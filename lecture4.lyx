@@ -1,0 +1,515 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\renewcommand\theenumi{(\alph{enumi})}
+\renewcommand\labelenumi{\theenumi}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams-bytype
+theorems-ams-extended-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format dvi
+\output_sync 1
+\output_sync_macro "\synctex=-1"
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch abc
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch pf of gamma = 0
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Asymptotics
+\end_layout
+
+\begin_layout Standard
+The basic idea of asymptotic theory.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\left\{ z_{n}\right\} $
+\end_inset
+
+ converges to 
+\begin_inset Formula $z$
+\end_inset
+
+ if for any 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+, there exists an 
+\begin_inset Formula $N=N\left(\epsilon\right)$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $n>N\left(\epsilon\right)$
+\end_inset
+
+, we have 
+\begin_inset Formula $\left|z_{n}-z\right|<\epsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Modes of Convergence
+\end_layout
+
+\begin_layout Standard
+almost sure convergence: for any 
+\begin_inset Formula $\epsilon>0$
+\end_inset
+
+, we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+P\left(\omega:\lim_{n\to\infty}\left|Z_{n}\left(\omega\right)-z\right|<\epsilon\right)=1
+\]
+
+\end_inset
+
+alternatively, 
+\begin_inset Formula $P\left(\limsup_{n\to\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|<\epsilon\right\} \right)=1$
+\end_inset
+
+ or 
+\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\bigcap_{n}^{\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|<\epsilon\right\} \right)=1$
+\end_inset
+
+.
+ Equivalently, 
+\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\bigcup_{n}^{\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|>\epsilon\right\} \right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Random variable 
+\begin_inset Formula $X_{n}\left(u\right)=1\left\{ u\leq\frac{1}{n}\right\} $
+\end_inset
+
+, where 
+\begin_inset Formula $u\sim Uniform[0,1]$
+\end_inset
+
+.
+ In this case,
+\begin_inset Formula 
+\[
+P\left(\bigcup_{n}^{\infty}\left\{ \left|X_{n}-0\right|>\epsilon\right\} \right)=P\left(X_{n}>\epsilon\right)=1/n\to0.
+\]
+
+\end_inset
+
+so 
+\begin_inset Formula $X_{n}\stackrel{a.s.}{\to}0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+convergence in probability
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}P\left(\omega:\left|Z_{n}\left(\omega\right)-z\right|<\epsilon\right)=1.
+\]
+
+\end_inset
+
+Give a counterexample that is convergent in probability but does not converge
+ almost surely.
+\end_layout
+
+\begin_layout Standard
+mean square convergence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}E\left[\left(Z_{n}-z\right)^{2}\right]=0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Convergence almost surely and convergence in probability do not take care
+ what happens on a set with small probability.
+ Convergence in mean square takes care of everything, and is an average.
+ If an a small set the difference is too large, it may blow away the convergence
+ in mean square.
+\end_layout
+
+\begin_layout Standard
+convergence in distribution
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $X\sim N\left(0,1\right)$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $Z_{n}=X+1/n$
+\end_inset
+
+, then 
+\begin_inset Formula $Z_{n}\stackrel{d}{\to}X$
+\end_inset
+
+ but 
+\begin_inset Formula $Z_{n}\stackrel{p}{\to}X_{n}$
+\end_inset
+
+.
+ On the contrary, if 
+\begin_inset Formula $Z_{n}=-X+1/n$
+\end_inset
+
+ or 
+\begin_inset Formula $Z_{n}=Y+1/n$
+\end_inset
+
+ where 
+\begin_inset Formula $Y\sim N\left(0,1\right)$
+\end_inset
+
+ and is independent of 
+\begin_inset Formula $X$
+\end_inset
+
+, then 
+\begin_inset Formula $Z_{n}\stackrel{d}{\to}X$
+\end_inset
+
+ but 
+\begin_inset Formula $Z_{n}\stackrel{p}{\nrightarrow}X$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+convergence in distribution is the convergence of CDF, not the random variables
+ themselves.
+ Convergence in distribution does not imply that there is any connection
+ between the left-hand side random variable and the right-hand side one.
+ 
+\end_layout
+
+\begin_layout Subsection
+law of large numbers
+\end_layout
+
+\begin_layout Standard
+iid, inid
+\end_layout
+
+\begin_layout Subsection
+central limit theorem
+\end_layout
+
+\begin_layout Standard
+Lindeberg-Levy, Lindeberg Feller
+\end_layout
+
+\begin_layout Standard
+continuous mapping theorem, big o small o, delta method
+\end_layout
+
+\begin_layout Section
+Apply Asymptotics to OLS
+\end_layout
+
+\begin_layout Subsection
+CLT
+\end_layout
+
+\begin_layout Standard
+Lindeberg-Feller CLT
+\end_layout
+
+\begin_layout Standard
+Lindeberg-Levy CLT is a special case of Lindeberg-Feller by directly checking
+ the Lindeberg condition, but not the Lyapunov condition.
+\end_layout
+
+\begin_layout Subsection
+Estimation of the Variance
+\end_layout
+
+\begin_layout Standard
+To show the finiteness of the variance,
+\begin_inset Formula $\Omega=E\left[x_{i}x_{i}'\epsilon_{i}^{2}\right].$
+\end_inset
+
+ Let 
+\begin_inset Formula $z_{i}=x_{i}\epsilon_{i}$
+\end_inset
+
+, so 
+\begin_inset Formula $\Omega=E\left[z_{i}z_{i}'\right]$
+\end_inset
+
+.
+ Because of the Cachy-Schwarz inequality, 
+\begin_inset Formula 
+\[
+\left\Vert \Omega\right\Vert _{\infty}=\left(E\left[z_{ik}^{2}\right]\right)_{k=1}^{K}.
+\]
+
+\end_inset
+
+For each 
+\begin_inset Formula $k$
+\end_inset
+
+, 
+\begin_inset Formula $E\left[z_{ik}^{2}\right]=E\left[z_{ik}^{2}\epsilon_{i}^{2}\right]\leq\left(E\left[z_{ik}^{4}\right]E\left[\epsilon_{i}^{4}\right]\right)^{1/2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For the estimation of variance, homoskedastic,
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}\left(\epsilon_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{2}+\left(\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right)
+\]
+
+\end_inset
+
+The third term
+\begin_inset Formula 
+\[
+\left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{2}x_{i}x'_{i}\right)\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right).
+\]
+
+\end_inset
+
+The second term
+\begin_inset Formula 
+\[
+\left(\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For general heteroskedasticity,
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\epsilon_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i'}\epsilon_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}
+\]
+
+\end_inset
+
+The third term every element is bounded by
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right) & \leq & \frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\\
+ & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
+ & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}}\sqrt{\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{4}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{4} & = & \frac{1}{n}\sum_{i=1}^{n}\left(x_{i1}^{2}+\cdots+x_{iK}^{2}\right)^{2}\leq\frac{1}{n}K\sum_{i=1}^{K}x_{ik}^{4}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The second term
+\begin_inset Formula 
+\begin{eqnarray*}
+\left|\frac{1}{n}\sum_{i=1}^{n}x_{i}^{2}\epsilon_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right| & \leq & \frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert \epsilon_{i}x_{i}\right\Vert _{2}\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\\
+ & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}}\left(\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\right)^{1/2}\\
+ & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}}\left(\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{4}\right)^{1/4}\left(\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{4}\right)^{1/4}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Collinearity
+\end_layout
+
+\begin_layout Standard
+nearly collinear
+\end_layout
+
+\begin_layout Subsection
+Asymptotic Distribution of Functional of Parameters
+\end_layout
+
+\begin_layout Standard
+Hansen's textbook provides a few examples why we are interested in a function
+ of parameters.
+\end_layout
+
+\begin_layout Standard
+How to derive the distribution? The delta method.
+\end_layout
+
+\begin_layout Standard
+It is particularly easy if the parameter of interest is of one dimensional.
+ 
+\end_layout
+
+\begin_layout Standard
+Besides point estimator, we might be interested in the interval estimator
+ 
+\begin_inset Formula $C_{n}$
+\end_inset
+
+.
+ What want to construct 
+\begin_inset Formula $\widehat{C}_{n}$
+\end_inset
+
+ such that 
+\begin_inset Formula 
+\[
+\lim_{n\to\infty}P\left(\beta_{0}\in\widehat{C}_{n}\right)=1-\alpha.
+\]
+
+\end_inset
+
+If we construct 
+\begin_inset Formula $\widehat{C}_{n}=\left[\widehat{\beta}-1.96\widehat{\sigma}_{\beta},\widehat{\beta}+1.96\widehat{\sigma}\right]$
+\end_inset
+
+, then we have 
+\begin_inset Formula 
+\[
+P\left(\widehat{\beta}-1.96\widehat{\sigma}\leq\beta_{0}\leq\widehat{\beta}+1.96\widehat{\sigma}\right)=P\left(1.96\leq\frac{\widehat{\beta}-\beta_{0}}{\widehat{\sigma}}\leq1.96\right)=F_{n}\left(1.96\right)-F_{n}\left(-1.96\right)\to\Phi\left(1.96\right)-\Phi\left(-1.96\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If multiple dimension, then one way to construct the interval is 
+\begin_inset Formula 
+\[
+P\left(\theta:\left(\widehat{\beta}-\beta\right)V^{-1}\left(\widehat{\beta}-\beta\right)\leq q_{\chi^{2}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
