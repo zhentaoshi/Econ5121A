@@ -34,7 +34,7 @@ theorems-ams-extended
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 11
 \spacing onehalf
 \use_hyperref false
 \papersize default
@@ -554,10 +554,6 @@ Sometimes we are interested in a subvector of
 \begin_inset Formula $\beta$
 \end_inset
 
-, but not the entire vector 
-\begin_inset Formula $\beta$
-\end_inset
-
 .
  For example, when we include a constant and some variables in 
 \begin_inset Formula $x$
@@ -566,7 +562,7 @@ Sometimes we are interested in a subvector of
 , we are often more interested in the slope coefficients (those associated
  with the random variables), as they represent the effect of these explanatory
  factors.
- In such a regression 
+ In the regression 
 \begin_inset Formula 
 \[
 y=\beta_{1}+x'\beta_{2}+e,
@@ -578,7 +574,7 @@ we take an expectation to get
 \begin_inset Formula $E\left[y\right]=\beta_{1}+E\left[x\right]'\beta_{2}.$
 \end_inset
 
- Differentiate the two equations, 
+ Differentiate the two equations to get 
 \begin_inset Formula 
 \[
 y-E\left[y\right]=\left(x-E\left[x\right]\right)'\beta_{2},
@@ -594,41 +590,12 @@ so that
 
 \end_inset
 
-where for two random vectors 
-\begin_inset Formula $x$
-\end_inset
-
- and 
-\begin_inset Formula $y$
-\end_inset
-
- (a scalar is a 
-\begin_inset Formula $1\times1$
-\end_inset
-
- vector), the variance and covariance are
-\begin_inset Formula 
-\begin{eqnarray*}
-\mathrm{var}\left(x\right) & = & E\left[\left(x-E\left[x\right]\right)\left(x-E\left[x\right]\right)'\right]\\
-\mathrm{cov}\left(x,y\right) & = & E\left[\left(x-E\left[x\right]\right)\left(y-E\left[y\right]\right)\right],
-\end{eqnarray*}
-
-\end_inset
-
-respectively.
- This is a special case of the subvector regression.
+This is a special case of the subvector regression.
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-Don't read the part below.
- It is not ready yet.
-\end_layout
-
-\begin_layout Standard
-To discuss the general case, we need to know the formula of the partitioned
- inverse, a fact from linear algebra.
+To discuss the general case, we need to know the formula of the inverse
+ of the partitioned matrix, a fact from linear algebra.
  If 
 \begin_inset Formula $Q=\begin{pmatrix}Q_{11} & Q_{12}\\
 Q_{21} & Q_{22}
@@ -658,11 +625,7 @@ Let
 \end_inset
 
 .
- Why is this useful?
-\end_layout
-
-\begin_layout Standard
-It is useful in interpreting the partial effect of a single regressors.
+ It is useful in interpreting the partial effect of a single regressors.
  We first run a regression
 \begin_inset Foot
 status open
@@ -710,7 +673,7 @@ u=x_{1}-x_{2}'\gamma=x_{1}-x_{2}'\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\le
 , and the coefficient is 
 \begin_inset Formula 
 \[
-\beta_{u}=\left(E\left[uu'\right]\right)^{-1}E\left[u'y\right].
+\theta=\left(E\left[uu'\right]\right)^{-1}E\left[u'y\right].
 \]
 
 \end_inset
@@ -728,7 +691,11 @@ E\left[uu'\right] & = & E\left[\left(x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left
 
 \end_inset
 
+We have verified that 
+\begin_inset Formula $\beta_{1}=\theta$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Subsection
@@ -746,40 +713,43 @@ name "omitted-variable-bias"
 \end_layout
 
 \begin_layout Standard
-Long regression 
+Long regression is 
+\begin_inset Formula $y=x_{1}'\beta_{1}+x_{2}'\beta_{2}+e$
+\end_inset
+
+, and short regression is 
+\begin_inset Formula $y=x_{1}'\gamma+u.$
+\end_inset
+
+ To discuss how to sign the bias, we first demean all the variables, which
+ is equivalent as if we project out the effect of the constant.
+ The long regression becomes 
 \begin_inset Formula 
 \[
-y=x_{1}'\beta_{1}+x_{2}'\beta_{2}+e
+\begin{aligned}\tilde{y} & = & \tilde{x}_{1}'\beta_{1}+\tilde{x}_{2}'\beta_{2}+e\end{aligned}
+,
 \]
 
 \end_inset
 
-and short regression 
+ and the short regression becomes 
 \begin_inset Formula 
 \[
-y=x_{1}'\gamma+u.
+\tilde{y}=\tilde{x}_{1}'\gamma+u,
 \]
 
 \end_inset
 
-
+ where 
+\emph on
+tilde
+\emph default
+ denotes the demeaned variable.
+ 
 \end_layout
 
 \begin_layout Standard
-To discuss how to sign the bias, we first demean all the variables, which
- is equivalent as if we project out the effect of the constant.
- 
-\begin_inset Formula 
-\[
-\begin{aligned}\tilde{y} & = & \tilde{x}_{1}'\beta_{1}+\tilde{x}_{2}'\beta_{2}+e\\
-\tilde{y} & = & \tilde{x}_{1}'\gamma+u
-\end{aligned}
-\]
-
-\end_inset
-
-where tilde denotes the demeaned variable.
- Now the cross moment equals to the covariance.
+After demeaning, the cross moment equals to the covariance.
  The short regression coefficient 
 \begin_inset Formula 
 \begin{eqnarray*}

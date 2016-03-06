@@ -104,20 +104,20 @@ theorems-ams-extended-bytype
 \begin_body
 
 \begin_layout Section
-The Algebra of Least Squares
+Algebra of Least Squares
 \end_layout
 
 \begin_layout Standard
 Notation: 
-\begin_inset Formula $y$
+\begin_inset Formula $y_{i}$
 \end_inset
 
  is a scalar, and 
-\begin_inset Formula $x$
+\begin_inset Formula $x_{i}$
 \end_inset
 
  is a 
-\begin_inset Formula $1\times K$
+\begin_inset Formula $K\times1$
 \end_inset
 
  vector.
@@ -152,14 +152,14 @@ As we have learned from the previous lecture, the parameter
  in the linear projection model 
 \begin_inset Formula 
 \begin{eqnarray*}
-y & = & x'\beta+e\\
-E[xe] & = & 0
+y_{i} & = & x'_{i}\beta+e_{i}\\
+E[x_{i}e_{i}] & = & 0
 \end{eqnarray*}
 
 \end_inset
 
 can be written as 
-\begin_inset Formula $\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right].$
+\begin_inset Formula $\beta=\left(E\left[x_{i}x_{i}'\right]\right)^{-1}E\left[x_{i}y_{i}\right].$
 \end_inset
 
  In reality we possess a sample of 
@@ -186,15 +186,10 @@ This is one way to motivate the OLS estimator.
 \begin_layout Standard
 Alternatively, we can derive the OLS estimator from minimizing the sum of
  squared residuals 
-\begin_inset Formula 
-\[
-\frac{1}{n}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2},
-\]
-
+\begin_inset Formula $\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.$
 \end_inset
 
-which is the sample counterpart of the MSE.
- By a similar optimization procedure, we derive exactly the same 
+ By a routine optimization, we derive exactly the same 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
@@ -235,8 +230,14 @@ Projector:
 \end_layout
 
 \begin_layout Itemize
-Idempotent matrix.
- 
+\begin_inset Formula $P_{X}M_{X}=M_{X}P_{X}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Idempotent matrix: 
 \begin_inset Formula $P_{X}P_{X}=P_{X},$
 \end_inset
 
@@ -246,10 +247,6 @@ Idempotent matrix.
 
 .
  
-\begin_inset Formula $P_{X}M_{X}=M_{X}P_{X}=0$
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Standard
@@ -288,7 +285,7 @@ Goodness of Fit
 \begin_layout Standard
 The so-called R-square is the most popular measure of goodness-of-fit in
  the linear regression.
- R-square is defined when a constant is included in the regressors.
+ R-square is defined only when a constant is included in the regressors.
  Let 
 \begin_inset Formula $M_{\iota}=I_{n}-\frac{1}{n}\iota\iota'$
 \end_inset
@@ -324,7 +321,7 @@ The so-called R-square is the most popular measure of goodness-of-fit in
 \end_inset
 
 .
- The squared sum is 
+ The total variation is 
 \begin_inset Formula 
 \begin{eqnarray*}
 Y'M_{\iota}Y & = & \left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)\\
@@ -334,12 +331,12 @@ Y'M_{\iota}Y & = & \left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{
 
 \end_inset
 
-where the last equality follows as 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
+where the last equality follows by 
+\begin_inset Formula $M_{\iota}\widehat{e}=\widehat{e}$
 \end_inset
 
- so that 
-\begin_inset Formula $M_{\iota}\widehat{e}=\widehat{e}$
+ as 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
 \end_inset
 
 , and 
@@ -347,8 +344,8 @@ where the last equality follows as
 \end_inset
 
 .
- R-square is defined as 
-\begin_inset Formula $1-\widehat{e}'\widehat{e}/Y'M_{\iota}Y$
+ R-square is 
+\begin_inset Formula $\widehat{Y}'M_{\iota}\widehat{Y}/Y'M_{\iota}Y$
 \end_inset
 
 .
@@ -360,11 +357,11 @@ Frish-Waugh-Lovell Theorem
 
 \begin_layout Standard
 If 
-\begin_inset Formula $y_{i}=x_{1}'\beta_{1}+x_{2}'\beta_{2}+e$
+\begin_inset Formula $Y=X_{1}\beta_{1}+X_{2}\beta_{2}+e$
 \end_inset
 
 , then 
-\begin_inset Formula $\widehat{\beta}_{1}=\left(X_{1}'M_{2}X_{1}\right)^{-1}X_{1}'M_{2}Y.$
+\begin_inset Formula $\widehat{\beta}_{1}=\left(X_{1}'M_{X_{2}}X_{1}\right)^{-1}X_{1}'M_{X_{2}}Y.$
 \end_inset
 
 
@@ -372,6 +369,160 @@ If
 
 \begin_layout Section
 Statistical Properties of Least Squares
+\end_layout
+
+\begin_layout Standard
+To talk about the statistical properties, we impose the following assumptions.
+\end_layout
+
+\begin_layout Enumerate
+The data 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ is a random sample from the same data generating proces 
+\begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ are independent.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $e_{i}\sim N\left(0,\sigma^{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Normal Regression
+\end_layout
+
+\begin_layout Standard
+Under the normality assumption, 
+\begin_inset Formula $y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\gamma=\sigma^{2}$
+\end_inset
+
+.
+ The 
+\emph on
+conditional
+\emph default
+ likelihood of observing a sample 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right),
+\]
+
+\end_inset
+
+ and the log-likelihood function is 
+\begin_inset Formula 
+\[
+L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.
+\]
+
+\end_inset
+
+Therefore, the maximum likelihood estimator (MLE) coincides with the OLS
+ estimator, and the MLE of 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ is 
+\begin_inset Formula $\widehat{e}'\widehat{e}/n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We can show the finite sample exact distribution of 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula 
+\[
+\widehat{\beta}=\left(X'X\right)^{-1}X'y=\left(X'X\right)^{-1}X'\left(X'\beta+e\right)=\beta+\left(X'X\right)^{-1}X'e,
+\]
+
+\end_inset
+
+ we have the estimator 
+\begin_inset Formula $\widehat{\beta}|X\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right)$
+\end_inset
+
+, and 
+\begin_inset Formula 
+\[
+\widehat{\beta}_{k}|X\sim N\left(\beta_{k},\eta_{k}'\sigma^{2}\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\eta_{k}=\left(1\left\{ l=k\right\} \right)_{l=1,\ldots,K}$
+\end_inset
+
+ is the selector of the 
+\begin_inset Formula $k$
+\end_inset
+
+-th element.
+ 
+\end_layout
+
+\begin_layout Standard
+Consider the 
+\begin_inset Formula $T$
+\end_inset
+
+-statistic
+\begin_inset Formula 
+\[
+T_{k}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left(X'X\right)_{kk}^{-1}}}=\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left(X'X\right)_{kk}^{-1}}}{\sqrt{s^{2}/\sigma^{2}}}.
+\]
+
+\end_inset
+
+The numerator follows a standard normal, and the denominator follows 
+\begin_inset Formula $\chi^{2}\left(n-K\right)$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $T_{k}\sim t\left(n-K\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+The part below is not ready yet.
+ Don't read.
 \end_layout
 
 \begin_layout Subsection
@@ -383,14 +534,14 @@ When we discuss the statistical properties of the least squares in finite
  sample, we assume 
 \begin_inset Formula 
 \begin{eqnarray*}
-y & = & x'\beta+e\\
-E[e|x] & = & 0,
+y_{i} & = & x_{i}'\beta+e_{i}\\
+E[e_{i}|x_{i}] & = & 0,
 \end{eqnarray*}
 
 \end_inset
 
 which is equivalent to assume 
-\begin_inset Formula $E\left[y|x\right]=x'\beta$
+\begin_inset Formula $E\left[y_{i}|x_{i}\right]=x'_{i}\beta$
 \end_inset
 
  so the linear projection model and the conditional mean model coincide.
@@ -407,7 +558,7 @@ Unbiasedness:
 \end_layout
 
 \begin_layout Itemize
-Variance 
+Variance: 
 \begin_inset Formula $\mathrm{var}\left(\widehat{\beta}|X\right)=E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]=E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]=\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}.$
 \end_inset
 
@@ -501,7 +652,7 @@ Let
  As 
 \begin_inset Formula 
 \[
-E\left[A'y|X\right]=E\left[A'\left(X\beta+e\right)|X\right]=AX\beta.
+E\left[A'y|X\right]=E\left[A'\left(X\beta+e\right)|X\right]=A'X\beta.
 \]
 
 \end_inset
@@ -511,7 +662,7 @@ So the unbiasedness of
 \end_inset
 
  implies 
-\begin_inset Formula $AX=I_{n}$
+\begin_inset Formula $A'X=I_{n}$
 \end_inset
 
 .
@@ -612,83 +763,6 @@ where
 
 .
  
-\end_layout
-
-\begin_layout Subsection
-Normal Regression
-\end_layout
-
-\begin_layout Standard
-If we assume 
-\begin_inset Formula $e_{i}\sim N\left(0,\sigma^{2}\right)$
-\end_inset
-
- is independent of 
-\begin_inset Formula $x_{i}$
-\end_inset
-
-, then 
-\begin_inset Formula $y_{i}\sim N\left(x_{i}'\beta,\sigma^{2}\right)$
-\end_inset
-
-.
- The likelihood of observing a sample 
-\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
-\end_inset
-
- is 
-\begin_inset Formula 
-\[
-\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2\sigma^{2}}\left(y_{i}-x_{i}'\beta\right)^{2}\right),
-\]
-
-\end_inset
-
- and the log-likelihood function is 
-\begin_inset Formula 
-\[
-L\left(\beta,\sigma\right)=-\frac{n}{2}\log2\pi-n\log\sigma-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.
-\]
-
-\end_inset
-
-Therefore, the maximum likelihood estimator coincides with the OLS estimator.
- 
-\end_layout
-
-\begin_layout Standard
-Moreover, consider the statistic
-\begin_inset Formula 
-\[
-T_{k}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left(X'X\right)_{kk}^{-1}}}=\frac{\eta_{k}'\left(X'X\right)^{-1}X'e/\sigma}{\sqrt{\frac{s^{2}}{\sigma^{2}}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}}}=\frac{a_{k}'\frac{e}{\sigma}/\sqrt{a_{k}'a_{k}}}{\sqrt{s^{2}/\sigma^{2}}}
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\eta_{k}=\left(1\left\{ l=k\right\} \right)_{l=1,\ldots,K}$
-\end_inset
-
- is the selector, and 
-\begin_inset Formula $a_{k}=\eta_{k}'\left(X'X\right)^{-1}X'$
-\end_inset
-
-.
- It is easy to see that the numerator follows a standard normal, and the
- denominator follows a 
-\begin_inset Formula $\chi^{2}$
-\end_inset
-
- with the degree of freedom 
-\begin_inset Formula $n-K$
-\end_inset
-
-.
- Therefore 
-\begin_inset Formula $T_{k}\sim t\left(n-K\right)$
-\end_inset
-
-.
 \end_layout
 
 \end_body
