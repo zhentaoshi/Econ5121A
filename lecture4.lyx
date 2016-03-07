@@ -344,8 +344,62 @@ Let
 Law of Large Numbers
 \end_layout
 
+\begin_layout Standard
+The law of large numbers (LLN) is a collect of probability theorems about
+ the convergence in probability of sample means.
+ The basic form of the LLN is: the sample average of 
+\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
+\end_inset
+
+ satisfies 
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}z_{i}-E\left(\frac{1}{n}\sum_{i=1}^{n}z_{i}\right)\stackrel{p}{\to}0.
+\]
+
+\end_inset
+
+Various versions of LLN work under different assumptions about the random
+ variables.
+ 
+\end_layout
+
+\begin_layout Standard
+The simplest version of LLN utilizes Chebysheve inequality, a simple fact
+ of probability.
+ For any random variable 
+\begin_inset Formula $x$
+\end_inset
+
+ with finite 
+\begin_inset Formula $E\left[x^{2}\right]$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+P\left(\left|x\right|>c\right)\leq E\left[x^{2}\right]/c^{2}
+\]
+
+\end_inset
+
+ for any positive constant 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+\begin_inset Formula $E\left[x^{2}\right]=\int_{\left|x\right|>c}x^{2}dF_{X}+\int_{\left|x\right|\leq c}x^{2}dF_{X}\geq\int_{\left|x\right|>c}x^{2}dF_{X}\geq c\int_{\left|x\right|>c}dF_{X}=c^{2}P\left(\left|x\right|>c\right).$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
-Cherbyshev LLN
+Chebyshev LLN
 \end_layout
 
 \begin_layout Itemize
@@ -354,6 +408,68 @@ Kolmogorov LLN
 
 \begin_layout Subsection
 Central Limit Theorem
+\end_layout
+
+\begin_layout Standard
+The central limit theorem (CLT) is a collect of probability theorems about
+ the convergence in distribution to a normally distributed random variable.
+ The basic form of the CLT is: For a sample 
+\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
+\end_inset
+
+ of 
+\emph on
+zero-mean
+\emph default
+ random variables, the sample mean scaled up by 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ satisfies 
+\begin_inset Formula 
+\[
+\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}\right).
+\]
+
+\end_inset
+
+Various versions of CLT work under different assumptions about the random
+ variables.
+ 
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\varphi_{x}\left(t\right)=E\left[\exp\left(itx\right)\right]$
+\end_inset
+
+ be the characteristic function.
+ If 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+'s mean is zero, variance is 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+, and its third moment is finite, then 
+\begin_inset Formula $\varphi_{x_{i}}\left(t\right)=1-\frac{\sigma^{2}}{2}t^{2}+O\left(t^{3}\right)$
+\end_inset
+
+.
+ If the observations in the sample are independent, then 
+\begin_inset Formula 
+\[
+\varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right)=\left(1-\frac{\sigma^{2}}{2n}t^{2}+O\left(\frac{t^{3}}{n^{3/2}}\right)\right)^{n}\to\exp\left(-\frac{\sigma^{2}}{2}t^{2}\right),
+\]
+
+\end_inset
+
+where the limit is exactly the characteristic function of 
+\begin_inset Formula $N\left(0,\sigma^{2}\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -366,6 +482,45 @@ Lindeberg-Feller CLT
 
 \begin_layout Subsection
 Tools for Transformations
+\end_layout
+
+\begin_layout Standard
+The original forms of LLN or CLT only deal with sample means.
+ However, most of the econometric estimators of interest are functions of
+ sample means.
+ Therefore, we need tools to handle transformations.
+\end_layout
+
+\begin_layout Itemize
+Small op: 
+\begin_inset Formula $x_{n}=o_{p}\left(r_{n}\right)$
+\end_inset
+
+ if 
+\begin_inset Formula $x_{n}/r_{n}\stackrel{p}{\to}0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Big Op: 
+\begin_inset Formula $x_{n}=O_{p}\left(r_{n}\right)$
+\end_inset
+
+ if for any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, there exists a 
+\begin_inset Formula $c>0$
+\end_inset
+
+ such that 
+\begin_inset Formula $P\left(x_{n}/r_{n}>c\right)<\varepsilon$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -403,38 +558,6 @@ Continuous mapping theorem 2: If
 
 , then 
 \begin_inset Formula $f\left(x_{n}\right)\stackrel{d}{\to}f\left(x\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Small op: 
-\begin_inset Formula $x_{n}=o_{p}\left(r_{n}\right)$
-\end_inset
-
- if 
-\begin_inset Formula $x_{n}/r_{n}\stackrel{p}{\to}0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Big op: 
-\begin_inset Formula $x_{n}=O_{p}\left(r_{n}\right)$
-\end_inset
-
- if for any 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, there exists a 
-\begin_inset Formula $c>0$
-\end_inset
-
- such that 
-\begin_inset Formula $P\left[x_{n}/r_{n}>c\right]<\varepsilon$
 \end_inset
 
 .
@@ -496,7 +619,7 @@ Estimation of the Variance
 \end_layout
 
 \begin_layout Standard
-To show the finiteness of the variance,
+To show the finiteness of the variance, 
 \begin_inset Formula $\Omega=E\left[x_{i}x_{i}'e_{i}^{2}\right].$
 \end_inset
 
@@ -573,44 +696,6 @@ As
 .
 \end_layout
 
-\begin_layout Standard
-For general heteroskedasticity,
-\begin_inset Formula 
-\[
-\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'e_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}
-\]
-
-\end_inset
-
-The third term is bounded by 
-\begin_inset Formula 
-\begin{eqnarray*}
- &  & \mbox{trace}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}\right)\\
- & \leq & K\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
- & = & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left(\sum_{k=1}^{K}x_{ik}^{2}\right)^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\sum_{k=1}^{K}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}=o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
-\end{eqnarray*}
-
-\end_inset
-
-where the third inequality follows by 
-\begin_inset Formula $\left(a_{1}+\cdots+a_{K}\right)^{2}\leq K\left(a_{1}^{2}+\cdots+a_{K}^{2}\right)$
-\end_inset
-
-.
- The second term is bounded by 
-\begin_inset Formula 
-\begin{eqnarray*}
-\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}x_{ik'}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right| & \leq & \max_{k}\left|\widehat{\beta}_{k}-\beta_{k}\right|K\max_{k,k',k''}\left|\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{ik}x_{ik'}x_{ik''}\right|\\
- & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\right)^{1/4}K\max_{k,k',k''}\left(\frac{1}{n}\sum_{i=1}^{n}\left(x_{ik}x_{ik'}x_{ik''}\right)^{4/3}\right)^{3/4}\\
- & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}K\max_{k}\left(\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\right)^{3/4}=o_{p}\left(1\right)O_{p}\left(1\right)
-\end{eqnarray*}
-
-\end_inset
-
-where the second and the third inequality hold by the Holder's inequality.
- 
-\end_layout
-
 \begin_layout Subsection
 Collinearity
 \end_layout
@@ -676,6 +761,49 @@ P\left(\theta:\left(\widehat{\beta}-\beta\right)V^{-1}\left(\widehat{\beta}-\bet
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Appendix
+\end_layout
+
+\begin_layout Standard
+For general heteroskedasticity,
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'e_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}
+\]
+
+\end_inset
+
+The third term is bounded by 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \mbox{trace}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}\right)\\
+ & \leq & K\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
+ & = & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left(\sum_{k=1}^{K}x_{ik}^{2}\right)^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\sum_{k=1}^{K}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}=o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
+\end{eqnarray*}
+
+\end_inset
+
+where the third inequality follows by 
+\begin_inset Formula $\left(a_{1}+\cdots+a_{K}\right)^{2}\leq K\left(a_{1}^{2}+\cdots+a_{K}^{2}\right)$
+\end_inset
+
+.
+ The second term is bounded by 
+\begin_inset Formula 
+\begin{eqnarray*}
+\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}x_{ik'}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right| & \leq & \max_{k}\left|\widehat{\beta}_{k}-\beta_{k}\right|K\max_{k,k',k''}\left|\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{ik}x_{ik'}x_{ik''}\right|\\
+ & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\right)^{1/4}K\max_{k,k',k''}\left(\frac{1}{n}\sum_{i=1}^{n}\left(x_{ik}x_{ik'}x_{ik''}\right)^{4/3}\right)^{3/4}\\
+ & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}K\max_{k}\left(\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\right)^{3/4}=o_{p}\left(1\right)O_{p}\left(1\right)
+\end{eqnarray*}
+
+\end_inset
+
+where the second and the third inequality hold by the Holder's inequality.
+ 
 \end_layout
 
 \end_body
