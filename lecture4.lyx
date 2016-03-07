@@ -4,8 +4,11 @@
 \begin_header
 \textclass article
 \begin_preamble
-\renewcommand\theenumi{(\alph{enumi})}
-\renewcommand\labelenumi{\theenumi}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Lecture Notes}
+\rhead{Zhentao Shi}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -33,7 +36,7 @@ theorems-ams-extended-bytype
 \output_sync_macro "\synctex=-1"
 \bibtex_command default
 \index_command default
-\paperfontsize 12
+\paperfontsize 11
 \spacing onehalf
 \use_hyperref true
 \pdf_bookmarks true
@@ -106,32 +109,28 @@ Asymptotics
 \end_layout
 
 \begin_layout Standard
-The basic idea of asymptotic theory.
-\end_layout
-
-\begin_layout Standard
-If 
+Convergence of a deterministic sequence 
 \begin_inset Formula $\left\{ z_{n}\right\} $
 \end_inset
 
- converges to 
-\begin_inset Formula $z$
+: 
+\begin_inset Formula $z_{n}\to z$
 \end_inset
 
  if for any 
-\begin_inset Formula $\epsilon>0$
+\begin_inset Formula $c>0$
 \end_inset
 
 , there exists an 
-\begin_inset Formula $N=N\left(\epsilon\right)$
+\begin_inset Formula $N\left(e\right)$
 \end_inset
 
  such that for all 
-\begin_inset Formula $n>N\left(\epsilon\right)$
+\begin_inset Formula $n>N\left(e\right)$
 \end_inset
 
 , we have 
-\begin_inset Formula $\left|z_{n}-z\right|<\epsilon$
+\begin_inset Formula $\left|z_{n}-z\right|<c$
 \end_inset
 
 .
@@ -142,38 +141,49 @@ Modes of Convergence
 \end_layout
 
 \begin_layout Standard
+In contrast to the convergence of a deterministic sequence, we are interested
+ in the convergence of random variables in some sense.
+ There are several commonly used definitions of convergence modes.
+ We introduce three of them.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 almost sure convergence: for any 
-\begin_inset Formula $\epsilon>0$
+\begin_inset Formula $e>0$
 \end_inset
 
 , we have 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula 
 \[
-P\left(\omega:\lim_{n\to\infty}\left|Z_{n}\left(\omega\right)-z\right|<\epsilon\right)=1
+P\left(\omega:\lim_{n\to\infty}\left|Z_{n}\left(\omega\right)-z\right|<e\right)=1
 \]
 
 \end_inset
 
 alternatively, 
-\begin_inset Formula $P\left(\limsup_{n\to\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|<\epsilon\right\} \right)=1$
+\begin_inset Formula $P\left(\limsup_{n\to\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|<e\right\} \right)=1$
 \end_inset
 
  or 
-\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\bigcap_{n}^{\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|<\epsilon\right\} \right)=1$
+\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\bigcap_{n}^{\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|<e\right\} \right)=1$
 \end_inset
 
 .
  Equivalently, 
-\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\bigcup_{n}^{\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|>\epsilon\right\} \right)=0$
+\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\bigcup_{n}^{\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|>e\right\} \right)=0$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Random variable 
 \begin_inset Formula $X_{n}\left(u\right)=1\left\{ u\leq\frac{1}{n}\right\} $
 \end_inset
@@ -186,7 +196,7 @@ Random variable
  In this case,
 \begin_inset Formula 
 \[
-P\left(\bigcup_{n}^{\infty}\left\{ \left|X_{n}-0\right|>\epsilon\right\} \right)=P\left(X_{n}>\epsilon\right)=1/n\to0.
+P\left(\bigcup_{n}^{\infty}\left\{ \left|X_{n}-0\right|>e\right\} \right)=P\left(X_{n}>e\right)=1/n\to0.
 \]
 
 \end_inset
@@ -198,136 +208,287 @@ so
 .
 \end_layout
 
-\begin_layout Standard
-convergence in probability
-\begin_inset Formula 
-\[
-\lim_{n\to\infty}P\left(\omega:\left|Z_{n}\left(\omega\right)-z\right|<\epsilon\right)=1.
-\]
-
-\end_inset
-
-Give a counterexample that is convergent in probability but does not converge
- almost surely.
-\end_layout
-
-\begin_layout Standard
-mean square convergence
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\lim_{n\to\infty}E\left[\left(Z_{n}-z\right)^{2}\right]=0.
-\]
-
 \end_inset
 
 
 \end_layout
 
+\begin_layout Itemize
+Convergence in probability: 
+\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\left|Z_{n}\left(\omega\right)-z\right|<c\right)=1.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula $z_{n}\left(\omega\right)\in\left\{ 0,1\right\} $
+\end_inset
+
+ is a binary variable.
+ 
+\begin_inset Formula $z_{n}=1$
+\end_inset
+
+ with probability 
+\begin_inset Formula $1/n$
+\end_inset
+
+, and 
+\begin_inset Formula $z_{n}=0$
+\end_inset
+
+ with probability 
+\begin_inset Formula $1-1/n$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $z_{n}\stackrel{p}{\to}0$
+\end_inset
+
+ but 
+\begin_inset Formula $z_{n}\stackrel{m.s.}{\nrightarrow}0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Mean-square convergence: 
+\begin_inset Formula $\lim_{n\to\infty}E\left[\left(z_{n}-z\right)^{2}\right]=0.$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Convergence almost surely and convergence in probability do not take care
- what happens on a set with small probability.
- Convergence in mean square takes care of everything, and is an average.
+Convergence in probability does not take care what happens on a set with
+ small probability.
+ Convergence in mean square takes care the average over the entire probability
+ space.
  If an a small set the difference is too large, it may blow away the convergence
  in mean square.
 \end_layout
 
-\begin_layout Standard
-convergence in distribution
+\begin_layout Itemize
+Convergence in distribution: 
+\begin_inset Formula $F\left(x_{n}\right)\to F\left(x\right)$
+\end_inset
+
+ for each 
+\begin_inset Formula $x$
+\end_inset
+
+ on which 
+\begin_inset Formula $F\left(x\right)$
+\end_inset
+
+ is continuous.
 \end_layout
 
 \begin_layout Standard
+Convergence in distribution is the convergence of CDF, not the random variables
+ themselves.
+ 
+\end_layout
+
+\begin_layout Example
 Let 
-\begin_inset Formula $X\sim N\left(0,1\right)$
+\begin_inset Formula $x\sim N\left(0,1\right)$
 \end_inset
 
 .
  If 
-\begin_inset Formula $Z_{n}=X+1/n$
+\begin_inset Formula $z_{n}=x+1/n$
 \end_inset
 
 , then 
-\begin_inset Formula $Z_{n}\stackrel{d}{\to}X$
+\begin_inset Formula $z_{n}\stackrel{d}{\to}x$
 \end_inset
 
  but 
-\begin_inset Formula $Z_{n}\stackrel{p}{\to}X_{n}$
+\begin_inset Formula $z_{n}\stackrel{p}{\to}x_{n}$
 \end_inset
 
 .
  On the contrary, if 
-\begin_inset Formula $Z_{n}=-X+1/n$
+\begin_inset Formula $z_{n}=-x+1/n$
 \end_inset
 
  or 
-\begin_inset Formula $Z_{n}=Y+1/n$
+\begin_inset Formula $z_{n}=y+1/n$
 \end_inset
 
  where 
-\begin_inset Formula $Y\sim N\left(0,1\right)$
+\begin_inset Formula $y\sim N\left(0,1\right)$
 \end_inset
 
  and is independent of 
-\begin_inset Formula $X$
+\begin_inset Formula $x$
 \end_inset
 
 , then 
-\begin_inset Formula $Z_{n}\stackrel{d}{\to}X$
+\begin_inset Formula $z_{n}\stackrel{d}{\to}x$
 \end_inset
 
  but 
-\begin_inset Formula $Z_{n}\stackrel{p}{\nrightarrow}X$
+\begin_inset Formula $z_{n}\stackrel{p}{\nrightarrow}x$
 \end_inset
 
 .
  
 \end_layout
 
-\begin_layout Standard
-convergence in distribution is the convergence of CDF, not the random variables
- themselves.
- Convergence in distribution does not imply that there is any connection
- between the left-hand side random variable and the right-hand side one.
- 
+\begin_layout Subsection
+Law of Large Numbers
+\end_layout
+
+\begin_layout Itemize
+Cherbyshev LLN
+\end_layout
+
+\begin_layout Itemize
+Kolmogorov LLN
 \end_layout
 
 \begin_layout Subsection
-law of large numbers
+Central Limit Theorem
 \end_layout
 
-\begin_layout Standard
-iid, inid
+\begin_layout Itemize
+Lindeberg-Levy CLT
+\end_layout
+
+\begin_layout Itemize
+Lindeberg-Feller CLT
 \end_layout
 
 \begin_layout Subsection
-central limit theorem
+Tools for Transformations
 \end_layout
 
-\begin_layout Standard
-Lindeberg-Levy, Lindeberg Feller
+\begin_layout Itemize
+Continuous mapping theorem 1: If 
+\begin_inset Formula $x_{n}\stackrel{p}{\to}a$
+\end_inset
+
+ and 
+\begin_inset Formula $f\left(\cdot\right)$
+\end_inset
+
+ is continuous at 
+\begin_inset Formula $a$
+\end_inset
+
+, then 
+\begin_inset Formula $f\left(x_{n}\right)\stackrel{p}{\to}f\left(a\right)$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Standard
-continuous mapping theorem, big o small o, delta method
+\begin_layout Itemize
+Continuous mapping theorem 2: If 
+\begin_inset Formula $x_{n}\stackrel{d}{\to}x$
+\end_inset
+
+ and 
+\begin_inset Formula $f\left(\cdot\right)$
+\end_inset
+
+ is continuous almost surely on the support of 
+\begin_inset Formula $x$
+\end_inset
+
+, then 
+\begin_inset Formula $f\left(x_{n}\right)\stackrel{d}{\to}f\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Small op: 
+\begin_inset Formula $x_{n}=o_{p}\left(r_{n}\right)$
+\end_inset
+
+ if 
+\begin_inset Formula $x_{n}/r_{n}\stackrel{p}{\to}0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Big op: 
+\begin_inset Formula $x_{n}=O_{p}\left(r_{n}\right)$
+\end_inset
+
+ if for any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, there exists a 
+\begin_inset Formula $c>0$
+\end_inset
+
+ such that 
+\begin_inset Formula $P\left[x_{n}/r_{n}>c\right]<\varepsilon$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Delta method
 \end_layout
 
 \begin_layout Section
 Apply Asymptotics to OLS
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 CLT
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lindeberg-Feller CLT
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Lindeberg-Levy CLT is a special case of Lindeberg-Feller by directly checking
  the Lindeberg condition, but not the Lyapunov condition.
+\end_layout
+
+\end_inset
+
+Convergence in probability: 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}E\left[x_{i}x_{i}'\right]$
+\end_inset
+
+, and 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{p}{\to}0$
+\end_inset
+
+.
+ By the continuous mapping theorem, 
+\begin_inset Formula $\widehat{\beta}-\beta\stackrel{p}{\to}0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Asymptotic distribution: 
+\begin_inset Formula $n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,E\left[x_{i}x_{i}'e_{i}^{2}\right]\right).$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -336,11 +497,11 @@ Estimation of the Variance
 
 \begin_layout Standard
 To show the finiteness of the variance,
-\begin_inset Formula $\Omega=E\left[x_{i}x_{i}'\epsilon_{i}^{2}\right].$
+\begin_inset Formula $\Omega=E\left[x_{i}x_{i}'e_{i}^{2}\right].$
 \end_inset
 
  Let 
-\begin_inset Formula $z_{i}=x_{i}\epsilon_{i}$
+\begin_inset Formula $z_{i}=x_{i}e_{i}$
 \end_inset
 
 , so 
@@ -351,7 +512,7 @@ To show the finiteness of the variance,
  Because of the Cachy-Schwarz inequality, 
 \begin_inset Formula 
 \[
-\left\Vert \Omega\right\Vert _{\infty}=\left(E\left[z_{ik}^{2}\right]\right)_{k=1}^{K}.
+\left\Vert \Omega\right\Vert _{\infty}=\max_{k=1,\ldots,K}E\left[z_{ik}^{2}\right].
 \]
 
 \end_inset
@@ -361,7 +522,7 @@ For each
 \end_inset
 
 , 
-\begin_inset Formula $E\left[z_{ik}^{2}\right]=E\left[z_{ik}^{2}\epsilon_{i}^{2}\right]\leq\left(E\left[z_{ik}^{4}\right]E\left[\epsilon_{i}^{4}\right]\right)^{1/2}$
+\begin_inset Formula $E\left[z_{ik}^{2}\right]=E\left[z_{ik}^{2}e_{i}^{2}\right]\leq\left(E\left[z_{ik}^{4}\right]E\left[e_{i}^{4}\right]\right)^{1/2}$
 \end_inset
 
 .
@@ -371,7 +532,7 @@ For each
 For the estimation of variance, homoskedastic,
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{i=1}^{n}\left(\epsilon_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{2}+\left(\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right)
+\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right)
 \]
 
 \end_inset
@@ -379,7 +540,7 @@ For the estimation of variance, homoskedastic,
 The third term
 \begin_inset Formula 
 \[
-\left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{2}x_{i}x'_{i}\right)\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right).
+\left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)O_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
 \]
 
 \end_inset
@@ -387,56 +548,67 @@ The third term
 The second term
 \begin_inset Formula 
 \[
-\left(\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
+\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
 \]
 
 \end_inset
 
+As 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}=\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}+o_{p}\left(1\right)$
+\end_inset
 
+ and 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}=\sigma_{e}^{2}+o_{p}\left(1\right)$
+\end_inset
+
+, we have 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}=\sigma_{e}^{2}+o_{p}\left(1\right)$
+\end_inset
+
+.
+ In other words, 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}\stackrel{p}{\to}\sigma_{e}^{2}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 For general heteroskedasticity,
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\epsilon_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i'}\epsilon_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}
+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'e_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}
 \]
 
 \end_inset
 
-The third term every element is bounded by
+The third term is bounded by 
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right) & \leq & \frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\\
- & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
- & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}}\sqrt{\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{4}}
+ &  & \mbox{trace}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}\right)\\
+ & \leq & K\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
+ & = & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left(\sum_{k=1}^{K}x_{ik}^{2}\right)^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\sum_{k=1}^{K}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}=o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
 \end{eqnarray*}
 
 \end_inset
 
+where the third inequality follows by 
+\begin_inset Formula $\left(a_{1}+\cdots+a_{K}\right)^{2}\leq K\left(a_{1}^{2}+\cdots+a_{K}^{2}\right)$
+\end_inset
 
+.
+ The second term is bounded by 
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{4} & = & \frac{1}{n}\sum_{i=1}^{n}\left(x_{i1}^{2}+\cdots+x_{iK}^{2}\right)^{2}\leq\frac{1}{n}K\sum_{i=1}^{K}x_{ik}^{4}.
+\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}x_{ik'}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right| & \leq & \max_{k}\left|\widehat{\beta}_{k}-\beta_{k}\right|K\max_{k,k',k''}\left|\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{ik}x_{ik'}x_{ik''}\right|\\
+ & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\right)^{1/4}K\max_{k,k',k''}\left(\frac{1}{n}\sum_{i=1}^{n}\left(x_{ik}x_{ik'}x_{ik''}\right)^{4/3}\right)^{3/4}\\
+ & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}K\max_{k}\left(\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\right)^{3/4}=o_{p}\left(1\right)O_{p}\left(1\right)
 \end{eqnarray*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-The second term
-\begin_inset Formula 
-\begin{eqnarray*}
-\left|\frac{1}{n}\sum_{i=1}^{n}x_{i}^{2}\epsilon_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right| & \leq & \frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert \epsilon_{i}x_{i}\right\Vert _{2}\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\\
- & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}}\left(\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\right)^{1/2}\\
- & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}\sqrt{\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}}\left(\frac{1}{n}\sum_{i=1}^{n}\epsilon_{i}^{4}\right)^{1/4}\left(\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{4}\right)^{1/4}
-\end{eqnarray*}
-
-\end_inset
-
-
+where the second and the third inequality hold by the Holder's inequality.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -454,14 +626,9 @@ Asymptotic Distribution of Functional of Parameters
 \begin_layout Standard
 Hansen's textbook provides a few examples why we are interested in a function
  of parameters.
-\end_layout
-
-\begin_layout Standard
-How to derive the distribution? The delta method.
-\end_layout
-
-\begin_layout Standard
-It is particularly easy if the parameter of interest is of one dimensional.
+ For example, the optimal experience level of a worker.
+ We derive the distribution by the delta method.
+ It is particularly easy if the parameter of interest is of one dimensional.
  
 \end_layout
 
