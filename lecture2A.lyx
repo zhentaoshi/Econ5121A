@@ -363,6 +363,22 @@ If
  are independent.
 \end_layout
 
+\begin_layout --Separator--
+
+\end_layout
+
+\begin_layout Fact
+If 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ is invertible, then 
+\begin_inset Formula $X'\Sigma^{-1}X\sim\chi^{2}\left(\mathrm{rank}\left(\Sigma\right)\right)$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
 The last result, which is useful in linear regression, is that if 
 \begin_inset Formula $X_{1}$

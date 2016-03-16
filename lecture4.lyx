@@ -109,15 +109,19 @@ Asymptotics
 \end_layout
 
 \begin_layout Standard
-Convergence of a deterministic sequence 
-\begin_inset Formula $\left\{ z_{n}\right\} $
-\end_inset
+Asymptotic theory is concerned about the behavior of statistics when the
+ sample size is arbitrarily large.
+ It is a useful approximation technique to simplify extremely complicated
+ finite-sample analysis.
+ 
+\end_layout
 
-: 
-\begin_inset Formula $z_{n}\to z$
-\end_inset
+\begin_layout Subsection
+Modes of Convergence
+\end_layout
 
- if for any 
+\begin_layout Standard
+Convergence of a deterministic sequence means that for any 
 \begin_inset Formula $c>0$
 \end_inset
 
@@ -134,22 +138,31 @@ Convergence of a deterministic sequence
 \end_inset
 
 .
-\end_layout
+ We say 
+\begin_inset Formula $z$
+\end_inset
 
-\begin_layout Subsection
-Modes of Convergence
+ is the limit of 
+\begin_inset Formula $z_{n}$
+\end_inset
+
+, and denote as 
+\begin_inset Formula $z_{n}\to z$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
 In contrast to the convergence of a deterministic sequence, we are interested
- in the convergence of random variables in some sense.
- There are several commonly used definitions of convergence modes.
+ in the convergence of random variables.
+ There are various modes of convergence.
  We introduce three of them.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 almost sure convergence: for any 
@@ -221,13 +234,21 @@ Convergence in probability:
 
 \end_layout
 
+\begin_layout Itemize
+Squared-mean convergence: 
+\begin_inset Formula $\lim_{n\to\infty}E\left[\left(z_{n}-z\right)^{2}\right]=0.$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Example
 \begin_inset Formula $z_{n}\left(\omega\right)\in\left\{ 0,1\right\} $
 \end_inset
 
  is a binary variable.
  
-\begin_inset Formula $z_{n}=1$
+\begin_inset Formula $z_{n}=\sqrt{n}$
 \end_inset
 
  with probability 
@@ -254,25 +275,22 @@ Convergence in probability:
 .
 \end_layout
 
-\begin_layout Itemize
-Mean-square convergence: 
-\begin_inset Formula $\lim_{n\to\infty}E\left[\left(z_{n}-z\right)^{2}\right]=0.$
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 Convergence in probability does not take care what happens on a set with
  small probability.
  Convergence in mean square takes care the average over the entire probability
  space.
- If an a small set the difference is too large, it may blow away the convergence
- in mean square.
+ Even at a small probability the value of the random variables deviates
+ too much, it may blow away the convergence in squared-mean.
+ On the contrary, such deviation does not undermine convergence in probability.
 \end_layout
 
 \begin_layout Itemize
 Convergence in distribution: 
+\begin_inset Formula $x_{n}\stackrel{d}{\to}x$
+\end_inset
+
+ if 
 \begin_inset Formula $F\left(x_{n}\right)\to F\left(x\right)$
 \end_inset
 
@@ -304,19 +322,19 @@ Let
 \end_inset
 
 , then 
+\begin_inset Formula $z_{n}\stackrel{p}{\to}x$
+\end_inset
+
+ and of course 
 \begin_inset Formula $z_{n}\stackrel{d}{\to}x$
 \end_inset
 
- but 
-\begin_inset Formula $z_{n}\stackrel{p}{\to}x_{n}$
-\end_inset
-
 .
- On the contrary, if 
+ However, if 
 \begin_inset Formula $z_{n}=-x+1/n$
 \end_inset
 
- or 
+, or 
 \begin_inset Formula $z_{n}=y+1/n$
 \end_inset
 
@@ -324,7 +342,7 @@ Let
 \begin_inset Formula $y\sim N\left(0,1\right)$
 \end_inset
 
- and is independent of 
+ is independent of 
 \begin_inset Formula $x$
 \end_inset
 
@@ -365,8 +383,8 @@ Various versions of LLN work under different assumptions about the random
 \end_layout
 
 \begin_layout Standard
-The simplest version of LLN utilizes Chebysheve inequality, a simple fact
- of probability.
+The simplest version of LLN utilizes Chebyshev inequality, a simple fact
+ from probability theory.
  For any random variable 
 \begin_inset Formula $x$
 \end_inset
@@ -404,6 +422,13 @@ Chebyshev LLN
 
 \begin_layout Itemize
 Kolmogorov LLN
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Not revised yet.
+ Don't read beyond this point.
 \end_layout
 
 \begin_layout Subsection
@@ -473,11 +498,44 @@ where the limit is exactly the characteristic function of
 \end_layout
 
 \begin_layout Itemize
-Lindeberg-Levy CLT
+Lindeberg-Levy CLT: zero-mean, finite 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
 Lindeberg-Feller CLT
+\end_layout
+
+\begin_layout Itemize
+Lindeberg condition: Let 
+\begin_inset Formula $\left(x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ be a sample of zero-mean independent observations.
+ For any fixed 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+\frac{1}{s_{n}^{2}}\sum_{i=1}^{n}\int_{\left|x_{i}\right|>\varepsilon s_{n}}x_{i}^{2}dPx_{i}\to0
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $s_{n}^{2}=\sum_{i=1}^{n}\sigma_{i}^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Lyapunov CLT
 \end_layout
 
 \begin_layout Subsection
@@ -697,15 +755,11 @@ As
 \end_layout
 
 \begin_layout Subsection
-Collinearity
+Asymptotic Distribution of Functional of Parameters
 \end_layout
 
 \begin_layout Standard
-nearly collinear
-\end_layout
-
-\begin_layout Subsection
-Asymptotic Distribution of Functional of Parameters
+A linear restriction that leads to the Wald test.
 \end_layout
 
 \begin_layout Standard

@@ -189,7 +189,7 @@ Alternatively, we can derive the OLS estimator from minimizing the sum of
 \begin_inset Formula $\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.$
 \end_inset
 
- By a routine optimization, we derive exactly the same 
+ By a routine optimization, we obtain exactly the same 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
@@ -197,7 +197,7 @@ Alternatively, we can derive the OLS estimator from minimizing the sum of
 \end_layout
 
 \begin_layout Standard
-Some definitions.
+Definitions and properties
 \end_layout
 
 \begin_layout Itemize
@@ -249,10 +249,6 @@ Idempotent matrix:
  
 \end_layout
 
-\begin_layout Standard
-Some properties of the residual
-\end_layout
-
 \begin_layout Itemize
 \begin_inset Formula $\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e$
 \end_inset
@@ -285,7 +281,7 @@ Goodness of Fit
 \begin_layout Standard
 The so-called R-square is the most popular measure of goodness-of-fit in
  the linear regression.
- R-square is defined only when a constant is included in the regressors.
+ R-square is well defined only when a constant is included in the regressors.
  Let 
 \begin_inset Formula $M_{\iota}=I_{n}-\frac{1}{n}\iota\iota'$
 \end_inset
@@ -324,9 +320,7 @@ The so-called R-square is the most popular measure of goodness-of-fit in
  The total variation is 
 \begin_inset Formula 
 \begin{eqnarray*}
-Y'M_{\iota}Y & = & \left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)\\
- & = & \widehat{Y}'M_{\iota}\widehat{Y}+2\widehat{Y}'M_{\iota}\widehat{e}+\widehat{e}'M_{\iota}\widehat{e}\\
- & = & \widehat{Y}'M_{\iota}\widehat{Y}+\widehat{e}'\widehat{e}.
+Y'M_{\iota}Y & = & \left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)=\widehat{Y}'M_{\iota}\widehat{Y}+2\widehat{Y}'M_{\iota}\widehat{e}+\widehat{e}'M_{\iota}\widehat{e}=\widehat{Y}'M_{\iota}\widehat{Y}+\widehat{e}'\widehat{e}
 \end{eqnarray*}
 
 \end_inset
@@ -380,7 +374,7 @@ The data
 \begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
 \end_inset
 
- is a random sample from the same data generating proces 
+ is a random sample from the same data generating process 
 \begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
 \end_inset
 
@@ -435,7 +429,7 @@ conditional
 
 \end_inset
 
- and the log-likelihood function is 
+ and the (conditional) log-likelihood function is 
 \begin_inset Formula 
 \[
 L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.
@@ -444,19 +438,15 @@ L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2
 \end_inset
 
 Therefore, the maximum likelihood estimator (MLE) coincides with the OLS
- estimator, and the MLE of 
-\begin_inset Formula $\gamma$
-\end_inset
-
- is 
-\begin_inset Formula $\widehat{e}'\widehat{e}/n$
+ estimator, and 
+\begin_inset Formula $\widehat{\gamma}_{\mathrm{MLE}}=\widehat{e}'\widehat{e}/n$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-We can show the finite sample exact distribution of 
+We can show the finite-sample exact distribution of 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
@@ -518,35 +508,37 @@ The numerator follows a standard normal, and the denominator follows
 .
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-The part below is not ready yet.
- Don't read.
-\end_layout
-
 \begin_layout Subsection
-Bias and Variance
+Gauss-Markov Theorem
 \end_layout
 
 \begin_layout Standard
-When we discuss the statistical properties of the least squares in finite
- sample, we assume 
+Now we relax the normality assumption and statistical independence.
+ Instead, we assume a random sample and 
 \begin_inset Formula 
-\begin{eqnarray*}
-y_{i} & = & x_{i}'\beta+e_{i}\\
-E[e_{i}|x_{i}] & = & 0,
-\end{eqnarray*}
+\begin{eqnarray}
+y_{i} & = & x_{i}'\beta+e_{i}\nonumber \\
+E[e_{i}|x_{i}] & = & 0\label{eq:mean_indep}\\
+E\left[e_{i}^{2}|x_{i}\right] & = & \sigma^{2}.\label{eq:homo}
+\end{eqnarray}
 
 \end_inset
 
-which is equivalent to assume 
-\begin_inset Formula $E\left[y_{i}|x_{i}\right]=x'_{i}\beta$
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mean_indep"
+
 \end_inset
 
- so the linear projection model and the conditional mean model coincide.
- In other words, the following statistical properties hold only when the
- conditional mean is a linear function.
+) is called the mean independence assumption, and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:homo"
+
+\end_inset
+
+) is the homoskedasticity assumption.
 \end_layout
 
 \begin_layout Itemize
@@ -555,55 +547,23 @@ Unbiasedness:
 \end_inset
 
 .
+ Unbiasedness does not rely on the homoskedasticity assumption.
 \end_layout
 
 \begin_layout Itemize
 Variance: 
-\begin_inset Formula $\mathrm{var}\left(\widehat{\beta}|X\right)=E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]=E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]=\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}.$
-\end_inset
-
- Under the 
-\emph on
-homoskedasticity
-\emph default
- assumption,
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-The error term is homoskedastic if 
-\begin_inset Formula $E\left[e_{i}^{2}|X\right]=\sigma^{2}$
-\end_inset
-
- for all 
-\begin_inset Formula $i$
-\end_inset
-
-.
- Homoskedasticity is a restrictive assumption.
- An example of 
-\emph on
-heteroskedasticity
-\emph default
-: consumption = income + e.
- A rich family has more variation in consumption than a poor family.
-\end_layout
-
-\end_inset
-
- we simplify it as 
 \begin_inset Formula 
-\[
-\mathrm{var}\left(\widehat{\beta}\right)=\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}=\sigma^{2}\left(X'X\right)^{-1}.
-\]
+\begin{eqnarray*}
+\mathrm{var}\left(\widehat{\beta}|X\right) & = & E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
+ & = & E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]\\
+ & = & \left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}\\
+ & = & \left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}\\
+ & = & \sigma^{2}\left(X'X\right)^{-1}.
+\end{eqnarray*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Gauss-Markov Theorem
 \end_layout
 
 \begin_layout Standard
@@ -657,7 +617,7 @@ E\left[A'y|X\right]=E\left[A'\left(X\beta+e\right)|X\right]=A'X\beta.
 
 \end_inset
 
-So the unbiasedness of 
+So the linearity and unbiasedness of 
 \begin_inset Formula $\tilde{\beta}$
 \end_inset
 
@@ -675,7 +635,7 @@ So the unbiasedness of
 \end_inset
 
  Let 
-\begin_inset Formula $A=C+X\left(X'X\right)^{-1}.$
+\begin_inset Formula $C=A-X\left(X'X\right)^{-1}.$
 \end_inset
 
 
@@ -696,7 +656,12 @@ where the last equality follows as
 
 \end_inset
 
-The variance of any 
+Therefore 
+\begin_inset Formula $A'A-\left(X'X\right)^{-1}$
+\end_inset
+
+ is a positive semi-definite matrix.
+ The variance of any 
 \begin_inset Formula $\tilde{\beta}$
 \end_inset
 
@@ -709,17 +674,8 @@ The variance of any
 \end_layout
 
 \begin_layout Standard
-However, notice that Gauss-Markov theorem is derived only in the conditional
- mean model under homoskedasticity.
- These conditions are restrictive.
-\end_layout
-
-\begin_layout Subsection
-Variance Estimation
-\end_layout
-
-\begin_layout Standard
-Under homoskedasticity, 
+Homoskedasticity is a restrictive assumption.
+ Under homoskedasticity, 
 \begin_inset Formula $\mathrm{var}\left(\widehat{\beta}\right)=\sigma^{2}\left(X'X\right)^{-1}$
 \end_inset
 
@@ -737,9 +693,18 @@ Under homoskedasticity,
 \end_inset
 
 .
+ Under heteroskedasticity, Gauss-Markov theorem does not apply.
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Heteroskedasticity
+\end_layout
+
+\begin_layout Plain Layout
 Under heteroskedasticity, 
 \begin_inset Formula 
 \[
@@ -763,6 +728,11 @@ where
 
 .
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
