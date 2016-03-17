@@ -2,10 +2,9 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass article
+\textclass extarticle
 \begin_preamble
-\renewcommand\theenumi{(\alph{enumi})}
-\renewcommand\labelenumi{\theenumi}
+\date{}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -33,8 +32,8 @@ theorems-ams-extended-bytype
 \output_sync_macro "\synctex=-1"
 \bibtex_command default
 \index_command default
-\paperfontsize 12
-\spacing onehalf
+\paperfontsize 11
+\spacing single
 \use_hyperref true
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
@@ -42,12 +41,12 @@ theorems-ams-extended-bytype
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder true
-\pdf_colorlinks true
+\pdf_colorlinks false
 \pdf_backref false
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry true
-\use_package amsmath 1
+\use_package amsmath 2
 \use_package amssymb 1
 \use_package cancel 0
 \use_package esint 1
@@ -91,7 +90,7 @@ theorems-ams-extended-bytype
 \quotes_language english
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle plain
 \tracking_changes false
 \output_changes true
 \html_math_output 0
@@ -101,179 +100,200 @@ theorems-ams-extended-bytype
 
 \begin_body
 
-\begin_layout Section
-Local Asymptotics
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\top}{\stackrel{\mathrm{p}}{\to}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Op}{O_{\mathrm{p}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\op}{o_{\mathrm{p}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\mathrm{d}}
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-For regular statistic tests, consistency is a desirable property.
- For example, if we look at the 
-\begin_inset Formula $t$
-\end_inset
 
- statistic
-\begin_inset Formula 
-\[
-T_{n}=\frac{\widehat{\theta}_{n}-\theta_{0}}{\widehat{\sigma}_{\widehat{\theta}}}.
-\]
-
-\end_inset
-
-For a fix hypothesis 
-\begin_inset Formula $\theta_{0}$
-\end_inset
-
- which is not the true value, then 
-\begin_inset Formula 
-\[
-T_{n}=\frac{\widehat{\theta}_{n}-\theta}{\widehat{\sigma}_{\widehat{\theta}}}+\frac{\theta-\theta_{0}}{\widehat{\sigma}_{\widehat{\theta}}}.
-\]
-
-\end_inset
-
-When 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-, the first term is 
-\begin_inset Formula $O_{p}\left(1\right)$
-\end_inset
-
- while the second term is 
-\begin_inset Formula $O_{p}\left(\sqrt{n}\right)$
-\end_inset
-
+\emph on
+Generalized method of moments
+\emph default
+ (GMM) is an estimation principle that extends 
+\emph on
+method of moments
+\emph default
 .
- It blows up in the limit, so that the test is consistent.
- However, this is not informative.
+ It seeks the parameter that minimizes a quadratic form of the moments.
+ It is particularly useful in estimating structural models in which moment
+ conditions can be derived from economic theory.
+ GMM emerges as one of the most popular estimators in modern econometrics,
+ and it includes conventional methods like the two-stage least squares (2SLS)
+ and the three-stage least square as special cases.
  
 \end_layout
 
+\begin_layout Section
+Examples of Endogeneity
+\end_layout
+
 \begin_layout Standard
-We take a local asymptotic framework.
- Let 
-\begin_inset Formula $\theta=\theta_{0}+n^{-1/2}h$
-\end_inset
+As econometricians mostly work with non-experimental data, we cannot overstate
+ the importance of the endogeneity problem.
+ We go over a few examples.
+\end_layout
 
- where 
-\begin_inset Formula $h$
-\end_inset
+\begin_layout Subsection
+Dynamic Panel Data Model
+\end_layout
 
- is a fixed constant.
- Then 
+\begin_layout Standard
+We know that the first-difference (FD) estimator is consistent for (static)
+ panel data model.
+ Nevertheless, the FD estimator encounters difficulty in a dynamic panel
+ model 
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
-T_{n}\left(h\right)=\frac{\widehat{\theta}_{n}-\theta}{\widehat{\sigma}_{\widehat{\theta}}}+\frac{h}{\sqrt{n}\widehat{\sigma}_{\widehat{\theta}}}\stackrel{d}{\to}N\left(\frac{h}{d_{\widehat{\theta}}},1\right)
+y_{it}=\beta_{1}+\beta_{2}y_{it-1}+\beta_{3}x_{it}+\alpha_{i}+\epsilon_{it},
+\]
+
+\end_inset
+
+even if we assume 
+\begin_inset Formula 
+\begin{equation}
+\E\left[\epsilon_{it}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{it-1},y_{it-2},\ldots,y_{i0}\right]=0.\label{eq:dyn_mean_0}
+\end{equation}
+
+\end_inset
+
+ When taking difference of the above equation for periods 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $t-1$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+\left(y_{it}-y_{it-1}\right)=\beta_{2}\left(y_{it-1}-y_{it-2}\right)+\beta_{3}\left(x_{it}-x_{it-1}\right)+\left(\epsilon_{it}-\epsilon_{it-1}\right).
+\]
+
+\end_inset
+
+Under (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dyn_mean_0"
+
+\end_inset
+
+), 
+\begin_inset Formula $\E\left[\left(x_{it}-x_{it-1}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=0$
+\end_inset
+
+, but 
+\begin_inset Formula 
+\[
+\E\left[\left(y_{it-1}-y_{it-2}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=-\beta_{2}\E\left[y_{it-1}\epsilon_{it-1}\right]=-\beta_{2}\E\left[\epsilon_{it-1}^{2}\right]\neq0.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Keynesian-Type Macro Equations
+\end_layout
+
+\begin_layout Standard
+This is a model borrowed from Hayashi (2000, p.193) but originated from Haavelmo
+ (1943).
+ An econometrician is interested in learning 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+, the marginal propensity of consumption, in the Keynesian-type equation
+ 
+\begin_inset Formula 
+\begin{equation}
+C_{i}=\beta_{1}+\beta_{2}Y_{i}+u_{i}\label{eq:keynes}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ is household consumption, 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ is the GNP, and 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is the unobservable error.
+ However, 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ are connected by an accounting equality (with no error) 
+\begin_inset Formula 
+\[
+Y_{i}=C_{i}+I_{i},
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\sqrt{n}\widehat{\delta}_{n,\widehat{\theta}}-d_{\widehat{\theta}}\stackrel{p}{\to}0$
+\begin_inset Formula $I_{i}$
 \end_inset
 
-.
- Therefore,
-\begin_inset Formula 
-\[
-P\left(T_{n}\left(h\right)\geq c_{\alpha}\right)=P\left(T_{n}\left(h\right)\geq c_{\alpha}-\frac{h}{d_{\widehat{\theta}}}\right)=1-\Phi\left(c_{\alpha}-\frac{h}{d_{\widehat{\theta}}}\right).
-\]
-
+ is investment.
+ We assume 
+\begin_inset Formula $\E\left[u_{i}|I_{i}\right]=0$
 \end_inset
 
-If 
-\begin_inset Formula $\widehat{\theta}_{1}$
-\end_inset
-
- is an efficient estimator but 
-\begin_inset Formula $\widehat{\theta}_{2}$
-\end_inset
-
- is inefficient, we have 
-\begin_inset Formula $d_{\widehat{\theta}_{1}}\leq d_{\widehat{\theta}_{2}}$
-\end_inset
-
- or equivalently 
-\begin_inset Formula $h/d_{\widehat{\theta}_{1}}\geq h/d_{\widehat{\theta}_{2}}$
-\end_inset
-
-.
- so 
-\begin_inset Formula 
-\[
-P\left(T_{1,n}\left(h\right)\geq c_{\alpha}|h\right)\geq P\left(T_{2,n}\left(h\right)\geq c_{\alpha}|h\right).
-\]
+ as investment is determined in advance.
+ OLS (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:keynes"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Section
-Bootstrap
-\end_layout
-
-\begin_layout Standard
-We are interested in a statistic 
-\begin_inset Formula $T_{n}=T_{n}\left(Z_{1},\ldots,Z_{n};F\right)$
+) will be inconsistent because in the reduced-form 
+\begin_inset Formula $Y_{i}=\frac{1}{1-\beta_{2}}\left(\beta_{1}+u_{i}+I_{i}\right)$
 \end_inset
 
- where 
-\begin_inset Formula $F$
-\end_inset
-
- is the true distribution of the data.
- The exact finite sample distribution is 
-\begin_inset Formula $G_{n}\left(a;F\right)=\Pr\left(T_{n}\leq a|F\right)$
-\end_inset
-
-.
- Asymptotic analysis uses 
-\begin_inset Formula 
-\[
-G\left(a;F\right)=\lim_{n\to\infty}G_{n}\left(a;F\right)
-\]
-
-\end_inset
-
- to approximate the finite sample 
-\begin_inset Formula $G_{n}\left(a;F\right)$
-\end_inset
-
-.
- Usually the asymptotic distribution is independent of 
-\begin_inset Formula $F$
-\end_inset
-
-, so it can be written as 
-\begin_inset Formula $G\left(a\right)=G\left(a;F\right)$
-\end_inset
-
-.
- We conduct statistical inference based on 
-\begin_inset Formula $G\left(a\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-In view of the fact that the difficulty to use the finite sample distribution
- is the unknown 
-\begin_inset Formula $F$
-\end_inset
-
-, an alternative is to replace it with a known 
-\begin_inset Formula $F_{n}$
-\end_inset
-
-.
- We approximate 
-\begin_inset Formula $G_{n}\left(a;F\right)$
-\end_inset
-
- by 
-\begin_inset Formula $G_{n}^{*}\left(a\right):=G_{n}\left(a;F_{n}\right)$
+ implies 
+\begin_inset Formula $\E\left[Y_{i}u_{i}\right]=\E\left[u_{i}^{2}\right]/\left(1-\beta_{2}\right)\neq0$
 \end_inset
 
 .
@@ -281,304 +301,573 @@ In view of the fact that the difficulty to use the finite sample distribution
 \end_layout
 
 \begin_layout Subsection
-Nonparametric Bootstrap
+Classical Measurement Error
 \end_layout
 
 \begin_layout Standard
-The choice of 
-\begin_inset Formula $F_{n}$
+Endogeneity also emerges when an explanatory variables is not directly observabl
+e but is replaced by a measurement with error.
+ Suppose the true linear model is 
+\begin_inset Formula 
+\begin{equation}
+y_{i}=\beta_{1}+\beta_{2}x_{i}^{*}+u_{i},\label{eq:measurement_error}
+\end{equation}
+
 \end_inset
 
- is not unique, but the most popular one is the empirical CDF 
-\begin_inset Formula $F_{n}\left(a\right)=\frac{1}{n}\sum_{i=1}^{n}1\left(Z_{n}\leq a\right)$
+ with 
+\begin_inset Formula $\E\left[u_{i}|x_{i}^{*}\right]=0$
 \end_inset
 
 .
- (If 
-\begin_inset Formula $Z_{n}$
+ We cannot observe 
+\begin_inset Formula $x_{i}^{*}$
 \end_inset
 
- is a vector, ``
-\begin_inset Formula $\leq$
+ but we observe 
+\begin_inset Formula $x_{i}$
 \end_inset
 
-'' is understood as element-wise comparison.) It is easy to show that 
-\begin_inset Formula $F_{n}\left(a\right)\stackrel{p}{\to}F\left(a\right)$
+, a measurement of 
+\begin_inset Formula $x_{i}^{*}$
+\end_inset
+
+, and they are linked by 
+\begin_inset Formula 
+\[
+x_{i}=x_{i}^{*}+v_{i}
+\]
+
+\end_inset
+
+ with 
+\begin_inset Formula $\E\left[v_{i}|x_{i}^{*},u_{i}\right]=0$
+\end_inset
+
+.
+ Such a formulation of the measurement error is called the 
+\emph on
+classical measurement error
+\emph default
+.
+ When we substitute out the unobservable 
+\begin_inset Formula $x_{i}^{*}$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:measurement_error"
+
+\end_inset
+
+), we have 
+\begin_inset Formula 
+\begin{equation}
+y_{i}=\beta_{1}+\beta_{2}\left(x_{i}-v_{i}\right)+u_{i}=\beta_{1}+\beta_{2}x_{i}+e_{i}\label{eq:measurement_error2}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $e_{i}=u_{i}-\beta_{2}v_{i}$
+\end_inset
+
+.
+ The correlation
+\begin_inset Formula 
+\[
+\E\left[x_{i}e_{i}\right]=\E\left[\left(x_{i}^{*}+v_{i}\right)\left(u_{i}-\beta_{2}v_{i}\right)\right]=-\beta_{2}\E\left[v_{i}^{2}\right]\neq0.
+\]
+
+\end_inset
+
+ OLS (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:measurement_error2"
+
+\end_inset
+
+) would not deliver a consistent estimator.
+\end_layout
+
+\begin_layout Section
+GMM 
+\end_layout
+
+\begin_layout Subsection
+GMM in Linear Model
+\end_layout
+
+\begin_layout Standard
+In this section we discuss GMM in a linear single structural equation.
+ A structural equation is a model of economic interest.
+ For example, (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:keynes"
+
+\end_inset
+
+) is a structural equation in which 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+ can be interpreted as the marginal propensity of consumption.
+ Consider the following linear structural model 
+\begin_inset Formula 
+\begin{equation}
+y_{i}=x_{1i}\beta_{1}+z_{1i}\beta_{2}+\epsilon_{i},\label{eq:basic_1}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{1i}$
+\end_inset
+
+ is a 
+\begin_inset Formula $k_{1}$
+\end_inset
+
+-dimensional endogenous explanatory variables, 
+\begin_inset Formula $z_{1i}$
+\end_inset
+
+ is a 
+\begin_inset Formula $k_{2}$
+\end_inset
+
+-dimensional exogenous explanatory variables with the intercept included.
+ In addition, we have 
+\begin_inset Formula $z_{2i}$
+\end_inset
+
+, a 
+\begin_inset Formula $k_{3}$
+\end_inset
+
+-dimensional excluded exogenous variables.
+ Let 
+\begin_inset Formula $K=k_{1}+k_{2}$
 \end_inset
 
  and 
-\begin_inset Formula $\sqrt{n}\left(F_{n}\left(a\right)-F\left(a\right)\right)\stackrel{d}{\to}N\left(0,F\left(a\right)\left(1-F\left(a\right)\right)\right)$
+\begin_inset Formula $L=k_{2}+k_{3}$
 \end_inset
 
 .
- 
-\end_layout
+ Denote 
+\begin_inset Formula $x_{i}=\left(x_{1i},z_{1i}\right)$
+\end_inset
 
-\begin_layout Subsubsection
-Bootstrap bias
+ as a 
+\begin_inset Formula $K$
+\end_inset
+
+-dimensional explanatory variable, and 
+\begin_inset Formula $z_{i}=\left(z_{1i},z_{2i}\right)$
+\end_inset
+
+ as an 
+\begin_inset Formula $L$
+\end_inset
+
+-dimensional exogenous vector.
+ In the context of endogeneity, we can call the exogenous variable instrument
+ variables, or simply instruments.
+ Let 
+\begin_inset Formula $\beta=\left(\beta_{1}',\beta_{2}'\right)'$
+\end_inset
+
+ be a 
+\begin_inset Formula $K$
+\end_inset
+
+-dimensional parameter of interest.
+ From now on, we rewrite (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basic_1"
+
+\end_inset
+
+) as 
+\begin_inset Formula 
+\begin{equation}
+y_{i}=x_{i}\beta+\epsilon_{i},\label{eq:basic_2}
+\end{equation}
+
+\end_inset
+
+and we have a vector of instruments 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Nonparametrics views the ECDF as if it is the true distribution, and calculate
- all objects of interest accordingly.
- Thus the ECDF is viewed as a multinomial distribution of 
-\begin_inset Formula $n$
-\end_inset
-
- discrete points.
- For example, we are interested in the mean 
-\begin_inset Formula $\mu=E\left[X\right]$
-\end_inset
-
-, and in sample we estimate it by 
-\begin_inset Formula $\tilde{\mu}=\frac{1}{3n}\sum_{i=1}^{n}X_{i}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}/3\right)$
-\end_inset
-
-.
- We know 
-\begin_inset Formula $\tilde{\mu}$
-\end_inset
-
- is a biased estimator.
- If we want to correct the bias 
-\begin_inset Formula $\tau=E\left[\tilde{\mu}\right]-\mu$
-\end_inset
-
-, we propose a bias corrected estimator 
-\begin_inset Formula 
-\[
-\check{\mu}=\tilde{\mu}-\tau.
-\]
-
-\end_inset
-
-Easy to show that 
-\begin_inset Formula $E\left[\check{\mu}\right]=E\left[\tilde{\mu}\right]-\tau=0$
-\end_inset
-
-.
- However, 
-\begin_inset Formula $\tau$
-\end_inset
-
- is a population quantity.
- We must estimate it.
- 
-\end_layout
-
-\begin_layout Standard
-Now we are in the world of bootstrap, where the ``true distribution'' is
- the multinomial distribution.
- In this world, the true mean is 
-\begin_inset Formula $\mu^{*}=\frac{1}{n}\sum_{i=1}^{n}X$
-\end_inset
-
-.
- In order to estimate the mean from a random sample, we sample from 
-\begin_inset Formula $F_{n}$
-\end_inset
-
- an artificial sample 
-\begin_inset Formula $\left(X_{1}^{*},\ldots,X_{n}^{*}\right)$
-\end_inset
-
- and then calculate the bootstrap mean 
-\begin_inset Formula $\tilde{\mu}^{*}=\frac{1}{3n}\sum X_{i}^{*}$
-\end_inset
-
-.
- (
-\begin_inset Formula $E$
-\end_inset
-
-
-\begin_inset Formula $\left[\tilde{\mu}\right]$
-\end_inset
-
- is is the mean for the estimator 
-\begin_inset Formula $\tilde{\mu},$
-\end_inset
-
- a function of the data; we use the bootstrap sample for it.
- In contrast, 
-\begin_inset Formula $\mu$
-\end_inset
-
- is a parameter, a function of the population 
-\begin_inset Formula $F$
-\end_inset
-
-.) Thus 
-\begin_inset Formula $\tau^{*}=E^{*}\left[\tilde{\mu}^{*}\right]-\tilde{\mu}$
-\end_inset
-
-.
- We estimate 
-\begin_inset Formula 
-\[
-\tau^{*}=\frac{1}{B}\sum_{b=1}^{B}\tilde{\mu}^{\left(b\right)*}-\mu^{*}=\frac{1}{B}\sum_{b=1}^{B}\tilde{\mu}^{\left(b\right)*}-\frac{1}{n}\sum_{i=1}^{n}X_{i}.
-\]
-
-\end_inset
-
- We propose that the bootstrap bias corrected estimator is 
-\begin_inset Formula 
-\[
-\check{\mu}^{*}=\tilde{\mu}-\tau^{*}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In theory, we can show that 
-\begin_inset Formula $\tau^{*}\stackrel{p}{\to}\tau$
-\end_inset
-
-, so 
-\begin_inset Formula $\check{\mu}^{*}-\check{\mu}\stackrel{p}{\to}0$
-\end_inset
-
-.
- Because 
-\begin_inset Formula $\check{\mu}\stackrel{p}{\to}\mu$
-\end_inset
-
-, we have 
-\begin_inset Formula $\check{\mu}^{*}\stackrel{p}{\to}\mu$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsubsection
-Bootstrap variance
-\end_layout
-
-\begin_layout Standard
-Bootstrap estimation of variance.
- 
-\begin_inset Formula $\sigma^{2}=E\left[\left(\widehat{\theta}-E\left[\widehat{\theta}\right]\right)^{2}\right]$
-\end_inset
-
-.
- Again, this is a population quantity.
- The bootstrap counterpart is 
-\begin_inset Formula $\sigma_{*}^{2}=E^{*}\left[\left(\widehat{\theta}-E^{*}\left[\widehat{\theta}\right]\right)^{2}\right]$
-\end_inset
-
-.
- 
-\begin_inset Formula 
-\[
-\sigma_{*}^{2}=\frac{1}{B}\sum_{i=1}^{n}\left(\widehat{\theta}^{\left(b\right)*}-\frac{1}{B}\sum_{i=1}^{n}\widehat{\theta}^{\left(b\right)*}\right)^{2}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Bootstrap confidence interval
-\end_layout
-
-\begin_layout Standard
-For confidence interval for 
-\begin_inset Formula $\theta_{0}$
-\end_inset
-
- constructed from an estimator 
-\begin_inset Formula $\widehat{\theta}$
-\end_inset
-
-, we know that 
-\begin_inset Formula 
-\[
-1-\alpha=\Pr\left(q_{n}\left(\frac{\alpha}{2}\right)\leq\widehat{\theta}_{n}-\theta\leq q_{n}\left(1-\frac{\alpha}{2}\right)\right)=\Pr\left(\widehat{\theta}_{n}-q_{n}\left(1-\frac{\alpha}{2}\right)\leq\theta\leq\widehat{\theta}_{n}-q_{n}\left(\frac{\alpha}{2}\right)\right).
-\]
-
-\end_inset
-
-
-\begin_inset Formula $q_{n}\left(\alpha/2\right)$
+Before estimating any structural econometric model, we must check identification.
+ A model is 
+\emph on
+identified
+\emph default
+ if there is a one-to-one mapping between the distribution of the observed
+ variables and the parameters.
+ In other words, in an identified model any two parameter values 
+\begin_inset Formula $\beta$
 \end_inset
 
  and 
-\begin_inset Formula $q_{n}\left(\alpha/2\right)$
+\begin_inset Formula $\tilde{\beta}$
 \end_inset
 
- are population quantiles, the 
-\begin_inset Formula $\alpha/2$
+, 
+\begin_inset Formula $\beta\neq\tilde{\beta}$
 \end_inset
 
- and 
-\begin_inset Formula $1-\alpha/2$
+, cannot generate exactly the same distribution for the observable data.
+ In the context of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basic_2"
+
 \end_inset
 
- quantiles of the distribution of 
-\begin_inset Formula $\widehat{\theta}_{n}-\theta$
+), identification requires that the true value 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ is the only value on the parameters space that satisfies the moment condition
+\begin_inset Formula 
+\begin{equation}
+\E\left[z_{i}'\left(y_{i}-x_{i}\beta\right)\right]=0_{L}.\label{eq:moment}
+\end{equation}
+
+\end_inset
+
+The rank condition is sufficient and necessary for identification.
+ 
+\end_layout
+
+\begin_layout Assumption*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Rank condition
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mathrm{rank}\left(\E\left[x_{i}'z_{i}\right]\right)=K$
 \end_inset
 
 .
- The quantiles can be estimated from the bootstrap
+ 
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $\E\left[x_{i}'z_{i}\right]$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times L$
+\end_inset
+
+ matrix.
+ The rank condition implies the 
+\emph on
+order condition
+\emph default
+ 
+\begin_inset Formula $L\geq K$
+\end_inset
+
+, which says that the number of excluded instruments must be no fewer than
+ the number of  endogenous variables.
+\end_layout
+
+\begin_layout Theorem*
+The parameter in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:moment"
+
+\end_inset
+
+) is identified if and only if the rank condition holds.
+ 
+\end_layout
+
+\begin_layout Proof
+(The 
+\begin_inset Quotes eld
+\end_inset
+
+if
+\begin_inset Quotes erd
+\end_inset
+
+ direction).
+ For any 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\tilde{\beta}\neq\beta_{0}$
+\end_inset
+
+, 
 \begin_inset Formula 
 \[
-q_{n}^{*}\left(\alpha/2\right)=\arg\min\left\{ a\in\mathbb{R}:\frac{1}{B}\sum_{i=1}^{n}1\left\{ T_{n}^{\left(b\right)*}\leq a\right\} =\frac{\alpha}{2}\right\} ,
+\E\left[z_{i}'\left(y_{i}-x_{i}\tilde{\beta}\right)\right]=\E\left[z_{i}'\left(y_{i}-x_{i}\beta_{0}\right)\right]+\E\left[z_{i}'x_{i}\right]\left(\beta_{0}-\tilde{\beta}\right)=0_{K}+\E\left[z_{i}'x_{i}\right]\left(\beta_{0}-\tilde{\beta}\right).
+\]
+
+\end_inset
+
+Because 
+\begin_inset Formula $\mathrm{rank}\left(\E\left[x_{i}'z_{i}\right]\right)=K$
+\end_inset
+
+, we would have 
+\begin_inset Formula $\E\left[z_{i}'x_{i}\right]\left(\beta_{0}-\tilde{\beta}\right)=0_{L}$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\beta_{0}-\tilde{\beta}=0_{K}$
+\end_inset
+
+, which violates 
+\begin_inset Formula $\tilde{\beta}\neq\beta_{0}$
+\end_inset
+
+.
+ Therefore 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ is the unique value that satisfies (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:moment"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Proof
+(The 
+\begin_inset Quotes eld
+\end_inset
+
+only if
+\begin_inset Quotes erd
+\end_inset
+
+ direction is left as an exercise.
+ Hint: By contrapositiveness, if the rank condition fails, then the model
+ is not identified.
+ We can easily prove the claim by making an example.)
+\end_layout
+
+\begin_layout Standard
+Because identification is a prerequisite for structural estimation, from
+ now on we always assume that the model is identified.
+ When it is just-identified (
+\begin_inset Formula $L=K$
+\end_inset
+
+), by (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:moment"
+
+\end_inset
+
+) we can express the parameter as 
+\begin_inset Formula 
+\begin{equation}
+\beta=\left(\E\left[z_{i}'x_{i}\right]\right)^{-1}\E\left[z_{i}'y_{i}\right].\label{eq:just}
+\end{equation}
+
+\end_inset
+
+It follows by the principle of method of moments that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{\beta}=\left(\frac{Z'X}{n}\right)^{-1}\frac{Z'y}{n}=\left(Z'X\right)^{-1}Z'y,
+\]
+
+\end_inset
+
+which is exactly the 2SLS when 
+\begin_inset Formula $L=K$
+\end_inset
+
+.
+ In the rest of this section, we focus on the over-identified case (
+\begin_inset Formula $L>K$
+\end_inset
+
+).
+ When 
+\begin_inset Formula $L>K$
+\end_inset
+
+, (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:moment"
+
+\end_inset
+
+) involves more equations than the number of parameters, directly taking
+ the inverse as in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:just"
+
+\end_inset
+
+) is inapplicable.
+\end_layout
+
+\begin_layout Standard
+In order to express 
+\begin_inset Formula $\beta$
+\end_inset
+
+ explicitly, we define a criterion function
+\begin_inset Formula 
+\[
+Q\left(\beta\right)=\E\left[z_{i}'\left(y_{i}-x_{i}\beta\right)\right]'W\E\left[z_{i}'\left(y_{i}-x_{i}\beta\right)\right],
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $T_{n}^{*}=\widehat{\theta}^{*}-\widehat{\theta}$
+\begin_inset Formula $W$
+\end_inset
+
+ is an arbitrary 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ positive-definite symmetric matrix.
+ Because of the quadratic form, 
+\begin_inset Formula $Q\left(\beta\right)\geq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $\beta$
 \end_inset
 
 .
- 
-\end_layout
+ Identification indicates that 
+\begin_inset Formula $Q\left(\beta\right)=0$
+\end_inset
 
-\begin_layout Standard
-The bootstrap confidence interval is 
-\begin_inset Formula $\left(\widehat{\theta}-q_{n}^{*}\left(1-\frac{\alpha}{2}\right),\widehat{\theta}-q_{n}^{*}\left(\frac{\alpha}{2}\right)\right)$
+ if and only if 
+\begin_inset Formula $\beta=\beta_{0}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Subsubsection
-Bootstrap Test
-\end_layout
-
-\begin_layout Standard
-Under the null hypothesis 
-\begin_inset Formula $\theta_{0}$
-\end_inset
-
-, in sample the 
-\begin_inset Formula $t$
-\end_inset
-
--statistic is 
-\begin_inset Formula $T_{n}\left(\theta_{0}\right)=\left(\widehat{\theta}-\theta_{0}\right)/\widehat{\sigma}_{\widehat{\theta}}$
-\end_inset
-
-.
- The test depends on the critical value, which is obtained as the quantile
- of the asymptotic distribution.
- Now we abandon the asymptotic distribution, so that we do not know what
- is the appropriate 
-\begin_inset Formula $c_{\alpha}$
-\end_inset
-
-.
- We bootstrap it.
- Since we must obtain the distribution no matter whether the null hypothesis
- is true or not, 
+ Therefore we conclude 
 \begin_inset Formula 
 \[
-T_{n}^{*}=\left(\widehat{\theta}_{n}^{*}-\widehat{\theta}_{n}\right)/\widehat{\sigma}_{\widehat{\theta}^{*}}^{*}.
+\beta_{0}=\arg\min_{\beta}Q\left(\beta\right).
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $Q\left(\beta\right)$
+\end_inset
+
+ is a smooth function of 
+\begin_inset Formula $\beta$
+\end_inset
+
+, the minimizer 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ can be characterized by the first-order condition
+\begin_inset Formula 
+\[
+0_{K}=\frac{\partial}{\partial\beta}Q\left(\beta_{0}\right)=-\E\left[z_{i}'x_{i}\right]'W\E\left[z_{i}'\left(y_{i}-x_{i}\beta_{0}\right)\right]=-\E\left[x_{i}'z_{i}\right]W\E\left[z_{i}'\left(y_{i}-x_{i}\beta_{0}\right)\right]
+\]
+
+\end_inset
+
+Rearranging the above equation, we have 
+\begin_inset Formula 
+\[
+\E\left[x_{i}'z_{i}\right]W\E\left[z_{i}'x_{i}\right]\beta_{0}=\E\left[x_{i}'z_{i}\right]W\E\left[z_{i}'y_{i}\right].
+\]
+
+\end_inset
+
+Denote 
+\begin_inset Formula $\Sigma=\E\left[z_{i}'x_{i}\right]$
+\end_inset
+
+.
+ Under the rank condition, 
+\begin_inset Formula $\Sigma'W\Sigma$
+\end_inset
+
+ is invertible so that we can solve 
+\begin_inset Formula 
+\[
+\beta_{0}=\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\E\left[z_{i}'y_{i}\right].
+\]
+
+\end_inset
+
+In practice, we use the sample moments to replace the corresponding population
+ moments.
+ The GMM estimator mimics its population formula.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+\widehat{\beta} & = & \left(\frac{1}{n}\sum x_{i}'z_{i}W\frac{1}{n}\sum z_{i}'x_{i}\right)^{-1}\frac{1}{n}\sum x_{i}'z_{i}W\frac{1}{n}\sum z_{i}'y_{i}\\
+ & = & \left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'y}{n}\\
+ & = & \left(X'ZWZ'X\right)^{-1}X'ZWZ'y.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise*
+The same GMM estimator 
+\begin_inset Formula $\hat{\beta}$
+\end_inset
+
+ can be obtained by minimizing 
+\begin_inset Formula 
+\[
+\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}'\left(y_{i}-x_{i}\beta\right)\right]'W\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}'\left(y_{i}-x_{i}\beta\right)\right]=\frac{\left(y-X\beta\right)'Z}{n}W\frac{Z'\left(y-X\beta\right)}{n},
+\]
+
+\end_inset
+
+or more concisely, 
+\begin_inset Formula 
+\[
+\hat{\beta}=\arg\min_{\beta}\left(y-X\beta\right)'ZWZ'\left(y-X\beta\right).
 \]
 
 \end_inset
@@ -587,35 +876,469 @@ T_{n}^{*}=\left(\widehat{\theta}_{n}^{*}-\widehat{\theta}_{n}\right)/\widehat{\s
 \end_layout
 
 \begin_layout Standard
-Otherwise, if we use 
-\begin_inset Formula $\tilde{T}^{*}=\left(\widehat{\theta}_{n}^{*}-\theta_{0}\right)/\widehat{\sigma}_{\widehat{\theta}^{*}}^{*}$
+Now we check the asymptotic properties of 
+\begin_inset Formula $\widehat{\beta}$
 \end_inset
 
-, then the resulting test that relying on the produced critical value will
- have no power.
- The same is for the Wald test.
- (Wald test is a generalized 
-\begin_inset Formula $t$
+.
+ A few assumptions are in order.
+\end_layout
+
+\begin_layout Assumption*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+A.1
+\end_layout
+
 \end_inset
 
--test.)
+ 
+\begin_inset Formula $Z'X/n\top\Sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $Z'\epsilon/n\top0_{L}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-In t-test and Wald test, the bootstrap critical value is generated from
- a distribution independent of the null hypothesis.
+A.1 assumes that we can apply a law of large numbers, so that that the sample
+ moments 
+\begin_inset Formula $Z'X/n$
+\end_inset
+
+ and 
+\begin_inset Formula $Z'\epsilon/n$
+\end_inset
+
+ converge in probability to their population counterparts.
+ 
+\end_layout
+
+\begin_layout Theorem*
+Under A.1, 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is consistent.
+\end_layout
+
+\begin_layout Proof
+The step is similar to the consistency proof of OLS.
+ 
+\begin_inset Formula 
+\[
+\widehat{\beta}=\left(X'ZWZ'X\right)^{-1}X'ZWZ'\left(X'\beta_{0}+\epsilon\right)=\beta_{0}+\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{n}\top\beta_{0}\qedhere
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To check asymptotic normality, we assume that a central limit theorem can
+ be applied.
+\end_layout
+
+\begin_layout Assumption*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+A.2
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'\epsilon_{i}\Rightarrow N\left(0_{L},\Omega\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}\epsilon_{i}^{2}\right].$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Asymptotic Normality
+\end_layout
+
+\end_inset
+
+Under A.1 and A.2, 
+\begin_inset Formula 
+\begin{equation}
+\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)\Rightarrow N\left(0_{K},\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}\right).\label{eq:normality}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Multiply 
+\begin_inset Formula $\widehat{\beta}-\beta_{0}$
+\end_inset
+
+ by the scaling factor 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{\sqrt{n}}=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'\epsilon_{i}.
+\]
+
+\end_inset
+
+The conclusion follows as 
+\begin_inset Formula $\frac{X'Z}{n}W\frac{Z'X}{n}\top\Sigma'W\Sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum z_{i}'\epsilon_{i}\Rightarrow\Sigma'W\times N\left(0,\Omega\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+It is clear from (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:normality"
+
+\end_inset
+
+) that the GMM estimator's asymptotic variance depends on the choice of
+ 
+\begin_inset Formula $W$
+\end_inset
+
+.
+ A natural question follows: can we optimally choose a 
+\begin_inset Formula $W$
+\end_inset
+
+ to make the asymptotic variance as small as possible? Here we claim the
+ result without a proof.
+ 
+\end_layout
+
+\begin_layout Claim*
+The choice 
+\begin_inset Formula $W=\Omega^{-1}$
+\end_inset
+
+ makes 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ an asymptotically efficient estimator, under which the asymptotic variance
+ is 
+\begin_inset Formula $\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\Sigma'\Omega^{-1}\Omega\Omega^{-1}\Sigma\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}=\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In practice, 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is unknown but can be estimated.
+ Hansen (1982) suggests the following procedure, which is known as the
+\emph on
+ two-step GMM
+\emph default
+.
+\end_layout
+
+\begin_layout Enumerate
+Choose any valid 
+\begin_inset Formula $W$
+\end_inset
+
+, say 
+\begin_inset Formula $W=I_{L}$
+\end_inset
+
+, to get a consistent (but inefficient in general) estimator 
+\begin_inset Formula $\hat{\beta}$
+\end_inset
+
+.
+ Save the residual 
+\begin_inset Formula $\widehat{\epsilon}_{i}=y_{i}-x_{i}\widehat{\beta}$
+\end_inset
+
+ and estimate the variance matrix 
+\begin_inset Formula $\widehat{\Omega}=\frac{1}{n}\sum z_{i}'z_{i}\widehat{\epsilon}_{i}^{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $W=\widehat{\Omega}^{-1}$
+\end_inset
+
+ and obtain a second estimator 
+\begin_inset Formula 
+\[
+\widehat{\beta}=\left(X'Z\widehat{\Omega}^{-1}Z'X\right)^{-1}X'Z\widehat{\Omega}^{-1}Z'y.
+\]
+
+\end_inset
+
+This second estimator is asymptotic efficient.
+\end_layout
+
+\begin_layout Standard
+If we further assume conditional homoskedasticity, then 
+\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}\epsilon_{i}^{2}\right]=\E\left[z_{i}'z_{i}\E\left[\epsilon_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\E\left[z'_{i}z_{i}\right]$
+\end_inset
+
+.
+ Therefore in the first-step of the two-step GMM we can estimate the variance
+ of the error term by 
+\begin_inset Formula $\widehat{\sigma}^{2}=\frac{1}{n}\sum_{i=1}^{n}\widehat{\epsilon}_{i}^{2}$
+\end_inset
+
+ and the variance matrix by 
+\begin_inset Formula $\widehat{\Omega}=\widehat{\sigma}^{2}\frac{1}{n}\sum_{i=1}^{n}z_{i}'z_{i}=\widehat{\sigma}^{2}Z'Z/n$
+\end_inset
+
+.
+ When we plug this 
+\begin_inset Formula $W=\widehat{\Omega}^{-1}$
+\end_inset
+
+ into the GMM estimator, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\widehat{\beta} & = & \left(X'Z\left(\widehat{\sigma}^{2}\frac{Z'Z}{n}\right)^{-1}Z'X\right)^{-1}X'Z\left(\widehat{\sigma}^{2}\frac{Z'Z}{n}\right)^{-1}Z'y\\
+ & = & \left(X'Z\left(Z'Z\right)^{-1}Z'X\right)^{-1}X'Z\left(Z'Z\right)^{-1}Z'y.
+\end{eqnarray*}
+
+\end_inset
+
+This is exactly the same expression of 2SLS for 
+\begin_inset Formula $L>K$
+\end_inset
+
+.
+ Therefore, 2SLS can be viewed as a special case of GMM with 
+\begin_inset Formula $W=\left(Z'Z/n\right)^{-1}$
+\end_inset
+
+.
+ Under conditional homoskedasticity, 2SLS is the efficient estimator; otherwise
+ 2SLS is inefficient.
+\end_layout
+
+\begin_layout Subsection
+GMM in Nonlinear Model
+\end_layout
+
+\begin_layout Standard
+The principle of GMM can be used in models where the parameter enters the
+ moment conditions nonlinearly.
+ Let 
+\begin_inset Formula $g_{i}\left(\beta\right)=g\left(w_{i},\beta\right)\mapsto\mathbb{R}^{L}$
+\end_inset
+
+ be a function of the data 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ and the parameter 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ If economic theory implies 
+\begin_inset Formula $\E\left[g_{i}\left(\beta\right)\right]=0$
+\end_inset
+
+, we can write the GMM population criterion function as 
+\begin_inset Formula 
+\[
+Q\left(\beta\right)=\E\left[g_{i}\left(\beta\right)\right]'W\E\left[g_{i}\left(\beta\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example*
+Nonlinear models nest the linear model as a special case.
+ For the linear IV model in the previous section, the data is 
+\begin_inset Formula $w_{i}=\left(y_{i},x_{i},z_{i}\right)$
+\end_inset
+
+, and the moment function is 
+\begin_inset Formula $g\left(w_{i},\beta\right)=z_{i}'\left(y_{i}-x_{i}\beta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In practice we use the sample moments to mimic the population moments in
+ the criterion function
+\begin_inset Formula 
+\[
+Q_{n}\left(\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)\right)'W\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)\right).
+\]
+
+\end_inset
+
+The GMM estimator is defined as 
+\begin_inset Formula 
+\[
+\hat{\beta}=\arg\min_{\beta}Q_{n}\left(\beta\right).
+\]
+
+\end_inset
+
+In these nonlinear models, a closed-form solution is in general unavailable,
+ while the asymptotic properties can still be established.
+ We state these asymptotic properties without proofs.
+\end_layout
+
+\begin_layout Theorem*
+If the model is identified, and 
+\begin_inset Formula 
+\[
+\mathbb{P}\left[\sup_{\beta}\left|\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)-\E\left[g_{i}\left(\beta\right)\right]\right|>\varepsilon\right]\to0
+\]
+
+\end_inset
+
+ for any constant 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, then 
+\begin_inset Formula $\hat{\beta}\top\beta.$
+\end_inset
+
+ If in addition 
+\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\beta_{0}\right)\Rightarrow N\left(0,\Omega\right)$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\beta}-\beta_{0}\right)\Rightarrow N\left(0,\left(\Sigma'W\Sigma\right)^{-1}\left(\Sigma'W\Omega W\Sigma\right)\left(\Sigma'W\Sigma\right)^{-1}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Sigma=\E\left[\frac{\partial}{\partial\beta'}g_{i}\left(\beta_{0}\right)\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega=\E\left[g_{i}\left(\beta_{0}\right)g_{i}\left(\beta_{0}\right)'\right]$
+\end_inset
+
+.
+ If we choose 
+\begin_inset Formula $W=\Omega^{-1}$
+\end_inset
+
+, then the GMM estimator is efficient, and the asymptotic variance becomes
+ 
+\begin_inset Formula $\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark*
+The list of assumptions in the above statement is incomplete.
+ We only lay out the key conditions but neglect some technical details.
  
 \end_layout
 
 \begin_layout Standard
-For LM test, we must impose the null hypothesis from the very beginning,
- and adjust the LM statistic to make sure that the null hypothesis holds
- in the bootstrap world.
-\end_layout
+\begin_inset Formula $Q_{n}\left(\beta\right)$
+\end_inset
 
-\begin_layout Standard
-LR-test has no bootstrap counterpart, because we cannot mimic the distribution
- under the null.
+ measures how close are the moments to zeros.
+ It can serve as a test statistic with proper formulation.
+ Under the null hypothesis 
+\begin_inset Formula $\E\left[g_{i}\left(\beta\right)\right]=0_{L}$
+\end_inset
+
+, this so-called ``
+\begin_inset Formula $J$
+\end_inset
+
+-test
+\begin_inset Quotes erd
+\end_inset
+
+ checks whether a moment condition is violated.
+ The test statistic is 
+\begin_inset Formula 
+\[
+J\left(\widehat{\beta}\right)=n\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)'\widehat{\Omega}^{-1}\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)=\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)'\widehat{\Omega}^{-1}\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\widehat{\Omega}$
+\end_inset
+
+ is a consistent estimator of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, and 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is an efficient estimator, for example, the second 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ from the two-step GMM.
+ This statistics converges in distribution to a chi-square random variable
+ with degree of freedom 
+\begin_inset Formula $L-K$
+\end_inset
+
+.
+ That is, under the null, 
+\begin_inset Formula 
+\[
+J\left(\widehat{\beta}\right)\Rightarrow\chi^{2}\left(L-K\right)
+\]
+
+\end_inset
+
+If the null hypothesis is false, then the test statistic tends to be large,
+ and it is more likely to reject the null.
 \end_layout
 
 \end_body

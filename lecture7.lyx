@@ -2,9 +2,13 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass extarticle
+\textclass article
 \begin_preamble
-\date{}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Lecture Notes}
+\rhead{Zhentao Shi}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -33,7 +37,7 @@ theorems-ams-extended-bytype
 \bibtex_command default
 \index_command default
 \paperfontsize 11
-\spacing single
+\spacing onehalf
 \use_hyperref true
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
@@ -41,12 +45,12 @@ theorems-ams-extended-bytype
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder true
-\pdf_colorlinks false
+\pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry true
-\use_package amsmath 2
+\use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 0
 \use_package esint 1
@@ -90,7 +94,7 @@ theorems-ams-extended-bytype
 \quotes_language english
 \papercolumns 1
 \papersides 1
-\paperpagestyle plain
+\paperpagestyle default
 \tracking_changes false
 \output_changes true
 \html_math_output 0
@@ -128,12 +132,8 @@ theorems-ams-extended-bytype
 
 \end_layout
 
-\begin_layout Title
-Lecture 10: Panel Data
-\end_layout
-
-\begin_layout Author
-Zhentao Shi
+\begin_layout Section
+Panel Data
 \end_layout
 
 \begin_layout Standard

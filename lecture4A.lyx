@@ -135,24 +135,24 @@ null hypothesis
 alternative hypothesis
 \emph default
  
-\begin_inset Formula $\Theta_{1}$
-\end_inset
-
- is the complement of 
-\begin_inset Formula $\Theta_{0}$
-\end_inset
-
-, that is, 
 \begin_inset Formula $\Theta_{1}=\Theta\backslash\Theta_{0}$
 \end_inset
 
-.
- 
+
 \emph on
-Hypothesis testing
+ 
+\emph default
+is the complement of 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+
+\emph on
+.
+ Hypothesis testing
 \emph default
  is a decision whether to accept the null hypothesis or to reject it according
- to the observation.
+ to the observed evidence.
 \end_layout
 
 \begin_layout Standard
@@ -169,11 +169,11 @@ is a mapping
 \end_inset
 
  is the sample space.
- We say we accept the null if 
+ We accept the null if 
 \begin_inset Formula $\phi\left(\mathbf{x}\right)=0$
 \end_inset
 
-, and we reject it if 
+, or reject it if 
 \begin_inset Formula $\phi\left(\mathbf{x}\right)=1$
 \end_inset
 
@@ -204,19 +204,12 @@ power function
 \end_inset
 
  is 
-\begin_inset Formula $\beta_{\phi}\left(\theta\right)=\mathbb{P}_{\theta}\left(\phi\left(\mathbf{X}\right)=1\right)=\mathbb{\mathbb{E}}_{\theta}\left(\phi\left(\mathbf{X}\right)\right)$
+\begin_inset Formula $\beta_{\phi}\left(\theta\right)=P_{\theta}\left(\phi\left(\mathbf{X}\right)=1\right)=E_{\theta}\left(\phi\left(\mathbf{X}\right)\right)$
 \end_inset
 
 .
- It is the probability that the test function 
-\begin_inset Formula $\phi$
-\end_inset
-
- takes value 1 if the true parameter that generates the sample is 
-\begin_inset Formula $\theta$
-\end_inset
-
-.
+ The power function measures, at a given point, the probability that the
+ test function rejects the null.
  The 
 \emph on
 size
@@ -246,9 +239,7 @@ level
 \begin_inset Formula $\alpha\geq\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)$
 \end_inset
 
-.
- When it is difficult to get the exact supremum of a test, we typically
- use level to replace size.
+, which is often used when it is difficult to get the exact supremum.
  The 
 \emph on
 probability of committing Type I error
@@ -257,7 +248,7 @@ probability of committing Type I error
 \begin_inset Formula $\beta_{\phi}\left(\theta\right)$
 \end_inset
 
- for 
+ for some 
 \begin_inset Formula $\theta\in\Theta_{0}$
 \end_inset
 
@@ -275,24 +266,24 @@ probability of committing Type II error
 \end_inset
 
 .
- The power function measures, at a given point, the probability that the
- test function rejects the null.
+ 
 \end_layout
 
 \begin_layout Standard
 There has been a philosophical debate for decades about the hypothesis testing
  framework.
- At present the prevailing framework in college-level statistics education
- is the frequentist perspective.
- Generally speaking, the frequentist's view about hypothesis testing is
- that a research should be conservative about the Type I error.
- Only if when overwhelming evidence is demonstrated should a researcher
- believes that the null hypothesis can be rejected.
+ At present the prevailing framework taught in statistics education is the
+ frequentist perspective.
+ A frequentist views the parameter as a fixed constant, and they are conservativ
+e about the Type I error.
+ Only if overwhelming evidence is demonstrated should a researcher reject
+ the null.
+ 
 \end_layout
 
 \begin_layout Standard
 The definition of the test function is too general to be useful.
- We do want to narrow down to a set of meaningful test function.
+ We narrow it down to a set of meaningful test function.
  Under the notion of protecting the null hypothesis, a desirable test should
  have a small level.
  Conventionally we take 
@@ -418,27 +409,12 @@ interval estimator
 \end_inset
 
  is defined as 
-\begin_inset Formula $\mathbb{P}_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)$
+\begin_inset Formula $P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)$
 \end_inset
 
 .
- Note that the interval estimate is a deterministic set on the parameter
- space, while the interval estimator is a random set.
- The coverage probability is not the probability that the true parameter
- falls into the interval estimate
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-In the Bayesian framework where the true parameter is viewed as a random
- variable instead of a fixed constant we can discuss this probability.
-\end_layout
-
-\end_inset
-
-.
- Instead it is the frequency that the interval estimator captures the true
- parameter that generates the sample.
+ The coverage probability is frequency that the interval estimator captures
+ the true parameter that generates the sample.
 \end_layout
 
 \begin_layout Exercise
@@ -458,11 +434,11 @@ Suppose a random sample of size 6 is generated from
 Hypothesis testing and confidence interval are closely related.
  Sometime it is difficult to directly construct the confidence interval,
  but easier to test a hypothesis.
- One way to a construct confidence interval is by inverting a corresponding
+ One way to construct confidence interval is by inverting a corresponding
  hypothesis testing problem.
 \end_layout
 
-\begin_layout Theorem
+\begin_layout Standard
 Suppose 
 \begin_inset Formula $A_{\phi}\left(\theta\right)$
 \end_inset
@@ -487,13 +463,13 @@ Suppose
  is constructed as 
 \begin_inset Formula 
 \[
-C\left(\mathbf{x}\right)=\left\{ \theta\in\Theta:\mathbf{x}\in A_{\phi}\left(\theta\right)\right\} .
+C\left(\mathbf{x}\right)=\left\{ \theta\in\Theta:\mathbf{x}\in A_{\phi}\left(\theta\right)\right\} ,
 \]
 
 \end_inset
 
-Then the coverage probability 
-\begin_inset Formula $\mathbb{P}_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)=1-\alpha$
+ the coverage probability 
+\begin_inset Formula $P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)=1-\alpha$
 \end_inset
 
 .

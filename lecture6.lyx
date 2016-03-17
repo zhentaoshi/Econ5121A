@@ -1,0 +1,625 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Lecture Notes}
+\rhead{Zhentao Shi}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams-bytype
+theorems-ams-extended-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format dvi
+\output_sync 1
+\output_sync_macro "\synctex=-1"
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch abc
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch pf of gamma = 0
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Local Asymptotics
+\end_layout
+
+\begin_layout Standard
+For regular statistic tests, consistency is a desirable property.
+ For example, if we look at the 
+\begin_inset Formula $t$
+\end_inset
+
+ statistic
+\begin_inset Formula 
+\[
+T_{n}=\frac{\widehat{\theta}_{n}-\theta_{0}}{\widehat{\sigma}_{\widehat{\theta}}}.
+\]
+
+\end_inset
+
+For a fix hypothesis 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ which is not the true value, then 
+\begin_inset Formula 
+\[
+T_{n}=\frac{\widehat{\theta}_{n}-\theta}{\widehat{\sigma}_{\widehat{\theta}}}+\frac{\theta-\theta_{0}}{\widehat{\sigma}_{\widehat{\theta}}}.
+\]
+
+\end_inset
+
+When 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+, the first term is 
+\begin_inset Formula $O_{p}\left(1\right)$
+\end_inset
+
+ while the second term is 
+\begin_inset Formula $O_{p}\left(\sqrt{n}\right)$
+\end_inset
+
+.
+ It blows up in the limit, so that the test is consistent.
+ However, this is not informative.
+ 
+\end_layout
+
+\begin_layout Standard
+We take a local asymptotic framework.
+ Let 
+\begin_inset Formula $\theta=\theta_{0}+n^{-1/2}h$
+\end_inset
+
+ where 
+\begin_inset Formula $h$
+\end_inset
+
+ is a fixed constant.
+ Then 
+\begin_inset Formula 
+\[
+T_{n}\left(h\right)=\frac{\widehat{\theta}_{n}-\theta}{\widehat{\sigma}_{\widehat{\theta}}}+\frac{h}{\sqrt{n}\widehat{\sigma}_{\widehat{\theta}}}\stackrel{d}{\to}N\left(\frac{h}{d_{\widehat{\theta}}},1\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\sqrt{n}\widehat{\delta}_{n,\widehat{\theta}}-d_{\widehat{\theta}}\stackrel{p}{\to}0$
+\end_inset
+
+.
+ Therefore,
+\begin_inset Formula 
+\[
+P\left(T_{n}\left(h\right)\geq c_{\alpha}\right)=P\left(T_{n}\left(h\right)\geq c_{\alpha}-\frac{h}{d_{\widehat{\theta}}}\right)=1-\Phi\left(c_{\alpha}-\frac{h}{d_{\widehat{\theta}}}\right).
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $\widehat{\theta}_{1}$
+\end_inset
+
+ is an efficient estimator but 
+\begin_inset Formula $\widehat{\theta}_{2}$
+\end_inset
+
+ is inefficient, we have 
+\begin_inset Formula $d_{\widehat{\theta}_{1}}\leq d_{\widehat{\theta}_{2}}$
+\end_inset
+
+ or equivalently 
+\begin_inset Formula $h/d_{\widehat{\theta}_{1}}\geq h/d_{\widehat{\theta}_{2}}$
+\end_inset
+
+.
+ so 
+\begin_inset Formula 
+\[
+P\left(T_{1,n}\left(h\right)\geq c_{\alpha}|h\right)\geq P\left(T_{2,n}\left(h\right)\geq c_{\alpha}|h\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Bootstrap
+\end_layout
+
+\begin_layout Standard
+We are interested in a statistic 
+\begin_inset Formula $T_{n}=T_{n}\left(Z_{1},\ldots,Z_{n};F\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $F$
+\end_inset
+
+ is the true distribution of the data.
+ The exact finite sample distribution is 
+\begin_inset Formula $G_{n}\left(a;F\right)=\Pr\left(T_{n}\leq a|F\right)$
+\end_inset
+
+.
+ Asymptotic analysis uses 
+\begin_inset Formula 
+\[
+G\left(a;F\right)=\lim_{n\to\infty}G_{n}\left(a;F\right)
+\]
+
+\end_inset
+
+ to approximate the finite sample 
+\begin_inset Formula $G_{n}\left(a;F\right)$
+\end_inset
+
+.
+ Usually the asymptotic distribution is independent of 
+\begin_inset Formula $F$
+\end_inset
+
+, so it can be written as 
+\begin_inset Formula $G\left(a\right)=G\left(a;F\right)$
+\end_inset
+
+.
+ We conduct statistical inference based on 
+\begin_inset Formula $G\left(a\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In view of the fact that the difficulty to use the finite sample distribution
+ is the unknown 
+\begin_inset Formula $F$
+\end_inset
+
+, an alternative is to replace it with a known 
+\begin_inset Formula $F_{n}$
+\end_inset
+
+.
+ We approximate 
+\begin_inset Formula $G_{n}\left(a;F\right)$
+\end_inset
+
+ by 
+\begin_inset Formula $G_{n}^{*}\left(a\right):=G_{n}\left(a;F_{n}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Nonparametric Bootstrap
+\end_layout
+
+\begin_layout Standard
+The choice of 
+\begin_inset Formula $F_{n}$
+\end_inset
+
+ is not unique, but the most popular one is the empirical CDF 
+\begin_inset Formula $F_{n}\left(a\right)=\frac{1}{n}\sum_{i=1}^{n}1\left(Z_{n}\leq a\right)$
+\end_inset
+
+.
+ (If 
+\begin_inset Formula $Z_{n}$
+\end_inset
+
+ is a vector, ``
+\begin_inset Formula $\leq$
+\end_inset
+
+'' is understood as element-wise comparison.) It is easy to show that 
+\begin_inset Formula $F_{n}\left(a\right)\stackrel{p}{\to}F\left(a\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\sqrt{n}\left(F_{n}\left(a\right)-F\left(a\right)\right)\stackrel{d}{\to}N\left(0,F\left(a\right)\left(1-F\left(a\right)\right)\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Bootstrap bias
+\end_layout
+
+\begin_layout Standard
+Nonparametrics views the ECDF as if it is the true distribution, and calculate
+ all objects of interest accordingly.
+ Thus the ECDF is viewed as a multinomial distribution of 
+\begin_inset Formula $n$
+\end_inset
+
+ discrete points.
+ For example, we are interested in the mean 
+\begin_inset Formula $\mu=E\left[X\right]$
+\end_inset
+
+, and in sample we estimate it by 
+\begin_inset Formula $\tilde{\mu}=\frac{1}{3n}\sum_{i=1}^{n}X_{i}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}/3\right)$
+\end_inset
+
+.
+ We know 
+\begin_inset Formula $\tilde{\mu}$
+\end_inset
+
+ is a biased estimator.
+ If we want to correct the bias 
+\begin_inset Formula $\tau=E\left[\tilde{\mu}\right]-\mu$
+\end_inset
+
+, we propose a bias corrected estimator 
+\begin_inset Formula 
+\[
+\check{\mu}=\tilde{\mu}-\tau.
+\]
+
+\end_inset
+
+Easy to show that 
+\begin_inset Formula $E\left[\check{\mu}\right]=E\left[\tilde{\mu}\right]-\tau=0$
+\end_inset
+
+.
+ However, 
+\begin_inset Formula $\tau$
+\end_inset
+
+ is a population quantity.
+ We must estimate it.
+ 
+\end_layout
+
+\begin_layout Standard
+Now we are in the world of bootstrap, where the ``true distribution'' is
+ the multinomial distribution.
+ In this world, the true mean is 
+\begin_inset Formula $\mu^{*}=\frac{1}{n}\sum_{i=1}^{n}X$
+\end_inset
+
+.
+ In order to estimate the mean from a random sample, we sample from 
+\begin_inset Formula $F_{n}$
+\end_inset
+
+ an artificial sample 
+\begin_inset Formula $\left(X_{1}^{*},\ldots,X_{n}^{*}\right)$
+\end_inset
+
+ and then calculate the bootstrap mean 
+\begin_inset Formula $\tilde{\mu}^{*}=\frac{1}{3n}\sum X_{i}^{*}$
+\end_inset
+
+.
+ (
+\begin_inset Formula $E$
+\end_inset
+
+
+\begin_inset Formula $\left[\tilde{\mu}\right]$
+\end_inset
+
+ is is the mean for the estimator 
+\begin_inset Formula $\tilde{\mu},$
+\end_inset
+
+ a function of the data; we use the bootstrap sample for it.
+ In contrast, 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is a parameter, a function of the population 
+\begin_inset Formula $F$
+\end_inset
+
+.) Thus 
+\begin_inset Formula $\tau^{*}=E^{*}\left[\tilde{\mu}^{*}\right]-\tilde{\mu}$
+\end_inset
+
+.
+ We estimate 
+\begin_inset Formula 
+\[
+\tau^{*}=\frac{1}{B}\sum_{b=1}^{B}\tilde{\mu}^{\left(b\right)*}-\mu^{*}=\frac{1}{B}\sum_{b=1}^{B}\tilde{\mu}^{\left(b\right)*}-\frac{1}{n}\sum_{i=1}^{n}X_{i}.
+\]
+
+\end_inset
+
+ We propose that the bootstrap bias corrected estimator is 
+\begin_inset Formula 
+\[
+\check{\mu}^{*}=\tilde{\mu}-\tau^{*}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In theory, we can show that 
+\begin_inset Formula $\tau^{*}\stackrel{p}{\to}\tau$
+\end_inset
+
+, so 
+\begin_inset Formula $\check{\mu}^{*}-\check{\mu}\stackrel{p}{\to}0$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $\check{\mu}\stackrel{p}{\to}\mu$
+\end_inset
+
+, we have 
+\begin_inset Formula $\check{\mu}^{*}\stackrel{p}{\to}\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Bootstrap variance
+\end_layout
+
+\begin_layout Standard
+Bootstrap estimation of variance.
+ 
+\begin_inset Formula $\sigma^{2}=E\left[\left(\widehat{\theta}-E\left[\widehat{\theta}\right]\right)^{2}\right]$
+\end_inset
+
+.
+ Again, this is a population quantity.
+ The bootstrap counterpart is 
+\begin_inset Formula $\sigma_{*}^{2}=E^{*}\left[\left(\widehat{\theta}-E^{*}\left[\widehat{\theta}\right]\right)^{2}\right]$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+\sigma_{*}^{2}=\frac{1}{B}\sum_{i=1}^{n}\left(\widehat{\theta}^{\left(b\right)*}-\frac{1}{B}\sum_{i=1}^{n}\widehat{\theta}^{\left(b\right)*}\right)^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Bootstrap confidence interval
+\end_layout
+
+\begin_layout Standard
+For confidence interval for 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ constructed from an estimator 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+, we know that 
+\begin_inset Formula 
+\[
+1-\alpha=\Pr\left(q_{n}\left(\frac{\alpha}{2}\right)\leq\widehat{\theta}_{n}-\theta\leq q_{n}\left(1-\frac{\alpha}{2}\right)\right)=\Pr\left(\widehat{\theta}_{n}-q_{n}\left(1-\frac{\alpha}{2}\right)\leq\theta\leq\widehat{\theta}_{n}-q_{n}\left(\frac{\alpha}{2}\right)\right).
+\]
+
+\end_inset
+
+
+\begin_inset Formula $q_{n}\left(\alpha/2\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $q_{n}\left(\alpha/2\right)$
+\end_inset
+
+ are population quantiles, the 
+\begin_inset Formula $\alpha/2$
+\end_inset
+
+ and 
+\begin_inset Formula $1-\alpha/2$
+\end_inset
+
+ quantiles of the distribution of 
+\begin_inset Formula $\widehat{\theta}_{n}-\theta$
+\end_inset
+
+.
+ The quantiles can be estimated from the bootstrap
+\begin_inset Formula 
+\[
+q_{n}^{*}\left(\alpha/2\right)=\arg\min\left\{ a\in\mathbb{R}:\frac{1}{B}\sum_{i=1}^{n}1\left\{ T_{n}^{\left(b\right)*}\leq a\right\} =\frac{\alpha}{2}\right\} ,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $T_{n}^{*}=\widehat{\theta}^{*}-\widehat{\theta}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The bootstrap confidence interval is 
+\begin_inset Formula $\left(\widehat{\theta}-q_{n}^{*}\left(1-\frac{\alpha}{2}\right),\widehat{\theta}-q_{n}^{*}\left(\frac{\alpha}{2}\right)\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Bootstrap Test
+\end_layout
+
+\begin_layout Standard
+Under the null hypothesis 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+, in sample the 
+\begin_inset Formula $t$
+\end_inset
+
+-statistic is 
+\begin_inset Formula $T_{n}\left(\theta_{0}\right)=\left(\widehat{\theta}-\theta_{0}\right)/\widehat{\sigma}_{\widehat{\theta}}$
+\end_inset
+
+.
+ The test depends on the critical value, which is obtained as the quantile
+ of the asymptotic distribution.
+ Now we abandon the asymptotic distribution, so that we do not know what
+ is the appropriate 
+\begin_inset Formula $c_{\alpha}$
+\end_inset
+
+.
+ We bootstrap it.
+ Since we must obtain the distribution no matter whether the null hypothesis
+ is true or not, 
+\begin_inset Formula 
+\[
+T_{n}^{*}=\left(\widehat{\theta}_{n}^{*}-\widehat{\theta}_{n}\right)/\widehat{\sigma}_{\widehat{\theta}^{*}}^{*}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Otherwise, if we use 
+\begin_inset Formula $\tilde{T}^{*}=\left(\widehat{\theta}_{n}^{*}-\theta_{0}\right)/\widehat{\sigma}_{\widehat{\theta}^{*}}^{*}$
+\end_inset
+
+, then the resulting test that relying on the produced critical value will
+ have no power.
+ The same is for the Wald test.
+ (Wald test is a generalized 
+\begin_inset Formula $t$
+\end_inset
+
+-test.)
+\end_layout
+
+\begin_layout Standard
+In t-test and Wald test, the bootstrap critical value is generated from
+ a distribution independent of the null hypothesis.
+ 
+\end_layout
+
+\begin_layout Standard
+For LM test, we must impose the null hypothesis from the very beginning,
+ and adjust the LM statistic to make sure that the null hypothesis holds
+ in the bootstrap world.
+\end_layout
+
+\begin_layout Standard
+LR-test has no bootstrap counterpart, because we cannot mimic the distribution
+ under the null.
+\end_layout
+
+\end_body
+\end_document

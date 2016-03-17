@@ -2,10 +2,9 @@
 \lyxformat 474
 \begin_document
 \begin_header
-\textclass article
+\textclass extarticle
 \begin_preamble
-\renewcommand\theenumi{(\alph{enumi})}
-\renewcommand\labelenumi{\theenumi}
+\date{}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -33,8 +32,8 @@ theorems-ams-extended-bytype
 \output_sync_macro "\synctex=-1"
 \bibtex_command default
 \index_command default
-\paperfontsize 12
-\spacing onehalf
+\paperfontsize 11
+\spacing single
 \use_hyperref true
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
@@ -42,12 +41,12 @@ theorems-ams-extended-bytype
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder true
-\pdf_colorlinks true
+\pdf_colorlinks false
 \pdf_backref false
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry true
-\use_package amsmath 1
+\use_package amsmath 2
 \use_package amssymb 1
 \use_package cancel 0
 \use_package esint 1
@@ -91,7 +90,7 @@ theorems-ams-extended-bytype
 \quotes_language english
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle plain
 \tracking_changes false
 \output_changes true
 \html_math_output 0
@@ -101,310 +100,600 @@ theorems-ams-extended-bytype
 
 \begin_body
 
-\begin_layout Section
-Hypothesis Testing: Application in OLS
-\end_layout
-
-\begin_layout Subsection
-Inverting test for confidence interval
-\end_layout
-
 \begin_layout Standard
-How to find a confidence interval with coverage probability 
-\begin_inset Formula $1-\alpha$
+\begin_inset FormulaMacro
+\newcommand{\top}{\stackrel{\mathrm{p}}{\to}}
 \end_inset
 
-? Invert a test.
- Let 
-\begin_inset Formula $T_{n}\left(\theta\right)$
-\end_inset
-
- be a test statistic.
- For example, the t-statistic 
-\begin_inset Formula $\left(\widehat{\theta}-\theta\right)/s_{\widehat{\theta}}$
-\end_inset
-
-.
- I claim that the set 
-\begin_inset Formula $\widehat{C}_{n}:=\left\{ \theta\in\Theta:T_{n}\left(\theta\right)\leq c_{\alpha}\right\} $
-\end_inset
-
- is a confidence interval with the desirable coverage probability, where
  
-\begin_inset Formula $c_{\alpha}$
+\begin_inset FormulaMacro
+\newcommand{\Op}{O_{\mathrm{p}}}
 \end_inset
 
- is the critical value of a test of size 
-\begin_inset Formula $\alpha$
+
+\begin_inset FormulaMacro
+\newcommand{\op}{o_{\mathrm{p}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\mathrm{d}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A panel dataset tracks the same individuals across time 
+\begin_inset Formula $t=1,\ldots,T$
 \end_inset
 
 .
-\begin_inset Formula 
-\[
-P\left(\theta_{0}\in\widehat{C}_{n}\right)=P\left(\left\{ T_{n}\left(\theta_{0}\right)\leq c_{\alpha}\right\} |H_{0}\right)=1-P\left(\left\{ T_{n}\left(\theta_{0}\right)\geq c_{\alpha}\right\} |H_{0}\right)=1-\alpha.
-\]
-
+ The potential endogeneity of the regressors motivates the panel data models.
+ We assume the observations are i.i.d.
+ across 
+\begin_inset Formula $i=1,\ldots,n$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Subsection
-Wald Test
-\end_layout
-
-\begin_layout Standard
-Because 
-\begin_inset Formula $\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)\to N\left(0,V\right)$
+, while we allow some form of dependence within a group across 
+\begin_inset Formula $t=1,\ldots,T$
 \end_inset
 
-, then 
-\begin_inset Formula $\sqrt{n}\left(R\widehat{\beta}-r\right)=R\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)\to N\left(0,RVR'\right)$
+ for the same 
+\begin_inset Formula $i$
 \end_inset
 
 .
- Therefore
+ We maintain the linear equation 
 \begin_inset Formula 
-\[
-W=n\left(\widehat{\beta}-\beta_{0}\right)'R'\left(RVR'\right)^{-1}R\left(\widehat{\beta}-\beta_{0}\right)\Rightarrow\chi_{q}^{2}.
-\]
+\begin{equation}
+y_{it}=\beta_{1}+x_{it}\beta_{2}+u_{it},\ i=1,\ldots,n;t=1,\ldots,T\label{eq:basic_eq}
+\end{equation}
 
 \end_inset
 
+where 
+\begin_inset Formula $u_{it}=\alpha_{i}+\epsilon_{it}$
+\end_inset
 
+ is called the 
+\emph on
+composite error
+\emph default
+.
+ Note that 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ is the time-invariant unobserved heterogeneity, while 
+\begin_inset Formula $\epsilon_{it}$
+\end_inset
+
+ varies across individuals and time periods.
+ 
 \end_layout
 
-\begin_layout Subsection
-LM Test
-\end_layout
-
-\begin_layout Standard
-Restricted least square
-\begin_inset Formula 
-\[
-\min_{\beta}\left(y-X\beta\right)'\left(y-X\beta\right)\mbox{ s.t. }R\beta=r.
-\]
-
-\end_inset
-
-Turn it into an unrestricted problem
-\begin_inset Formula 
-\[
-L\left(\beta,\lambda\right)=\frac{1}{2n}\left(y-X\beta\right)'\left(y-X\beta\right)+\lambda'\left(R\beta-r\right).
-\]
-
-\end_inset
-
-The first-order condition
-\begin_inset Formula 
-\begin{eqnarray*}
-\frac{\partial}{\partial\beta}L & = & -\frac{1}{n}X'\left(y-X\tilde{\beta}\right)+\tilde{\lambda}R=-\frac{1}{n}X'\epsilon+\frac{1}{n}X'X\left(\tilde{\beta}-\beta_{0}\right)+R'\tilde{\lambda}=0.\\
-\frac{\partial}{\partial\beta}L & = & R\tilde{\beta}-r=R\left(\tilde{\beta}-\beta_{0}\right)=0
-\end{eqnarray*}
-
-\end_inset
-
-Combine these two equations into a linear system,
-\begin_inset Formula 
-\[
-\begin{pmatrix}\widehat{Q} & R'\\
-R & 0
-\end{pmatrix}\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
-\tilde{\lambda}
-\end{pmatrix}=\begin{pmatrix}\frac{1}{n}X'\epsilon\\
-0
-\end{pmatrix}.
-\]
-
-\end_inset
-
-
+\begin_layout Section
+Fixed Effect
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\begin{eqnarray*}
-\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
-\tilde{\lambda}
-\end{pmatrix} & = & \begin{pmatrix}\widehat{Q} & R'\\
-R & 0
-\end{pmatrix}^{-1}\begin{pmatrix}\frac{1}{n}X'\epsilon\\
-0
-\end{pmatrix}.\\
- & = & \begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
-\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & -\left(R\widehat{Q}^{-1}R'\right)^{-1}
-\end{pmatrix}\begin{pmatrix}\frac{1}{n}X'\epsilon\\
-0
-\end{pmatrix}.
-\end{eqnarray*}
+If 
+\begin_inset Formula $\mathrm{cov}\left(\alpha_{i},x_{it}\right)=0$
+\end_inset
+
+, OLS is consistent for (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basic_eq"
 
 \end_inset
 
-We conclude that 
-\begin_inset Formula 
-\[
-\sqrt{n}\tilde{\lambda}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon
-\]
+); otherwise the consistency breaks down.
+ The fixed effect model allows 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{it}$
+\end_inset
+
+ to be arbitrarily correlated.
+ The trick to regain consistency is to eliminate 
+\begin_inset Formula $\alpha_{i},i=1,\ldots,n$
+\end_inset
+
+ .
+ The rest of this section develops the consistency and asymptotic distribution
+ of the 
+\emph on
+within estimator
+\emph default
+, the default fixed-effect (FE) estimator.
+ The within estimator transforms the data by subtracting all the observable
+ variables by the corresponding group means.
+ Averaging the 
+\begin_inset Formula $T$
+\end_inset
+
+ equations in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basic_eq"
 
 \end_inset
 
-
-\begin_inset Formula 
-\[
-\sqrt{n}\tilde{\lambda}\Rightarrow N\left(0,\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}\right).
-\]
-
-\end_inset
-
-Let 
-\begin_inset Formula $W=\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}$
+) for the same 
+\begin_inset Formula $i$
 \end_inset
 
 , we have 
 \begin_inset Formula 
-\[
-n\tilde{\lambda}'W^{-1}\tilde{\lambda}\Rightarrow\chi_{q}^{2}.
-\]
+\begin{equation}
+\overline{y}_{i}=\beta_{1}+\overline{x}_{i}\beta_{2}+\bar{u}_{it}=\beta_{1}+\overline{x}_{i}\beta_{2}+\alpha_{i}+\bar{\epsilon}_{it}.\label{eq:group_mean}
+\end{equation}
 
 \end_inset
 
-If homoskedastic, then 
-\begin_inset Formula $W=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}RQ^{-1}QQ^{-1}R'\left(RQ^{-1}R'\right)^{-1}=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}.$
+where 
+\begin_inset Formula $\overline{y}_{i}=\frac{1}{T}\sum_{t=1}^{T}y_{it}$
 \end_inset
 
+.
+ Subtracting (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:group_mean"
 
+\end_inset
+
+) from (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basic_eq"
+
+\end_inset
+
+) gives
 \begin_inset Formula 
-\[
-\frac{n\tilde{\lambda}'RQ^{-1}R'\tilde{\lambda}}{\sigma^{2}}=\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'XQ^{-1}X'\left(y-X\tilde{\beta}\right)=\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'P_{X}\left(y-X\tilde{\beta}\right).
-\]
+\begin{equation}
+\tilde{y}_{it}=\tilde{x}_{it}\beta_{2}+\tilde{\epsilon}_{it}\label{eq:FE_demean}
+\end{equation}
 
 \end_inset
 
+where 
+\begin_inset Formula $\tilde{y}_{it}=y_{it}-\overline{y}_{i}$
+\end_inset
 
-\end_layout
-
-\begin_layout Subsection
-LR test
-\end_layout
-
-\begin_layout Standard
-For likelihood ratio test, the starting point can be a criterion function
+.
+ We then run OLS with the demeaned data, and obtain the within estimator
  
-\begin_inset Formula $L\left(\beta\right)=\left(y-X\beta\right)'\left(y-X\beta\right)$
+\begin_inset Formula 
+\[
+\widehat{\beta}_{2}^{FE}=\left(\tilde{X}'\tilde{X}\right)^{-1}\tilde{X}'\tilde{y},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{y}=\left(y_{it}\right)_{i,t}$
+\end_inset
+
+ stacks all the 
+\begin_inset Formula $nT$
+\end_inset
+
+ observations into a vector, and similarly defined is 
+\begin_inset Formula $\tilde{X}$
+\end_inset
+
+ as an 
+\begin_inset Formula $nT\times K$
+\end_inset
+
+ matrix, where 
+\begin_inset Formula $K$
+\end_inset
+
+ is the dimension of 
+\begin_inset Formula $\beta_{2}$
 \end_inset
 
 .
- It does not have to be the likelihood function.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\[
-L\left(\tilde{\beta}\right)-L\left(\widehat{\beta}\right)=\frac{\partial L}{\partial\beta}\left(\widehat{\beta}\right)+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\frac{\partial L}{\partial\beta\partial\beta}\left(\dot{\beta}\right)\left(\tilde{\beta}-\widehat{\beta}\right)=0+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right).
-\]
+We know that OLS in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:FE_demean"
 
 \end_inset
 
-From the derivation of LM test, we have 
-\begin_inset Formula 
-\begin{eqnarray*}
-\sqrt{n}\left(\tilde{\beta}-\beta_{0}\right) & = & \left(\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\right)\frac{1}{\sqrt{n}}X'\epsilon\\
- & = & \frac{1}{\sqrt{n}}\left(X'X\right)X'\epsilon-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon\\
- & = & \sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon
-\end{eqnarray*}
-
-\end_inset
-
-Therefore
-\begin_inset Formula 
-\[
-\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)=-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon
-\]
-
-\end_inset
-
-and 
-\begin_inset Formula 
-\begin{eqnarray*}
-n\left(\tilde{\beta}-\beta\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right) & = & \frac{1}{\sqrt{n}}\epsilon'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon\\
- & = & \frac{1}{\sqrt{n}}\epsilon'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon
-\end{eqnarray*}
-
-\end_inset
-
-In general, it is a quadratic form of normal distributions.
- If homoskedastic, then 
-\begin_inset Formula 
-\[
-\left(R\widehat{Q}^{-1}R'\right)^{-1/2}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon
-\]
-
-\end_inset
-
- has variance 
-\begin_inset Formula 
-\[
-\sigma^{2}\left(RQ^{-1}R'\right)^{-1/2}RQ^{-1}QQ^{-1}R'\left(RQ^{-1}R'\right)^{-1/2}=\sigma^{2}I_{q}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We can view the optimization of the log-likelihood as a two-step optimization
- with the inner step 
-\begin_inset Formula $\sigma=\sigma\left(\beta\right)$
+) would be consistent if 
+\begin_inset Formula $\E\left[\tilde{\epsilon}_{it}|\tilde{x}_{it}\right]=0$
 \end_inset
 
 .
- By the envelop theorem, when we take derivative with respect to 
-\begin_inset Formula $\beta$
-\end_inset
-
-, we can ignore the indirect effect of 
-\begin_inset Formula $\partial\sigma\left(\beta\right)/\partial\beta$
-\end_inset
-
+ Below we provide a sufficient condition, which is often called 
+\emph on
+strict exogeneity
+\emph default
 .
  
 \end_layout
 
-\begin_layout Subsection
-Diagrams
+\begin_layout Assumption*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+FE.1
 \end_layout
 
-\begin_layout Standard
-Wald works on 
-\begin_inset Formula $R\widehat{\beta}-r=0$
 \end_inset
 
-.
- LM works on the first order condition.
-\end_layout
 
-\begin_layout Subsection
-Examples
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\beta_{1}=0$
+\begin_inset Formula $\E\left[\epsilon_{it}|\mathbf{x}_{i}\right]=0$
 \end_inset
 
- in 
-\begin_inset Formula $y_{i}=\beta_{1}x_{i}+\beta_{2}+\epsilon_{i}$
+ where 
+\begin_inset Formula $\mathbf{x}_{i}=\left(x_{i1},\ldots,x_{iT}\right)$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $-\beta_{2}/2\beta_{3}=20$
+Its strictness is relative to the contemporary exogeneity 
+\begin_inset Formula $\E\left[\epsilon_{it}|x_{it}\right]=0$
+\end_inset
+
+.
+ FE.1 is more restrictive as it assumes that the error 
+\begin_inset Formula $\epsilon_{it}$
+\end_inset
+
+ is mean independent of the past, present and future explanatory variables.
+\end_layout
+
+\begin_layout Standard
+When we talk about the consistency in panel data, typically we are considering
+ 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+ while 
+\begin_inset Formula $T$
+\end_inset
+
+ stays fixed.
+ This asymptotic framework is appropriate for panel datasets with many individua
+ls but only a few time periods.
+\end_layout
+
+\begin_layout Lemma*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+FE consistency
+\end_layout
+
+\end_inset
+
+ If FE.1 is satisfied, then 
+\begin_inset Formula $\widehat{\beta}_{2}^{FE}$
+\end_inset
+
+ is consistent.
+\end_layout
+
+\begin_layout Standard
+The variance estimation for the FE estimator is a little bit tricky.
+ We assume a homoskedasitcity condition to simplify the calculation.
+ Violation of this assumption changes the form of the asymptotic variance,
+ but does not jeopardize the asymptotic normality.
+ 
+\end_layout
+
+\begin_layout Assumption*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+FE.2
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathrm{var}\left(\epsilon_{i}|\mathbf{x}_{i}\right)=\sigma_{\epsilon}^{2}I_{T}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Under FE.1 and FE.2, 
+\begin_inset Formula $\widehat{\sigma}_{\epsilon}^{2}=\frac{1}{n\left(T-1\right)}\sum_{i=1}^{n}\sum_{t=1}^{T}\widehat{\tilde{\epsilon}}_{it}^{2}$
+\end_inset
+
+ is a consistent estimator of 
+\begin_inset Formula $\sigma_{\epsilon}^{2}$
+\end_inset
+
+, where 
+\begin_inset Formula $\widehat{\tilde{\epsilon}}=\tilde{y}_{it}-\tilde{x}_{it}\widehat{\beta}_{2}^{FE}$
+\end_inset
+
+.
+ Note that the denominator is 
+\begin_inset Formula $n\left(T-1\right)$
+\end_inset
+
+, not 
+\begin_inset Formula $nT$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+FE asymptotic normality
+\end_layout
+
+\end_inset
+
+ If FE.1 and FE.2 are satisfied, then 
+\begin_inset Formula 
+\[
+\frac{\left(\tilde{X}'\tilde{X}\right)^{1/2}}{\widehat{\sigma}_{\epsilon}}\left(\widehat{\beta}_{2}^{FE}-\beta_{2}^{0}\right)\Rightarrow N\left(0,I_{K}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark*
+We implicitly assume some regularity conditions that allow us to invoke
+ a law of large numbers and a central limit theorem.
+ We ignore those technical details here.
+ 
+\end_layout
+
+\begin_layout Section
+Random Effect
+\end_layout
+
+\begin_layout Standard
+The random effect estimator pursues efficiency at a knife-edge special case
+ 
+\begin_inset Formula $\mathrm{cov}\left(\alpha_{i},x_{it}\right)=0$
+\end_inset
+
+.
+ As mentioned above, FE is consistent when 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{it}$
+\end_inset
+
+ are uncorrelated.
+ However, an inspection of the covariance matrix reveals that OLS is inefficient.
+ 
+\end_layout
+
+\begin_layout Standard
+The model is again (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basic_eq"
+
+\end_inset
+
+), while we assume
+\end_layout
+
+\begin_layout Assumption*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+RE.1
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\E\left[\epsilon_{it}|\alpha_{i},\mathbf{x}_{i}\right]=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\E\left[\alpha_{i}|\mathbf{x}_{i}\right]=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+RE.1 obviously implies 
+\begin_inset Formula $\mathrm{cov}\left(\alpha_{i},x_{it}\right)=0$
+\end_inset
+
+, so 
+\begin_inset Formula 
+\[
+S=\mathrm{var}\left(u_{i}|\mathbf{x}_{i}\right)=\sigma_{\alpha}^{2}\mathbf{1}_{T}\mathbf{1}_{T}'+\sigma_{\epsilon}^{2}I_{T},\ \mbox{for all }i=1,\ldots,n.
+\]
+
+\end_inset
+
+Because the covariance matrix is not a scalar multiplication of the identity
+ matrix, OLS is inefficient.
+ 
+\end_layout
+
+\begin_layout Standard
+As mentioned before, FE estimation kills all time-invariant regressors.
+ In contrast, RE allows time-invariant explanatory variables.
+ Let us rewrite (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basic_eq"
+
+\end_inset
+
+) as 
+\begin_inset Formula 
+\[
+y_{it}=w_{it}\boldsymbol{\beta}+u_{it},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{\beta}=\left(\beta_{1},\beta_{2}'\right)'$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{it}=\left(1,x_{it}\right)$
+\end_inset
+
+ are 
+\begin_inset Formula $K+1$
+\end_inset
+
+ vectors, i.e., 
+\begin_inset Formula $\boldsymbol{\beta}$
+\end_inset
+
+ is the parameter including the intercept, and 
+\begin_inset Formula $w_{it}$
+\end_inset
+
+ is the explanatory variables including the constant.
+ Had we known 
+\begin_inset Formula $S$
+\end_inset
+
+, the GLS estimator would be 
+\begin_inset Formula 
+\[
+\widehat{\boldsymbol{\beta}}^{RE}=\left(\sum_{i=1}^{n}\mathbf{w}_{i}'S^{-1}\mathbf{w}_{i}\right)^{-1}\sum_{i=1}^{n}\mathbf{w}_{i}'S^{-1}\mathbf{y}_{i}=\left(W'\mathbf{S}^{-1}W\right)^{-1}W'\mathbf{S}^{-1}y
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{S}=I_{T}\otimes S$
+\end_inset
+
+.
+ (``
+\begin_inset Formula $\otimes$
+\end_inset
+
+'' denotes the Kronecker product.) In practice, 
+\begin_inset Formula $\sigma_{\alpha}^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{\epsilon}^{2}$
 \end_inset
 
  in 
-\begin_inset Formula $y=\beta_{1}edu+\beta_{2}exp+\beta_{3}exp^{2}+\beta_{4}+\epsilon_{i}$
+\begin_inset Formula $S$
+\end_inset
+
+ are unknown, so we seek consistent estimators.
+ Again, we impose a simplifying assumption parallel to FE.2.
+ 
+\end_layout
+
+\begin_layout Assumption*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+RE.2
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\mathrm{var}\left(\epsilon_{i}|\mathbf{x}_{i},\alpha_{i}\right)=\sigma_{\epsilon}^{2}I_{T}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathrm{var}\left(\alpha_{i}|\mathbf{x}_{i}\right)=\sigma_{\alpha}^{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Under this assumption, we can consistently estimate the variances from the
+ residuals 
+\begin_inset Formula $\widehat{u}_{it}=y_{it}-x_{it}\widehat{\boldsymbol{\beta}}^{RE}$
+\end_inset
+
+.
+ That is 
+\begin_inset Formula 
+\begin{eqnarray*}
+\widehat{\sigma}_{u}^{2} & = & \frac{1}{nT}\sum_{i=1}^{n}\sum_{t=1}^{T}\widehat{u}_{it}^{2}\\
+\widehat{\sigma}_{\epsilon}^{2} & = & \frac{1}{n}\sum_{i=1}^{n}\frac{1}{T\left(T-1\right)}\sum_{t=1}^{T}\sum_{r=1}^{T}\sum_{r\neq t}\widehat{u}_{it}\widehat{u}_{ir}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Again, we claim the asymptotic normality.
+\end_layout
+
+\begin_layout Theorem*
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+RE asymptotic normality
+\end_layout
+
+\end_inset
+
+ If RE.1 and RE.2 are satisfied, then 
+\begin_inset Formula 
+\[
+\left(\widehat{\sigma}_{u}^{2}\left(W'\widehat{\mathbf{S}}^{-1}W\right)^{-1}\right)^{-1/2}\left(\widehat{\boldsymbol{\beta}}^{RE}-\boldsymbol{\beta}_{0}\right)\Rightarrow N\left(0,I_{K+1}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\widehat{\mathbf{S}}$
+\end_inset
+
+ is a consistent estimator of 
+\begin_inset Formula $\mathbf{S}$
 \end_inset
 
 .
