@@ -348,7 +348,7 @@ FE.1
 \end_inset
 
 
-\begin_inset Formula $\E\left[\epsilon_{it}|\mathbf{x}_{i}\right]=0$
+\begin_inset Formula $\E\left[\epsilon_{it}|\alpha_{i},\mathbf{x}_{i}\right]=0$
 \end_inset
 
  where 

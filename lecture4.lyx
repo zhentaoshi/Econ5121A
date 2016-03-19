@@ -126,11 +126,11 @@ Convergence of a deterministic sequence means that for any
 \end_inset
 
 , there exists an 
-\begin_inset Formula $N\left(e\right)$
+\begin_inset Formula $N\left(c\right)$
 \end_inset
 
  such that for all 
-\begin_inset Formula $n>N\left(e\right)$
+\begin_inset Formula $n>N\left(c\right)$
 \end_inset
 
 , we have 
@@ -465,27 +465,43 @@ Various versions of CLT work under different assumptions about the random
 
 \begin_layout Standard
 Let 
-\begin_inset Formula $\varphi_{x}\left(t\right)=E\left[\exp\left(itx\right)\right]$
+\begin_inset Formula $\varphi_{x}\left(t\right)=E\left[\exp\left(ixt\right)\right]$
 \end_inset
 
  be the characteristic function.
  If 
+\begin_inset Formula $E\left[X\right]<\infty$
+\end_inset
+
+ for a positive integer 
+\begin_inset Formula $k$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\varphi_{x}\left(t\right)=1+itE\left[X\right]+\frac{\left(it\right)^{2}}{2}E\left[X^{2}\right]+\ldots\frac{\left(it\right)^{k}}{k!}E\left[X^{k}\right]+o\left(t^{k}\right).
+\]
+
+\end_inset
+
+Therefore, if 
 \begin_inset Formula $x_{i}$
 \end_inset
 
-'s mean is zero, variance is 
+'s mean is zero and variance is 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
 , and its third moment is finite, then 
-\begin_inset Formula $\varphi_{x_{i}}\left(t\right)=1-\frac{\sigma^{2}}{2}t^{2}+O\left(t^{3}\right)$
+\begin_inset Formula $\varphi_{x_{i}}\left(t\right)=1-\frac{\sigma^{2}}{2}t^{2}+o\left(\frac{\sigma^{2}}{2}t^{2}\right)$
 \end_inset
 
 .
  If the observations in the sample are independent, then 
 \begin_inset Formula 
 \[
-\varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right)=\left(1-\frac{\sigma^{2}}{2n}t^{2}+O\left(\frac{t^{3}}{n^{3/2}}\right)\right)^{n}\to\exp\left(-\frac{\sigma^{2}}{2}t^{2}\right),
+\varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right)=\left(1-\frac{\sigma^{2}}{2n}t^{2}+o\left(\frac{\sigma^{2}}{2n}t^{2}\right)\right)^{n}\to\exp\left(-\frac{\sigma^{2}}{2}t^{2}\right),
 \]
 
 \end_inset

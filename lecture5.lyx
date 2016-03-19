@@ -183,8 +183,29 @@ W=n\left(\widehat{\beta}-\beta_{0}\right)'R'\left(RVR'\right)^{-1}R\left(\wideha
 
 \end_layout
 
+\begin_layout Example
+Linear hypothesis: 
+\begin_inset Formula $\beta_{1}=0$
+\end_inset
+
+ in 
+\begin_inset Formula $y_{i}=\beta_{1}x_{i}+\beta_{2}+\epsilon_{i}$
+\end_inset
+
+.
+ Nonlinear hypothesis: 
+\begin_inset Formula $-\beta_{2}/2\beta_{3}=20$
+\end_inset
+
+ in 
+\begin_inset Formula $y=\beta_{1}edu+\beta_{2}exp+\beta_{3}exp^{2}+\beta_{4}+\epsilon_{i}$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
-LM Test
+Lagrangian Multiplier Test
 \end_layout
 
 \begin_layout Standard
@@ -391,32 +412,6 @@ Wald works on
 
 .
  LM works on the first order condition.
-\end_layout
-
-\begin_layout Subsection
-Examples
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $\beta_{1}=0$
-\end_inset
-
- in 
-\begin_inset Formula $y_{i}=\beta_{1}x_{i}+\beta_{2}+\epsilon_{i}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $-\beta_{2}/2\beta_{3}=20$
-\end_inset
-
- in 
-\begin_inset Formula $y=\beta_{1}edu+\beta_{2}exp+\beta_{3}exp^{2}+\beta_{4}+\epsilon_{i}$
-\end_inset
-
-.
 \end_layout
 
 \end_body
