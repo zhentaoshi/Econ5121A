@@ -424,13 +424,6 @@ Chebyshev LLN
 Kolmogorov LLN
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Not revised yet.
- Don't read beyond this point.
-\end_layout
-
 \begin_layout Subsection
 Central Limit Theorem
 \end_layout
@@ -470,7 +463,7 @@ Let
 
  be the characteristic function.
  If 
-\begin_inset Formula $E\left[X\right]<\infty$
+\begin_inset Formula $E\left[\left|x\right|^{k}\right]<\infty$
 \end_inset
 
  for a positive integer 
@@ -493,7 +486,7 @@ Therefore, if
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
-, and its third moment is finite, then 
+, then 
 \begin_inset Formula $\varphi_{x_{i}}\left(t\right)=1-\frac{\sigma^{2}}{2}t^{2}+o\left(\frac{\sigma^{2}}{2}t^{2}\right)$
 \end_inset
 
@@ -514,7 +507,7 @@ where the limit is exactly the characteristic function of
 \end_layout
 
 \begin_layout Itemize
-Lindeberg-Levy CLT: zero-mean, finite 
+Lindeberg-Levy CLT: iid, zero-mean, finite 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
@@ -522,36 +515,31 @@ Lindeberg-Levy CLT: zero-mean, finite
 \end_layout
 
 \begin_layout Itemize
-Lindeberg-Feller CLT
-\end_layout
-
-\begin_layout Itemize
-Lindeberg condition: Let 
-\begin_inset Formula $\left(x_{i}\right)_{i=1}^{n}$
-\end_inset
-
- be a sample of zero-mean independent observations.
- For any fixed 
+Lindeberg-Feller CLT: inid, and Lindeberg condition: for any fixed 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
 , 
 \begin_inset Formula 
 \[
-\frac{1}{s_{n}^{2}}\sum_{i=1}^{n}\int_{\left|x_{i}\right|>\varepsilon s_{n}}x_{i}^{2}dPx_{i}\to0
+\frac{1}{s_{n}}\sum_{i=1}^{n}\int_{x_{i}^{2}>\varepsilon s_{n}}x_{i}^{2}dPx_{i}\to0
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $s_{n}^{2}=\sum_{i=1}^{n}\sigma_{i}^{2}$
+\begin_inset Formula $s_{n}=\sum_{i=1}^{n}\sigma_{i}^{2}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Itemize
-Lyapunov CLT
+Lyapunov CLT: inid, finite 
+\begin_inset Formula $E\left[\left|x\right|^{3}\right]$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -638,7 +626,27 @@ Continuous mapping theorem 2: If
 \end_layout
 
 \begin_layout Itemize
-Delta method
+Delta method: if 
+\begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $f\left(\cdot\right)$
+\end_inset
+
+ is continuously differentiable at 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta'}\left(\theta\right)\Omega\left(\frac{\partial f}{\partial\theta}\left(\theta\right)\right)'\right).
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -665,7 +673,7 @@ Lindeberg-Levy CLT is a special case of Lindeberg-Feller by directly checking
 \end_inset
 
 Convergence in probability: 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}E\left[x_{i}x_{i}'\right]$
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}Q=E\left[x_{i}x_{i}'\right]$
 \end_inset
 
 , and 
@@ -674,7 +682,7 @@ Convergence in probability:
 
 .
  By the continuous mapping theorem, 
-\begin_inset Formula $\widehat{\beta}-\beta\stackrel{p}{\to}0$
+\begin_inset Formula $\widehat{\beta}-\beta\stackrel{p}{\to}Q^{-1}0=0$
 \end_inset
 
 .
@@ -682,7 +690,19 @@ Convergence in probability:
 
 \begin_layout Standard
 Asymptotic distribution: 
-\begin_inset Formula $n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,E\left[x_{i}x_{i}'e_{i}^{2}\right]\right).$
+\begin_inset Formula $n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\Sigma\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]$
+\end_inset
+
+, so
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,Q^{-1}\Sigma Q^{-1}\right).
+\]
+
 \end_inset
 
 
@@ -694,7 +714,7 @@ Estimation of the Variance
 
 \begin_layout Standard
 To show the finiteness of the variance, 
-\begin_inset Formula $\Omega=E\left[x_{i}x_{i}'e_{i}^{2}\right].$
+\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right].$
 \end_inset
 
  Let 
@@ -709,7 +729,7 @@ To show the finiteness of the variance,
  Because of the Cachy-Schwarz inequality, 
 \begin_inset Formula 
 \[
-\left\Vert \Omega\right\Vert _{\infty}=\max_{k=1,\ldots,K}E\left[z_{ik}^{2}\right].
+\left\Vert \Sigma\right\Vert _{\infty}=\max_{k=1,\ldots,K}E\left[z_{ik}^{2}\right].
 \]
 
 \end_inset
@@ -729,7 +749,15 @@ For each
 For the estimation of variance, homoskedastic,
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right)
+\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right)
+\]
+
+\end_inset
+
+The second term
+\begin_inset Formula 
+\[
+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
 \]
 
 \end_inset
@@ -738,14 +766,6 @@ The third term
 \begin_inset Formula 
 \[
 \left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)O_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
-\]
-
-\end_inset
-
-The second term
-\begin_inset Formula 
-\[
-\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
 \]
 
 \end_inset
@@ -770,15 +790,19 @@ As
 .
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
 \begin_layout Subsection
 Asymptotic Distribution of Functional of Parameters
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A linear restriction that leads to the Wald test.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Hansen's textbook provides a few examples why we are interested in a function
  of parameters.
  For example, the optimal experience level of a worker.
@@ -787,7 +811,7 @@ Hansen's textbook provides a few examples why we are interested in a function
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Besides point estimator, we might be interested in the interval estimator
  
 \begin_inset Formula $C_{n}$
@@ -821,12 +845,17 @@ P\left(\widehat{\beta}-1.96\widehat{\sigma}\leq\beta_{0}\leq\widehat{\beta}+1.96
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 If multiple dimension, then one way to construct the interval is 
 \begin_inset Formula 
 \[
 P\left(\theta:\left(\widehat{\beta}-\beta\right)V^{-1}\left(\widehat{\beta}-\beta\right)\leq q_{\chi^{2}}\right)
 \]
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
