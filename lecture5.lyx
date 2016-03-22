@@ -112,13 +112,14 @@ Hypothesis Testing: Application in OLS
 
 \series bold
 Not revised
-\end_layout
+\begin_inset Note Note
+status open
 
 \begin_layout Subsection
 Inverting test for confidence interval
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 How to find a confidence interval with coverage probability 
 \begin_inset Formula $1-\alpha$
 \end_inset
@@ -158,24 +159,246 @@ P\left(\theta_{0}\in\widehat{C}_{n}\right)=P\left(\left\{ T_{n}\left(\theta_{0}\
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Wald Test
 \end_layout
 
 \begin_layout Standard
-Because 
-\begin_inset Formula $\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)\to N\left(0,V\right)$
+If 
+\begin_inset Formula $\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
 \end_inset
 
-, then 
-\begin_inset Formula $\sqrt{n}\left(R\widehat{\beta}-r\right)=R\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)\to N\left(0,RVR'\right)$
+ where 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times K$
+\end_inset
+
+ positive definite covariance matrix and 
+\begin_inset Formula $R$
+\end_inset
+
+ is a 
+\begin_inset Formula $q\times K$
+\end_inset
+
+ constant matrix, then 
+\begin_inset Formula $R\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)$
 \end_inset
 
 .
- Therefore
+ Moreover, if 
+\begin_inset Formula $R$
+\end_inset
+
+ is of rank 
+\begin_inset Formula $q$
+\end_inset
+
+, then 
 \begin_inset Formula 
 \[
-W=n\left(\widehat{\beta}-\beta_{0}\right)'R'\left(RVR'\right)^{-1}R\left(\widehat{\beta}-\beta_{0}\right)\Rightarrow\chi_{q}^{2}.
+n\left(\widehat{\beta}-\beta\right)'R'\left(R\Omega R'\right)^{-1}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}\chi_{q}^{2}.
+\]
+
+\end_inset
+
+Now we intend to test a null 
+\begin_inset Formula $R\beta=r$
+\end_inset
+
+.
+ Under the null hypothesis, the Wald statistic 
+\begin_inset Formula 
+\[
+W_{n}=n\left(R\widehat{\beta}-r\right)'\left(R\widehat{\Omega}R'\right)^{-1}\left(R\widehat{\beta}-r\right)\stackrel{d}{\to}\chi_{q}^{2}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\widehat{\Omega}$
+\end_inset
+
+ is consistent estimator of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+In a linear regression 
+\begin_inset Formula 
+\begin{eqnarray}
+y & = & x_{i}'\beta+e_{i}=\sum_{k=1}^{5}\beta_{k}x_{ik}+e_{i}.\nonumber \\
+E\left[e_{i}x_{i}\right] & = & \mathbf{0}_{5},\label{eq:example}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{i}=\left(\mbox{edu},\mbox{age},\mbox{experience},\mbox{experience}^{2},1\right)'$
+\end_inset
+
+.
+ If we want to test whether edu has no effect, the null hypothesis is 
+\begin_inset Formula $\beta_{1}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Let 
+\begin_inset Formula $R=\left(1,0,0,0,0\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{equation}
+\sqrt{n}\widehat{\beta}_{1}=\sqrt{n}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)\sim N\left(0,\Omega_{11}\right)\label{eq:R11}
+\end{equation}
+
+\end_inset
+
+, where 
+\begin_inset Formula $\Omega{}_{11}$
+\end_inset
+
+ is the 
+\begin_inset Formula $\left(1,1\right)$
+\end_inset
+
+ (scalar) element of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Therefore,
+\begin_inset Formula 
+\[
+\sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}=\sqrt{\frac{\Omega_{11}}{\widehat{\Omega}_{11}}}\sqrt{n}\frac{\widehat{\beta}_{1}}{\Omega_{11}^{1/2}}
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $\widehat{\Omega}\stackrel{p}{\to}\Omega$
+\end_inset
+
+, then 
+\begin_inset Formula $\left(\Omega_{11}/\widehat{\Omega}_{11}\right)^{1/2}\stackrel{p}{\to}1$
+\end_inset
+
+ by the continuous mapping theorem 1.
+ As 
+\begin_inset Formula $\sqrt{n}\frac{\widehat{\beta}_{1}}{\Omega_{11}^{1/2}}\stackrel{d}{\to}N\left(0,1\right)$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+\sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}\stackrel{d}{\to}N\left(0,1\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Example 1 is a test about a single coefficient, and the test statistic is
+ essentially a t-statistic.
+ Example 2 gives a test about a joint hypothesis.
+\end_layout
+
+\begin_layout Example
+In the regression 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:example"
+
+\end_inset
+
+, we test 
+\begin_inset Formula $\beta_{1}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{3}+\beta_{4}=2$
+\end_inset
+
+ simultaneously.
+ The null hypothesis can be expressed in the general form 
+\begin_inset Formula $R\beta=r$
+\end_inset
+
+, where the restriction matrix 
+\begin_inset Formula $R$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+R=\begin{pmatrix}1 & 0 & 0 & 0 & 0\\
+0 & 0 & 1 & 1 & 0
+\end{pmatrix}
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula $r=\left(1,2\right)'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Example 1 and 2 are linear restrictions.
+ In order to test a nonlinear regression, we need the so-called 
+\emph on
+delta method
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+delta method
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta^{*}\right)\stackrel{d}{\to}N\left(0,\Omega_{K\times K}\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $f:\mathbb{R}^{K}\mapsto\mathbb{R}^{q}$
+\end_inset
+
+ is a continuous function for some 
+\begin_inset Formula $q\leq K$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta^{*}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)'\right).
 \]
 
 \end_inset
@@ -184,24 +407,86 @@ W=n\left(\widehat{\beta}-\beta_{0}\right)'R'\left(RVR'\right)^{-1}R\left(\wideha
 \end_layout
 
 \begin_layout Example
-Linear hypothesis: 
-\begin_inset Formula $\beta_{1}=0$
+In the regression (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:example"
+
 \end_inset
 
- in 
-\begin_inset Formula $y_{i}=\beta_{1}x_{i}+\beta_{2}+\epsilon_{i}$
-\end_inset
-
-.
- Nonlinear hypothesis: 
-\begin_inset Formula $-\beta_{2}/2\beta_{3}=20$
-\end_inset
-
- in 
-\begin_inset Formula $y=\beta_{1}edu+\beta_{2}exp+\beta_{3}exp^{2}+\beta_{4}+\epsilon_{i}$
+), the optimal experience level is 
+\begin_inset Formula $\beta_{3}+2\beta_{4}\mbox{experience}^{*}=0$
 \end_inset
 
 .
+ We test 
+\begin_inset Formula 
+\[
+\mbox{experience}^{*}=-\frac{\beta_{3}}{2\beta_{4}}=20.
+\]
+
+\end_inset
+
+This is a nonlinear (in parameter) hypothesis.
+ According to Theorem 1, if 
+\begin_inset Formula $\mathrm{rank}\left(\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)\right)=q\leq K$
+\end_inset
+
+, we have
+\begin_inset Formula 
+\[
+n\left(f\left(\widehat{\theta}\right)-f\left(\theta^{*}\right)\right)'\left(\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)'\right)^{-1}\left(f\left(\widehat{\theta}\right)-f\left(\theta^{*}\right)\right)\stackrel{d}{\to}\chi_{q}^{2},
+\]
+
+\end_inset
+
+where in this example, 
+\begin_inset Formula $\theta=\beta$
+\end_inset
+
+, 
+\begin_inset Formula $f\left(\beta\right)=-\beta/\left(2\beta_{4}\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+\frac{\partial f}{\partial\beta}\left(\beta\right)=\left(0,0,-\frac{1}{2\beta_{4}},\frac{\beta_{3}}{2\beta_{4}^{2}}\right)
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $\widehat{\beta}\stackrel{p}{\to}\beta^{*}$
+\end_inset
+
+, by Slutsky's theorem, if 
+\begin_inset Formula $\beta_{4}^{*}\neq0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\frac{\partial}{\partial\beta}f\left(\widehat{\beta}\right)\stackrel{p}{\to}\frac{\partial}{\partial\beta}f\left(\beta^{*}\right)$
+\end_inset
+
+.
+ Therefore, the (nonlinear) Wald test is 
+\begin_inset Formula 
+\[
+W_{n}=n\left(f\left(\widehat{\beta}\right)-20\right)'\left(\frac{\partial f}{\partial\beta}\left(\widehat{\beta}\right)\widehat{\Omega}\frac{\partial f}{\partial\beta}\left(\widehat{\beta}\right)'\right)^{-1}\left(f\left(\widehat{\beta}\right)-20\right)\stackrel{d}{\to}\chi_{1}^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+I did not teach the LM and LR tests below.
+ Do not read.
+ 
 \end_layout
 
 \begin_layout Subsection
@@ -228,8 +513,8 @@ L\left(\beta,\lambda\right)=\frac{1}{2n}\left(y-X\beta\right)'\left(y-X\beta\rig
 The first-order condition
 \begin_inset Formula 
 \begin{eqnarray*}
-\frac{\partial}{\partial\beta}L & = & -\frac{1}{n}X'\left(y-X\tilde{\beta}\right)+\tilde{\lambda}R=-\frac{1}{n}X'\epsilon+\frac{1}{n}X'X\left(\tilde{\beta}-\beta_{0}\right)+R'\tilde{\lambda}=0.\\
-\frac{\partial}{\partial\beta}L & = & R\tilde{\beta}-r=R\left(\tilde{\beta}-\beta_{0}\right)=0
+\frac{\partial}{\partial\beta}L & = & -\frac{1}{n}X'\left(y-X\tilde{\beta}\right)+\tilde{\lambda}R=-\frac{1}{n}X'e+\frac{1}{n}X'X\left(\tilde{\beta}-\beta^{*}\right)+R'\tilde{\lambda}=0.\\
+\frac{\partial}{\partial\beta}L & = & R\tilde{\beta}-r=R\left(\tilde{\beta}-\beta^{*}\right)=0
 \end{eqnarray*}
 
 \end_inset
@@ -239,9 +524,9 @@ Combine these two equations into a linear system,
 \[
 \begin{pmatrix}\widehat{Q} & R'\\
 R & 0
-\end{pmatrix}\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
+\end{pmatrix}\begin{pmatrix}\tilde{\beta}-\beta^{*}\\
 \tilde{\lambda}
-\end{pmatrix}=\begin{pmatrix}\frac{1}{n}X'\epsilon\\
+\end{pmatrix}=\begin{pmatrix}\frac{1}{n}X'e\\
 0
 \end{pmatrix}.
 \]
@@ -254,16 +539,16 @@ R & 0
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
+\begin{pmatrix}\tilde{\beta}-\beta^{*}\\
 \tilde{\lambda}
 \end{pmatrix} & = & \begin{pmatrix}\widehat{Q} & R'\\
 R & 0
-\end{pmatrix}^{-1}\begin{pmatrix}\frac{1}{n}X'\epsilon\\
+\end{pmatrix}^{-1}\begin{pmatrix}\frac{1}{n}X'e\\
 0
 \end{pmatrix}.\\
  & = & \begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
 \left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & -\left(R\widehat{Q}^{-1}R'\right)^{-1}
-\end{pmatrix}\begin{pmatrix}\frac{1}{n}X'\epsilon\\
+\end{pmatrix}\begin{pmatrix}\frac{1}{n}X'e\\
 0
 \end{pmatrix}.
 \end{eqnarray*}
@@ -273,7 +558,7 @@ R & 0
 We conclude that 
 \begin_inset Formula 
 \[
-\sqrt{n}\tilde{\lambda}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon
+\sqrt{n}\tilde{\lambda}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
 \]
 
 \end_inset
@@ -314,7 +599,7 @@ If homoskedastic, then
 \end_layout
 
 \begin_layout Subsection
-LR test
+Likelihood-Ratio test
 \end_layout
 
 \begin_layout Standard
@@ -338,9 +623,9 @@ L\left(\tilde{\beta}\right)-L\left(\widehat{\beta}\right)=\frac{\partial L}{\par
 From the derivation of LM test, we have 
 \begin_inset Formula 
 \begin{eqnarray*}
-\sqrt{n}\left(\tilde{\beta}-\beta_{0}\right) & = & \left(\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\right)\frac{1}{\sqrt{n}}X'\epsilon\\
- & = & \frac{1}{\sqrt{n}}\left(X'X\right)X'\epsilon-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon\\
- & = & \sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon
+\sqrt{n}\left(\tilde{\beta}-\beta^{*}\right) & = & \left(\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\right)\frac{1}{\sqrt{n}}X'e\\
+ & = & \frac{1}{\sqrt{n}}\left(X'X\right)X'e-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ & = & \sqrt{n}\left(\widehat{\beta}-\beta^{*}\right)-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
 \end{eqnarray*}
 
 \end_inset
@@ -348,7 +633,7 @@ From the derivation of LM test, we have
 Therefore
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)=-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon
+\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)=-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
 \]
 
 \end_inset
@@ -356,8 +641,8 @@ Therefore
 and 
 \begin_inset Formula 
 \begin{eqnarray*}
-n\left(\tilde{\beta}-\beta\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right) & = & \frac{1}{\sqrt{n}}\epsilon'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon\\
- & = & \frac{1}{\sqrt{n}}\epsilon'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon
+n\left(\tilde{\beta}-\beta\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right) & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
 \end{eqnarray*}
 
 \end_inset
@@ -366,7 +651,7 @@ In general, it is a quadratic form of normal distributions.
  If homoskedastic, then 
 \begin_inset Formula 
 \[
-\left(R\widehat{Q}^{-1}R'\right)^{-1/2}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\epsilon
+\left(R\widehat{Q}^{-1}R'\right)^{-1/2}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
 \]
 
 \end_inset
@@ -399,19 +684,25 @@ We can view the optimization of the log-likelihood as a two-step optimization
 
 .
  
-\end_layout
+\begin_inset Note Note
+status open
 
 \begin_layout Subsection
 Diagrams
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Wald works on 
 \begin_inset Formula $R\widehat{\beta}-r=0$
 \end_inset
 
 .
  LM works on the first order condition.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
