@@ -111,9 +111,8 @@ Hypothesis Testing: Application in OLS
 \begin_layout Standard
 
 \series bold
-Not revised
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Subsection
 Inverting test for confidence interval
@@ -195,11 +194,7 @@ If
 
 .
  Moreover, if 
-\begin_inset Formula $R$
-\end_inset
-
- is of rank 
-\begin_inset Formula $q$
+\begin_inset Formula $\mbox{rank}\left(R\right)=q$
 \end_inset
 
 , then 
@@ -210,7 +205,7 @@ n\left(\widehat{\beta}-\beta\right)'R'\left(R\Omega R'\right)^{-1}R\left(\wideha
 
 \end_inset
 
-Now we intend to test a null 
+Now we intend to test the null hypothesis 
 \begin_inset Formula $R\beta=r$
 \end_inset
 
@@ -227,7 +222,7 @@ where
 \begin_inset Formula $\widehat{\Omega}$
 \end_inset
 
- is consistent estimator of 
+ is a consistent estimator of 
 \begin_inset Formula $\Omega$
 \end_inset
 
@@ -249,15 +244,16 @@ where
 \end_inset
 
 .
- If we want to test whether edu has no effect, the null hypothesis is 
+ To test whether 
+\emph on
+education
+\emph default
+ has effect on wage, we specify the null hypothesis 
 \begin_inset Formula $\beta_{1}=0$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Example
-Let 
+ Let 
 \begin_inset Formula $R=\left(1,0,0,0,0\right)$
 \end_inset
 
@@ -265,12 +261,12 @@ Let
  
 \begin_inset Formula 
 \begin{equation}
-\sqrt{n}\widehat{\beta}_{1}=\sqrt{n}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)\sim N\left(0,\Omega_{11}\right)\label{eq:R11}
+\sqrt{n}\widehat{\beta}_{1}=\sqrt{n}\left(\widehat{\beta}_{1}-\beta\right)=\sqrt{n}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)\sim N\left(0,\Omega_{11}\right),\label{eq:R11}
 \end{equation}
 
 \end_inset
 
-, where 
+ where 
 \begin_inset Formula $\Omega{}_{11}$
 \end_inset
 
@@ -299,17 +295,20 @@ If
 \begin_inset Formula $\left(\Omega_{11}/\widehat{\Omega}_{11}\right)^{1/2}\stackrel{p}{\to}1$
 \end_inset
 
- by the continuous mapping theorem 1.
+ by the continuous mapping theorem.
  As 
-\begin_inset Formula $\sqrt{n}\frac{\widehat{\beta}_{1}}{\Omega_{11}^{1/2}}\stackrel{d}{\to}N\left(0,1\right)$
+\begin_inset Formula $\sqrt{n}\widehat{\beta}_{1}/\Omega_{11}^{1/2}\stackrel{d}{\to}N\left(0,1\right)$
 \end_inset
 
-, we have 
-\begin_inset Formula 
-\[
-\sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}\stackrel{d}{\to}N\left(0,1\right).
-\]
+, we conclude 
+\begin_inset Formula $\sqrt{n}\widehat{\beta}_{1}/\widehat{\Omega}_{11}^{1/2}\stackrel{d}{\to}N\left(0,1\right).$
+\end_inset
 
+
+\end_layout
+
+\begin_layout Example
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -322,14 +321,7 @@ Example 1 is a test about a single coefficient, and the test statistic is
 \end_layout
 
 \begin_layout Example
-In the regression 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:example"
-
-\end_inset
-
-, we test 
+We want to simultaneously test 
 \begin_inset Formula $\beta_{1}=1$
 \end_inset
 
@@ -337,7 +329,14 @@ reference "eq:example"
 \begin_inset Formula $\beta_{3}+\beta_{4}=2$
 \end_inset
 
- simultaneously.
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:example"
+
+\end_inset
+
+).
  The null hypothesis can be expressed in the general form 
 \begin_inset Formula $R\beta=r$
 \end_inset
@@ -361,6 +360,10 @@ R=\begin{pmatrix}1 & 0 & 0 & 0 & 0\\
 \end_inset
 
 .
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -414,12 +417,14 @@ reference "eq:example"
 
 \end_inset
 
-), the optimal experience level is 
+), the optimal experience level can be found by setting the first order
+ condition with respective to experience to set, 
 \begin_inset Formula $\beta_{3}+2\beta_{4}\mbox{experience}^{*}=0$
 \end_inset
 
 .
- We test 
+ We test the hypothesis that the optimal experience level is 20 years; in
+ other words, 
 \begin_inset Formula 
 \[
 \mbox{experience}^{*}=-\frac{\beta_{3}}{2\beta_{4}}=20.
@@ -427,7 +432,7 @@ reference "eq:example"
 
 \end_inset
 
-This is a nonlinear (in parameter) hypothesis.
+This is a nonlinear hypothesis.
  According to Theorem 1, if 
 \begin_inset Formula $\mathrm{rank}\left(\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)\right)=q\leq K$
 \end_inset
@@ -445,11 +450,11 @@ where in this example,
 \end_inset
 
 , 
-\begin_inset Formula $f\left(\beta\right)=-\beta/\left(2\beta_{4}\right)$
+\begin_inset Formula $f\left(\beta\right)=-\beta_{3}/\left(2\beta_{4}\right)$
 \end_inset
 
 .
- 
+ The gradient 
 \begin_inset Formula 
 \[
 \frac{\partial f}{\partial\beta}\left(\beta\right)=\left(0,0,-\frac{1}{2\beta_{4}},\frac{\beta_{3}}{2\beta_{4}^{2}}\right)
