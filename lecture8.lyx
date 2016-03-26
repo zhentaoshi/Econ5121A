@@ -121,7 +121,7 @@ theorems-ams-extended-bytype
 
 
 \begin_inset FormulaMacro
-\newcommand{\E}{\mathbb{E}}
+\newcommand{\E}{E}
 \end_inset
 
 
@@ -175,7 +175,7 @@ We know that the first-difference (FD) estimator is consistent for (static)
 \begin_layout Standard
 \begin_inset Formula 
 \[
-y_{it}=\beta_{1}+\beta_{2}y_{it-1}+\beta_{3}x_{it}+\alpha_{i}+\epsilon_{it},
+y_{it}=\beta_{1}+\beta_{2}y_{it-1}+\beta_{3}x_{it}+\alpha_{i}+e_{it},
 \]
 
 \end_inset
@@ -183,7 +183,7 @@ y_{it}=\beta_{1}+\beta_{2}y_{it-1}+\beta_{3}x_{it}+\alpha_{i}+\epsilon_{it},
 even if we assume 
 \begin_inset Formula 
 \begin{equation}
-\E\left[\epsilon_{it}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{it-1},y_{it-2},\ldots,y_{i0}\right]=0.\label{eq:dyn_mean_0}
+\E\left[e_{it}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{it-1},y_{it-2},\ldots,y_{i0}\right]=0.\label{eq:dyn_mean_0}
 \end{equation}
 
 \end_inset
@@ -199,7 +199,7 @@ even if we assume
 , we have 
 \begin_inset Formula 
 \[
-\left(y_{it}-y_{it-1}\right)=\beta_{2}\left(y_{it-1}-y_{it-2}\right)+\beta_{3}\left(x_{it}-x_{it-1}\right)+\left(\epsilon_{it}-\epsilon_{it-1}\right).
+\left(y_{it}-y_{it-1}\right)=\beta_{2}\left(y_{it-1}-y_{it-2}\right)+\beta_{3}\left(x_{it}-x_{it-1}\right)+\left(e_{it}-e_{it-1}\right).
 \]
 
 \end_inset
@@ -212,13 +212,13 @@ reference "eq:dyn_mean_0"
 \end_inset
 
 ), 
-\begin_inset Formula $\E\left[\left(x_{it}-x_{it-1}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=0$
+\begin_inset Formula $\E\left[\left(x_{it}-x_{it-1}\right)\left(e_{it}-e_{it-1}\right)\right]=0$
 \end_inset
 
 , but 
 \begin_inset Formula 
 \[
-\E\left[\left(y_{it-1}-y_{it-2}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=-\beta_{2}\E\left[y_{it-1}\epsilon_{it-1}\right]=-\beta_{2}\E\left[\epsilon_{it-1}^{2}\right]\neq0.
+\E\left[\left(y_{it-1}-y_{it-2}\right)\left(e_{it}-e_{it-1}\right)\right]=-\beta_{2}\E\left[y_{it-1}e_{it-1}\right]=-\beta_{2}\E\left[e_{it-1}^{2}\right]\neq0.
 \]
 
 \end_inset
@@ -422,7 +422,7 @@ reference "eq:keynes"
  Consider the following linear structural model 
 \begin_inset Formula 
 \begin{equation}
-y_{i}=x_{1i}\beta_{1}+z_{1i}\beta_{2}+\epsilon_{i},\label{eq:basic_1}
+y_{i}=x_{1i}\beta_{1}+z_{1i}\beta_{2}+e_{i},\label{eq:basic_1}
 \end{equation}
 
 \end_inset
@@ -500,7 +500,7 @@ reference "eq:basic_1"
 ) as 
 \begin_inset Formula 
 \begin{equation}
-y_{i}=x_{i}\beta+\epsilon_{i},\label{eq:basic_2}
+y_{i}=x_{i}\beta+e_{i},\label{eq:basic_2}
 \end{equation}
 
 \end_inset
@@ -903,7 +903,7 @@ A.1
 \end_inset
 
  and 
-\begin_inset Formula $Z'\epsilon/n\top0_{L}$
+\begin_inset Formula $Z'e/n\top0_{L}$
 \end_inset
 
 .
@@ -916,7 +916,7 @@ A.1 assumes that we can apply a law of large numbers, so that that the sample
 \end_inset
 
  and 
-\begin_inset Formula $Z'\epsilon/n$
+\begin_inset Formula $Z'e/n$
 \end_inset
 
  converge in probability to their population counterparts.
@@ -936,7 +936,7 @@ The step is similar to the consistency proof of OLS.
  
 \begin_inset Formula 
 \[
-\widehat{\beta}=\left(X'ZWZ'X\right)^{-1}X'ZWZ'\left(X'\beta_{0}+\epsilon\right)=\beta_{0}+\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{n}\top\beta_{0}\qedhere
+\widehat{\beta}=\left(X'ZWZ'X\right)^{-1}X'ZWZ'\left(X'\beta_{0}+e\right)=\beta_{0}+\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'e}{n}\top\beta_{0}\qedhere
 \]
 
 \end_inset
@@ -960,11 +960,11 @@ A.2
 \end_inset
 
  
-\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'\epsilon_{i}\Rightarrow N\left(0_{L},\Omega\right)$
+\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'e_{i}\Rightarrow N\left(0_{L},\Omega\right)$
 \end_inset
 
 , where 
-\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}\epsilon_{i}^{2}\right].$
+\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}e_{i}^{2}\right].$
 \end_inset
 
 
@@ -1003,7 +1003,7 @@ Multiply
 ,
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{\sqrt{n}}=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'\epsilon_{i}.
+\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'e}{\sqrt{n}}=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'e_{i}.
 \]
 
 \end_inset
@@ -1013,7 +1013,7 @@ The conclusion follows as
 \end_inset
 
  and 
-\begin_inset Formula $\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum z_{i}'\epsilon_{i}\Rightarrow\Sigma'W\times N\left(0,\Omega\right)$
+\begin_inset Formula $\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum z_{i}'e_{i}\Rightarrow\Sigma'W\times N\left(0,\Omega\right)$
 \end_inset
 
 .
@@ -1087,11 +1087,11 @@ Choose any valid
 
 .
  Save the residual 
-\begin_inset Formula $\widehat{\epsilon}_{i}=y_{i}-x_{i}\widehat{\beta}$
+\begin_inset Formula $\widehat{e}_{i}=y_{i}-x_{i}\widehat{\beta}$
 \end_inset
 
  and estimate the variance matrix 
-\begin_inset Formula $\widehat{\Omega}=\frac{1}{n}\sum z_{i}'z_{i}\widehat{\epsilon}_{i}^{2}.$
+\begin_inset Formula $\widehat{\Omega}=\frac{1}{n}\sum z_{i}'z_{i}\widehat{e}_{i}^{2}.$
 \end_inset
 
 
@@ -1115,13 +1115,13 @@ This second estimator is asymptotic efficient.
 
 \begin_layout Standard
 If we further assume conditional homoskedasticity, then 
-\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}\epsilon_{i}^{2}\right]=\E\left[z_{i}'z_{i}\E\left[\epsilon_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\E\left[z'_{i}z_{i}\right]$
+\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}e_{i}^{2}\right]=\E\left[z_{i}'z_{i}\E\left[e_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\E\left[z'_{i}z_{i}\right]$
 \end_inset
 
 .
  Therefore in the first-step of the two-step GMM we can estimate the variance
  of the error term by 
-\begin_inset Formula $\widehat{\sigma}^{2}=\frac{1}{n}\sum_{i=1}^{n}\widehat{\epsilon}_{i}^{2}$
+\begin_inset Formula $\widehat{\sigma}^{2}=\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}$
 \end_inset
 
  and the variance matrix by 
