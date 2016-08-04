@@ -1,0 +1,569 @@
+%
+
+% \documentclass[handout]{beamer}
+\documentclass{beamer}
+% \usetheme{CambridgeUS}
+\usetheme{Boadilla}
+\usecolortheme{Crane}
+\setbeamercovered{transparent}
+
+\usepackage{graphicx}
+\usepackage{pgf,tikz}
+\usetikzlibrary{arrows}
+
+%%%%%%%%%%
+
+% defining UConn colors following this website http://
+\definecolor{uconnblue}{RGB}{15,25,56}
+\definecolor{uconngray}{RGB}{204,204,204}
+
+\setbeamercolor{title}{fg=uconngray,bg=uconnblue}
+\setbeamercolor{frametitle}{fg=uconngray,bg=uconnblue}
+
+\setbeamercolor*{palette primary}{fg=uconngray,bg=uconnblue}
+\setbeamercolor*{palette secondary}{bg=gray!50,fg=uconnblue}
+\setbeamercolor*{palette tertiary}{fg=uconngray,bg=uconnblue}
+\setbeamercolor*{palette quaternary}{fg=white,bg=black}
+\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+\setbeamercolor*{titlelike}{bg=uconngray}
+
+%%%%%%%%%%
+
+
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\title[Empirical Likelihood]{An Introduction to Empirical Likelihood}
+% \author{Zhentao Shi}
+% \institute[Yale]{Yale University}
+% \date[Mar 27, UConn]{March 27, 2014\\ University of Connecticut}
+\date{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\maketitle
+
+
+\begin{frame}
+\frametitle{Textbooks}
+\begin{itemize}
+\item Greene, W.H., 2012, \emph{Econometric Analysis} (7th ed.), Chapter 12.3.2.
+\item Cameron, A.C. and Trivedi, P.K., 2005, \emph{Microeconometrics: Methods and Applications}, Chapter 6.8.
+\item Hansen, B.E., 2013, \emph{Econometrics}, Chapter 14.
+\item Anatolyev, S. and Gospodinov, N., 2011, \emph{Methods for Estimation and Inference in Modern Econometrics}, Chapter 2.
+\end{itemize}
+\end{frame}
+
+\section{Introduction}
+\frame{\sectionpage}
+
+
+\begin{frame}
+\frametitle{Introduction}
+
+\begin{itemize}
+\item Method of Moments vs. Maximum Likelihood. \pause
+\item Many economic models can be written in the form\\
+\[E[g(Z_i, \beta)]=0\] \\where \(\beta\in\mathcal{B}\) is a
+$k$-dimensional parameter of  interest, and $g(\cdot,\cdot)$
+is a $\mathbb{R}^m$ valued function. \(k\leq m\).
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Examples I}
+\framesubtitle{Linear model with endogenous variables and instruments}
+\begin{itemize}
+\item 
+Structural equation \( Y_i = X_i \beta_0 + \epsilon_i \)
+\item \(X_i\) is an endogenous variable. 
+\item \(W_i\) is a vector of instruments. \pause
+\item We estimate \(\beta_0\) via the moment condition
+\[
+E \left[ \epsilon_i W_i \right] = 
+E \left[ (y_i-X_i\beta) W_i \right] = 0.
+\] 
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Examples II}
+\framesubtitle{Asset pricing in Dynamic Rational Expectation Model.}
+\begin{itemize}
+\item  Hansen and Singleton (1982).
+\item The rational expectation theory implies
+\[
+E_t \left[ b \frac{U'(C_{t+j}, \beta_0)}{U'(C_t, \beta_0)} X_{t+j} - 1  \right]
+= 0
+\] where \(b\) is a discount factor, \(U(\cdot)\) is a utility function known
+up to a parameter \(\beta\), and \(X_{t+j} = (P_{t+j} + D_{t+j})/P_{t+j} \) is the interest rate.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Outline}
+
+\begin{enumerate}
+\item Review GMM and introduce Empirical Likelihood (EL) \pause
+\item Generalize EL and develop its asymptotic theory \pause
+\item Extend EL into high-dimensional moments
+\end{enumerate}
+
+\end{frame}
+
+\section[EL]{Empirical Likelihood}
+\frame{\sectionpage}
+
+\begin{frame}
+\frametitle{Generalized Method of Moments}
+
+\begin{itemize}
+\item Let $E_n [\cdot] = n^{-1} \sum_{i=1}^n \cdot$ be the empirical mean.
+\item The GMM estimator 
+\[ 
+\widehat{\beta}_{\mathrm{GMM}} = \arg \min_{\beta \in \mathcal{B}}
+E_n[g(Z_i,\beta)]^\prime W \alert{E_n[g(Z_i,\beta)]},
+\]
+where $W$ is a positive-definite weighting matrix. \pause
+\item GMM gives a unified framework of estimation for many economic models.
+\item Empirical Likelihood (EL) is an alternative.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Likelihood Approach}
+\begin{itemize}
+\item Consider a random sample from population distribution $F(x)$ with density
+$f(x)$. 
+\item The joint likelihood function is \begin{displaymath}
+\prod_{i=1}^n f(x_i).
+\end{displaymath}
+\item The parametric method assumes that $f(\cdot)$ is known up to a finite-dimensional
+parameter. 
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Nonparametric Likelihood}
+\begin{itemize}
+\item A nonparametric method assigns probability \(p_i\) to each observation
+\(x_i\) for \(i=1,\ldots,n\). 
+
+\item It can be viewed as a sampling experiment from
+the multinomial population concentrated at the sample points. \pause
+
+\item 
+The Nonparametric Maximum Likelihood Estimator (NPMLE) solves
+\begin{displaymath}
+\max_{\mathbf{p}} \prod_{i=1}^n p_i \ \ \mbox{s.t. } p_i \geq 0, \  \sum_{i=1}^n p_i = 1,
+\end{displaymath} or equivalently
+\begin{displaymath}
+\max_{\mathbf{p}} \sum_{i=1}^n \log p_i \ \ \mbox{s.t. }   \sum_{i=1}^n
+p_i = 1.
+\end{displaymath}
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Solution}
+\begin{itemize}
+\item To solve the constrained optimization problem,
+\begin{displaymath}
+\mathcal{L}(\mathbf{p},\mu)=\frac{1}{n} \sum_{i=1}^n \log p_i - \mu\ 
+\left( \sum_{i=1}^n p_i - 1 \right).
+\end{displaymath}\pause
+
+\item The first-order condition gives
+\begin{displaymath}
+\partial\mathcal{L}/\partial p_i = (np_i)^{-1} - \mu\ = 0, 
+\end{displaymath}
+for all \(i=1,\ldots,n\). \pause
+
+\item As $\sum_{i=1}^n p_i = 1$, we have $\mu\ = 1$, so that 
+\[ \alert{\widehat{p_i} = 1/n.}\]
+
+\item This is exactly the Empirical Distribution Function.
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{EL with Moment Constraints}
+\begin{itemize}
+\item Again, the model is 
+\(E[g(Z_i, \beta)]=0.\) \pause
+
+\item 
+The EL problem is 
+\begin{gather*}
+\max_{\beta, \mathbf{p}} \ \sum_{i=1}^n \log p_i \\ 
+ \mbox{s.t. }  \alert{\sum_{i=1}^n p_i g(Z_i,\beta) =0} 
+\mbox{ and } 
+\sum_{i=1}^n
+p_i = 1.
+\end{gather*}\pause
+
+\item If \(k = m\), then
+\[
+\widehat{\beta} = \arg_{\beta} \left(
+\alert{\frac{1}{n}} \sum_{i=1}^n g(Z_i,\beta)=0
+\right),
+\]
+which is the method of moments.
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Solution when \(k<m\)}
+
+\begin{itemize}
+\item The Lagrangian
+\[ 
+\mathcal{L}(\beta,\mathbf{p},\lambda,\mu)=\frac{1}{n} \sum_{i=1}^n \log p_i 
+- \lambda' \sum_{i=1}^n p_i g(Z_i,\beta)
+- \mu \left( \sum_{i=1}^n p_i - 1 \right).\pause
+\]
+\item The first order condition with respect to \(p_i\),
+\begin{equation}
+(np_i)^{-1} - \lambda' g(Z_i, \beta) - \mu = 0. \label{eq1}
+\end{equation} \pause
+\item Multiple both sides by $p_i$ and sum over \(i\),
+\begin{displaymath}
+1 - \lambda' \sum_{i=1}^n p_i g(Z_i, \beta) - \mu \sum_{i=1}^n p_i =1 -\mu=0.
+\end{displaymath} 
+ 
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Solution when \(k<m\) (Continue)}
+\begin{itemize}
+\item Plug in $\mu = 1$ into (\ref{eq1}),  $p_i = [n(1+\lambda'g(Z_i, \beta))]^{-1}$,
+which is slightly different from \(1/n\). 
+\item Substitute the expression of \(p_i \) into the criterion function,
+we obtain the EL estimator \(\widehat{\beta} \) and multiplier \(\widehat{\lambda}\)
+ via the \alert{saddlepoint problem}
+ \[
+ \max_{\beta \in \mathcal{B}  } \min_{\lambda} -
+ \sum_{i=1}^n \log \left(1 +\lambda' g(Z_i,\beta) \right).
+ \]
+
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Computation}
+\begin{itemize}
+\item The inner loop and the outer loop
+ \[
+ \max_{\beta} \left\{ \min_{\lambda(\beta)} \left[ - 
+ \sum_{i=1}^n \log \left(1 +\lambda(\beta)' g(Z_i,\beta) \right) \right] \right\}. \pause
+ \]
+ \item The inner loop is globally convex in \(\lambda\).
+ \item The outer loop is neither convex nor concave in general in \(\beta\).
+\end{itemize}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Differences from GMM}
+\begin{itemize}
+\item GMM: Two-step,
+iterative, continuous-updating (Hansen, Heaton and Yaron, 1996).
+Basic idea: stick to \(p_i = 1/n\).
+\item Altonji and Segal (1996): large bias in two-step GMM
+\item EL: more flexible \(\mathbf{p}\). One-step estimator. Self-normalize. 
+\item High-order improvement
+\begin{itemize}
+\item Kitamura(2001): Asymptotic optimality under the generalized Neyman-Pearson criterion
+\item Newey and Smith (2004): High-order bias correction
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{ Example (Imbens, 1997)}
+\begin{itemize}
+\item The logarithm of hourly wage of 827 men in 1971--1978.
+\item The model is borrowed from Card (1994)
+\begin{eqnarray*}
+\ln y_{it} &= & \mu_t + \omega_i + u_{it} + \varepsilon_{it}\\
+u_{it} & = & \alpha u_{it-1} + \eta_{it}
+\end{eqnarray*}
+where $\mu_t$ is a common time-varying component, \(\omega_i\) is the individual fixed effect, \(\eta_{it}\) is the shock to the autoregressive component. \item Unknown parameters: \(\mu_1,\ldots,\mu_T\); \(\sigma_{\eta,1}^2,\ldots,\sigma_{\eta,T}^2\);
+\(\sigma_\varepsilon^2\); \(\sigma_\omega^2\) and \(\alpha\).
+\item Imbens (1997) constructs 44 moments to estimate the 19 parameters. He compares two-step GMM, iterated GMM and EL.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{ Example (Imbens, 1997)}
+\begin{itemize}
+\item Real data estimates \\ \vspace{0.3cm}
+\centering
+\begin{tabular}{crrrr}\hline
+& 2S-GMM & GMM & EL & s.e. \\\hline
+\(\sigma_\omega^2\)     & 0.110 & 0.111 & 0.123 & 0.053 \\
+\(\sigma_\varepsilon^2\)& 0.040 & 0.039 & 0.041 & 0.003 \\
+\(\alpha\)              & 0.913 & 0.912 & 0.899 & 0.057 \\ \hline
+\end{tabular}
+\pause 
+\vspace{0.3cm}
+
+\raggedright
+\item Simulation: true value and bias divided by the average of s.e. \\ \vspace{0.3cm}
+\centering
+\begin{tabular}{crrrr}\hline
+ & True value & 2S-GMM & GMMi & EL  \\\hline
+\(\sigma_\omega^2\)      & 0.10 & -0.28 & -0.28 & -0.16 \\
+\(\sigma_\varepsilon^2\) & 0.05 & -0.31 & -0.30 & -0.22 \\
+\(\alpha\)               & 0.50 &  0.05 & 0.06 &   0.02 \\ \hline
+\end{tabular}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Literature}
+\begin{itemize}
+\item Owen (1988): Original paper on EL
+\item Qin and Lawless (1993): EL with estimating equations
+\item Imbens (1997): Introduce EL into econometrics
+\item Kitamura (1997): EL in time series
+\item Newey and Smith (2004): Generalized EL
+\end{itemize}
+\end{frame}
+
+
+\section[GEL]{Generalized Empirical Likelihood}
+\frame{\sectionpage}
+
+
+
+
+
+\begin{frame}
+\frametitle{Generalized Empirical Likelihood}
+\begin{itemize}
+
+\item Let \(\rho(\cdot)\) be a smooth scalar function that satisfies \[\rho(0)
+= 0 \mbox{ and } \partial \rho(0)/\partial v = \partial^2 \rho(0) / \partial v^2 = -1. \] GEL estimator solves
+\begin{displaymath}
+\min_\beta \sup_\lambda \sum_{i=1}^n \rho \left( \lambda'g(Z_i,\beta) \right).
+\end{displaymath} 
+\item The Generalized Empirical Likelihood (GEL) contains several important
+estimators as special cases.
+\begin{itemize}
+\item EL:  \(\rho(v) = \log(1-v)\), 
+\item continuous-updating: \(\rho(v) = -\frac{1}{2} v^2 - v\),
+\item Exponential Tilting (Kitamura and Stutzer, 1997): \(\rho(v) = 1-\exp(v) \).
+
+\end{itemize}
+
+ \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Asymptotic Properties}
+
+\begin{itemize}
+\item Let \(J\equiv E\left[ \partial g(Z,\beta_0)/\partial\beta' \right]\) and \(V\equiv E\left[ g(Z,\beta_0) g(Z,\beta_0)' \right]\). 
+
+\item With random sampling, 
+\[
+\sqrt{n} \left( \widehat{\beta} - \beta_0 \right) \Rightarrow 
+\mathrm{N}\left(0,\left(J'V^{-1}J \right)^{-1}
+\right).
+\]
+\item First-order asymptotically equivalent to the efficient GMM.
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Asymptotic Tests}
+\begin{itemize}
+\item 
+Wald test, LM test and overidentification test. \pause
+\item 
+Moreover, it inherits a \emph{likelihood ratio}-type test. Let \((\widehat{\beta},
+\widehat{\lambda}) \) 
+and \(( \tilde{\beta}, \tilde{\lambda}) \) be the estimates without and with constraints, respectively. Then 
+\[
+GELR = 2 \sum_{i=1}^n \left[ 
+\rho \left( \tilde{\lambda}'g(Z_i, \tilde{\beta})\right) - 
+\rho \left( \widehat{\lambda}'g(Z_i, \widehat{\beta})\right)
+\right].
+\]
+\item Under the null, \[GELR\Rightarrow \chi_q^2,\] where \(q\) is the number
+of restrictions.
+\item Convenience of LR test: no need to estimate the variance.
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Example}
+\begin{itemize}
+\item Overidentification Test for EL. \(\rho(v) = \log(1-v)\).
+\item $H_0$: Correct model specification. \(E[g(Z,\beta_0)] = 0\). 
+\begin{itemize}
+\item Likelihood without restriction: \(-n\log n\)
+\item Likelihood with restriction: \(-n\log n -\sum_{i=1}^n \log\left(1+\widehat{\lambda}'
+g\left(Z_i,\widehat{\beta}\right)\right) \). \pause
+\end{itemize}
+\item Test statistic
+\[
+ELR = 2 \sum_{i=1}^n \log
+\left(
+1+\widehat{\lambda}'
+g \left(Z_i,\widehat{\beta}\right)
+\right) 
+\Rightarrow
+\chi_m^2.
+\]
+\end{itemize}
+ \end{frame}
+
+
+
+
+
+
+\section[REL]{Relaxed Empirical Likelihood}
+\frame{\sectionpage}
+
+\begin{frame}
+\frametitle{High-Dimensional Moments}
+\begin{itemize}
+\item 
+Large data, large model vs.~parsimonious modeling.\pause
+\begin{itemize}
+\item Altonji, Smith and Vidangos (2013)
+\item Eaton, Kortum and Kramarz (2011)
+\item Han, Orea, Schmidt (2005)
+\item Angrist (1990)\pause
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{What Happens when \(m>n\)}
+\tikzstyle{every picture}+=[remember picture]
+\begin{itemize} 
+\item <1-> Problem of optimally-weighted GMM.  
+\[ \mathbb{E}_{n}\left[g_{i}\left(\beta\right)\right]' 
+\tikz[baseline]{\node  [color = red] (p0) {$W_{\mathrm{GMM}}$}; } 
+\mathbb{E}_{n}\left[g{}_{i}\left(\beta\right)\right] \]
+
+\begin{tikzpicture}
+[overlay, node distance =1.5cm, line cap=round,line join=round,>=triangle 45] 
+\only<2>{     
+\node  (p10) at (9,2) [rectangle, fill = gray!30] 
+{\parbox{3.1cm}
+{$W_{\mathrm{GMM}} = \widehat{V}^{-1}$ \\ $\widehat{V}$: {$m\times m$}, rank {$n$}}};     
+\path[->] (p10) edge (6,1.2);
+} 
+\end{tikzpicture}
+
+\item <3-> Problem of EL. For any $\beta\in\mathcal{B}$, the constraints 
+\[ 
+\sum_{i=1}^{n}{\color{red}p_{i}}=1\mbox{ and }
+\sum_{i=1}^{n}{\color{red}p_{i}}g_{i}\left(\beta\right)= \tikz[baseline] {\node (n2) {$0_m$}; } \]
+\end{itemize} 
+
+\begin{tikzpicture}
+[overlay, node distance =1.5cm, line cap=round,line join=round,>=triangle 45] 
+\only<4>{         
+\node  (n20) at (10,0) [rectangle, fill = gray!30] 
+{\parbox{3.1cm}{$m$ equations\\ $n$ free parameters}};     
+\path[->] (n20) edge (9,1.3);     } 
+\end{tikzpicture}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Extension: Relaxed EL}
+\begin{itemize}
+\item Shi (2013) proposes the first asymptotically normal estimator that allows \(m>n\).\pause
+\item Relax equality constraints of the standard EL problem by inequality constraints
+\begin{gather*}
+\max_{\beta, \mathbf{p}} \ \sum_{i=1}^n \log p_i \\ 
+ \mbox{s.t. }\ \ \  \sum_{i=1}^n p_i = 1, \\ 
+ \alert{\left|  \sum_{i=1}^n p_i h_{j}(Z_i,\beta)\right| \leq \tau}, \forall\   j=1,\ldots,n.
+\end{gather*}where \(\tau\) is a tuning parameter, and \(h_{j} =g_j/ \widehat{\sigma}_j\)
+is the scale-standardized function. 
+\end{itemize}
+\end{frame}
+
+
+
+\section{Summary}
+\begin{frame}
+\frametitle{Summary}
+
+\begin{enumerate}
+\item What is EL and why
+\item GEL and the asymptotic theory 
+\item REL for high-dimensional moments
+\end{enumerate}
+
+\end{frame}
+
+\end{document}
+

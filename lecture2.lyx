@@ -1,0 +1,783 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Lecture Notes}
+\rhead{Zhentao Shi}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Regression Model
+\begin_inset CommandInset label
+LatexCommand label
+name "regression-model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will talk about the conditional mean model and the linear projection
+ model.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Notation
+\series default
+: in this note, 
+\begin_inset Formula $y$
+\end_inset
+
+ is a scale random variable, and 
+\begin_inset Formula $x$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times1$
+\end_inset
+
+ random vector.
+\end_layout
+
+\begin_layout Subsection
+Conditional Expectation Model
+\begin_inset CommandInset label
+LatexCommand label
+name "conditional-expectation-function"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A regression model can be written as 
+\begin_inset Formula $y=m\left(x\right)+\epsilon$
+\end_inset
+
+, where 
+\begin_inset Formula $m(x)=E[y|x]$
+\end_inset
+
+ is called the 
+\emph on
+conditional mean function
+\emph default
+, and 
+\begin_inset Formula $\epsilon=y-m\left(x\right)$
+\end_inset
+
+ is called the 
+\emph on
+regression error
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+The error term 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ satisfies the following properties.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E\left[\epsilon|x\right]=0$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E\left[\epsilon\right]=0$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E\left[h\left(x\right)\epsilon\right]=0$
+\end_inset
+
+, where 
+\begin_inset Formula $h$
+\end_inset
+
+ is a function of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The last one means that 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is uncorrelated with any function of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The conditional expectation function is of interest, because it is the best
+ prediction of 
+\begin_inset Formula $y$
+\end_inset
+
+ under the 
+\emph on
+mean squared error
+\emph default
+ (MSE).
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The quadratic loss function is between 
+\begin_inset Formula $y$
+\end_inset
+
+ and a prediction 
+\begin_inset Formula $g(x)$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $L\left(y,g\left(x\right)\right)=\left(y-g\left(x\right)\right)^{2},$
+\end_inset
+
+ and its expectation 
+\begin_inset Formula $R\left(y,g\left(x\right)\right)=E\left[\left(y-g\left(x\right)\right)^{2}\right]$
+\end_inset
+
+ is called the MSE.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Among all the functions 
+\begin_inset Formula $g(X)$
+\end_inset
+
+, the conditional mean function 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+ minimizes the MSE.
+\end_layout
+
+\begin_layout Proof
+We take a guess-and-verify approach.
+ 
+\begin_inset Formula 
+\[
+E\left[\left(y-g\left(x\right)\right)^{2}\right]=E\left[\left(y-m\left(x\right)\right)^{2}\right]+2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right]+E\left[\left(m\left(x\right)-g\left(x\right)\right)^{2}\right].
+\]
+
+\end_inset
+
+The first term is irrelevant to 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+.
+ The second term is 
+\begin_inset Formula $2E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)\right]=0$
+\end_inset
+
+, which is again irrelevant of 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+.
+ The third term is minimized at 
+\begin_inset Formula $g\left(x\right)=m\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Linear Projection Model
+\begin_inset CommandInset label
+LatexCommand label
+name "linear-projection-model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As discussed in the previous section, we are interested in the conditional
+ mean function 
+\begin_inset Formula $m(x)$
+\end_inset
+
+.
+ However, 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+ is a complex function depending on the joint distribution of 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+.
+ A special case is 
+\begin_inset Formula $m\left(x\right)=x'\beta$
+\end_inset
+
+, that is, the conditional mean function is a linear function of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+The linear function is not as restrictive as one might thought.
+ It can be used to generate some nonlinear (in random variables) effect.
+ For example, if 
+\begin_inset Formula $y=x_{1}\beta_{2}+x_{2}\beta_{2}+x_{1}x_{2}\beta_{3}+e,$
+\end_inset
+
+ then 
+\begin_inset Formula $\frac{\partial}{\partial x_{1}}m\left(x_{1},x_{2}\right)=\beta_{1}+x_{2}\beta_{3}$
+\end_inset
+
+, which is nonlinear in 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, while it is still linear in the parameter 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ It is true if 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ follows a joint normal distribution.
+ Even if 
+\begin_inset Formula $m\left(x\right)\neq x'\beta$
+\end_inset
+
+, the linear 
+\begin_inset Formula $x'\beta$
+\end_inset
+
+ is still useful as an approximation, as will be clear soon.
+ Therefore, we may write the linear regression model, or the linear projection
+ model, as 
+\begin_inset Formula 
+\begin{eqnarray}
+y & = & x'\beta+e\label{eq:linear}\\
+E[xe] & = & 0,\label{eq:Xe0}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $e$
+\end_inset
+
+ is called the 
+\emph on
+projection error
+\emph default
+.
+ Eq.(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Xe0"
+
+\end_inset
+
+) implies that, if a constant is included in 
+\begin_inset Formula $x$
+\end_inset
+
+, we have 
+\begin_inset Formula $E\left[e\right]=0$
+\end_inset
+
+ and moreover, 
+\begin_inset Formula $\mathrm{cov}\left(x,e\right)=E\left[xe\right]=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The coefficient 
+\begin_inset Formula $\beta$
+\end_inset
+
+ in the linear projection model has a straightforward closed-form.
+ Multiplying 
+\begin_inset Formula $x$
+\end_inset
+
+ on both sides and taking expectation, we have 
+\begin_inset Formula $E[xy]=E[xx']\beta$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $E[xx']$
+\end_inset
+
+ is invertible, we explicitly solve 
+\begin_inset Formula 
+\begin{equation}
+\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right].\label{eq:b_star}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Even if 
+\begin_inset Formula $m\left(x\right)\neq x'\beta$
+\end_inset
+
+, we are interested in 
+\begin_inset Formula $\beta$
+\end_inset
+
+ as is the 
+\emph on
+linear
+\emph default
+ minimizer of the MSE.
+ That is, 
+\begin_inset Formula 
+\begin{equation}
+\beta=\arg\min_{\beta\in\mathbb{R}^{K}}E\left[\left(y-x'\beta\right)^{2}\right].\label{eq:min_MSE}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We look for such a 
+\begin_inset Formula $\beta$
+\end_inset
+
+ that minimizes 
+\begin_inset Formula $E\left[\left(y-x'\beta\right)^{2}\right]$
+\end_inset
+
+.
+ Set the first order condition to zero, 
+\begin_inset Formula $2E\left[x\left(y-x'\beta\right)\right]=0$
+\end_inset
+
+.
+ We solve 
+\begin_inset Formula $\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right].$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the meantime, 
+\begin_inset Formula $x'\beta$
+\end_inset
+
+ is also the best 
+\emph on
+linear
+\emph default
+ approximation to 
+\begin_inset Formula $m(x)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+If we replace 
+\begin_inset Formula $y$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:min_MSE"
+
+\end_inset
+
+) by 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+, we solve the minimizer as 
+\begin_inset Formula 
+\[
+\left(E\left[xx'\right]\right)^{-1}E\left[xm\left(x\right)\right]=\left(E\left[xx'\right]\right)^{-1}E\left[E\left[xy|x\right]\right]=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right]=\beta.
+\]
+
+\end_inset
+
+Therefore 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is also the linear minimizer of 
+\begin_inset Formula $E\left[\left(m\left(x\right)-x'\beta\right)^{2}\right]$
+\end_inset
+
+, the best linear approximation to 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+ under MSE.
+\end_layout
+
+\begin_layout Subsubsection
+Subvector Regression
+\begin_inset CommandInset label
+LatexCommand label
+name "subvector-regression"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sometimes we are interested in a subvector of 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ For example, when we include a constant and some variables in 
+\begin_inset Formula $x$
+\end_inset
+
+, we are often more interested in the slope coefficients (those associated
+ with the random variables), as they represent the effect of these explanatory
+ factors.
+ In the regression 
+\begin_inset Formula 
+\[
+y=\beta_{1}+x'\beta_{2}+e,
+\]
+
+\end_inset
+
+we take an expectation to get 
+\begin_inset Formula $E\left[y\right]=\beta_{1}+E\left[x\right]'\beta_{2}.$
+\end_inset
+
+ Differentiate the two equations to get 
+\begin_inset Formula 
+\[
+y-E\left[y\right]=\left(x-E\left[x\right]\right)'\beta_{2},
+\]
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+\beta_{2}=\left(E\left[\left(x-E\left[x\right]\right)\left(x-E\left[x\right]\right)'\right]\right)^{-1}E\left[\left(x-E\left[x\right]\right)\left(y-E\left[y\right]\right)\right]=\left(\mbox{var}\left(x\right)\right)^{-1}\mbox{cov}\left(x,y\right),
+\]
+
+\end_inset
+
+This is a special case of the subvector regression.
+\end_layout
+
+\begin_layout Standard
+To discuss the general case, we need to know the formula of the inverse
+ of the partitioned matrix, a fact from linear algebra.
+ If 
+\begin_inset Formula $Q=\begin{pmatrix}Q_{11} & Q_{12}\\
+Q_{21} & Q_{22}
+\end{pmatrix}$
+\end_inset
+
+ is a symmetric and positive definite matrix, then 
+\begin_inset Formula 
+\[
+Q^{-1}=\begin{pmatrix}\left(Q_{11}-Q_{12}Q_{22}Q_{21}\right)^{-1} & -\left(Q_{11}-Q_{12}Q_{22}Q_{21}\right)^{-1}Q_{12}Q_{22}^{-1}\\
+-\left(Q_{22}-Q_{21}Q_{11}Q_{12}\right)^{-1}Q_{21}Q_{11}^{-1} & \left(Q_{22}-Q_{21}Q_{11}Q_{12}\right)^{-1}
+\end{pmatrix}.
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $A_{11\cdot2}=E\left[x_{1}x_{1}'\right]-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}x_{1}'\right]$
+\end_inset
+
+, and 
+\begin_inset Formula $A_{1y\cdot2}=E\left[x_{1}y\right]-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}y\right]$
+\end_inset
+
+ then 
+\begin_inset Formula $\beta_{1}=A_{11\cdot2}^{-1}A_{1y\cdot2}$
+\end_inset
+
+.
+ It is useful in interpreting the partial effect of a single regressors.
+ We first run a regression
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+We allow 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ to be a vector.
+ However, one may find it is easier to consider the special case that 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ is a scalar random variable.
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+x_{1} & = & x_{2}'\gamma+u\\
+E\left[x_{2}u\right] & = & 0
+\end{eqnarray*}
+
+\end_inset
+
+so that 
+\begin_inset Formula 
+\[
+u=x_{1}-x_{2}'\gamma=x_{1}-x_{2}'\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}x_{1}'\right]=x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}
+\]
+
+\end_inset
+
+ We then run a simple regression of 
+\begin_inset Formula $y$
+\end_inset
+
+ on 
+\begin_inset Formula $u$
+\end_inset
+
+, and the coefficient is 
+\begin_inset Formula 
+\[
+\theta=\left(E\left[uu'\right]\right)^{-1}E\left[u'y\right].
+\]
+
+\end_inset
+
+The nominator 
+\begin_inset Formula $E\left[u'y\right]=E\left[x_{1}y\right]-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}y\right]$
+\end_inset
+
+.
+ The denominator 
+\begin_inset Formula 
+\begin{eqnarray*}
+E\left[uu'\right] & = & E\left[\left(x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}\right)\left(x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}\right)'\right]=A_{11\cdot2}.
+\end{eqnarray*}
+
+\end_inset
+
+We have verified that 
+\begin_inset Formula $\beta_{1}=\theta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Omitted Variable Bias
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "omitted-variable-bias"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Long regression is 
+\begin_inset Formula $y=x_{1}'\beta_{1}+x_{2}'\beta_{2}+e$
+\end_inset
+
+, and short regression is 
+\begin_inset Formula $y=x_{1}'\gamma+u.$
+\end_inset
+
+ To discuss how to sign the bias, we first demean all the variables, which
+ is equivalent as if we project out the effect of the constant.
+ The long regression becomes 
+\begin_inset Formula 
+\[
+\begin{aligned}\tilde{y} & = & \tilde{x}_{1}'\beta_{1}+\tilde{x}_{2}'\beta_{2}+e\end{aligned}
+,
+\]
+
+\end_inset
+
+ and the short regression becomes 
+\begin_inset Formula 
+\[
+\tilde{y}=\tilde{x}_{1}'\gamma+u,
+\]
+
+\end_inset
+
+ where 
+\emph on
+tilde
+\emph default
+ denotes the demeaned variable.
+ 
+\end_layout
+
+\begin_layout Standard
+After demeaning, the cross moment equals to the covariance.
+ The short regression coefficient 
+\begin_inset Formula 
+\begin{eqnarray*}
+\gamma & = & \left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{y}\right]\\
+ & = & \left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\left(\tilde{x}_{1}'\beta_{1}+\tilde{x}_{2}'\beta_{2}+e\right)\right]\\
+ & = & \beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}.
+\end{eqnarray*}
+
+\end_inset
+
+Therefore, 
+\begin_inset Formula $\gamma=\beta_{1}$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}=0$
+\end_inset
+
+, which means either 
+\begin_inset Formula $E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]=0$
+\end_inset
+
+ or 
+\begin_inset Formula $\beta_{2}=0$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

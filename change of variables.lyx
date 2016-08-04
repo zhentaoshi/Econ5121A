@@ -1,0 +1,231 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+\renewcommand\theenumi{(\alph{enumi})}
+\renewcommand\labelenumi{\theenumi}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams-bytype
+theorems-ams-extended-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format dvi
+\output_sync 1
+\output_sync_macro "\synctex=-1"
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing double
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1.5in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+The integration of the one dimension and that of multiple dimensions are
+ different.
+ The former does have a direction, while the latter is integrating over
+ a region so that is doesn't have a direction.
+ We first discuss that case in one dimension.
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula $x=g(y)$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\int_{a}^{b}f(x)dx=\int_{g(a)}^{g(b)}f(g(y))dg(y)=\int_{g(a)}^{g(b)}f(g(y))g'(y)dx.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In one dimension, the direction does matter, because by definition 
+\begin_inset Formula $\int_{a}^{b}f(x)dx=F(b)-F(a)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula $\int_{0}^{\infty}e^{-x}dx=1$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $y=-x$
+\end_inset
+
+, so that 
+\begin_inset Formula $x=-y$
+\end_inset
+
+.
+ Substitute 
+\begin_inset Formula $x$
+\end_inset
+
+ by 
+\begin_inset Formula $x=-y$
+\end_inset
+
+ into the left-hand-side, 
+\begin_inset Formula 
+\[
+\int_{0}^{\infty}e^{-x}dx=\int_{0}^{-\infty}e^{-(-y)}d(-y)=\int_{-\infty}^{0}e^{y}dy=e^{y}\big|_{-\infty}^{0}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Formula $\Gamma\left(\frac{1}{2}\right)=\sqrt{\pi}$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\[
+\Gamma\left(\frac{1}{2}\right)=\int_{0}^{\infty}x^{-1/2}e^{-x}dx.
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $t^{2}=x$
+\end_inset
+
+, so that 
+\begin_inset Formula 
+\begin{eqnarray*}
+\Gamma\left(\frac{1}{2}\right) & = & \int_{0}^{\infty}t^{-1}e^{-t^{2}}2tdt=2\int_{0}^{\infty}e^{-t^{2}}dt.
+\end{eqnarray*}
+
+\end_inset
+
+Again let 
+\begin_inset Formula $t=y/\sqrt{2}.$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{eqnarray*}
+\Gamma\left(\frac{1}{2}\right) & = & 2\int_{0}^{\infty}e^{-y^{2}/2}\frac{1}{\sqrt{2}}dy\\
+ & = & \sqrt{2}\sqrt{2\pi}\int_{0}^{\infty}\frac{1}{\sqrt{2\pi}}e^{-y^{2}/2}dy\\
+ & = & 2\sqrt{\pi}/2=\sqrt{\pi}.
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On the contrary, integrate over a region doesn't have a direction.
+ Let 
+\begin_inset Formula $x=g(u,v)$
+\end_inset
+
+ and 
+\begin_inset Formula $y=h(u,v)$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{eqnarray*}
+\int_{A}f(x,y)dxdy & = & \int_{B}f(g(u,v),h(u,v))dg(u,v)dh(u,v)\\
+ & = & \int_{B}f(g(u,v),h(u,v))\left|\mathrm{det}\left(\begin{array}{cc}
+g_{u} & g_{v}\\
+h_{u} & g_{v}
+\end{array}\right)\right|dudv\\
+ & = & \int_{B}f(g(u,v),h(u,v))\left|\mbox{det}\left[J_{u,v}\left(g,h\right)\right]\right|dudv
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $B=\left\{ \left(u,v\right):\left(g\left(u,v\right),h\left(u,v\right)\right)\in A\right\} $
+\end_inset
+
+, and 
+\begin_inset Formula $J$
+\end_inset
+
+ is the Jacobian.
+ The 
+\emph on
+absolute value
+\emph default
+ of the determinant of the Jacobian is used because there is no direction
+ in the integration region.
+\end_layout
+
+\end_body
+\end_document

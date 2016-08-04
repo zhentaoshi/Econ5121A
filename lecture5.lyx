@@ -1,0 +1,714 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Lecture Notes}
+\rhead{Zhentao Shi}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams-bytype
+theorems-ams-extended-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format dvi
+\output_sync 1
+\output_sync_macro "\synctex=-1"
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch abc
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch pf of gamma = 0
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Hypothesis Testing: Application in OLS
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subsection
+Inverting test for confidence interval
+\end_layout
+
+\begin_layout Plain Layout
+How to find a confidence interval with coverage probability 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+? Invert a test.
+ Let 
+\begin_inset Formula $T_{n}\left(\theta\right)$
+\end_inset
+
+ be a test statistic.
+ For example, the t-statistic 
+\begin_inset Formula $\left(\widehat{\theta}-\theta\right)/s_{\widehat{\theta}}$
+\end_inset
+
+.
+ I claim that the set 
+\begin_inset Formula $\widehat{C}_{n}:=\left\{ \theta\in\Theta:T_{n}\left(\theta\right)\leq c_{\alpha}\right\} $
+\end_inset
+
+ is a confidence interval with the desirable coverage probability, where
+ 
+\begin_inset Formula $c_{\alpha}$
+\end_inset
+
+ is the critical value of a test of size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+P\left(\theta_{0}\in\widehat{C}_{n}\right)=P\left(\left\{ T_{n}\left(\theta_{0}\right)\leq c_{\alpha}\right\} |H_{0}\right)=1-P\left(\left\{ T_{n}\left(\theta_{0}\right)\geq c_{\alpha}\right\} |H_{0}\right)=1-\alpha.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Wald Test
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times K$
+\end_inset
+
+ positive definite covariance matrix and 
+\begin_inset Formula $R$
+\end_inset
+
+ is a 
+\begin_inset Formula $q\times K$
+\end_inset
+
+ constant matrix, then 
+\begin_inset Formula $R\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)$
+\end_inset
+
+.
+ Moreover, if 
+\begin_inset Formula $\mbox{rank}\left(R\right)=q$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+n\left(\widehat{\beta}-\beta\right)'R'\left(R\Omega R'\right)^{-1}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}\chi_{q}^{2}.
+\]
+
+\end_inset
+
+Now we intend to test the null hypothesis 
+\begin_inset Formula $R\beta=r$
+\end_inset
+
+.
+ Under the null hypothesis, the Wald statistic 
+\begin_inset Formula 
+\[
+W_{n}=n\left(R\widehat{\beta}-r\right)'\left(R\widehat{\Omega}R'\right)^{-1}\left(R\widehat{\beta}-r\right)\stackrel{d}{\to}\chi_{q}^{2}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\widehat{\Omega}$
+\end_inset
+
+ is a consistent estimator of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+In a linear regression 
+\begin_inset Formula 
+\begin{eqnarray}
+y & = & x_{i}'\beta+e_{i}=\sum_{k=1}^{5}\beta_{k}x_{ik}+e_{i}.\nonumber \\
+E\left[e_{i}x_{i}\right] & = & \mathbf{0}_{5},\label{eq:example}
+\end{eqnarray}
+
+\end_inset
+
+where 
+\begin_inset Formula $x_{i}=\left(\mbox{edu},\mbox{age},\mbox{experience},\mbox{experience}^{2},1\right)'$
+\end_inset
+
+.
+ To test whether 
+\emph on
+education
+\emph default
+ has effect on wage, we specify the null hypothesis 
+\begin_inset Formula $\beta_{1}=0$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $R=\left(1,0,0,0,0\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{equation}
+\sqrt{n}\widehat{\beta}_{1}=\sqrt{n}\left(\widehat{\beta}_{1}-\beta\right)=\sqrt{n}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)\sim N\left(0,\Omega_{11}\right),\label{eq:R11}
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $\Omega{}_{11}$
+\end_inset
+
+ is the 
+\begin_inset Formula $\left(1,1\right)$
+\end_inset
+
+ (scalar) element of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Therefore,
+\begin_inset Formula 
+\[
+\sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}=\sqrt{\frac{\Omega_{11}}{\widehat{\Omega}_{11}}}\sqrt{n}\frac{\widehat{\beta}_{1}}{\Omega_{11}^{1/2}}
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $\widehat{\Omega}\stackrel{p}{\to}\Omega$
+\end_inset
+
+, then 
+\begin_inset Formula $\left(\Omega_{11}/\widehat{\Omega}_{11}\right)^{1/2}\stackrel{p}{\to}1$
+\end_inset
+
+ by the continuous mapping theorem.
+ As 
+\begin_inset Formula $\sqrt{n}\widehat{\beta}_{1}/\Omega_{11}^{1/2}\stackrel{d}{\to}N\left(0,1\right)$
+\end_inset
+
+, we conclude 
+\begin_inset Formula $\sqrt{n}\widehat{\beta}_{1}/\widehat{\Omega}_{11}^{1/2}\stackrel{d}{\to}N\left(0,1\right).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Example 1 is a test about a single coefficient, and the test statistic is
+ essentially a t-statistic.
+ Example 2 gives a test about a joint hypothesis.
+\end_layout
+
+\begin_layout Example
+We want to simultaneously test 
+\begin_inset Formula $\beta_{1}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{3}+\beta_{4}=2$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:example"
+
+\end_inset
+
+).
+ The null hypothesis can be expressed in the general form 
+\begin_inset Formula $R\beta=r$
+\end_inset
+
+, where the restriction matrix 
+\begin_inset Formula $R$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+R=\begin{pmatrix}1 & 0 & 0 & 0 & 0\\
+0 & 0 & 1 & 1 & 0
+\end{pmatrix}
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula $r=\left(1,2\right)'$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Example 1 and 2 are linear restrictions.
+ In order to test a nonlinear regression, we need the so-called 
+\emph on
+delta method
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+delta method
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta^{*}\right)\stackrel{d}{\to}N\left(0,\Omega_{K\times K}\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $f:\mathbb{R}^{K}\mapsto\mathbb{R}^{q}$
+\end_inset
+
+ is a continuous function for some 
+\begin_inset Formula $q\leq K$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta^{*}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)'\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+In the regression (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:example"
+
+\end_inset
+
+), the optimal experience level can be found by setting the first order
+ condition with respective to experience to set, 
+\begin_inset Formula $\beta_{3}+2\beta_{4}\mbox{experience}^{*}=0$
+\end_inset
+
+.
+ We test the hypothesis that the optimal experience level is 20 years; in
+ other words, 
+\begin_inset Formula 
+\[
+\mbox{experience}^{*}=-\frac{\beta_{3}}{2\beta_{4}}=20.
+\]
+
+\end_inset
+
+This is a nonlinear hypothesis.
+ According to Theorem 1, if 
+\begin_inset Formula $\mathrm{rank}\left(\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)\right)=q\leq K$
+\end_inset
+
+, we have
+\begin_inset Formula 
+\[
+n\left(f\left(\widehat{\theta}\right)-f\left(\theta^{*}\right)\right)'\left(\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)'\right)^{-1}\left(f\left(\widehat{\theta}\right)-f\left(\theta^{*}\right)\right)\stackrel{d}{\to}\chi_{q}^{2},
+\]
+
+\end_inset
+
+where in this example, 
+\begin_inset Formula $\theta=\beta$
+\end_inset
+
+, 
+\begin_inset Formula $f\left(\beta\right)=-\beta_{3}/\left(2\beta_{4}\right)$
+\end_inset
+
+.
+ The gradient 
+\begin_inset Formula 
+\[
+\frac{\partial f}{\partial\beta}\left(\beta\right)=\left(0,0,-\frac{1}{2\beta_{4}},\frac{\beta_{3}}{2\beta_{4}^{2}}\right)
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $\widehat{\beta}\stackrel{p}{\to}\beta^{*}$
+\end_inset
+
+, by Slutsky's theorem, if 
+\begin_inset Formula $\beta_{4}^{*}\neq0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\frac{\partial}{\partial\beta}f\left(\widehat{\beta}\right)\stackrel{p}{\to}\frac{\partial}{\partial\beta}f\left(\beta^{*}\right)$
+\end_inset
+
+.
+ Therefore, the (nonlinear) Wald test is 
+\begin_inset Formula 
+\[
+W_{n}=n\left(f\left(\widehat{\beta}\right)-20\right)'\left(\frac{\partial f}{\partial\beta}\left(\widehat{\beta}\right)\widehat{\Omega}\frac{\partial f}{\partial\beta}\left(\widehat{\beta}\right)'\right)^{-1}\left(f\left(\widehat{\beta}\right)-20\right)\stackrel{d}{\to}\chi_{1}^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+I did not teach the LM and LR tests below.
+ Do not read.
+ 
+\end_layout
+
+\begin_layout Subsection
+Lagrangian Multiplier Test
+\end_layout
+
+\begin_layout Standard
+Restricted least square
+\begin_inset Formula 
+\[
+\min_{\beta}\left(y-X\beta\right)'\left(y-X\beta\right)\mbox{ s.t. }R\beta=r.
+\]
+
+\end_inset
+
+Turn it into an unrestricted problem
+\begin_inset Formula 
+\[
+L\left(\beta,\lambda\right)=\frac{1}{2n}\left(y-X\beta\right)'\left(y-X\beta\right)+\lambda'\left(R\beta-r\right).
+\]
+
+\end_inset
+
+The first-order condition
+\begin_inset Formula 
+\begin{eqnarray*}
+\frac{\partial}{\partial\beta}L & = & -\frac{1}{n}X'\left(y-X\tilde{\beta}\right)+\tilde{\lambda}R=-\frac{1}{n}X'e+\frac{1}{n}X'X\left(\tilde{\beta}-\beta^{*}\right)+R'\tilde{\lambda}=0.\\
+\frac{\partial}{\partial\beta}L & = & R\tilde{\beta}-r=R\left(\tilde{\beta}-\beta^{*}\right)=0
+\end{eqnarray*}
+
+\end_inset
+
+Combine these two equations into a linear system,
+\begin_inset Formula 
+\[
+\begin{pmatrix}\widehat{Q} & R'\\
+R & 0
+\end{pmatrix}\begin{pmatrix}\tilde{\beta}-\beta^{*}\\
+\tilde{\lambda}
+\end{pmatrix}=\begin{pmatrix}\frac{1}{n}X'e\\
+0
+\end{pmatrix}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray*}
+\begin{pmatrix}\tilde{\beta}-\beta^{*}\\
+\tilde{\lambda}
+\end{pmatrix} & = & \begin{pmatrix}\widehat{Q} & R'\\
+R & 0
+\end{pmatrix}^{-1}\begin{pmatrix}\frac{1}{n}X'e\\
+0
+\end{pmatrix}.\\
+ & = & \begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
+\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & -\left(R\widehat{Q}^{-1}R'\right)^{-1}
+\end{pmatrix}\begin{pmatrix}\frac{1}{n}X'e\\
+0
+\end{pmatrix}.
+\end{eqnarray*}
+
+\end_inset
+
+We conclude that 
+\begin_inset Formula 
+\[
+\sqrt{n}\tilde{\lambda}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\sqrt{n}\tilde{\lambda}\Rightarrow N\left(0,\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}\right).
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $W=\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+n\tilde{\lambda}'W^{-1}\tilde{\lambda}\Rightarrow\chi_{q}^{2}.
+\]
+
+\end_inset
+
+If homoskedastic, then 
+\begin_inset Formula $W=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}RQ^{-1}QQ^{-1}R'\left(RQ^{-1}R'\right)^{-1}=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}.$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{n\tilde{\lambda}'RQ^{-1}R'\tilde{\lambda}}{\sigma^{2}}=\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'XQ^{-1}X'\left(y-X\tilde{\beta}\right)=\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'P_{X}\left(y-X\tilde{\beta}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Likelihood-Ratio test
+\end_layout
+
+\begin_layout Standard
+For likelihood ratio test, the starting point can be a criterion function
+ 
+\begin_inset Formula $L\left(\beta\right)=\left(y-X\beta\right)'\left(y-X\beta\right)$
+\end_inset
+
+.
+ It does not have to be the likelihood function.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+L\left(\tilde{\beta}\right)-L\left(\widehat{\beta}\right)=\frac{\partial L}{\partial\beta}\left(\widehat{\beta}\right)+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\frac{\partial L}{\partial\beta\partial\beta}\left(\dot{\beta}\right)\left(\tilde{\beta}-\widehat{\beta}\right)=0+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right).
+\]
+
+\end_inset
+
+From the derivation of LM test, we have 
+\begin_inset Formula 
+\begin{eqnarray*}
+\sqrt{n}\left(\tilde{\beta}-\beta^{*}\right) & = & \left(\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\right)\frac{1}{\sqrt{n}}X'e\\
+ & = & \frac{1}{\sqrt{n}}\left(X'X\right)X'e-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ & = & \sqrt{n}\left(\widehat{\beta}-\beta^{*}\right)-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
+\end{eqnarray*}
+
+\end_inset
+
+Therefore
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)=-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\begin{eqnarray*}
+n\left(\tilde{\beta}-\beta\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right) & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
+\end{eqnarray*}
+
+\end_inset
+
+In general, it is a quadratic form of normal distributions.
+ If homoskedastic, then 
+\begin_inset Formula 
+\[
+\left(R\widehat{Q}^{-1}R'\right)^{-1/2}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
+\]
+
+\end_inset
+
+ has variance 
+\begin_inset Formula 
+\[
+\sigma^{2}\left(RQ^{-1}R'\right)^{-1/2}RQ^{-1}QQ^{-1}R'\left(RQ^{-1}R'\right)^{-1/2}=\sigma^{2}I_{q}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can view the optimization of the log-likelihood as a two-step optimization
+ with the inner step 
+\begin_inset Formula $\sigma=\sigma\left(\beta\right)$
+\end_inset
+
+.
+ By the envelop theorem, when we take derivative with respect to 
+\begin_inset Formula $\beta$
+\end_inset
+
+, we can ignore the indirect effect of 
+\begin_inset Formula $\partial\sigma\left(\beta\right)/\partial\beta$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Subsection
+Diagrams
+\end_layout
+
+\begin_layout Plain Layout
+Wald works on 
+\begin_inset Formula $R\widehat{\beta}-r=0$
+\end_inset
+
+.
+ LM works on the first order condition.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
