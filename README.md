@@ -3,9 +3,9 @@ The Chinese University of Hong Kong
 
 **Instructor**: Zhentao Shi (zhentao.shi@cuhk.edu.hk)
 
-**Office hour**: Friday 3-5 pm @ WMY 402
+**Office hour**: Friday 3-5 pm ELB 912
 
-**Time and Venue**: Wednesday 3:30--6:15 @ AIT G02
+**Time and Venue**: Wednesday 3:30--6:15 @ WMY 402
 
 **TA**: Jingyi Huang (jyhuang@link.cuhk.edu.hk)
 
