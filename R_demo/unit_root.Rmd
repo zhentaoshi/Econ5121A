@@ -1,0 +1,104 @@
+---
+title: "Nonstationary Time Series"
+author: "Zhentao Shi"
+output: pdf_document
+fontsize: 12pt
+---
+In this document we demonstrate the unit root process and the spurious regression.
+
+## Unit Root Process
+
+Though **R** has a built-in function to generate autoregressive time series, the generating process is simple enough to handle by ourselves. We write a user-function.
+
+```{r}
+AR <- function(a,T){
+  # a: the AR coefficient
+  # T: time periods
+  y <- rep(0, T)
+  e <- rnorm(T)
+  for (t in 1:T){
+    if (t == 1) {
+      y[t] <- e[t]
+    } else {
+      y[t] <- a * y[t-1] + e[t]
+    }
+  }
+  return(y)
+}
+```
+
+#### A Simulated Example
+
+We generate a stationary AR(1) and a unit root time series. We plot them on a graph.
+```{r}
+set.seed(999)
+stationary <- AR(0.7, 200) # stationary 
+ur <- AR(1, 200) # unit root 
+matplot( cbind(stationary, ur), type = "l", ylab = "" ) 
+```
+
+We can invoke the Dicky-Fuller test from the R package **urca**. We test the stationarity for the two time series separately. 
+```{r}
+library(urca)
+dftest <- ur.df(y = stationary, lag = 0, type = "drift")
+summary(dftest)
+```
+The ADF test rejects the null strongly.
+
+
+```
+dftest <- ur.df(y = ur, lag = 0, type = "drift")
+summary(dftest)
+```
+The ADF test does not reject the null at significance level 0.10.
+
+#### A Real Data Example
+
+We download the stock price of *Facebook* from Yahoo, and test the stationarity of the closing price during the most recent 150 days.
+
+```{r}
+FB <- read.csv("http://ichart.finance.yahoo.com/table.csv?s=FB")
+print(head(FB))
+
+fb <- FB$Close[1:150] # get the latest 150 closing price as the observations
+fb <- fb[151 - (1:150)] # reverse the order. From early to late
+plot(fb, type = "l", xlab = "", ylab = "facebook price")
+dftest <- ur.df(y = fb, lags = 3, type = "drift")
+summary(dftest)
+
+```
+
+## Spurious Regression
+
+This is an example of the spurious regression. The two time series $\{y_t\}$ and $\{x_t\}$ are generated independently, so that $E[y_t|x_t] = 0$. However, we observe a high $R^2$ and large t-value if we regression $y_t$ against $x_t$.
+
+```{r}
+T = 50
+a = 1
+
+y <- AR(a, T)
+x <- AR(a, T)
+matplot( cbind(y, x), type = "l", ylab = "" )
+
+reg <- lm(y ~ x)
+summary(reg)
+```
+
+We run a regression to check that if we naively use 1.96 as the critical value for the $t$-ratio, how often we would reject the null hypothesis that $\beta = 0$. 
+```{r}
+spurious <- function(i, a, T){
+    y <- AR(a, T)
+    x <- AR(a, T)
+    
+    reg <- lm(y ~ x)
+    p.val <- summary(reg)[[4]][2,4]
+    # save the p-value of the estimate of x's coefficient
+    return(p.val)
+}
+
+library("plyr")
+out <- ldply(.data = 1:100, .fun = spurious, a = 1, T = 100)
+print( mean(out < 0.05) )
+```
+
+The nominal asymptotic test size is $5\%$ according to the standard asymptotic theory. However, the empirical size, the percentage of times that rejects the null turns out to be 0.80 in this simulation. The drastic deviation suggests that the standard asymptotic theory fails in the nonstationary environment.

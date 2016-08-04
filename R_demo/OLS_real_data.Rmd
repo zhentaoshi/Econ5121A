@@ -1,0 +1,42 @@
+---
+title: "Real Data Applicaiton of OLS"
+author: Zhentao Shi
+output: html_document
+---
+
+### Import Data
+
+We check the relationship of having 
+health insurance and a person's education. 
+We use `age` and `family` as control variables
+
+
+```{r,message=FALSE,warning=FALSE}
+library(AER)
+data(HealthInsurance)
+head(HealthInsurance) # display the data structure
+```
+
+### Prepare Data
+
+Convert the factor variable `insurance` to numeric, 
+otherwise `lm()` will not accept it as a dependent variable
+
+```{r}
+HealthInsurance$ins = (HealthInsurance$insurance == "yes")
+```
+
+### Regression 
+
+Run the OLS regression and print the output.
+```{r}
+reg = lm( ins ~  education + age + family, data = HealthInsurance)
+summary(reg)
+```
+
+
+### Inference 
+Use the robust standard error.
+```{r}
+coeftest(reg, vcov = sandwich)
+```

@@ -1,0 +1,49 @@
+---
+title: "Algebra of OLS"
+author: Zhentao Shi
+output: html_document
+---
+
+We demonstrate the OLS estimator and its algebraic properties
+
+Generate the data.
+
+
+```{r}
+n = 5
+b0 = as.matrix( c(0.5, 1) )
+
+X = cbind(1, rnorm(n) )
+e = rnorm(n,1)
+Y = X %*% b0 + e
+print(Y)
+```
+
+
+
+Calculate the estimate as $\hat{\beta} = (X' X)^{-1} X'Y$, and the residual $\hat{e} = Y - X' \beta$. Verify $X'\hat{e} = 0$.
+
+
+```{r}
+bhat = solve(t(X)%*%X, t(X) %*% Y )
+ehat = Y - X %*% bhat
+
+print( t(X) %*% ehat )
+```
+
+
+
+
+
+Define $P_X$ and $M_X$, and show $\hat{e} = M_X Y = M_X  e$.
+
+
+```{r}
+PX = X %*% solve( t(X) %*% X) %*% t(X)
+MX = diag(rep(1,n)) - PX
+print( cbind( ehat, MX %*% Y, MX %*% e) )
+```
+
+
+
+

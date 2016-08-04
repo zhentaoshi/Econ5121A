@@ -1,0 +1,54 @@
+---
+title: "Demomstration of GMM"
+author:  "Zhentao Shi"
+output: pdf_document
+fontsize: 12pt
+---
+
+The CRAN packge [gmm](http://cran.r-project.org/web/packages/gmm/index.html) provides an interface for GMM estimation. In this document we demonstrate it in a nonlinear model. 
+
+[Bruno Rodrigues](http://www.brodrigues.co/pages/aboutme.html) shared [his example](http://www.brodrigues.co/2013/11/07/gmm-with-rmd/) with detailed instruction and discussion. Unfortunately, I find his example cannot reflect the essence of GMM. The blunder was that he took the *method of moments* as the *generalized method of moments*. He worked with a just-identified model, in which the choices of **type** and **wmatrix** in his call
+```{r, eval = FALSE}
+my_gmm <- gmm(moments, x = dat, t0 = init, type = "iterative", crit = 1e-25, wmatrix = "optimal", method = "Nelder-Mead", control = list(reltol = 1e-25, maxit = 20000))
+```
+is simplily irrelevant. Experimenting with different options of **type** and **wmatrix**, we will find exactly the same point estimates and variances.
+
+Below I illustrate the nonlinear GMM in an over-identified system. First we import the data and add a constant. 
+```{r, cache=TRUE}
+library(gmm)  # load the library "gmm"
+g <- read.table("http://www.brodrigues.co/assets/files/benefits.R", header = T)
+g$const <- 1 # add the constant
+g1 <- g[, c("y", "const", "age", "age2", "dkids", "dykids", "head", "male", "married", "rr", "rr2") ] 
+```
+R's OLS function **lm** adds the intercept in the default setting. In contrast,we have to specify the moments from scratch in **gmm**. The constant, a column of ones, must be included explicitly in the data matrix.
+
+Next, we define the logistic function and the moment conditions. 
+```{r}
+logistic <- function(theta, data) {
+  return(1/(1 + exp(-data %*% theta)))
+}
+
+moments <- function(theta, data) {
+  y <- as.numeric(data[, 1])
+  x <- data.matrix(data[, c(2:4, 6:8)])
+  z <- data.matrix( data[, c(2,3, 5:10) ] )  # more IVs than the regressors. Over-identified.
+  m <- z * as.vector((y - logistic(theta, x)))
+  return(cbind(m))
+}
+```
+Here I naively adapt Bruno Rodrigues's example and specify the momemts as
+$$
+E[z_i \epsilon_i] = E[ z_i ( y_i - \mathrm{ logistic }(x_i \beta ) )] = 0
+$$
+However, such a specification is almost impossible to be motivated from the economic theory of random utility models.
+
+
+Eventually, we call the GMM function and display the results. An initial value must be provided for a numerical optimization algorithm. It is recommended to try at least dozens of initial values in general unless one can show that the minimizer is unique in the model.
+```{r, cache=TRUE}
+init <- (lm(y ~ age + age2 + dkids + head + male, data = g1 ))$coefficients
+my_gmm <- gmm(moments, x = g1, t0 = init, type = "twoStep", wmatrix = "optimal")
+summary(my_gmm)
+```
+In the summary, the J statistics indicates that the moment conditions are unlikely to hold. The model requires further modification. 
+
+P.S.: According to my personal experience, caution must be executed when using **gmm** in R for nonlinear models. Sometimes the estimates can be unrealible, perhaps due to the shape of the criterion function in several parameters. Simulation experiments are highly suggested before we believe the estimates.
