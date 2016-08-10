@@ -234,6 +234,17 @@ Measurable function: a function
 
 .
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+It doesn't have to be on the real line.
+ But real line is the case that we most often encounter.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -254,33 +265,132 @@ Random variable:
 \end_layout
 
 \begin_layout Itemize
-Cumulative distribution function (CDF)
+The probability measure of a random variable 
+\begin_inset Formula $P\left(X^{-1}\right)$
+\end_inset
+
+ is induced by the measurable function.
 \end_layout
 
 \begin_layout Itemize
-Probability density function (PDF)
-\begin_inset Separator latexpar
+Cumulative distribution function (CDF)
+\begin_inset Formula 
+\[
+F\left(x\right)=P\left(X\leq x\right)=P_{X}\left(\left\{ X\leq x\right\} \right).
+\]
+
 \end_inset
 
 
 \end_layout
 
-\begin_deeper
 \begin_layout Itemize
-Univariate random variable 
+What is a discrete random variable.
+ What is a continuous random variable.
 \end_layout
 
 \begin_layout Itemize
-Bivariate random variable 
+Examples: binary, Poisson 
+\begin_inset Formula $\frac{e^{-\lambda}\lambda^{k}}{k!}$
+\end_inset
+
+; normal 
+\begin_inset Formula 
+\[
+\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(x-\mu\right)^{2}\right).
+\]
+
+\end_inset
+
+The normal distribution generates 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $F$
+\end_inset
+
+ and 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
-Multivariate random variable 
+Properties of CDF: 
+\begin_inset Formula $\lim_{x\to-\infty}F\left(x\right)=0$
+\end_inset
+
+, 
+\begin_inset Formula $\lim_{x\to\infty}F\left(x\right)=1$
+\end_inset
+
+, non-decreasing, and right-continuous 
+\begin_inset Formula 
+\[
+\lim_{y\to x^{+}}F\left(y\right)=F\left(x\right).
+\]
+
+\end_inset
+
+
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
-Conditional distribution 
+Probability density function (PDF) 
+\begin_inset Formula $f\left(x\right)=\partial F\left(x\right)/\partial x$
+\end_inset
+
+.
+ PDF is the Rondom-Nykdin derivative of the probability measure of the random
+ variable 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to the Lebesgue measure on the real line.
+ For a measure 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ that is absolutely continuous with respect to another measure 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, the Rodom-Nykdin derivative is defined as 
+\begin_inset Formula $d\lambda/d\mu$
+\end_inset
+
+ such that for any 
+\begin_inset Formula $x$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+\lambda\left(A\right)=\int_{A}\frac{d\lambda}{d\mu}d\mu
+\]
+
+\end_inset
+
+ for any 
+\begin_inset Formula $A\in\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Properties: 
+\begin_inset Formula $f\left(x\right)\geq0$
+\end_inset
+
+.
+ 
+\begin_inset Formula $F\left(b\right)-F\left(a\right)=\int_{a}^{b}f\left(x\right)dx$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -315,6 +425,26 @@ Expectation
 
 , just for a concise notation when the underlying probability measure is
  clear.
+\end_layout
+
+\begin_layout Section
+Multivariate 
+\end_layout
+
+\begin_layout Itemize
+Univariate random variable 
+\end_layout
+
+\begin_layout Itemize
+Bivariate random variable 
+\end_layout
+
+\begin_layout Itemize
+Multivariate random variable 
+\end_layout
+
+\begin_layout Itemize
+Conditional distribution 
 \end_layout
 
 \begin_layout Itemize
