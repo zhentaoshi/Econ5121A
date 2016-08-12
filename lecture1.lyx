@@ -34,7 +34,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
-\spacing single
+\spacing double
 \use_hyperref false
 \papersize default
 \use_geometry true
@@ -504,19 +504,6 @@ Expectation
 \end_layout
 
 \begin_layout Itemize
-Jensen's inequality.
- If 
-\begin_inset Formula $\varphi\left(\cdot\right)$
-\end_inset
-
- is a convex function, then 
-\begin_inset Formula $\varphi\left(E\left[x\right]\right)\leq E\left[\varphi\left(x\right)\right].$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
 Mean 
 \begin_inset Formula $\mu=E\left[X\right]$
 \end_inset
@@ -546,6 +533,40 @@ Skewness coefficient
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Itemize
+Jensen's inequality.
+ If 
+\begin_inset Formula $\varphi\left(\cdot\right)$
+\end_inset
+
+ is a convex function, then 
+\begin_inset Formula $\varphi\left(E\left[x\right]\right)\leq E\left[\varphi\left(x\right)\right].$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Chebyshev inequality: 
+\begin_inset Formula 
+\[
+P\left[\left|X\right|>\epsilon\right]\leq E\left[X^{2}\right]/\epsilon^{2}.
+\]
+
+\end_inset
+
+Proof: 
+\begin_inset Formula 
+\begin{align*}
+E\left[X^{2}\right] & =\int X^{2}dF\left(X\right)=\int_{\left|X\right|>\epsilon}X^{2}dF\left(X\right)+\int_{\left|X\right|\leq\epsilon^{2}}X^{2}dF\left(X\right)\\
+ & \geq\int_{\left|X\right|>\epsilon}X^{2}dF\left(X\right)\geq\epsilon^{2}\int_{\left|X\right|>\epsilon}dF\left(X\right)=\epsilon^{2}P\left[\left|X\right|>\epsilon\right].
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -730,5 +751,54 @@ P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\rig
 \end_layout
 
 \end_deeper
+\begin_layout Section
+Independence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent if 
+\begin_inset Formula $P\left(x,y\right)=P\left(x\right)P\left(y\right).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Law of large numbers.
+ Let 
+\begin_inset Formula $Z_{n}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathrm{var}\left(Z_{n}\right)=\frac{\sum\sigma_{i}^{2}}{n^{2}}.$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P\left(\left|Z_{n}\right|>\epsilon\right)\leq\frac{E\left[Z^{2}\right]}{\epsilon^{2}}=\frac{\sum\sigma_{i}^{2}}{n^{2}\epsilon^{2}}.
+\]
+
+\end_inset
+
+As 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+, the probability 
+\begin_inset Formula $P\left(\left|Z_{n}\right|>\epsilon\right)\to0$
+\end_inset
+
+.
+\end_layout
+
 \end_body
 \end_document
