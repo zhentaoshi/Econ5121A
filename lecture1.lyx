@@ -279,16 +279,6 @@ Discrete random variable: the set
 
  is finite or countable.
  
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-what is countable? one-to-one mapping with the set of real numbers
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
@@ -415,18 +405,18 @@ normal
 
 \begin_layout Itemize
 normal generates 
-\begin_inset Formula $t$
-\end_inset
-
-, 
-\begin_inset Formula $F$
-\end_inset
-
- and 
 \begin_inset Formula $\chi^{2}$
 \end_inset
 
+, 
+\begin_inset Formula $t$
+\end_inset
 
+, and 
+\begin_inset Formula $F$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -434,6 +424,51 @@ parametric distribution vs nonparametric distribution
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+Implementation in 
+\family typewriter
+R
+\family default
+: 
+\family typewriter
+d 
+\family default
+for density,
+\family typewriter
+ p 
+\family default
+for probability,
+\family typewriter
+ q 
+\family default
+for quantile,
+\family typewriter
+ 
+\family default
+and
+\family typewriter
+ r 
+\family default
+for random variable.
+ For example, 
+\family typewriter
+dnorm
+\family default
+, 
+\family typewriter
+pnorm
+\family default
+, 
+\family typewriter
+qnorm
+\family default
+, and 
+\family typewriter
+rnorm
+\family default
+.
+\end_layout
+
 \begin_layout Subsection
 Expectation
 \end_layout
@@ -501,33 +536,104 @@ Mean
 .
 \end_layout
 
+\begin_layout Itemize
+Skewness coefficient 
+\begin_inset Formula $E\left[\left(X-\mu\right)^{3}\right]/\sigma^{3}$
+\end_inset
+
+, degree of excess 
+\begin_inset Formula $E\left[\left(X-\mu\right)^{4}\right]/\sigma^{4}-3$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
-Multivariate 
+Multivariate Random Variable
 \end_layout
 
 \begin_layout Itemize
-Univariate random variable 
-\end_layout
+Bivariate random variable: 
+\begin_inset Formula $X:\Omega\mapsto\mathbb{R}^{2}$
+\end_inset
 
-\begin_layout Itemize
-Bivariate random variable 
+.
+ 
 \end_layout
 
 \begin_layout Itemize
 Multivariate random variable 
+\begin_inset Formula $X:\Omega\mapsto\mathbb{R}^{d}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
-Conditional distribution 
+Joint CDF: 
+\begin_inset Formula $F\left(x_{1},\ldots,x_{d}\right)=P\left(X_{1}\leq x_{1},\ldots,X_{d}\leq x_{d}\right)$
+\end_inset
+
+.
+ Joint PDF is defined similarly.
 \end_layout
 
 \begin_layout Itemize
-Conditional expectation 
+Conditional expectation: Given a probability space 
+\begin_inset Formula $\left(\Omega,\mathcal{F}_{0},P\right)$
+\end_inset
+
+, a sub 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra 
+\begin_inset Formula $\mathcal{F}\subset\mathcal{F}_{0}$
+\end_inset
+
+ and a random variable 
+\begin_inset Formula $\mathcal{F}_{0}$
+\end_inset
+
+ measurable function 
+\begin_inset Formula $X$
+\end_inset
+
+ with 
+\begin_inset Formula $E\left|X\right|<\infty$
+\end_inset
+
+, the conditional expectation 
+\begin_inset Formula $E\left[X|\mathcal{F}\right]$
+\end_inset
+
+ is defined as a 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ measurable function 
+\begin_inset Formula $Y$
+\end_inset
+
+ such that 
+\begin_inset Formula $\int_{A}XdP=\int_{A}YdP$
+\end_inset
+
+ for all 
+\begin_inset Formula $A\in\mathcal{F}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
 Law of iterated expectation: 
 \begin_inset Formula $E\left[E\left[Y|X\right]\right]=E\left[Y\right]$
+\end_inset
+
+ is a trivial fact from the definition of the conditional expectation by
+ taking 
+\begin_inset Formula $A=\Omega$
 \end_inset
 
 .
@@ -562,6 +668,65 @@ Properties of conditional expectations
 \end_inset
 
  
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Conditional distribution 
+\end_layout
+
+\begin_layout Itemize
+Elementary formulation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+conditional distribution 
+\begin_inset Formula $f\left(Y,X\right)=f\left(X,Y\right)/f\left(X\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+marginal distribution 
+\begin_inset Formula $f\left(Y\right)=\int f\left(X,Y\right)dX$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+conditional expectation 
+\begin_inset Formula $E\left[Y|X\right]=\int Yf\left(Y|X\right)dY$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+law of iterated expectation
+\begin_inset Formula 
+\begin{align*}
+E\left[E\left[Y|X\right]\right] & =\int E\left[Y|X\right]f\left(X\right)dX=\int\left(\int Yf\left(Y|X\right)dY\right)f\left(X\right)dX=\int\int Yf\left(Y|X\right)f\left(X\right)dYdX\\
+ & =\int\int Yf\left(X,Y\right)dYdX=\int Y\left(\int f\left(X,Y\right)dX\right)dY=\int YdY=E\left[Y\right].
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Bayes theorem
+\begin_inset Formula 
+\[
+P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\right)P\left(A\right)}{P\left(B\right)}.
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
