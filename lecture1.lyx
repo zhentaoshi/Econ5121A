@@ -83,7 +83,7 @@
 \begin_body
 
 \begin_layout Section
-Review of Probability
+Probability
 \end_layout
 
 \begin_layout Standard
@@ -96,8 +96,42 @@ name "review-of-probability"
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Why the elementary calculation in undergraduate courses is insufficient?
+\end_layout
+
+\begin_layout Plain Layout
+In econometrics we will soon encounter 
+\begin_inset Formula $E\left[Y|X\right]=\int Yf\left(Y|X\right)dY$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+We know that 
+\begin_inset Formula $P\left(A|B\right)=P\left(A,B\right)/P\left(B\right)$
+\end_inset
+
+.
+ How to compute 
+\begin_inset Formula $P\left(Y|X=0\right)$
+\end_inset
+
+?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
-Probability
+Probability Space
 \end_layout
 
 \begin_layout Standard
@@ -120,6 +154,7 @@ Sample space
 \end_inset
 
  is the collection of all possible outcomes.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -135,7 +170,7 @@ event
 \end_layout
 
 \begin_layout Itemize
-An 
+A 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -167,32 +202,35 @@ An
 \end_layout
 
 \begin_layout Itemize
-Measure space 
 \begin_inset Formula $\left(\Omega,\mathcal{F}\right)$
 \end_inset
 
+ is called a 
+\emph on
+measure space
+\emph default
 .
  
 \end_layout
 
 \begin_layout Itemize
-Probability 
-\begin_inset Formula $P:\mathcal{F}\mapsto\left[0,1\right]$
+A function 
+\begin_inset Formula $\mu:\mathcal{F}\mapsto\left[0,\infty\right]$
 \end_inset
 
- is a function such that: (i) 
-\begin_inset Formula $P\left(A\right)\geq0$
+ is called a 
+\emph on
+measure
+\emph default
+ if it satisfies (i) 
+\begin_inset Formula $\mu\left(A\right)\geq0$
 \end_inset
 
  for all 
-\begin_inset Formula $A\in\mathcal{F}$
+\begin_inset Formula $\mu\in\mathcal{F}$
 \end_inset
 
-; (ii) 
-\begin_inset Formula $P\left(\Omega\right)=1$
-\end_inset
-
-; (iii) if 
+; (ii) if 
 \begin_inset Formula $A_{i}\in\mathcal{F}$
 \end_inset
 
@@ -201,53 +239,78 @@ Probability
 \end_inset
 
 , are mutually disjoint, then 
-\begin_inset Formula $P\left(\bigcup_{i\in\mathbb{N}}A_{i}\right)=\sum_{i\in\mathbb{N}}P\left(A_{i}\right)$
+\begin_inset Formula $\mu\left(\bigcup_{i\in\mathbb{N}}A_{i}\right)=\sum_{i\in\mathbb{N}}\mu\left(A_{i}\right)$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Itemize
-Probability space 
-\begin_inset Formula $\left(\Omega,\mathcal{F},P\right)$
-\end_inset
-
-.
  
 \end_layout
 
 \begin_layout Itemize
-Measurable function: a function 
-\begin_inset Formula $X$
+If 
+\begin_inset Formula $\mu\left(\Omega\right)=1$
 \end_inset
 
- is called 
-\begin_inset Formula $\left(\Omega,\mathcal{F}\right)/\left(\mathbb{R},\mathcal{R}\right)$
+, we call 
+\begin_inset Formula $\mu$
 \end_inset
 
- measurable if 
+ a 
+\emph on
+probability measure
+\emph default
+.
+ A probability measure is often denoted as 
+\begin_inset Formula $P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left(\Omega,\mathcal{F},P\right)$
+\end_inset
+
+ is called a 
+\emph on
+probability space
+\emph default
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+example: toss a coin for three times
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Random Variable
+\end_layout
+
+\begin_layout Itemize
+A function 
+\begin_inset Formula $X:\Omega\mapsto\mathbb{R}$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\Omega,\mathcal{F}\right)\backslash\left(\mathbb{R},\mathcal{R}\right)$
+\end_inset
+
+ 
+\emph on
+measurable
+\emph default
+ if 
 \begin_inset Formula $X^{-1}\left(B\right)=\left\{ \omega\in\Omega:X\left(\omega\right)\in B\right\} \in\mathcal{F}$
 \end_inset
 
  for any 
 \begin_inset Formula $B\in\mathcal{R}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Random variable: 
-\begin_inset Formula $X:\Omega\mapsto\mathbb{R}$
-\end_inset
-
- is a measurable function from 
-\begin_inset Formula $\left(\Omega,\mathcal{F}\right)$
-\end_inset
-
- and 
-\begin_inset Formula $\left(\mathbb{R},\mathcal{R}\right)$
 \end_inset
 
 , where 
@@ -260,16 +323,10 @@ Random variable:
 
 -field on the real line.
  
-\end_layout
-
-\begin_layout Itemize
-The probability measure of a random variable 
-\begin_inset Formula $P\left(X^{-1}\left(\cdot\right)\right)$
-\end_inset
-
- is induced by the measurable function.
- The distribution of a random variable is traced back to the original probabilit
-y space for weight assignment.
+\emph on
+Random variable
+\emph default
+ is an alternative name for a measurable function.
 \end_layout
 
 \begin_layout Itemize
@@ -291,10 +348,48 @@ Continuous random variable: the set
 \end_layout
 
 \begin_layout Itemize
-(Cumulative) distribution function (CDF)
+\begin_inset Formula $P_{X}:\mathcal{R}\mapsto\left[0,1\right]$
+\end_inset
+
+ defined as 
+\begin_inset Formula $P_{X}\left(B\right)=P\left(X^{-1}\left(B\right)\right)$
+\end_inset
+
+ for any 
+\begin_inset Formula $B\in\mathcal{R}$
+\end_inset
+
+ is a probability measure.
+ We call 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+ the probability measure induced by the measurable function 
+\begin_inset Formula $X$
+\end_inset
+
+ .
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+example: assign value to the toss outcomes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Distribution Function
+\end_layout
+
+\begin_layout Itemize
+(Cumulative) distribution function
 \begin_inset Formula 
 \[
-F\left(x\right)=P\left(X\leq x\right)=P_{X}\left(\left\{ X\leq x\right\} \right).
+F\left(x\right)=P\left(X\leq x\right)=P\left(\left\{ \omega\in\Omega:X\left(\omega\right)\leq x\right\} \right).
 \]
 
 \end_inset
@@ -348,12 +443,15 @@ then we call
 \end_inset
 
 .
- PDF is the Radon-Nikodym derivative of the probability measure of the random
- variable 
-\begin_inset Formula $X$
+ PDF is the Radon-Nikodym derivative of the probability measure 
+\begin_inset Formula $P_{X}$
 \end_inset
 
- with respect to the Lebesgue measure on the real line.
+ with respect to the Lebesgue measure (
+\begin_inset Formula $F\left((a,b]\right)=b-a$
+\end_inset
+
+) on the real line.
  
 \end_layout
 
@@ -370,41 +468,39 @@ Properties:
 
 \end_layout
 
-\begin_layout Itemize
-Examples: 
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-binary 
-\begin_inset Formula $p$
-\end_inset
-
-
+\begin_layout Subsection
+Examples
 \end_layout
 
 \begin_layout Itemize
-Poisson 
+binary, Poisson, 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+ 
 \begin_inset Formula $\frac{e^{-\lambda}\lambda^{k}}{k!}$
 \end_inset
 
-; 
+
 \end_layout
 
-\begin_layout Itemize
-Uniform
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-normal 
+ uniform, normal, 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula $\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2}\left(x-\mu\right)^{2}\right)$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
-normal generates 
+\end_inset
+
+
 \begin_inset Formula $\chi^{2}$
 \end_inset
 
@@ -412,18 +508,21 @@ normal generates
 \begin_inset Formula $t$
 \end_inset
 
-, and 
+, 
 \begin_inset Formula $F$
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Itemize
-parametric distribution vs nonparametric distribution
+parametric distribution vs.
+\begin_inset space ~
+\end_inset
+
+nonparametric distribution
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 Implementation in 
 \family typewriter
@@ -450,7 +549,7 @@ and
  r 
 \family default
 for random variable.
- For example, 
+ For instance, 
 \family typewriter
 dnorm
 \family default
@@ -467,10 +566,22 @@ qnorm
 rnorm
 \family default
 .
+ Execute online 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.tutorialspoint.com/execute_r_online.php
 \end_layout
 
-\begin_layout Subsection
-Expectation
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Expected Value
 \end_layout
 
 \begin_layout Standard
@@ -486,17 +597,20 @@ name "expectation"
 \begin_layout Itemize
 
 \emph on
-Expectation
+Expected value, 
+\emph default
+or
+\emph on
+ expectation,
 \emph default
  is an average of a random variable.
- Expectation is nothing but an integration, where the integrand is the random
- variable, and the measure is the probability measure.
+ Expectation is nothing but an integral.
  We write 
 \begin_inset Formula $E\left[X\right]$
 \end_inset
 
 , instead of 
-\begin_inset Formula $\int X\mathrm{d}P_{X}$
+\begin_inset Formula $\int X\mathrm{d}P$
 \end_inset
 
 , just for a concise notation when the underlying probability measure is
@@ -504,7 +618,46 @@ Expectation
 \end_layout
 
 \begin_layout Itemize
-Mean 
+Elementary calculation: 
+\begin_inset Formula $E\left[X\right]=\sum_{x}xP\left(X=x\right)$
+\end_inset
+
+ or 
+\begin_inset Formula $E\left[X\right]=\int xf\left(x\right)\mathrm{d}x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P\left(X\in A\right)=E\left[1\left\{ X\in A\right\} \right]$
+\end_inset
+
+, where 
+\begin_inset Formula $1\left\{ \cdot\right\} $
+\end_inset
+
+ is the indicator function, and 
+\begin_inset Formula $\left\{ X\in A\right\} =\left\{ \omega\in\Omega:X\left(\omega\right)\in A\right\} $
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E\left[X^{r}\right]$
+\end_inset
+
+ is call the 
+\begin_inset Formula $r$
+\end_inset
+
+-moment of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ Mean 
 \begin_inset Formula $\mu=E\left[X\right]$
 \end_inset
 
@@ -550,20 +703,7 @@ Jensen's inequality.
 
 \begin_layout Itemize
 Chebyshev inequality: 
-\begin_inset Formula 
-\[
-P\left[\left|X\right|>\epsilon\right]\leq E\left[X^{2}\right]/\epsilon^{2}.
-\]
-
-\end_inset
-
-Proof: 
-\begin_inset Formula 
-\begin{align*}
-E\left[X^{2}\right] & =\int X^{2}dF\left(X\right)=\int_{\left|X\right|>\epsilon}X^{2}dF\left(X\right)+\int_{\left|X\right|\leq\epsilon^{2}}X^{2}dF\left(X\right)\\
- & \geq\int_{\left|X\right|>\epsilon}X^{2}dF\left(X\right)\geq\epsilon^{2}\int_{\left|X\right|>\epsilon}dF\left(X\right)=\epsilon^{2}P\left[\left|X\right|>\epsilon\right].
-\end{align*}
-
+\begin_inset Formula $P\left[\left|X\right|>\epsilon\right]\leq E\left[X^{2}\right]/\epsilon^{2}.$
 \end_inset
 
 
@@ -599,9 +739,13 @@ Joint CDF:
  Joint PDF is defined similarly.
 \end_layout
 
+\begin_layout Subsection
+Law of Iterated Expectations
+\end_layout
+
 \begin_layout Itemize
-Conditional expectation: Given a probability space 
-\begin_inset Formula $\left(\Omega,\mathcal{F}_{0},P\right)$
+Given a probability space 
+\begin_inset Formula $\left(\Omega,\mathcal{F},P\right)$
 \end_inset
 
 , a sub 
@@ -609,14 +753,14 @@ Conditional expectation: Given a probability space
 \end_inset
 
 -algebra 
-\begin_inset Formula $\mathcal{F}\subset\mathcal{F}_{0}$
+\begin_inset Formula $\mathcal{G}\subset\mathcal{F}$
 \end_inset
 
- and a random variable 
-\begin_inset Formula $\mathcal{F}_{0}$
+ and a 
+\begin_inset Formula $\mathcal{F}$
 \end_inset
 
- measurable function 
+-measurable function 
 \begin_inset Formula $X$
 \end_inset
 
@@ -624,32 +768,37 @@ Conditional expectation: Given a probability space
 \begin_inset Formula $E\left|X\right|<\infty$
 \end_inset
 
-, the conditional expectation 
-\begin_inset Formula $E\left[X|\mathcal{F}\right]$
+, the 
+\emph on
+conditional expectation
+\emph default
+ 
+\begin_inset Formula $E\left[X|\mathcal{G}\right]$
 \end_inset
 
  is defined as a 
-\begin_inset Formula $\mathcal{F}$
+\begin_inset Formula $\mathcal{G}$
 \end_inset
 
- measurable function 
-\begin_inset Formula $Y$
-\end_inset
-
- such that 
-\begin_inset Formula $\int_{A}XdP=\int_{A}YdP$
+-measurable function such that 
+\begin_inset Formula $\int_{A}XdP=\int_{A}E\left[X|\mathcal{G}\right]dP$
 \end_inset
 
  for all 
-\begin_inset Formula $A\in\mathcal{F}$
+\begin_inset Formula $A\in\mathcal{G}$
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Itemize
-Law of iterated expectation: 
-\begin_inset Formula $E\left[E\left[Y|X\right]\right]=E\left[Y\right]$
+Law of iterated expectation
+\begin_inset Formula 
+\[
+E\left[E\left[Y|X\right]\right]=E\left[Y\right]
+\]
+
 \end_inset
 
  is a trivial fact from the definition of the conditional expectation by
@@ -692,25 +841,36 @@ Properties of conditional expectations
 \end_layout
 
 \end_deeper
+\begin_layout Subsection
+Elementary Formulation
+\end_layout
+
 \begin_layout Itemize
 Conditional distribution 
 \end_layout
 
 \begin_layout Itemize
-Elementary formulation
-\end_layout
+conditional probability
+\begin_inset Formula 
+\[
+P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\right)P\left(A\right)}{P\left(B\right)}.
+\]
 
-\begin_deeper
-\begin_layout Itemize
-conditional distribution 
-\begin_inset Formula $f\left(Y,X\right)=f\left(X,Y\right)/f\left(X\right)$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-marginal distribution 
+conditional density 
+\begin_inset Formula $f\left(Y|X\right)=f\left(X,Y\right)/f\left(X\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+marginal density 
 \begin_inset Formula $f\left(Y\right)=\int f\left(X,Y\right)dX$
 \end_inset
 
@@ -726,7 +886,11 @@ conditional expectation
 \end_layout
 
 \begin_layout Itemize
-law of iterated expectation
+proof of law of iterated expectation 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{align*}
 E\left[E\left[Y|X\right]\right] & =\int E\left[Y|X\right]f\left(X\right)dX=\int\left(\int Yf\left(Y|X\right)dY\right)f\left(X\right)dX=\int\int Yf\left(Y|X\right)f\left(X\right)dYdX\\
@@ -738,19 +902,11 @@ E\left[E\left[Y|X\right]\right] & =\int E\left[Y|X\right]f\left(X\right)dX=\int\
 
 \end_layout
 
-\begin_layout Itemize
-Bayes theorem
-\begin_inset Formula 
-\[
-P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\right)P\left(A\right)}{P\left(B\right)}.
-\]
-
 \end_inset
 
 
 \end_layout
 
-\end_deeper
 \begin_layout Section
 Independence
 \end_layout
@@ -763,41 +919,53 @@ Independence
 \begin_inset Formula $Y$
 \end_inset
 
- are independent if 
-\begin_inset Formula $P\left(x,y\right)=P\left(x\right)P\left(y\right).$
+ are 
+\emph on
+independent
+\emph default
+ if 
+\begin_inset Formula $P\left[X\in A,Y\in B\right]=P\left(X\in A\right)P\left(Y\in B\right)$
 \end_inset
 
- 
+ for all 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Law of large numbers.
- Let 
-\begin_inset Formula $Z_{n}=\frac{1}{n}\sum_{i=1}^{n}X_{i}$
+Application: (Chebyshev law of large numbers) If 
+\begin_inset Formula $X_{1},X_{2},\ldots,X_{n}$
+\end_inset
+
+ are independent, and they have the same mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and variance 
+\begin_inset Formula $\sigma^{2}<\infty$
 \end_inset
 
 .
- 
-\begin_inset Formula $\mathrm{var}\left(Z_{n}\right)=\frac{\sum\sigma_{i}^{2}}{n^{2}}.$
+ Let 
+\begin_inset Formula $Z_{n}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\mu\right)$
 \end_inset
 
-
-\begin_inset Formula 
-\[
-P\left(\left|Z_{n}\right|>\epsilon\right)\leq\frac{E\left[Z^{2}\right]}{\epsilon^{2}}=\frac{\sum\sigma_{i}^{2}}{n^{2}\epsilon^{2}}.
-\]
-
-\end_inset
-
-As 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-, the probability 
+.
+ Then the probability 
 \begin_inset Formula $P\left(\left|Z_{n}\right|>\epsilon\right)\to0$
 \end_inset
 
-.
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+,
 \end_layout
 
 \end_body
