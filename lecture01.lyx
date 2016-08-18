@@ -552,18 +552,6 @@ qnorm
 rnorm
 \family default
 .
- Execute online 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.tutorialspoint.com/execute_r_online.php
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \end_body
