@@ -1,6 +1,7 @@
 ## LyX
 *.lyx~
 *.lyx#
+*.Rdata
 
 ## SWP
 *.bak

@@ -254,7 +254,7 @@ of
 \end_inset
 
 .
- The popular notation 
+ We often use the popular notation 
 \begin_inset Formula $E\left[X\right]$
 \end_inset
 
@@ -262,7 +262,7 @@ of
 \begin_inset Formula $\int X\mathrm{d}P$
 \end_inset
 
-, is just for convenience.
+, for convenience.
  
 \end_layout
 
@@ -533,22 +533,6 @@ Elementary Formulation
 \end_layout
 
 \begin_layout Itemize
-conditional distribution 
-\end_layout
-
-\begin_layout Itemize
-conditional probability
-\begin_inset Formula 
-\[
-P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\right)P\left(A\right)}{P\left(B\right)}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
 conditional density 
 \begin_inset Formula $f\left(Y|X\right)=f\left(X,Y\right)/f\left(X\right)$
 \end_inset
@@ -588,6 +572,18 @@ E\left[E\left[Y|X\right]\right] & =\int E\left[Y|X\right]f\left(X\right)dX=\int\
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+conditional probability, or Bayes' Theorem
+\begin_inset Formula 
+\[
+P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\right)P\left(A\right)}{P\left(B\right)}.
+\]
 
 \end_inset
 
