@@ -1,0 +1,55 @@
+---
+title: "Law of Large Numbers"
+author: Zhentao Shi
+output: html_document
+---
+
+This script demonstrates the law of large numbers (LLN) along with the underlying assumptions.
+
+Write a function to generate the sample mean given the sample size $n$ and the distribution.
+We allow three distributions, namely, $N(0,1)$, $t(2)$ and Cauchy.
+
+```{r}
+
+sample_mean = function( n, distribution ){
+  if (distribution == "normal"){ y = rnorm( n ) } 
+  else if (distribution == "t2") {y = rt(n, 2) }
+  else if (distribution == "cauchy") {y = rcauchy(n) }
+  return( mean(y) )
+}
+```
+
+This function plots the sample mean over the path of geometrically increasing sample size.
+
+```{r}
+LLN_plot = function(distribution){
+  
+  y_bar = rep(0, length(NN) )
+  
+  for ( i in 1:length(NN)){
+    n = NN[i]
+    y_bar[i] = sample_mean(n, distribution)
+  }
+  
+  plot(y_bar, type = "l", col = "red", ylab = "mean", xlab = "", lwd = 2)
+  abline(h = 0, lty = 2)
+  return(y_bar)
+}
+```
+
+The sample size is chosen as $2^x$, where $x=1:20$. We have the following observations.
+
+* When the distribution is $N(0,1)$, the Chebyshev LLN works. The sample mean converges fast.
+* When the distribution is $t(2)$, which has zero mean but infinite variance, the Kolmogorov LLN works. The sample mean still converges, though more slowly than the $N(0,1)$ case.
+* The Cauchy distribution has no moment at any order. The sample mean does not converge no matter how large is the sample size.
+
+
+```{r}
+NN = 2^(1:20)
+
+LLN_plot("normal")
+
+LLN_plot("t2")
+
+LLN_plot("cauchy")
+```
