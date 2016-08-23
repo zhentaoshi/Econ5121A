@@ -1,0 +1,36 @@
+---
+title: "Degree of Excess"
+author: Zhentao Shi
+output: html_document
+---
+
+This script computes the up-to-date degree of excess from the return time series of Shanghai Stock Exchange Composite Index.
+  
+We download data from Yahoo Finance, and check the head and tail of the dataset.
+
+```{r}  
+# install.packages("timeDate") # if use the packages for the first time, must install it.
+library(timeDate) # load a package
+
+SS = read.csv("http://ichart.finance.yahoo.com/table.csv?s=000001.SS") 
+# download data of SSE composite index
+
+head(SS)
+tail(SS)
+# display the dataset
+```
+
+Then we generate the time series of log return $R_{t} = \log p_{t} - \log p_{t-1}$.
+
+```{r}
+sc = rev(SS$Close) # revert the time series
+T = dim(SS)[1] # compute the length of the time series
+return = log( sc[2:T] ) - log( sc[1:(T-1)] ) # compute the log return
+plot(return, type="l")
+```
+
+Finally, we compute the degree of excess, which is $E[ (X - \mu)^4 / \sigma^4 ] - 3$.
+```{r}
+k = kurtosis(return)
+print(k)
+```
