@@ -552,18 +552,6 @@ qnorm
 rnorm
 \family default
 .
- Execute online 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.tutorialspoint.com/execute_r_online.php
-\end_layout
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
@@ -580,18 +568,165 @@ name "expectation"
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsection
+Integration
+\end_layout
 
+\begin_layout Itemize
+\begin_inset Formula $X$
+\end_inset
+
+ is called a 
 \emph on
-Expected value, 
+simple function
+\emph default
+ on a measurable space 
+\begin_inset Formula $\left(\Omega,\mathcal{F}\right)$
+\end_inset
+
+ if 
+\begin_inset Formula $X=\sum_{i}a_{i}1\left\{ A_{i}\right\} $
+\end_inset
+
+ is a finite sum, where 
+\begin_inset Formula $a_{i}\in\mathbb{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{i}\in\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\left(\Omega,\mathcal{F},\mu\right)$
+\end_inset
+
+ be a measure space and 
+\begin_inset Formula $a_{i}\geq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ The integral of 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\int X\mathrm{d}\mu=\sum_{i}a_{i}\mu\left(A_{i}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a non-negative measurable function.
+ The integral of 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\int X\mathrm{d}\mu=\sup\left\{ \int Y\mathrm{d}\mu:0\leq Y\leq X,\text{ }Y\text{ is simple}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a measurable function.
+ Define 
+\begin_inset Formula $X^{+}=\max\left\{ X,0\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $X^{-}=-\min\left\{ X,0\right\} $
+\end_inset
+
+.
+ Both 
+\begin_inset Formula $X^{+}$
+\end_inset
+
+ and 
+\begin_inset Formula $X^{-}$
+\end_inset
+
+ are non-negative functions.
+ The integral of 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\int f\mathrm{d}\mu=\int f^{+}\mathrm{d}\mu-\int f^{-}\mathrm{d}\mu.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If the measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is a probability measure 
+\begin_inset Formula $P$
+\end_inset
+
+, then the integral 
+\begin_inset Formula $\int X\mathrm{d}P$
+\end_inset
+
+ is called the 
+\emph on
+expected value, 
 \emph default
 or
 \emph on
- expectation,
+ expectation, 
 \emph default
- is an average of a random variable.
- Expectation is nothing but an integral.
- We write 
+of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ We often use the popular notation 
 \begin_inset Formula $E\left[X\right]$
 \end_inset
 
@@ -599,8 +734,12 @@ or
 \begin_inset Formula $\int X\mathrm{d}P$
 \end_inset
 
-, just for a concise notation when the underlying probability measure is
- clear.
+, for convenience.
+ 
+\end_layout
+
+\begin_layout Subsection
+Properties
 \end_layout
 
 \begin_layout Itemize
@@ -616,15 +755,7 @@ Elementary calculation:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $P\left(X\in A\right)=E\left[1\left\{ X\in A\right\} \right]$
-\end_inset
-
-, where 
-\begin_inset Formula $1\left\{ \cdot\right\} $
-\end_inset
-
- is the indicator function, and 
-\begin_inset Formula $\left\{ X\in A\right\} =\left\{ \omega\in\Omega:X\left(\omega\right)\in A\right\} $
+\begin_inset Formula $E\left[1\left\{ A\right\} \right]=P\left(A\right)$
 \end_inset
 
 .
@@ -674,6 +805,20 @@ Skewness coefficient
 .
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Application: 
+\begin_inset CommandInset href
+LatexCommand href
+name "The formula that killed Wall Street"
+target "http://archive.wired.com/techbiz/it/magazine/17-03/wp_quant?currentPage=all"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Jensen's inequality.
  If 
@@ -687,14 +832,42 @@ Jensen's inequality.
 
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
-Chebyshev inequality: 
+Application: Kullback-Leibler distance 
+\begin_inset Formula $d\left(p,q\right)=\int\log\left(p/q\right)\mathrm{d}P=E_{P}\left[\log\left(p/q\right)\right]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Markov inequality: if 
+\begin_inset Formula $E\left[\left|X\right|^{r}\right]$
+\end_inset
+
+ exists, then 
+\begin_inset Formula $P\left(\left|X\right|>\epsilon\right)\leq E\left[\left|X\right|^{r}\right]/\epsilon^{r}$
+\end_inset
+
+ for all 
+\begin_inset Formula $r\geq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Application: Chebyshev inequality: 
 \begin_inset Formula $P\left(\left|X\right|>\epsilon\right)\leq E\left[X^{2}\right]/\epsilon^{2}.$
 \end_inset
 
 
 \end_layout
 
+\end_deeper
 \begin_layout Section
 Multivariate Random Variable
 \end_layout
@@ -710,7 +883,7 @@ Bivariate random variable:
 
 \begin_layout Itemize
 Multivariate random variable 
-\begin_inset Formula $X:\Omega\mapsto\mathbb{R}^{d}$
+\begin_inset Formula $X:\Omega\mapsto\mathbb{R}^{n}$
 \end_inset
 
 .
@@ -718,11 +891,121 @@ Multivariate random variable
 
 \begin_layout Itemize
 Joint CDF: 
-\begin_inset Formula $F\left(x_{1},\ldots,x_{d}\right)=P\left(X_{1}\leq x_{1},\ldots,X_{d}\leq x_{d}\right)$
+\begin_inset Formula $F\left(x_{1},\ldots,x_{n}\right)=P\left(X_{1}\leq x_{1},\ldots,X_{n}\leq x_{n}\right)$
 \end_inset
 
 .
  Joint PDF is defined similarly.
+\end_layout
+
+\begin_layout Subsection
+Elementary Formulas
+\end_layout
+
+\begin_layout Itemize
+conditional density 
+\begin_inset Formula $f\left(Y|X\right)=f\left(X,Y\right)/f\left(X\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+marginal density 
+\begin_inset Formula $f\left(Y\right)=\int f\left(X,Y\right)dX$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+conditional expectation 
+\begin_inset Formula $E\left[Y|X\right]=\int Yf\left(Y|X\right)dY$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+proof of law of iterated expectation 
+\begin_inset Formula 
+\begin{align*}
+E\left[E\left[Y|X\right]\right] & =\int E\left[Y|X\right]f\left(X\right)dX=\int\left(\int Yf\left(Y|X\right)dY\right)f\left(X\right)dX=\int\int Yf\left(Y|X\right)f\left(X\right)dYdX\\
+ & =\int\int Yf\left(X,Y\right)dYdX=\int Y\left(\int f\left(X,Y\right)dX\right)dY=\int YdY=E\left[Y\right].
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+conditional probability, or Bayes' Theorem 
+\begin_inset Formula $P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\right)P\left(A\right)}{P\left(B\right)}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Independence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are 
+\emph on
+independent
+\emph default
+ if 
+\begin_inset Formula $P\left(X\in A,Y\in B\right)=P\left(X\in A\right)P\left(Y\in B\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Application: (Chebyshev law of large numbers) If 
+\begin_inset Formula $X_{1},X_{2},\ldots,X_{n}$
+\end_inset
+
+ are independent, and they have the same mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and variance 
+\begin_inset Formula $\sigma^{2}<\infty$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $Z_{n}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\mu\right)$
+\end_inset
+
+.
+ Then the probability 
+\begin_inset Formula $P\left(\left|Z_{n}\right|>\epsilon\right)\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+,
 \end_layout
 
 \begin_layout Subsection
@@ -827,131 +1110,16 @@ Properties of conditional expectations
 \end_layout
 
 \end_deeper
-\begin_layout Subsection
-Elementary Formulation
-\end_layout
-
-\begin_layout Itemize
-conditional distribution 
-\end_layout
-
-\begin_layout Itemize
-conditional probability
-\begin_inset Formula 
-\[
-P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\right)P\left(A\right)}{P\left(B\right)}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-conditional density 
-\begin_inset Formula $f\left(Y|X\right)=f\left(X,Y\right)/f\left(X\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-marginal density 
-\begin_inset Formula $f\left(Y\right)=\int f\left(X,Y\right)dX$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-conditional expectation 
-\begin_inset Formula $E\left[Y|X\right]=\int Yf\left(Y|X\right)dY$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-proof of law of iterated expectation 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{align*}
-E\left[E\left[Y|X\right]\right] & =\int E\left[Y|X\right]f\left(X\right)dX=\int\left(\int Yf\left(Y|X\right)dY\right)f\left(X\right)dX=\int\int Yf\left(Y|X\right)f\left(X\right)dYdX\\
- & =\int\int Yf\left(X,Y\right)dYdX=\int Y\left(\int f\left(X,Y\right)dX\right)dY=\int YdY=E\left[Y\right].
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Independence
-\end_layout
-
 \begin_layout Standard
-\begin_inset Formula $X$
+Application: Regression 
+\begin_inset Formula $Y=E\left[Y|X\right]+\epsilon$
 \end_inset
 
- and 
-\begin_inset Formula $Y$
-\end_inset
-
- are 
-\emph on
-independent
-\emph default
- if 
-\begin_inset Formula $P\left[X\in A,Y\in B\right]=P\left(X\in A\right)P\left(Y\in B\right)$
-\end_inset
-
- for all 
-\begin_inset Formula $A$
-\end_inset
-
- and 
-\begin_inset Formula $B$
+, where 
+\begin_inset Formula $\epsilon=Y-E\left[Y|X\right]$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-Application: (Chebyshev law of large numbers) If 
-\begin_inset Formula $X_{1},X_{2},\ldots,X_{n}$
-\end_inset
-
- are independent, and they have the same mean 
-\begin_inset Formula $\mu$
-\end_inset
-
- and variance 
-\begin_inset Formula $\sigma^{2}<\infty$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $Z_{n}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\mu\right)$
-\end_inset
-
-.
- Then the probability 
-\begin_inset Formula $P\left(\left|Z_{n}\right|>\epsilon\right)\to0$
-\end_inset
-
- as 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-,
 \end_layout
 
 \end_body

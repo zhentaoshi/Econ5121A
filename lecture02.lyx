@@ -411,7 +411,7 @@ Bivariate random variable:
 
 \begin_layout Itemize
 Multivariate random variable 
-\begin_inset Formula $X:\Omega\mapsto\mathbb{R}^{d}$
+\begin_inset Formula $X:\Omega\mapsto\mathbb{R}^{n}$
 \end_inset
 
 .
@@ -419,11 +419,130 @@ Multivariate random variable
 
 \begin_layout Itemize
 Joint CDF: 
-\begin_inset Formula $F\left(x_{1},\ldots,x_{d}\right)=P\left(X_{1}\leq x_{1},\ldots,X_{d}\leq x_{d}\right)$
+\begin_inset Formula $F\left(x_{1},\ldots,x_{n}\right)=P\left(X_{1}\leq x_{1},\ldots,X_{n}\leq x_{n}\right)$
 \end_inset
 
 .
  Joint PDF is defined similarly.
+\end_layout
+
+\begin_layout Subsection
+Elementary Formulas
+\end_layout
+
+\begin_layout Itemize
+conditional density 
+\begin_inset Formula $f\left(Y|X\right)=f\left(X,Y\right)/f\left(X\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+marginal density 
+\begin_inset Formula $f\left(Y\right)=\int f\left(X,Y\right)dX$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+conditional expectation 
+\begin_inset Formula $E\left[Y|X\right]=\int Yf\left(Y|X\right)dY$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+proof of law of iterated expectation 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+E\left[E\left[Y|X\right]\right] & =\int E\left[Y|X\right]f\left(X\right)dX=\int\left(\int Yf\left(Y|X\right)dY\right)f\left(X\right)dX=\int\int Yf\left(Y|X\right)f\left(X\right)dYdX\\
+ & =\int\int Yf\left(X,Y\right)dYdX=\int Y\left(\int f\left(X,Y\right)dX\right)dY=\int YdY=E\left[Y\right].
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+conditional probability, or Bayes' Theorem 
+\begin_inset Formula $P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\right)P\left(A\right)}{P\left(B\right)}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Independence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are 
+\emph on
+independent
+\emph default
+ if 
+\begin_inset Formula $P\left(X\in A,Y\in B\right)=P\left(X\in A\right)P\left(Y\in B\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Application: (Chebyshev law of large numbers) If 
+\begin_inset Formula $X_{1},X_{2},\ldots,X_{n}$
+\end_inset
+
+ are independent, and they have the same mean 
+\begin_inset Formula $\mu$
+\end_inset
+
+ and variance 
+\begin_inset Formula $\sigma^{2}<\infty$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $Z_{n}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\mu\right)$
+\end_inset
+
+.
+ Then the probability 
+\begin_inset Formula $P\left(\left|Z_{n}\right|>\epsilon\right)\to0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+,
 \end_layout
 
 \begin_layout Subsection
@@ -528,73 +647,8 @@ Properties of conditional expectations
 \end_layout
 
 \end_deeper
-\begin_layout Subsection
-Elementary Formulation
-\end_layout
-
-\begin_layout Itemize
-conditional density 
-\begin_inset Formula $f\left(Y|X\right)=f\left(X,Y\right)/f\left(X\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-marginal density 
-\begin_inset Formula $f\left(Y\right)=\int f\left(X,Y\right)dX$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-conditional expectation 
-\begin_inset Formula $E\left[Y|X\right]=\int Yf\left(Y|X\right)dY$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-proof of law of iterated expectation 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{align*}
-E\left[E\left[Y|X\right]\right] & =\int E\left[Y|X\right]f\left(X\right)dX=\int\left(\int Yf\left(Y|X\right)dY\right)f\left(X\right)dX=\int\int Yf\left(Y|X\right)f\left(X\right)dYdX\\
- & =\int\int Yf\left(X,Y\right)dYdX=\int Y\left(\int f\left(X,Y\right)dX\right)dY=\int YdY=E\left[Y\right].
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-conditional probability, or Bayes' Theorem
-\begin_inset Formula 
-\[
-P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\right)P\left(A\right)}{P\left(B\right)}.
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Application: Regression
-\end_layout
-
-\begin_layout Itemize
+\begin_layout Standard
+Application: Regression 
 \begin_inset Formula $Y=E\left[Y|X\right]+\epsilon$
 \end_inset
 
@@ -603,67 +657,6 @@ Application: Regression
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Section
-Independence
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $X$
-\end_inset
-
- and 
-\begin_inset Formula $Y$
-\end_inset
-
- are 
-\emph on
-independent
-\emph default
- if 
-\begin_inset Formula $P\left(X\in A,Y\in B\right)=P\left(X\in A\right)P\left(Y\in B\right)$
-\end_inset
-
- for all 
-\begin_inset Formula $A$
-\end_inset
-
- and 
-\begin_inset Formula $B$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Application: (Chebyshev law of large numbers) If 
-\begin_inset Formula $X_{1},X_{2},\ldots,X_{n}$
-\end_inset
-
- are independent, and they have the same mean 
-\begin_inset Formula $\mu$
-\end_inset
-
- and variance 
-\begin_inset Formula $\sigma^{2}<\infty$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $Z_{n}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\mu\right)$
-\end_inset
-
-.
- Then the probability 
-\begin_inset Formula $P\left(\left|Z_{n}\right|>\epsilon\right)\to0$
-\end_inset
-
- as 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-,
 \end_layout
 
 \end_body
