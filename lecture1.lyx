@@ -1062,7 +1062,7 @@ conditional expectation
 \end_layout
 
 \begin_layout Itemize
-Law of iterated expectation
+Law of iterated expectations
 \begin_inset Formula 
 \[
 E\left[E\left[Y|X\right]\right]=E\left[Y\right]
