@@ -114,7 +114,7 @@ In econometrics we will soon encounter
 
 \begin_layout Plain Layout
 We know that 
-\begin_inset Formula $P\left(A|B\right)=P\left(A,B\right)/P\left(B\right)$
+\begin_inset Formula $P\left(A|B\right)=P\left(AB\right)/P\left(B\right)$
 \end_inset
 
 .
@@ -471,89 +471,6 @@ Properties:
 
 \end_layout
 
-\begin_layout Subsection
-Examples
-\end_layout
-
-\begin_layout Itemize
-Binary, Poisson, 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
- 
-\begin_inset Formula $\frac{e^{-\lambda}\lambda^{k}}{k!}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- uniform, normal, 
-\begin_inset Formula $\chi^{2}$
-\end_inset
-
-, 
-\begin_inset Formula $t$
-\end_inset
-
-, 
-\begin_inset Formula $F$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Parametric distribution verses nonparametric distribution.
-\end_layout
-
-\begin_layout Itemize
-Implementation in 
-\family typewriter
-R
-\family default
-: 
-\family typewriter
-d 
-\family default
-for density,
-\family typewriter
- p 
-\family default
-for probability,
-\family typewriter
- q 
-\family default
-for quantile,
-\family typewriter
- 
-\family default
-and
-\family typewriter
- r 
-\family default
-for random variable.
- For instance, 
-\family typewriter
-dnorm
-\family default
-, 
-\family typewriter
-pnorm
-\family default
-, 
-\family typewriter
-qnorm
-\family default
-, and 
-\family typewriter
-rnorm
-\family default
-.
-\end_layout
-
 \begin_layout Section
 Expected Value
 \end_layout
@@ -805,20 +722,6 @@ Skewness coefficient
 .
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Application: 
-\begin_inset CommandInset href
-LatexCommand href
-name "The formula that killed Wall Street"
-target "http://archive.wired.com/techbiz/it/magazine/17-03/wp_quant?currentPage=all"
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 Jensen's inequality.
  If 
@@ -832,16 +735,6 @@ Jensen's inequality.
 
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Application: Kullback-Leibler distance 
-\begin_inset Formula $d\left(p,q\right)=\int\log\left(p/q\right)\mathrm{d}P=E_{P}\left[\log\left(p/q\right)\right]$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 Markov inequality: if 
 \begin_inset Formula $E\left[\left|X\right|^{r}\right]$
@@ -858,16 +751,6 @@ Markov inequality: if
 .
 \end_layout
 
-\begin_deeper
-\begin_layout Itemize
-Application: Chebyshev inequality: 
-\begin_inset Formula $P\left(\left|X\right|>\epsilon\right)\leq E\left[X^{2}\right]/\epsilon^{2}.$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Section
 Multivariate Random Variable
 \end_layout
@@ -896,6 +779,33 @@ Joint CDF:
 
 .
  Joint PDF is defined similarly.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are 
+\emph on
+independent
+\emph default
+ if 
+\begin_inset Formula $P\left(X\in A,Y\in B\right)=P\left(X\in A\right)P\left(Y\in B\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -945,67 +855,6 @@ conditional probability, or Bayes' Theorem
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Independence
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $X$
-\end_inset
-
- and 
-\begin_inset Formula $Y$
-\end_inset
-
- are 
-\emph on
-independent
-\emph default
- if 
-\begin_inset Formula $P\left(X\in A,Y\in B\right)=P\left(X\in A\right)P\left(Y\in B\right)$
-\end_inset
-
- for all 
-\begin_inset Formula $A$
-\end_inset
-
- and 
-\begin_inset Formula $B$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Application: (Chebyshev law of large numbers) If 
-\begin_inset Formula $X_{1},X_{2},\ldots,X_{n}$
-\end_inset
-
- are independent, and they have the same mean 
-\begin_inset Formula $\mu$
-\end_inset
-
- and variance 
-\begin_inset Formula $\sigma^{2}<\infty$
-\end_inset
-
-.
- Let 
-\begin_inset Formula $Z_{n}=\frac{1}{n}\sum_{i=1}^{n}\left(X_{i}-\mu\right)$
-\end_inset
-
-.
- Then the probability 
-\begin_inset Formula $P\left(\left|Z_{n}\right|>\epsilon\right)\to0$
-\end_inset
-
- as 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-,
 \end_layout
 
 \begin_layout Subsection
@@ -1110,17 +959,5 @@ Properties of conditional expectations
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-Application: Regression 
-\begin_inset Formula $Y=E\left[Y|X\right]+\epsilon$
-\end_inset
-
-, where 
-\begin_inset Formula $\epsilon=Y-E\left[Y|X\right]$
-\end_inset
-
-.
-\end_layout
-
 \end_body
 \end_document
