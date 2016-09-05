@@ -3,26 +3,24 @@
   <head>
     <meta charset="UTF-8">
     <title>Econometrics I by zhentaoshi</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <div id="wrapper">
+
+    	<div id="header">
+    		<div id="nav"><a href="index.html">Home</a>  | <a href="outline.html">Course Outline</a> | <a href="lecture_notes.html">Lecture Notes</a> | <a href="exercise.html">Exercises</a>  </div>
+    		<div id="bg"></div>
+    	</div>
+
+
     <section class="page-header">
-      <h1 class="project-name">Econometrics I</h1>
-      <h2 class="project-tagline">Teaching materials for Econ5121A</h2>
+      <h1 class="project-name">Econ5121A: Econometric Theory and Applications (Fall, 2016)</h1>
       <a href="https://github.com/zhentaoshi/Econ5121A" class="btn">View on GitHub</a>
-      <a href="https://github.com/zhentaoshi/Econ5121A/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/zhentaoshi/Econ5121A/tarball/master" class="btn">Download .tar.gz</a>
     </section>
 
     <section class="main-content">
       <p>The Chinese University of Hong Kong</p>
-
-<h2>
-<a id="econometric-theory-and-applications-fall-2016" class="anchor" href="#econometric-theory-and-applications-fall-2016" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Econometric Theory and Applications (Fall, 2016)</h2>
 
 <p><strong>Instructor</strong>: Zhentao Shi (<a href="mailto:zhentao.shi@cuhk.edu.hk">zhentao.shi@cuhk.edu.hk</a>)</p>
 
@@ -40,109 +38,6 @@
 <li>Fumio Hayashi (2000): <a href="http://press.princeton.edu/titles/6946.html">Econometrics</a>, Princeton University Press</li>
 </ul>
 
-<p><strong>Course outline</strong></p>
-
-<ul>
-<li>Lecture 1: introduction and reviews
-
-<ul>
-<li>probability distributions, conditional expectation function</li>
-</ul>
-</li>
-<li>Lecture 2: conditional expectation model
-
-<ul>
-<li>best linear predictor, subvector regression</li>
-<li>omitted variable bias</li>
-</ul>
-</li>
-<li>Lecture 3: least squares estimator I: algebra
-
-<ul>
-<li>least squares, regression residuals, variance decomposition</li>
-<li>Frisch-Waugh-Lovell theorem</li>
-</ul>
-</li>
-<li>Lecture 4: least squares estimator II: statistical properties
-
-<ul>
-<li>unbiasedness, variance, Gauss-Markov theorem</li>
-<li>maximum likelihood estimation under normality</li>
-<li>exact distribution of t-statistic</li>
-</ul>
-</li>
-<li>Lecture 5: asymptotics I: theory
-
-<ul>
-<li>modes of convergence, law of large numbers</li>
-<li>convergence in distribution, central limit theorem</li>
-</ul>
-</li>
-<li>Lecture 6: asymptotics II: application to OLS
-
-<ul>
-<li>Lindeberg-Feller CLT</li>
-<li>continuous mapping theorem</li>
-<li>consistency and asymptotic normality of OLS estimator</li>
-<li>delta method, confidence interval</li>
-</ul>
-</li>
-<li>Lecture 7:  hypothesis testing I
-
-<ul>
-<li>hypothesis testing, size and power, p-value</li>
-</ul>
-</li>
-<li>Lecture 8: hypothesis testing II
-
-<ul>
-<li>Wald test, Lagrangian-multiplier test, likelihood-ratio test</li>
-<li>examples of tests</li>
-<li>local asymptotics</li>
-</ul>
-</li>
-<li>Lecture 9: bootstrap
-
-<ul>
-<li>the principle of bootstrap</li>
-<li>bootstrap bias, bootstrap variance, bootstrap confidence interval, bootstrap test</li>
-</ul>
-</li>
-<li>Lecture 10: panel data
-
-<ul>
-<li>panel data, fixed effect, random effect</li>
-</ul>
-</li>
-<li>Lecture 11: endogeneity
-
-<ul>
-<li>examples of endogeneity</li>
-</ul>
-</li>
-<li>Lecture 12: generalized method of moments
-
-<ul>
-<li>GMM in linear IV model, 2SLS</li>
-</ul>
-</li>
-</ul>
-
-<p><strong>Exercises</strong></p>
-
-<p>The exercise numbers refer to the 2015 version, not 2016 version</p>
-
-<ul>
-<li>Hansen Ex.2.1, 2.4, 2.6, 2.10, 2.11</li>
-<li>Hansen Ex.3.2, 3.4, 3.7, 3.9, 3.12, 3.13, 3.16, 3.20</li>
-<li>Hansen Ex.4.3, 4.4</li>
-<li>Hansen Ex.5.1, 5.2</li>
-<li>Hansen Ex.6.1, 6.2, 6.7</li>
-<li>Hansen Ex.6.11, 8.2, 8.3</li>
-<li>Hansen Ex.8.4</li>
-<li>Hansen Ex.10.1, 10.2, 10.4, 10.5, 10.6</li>
-<li>Hansen Ex.13.1, 13.2, 13.3</li>
-</ul>
 
 <p><strong>Software</strong></p>
 
@@ -161,28 +56,8 @@
 <li>Midterm 50%, Final: 50%</li>
 </ul>
 
-<h2>
-<a id="lecture-notes" class="anchor" href="#lecture-notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lecture Notes</h2>
-
-<p>This repository hosts an open-source writing project of lecture notes for the first-year gradate-level econometrics.
-They are companions of the my in-class teaching,
-but not substitute for lecture taking.</p>
-
-<p>My lectures are based primarily on <a href="http://www.ssc.wisc.edu/%7Ebhansen/econometrics/">Bruce Hansen's textbook</a>.</p>
-
-<p><strong>Caveat</strong>: This is an ongoing writing project not ready to publish.
-The text is very incomplete, and must contain many errors. <strong>Use them at your own risk!</strong></p>
-
-<p>Licensed under the <a href="https://creativecommons.org/licenses/by-nc/3.0/">Creative Commons Attribution-NonCommercial License 3.0</a>.</p>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/zhentaoshi/Econ5121A">Econometrics I</a> is maintained by <a href="https://github.com/zhentaoshi">zhentaoshi</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
     </section>
 
-  
+
   </body>
 </html>
