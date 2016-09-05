@@ -1,7 +1,7 @@
 * Layout */
 
 body {
-    font:normal 14px;
+  font:normal 14px Arial;
 	color:#2a3845;
 	margin:0;
 	padding:0;
@@ -9,6 +9,7 @@ body {
 }
 
 p {
+  font:normal 14px Arial;
 	margin:2;
 	padding:2;
 }
@@ -101,7 +102,8 @@ h3 {
 }
 
 ul {
-	padding:3;
+  font:normal 14px Arial;
+	padding:1;
 	margin:0 0 0 17px;
 	list-style:square url('http://img525.imageshack.us/img525/1890/bulletr.gif');
 }
