@@ -1,12 +1,15 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{Lecture Notes}
+\lhead{Lecture Notes, \today}
 \rhead{Zhentao Shi}
 \end_preamble
 \use_default_options false
@@ -19,26 +22,26 @@ theorems-ams-extended
 \language_package none
 \inputencoding auto
 \fontencoding default
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize 11
-\spacing onehalf
+\spacing double
 \use_hyperref false
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 0

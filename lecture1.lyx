@@ -37,7 +37,7 @@
 \spacing double
 \use_hyperref false
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 0
@@ -314,7 +314,11 @@ A function
 measurable
 \emph default
  if 
-\begin_inset Formula $X^{-1}\left(B\right)=\left\{ \omega\in\Omega:X\left(\omega\right)\in B\right\} \in\mathcal{F}$
+\begin_inset Formula 
+\[
+X^{-1}\left(B\right)=\left\{ \omega\in\Omega:X\left(\omega\right)\in B\right\} \in\mathcal{F}
+\]
+
 \end_inset
 
  for any 
@@ -335,24 +339,6 @@ measurable
 Random variable
 \emph default
  is an alternative name for a measurable function.
-\end_layout
-
-\begin_layout Itemize
-Discrete random variable: the set 
-\begin_inset Formula $\left\{ X\left(\omega\right):\omega\in\Omega\right\} $
-\end_inset
-
- is finite or countable.
- 
-\end_layout
-
-\begin_layout Itemize
-Continuous random variable: the set 
-\begin_inset Formula $\left\{ X\left(\omega\right):\omega\in\Omega\right\} $
-\end_inset
-
- is uncountable.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -382,7 +368,7 @@ induced
 
  .
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 example: assign value to the toss outcomes
@@ -390,7 +376,23 @@ example: assign value to the toss outcomes
 
 \end_inset
 
+ 
+\end_layout
 
+\begin_layout Itemize
+A measurable function is non-random; the randomness of the 
+\begin_inset Quotes eld
+\end_inset
+
+random variable
+\begin_inset Quotes erd
+\end_inset
+
+ is inherited from the underlying probability measure.
+\end_layout
+
+\begin_layout Itemize
+Discrete random variable and continuous random variable.
 \end_layout
 
 \begin_layout Subsection
@@ -710,47 +712,6 @@ Elementary calculation:
 .
 \end_layout
 
-\begin_layout Itemize
-Skewness coefficient 
-\begin_inset Formula $E\left[\left(X-\mu\right)^{3}\right]/\sigma^{3}$
-\end_inset
-
-, degree of excess 
-\begin_inset Formula $E\left[\left(X-\mu\right)^{4}\right]/\sigma^{4}-3$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Jensen's inequality.
- If 
-\begin_inset Formula $\varphi\left(\cdot\right)$
-\end_inset
-
- is a convex function, then 
-\begin_inset Formula $\varphi\left(E\left[X\right]\right)\leq E\left[\varphi\left(X\right)\right].$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Markov inequality: if 
-\begin_inset Formula $E\left[\left|X\right|^{r}\right]$
-\end_inset
-
- exists, then 
-\begin_inset Formula $P\left(\left|X\right|>\epsilon\right)\leq E\left[\left|X\right|^{r}\right]/\epsilon^{r}$
-\end_inset
-
- for all 
-\begin_inset Formula $r\geq1$
-\end_inset
-
-.
-\end_layout
-
 \begin_layout Section
 Multivariate Random Variable
 \end_layout
@@ -839,10 +800,11 @@ conditional expectation
 \begin_layout Itemize
 proof of law of iterated expectation 
 \begin_inset Formula 
-\begin{align*}
-E\left[E\left[Y|X\right]\right] & =\int E\left[Y|X\right]f\left(X\right)dX=\int\left(\int Yf\left(Y|X\right)dY\right)f\left(X\right)dX=\int\int Yf\left(Y|X\right)f\left(X\right)dYdX\\
- & =\int\int Yf\left(X,Y\right)dYdX=\int Y\left(\int f\left(X,Y\right)dX\right)dY=\int YdY=E\left[Y\right].
-\end{align*}
+\begin{eqnarray*}
+ &  & E\left[E\left[Y|X\right]\right]=\int E\left[Y|X\right]f\left(X\right)dX\\
+ & = & \int\left(\int Yf\left(Y|X\right)dY\right)f\left(X\right)dX=\int\int Yf\left(Y|X\right)f\left(X\right)dYdX\\
+ & = & \int\int Yf\left(X,Y\right)dYdX=\int Y\left(\int f\left(X,Y\right)dX\right)dY=\int YdY=E\left[Y\right].
+\end{eqnarray*}
 
 \end_inset
 
