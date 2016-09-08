@@ -2,6 +2,7 @@
 *.lyx~
 *.lyx#
 *.Rdata
+handwriting_notes/*.*
 
 ## SWP
 *.bak
