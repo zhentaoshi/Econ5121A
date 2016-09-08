@@ -86,22 +86,6 @@ theorems-ams-extended
 
 \begin_body
 
-\begin_layout Section
-Regression Model
-\begin_inset CommandInset label
-LatexCommand label
-name "regression-model"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We will talk about the conditional mean model and the linear projection
- model.
-\end_layout
-
 \begin_layout Standard
 
 \series bold
@@ -122,7 +106,7 @@ Notation
  random vector.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Conditional Expectation Model
 \begin_inset CommandInset label
 LatexCommand label
@@ -135,10 +119,14 @@ name "conditional-expectation-function"
 
 \begin_layout Standard
 A regression model can be written as 
-\begin_inset Formula $y=m\left(x\right)+\epsilon$
+\begin_inset Formula 
+\[
+y=m\left(x\right)+\epsilon,
+\]
+
 \end_inset
 
-, where 
+ where 
 \begin_inset Formula $m(x)=E[y|x]$
 \end_inset
 
@@ -155,14 +143,20 @@ conditional mean function
 regression error
 \emph default
 .
-\end_layout
+ Such an equation holds for 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
 
-\begin_layout Standard
-The error term 
+ that follows any joint distribution, as long as 
+\begin_inset Formula $E\left[y|x\right]$
+\end_inset
+
+ exists.
+ The error term 
 \begin_inset Formula $\epsilon$
 \end_inset
 
- satisfies the following properties.
+ satisfies these properties:
 \end_layout
 
 \begin_layout Itemize
@@ -196,7 +190,7 @@ The error term
 \end_layout
 
 \begin_layout Standard
-The last one means that 
+The last property implies that 
 \begin_inset Formula $\epsilon$
 \end_inset
 
@@ -208,63 +202,123 @@ The last one means that
 \end_layout
 
 \begin_layout Standard
-The conditional expectation function is of interest, because it is the best
- prediction of 
+If we are interested in predicting 
 \begin_inset Formula $y$
 \end_inset
 
- under the 
+ given 
+\begin_inset Formula $x$
+\end_inset
+
+, then the conditional mean function 
+\begin_inset Formula $E\left[y|x\right]$
+\end_inset
+
+ is 
+\begin_inset Quotes eld
+\end_inset
+
+optimal
+\begin_inset Quotes erd
+\end_inset
+
+ in terms of the 
 \emph on
 mean squared error
 \emph default
  (MSE).
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-The quadratic loss function is between 
-\begin_inset Formula $y$
-\end_inset
-
- and a prediction 
-\begin_inset Formula $g(x)$
-\end_inset
-
- is defined as 
-\begin_inset Formula $L\left(y,g\left(x\right)\right)=\left(y-g\left(x\right)\right)^{2},$
-\end_inset
-
- and its expectation 
-\begin_inset Formula $R\left(y,g\left(x\right)\right)=E\left[\left(y-g\left(x\right)\right)^{2}\right]$
-\end_inset
-
- is called the MSE.
-\end_layout
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Standard
-Among all the functions 
-\begin_inset Formula $g(X)$
+As 
+\begin_inset Formula $y$
 \end_inset
 
-, the conditional mean function 
+ is not a deterministic function of 
+\begin_inset Formula $x$
+\end_inset
+
+, we cannot predict it with certainty.
+ In order to evaluate different methods of prediction, we must therefore
+ propose a criterion for comparison.
+ For an arbitrary prediction method 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+, we employ a 
+\emph on
+loss function
+\emph default
+ 
+\begin_inset Formula $L\left(y,g\left(x\right)\right)$
+\end_inset
+
+ to measure how wrong is the prediction, and the expected value of the loss
+ function is called the 
+\emph on
+risk 
+\begin_inset Formula $R\left(y,g\left(x\right)\right)$
+\end_inset
+
+.
+ 
+\emph default
+The 
+\emph on
+quadratic loss function
+\emph default
+ is defined as 
+\begin_inset Formula 
+\[
+L\left(y,g\left(x\right)\right)=\left(y-g\left(x\right)\right)^{2},
+\]
+
+\end_inset
+
+ and the corresponding risk 
+\begin_inset Formula 
+\[
+R\left(y,g\left(x\right)\right)=E\left[\left(y-g\left(x\right)\right)^{2}\right]
+\]
+
+\end_inset
+
+ is called the MSE.
+ 
+\end_layout
+
+\begin_layout Standard
+Due to its operational convenience, MSE is one of the most widely used criterion.
+ Under MSE, the conditional expectation function happens to be the best
+ prediction method for 
+\begin_inset Formula $y$
+\end_inset
+
+ given 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ In other words, the conditional mean function 
 \begin_inset Formula $m\left(x\right)$
 \end_inset
 
  minimizes the MSE.
 \end_layout
 
-\begin_layout Proof
-We take a guess-and-verify approach.
- 
+\begin_layout Standard
+We can take a guess-and-verify approach to easy confirm this claim of optimality.
+ For a arbitrary 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+, the risk can be decomposed into three terms 
 \begin_inset Formula 
-\[
-E\left[\left(y-g\left(x\right)\right)^{2}\right]=E\left[\left(y-m\left(x\right)\right)^{2}\right]+2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right]+E\left[\left(m\left(x\right)-g\left(x\right)\right)^{2}\right].
-\]
+\begin{eqnarray*}
+ &  & E\left[\left(y-g\left(x\right)\right)^{2}\right]\\
+ & = & E\left[\left(y-m\left(x\right)\right)^{2}\right]+2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right]+E\left[\left(m\left(x\right)-g\left(x\right)\right)^{2}\right].
+\end{eqnarray*}
 
 \end_inset
 
@@ -273,23 +327,23 @@ The first term is irrelevant to
 \end_inset
 
 .
- The second term is 
+ The second term 
 \begin_inset Formula $2E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)\right]=0$
 \end_inset
 
-, which is again irrelevant of 
+ is again irrelevant of 
 \begin_inset Formula $g\left(x\right)$
 \end_inset
 
 .
- The third term is minimized at 
+ The third term, obviously, is minimized at 
 \begin_inset Formula $g\left(x\right)=m\left(x\right)$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Linear Projection Model
 \begin_inset CommandInset label
 LatexCommand label
@@ -307,32 +361,56 @@ As discussed in the previous section, we are interested in the conditional
 \end_inset
 
 .
- However, 
-\begin_inset Formula $m\left(x\right)$
+ However, remind that 
+\begin_inset Formula 
+\[
+m\left(x\right)=E\left[y|x\right]=\int yf\left(y|x\right)\mathrm{d}y
+\]
+
 \end_inset
 
- is a complex function depending on the joint distribution of 
+ is a complex function of 
+\begin_inset Formula $x$
+\end_inset
+
+, as it depends on the joint distribution of 
 \begin_inset Formula $\left(y,x\right)$
 \end_inset
 
 .
- A special case is 
-\begin_inset Formula $m\left(x\right)=x'\beta$
+ 
+\end_layout
+
+\begin_layout Standard
+A particular form of the conditional mean function is 
+\begin_inset Formula 
+\[
+m\left(x\right)=x'\beta,
+\]
+
 \end_inset
 
-, that is, the conditional mean function is a linear function of 
+a linear function of 
 \begin_inset Formula $x$
 \end_inset
 
 .
-\begin_inset Foot
-status open
+\end_layout
 
-\begin_layout Plain Layout
+\begin_layout Remark*
 The linear function is not as restrictive as one might thought.
- It can be used to generate some nonlinear (in random variables) effect.
+ It can be used to generate some nonlinear (in random variables) effect
+ if we re-define 
+\begin_inset Formula $x$
+\end_inset
+
+.
  For example, if 
-\begin_inset Formula $y=x_{1}\beta_{2}+x_{2}\beta_{2}+x_{1}x_{2}\beta_{3}+e,$
+\begin_inset Formula 
+\[
+y=x_{1}\beta_{2}+x_{2}\beta_{2}+x_{1}x_{2}\beta_{3}+e,
+\]
+
 \end_inset
 
  then 
@@ -347,27 +425,48 @@ The linear function is not as restrictive as one might thought.
 \begin_inset Formula $\beta$
 \end_inset
 
-.
-\end_layout
-
+ if we define a set of new regressors as 
+\begin_inset Formula $\left(\tilde{x}_{1},\tilde{x}_{2},\tilde{x}_{3}\right)=\left(x_{1},x_{2},x_{1}x_{2}\right)$
 \end_inset
 
- It is true if 
+.
+ 
+\end_layout
+
+\begin_layout Example*
+It is true if 
 \begin_inset Formula $\left(y,x\right)$
 \end_inset
 
  follows a joint normal distribution.
- Even if 
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+to be completed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Even though in general 
 \begin_inset Formula $m\left(x\right)\neq x'\beta$
 \end_inset
 
-, the linear 
+, the linear form 
 \begin_inset Formula $x'\beta$
 \end_inset
 
  is still useful as an approximation, as will be clear soon.
- Therefore, we may write the linear regression model, or the linear projection
- model, as 
+ Therefore, we may write the linear regression model, or the 
+\emph on
+linear projection model
+\emph default
+, as 
 \begin_inset Formula 
 \begin{eqnarray}
 y & = & x'\beta+e\label{eq:linear}\\
@@ -384,15 +483,16 @@ where
 \emph on
 projection error
 \emph default
-.
- Eq.(
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:Xe0"
-
+, to be distinguished from 
+\begin_inset Formula $\varepsilon=y-m\left(x\right)$
 \end_inset
 
-) implies that, if a constant is included in 
+.
+ 
+\end_layout
+
+\begin_layout Remark*
+If a constant is included in 
 \begin_inset Formula $x$
 \end_inset
 
@@ -400,12 +500,7 @@ reference "eq:Xe0"
 \begin_inset Formula $E\left[e\right]=0$
 \end_inset
 
- and moreover, 
-\begin_inset Formula $\mathrm{cov}\left(x,e\right)=E\left[xe\right]=0$
-\end_inset
-
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -427,11 +522,11 @@ The coefficient
 \begin_inset Formula $E[xx']$
 \end_inset
 
- is invertible, we explicitly solve 
+ is invertible, we can explicitly solve 
 \begin_inset Formula 
-\begin{equation}
-\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right].\label{eq:b_star}
-\end{equation}
+\[
+\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right].
+\]
 
 \end_inset
 
@@ -439,20 +534,24 @@ The coefficient
 \end_layout
 
 \begin_layout Standard
-Even if 
-\begin_inset Formula $m\left(x\right)\neq x'\beta$
+Now we justify 
+\begin_inset Formula $x'\beta$
 \end_inset
 
-, we are interested in 
-\begin_inset Formula $\beta$
+ as an approximation to 
+\begin_inset Formula $m\left(x\right)$
 \end_inset
 
- as is the 
+.
+ We claim that 
+\begin_inset Formula $x'\beta$
+\end_inset
+
+ is the best as is the 
 \emph on
 linear
 \emph default
- minimizer of the MSE.
- That is, 
+ minimizer of the MSE; in other words, 
 \begin_inset Formula 
 \begin{equation}
 \beta=\arg\min_{\beta\in\mathbb{R}^{K}}E\left[\left(y-x'\beta\right)^{2}\right].\label{eq:min_MSE}
@@ -460,26 +559,9 @@ linear
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
-We look for such a 
-\begin_inset Formula $\beta$
-\end_inset
-
- that minimizes 
-\begin_inset Formula $E\left[\left(y-x'\beta\right)^{2}\right]$
-\end_inset
-
-.
- Set the first order condition to zero, 
-\begin_inset Formula $2E\left[x\left(y-x'\beta\right)\right]=0$
-\end_inset
-
-.
- We solve 
-\begin_inset Formula $\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right].$
+This fact can be verified by taking the first-order condition of the above
+ minimization problem 
+\begin_inset Formula $\frac{\partial}{\partial\beta}E\left[\left(y-x'\beta\right)^{2}\right]=2E\left[x\left(y-x'\beta\right)\right]=0.$
 \end_inset
 
 
@@ -499,11 +581,7 @@ linear
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Proof
-If we replace 
+ If we replace 
 \begin_inset Formula $y$
 \end_inset
 
@@ -539,9 +617,19 @@ Therefore
 \end_inset
 
  under MSE.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+revised up here 9/8/2016
 \end_layout
 
-\begin_layout Subsubsection
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Subvector Regression
 \begin_inset CommandInset label
 LatexCommand label
