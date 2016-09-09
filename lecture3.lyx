@@ -1,12 +1,14 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{Lecture Notes}
+\lhead{Lecture Notes, \today}
 \rhead{Zhentao Shi}
 \end_preamble
 \use_default_options false
@@ -19,16 +21,16 @@ theorems-ams-extended-bytype
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format dvi
 \output_sync 1
@@ -48,7 +50,7 @@ theorems-ams-extended-bytype
 \pdf_backref false
 \pdf_pdfusetitle true
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 0
@@ -103,10 +105,6 @@ theorems-ams-extended-bytype
 
 \begin_body
 
-\begin_layout Section
-Algebra of Least Squares
-\end_layout
-
 \begin_layout Standard
 Notation: 
 \begin_inset Formula $y_{i}$
@@ -140,16 +138,20 @@ Notation:
  matrix.
 \end_layout
 
+\begin_layout Section
+Algebra of Least Squares
+\end_layout
+
 \begin_layout Subsection
 OLS estimator
 \end_layout
 
 \begin_layout Standard
-As we have learned from the previous lecture, the parameter 
+As we have learned from the linear project model, the parameter 
 \begin_inset Formula $\beta$
 \end_inset
 
- in the linear projection model 
+ 
 \begin_inset Formula 
 \begin{eqnarray*}
 y_{i} & = & x'_{i}\beta+e_{i}\\
@@ -162,11 +164,16 @@ can be written as
 \begin_inset Formula $\beta=\left(E\left[x_{i}x_{i}'\right]\right)^{-1}E\left[x_{i}y_{i}\right].$
 \end_inset
 
- In reality we possess a sample of 
+ 
+\end_layout
+
+\begin_layout Standard
+While population is something imaginary, in reality we possess a sample
+ of 
 \begin_inset Formula $n$
 \end_inset
 
- observations, not the population.
+ observations.
  We thus replace the population mean 
 \begin_inset Formula $E\left[\cdot\right]$
 \end_inset
@@ -197,7 +204,7 @@ Alternatively, we can derive the OLS estimator from minimizing the sum of
 \end_layout
 
 \begin_layout Standard
-Definitions and properties
+Here we introduce some definitions and properties from OLS estimation.
 \end_layout
 
 \begin_layout Itemize
@@ -299,7 +306,11 @@ The so-called R-square is the most popular measure of goodness-of-fit in
 \begin_inset Formula $M_{\iota}$
 \end_inset
 
- is the demeaner, that is, 
+ is the 
+\emph on
+demeaner
+\emph default
+, in the sense that 
 \begin_inset Formula $M_{\iota}\left(z_{1},\ldots,z_{n}\right)'=\left(z_{1}-\overline{z},\ldots,z_{n}-\overline{z}\right)'$
 \end_inset
 
@@ -338,7 +349,7 @@ where the last equality follows by
 \end_inset
 
 .
- R-square is 
+ R-square is defined as 
 \begin_inset Formula $\widehat{Y}'M_{\iota}\widehat{Y}/Y'M_{\iota}Y$
 \end_inset
 
@@ -501,7 +512,8 @@ The numerator follows a standard normal, and the denominator follows
 \end_inset
 
 .
- Therefore 
+ Moreover, the numerator and the denominator are independent.
+ As a result, 
 \begin_inset Formula $T_{k}\sim t\left(n-K\right)$
 \end_inset
 
