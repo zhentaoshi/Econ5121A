@@ -434,18 +434,21 @@ y=x_{1}\beta_{2}+x_{2}\beta_{2}+x_{1}x_{2}\beta_{3}+e,
 \end_layout
 
 \begin_layout Example*
-It is true if 
-\begin_inset Formula $\left(y,x\right)$
+If 
+\begin_inset Formula $\begin{pmatrix}y\\
+x
+\end{pmatrix}\sim\mathrm{N}\left(\begin{pmatrix}\mu_{y}\\
+\mu_{x}
+\end{pmatrix},\begin{pmatrix}\sigma_{y}^{2} & \rho\sigma_{y}\sigma_{x}\\
+\rho\sigma_{y}\sigma_{x} & \sigma_{x}^{2}
+\end{pmatrix}\right)$
 \end_inset
 
- follows a joint normal distribution.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-to be completed
-\end_layout
+, then 
+\begin_inset Formula 
+\[
+E\left[y|x\right]=\mu_{y}+\rho\frac{\sigma_{y}}{\sigma_{x}}\left(x-\mu_{x}\right)=\left(\mu_{y}-\rho\frac{\sigma_{y}}{\sigma_{x}}\mu_{x}\right)+\rho\frac{\sigma_{y}}{\sigma_{x}}x.
+\]
 
 \end_inset
 
@@ -646,14 +649,14 @@ Sometimes we are interested in a subvector of
 \end_inset
 
 .
- For example, when we include a constant and some variables in 
+ For example, when we include an intercept and some variables in 
 \begin_inset Formula $x$
 \end_inset
 
-, we are often more interested in the slope coefficients (those associated
- with the random variables), as they represent the effect of these explanatory
- factors.
- In the regression 
+, we are often more interested in the slope coefficients—the parameters
+ associated with the random regressors—as they represent the size of effect
+ of these explanatory factors.
+ In such a regression 
 \begin_inset Formula 
 \[
 y=\beta_{1}+x'\beta_{2}+e,
@@ -665,15 +668,19 @@ we take an expectation to get
 \begin_inset Formula $E\left[y\right]=\beta_{1}+E\left[x\right]'\beta_{2}.$
 \end_inset
 
- Differentiate the two equations to get 
+ Take the difference of the two equations, 
 \begin_inset Formula 
 \[
-y-E\left[y\right]=\left(x-E\left[x\right]\right)'\beta_{2},
+y-E\left[y\right]=\left(x-E\left[x\right]\right)'\beta_{2}.
 \]
 
 \end_inset
 
-so that 
+Therefore, we can explicitly solve 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+ as 
 \begin_inset Formula 
 \[
 \beta_{2}=\left(E\left[\left(x-E\left[x\right]\right)\left(x-E\left[x\right]\right)'\right]\right)^{-1}E\left[\left(x-E\left[x\right]\right)\left(y-E\left[y\right]\right)\right]=\left(\mbox{var}\left(x\right)\right)^{-1}\mbox{cov}\left(x,y\right),
@@ -685,8 +692,11 @@ This is a special case of the subvector regression.
 \end_layout
 
 \begin_layout Standard
-To discuss the general case, we need to know the formula of the inverse
- of the partitioned matrix, a fact from linear algebra.
+To discuss the general case, we need to know 
+\emph on
+the formula of the inverse of a partitioned matrix
+\emph default
+.
  If 
 \begin_inset Formula $Q=\begin{pmatrix}Q_{11} & Q_{12}\\
 Q_{21} & Q_{22}
@@ -745,7 +755,7 @@ E\left[x_{2}u\right] & = & 0
 
 \end_inset
 
-so that 
+so that the regressor error
 \begin_inset Formula 
 \[
 u=x_{1}-x_{2}'\gamma=x_{1}-x_{2}'\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}x_{1}'\right]=x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}
@@ -769,31 +779,38 @@ u=x_{1}-x_{2}'\gamma=x_{1}-x_{2}'\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\le
 
 \end_inset
 
-The nominator 
+The nominator is 
 \begin_inset Formula $E\left[u'y\right]=E\left[x_{1}y\right]-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}y\right]$
 \end_inset
 
 .
- The denominator 
+ The denominator is 
 \begin_inset Formula 
-\begin{eqnarray*}
-E\left[uu'\right] & = & E\left[\left(x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}\right)\left(x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}\right)'\right]=A_{11\cdot2}.
-\end{eqnarray*}
+\[
+E\left[uu'\right]=E\left[\left(x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}\right)\left(x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}\right)'\right]=A_{11\cdot2}.
+\]
 
 \end_inset
 
-We have verified that 
-\begin_inset Formula $\beta_{1}=\theta$
+We thus have verified that 
+\begin_inset Formula $\beta_{2}=\theta$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Subsection
-Omitted Variable Bias
+\begin_layout Standard
+While we have the formula for the whole vector, why do we bother to derive
+ the subvector formula? The subvector formula makes clear that the coefficient
+ represents the 
+\emph on
+partial effect
+\emph default
+ of the associate random variable.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
+Omitted Variable Bias
 \begin_inset CommandInset label
 LatexCommand label
 name "omitted-variable-bias"
@@ -804,16 +821,80 @@ name "omitted-variable-bias"
 \end_layout
 
 \begin_layout Standard
-Long regression is 
-\begin_inset Formula $y=x_{1}'\beta_{1}+x_{2}'\beta_{2}+e$
+We write the 
+\emph on
+long regression
+\emph default
+ as 
+\begin_inset Formula 
+\[
+y=x_{1}'\beta_{1}+x_{2}'\beta_{2}+e,
+\]
+
 \end_inset
 
-, and short regression is 
-\begin_inset Formula $y=x_{1}'\gamma+u.$
+ and the 
+\emph on
+short regression
+\emph default
+ as 
+\begin_inset Formula 
+\[
+y=x_{1}'\gamma+u.
+\]
+
 \end_inset
 
- To discuss how to sign the bias, we first demean all the variables, which
- is equivalent as if we project out the effect of the constant.
+If 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ in the long regression is the parameter of interest, omitting 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ as in the short regression will render 
+\emph on
+omitted variable bias
+\emph default
+ (meaning 
+\begin_inset Formula $\gamma\neq\beta_{1}$
+\end_inset
+
+) unless 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ are uncorrelated.
+\end_layout
+
+\begin_layout Standard
+Obviously we prefer to run the long regression if possible.
+ However, sometimes 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ is simply unobservable so the long regression is infeasible.
+ When only the short regression is available, in some cases we are able
+ to sign the bias, meaning that we know whether 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ is bigger or smaller than 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We first demean all the variables in the two regressions, which is equivalent
+ as if we project out the effect of the constant.
  The long regression becomes 
 \begin_inset Formula 
 \[
