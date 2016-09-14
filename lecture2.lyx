@@ -308,8 +308,8 @@ Due to its operational convenience, MSE is one of the most widely used criterion
 \end_layout
 
 \begin_layout Standard
-We can take a guess-and-verify approach to easy confirm this claim of optimality.
- For a arbitrary 
+We can take a guess-and-verify this claim of optimality.
+ For an arbitrary 
 \begin_inset Formula $g\left(x\right)$
 \end_inset
 
@@ -471,10 +471,10 @@ linear projection model
 \emph default
 , as 
 \begin_inset Formula 
-\begin{eqnarray}
-y & = & x'\beta+e\label{eq:linear}\\
-E[xe] & = & 0,\label{eq:Xe0}
-\end{eqnarray}
+\begin{eqnarray*}
+y & = & x'\beta+e\\
+E[xe] & = & 0,
+\end{eqnarray*}
 
 \end_inset
 
@@ -499,7 +499,7 @@ If a constant is included in
 \begin_inset Formula $x$
 \end_inset
 
-, we have 
+ as a regressor, we have 
 \begin_inset Formula $E\left[e\right]=0$
 \end_inset
 
@@ -546,18 +546,18 @@ Now we justify
 \end_inset
 
 .
- We claim that 
+ Indeed, 
 \begin_inset Formula $x'\beta$
 \end_inset
 
- is the best as is the 
+ is the optimal 
 \emph on
 linear
 \emph default
- minimizer of the MSE; in other words, 
+ predictor in terms of MSE; in other words, 
 \begin_inset Formula 
 \begin{equation}
-\beta=\arg\min_{\beta\in\mathbb{R}^{K}}E\left[\left(y-x'\beta\right)^{2}\right].\label{eq:min_MSE}
+\beta=\arg\min_{b\in\mathbb{R}^{K}}E\left[\left(y-x'b\right)^{2}\right].\label{eq:min_MSE}
 \end{equation}
 
 \end_inset
@@ -611,25 +611,11 @@ Therefore
 \begin_inset Formula $\beta$
 \end_inset
 
- is also the linear minimizer of 
-\begin_inset Formula $E\left[\left(m\left(x\right)-x'\beta\right)^{2}\right]$
-\end_inset
-
-, the best linear approximation to 
+ is also the best linear approximation to 
 \begin_inset Formula $m\left(x\right)$
 \end_inset
 
- under MSE.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-revised up here 9/8/2016
-\end_layout
-
-\end_inset
-
-
+ in terms of MSE.
 \end_layout
 
 \begin_layout Subsection
@@ -713,26 +699,43 @@ Q^{-1}=\begin{pmatrix}\left(Q_{11}-Q_{12}Q_{22}Q_{21}\right)^{-1} & -\left(Q_{11
 
 \end_inset
 
-Let 
-\begin_inset Formula $A_{11\cdot2}=E\left[x_{1}x_{1}'\right]-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}x_{1}'\right]$
+
+\end_layout
+
+\begin_layout Standard
+We apply the above formulate to the expression of 
+\begin_inset Formula $\beta$
 \end_inset
 
-, and 
-\begin_inset Formula $A_{1y\cdot2}=E\left[x_{1}y\right]-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}y\right]$
-\end_inset
-
- then 
+, and we obtain 
 \begin_inset Formula $\beta_{1}=A_{11\cdot2}^{-1}A_{1y\cdot2}$
 \end_inset
 
+, where 
+\begin_inset Formula 
+\begin{align*}
+A_{11\cdot2} & =E\left[x_{1}x_{1}'\right]-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}x_{1}'\right]\\
+A_{1y\cdot2} & =E\left[x_{1}y\right]-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}y\right].
+\end{align*}
+
+\end_inset
+
+This is a brutal force approach for the explicit expression of the subvector
+ 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
 .
- It is useful in interpreting the partial effect of a single regressors.
- We first run a regression
+\end_layout
+
+\begin_layout Standard
+Alternatively, we can proceed in two steps.
+ First, we run a multiple regression
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-We allow 
+We do allow 
 \begin_inset Formula $x_{1}$
 \end_inset
 
@@ -758,7 +761,7 @@ E\left[x_{2}u\right] & = & 0
 so that the regressor error
 \begin_inset Formula 
 \[
-u=x_{1}-x_{2}'\gamma=x_{1}-x_{2}'\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}x_{1}'\right]=x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}
+u=x_{1}-x_{2}'\gamma=x_{1}-x_{2}'\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}x_{1}'\right]=x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}.
 \]
 
 \end_inset
@@ -780,11 +783,14 @@ u=x_{1}-x_{2}'\gamma=x_{1}-x_{2}'\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\le
 \end_inset
 
 The nominator is 
-\begin_inset Formula $E\left[u'y\right]=E\left[x_{1}y\right]-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}y\right]$
+\begin_inset Formula 
+\[
+E\left[u'y\right]=E\left[x_{1}y\right]-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}E\left[x_{2}y\right]=A_{1y\cdot2}
+\]
+
 \end_inset
 
-.
- The denominator is 
+and the denominator is 
 \begin_inset Formula 
 \[
 E\left[uu'\right]=E\left[\left(x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}\right)\left(x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}x_{2}'\right]\right)^{-1}x_{2}\right)'\right]=A_{11\cdot2}.
@@ -792,7 +798,7 @@ E\left[uu'\right]=E\left[\left(x_{1}-E\left[x_{1}x_{2}'\right]\left(E\left[x_{2}
 
 \end_inset
 
-We thus have verified that 
+It turns out 
 \begin_inset Formula $\beta_{2}=\theta$
 \end_inset
 
@@ -800,9 +806,16 @@ We thus have verified that
 \end_layout
 
 \begin_layout Standard
-While we have the formula for the whole vector, why do we bother to derive
- the subvector formula? The subvector formula makes clear that the coefficient
- represents the 
+While we can derive the expression of 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ as a subvector of 
+\begin_inset Formula $\beta$
+\end_inset
+
+, why do we come up with the two-step derivation? The latter makes clear
+ that the coefficient represents the 
 \emph on
 partial effect
 \emph default
@@ -873,26 +886,6 @@ omitted variable bias
 \end_layout
 
 \begin_layout Standard
-Obviously we prefer to run the long regression if possible.
- However, sometimes 
-\begin_inset Formula $x_{2}$
-\end_inset
-
- is simply unobservable so the long regression is infeasible.
- When only the short regression is available, in some cases we are able
- to sign the bias, meaning that we know whether 
-\begin_inset Formula $\gamma$
-\end_inset
-
- is bigger or smaller than 
-\begin_inset Formula $\beta_{1}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
 We first demean all the variables in the two regressions, which is equivalent
  as if we project out the effect of the constant.
  The long regression becomes 
@@ -921,7 +914,7 @@ tilde
 \end_layout
 
 \begin_layout Standard
-After demeaning, the cross moment equals to the covariance.
+After demeaning, the cross-moment equals to the covariance.
  The short regression coefficient 
 \begin_inset Formula 
 \begin{eqnarray*}
@@ -940,7 +933,7 @@ Therefore,
 \begin_inset Formula $E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}=0$
 \end_inset
 
-, which means either 
+, which demands either 
 \begin_inset Formula $E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]=0$
 \end_inset
 
@@ -949,6 +942,30 @@ Therefore,
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+Obviously we prefer to run the long regression to attain 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ if possible.
+ However, sometimes 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ is simply unobservable so the long regression is infeasible.
+ When only the short regression is available, in some cases we are able
+ to sign the bias, meaning that we know whether 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ is bigger or smaller than 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \end_body
