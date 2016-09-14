@@ -1,7 +1,7 @@
 ---
 title: "Algebra of OLS"
-author: Zhentao Shi
-output: html_document
+author: "Zhentao Shi"
+output: pdf_document
 ---
 
 We demonstrate the OLS estimator and its algebraic properties

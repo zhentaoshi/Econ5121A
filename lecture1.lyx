@@ -33,7 +33,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize default
+\paperfontsize 11
 \spacing double
 \use_hyperref false
 \papersize default
@@ -611,7 +611,7 @@ Let
  is
 \begin_inset Formula 
 \[
-\int f\mathrm{d}\mu=\int f^{+}\mathrm{d}\mu-\int f^{-}\mathrm{d}\mu.
+\int X\mathrm{d}\mu=\int X^{+}\mathrm{d}\mu-\int X^{-}\mathrm{d}\mu.
 \]
 
 \end_inset

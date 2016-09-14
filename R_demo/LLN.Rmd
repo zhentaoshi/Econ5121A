@@ -1,7 +1,7 @@
 ---
 title: "Law of Large Numbers"
-author: Zhentao Shi
-output: html_document
+author: "Zhentao Shi"
+output: pdf_document
 ---
 
 This script demonstrates the law of large numbers (LLN) along with the underlying assumptions.
