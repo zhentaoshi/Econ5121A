@@ -1,0 +1,178 @@
+%% LyX 2.2.0 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[11pt]{article}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{setspace}
+\doublespacing
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Lecture Notes, \today}
+\rhead{Zhentao Shi}
+
+\makeatother
+
+\begin{document}
+
+\section{Probability}
+
+\label{review-of-probability}
+
+
+\subsection{Probability Space}
+
+\label{probability}
+\begin{itemize}
+\item \emph{Sample space} $\Omega$ is the collection of all possible outcomes. 
+\item An \emph{event} $A$ is a subset of $\Omega$.
+\item A $\sigma$-field, denoted by $\mathcal{F}$, is a collection of events
+such that: (i) $\emptyset\in\mathcal{F}$; (ii) if an event $A\in\mathcal{F}$,
+then $A^{c}\in\mathcal{F}$; (iii) if $A_{i}\in\mathcal{F}$ for $i\in\mathbb{N}$,
+then $\bigcup_{i\in\mathbb{N}}A_{i}\in\mathcal{F}$.
+\item $\left(\Omega,\mathcal{F}\right)$ is called a \emph{measure space}. 
+\item A function $\mu:\mathcal{F}\mapsto\left[0,\infty\right]$ is called
+a \emph{measure} if it satisfies (i) $\mu\left(A\right)\geq0$ for
+all $A\in\mathcal{F}$; (ii) if $A_{i}\in\mathcal{F}$, $i\in\mathbb{N}$,
+are mutually disjoint, then $\mu\left(\bigcup_{i\in\mathbb{N}}A_{i}\right)=\sum_{i\in\mathbb{N}}\mu\left(A_{i}\right)$ 
+\item If $\mu\left(\Omega\right)=1$, we call $\mu$ a \emph{probability
+measure}. A probability measure is often denoted as $P$.
+\item $\left(\Omega,\mathcal{F},P\right)$ is called a \emph{probability
+space}. 
+\end{itemize}
+
+\subsection{Random Variable}
+\begin{itemize}
+\item A function $X:\Omega\mapsto\mathbb{R}$ is $\left(\Omega,\mathcal{F}\right)\backslash\left(\mathbb{R},\mathcal{R}\right)$
+\emph{measurable} if 
+\[
+X^{-1}\left(B\right)=\left\{ \omega\in\Omega:X\left(\omega\right)\in B\right\} \in\mathcal{F}
+\]
+ for any $B\in\mathcal{R}$, where $\mathcal{R}$ is the Borel $\sigma$-field
+on the real line. \emph{Random variable} is an alternative name for
+a measurable function.
+\item $P_{X}:\mathcal{R}\mapsto\left[0,1\right]$ is also a probability
+measure if defined as $P_{X}\left(B\right)=P\left(X^{-1}\left(B\right)\right)$
+for any $B\in\mathcal{R}$. This $P_{X}$ is called the probability
+measure \emph{induced} by the measurable function $X$ . 
+\item A measurable function is non-random; the randomness of the ``random
+variable'' is inherited from the underlying probability measure.
+\item Discrete random variable and continuous random variable.
+\end{itemize}
+
+\subsection{Distribution Function}
+\begin{itemize}
+\item (Cumulative) distribution function
+\[
+F\left(x\right)=P\left(X\leq x\right)=P\left(\left\{ \omega\in\Omega:X\left(\omega\right)\leq x\right\} \right).
+\]
+\item Properties of CDF: $\lim_{x\to-\infty}F\left(x\right)=0$, $\lim_{x\to\infty}F\left(x\right)=1$,
+non-decreasing, and right-continuous 
+\[
+\lim_{y\to x^{+}}F\left(y\right)=F\left(x\right).
+\]
+\item Probability density function (PDF): if there exists a function $f$
+such that for all $x$,
+\[
+F\left(x\right)=\int_{-\infty}^{x}f\left(y\right)dy,
+\]
+then $f$ is called the PDF of $X$. 
+\item Properties: $f\left(x\right)\geq0$. $\int_{a}^{b}f\left(x\right)dx=F\left(b\right)-F\left(a\right)$
+\end{itemize}
+
+\section{Expected Value}
+
+\label{expectation}
+
+\subsection{Integration}
+\begin{itemize}
+\item $X$ is called a \emph{simple function} on a measurable space $\left(\Omega,\mathcal{F}\right)$
+if $X=\sum_{i}a_{i}1\left\{ A_{i}\right\} $ is a finite sum, where
+$a_{i}\in\mathbb{R}$ and $A_{i}\in\mathcal{F}$.
+\item Let $\left(\Omega,\mathcal{F},\mu\right)$ be a measure space and
+$a_{i}\geq0$ for all $i$. The integral of $X$ with respect to $\mu$
+is 
+\[
+\int X\mathrm{d}\mu=\sum_{i}a_{i}\mu\left(A_{i}\right).
+\]
+\item Let $X$ be a non-negative measurable function. The integral of $X$
+with respect to $\mu$ is 
+\[
+\int X\mathrm{d}\mu=\sup\left\{ \int Y\mathrm{d}\mu:0\leq Y\leq X,\text{ }Y\text{ is simple}\right\} .
+\]
+\item Let $X$ be a measurable function. Define $X^{+}=\max\left\{ X,0\right\} $
+and $X^{-}=-\min\left\{ X,0\right\} $. Both $X^{+}$ and $X^{-}$
+are non-negative functions. The integral of $X$ with respect to $\mu$
+is
+\[
+\int X\mathrm{d}\mu=\int X^{+}\mathrm{d}\mu-\int X^{-}\mathrm{d}\mu.
+\]
+\item If the measure $\mu$ is a probability measure $P$, then the integral
+$\int X\mathrm{d}P$ is called the \emph{expected value, }or\emph{
+expectation, }of $X$. We often use the popular notation $E\left[X\right]$,
+instead of $\int X\mathrm{d}P$, for convenience. 
+\end{itemize}
+
+\subsection{Properties}
+\begin{itemize}
+\item Elementary calculation: $E\left[X\right]=\sum_{x}xP\left(X=x\right)$
+or $E\left[X\right]=\int xf\left(x\right)\mathrm{d}x$.
+\item $E\left[1\left\{ A\right\} \right]=P\left(A\right)$.
+\item $E\left[X^{r}\right]$ is call the $r$-moment of $X$. Mean $\mu=E\left[X\right]$,
+variance $\mathrm{var}\left[X\right]=E\left[\left(X-\mu\right)^{2}\right]$,
+skewness $E\left[\left(X-\mu\right)^{3}\right]$ and kurtosis $E\left[\left(X-\mu\right)^{4}\right]$.
+\end{itemize}
+
+\section{Multivariate Random Variable}
+\begin{itemize}
+\item Bivariate random variable: $X:\Omega\mapsto\mathbb{R}^{2}$. 
+\item Multivariate random variable $X:\Omega\mapsto\mathbb{R}^{n}$.
+\item Joint CDF: $F\left(x_{1},\ldots,x_{n}\right)=P\left(X_{1}\leq x_{1},\ldots,X_{n}\leq x_{n}\right)$.
+Joint PDF is defined similarly.
+\item $X$ and $Y$ are \emph{independent} if $P\left(X\in A,Y\in B\right)=P\left(X\in A\right)P\left(Y\in B\right)$
+for all $A$ and $B$.
+\end{itemize}
+
+\subsection{Elementary Formulas}
+\begin{itemize}
+\item conditional density $f\left(Y|X\right)=f\left(X,Y\right)/f\left(X\right)$
+\item marginal density $f\left(Y\right)=\int f\left(X,Y\right)dX$.
+\item conditional expectation $E\left[Y|X\right]=\int Yf\left(Y|X\right)dY$
+\item proof of law of iterated expectation 
+\begin{eqnarray*}
+ &  & E\left[E\left[Y|X\right]\right]=\int E\left[Y|X\right]f\left(X\right)dX\\
+ & = & \int\left(\int Yf\left(Y|X\right)dY\right)f\left(X\right)dX=\int\int Yf\left(Y|X\right)f\left(X\right)dYdX\\
+ & = & \int\int Yf\left(X,Y\right)dYdX=\int Y\left(\int f\left(X,Y\right)dX\right)dY=\int YdY=E\left[Y\right].
+\end{eqnarray*}
+\item conditional probability, or Bayes' Theorem $P\left(A|B\right)=\frac{P\left(A,B\right)}{P\left(B\right)}=\frac{P\left(B|A\right)P\left(A\right)}{P\left(B\right)}.$
+\end{itemize}
+
+\subsection{Law of Iterated Expectations}
+\begin{itemize}
+\item Given a probability space $\left(\Omega,\mathcal{F},P\right)$, a
+sub $\sigma$-algebra $\mathcal{G}\subset\mathcal{F}$ and a $\mathcal{F}$-measurable
+function $X$ with $E\left|X\right|<\infty$, the \emph{conditional
+expectation} $E\left[X|\mathcal{G}\right]$ is defined as a $\mathcal{G}$-measurable
+function such that $\int_{A}XdP=\int_{A}E\left[X|\mathcal{G}\right]dP$
+for all $A\in\mathcal{G}$. 
+\item Law of iterated expectations
+\[
+E\left[E\left[Y|X\right]\right]=E\left[Y\right]
+\]
+ is a trivial fact from the definition of the conditional expectation
+by taking $A=\Omega$. 
+\item Properties of conditional expectations 
+
+\begin{enumerate}
+\item $E\left[E\left[Y|X_{1},X_{2}\right]|X_{1}\right]=E\left[Y|X_{1}\right]$ 
+\item $E\left[E\left[Y|X_{1}\right]|X_{1},X_{2}\right]=E\left[Y|X_{1}\right]$ 
+\item $E\left[h\left(X\right)Y|X\right]=h\left(X\right)E\left[Y|X\right]$ 
+\end{enumerate}
+\end{itemize}
+
+\end{document}

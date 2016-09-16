@@ -888,6 +888,17 @@ E\left[E\left[Y|X\right]\right]=E\left[Y\right]
 
 .
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+next time, should introduce product space, so that the law of iterated expectati
+ons can indeed be a special case of the definition.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
