@@ -9,7 +9,7 @@
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{Lecture Notes, \today}
+\lhead{Lecture Notes}
 \rhead{Zhentao Shi}
 \end_preamble
 \use_default_options false
@@ -81,6 +81,21 @@
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+This version: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+September 7, 2016
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Section
 Probability

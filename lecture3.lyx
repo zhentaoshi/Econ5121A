@@ -8,7 +8,7 @@
 \begin_preamble
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{Lecture Notes, \today}
+\lhead{Lecture Notes}
 \rhead{Zhentao Shi}
 \end_preamble
 \use_default_options false
@@ -107,6 +107,23 @@ theorems-chap
 \begin_body
 
 \begin_layout Standard
+This version: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Notation: 
 \begin_inset Formula $y_{i}$
 \end_inset
@@ -194,18 +211,60 @@ This is one way to motivate the OLS estimator.
 \begin_layout Standard
 Alternatively, we can derive the OLS estimator from minimizing the sum of
  squared residuals 
-\begin_inset Formula $\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.$
+\begin_inset Formula 
+\[
+Q\left(\beta\right)=\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}=\left(Y-X\beta\right)'\left(Y-X\beta\right).
+\]
+
 \end_inset
 
- By a routine optimization, we obtain exactly the same 
+ By the first-order condition
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\beta}Q\left(\beta\right)=-2X'\left(Y-X\beta\right),
+\]
+
+\end_inset
+
+the optimality condition gives exactly the same 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
 .
+ Moreover, the second-order condition 
+\begin_inset Formula 
+\[
+\frac{\partial^{2}}{\partial\beta\partial\beta'}Q\left(\beta\right)=2X'X
+\]
+
+\end_inset
+
+shows that 
+\begin_inset Formula $Q\left(\beta\right)$
+\end_inset
+
+ is convex in 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ (
+\begin_inset Formula $Q\left(\beta\right)$
+\end_inset
+
+ is strictly convex in 
+\begin_inset Formula $\beta$
+\end_inset
+
+ if 
+\begin_inset Formula $X'X$
+\end_inset
+
+ is positive definite.)
 \end_layout
 
 \begin_layout Standard
-Here we introduce some definitions and properties from OLS estimation.
+Here we introduce some definitions and properties in OLS estimation.
 \end_layout
 
 \begin_layout Itemize
@@ -245,15 +304,20 @@ Projector:
 \end_layout
 
 \begin_layout Itemize
-Idempotent matrix: 
-\begin_inset Formula $P_{X}P_{X}=P_{X},$
+If 
+\begin_inset Formula $AA=A$
 \end_inset
 
- 
-\begin_inset Formula $M_{X}M_{X}=M_{X}$
+, we call it an idempotent matrix.
+ Both 
+\begin_inset Formula $P_{X}$
 \end_inset
 
-.
+ and 
+\begin_inset Formula $M_{X}$
+\end_inset
+
+ are idempotent.
  
 \end_layout
 
@@ -362,7 +426,7 @@ Frish-Waugh-Lovell Theorem
 \end_layout
 
 \begin_layout Standard
-This is a sample version of the subvector regression.
+This theorem is the sample version of the subvector regression.
 \end_layout
 
 \begin_layout Standard
@@ -398,18 +462,7 @@ The data
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $e_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- are independent.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $e_{i}\sim N\left(0,\sigma^{2}\right)$
+\begin_inset Formula $e_{i}|x_{i}\sim N\left(0,\sigma^{2}\right)$
 \end_inset
 
 .
@@ -560,10 +613,13 @@ reference "eq:homo"
 
 \begin_layout Itemize
 Unbiasedness: 
-\begin_inset Formula $E\left[\widehat{\beta}|X\right]=E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]=\beta$
+\begin_inset Formula 
+\[
+E\left[\widehat{\beta}|X\right]=E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]=\beta.
+\]
+
 \end_inset
 
-.
  Unbiasedness does not rely on the homoskedasticity assumption.
 \end_layout
 

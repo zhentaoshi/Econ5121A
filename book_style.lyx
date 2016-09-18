@@ -9,7 +9,7 @@
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{Lecture Notes, \today}
+\lhead{Lecture Notes}
 \rhead{Zhentao Shi}
 \end_preamble
 \use_default_options false
@@ -124,7 +124,7 @@ filename "lecture2.lyx"
 \end_layout
 
 \begin_layout Chapter
-Algebra of Least Sqaures
+Least Squares
 \end_layout
 
 \begin_layout Standard
