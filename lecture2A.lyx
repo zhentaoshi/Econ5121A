@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 \usepackage{fancyhdr}
@@ -19,16 +21,16 @@ theorems-ams-extended
 \language_package none
 \inputencoding auto
 \fontencoding default
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -38,7 +40,7 @@ theorems-ams-extended
 \spacing onehalf
 \use_hyperref false
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 0
@@ -83,21 +85,38 @@ theorems-ams-extended
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
-Appendix: Joint Normal Distribution
+Joint Normal Distribution
 \end_layout
 
 \begin_layout Standard
-It is arguable that normal distribution is the most frequently encountered
- distribution in statistical inference, as it is the asymptotic distribution
- of many popular estimators.
+It is arguable that the normal distribution is the most frequently encountered
+ in statistical inference.
+ It is the asymptotic distribution of many popular estimators under standard
+ conditions.
  Moreover, it boasts some unique features that facilitates the calculation
  of objects of interest.
- This note summaries a few of them.
+ This note introduce some importance properties of normal distribution.
 \end_layout
 
 \begin_layout Standard
-An 
+If an 
 \begin_inset Formula $n\times1$
 \end_inset
 
@@ -125,8 +144,8 @@ An
 \begin_inset Formula $n\times n$
 \end_inset
 
- symmetric positive definite matrix.
- The probability density function is
+ symmetric positive definite matrix ,then its probability density function
+ is
 \begin_inset Formula 
 \[
 f_{X}\left(x\right)=\left(2\pi\right)^{-n/2}\left(\mathrm{det}\left(\Sigma\right)\right)^{-1/2}\exp\left(-\frac{1}{2}\left(x-\mu\right)'\Sigma^{-1}\left(x-\mu\right)\right)
@@ -150,8 +169,19 @@ Fact 1 states the fact that a linear transformation of
 \begin_inset Formula $X$
 \end_inset
 
- still follows a joint normal distribution.
+ remains a joint normal distribution.
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+zt reviewed up here.
+ 9/21/2016
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Fact
@@ -363,7 +393,10 @@ If
  are independent.
 \end_layout
 
-\begin_layout --Separator--
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
 
 \end_layout
 
