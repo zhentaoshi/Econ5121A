@@ -276,14 +276,6 @@ Fitted value:
 \end_layout
 
 \begin_layout Itemize
-Residual: 
-\begin_inset Formula $\widehat{e}=Y-\widehat{Y}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
 Projector: 
 \begin_inset Formula $P_{X}=X\left(X'X\right)^{-1}X$
 \end_inset
@@ -322,6 +314,7 @@ If
 \end_layout
 
 \begin_layout Itemize
+Residual: 
 \begin_inset Formula $\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e$
 \end_inset
 
@@ -395,9 +388,9 @@ demeaner
 .
  The total variation is 
 \begin_inset Formula 
-\begin{eqnarray*}
-Y'M_{\iota}Y & = & \left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)=\widehat{Y}'M_{\iota}\widehat{Y}+2\widehat{Y}'M_{\iota}\widehat{e}+\widehat{e}'M_{\iota}\widehat{e}=\widehat{Y}'M_{\iota}\widehat{Y}+\widehat{e}'\widehat{e}
-\end{eqnarray*}
+\[
+Y'M_{\iota}Y=\left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)=\widehat{Y}'M_{\iota}\widehat{Y}+2\widehat{Y}'M_{\iota}\widehat{e}+\widehat{e}'M_{\iota}\widehat{e}=\widehat{Y}'M_{\iota}\widehat{Y}+\widehat{e}'\widehat{e}
+\]
 
 \end_inset
 
@@ -446,7 +439,8 @@ Statistical Properties of Least Squares
 \end_layout
 
 \begin_layout Standard
-To talk about the statistical properties, we impose the following assumptions.
+To talk about the statistical properties in finite sample, we impose the
+ following assumptions.
 \end_layout
 
 \begin_layout Enumerate
@@ -553,20 +547,37 @@ We can show the finite-sample exact distribution of
 \end_layout
 
 \begin_layout Standard
-Consider the 
+In reality, 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is an unknown parameter, and 
+\begin_inset Formula 
+\[
+s^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)=e'M_{X}e/\left(n-K\right)
+\]
+
+\end_inset
+
+ is an unbiased estimator of 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ Consider the 
 \begin_inset Formula $T$
 \end_inset
 
 -statistic
 \begin_inset Formula 
 \[
-T_{k}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left(X'X\right)_{kk}^{-1}}}=\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left(X'X\right)_{kk}^{-1}}}{\sqrt{s^{2}/\sigma^{2}}}.
+T_{k}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left(X'X\right)_{kk}^{-1}}}=\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left(X'X\right)_{kk}^{-1}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
 \]
 
 \end_inset
 
 The numerator follows a standard normal, and the denominator follows 
-\begin_inset Formula $\chi^{2}\left(n-K\right)$
+\begin_inset Formula $\frac{1}{n-K}\chi^{2}\left(n-K\right)$
 \end_inset
 
 .
