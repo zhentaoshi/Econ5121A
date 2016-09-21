@@ -9,7 +9,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \lhead{Lecture Notes}
-\rhead{Zhentao Shi}
+\rhead{Econ5121A}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -86,8 +86,38 @@ theorems-ams-extended
 \begin_body
 
 \begin_layout Title
-Supplimentary Material 1.
+Supplementary Material 1.
  Normal Distribution
+\end_layout
+
+\begin_layout Author
+Contributors: Zhentao Shi, Jingyi Huang
+\end_layout
+
+\begin_layout Date
+This version: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is arguable that the normal distribution is the most frequently encountered
+ distribution in statistical inference, as it is the asymptotic distribution
+ of many popular estimators.
+ Moreover, it boasts some unique features that facilitates the calculation
+ of objects of interest.
+ This note summaries a few of them.
 \end_layout
 
 \begin_layout Section
@@ -96,10 +126,10 @@ Normal Distribution
 
 \begin_layout Standard
 Random variable 
-\begin_inset Formula $x\in R$
+\begin_inset Formula $x$
 \end_inset
 
- has normal distribution with mean 
+ follows the normal distribution with mean 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -116,10 +146,10 @@ Random variable
 \begin_inset Formula $x$
 \end_inset
 
- iso
+ is
 \begin_inset Formula 
 \[
-f(x)=\frac{1}{\sqrt{2\pi}\sigma}exp\left(-\frac{\left(x-\mu\right)^{2}}{2\sigma^{2}}\right).
+f(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{\left(x-\mu\right)^{2}}{2\sigma^{2}}\right).
 \]
 
 \end_inset
@@ -167,7 +197,7 @@ If
 
 \begin_layout Itemize
 If 
-\begin_inset Formula $z_{1},...,z_{n}$
+\begin_inset Formula $z_{1},\ldots,z_{n}$
 \end_inset
 
  are independent 
@@ -235,15 +265,6 @@ If
 
 \begin_layout Section
 Joint Normal Distribution
-\end_layout
-
-\begin_layout Standard
-It is arguable that normal distribution is the most frequently encountered
- distribution in statistical inference, as it is the asymptotic distribution
- of many popular estimators.
- Moreover, it boasts some unique features that facilitates the calculation
- of objects of interest.
- This note summaries a few of them.
 \end_layout
 
 \begin_layout Standard
