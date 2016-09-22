@@ -1,35 +1,52 @@
 ---
 title: "Algebra of OLS"
 author: "Zhentao Shi"
+date: September 22, 2016
 output: pdf_document
 ---
 
 We demonstrate the OLS estimator and its algebraic properties
 
-Generate the data.
+### Generate the data.
 
 
 ```{r}
-n = 5
-b0 = as.matrix( c(0.5, 1) )
+n = 20 # sample size 
+K = 3  # number of paramters
 
-X = cbind(1, rnorm(n) )
-e = rnorm(n,1)
-Y = X %*% b0 + e
-print(Y)
+b0 = as.matrix( c(0.5, 1, -1) ) # the true coefficient
+
+X = cbind(1, matrix( rnorm(n * (K-1)), nrow = n ) )  # the regressor matrix
+e = rnorm(n,1) # the error term
+
+Y = X %*% b0 + e # generate the dependent variable
 ```
 
-
-
-Calculate the estimate as $\hat{\beta} = (X' X)^{-1} X'Y$, and the residual $\hat{e} = Y - X' \beta$. Verify $X'\hat{e} = 0$.
-
+### OLS estimator
 
 ```{r}
 bhat = solve(t(X)%*%X, t(X) %*% Y )
+```
+
+
+Calculate the estimate as $\hat{\beta} = (X' X)^{-1} X'Y=$ `r bhat`.
+
+
+### Residual
+
+The residual $\hat{e} = Y - X' \beta$. Verify $X'\hat{e} = 0$.
+
+
+```{r}
 ehat = Y - X %*% bhat
 
 print( t(X) %*% ehat )
 ```
+
+Notice that 
+
+- $\sum_{i=1}^n e_i=$ `r sum(e)`,
+- $\sum_{i=1}^n \hat{e}_i=$ `r format(sum(ehat), digits = 6)`.
 
 
 
