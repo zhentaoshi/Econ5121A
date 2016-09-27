@@ -1,35 +1,54 @@
 ---
 title: "Algebra of OLS"
 author: "Zhentao Shi"
+date: September 23, 2016
 output: pdf_document
 ---
 
 We demonstrate the OLS estimator and its algebraic properties
 
-Generate the data.
+## Generating data
 
 
 ```{r}
-n = 5
-b0 = as.matrix( c(0.5, 1) )
+n = 20 # sample size 
+K = 4  # number of paramters
 
-X = cbind(1, rnorm(n) )
-e = rnorm(n,1)
-Y = X %*% b0 + e
-print(Y)
+b0 = as.matrix( c(0.5, 1, -1, 1) ) # the true coefficient
+
+X = cbind(1, matrix( rnorm(n * (K-1)), nrow = n ) )  # the regressor matrix
+e = rnorm(n,1) # the error term
+
+Y = X %*% b0 + e # generate the dependent variable
+```
+
+After the data generation, we obtain an $n\times 1$ vector of $Y$ and an $n\times K$ vector of $X$. Since the random generator seed is unspecified, the generated random variables are different every time we run the code.
+
+
+## OLS estimator
+
+```{r}
+bhat = solve(t(X)%*%X, t(X) %*% Y ) # translate the formula into code
 ```
 
 
+Calculate the estimate as $\hat{\beta} = (X' X)^{-1} X'Y=$ (`r bhat`).
 
-Calculate the estimate as $\hat{\beta} = (X' X)^{-1} X'Y$, and the residual $\hat{e} = Y - X' \beta$. Verify $X'\hat{e} = 0$.
+
+## Residual
+
+The residual $\hat{e} = Y - X' \beta$. Verify $X'\hat{e} = 0$.
 
 
 ```{r}
-bhat = solve(t(X)%*%X, t(X) %*% Y )
 ehat = Y - X %*% bhat
-
 print( t(X) %*% ehat )
 ```
+
+Notice that 
+
+- $\sum_{i=1}^n e_i=$ `r sum(e)`,
+- $\sum_{i=1}^n \hat{e}_i=$ `r format(sum(ehat), digits = 6)`.
 
 
 
@@ -44,6 +63,24 @@ MX = diag(rep(1,n)) - PX
 print( cbind( ehat, MX %*% Y, MX %*% e) )
 ```
 
+## FWL Theorem
+```{r}
+X1 = X[,1:2]
+PX1 = X1 %*% solve( t(X1) %*% X1) %*% t(X1)
+MX1 = diag(rep(1,n)) - PX1
+X2 = X[,3:4]
 
+
+bhat12 =  solve(t(X2)%*% MX1 %*% X2, t(X2) %*% MX1 %*% Y )
+```
+
+$(\hat{\beta}_3, \hat{\beta}_4)=$ (`r bhat12`), which is the same as the counterpart in $\hat{\beta}=$ (`r bhat`).
+
+
+```{r}
+# the residuls after purging out X1 is the same as that from the full regression
+ehat12 = MX1 %*% Y - MX1 %*% X2 %*% bhat12 
+print(cbind(ehat, ehat12))
+```
 
 

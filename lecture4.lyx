@@ -9,7 +9,7 @@
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{Lecture Notes, \today}
+\lhead{Lecture Notes}
 \rhead{Zhentao Shi}
 \end_preamble
 \use_default_options false
@@ -106,6 +106,23 @@ theorems-ams-extended-bytype
 
 \begin_body
 
+\begin_layout Standard
+This version: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Asymptotics
 \end_layout
@@ -124,19 +141,19 @@ Modes of Convergence
 
 \begin_layout Standard
 Convergence of a deterministic sequence means that for any 
-\begin_inset Formula $c>0$
+\begin_inset Formula $\varepsilon>0$
 \end_inset
 
 , there exists an 
-\begin_inset Formula $N\left(c\right)$
+\begin_inset Formula $N\left(\varepsilon\right)$
 \end_inset
 
  such that for all 
-\begin_inset Formula $n>N\left(c\right)$
+\begin_inset Formula $n>N\left(\varepsilon\right)$
 \end_inset
 
 , we have 
-\begin_inset Formula $\left|z_{n}-z\right|<c$
+\begin_inset Formula $\left|z_{n}-z\right|<\varepsilon$
 \end_inset
 
 .
@@ -148,7 +165,7 @@ Convergence of a deterministic sequence means that for any
 \begin_inset Formula $z_{n}$
 \end_inset
 
-, and denote as 
+, and write as 
 \begin_inset Formula $z_{n}\to z$
 \end_inset
 
@@ -158,8 +175,18 @@ Convergence of a deterministic sequence means that for any
 \begin_layout Standard
 In contrast to the convergence of a deterministic sequence, we are interested
  in the convergence of random variables.
- There are various modes of convergence.
- We introduce three of them.
+ Since a random variable has an associated probability measure, we must
+ define clearly what 
+\begin_inset Quotes eld
+\end_inset
+
+convergence
+\begin_inset Quotes erd
+\end_inset
+
+ means.
+ Several modes of convergence are often encountered.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -229,11 +256,19 @@ so
 \end_layout
 
 \begin_layout Itemize
+Convergence almost surely*
+\end_layout
+
+\begin_layout Itemize
 Convergence in probability: 
-\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\left|Z_{n}\left(\omega\right)-z\right|<c\right)=1.$
+\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\left|Z_{n}\left(\omega\right)-z\right|<\varepsilon\right)=1$
 \end_inset
 
+ for any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Itemize
@@ -245,11 +280,10 @@ Squared-mean convergence:
 \end_layout
 
 \begin_layout Example
-\begin_inset Formula $z_{n}\left(\omega\right)\in\left\{ 0,1\right\} $
+\begin_inset Formula $z_{n}$
 \end_inset
 
- is a binary variable.
- 
+ is a binary random variable: 
 \begin_inset Formula $z_{n}=\sqrt{n}$
 \end_inset
 
@@ -278,13 +312,14 @@ Squared-mean convergence:
 \end_layout
 
 \begin_layout Standard
-Convergence in probability does not take care what happens on a set with
- small probability.
+Convergence in probability does not count what happens on a subset with
+ small probability in the sample space.
  Convergence in mean square takes care the average over the entire probability
  space.
- Even at a small probability the value of the random variables deviates
- too much, it may blow away the convergence in squared-mean.
- On the contrary, such deviation does not undermine convergence in probability.
+ If a random variable can take a wild value, even with small probability,
+ it may blow away the squared-mean convergence.
+ On the contrary, such irregularity does not undermine convergence in probabilit
+y.
 \end_layout
 
 \begin_layout Itemize
@@ -358,6 +393,17 @@ Let
 
 .
  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+revised up here.
+ 9/22/2016
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -365,8 +411,8 @@ Law of Large Numbers
 \end_layout
 
 \begin_layout Standard
-The law of large numbers (LLN) is a collect of probability theorems about
- the convergence in probability of sample means.
+(Weak) law of large numbers (LLN) is a collection of statements about convergenc
+e in probability of the sample average to its population counterpart.
  The basic form of the LLN is: the sample average of 
 \begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
 \end_inset
@@ -374,19 +420,55 @@ The law of large numbers (LLN) is a collect of probability theorems about
  satisfies 
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{i=1}^{n}z_{i}-E\left(\frac{1}{n}\sum_{i=1}^{n}z_{i}\right)\stackrel{p}{\to}0.
+\frac{1}{n}\sum_{i=1}^{n}z_{i}-E\left(\frac{1}{n}\sum_{i=1}^{n}z_{i}\right)\stackrel{p}{\to}0
 \]
 
 \end_inset
 
-Various versions of LLN work under different assumptions about the random
- variables.
+as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ Various versions of LLN work under different assumptions about the distribution
+s and dependence of the random variables.
  
 \end_layout
 
+\begin_layout Itemize
+Chebyshev LLN: if 
+\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
+\end_inset
+
+ is a sample of i.i.d.
+\begin_inset space ~
+\end_inset
+
+observations, 
+\begin_inset Formula $E\left[z_{1}\right]=\mu$
+\end_inset
+
+ exists, and 
+\begin_inset Formula $\sigma^{2}=\mathrm{var}\left[x_{1}\right]<\infty$
+\end_inset
+
+, then 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-The simplest version of LLN utilizes Chebyshev inequality, a simple fact
- from probability theory.
+Chebyshev LLN utilizes
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Chebyshev inequality
+\emph default
+.
  For any random variable 
 \begin_inset Formula $x$
 \end_inset
@@ -396,34 +478,128 @@ The simplest version of LLN utilizes Chebyshev inequality, a simple fact
 \end_inset
 
 , we have 
-\begin_inset Formula 
-\[
-P\left(\left|x\right|>c\right)\leq E\left[x^{2}\right]/c^{2}
-\]
-
+\begin_inset Formula $P\left(\left|x\right|>\varepsilon\right)\leq E\left[x^{2}\right]/\varepsilon^{2}$
 \end_inset
 
- for any positive constant 
-\begin_inset Formula $c$
+ for any 
+\begin_inset Formula $\varepsilon>0$
 \end_inset
 
 .
  
 \end_layout
 
-\begin_layout Proof
-\begin_inset Formula $E\left[x^{2}\right]=\int_{\left|x\right|>c}x^{2}dF_{X}+\int_{\left|x\right|\leq c}x^{2}dF_{X}\geq\int_{\left|x\right|>c}x^{2}dF_{X}\geq c\int_{\left|x\right|>c}dF_{X}=c^{2}P\left(\left|x\right|>c\right).$
+\begin_layout Standard
+Chebyshev inequality is a special case of 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Markov inequality
+\emph default
+: 
+\begin_inset Formula $P\left(\left|x\right|>\varepsilon\right)\leq E\left[\left|x\right|^{r}\right]/\varepsilon^{r}$
+\end_inset
+
+ for 
+\begin_inset Formula $r\geq1$
+\end_inset
+
+ and any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+It is easy to verify Markov inequality.
+\begin_inset Formula 
+\begin{align*}
+E\left[x^{r}\right] & =\int_{\left|x\right|>\varepsilon}x^{r}dF_{X}+\int_{\left|x\right|\leq\varepsilon}x^{r}dF_{X}\\
+ & \geq\int_{\left|x\right|>\varepsilon}x^{r}dF_{X}\geq\varepsilon\int_{\left|x\right|>\varepsilon}dF_{X}=\varepsilon^{r}P\left(\left|x\right|>\varepsilon\right).
+\end{align*}
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Itemize
-Chebyshev LLN
+\begin_layout Standard
+Consider a partial sum 
+\begin_inset Formula $S_{n}=\sum_{i=1}^{n}x_{i}$
+\end_inset
+
+, where 
+\begin_inset Formula $\mu_{i}=E\left[x_{i}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{i}^{2}=\mathrm{var}\left[x_{i}\right]$
+\end_inset
+
+.
+ We apply the Chebyshev inequality to the sample mean 
+\begin_inset Formula $\overline{x}-\bar{\mu}=n^{-1}\left(S_{n}-\sum_{i=1}^{n}\mu_{i}\right)$
+\end_inset
+
+ .
+\begin_inset Formula 
+\begin{align*}
+P\left(\left|\bar{x}-\bar{\mu}\right|\geq\varepsilon\right) & =P\left(\left|S_{n}-\sum_{i=1}^{n}\mu_{i}\right|\geq n\varepsilon\right)\\
+ & \leq\left(n\varepsilon\right)^{-2}E\left[\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)^{2}\right]\\
+ & =\left(n\varepsilon\right)^{-2}\mathrm{var}\left(\sum_{i=1}^{n}x_{i}\right)\\
+ & =\left(n\varepsilon\right)^{-2}\left[\sum_{i=1}^{n}\mathrm{var}\left(x_{i}\right)+\sum_{i=1}^{n}\sum_{j\neq i}\mathrm{cov}\left(x_{i},x_{j}\right)\right].
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the above derivative, as long as the right-hand side shrinks to 0 as
+ 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+, convergence in probability holds.
+ It holds under much more general conditions than just under the i.i.d.
+\begin_inset space ~
+\end_inset
+
+assumption.
+ The random variables in the sample do not have to be identically distributed,
+ and they also do not have to be independent either.
+\end_layout
+
+\begin_layout Standard
+Another useful LLN is called Kolmogorov LLN.
+ Since the derivation requires advanced knowledge of mathematics, we just
+ state the result without proof.
+ 
 \end_layout
 
 \begin_layout Itemize
-Kolmogorov LLN
+Kolmogorov LLN: if 
+\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
+\end_inset
+
+ is a sample of i.i.d.
+\begin_inset space ~
+\end_inset
+
+observations and 
+\begin_inset Formula $E\left[z_{1}\right]=\mu$
+\end_inset
+
+ exists, then 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection

@@ -590,7 +590,7 @@ The numerator follows a standard normal, and the denominator follows
 \end_layout
 
 \begin_layout Subsection
-Gauss-Markov Theorem
+Mean and Variance
 \end_layout
 
 \begin_layout Standard
@@ -612,14 +612,38 @@ reference "eq:mean_indep"
 
 \end_inset
 
-) is called the mean independence assumption, and (
+) is the 
+\emph on
+mean independence
+\emph default
+ assumption, and (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:homo"
 
 \end_inset
 
-) is the homoskedasticity assumption.
+) is the 
+\emph on
+homoskedasticity
+\emph default
+ assumption.
+ These assumptions are about the first and second moment of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ conditional on 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ Unlike the normality assumption, they do not restrict the entire distribution
+ of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -631,7 +655,7 @@ E\left[\widehat{\beta}|X\right]=E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\
 
 \end_inset
 
- Unbiasedness does not rely on the homoskedasticity assumption.
+ Unbiasedness does not rely on homoskedasticity.
 \end_layout
 
 \begin_layout Itemize
@@ -639,6 +663,7 @@ Variance:
 \begin_inset Formula 
 \begin{eqnarray*}
 \mathrm{var}\left(\widehat{\beta}|X\right) & = & E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
+ & = & E\left[\left(\widehat{\beta}-\beta\right)\left(\widehat{\beta}-\beta\right)'|X\right]\\
  & = & E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]\\
  & = & \left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}\\
  & = & \left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}\\
@@ -650,11 +675,18 @@ Variance:
 
 \end_layout
 
+\begin_layout Subsection
+Gauss-Markov Theorem*
+\end_layout
+
 \begin_layout Standard
 Gauss-Markov theorem justifies the OLS estimator as the efficient estimator
  among all linear unbiased ones.
- Efficient here means that it enjoys the smallest variance in a family of
- estimators.
+ 
+\emph on
+Efficient
+\emph default
+ here means that it enjoys the smallest variance in a family of estimators.
 \end_layout
 
 \begin_layout Standard
