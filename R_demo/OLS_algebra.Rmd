@@ -17,7 +17,7 @@ K = 4  # number of paramters
 b0 = as.matrix( c(0.5, 1, -1, 1) ) # the true coefficient
 
 X = cbind(1, matrix( rnorm(n * (K-1)), nrow = n ) )  # the regressor matrix
-e = rnorm(n,1) # the error term
+e = rnorm(n) # the error term
 
 Y = X %*% b0 + e # generate the dependent variable
 ```
@@ -37,7 +37,7 @@ Calculate the estimate as $\hat{\beta} = (X' X)^{-1} X'Y=$ (`r bhat`).
 
 ## Residual
 
-The residual $\hat{e} = Y - X' \beta$. Verify $X'\hat{e} = 0$.
+The residual $\hat{e} = Y - X' \hat{\beta}$. Verify $X'\hat{e} = 0$.
 
 
 ```{r}

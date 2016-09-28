@@ -137,5 +137,19 @@ filename "lecture3.lyx"
 
 \end_layout
 
+\begin_layout Chapter
+Large Sample Theory
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "lecture4.lyx"
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document
