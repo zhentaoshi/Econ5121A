@@ -629,9 +629,9 @@ Central Limit Theorem
 \end_layout
 
 \begin_layout Standard
-The central limit theorem (CLT) is a collect of probability theorems about
+The central limit theorem (CLT) is a collect of probability results about
  the convergence in distribution to a normally distributed random variable.
- The basic form of the CLT is: For a sample 
+ The basic form of the CLT is: for a sample 
 \begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
 \end_inset
 
@@ -639,11 +639,7 @@ The central limit theorem (CLT) is a collect of probability theorems about
 \emph on
 zero-mean
 \emph default
- random variables, the sample mean scaled up by 
-\begin_inset Formula $\sqrt{n}$
-\end_inset
-
- satisfies 
+ random variables, 
 \begin_inset Formula 
 \[
 \frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}\right).
@@ -707,7 +703,7 @@ where the limit is exactly the characteristic function of
 \end_layout
 
 \begin_layout Itemize
-Lindeberg-Levy CLT: iid, zero-mean, finite 
+Lindeberg-Levy CLT: i.i.d., zero-mean, finite 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
@@ -715,7 +711,11 @@ Lindeberg-Levy CLT: iid, zero-mean, finite
 \end_layout
 
 \begin_layout Itemize
-Lindeberg-Feller CLT: inid, and Lindeberg condition: for any fixed 
+Lindeberg-Feller CLT: i.n.i.d., and 
+\emph on
+Lindeberg condition
+\emph default
+: for any fixed 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
@@ -735,7 +735,7 @@ where
 \end_layout
 
 \begin_layout Itemize
-Lyapunov CLT: inid, finite 
+Lyapunov CLT: i.n.i.d, finite 
 \begin_inset Formula $E\left[\left|x\right|^{3}\right]$
 \end_inset
 
@@ -850,39 +850,66 @@ Delta method: if
 \end_layout
 
 \begin_layout Section
-Apply Asymptotics to OLS
+Apply to OLS
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-CLT
-\end_layout
-
-\begin_layout Plain Layout
-Lindeberg-Feller CLT
-\end_layout
-
-\begin_layout Plain Layout
-Lindeberg-Levy CLT is a special case of Lindeberg-Feller by directly checking
- the Lindeberg condition, but not the Lyapunov condition.
-\end_layout
-
+We apply large sample theory to study the OLS estimator 
+\begin_inset Formula $\widehat{\beta}=\left(X'X\right)^{-1}X'Y.$
 \end_inset
 
-Convergence in probability: 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}Q=E\left[x_{i}x_{i}'\right]$
+ We say 
+\begin_inset Formula $\widehat{\beta}$
 \end_inset
 
-, and 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{p}{\to}0$
+ is a consistent estimator if 
+\begin_inset Formula $\widehat{\beta}\stackrel{p}{\to}\beta$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
 \end_inset
 
 .
- By the continuous mapping theorem, 
+\begin_inset Formula 
+\[
+\widehat{\beta}-\beta=\left(X'X\right)^{-1}X'e=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}.
+\]
+
+\end_inset
+
+The first term 
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}Q=E\left[x_{i}x_{i}'\right].
+\]
+
+\end_inset
+
+ and the second term 
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{p}{\to}0.
+\]
+
+\end_inset
+
+No matter whether 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ is an i.i.d., i.n.i.d., or dependent sample, as long as the convergence in probability
+ holds for the above two expressions, we have 
 \begin_inset Formula $\widehat{\beta}-\beta\stackrel{p}{\to}Q^{-1}0=0$
+\end_inset
+
+ by the continuous mapping theorem.
+ In other words, 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is an consistent estimator of 
+\begin_inset Formula $\beta$
 \end_inset
 
 .
@@ -909,7 +936,7 @@ Asymptotic distribution:
 \end_layout
 
 \begin_layout Subsection
-Estimation of the Variance
+Estimation of the Variance*
 \end_layout
 
 \begin_layout Standard
@@ -1060,11 +1087,6 @@ P\left(\theta:\left(\widehat{\beta}-\beta\right)V^{-1}\left(\widehat{\beta}-\bet
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-\start_of_appendix
-Appendix
 \end_layout
 
 \begin_layout Standard
