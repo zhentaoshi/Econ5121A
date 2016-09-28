@@ -175,8 +175,15 @@ Convergence of a deterministic sequence means that for any
 \begin_layout Standard
 In contrast to the convergence of a deterministic sequence, we are interested
  in the convergence of random variables.
- Since a random variable has an associated probability measure, we must
- define clearly what 
+ Since a random variable is 
+\begin_inset Quotes eld
+\end_inset
+
+random
+\begin_inset Quotes erd
+\end_inset
+
+, we must define clearly what 
 \begin_inset Quotes eld
 \end_inset
 
@@ -312,9 +319,9 @@ Squared-mean convergence:
 \end_layout
 
 \begin_layout Standard
-Convergence in probability does not count what happens on a subset with
- small probability in the sample space.
- Convergence in mean square takes care the average over the entire probability
+Convergence in probability does not count what happens on a subset in the
+ sample space of small probability.
+ Squared-mean convergence deals with the average over the entire probability
  space.
  If a random variable can take a wild value, even with small probability,
  it may blow away the squared-mean convergence.
@@ -343,8 +350,11 @@ Convergence in distribution:
 \end_layout
 
 \begin_layout Standard
-Convergence in distribution is the convergence of CDF, not the random variables
- themselves.
+Convergence in distribution is about 
+\emph on
+pointwise 
+\emph default
+convergence of CDF, not the random variables themselves.
  
 \end_layout
 
@@ -413,14 +423,10 @@ Law of Large Numbers
 \begin_layout Standard
 (Weak) law of large numbers (LLN) is a collection of statements about convergenc
 e in probability of the sample average to its population counterpart.
- The basic form of the LLN is: the sample average of 
-\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
-\end_inset
-
- satisfies 
+ The basic form of LLN is: 
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{i=1}^{n}z_{i}-E\left(\frac{1}{n}\sum_{i=1}^{n}z_{i}\right)\stackrel{p}{\to}0
+\frac{1}{n}\sum_{i=1}^{n}z_{i}-E\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}\right]\stackrel{p}{\to}0
 \]
 
 \end_inset
@@ -448,11 +454,11 @@ observations,
 \begin_inset Formula $E\left[z_{1}\right]=\mu$
 \end_inset
 
- exists, and 
+ , and 
 \begin_inset Formula $\sigma^{2}=\mathrm{var}\left[x_{1}\right]<\infty$
 \end_inset
 
-, then 
+ exists, then 
 \begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
 \end_inset
 
@@ -468,16 +474,11 @@ Chebyshev LLN utilizes
 \emph on
 Chebyshev inequality
 \emph default
-.
- For any random variable 
+: for any random variable 
 \begin_inset Formula $x$
 \end_inset
 
- with finite 
-\begin_inset Formula $E\left[x^{2}\right]$
-\end_inset
-
-, we have 
+ , we have 
 \begin_inset Formula $P\left(\left|x\right|>\varepsilon\right)\leq E\left[x^{2}\right]/\varepsilon^{2}$
 \end_inset
 
@@ -485,8 +486,11 @@ Chebyshev inequality
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
-.
- 
+, if 
+\begin_inset Formula $E\left[x^{2}\right]$
+\end_inset
+
+ exists.
 \end_layout
 
 \begin_layout Standard
@@ -510,16 +514,19 @@ Markov inequality
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
-.
- 
+, if 
+\begin_inset Formula $E\left[\left|x\right|^{r}\right]$
+\end_inset
+
+ exists.
 \end_layout
 
 \begin_layout Standard
 It is easy to verify Markov inequality.
 \begin_inset Formula 
 \begin{align*}
-E\left[x^{r}\right] & =\int_{\left|x\right|>\varepsilon}x^{r}dF_{X}+\int_{\left|x\right|\leq\varepsilon}x^{r}dF_{X}\\
- & \geq\int_{\left|x\right|>\varepsilon}x^{r}dF_{X}\geq\varepsilon\int_{\left|x\right|>\varepsilon}dF_{X}=\varepsilon^{r}P\left(\left|x\right|>\varepsilon\right).
+E\left[\left|x\right|^{r}\right] & =\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}+\int_{\left|x\right|\leq\varepsilon}\left|x\right|^{r}dF_{X}\\
+ & \geq\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}\geq\varepsilon^{r}\int_{\left|x\right|>\varepsilon}dF_{X}=\varepsilon^{r}P\left(\left|x\right|>\varepsilon\right).
 \end{align*}
 
 \end_inset
@@ -542,13 +549,13 @@ Consider a partial sum
 
 .
  We apply the Chebyshev inequality to the sample mean 
-\begin_inset Formula $\overline{x}-\bar{\mu}=n^{-1}\left(S_{n}-\sum_{i=1}^{n}\mu_{i}\right)$
+\begin_inset Formula $\overline{x}-\bar{\mu}=n^{-1}\left(S_{n}-E\left[S_{n}\right]\right)$
 \end_inset
 
- .
+.
 \begin_inset Formula 
 \begin{align*}
-P\left(\left|\bar{x}-\bar{\mu}\right|\geq\varepsilon\right) & =P\left(\left|S_{n}-\sum_{i=1}^{n}\mu_{i}\right|\geq n\varepsilon\right)\\
+P\left(\left|\bar{x}-\bar{\mu}\right|\geq\varepsilon\right) & =P\left(\left|S_{n}-E\left[S_{n}\right]\right|\geq n\varepsilon\right)\\
  & \leq\left(n\varepsilon\right)^{-2}E\left[\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)^{2}\right]\\
  & =\left(n\varepsilon\right)^{-2}\mathrm{var}\left(\sum_{i=1}^{n}x_{i}\right)\\
  & =\left(n\varepsilon\right)^{-2}\left[\sum_{i=1}^{n}\mathrm{var}\left(x_{i}\right)+\sum_{i=1}^{n}\sum_{j\neq i}\mathrm{cov}\left(x_{i},x_{j}\right)\right].
@@ -560,25 +567,30 @@ P\left(\left|\bar{x}-\bar{\mu}\right|\geq\varepsilon\right) & =P\left(\left|S_{n
 \end_layout
 
 \begin_layout Standard
-From the above derivative, as long as the right-hand side shrinks to 0 as
- 
+From the above derivation, convergence in probability holds as long as the
+ right-hand side shrinks to 0 as 
 \begin_inset Formula $n\to\infty$
 \end_inset
 
-, convergence in probability holds.
- It holds under much more general conditions than just under the i.i.d.
+.
+ Actually, the convergence can be maintained under much more general conditions
+ than just under the i.i.d.
 \begin_inset space ~
 \end_inset
 
 assumption.
  The random variables in the sample do not have to be identically distributed,
- and they also do not have to be independent either.
+ and they do not have to be independent either.
 \end_layout
 
 \begin_layout Standard
-Another useful LLN is called Kolmogorov LLN.
- Since the derivation requires advanced knowledge of mathematics, we just
- state the result without proof.
+Another useful LLN is 
+\emph on
+Kolmogorov LLN
+\emph default
+.
+ Since its derivation requires advanced knowledge of mathematics, we state
+ the result without proof.
  
 \end_layout
 
@@ -600,6 +612,16 @@ observations and
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Compared to Chebyshev LLN, Kolmogorov LLN only requires the existence of
+ the population mean, but not any higher moment.
+ On the other hand, i.i.d.
+\begin_inset space ~
+\end_inset
+
+is essential for Kolmogorov LLN.
 \end_layout
 
 \begin_layout Subsection
