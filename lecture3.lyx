@@ -529,7 +529,7 @@ We can show the finite-sample exact distribution of
 , and 
 \begin_inset Formula 
 \[
-\widehat{\beta}_{k}|X\sim N\left(\beta_{k},\eta_{k}'\sigma^{2}\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
+\widehat{\beta}_{k}|X\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
 \]
 
 \end_inset
