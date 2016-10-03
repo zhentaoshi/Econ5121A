@@ -14,8 +14,8 @@
 \end_preamble
 \use_default_options false
 \begin_modules
-theorems-ams-bytype
-theorems-ams-extended-bytype
+theorems-ams
+theorems-ams-extended
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -418,6 +418,17 @@ revised up here.
 
 \begin_layout Subsection
 Law of Large Numbers
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Though the results in this section hold for convergence almost surely, for
+ simplicity we state the versions of convergence in probability.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -689,9 +700,10 @@ Therefore, if
 .
  If the observations in the sample are independent, then 
 \begin_inset Formula 
-\[
-\varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right)=\left(1-\frac{\sigma^{2}}{2n}t^{2}+o\left(\frac{\sigma^{2}}{2n}t^{2}\right)\right)^{n}\to\exp\left(-\frac{\sigma^{2}}{2}t^{2}\right),
-\]
+\begin{align*}
+\varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) & =\prod_{i=1}^{n}\varphi_{x_{i}/\sqrt{n}}\left(t\right)=\left(1+i\cdot0-\frac{\sigma^{2}}{2n}t^{2}+o\left(\frac{\sigma^{2}}{2}t^{2}\right)\right)^{n}\\
+ & \to\exp\left(-\frac{\sigma^{2}}{2}t^{2}\right),
+\end{align*}
 
 \end_inset
 
