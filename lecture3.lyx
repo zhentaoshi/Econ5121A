@@ -463,7 +463,7 @@ The data
 \end_layout
 
 \begin_layout Subsection
-Normal Regression
+Maximum Likelihood Estimation*
 \end_layout
 
 \begin_layout Standard
@@ -508,13 +508,38 @@ Therefore, the maximum likelihood estimator (MLE) coincides with the OLS
 .
 \end_layout
 
+\begin_layout Subsection
+Finite Sample Distribution
+\end_layout
+
 \begin_layout Standard
 We can show the finite-sample exact distribution of 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
 .
- Since 
+ 
+\emph on
+Finite sample distribution
+\emph default
+ means that the distribution holds for any 
+\begin_inset Formula $n$
+\end_inset
+
+; it is in contrast to 
+\emph on
+asymptotic distribution
+\emph default
+, which holds only when 
+\begin_inset Formula $n$
+\end_inset
+
+ is arbitrarily large.
+ 
+\end_layout
+
+\begin_layout Standard
+Since 
 \begin_inset Formula 
 \[
 \widehat{\beta}=\left(X'X\right)^{-1}X'y=\left(X'X\right)^{-1}X'\left(X'\beta+e\right)=\beta+\left(X'X\right)^{-1}X'e,
@@ -571,7 +596,7 @@ s^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)=e'M_{X}e/\left(n-K\right)
 -statistic
 \begin_inset Formula 
 \[
-T_{k}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left(X'X\right)_{kk}^{-1}}}=\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left(X'X\right)_{kk}^{-1}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
+T_{k}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}=\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
 \]
 
 \end_inset
@@ -628,7 +653,56 @@ reference "eq:homo"
 homoskedasticity
 \emph default
  assumption.
- These assumptions are about the first and second moment of 
+\end_layout
+
+\begin_layout Example*
+(Heteroskedasticity) If 
+\begin_inset Formula $e_{i}=x_{i}u_{i}$
+\end_inset
+
+, where 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is a scalar random variable, 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E\left[u_{i}\right]=0$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[u_{i}^{2}\right]=\sigma^{2}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $E\left[e_{i}|x_{i}\right]=0$
+\end_inset
+
+ but 
+\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=\sigma_{i}^{2}x_{i}^{2}$
+\end_inset
+
+ is a function of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ We say 
+\begin_inset Formula $e_{i}^{2}$
+\end_inset
+
+ is a heteroskedastic error.
+\end_layout
+
+\begin_layout Standard
+These assumptions are about the first and second moment of 
 \begin_inset Formula $e_{i}$
 \end_inset
 

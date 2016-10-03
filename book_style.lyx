@@ -71,7 +71,7 @@ theorems-ams-extended
 \rightmargin 1in
 \bottommargin 1in
 \secnumdepth 3
-\tocdepth 3
+\tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation default
 \quotes_language english
@@ -93,6 +93,15 @@ Introductory Econometrics: a Companion
 
 \begin_layout Author
 Zhentao Shi
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
