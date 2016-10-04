@@ -652,9 +652,9 @@ zero-mean
 \emph default
  random variables, 
 \begin_inset Formula 
-\[
-\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}\right).
-\]
+\begin{equation}
+\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}\right).\label{eq:clt}
+\end{equation}
 
 \end_inset
 
@@ -664,12 +664,65 @@ Various versions of CLT work under different assumptions about the random
 \end_layout
 
 \begin_layout Standard
-Let 
+
+\emph on
+Lindeberg-Levy CLT
+\emph default
+ is the simplest CLT.
+ 
+\end_layout
+
+\begin_layout Itemize
+If the sample is i.i.d., 
+\begin_inset Formula $E\left[x_{1}\right]=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathrm{var}\left[x_{1}^{2}\right]=\sigma^{2}<\infty$
+\end_inset
+
+, then (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:clt"
+
+\end_inset
+
+) holds.
+ 
+\end_layout
+
+\begin_layout Standard
+Lindeberg-Levy CLT is easy to verify by the characteristic function.
+ For any random variable 
+\begin_inset Formula $x$
+\end_inset
+
+, the function 
 \begin_inset Formula $\varphi_{x}\left(t\right)=E\left[\exp\left(ixt\right)\right]$
 \end_inset
 
- be the characteristic function.
- If 
+ is called its 
+\emph on
+characteristic function
+\emph default
+.
+ The characteristic function fully describes a distribution, just like PDF
+ or CDF.
+ For example, the characteristic function of 
+\begin_inset Formula $N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\exp\left(it\mu-\frac{1}{2}\sigma^{2}t^{2}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+If 
 \begin_inset Formula $E\left[\left|x\right|^{k}\right]<\infty$
 \end_inset
 
@@ -685,20 +738,19 @@ Let
 
 \end_inset
 
-Therefore, if 
-\begin_inset Formula $x_{i}$
+Under the assumption of Lindeberg-Levy CLT, 
+\begin_inset Formula 
+\[
+\varphi_{x_{i}}\left(t\right)=1-\frac{\sigma^{2}}{2}t^{2}+o\left(\frac{\sigma^{2}}{2}t^{2}\right)
+\]
+
 \end_inset
 
-'s mean is zero and variance is 
-\begin_inset Formula $\sigma^{2}$
+ for all 
+\begin_inset Formula $i$
 \end_inset
 
-, then 
-\begin_inset Formula $\varphi_{x_{i}}\left(t\right)=1-\frac{\sigma^{2}}{2}t^{2}+o\left(\frac{\sigma^{2}}{2}t^{2}\right)$
-\end_inset
-
-.
- If the observations in the sample are independent, then 
+, and by independence we have 
 \begin_inset Formula 
 \begin{align*}
 \varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) & =\prod_{i=1}^{n}\varphi_{x_{i}/\sqrt{n}}\left(t\right)=\left(1+i\cdot0-\frac{\sigma^{2}}{2n}t^{2}+o\left(\frac{\sigma^{2}}{2}t^{2}\right)\right)^{n}\\
@@ -709,14 +761,6 @@ Therefore, if
 
 where the limit is exactly the characteristic function of 
 \begin_inset Formula $N\left(0,\sigma^{2}\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Lindeberg-Levy CLT: i.i.d., zero-mean, finite 
-\begin_inset Formula $\sigma^{2}$
 \end_inset
 
 .
@@ -837,6 +881,45 @@ Continuous mapping theorem 2: If
 .
 \end_layout
 
+\begin_layout Itemize
+Slutsky's Theorem: If 
+\begin_inset Formula $x_{n}\stackrel{d}{\to}x$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{n}\stackrel{p}{\to}a$
+\end_inset
+
+, then 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $x_{n}+y_{n}\stackrel{d}{\to}x+a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x_{n}y_{n}\stackrel{d}{\to}ax$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x_{n}/y_{n}\stackrel{d}{\to}x/a$
+\end_inset
+
+ if 
+\begin_inset Formula $a\neq0$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Delta method: if 
 \begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
