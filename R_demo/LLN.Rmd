@@ -31,7 +31,7 @@ LLN_plot = function(distribution){
     y_bar[i] = sample_mean(n, distribution)
   }
   
-  plot(y_bar, type = "l", col = "red", ylab = "mean", xlab = "", lwd = 2)
+  plot(y_bar, type = "l", col = "red", ylab = "mean", xlab = "", lwd = 2, main = distribution)
   abline(h = 0, lty = 2)
   return(y_bar)
 }
@@ -46,6 +46,7 @@ The sample size is chosen as $2^x$, where $x=1:20$. We have the following observ
 
 ```{r}
 NN = 2^(1:20)
+set.seed(888)
 
 LLN_plot("normal")
 
