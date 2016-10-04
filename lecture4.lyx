@@ -423,7 +423,7 @@ status open
 
 \begin_layout Plain Layout
 Though the results in this section hold for convergence almost surely, for
- simplicity we state the versions of convergence in probability.
+ simplicity we state them in terms of convergence in probability.
 \end_layout
 
 \end_inset
@@ -862,7 +862,7 @@ Delta method: if
 \end_layout
 
 \begin_layout Section
-Apply to OLS
+Asymptotic Properties of OLS
 \end_layout
 
 \begin_layout Standard
@@ -870,11 +870,23 @@ We apply large sample theory to study the OLS estimator
 \begin_inset Formula $\widehat{\beta}=\left(X'X\right)^{-1}X'Y.$
 \end_inset
 
- We say 
+ 
+\end_layout
+
+\begin_layout Subsection
+Consistency
+\end_layout
+
+\begin_layout Standard
+We say 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
- is a consistent estimator if 
+ is 
+\emph on
+consistent
+\emph default
+ if 
 \begin_inset Formula $\widehat{\beta}\stackrel{p}{\to}\beta$
 \end_inset
 
@@ -883,17 +895,18 @@ We apply large sample theory to study the OLS estimator
 \end_inset
 
 .
+ To verify consistency, we write
 \begin_inset Formula 
-\[
-\widehat{\beta}-\beta=\left(X'X\right)^{-1}X'e=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}.
-\]
+\begin{equation}
+\widehat{\beta}-\beta=\left(X'X\right)^{-1}X'e=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}.\label{eq:ols_d}
+\end{equation}
 
 \end_inset
 
 The first term 
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}Q=E\left[x_{i}x_{i}'\right].
+\widehat{Q}=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}Q=E\left[x_{i}x_{i}'\right].
 \]
 
 \end_inset
@@ -927,19 +940,120 @@ No matter whether
 .
 \end_layout
 
+\begin_layout Subsection
+Asymptotic Normality
+\end_layout
+
 \begin_layout Standard
-Asymptotic distribution: 
-\begin_inset Formula $n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\Sigma\right)$
+In finite sample, 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is a random variable.
+ We have shown the distribution of 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ under normality in the previous lecture.
+ Without the restrictive normality assumption, how can we characterize the
+ randomness of the OLS estimator? If we multiply 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ on both sides of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ols_d"
+
+\end_inset
+
+), we have 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\beta}-\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}e_{i}.
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $E\left[x_{i}e_{i}\right]=0$
+\end_inset
+
+, we apply a CLT to obtain 
+\begin_inset Formula 
+\[
+n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\Sigma\right)
+\]
+
 \end_inset
 
  where 
 \begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]$
 \end_inset
 
-, so
+.
+ By the continuous mapping theorem, 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,Q^{-1}\Sigma Q^{-1}\right).
+\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}Q^{-1}\times N\left(0,\Sigma\right)\sim N\left(0,\Omega\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}$
+\end_inset
+
+ is called the 
+\emph on
+asymptotic variance
+\emph default
+.
+ This is called the 
+\emph on
+asymptotic normality
+\emph default
+ of the OLS estimator.
+\end_layout
+
+\begin_layout Standard
+Up to now we have derived the asymptotic distribution of 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+.
+ However, to make it feasible, we still have to estimator the asymptotic
+ variance 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\widehat{\Sigma}$
+\end_inset
+
+ is a consistent estimator of 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, then 
+\begin_inset Formula $\widehat{\Omega}=\widehat{Q}^{-1}\widehat{\Sigma}\widehat{Q}^{-1}$
+\end_inset
+
+ is a consistent estimator of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ (Of course, there are other ways to estimate the asymptotic variance.) Then
+ a feasible version about the distribution of 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\widehat{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right)
 \]
 
 \end_inset
@@ -961,7 +1075,7 @@ To show the finiteness of the variance,
 \end_inset
 
 , so 
-\begin_inset Formula $\Omega=E\left[z_{i}z_{i}'\right]$
+\begin_inset Formula $\Sigma=E\left[z_{i}z_{i}'\right]$
 \end_inset
 
 .
@@ -987,9 +1101,10 @@ For each
 \begin_layout Standard
 For the estimation of variance, homoskedastic,
 \begin_inset Formula 
-\[
-\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right)
-\]
+\begin{align*}
+ & \frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
+ & =\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right).
+\end{align*}
 
 \end_inset
 
@@ -1104,9 +1219,10 @@ P\left(\theta:\left(\widehat{\beta}-\beta\right)V^{-1}\left(\widehat{\beta}-\bet
 \begin_layout Standard
 For general heteroskedasticity,
 \begin_inset Formula 
-\[
-\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'e_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}
-\]
+\begin{align*}
+ & \frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
+ & =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'e_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}.
+\end{align*}
 
 \end_inset
 
@@ -1114,8 +1230,11 @@ The third term is bounded by
 \begin_inset Formula 
 \begin{eqnarray*}
  &  & \mbox{trace}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}\right)\\
- & \leq & K\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
- & = & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left(\sum_{k=1}^{K}x_{ik}^{2}\right)^{2}\leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\sum_{k=1}^{K}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}=o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
+ & \leq & K\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\\
+ & \leq & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
+ & \leq & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
+ & = & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left(\sum_{k=1}^{K}x_{ik}^{2}\right)^{2}\\
+ & \leq & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\sum_{k=1}^{K}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}=o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
 \end{eqnarray*}
 
 \end_inset
@@ -1128,7 +1247,8 @@ where the third inequality follows by
  The second term is bounded by 
 \begin_inset Formula 
 \begin{eqnarray*}
-\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}x_{ik'}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right| & \leq & \max_{k}\left|\widehat{\beta}_{k}-\beta_{k}\right|K\max_{k,k',k''}\left|\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{ik}x_{ik'}x_{ik''}\right|\\
+ &  & \left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}x_{ik'}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right|\\
+ & \leq & \max_{k}\left|\widehat{\beta}_{k}-\beta_{k}\right|K\max_{k,k',k''}\left|\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{ik}x_{ik'}x_{ik''}\right|\\
  & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\right)^{1/4}K\max_{k,k',k''}\left(\frac{1}{n}\sum_{i=1}^{n}\left(x_{ik}x_{ik'}x_{ik''}\right)^{4/3}\right)^{3/4}\\
  & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}K\max_{k}\left(\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\right)^{3/4}=o_{p}\left(1\right)O_{p}\left(1\right)
 \end{eqnarray*}
