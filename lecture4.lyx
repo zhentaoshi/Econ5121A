@@ -416,6 +416,52 @@ revised up here.
 
 \end_layout
 
+\begin_layout Standard
+
+\emph on
+Cram
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+'{e}
+\end_layout
+
+\end_inset
+
+r-Wold device
+\emph default
+ handles convergence in distribution for random vectors? We say a sequence
+ of 
+\begin_inset Formula $K$
+\end_inset
+
+-dimensional random vectors 
+\begin_inset Formula $\left(X_{n}\right)$
+\end_inset
+
+ converge in distribution to 
+\begin_inset Formula $X$
+\end_inset
+
+ if we have 
+\begin_inset Formula $\lambda'X_{n}\stackrel{d}{\to}\lambda'X$
+\end_inset
+
+ for any 
+\begin_inset Formula $\lambda\in\mathbb{R}^{K}$
+\end_inset
+
+ with 
+\begin_inset Formula $\lambda'\lambda=1$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Law of Large Numbers
 \begin_inset Foot
@@ -733,7 +779,7 @@ If
 , then 
 \begin_inset Formula 
 \[
-\varphi_{x}\left(t\right)=1+itE\left[X\right]+\frac{\left(it\right)^{2}}{2}E\left[X^{2}\right]+\ldots\frac{\left(it\right)^{k}}{k!}E\left[X^{k}\right]+o\left(t^{k}\right).
+\varphi_{X}\left(t\right)=1+itE\left[X\right]+\frac{\left(it\right)^{2}}{2}E\left[X^{2}\right]+\ldots\frac{\left(it\right)^{k}}{k!}E\left[X^{k}\right]+o\left(t^{k}\right).
 \]
 
 \end_inset
@@ -741,7 +787,7 @@ If
 Under the assumption of Lindeberg-Levy CLT, 
 \begin_inset Formula 
 \[
-\varphi_{x_{i}}\left(t\right)=1-\frac{\sigma^{2}}{2}t^{2}+o\left(\frac{\sigma^{2}}{2}t^{2}\right)
+\varphi_{X_{i}/\sqrt{n}}\left(t\right)=1-\frac{t^{2}}{2n}\sigma^{2}+o\left(\frac{t^{2}}{n}\right)
 \]
 
 \end_inset
@@ -753,7 +799,7 @@ Under the assumption of Lindeberg-Levy CLT,
 , and by independence we have 
 \begin_inset Formula 
 \begin{align*}
-\varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) & =\prod_{i=1}^{n}\varphi_{x_{i}/\sqrt{n}}\left(t\right)=\left(1+i\cdot0-\frac{\sigma^{2}}{2n}t^{2}+o\left(\frac{\sigma^{2}}{2}t^{2}\right)\right)^{n}\\
+\varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) & =\prod_{i=1}^{n}\varphi_{x_{i}/\sqrt{n}}\left(t\right)=\left(1+i\cdot0-\frac{t^{2}}{2n}\sigma^{2}+o\left(\frac{t^{2}}{n}\right)\right)^{n}\\
  & \to\exp\left(-\frac{\sigma^{2}}{2}t^{2}\right),
 \end{align*}
 
@@ -778,13 +824,13 @@ Lindeberg condition
 , 
 \begin_inset Formula 
 \[
-\frac{1}{s_{n}}\sum_{i=1}^{n}\int_{x_{i}^{2}>\varepsilon s_{n}}x_{i}^{2}dPx_{i}\to0
+\frac{1}{s_{n}^{2}}\sum_{i=1}^{n}\int_{\left|x_{i}\right|>\varepsilon s_{n}}x_{i}^{2}dPx_{i}\to0
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $s_{n}=\sum_{i=1}^{n}\sigma_{i}^{2}$
+\begin_inset Formula $s_{n}=\left(\sum_{i=1}^{n}\sigma_{i}^{2}\right)^{1/2}$
 \end_inset
 
 .
@@ -1016,7 +1062,7 @@ No matter whether
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
- is an consistent estimator of 
+ is a consistent estimator of 
 \begin_inset Formula $\beta$
 \end_inset
 
@@ -1092,7 +1138,7 @@ where
 asymptotic variance
 \emph default
 .
- This is called the 
+ This is the 
 \emph on
 asymptotic normality
 \emph default
