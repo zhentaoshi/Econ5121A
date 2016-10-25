@@ -160,5 +160,19 @@ filename "lecture4.lyx"
 
 \end_layout
 
+\begin_layout Chapter
+Hypothesis Testing
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "lecture5.lyx"
+
+\end_inset
+
+
+\end_layout
+
 \end_body
 \end_document

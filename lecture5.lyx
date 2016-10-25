@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 
@@ -20,16 +22,16 @@ theorems-ams-extended-bytype
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format dvi
 \output_sync 1
@@ -49,7 +51,7 @@ theorems-ams-extended-bytype
 \pdf_backref false
 \pdf_pdfusetitle true
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 0
@@ -104,8 +106,453 @@ theorems-ams-extended-bytype
 
 \begin_body
 
+\begin_layout Standard
+This version: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hypothesis Testing
+\end_layout
+
+\begin_layout Standard
+A 
+\emph on
+hypothesis
+\emph default
+ is a statement about the parameter space 
+\begin_inset Formula $\Theta$
+\end_inset
+
+.
+ The 
+\emph on
+null hypothesis
+\emph default
+ 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+ is a subset of 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ of interest, typically suggested by some scientific theory.
+ The 
+\emph on
+alternative hypothesis
+\emph default
+ 
+\begin_inset Formula $\Theta_{1}=\Theta\backslash\Theta_{0}$
+\end_inset
+
+
+\emph on
+ 
+\emph default
+is the complement of 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+
+\emph on
+.
+ Hypothesis testing
+\emph default
+ is a decision whether to accept the null hypothesis or to reject it according
+ to the observed evidence.
+\end_layout
+
+\begin_layout Standard
+A 
+\emph on
+test function 
+\emph default
+is a mapping 
+\begin_inset Formula 
+\[
+\phi:\mathcal{X}^{n}\mapsto\left\{ 0,1\right\} ,
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ is the sample space.
+ We accept the null hypothesis if 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)=0$
+\end_inset
+
+, or reject it if 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)=1$
+\end_inset
+
+.
+ The 
+\emph on
+acceptance region
+\emph default
+ is defined as 
+\begin_inset Formula $A_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi\left(\mathbf{x}\right)=0\right\} ,$
+\end_inset
+
+ and the 
+\emph on
+rejection region
+\emph default
+ is 
+\begin_inset Formula $R_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi\left(\mathbf{x}\right)=1\right\} .$
+\end_inset
+
+ The 
+\emph on
+power function
+\emph default
+ of the test 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\beta_{\phi}\left(\theta\right)=P_{\theta}\left(\phi\left(\mathbf{X}\right)=1\right)=E_{\theta}\left(\phi\left(\mathbf{X}\right)\right).
+\]
+
+\end_inset
+
+ The power function measures, at a given point, the probability that the
+ test function rejects the null.
+ The 
+\emph on
+size
+\emph default
+ of the test 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is a real number 
+\begin_inset Formula 
+\[
+\alpha=\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right).
+\]
+
+\end_inset
+
+ The 
+\emph on
+level
+\emph default
+ of the test 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is a value 
+\begin_inset Formula $\alpha\in\left(0,1\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\alpha\geq\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)$
+\end_inset
+
+, which is often used when it is difficult to attain the exact supremum.
+ The 
+\emph on
+probability of committing Type I error
+\emph default
+ is 
+\begin_inset Formula $\beta_{\phi}\left(\theta\right)$
+\end_inset
+
+ for some 
+\begin_inset Formula $\theta\in\Theta_{0}$
+\end_inset
+
+.
+ The 
+\emph on
+probability of committing Type II error
+\emph default
+ is 
+\begin_inset Formula $1-\beta_{\phi}\left(\theta\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+There has been a philosophical debate for decades about the hypothesis testing
+ framework.
+ At present the prevailing framework in statistics education is the frequentist
+ perspective.
+ A frequentist views the parameter as a fixed constant, and they are conservativ
+e about the Type I error.
+ Only if overwhelming evidence is demonstrated should a researcher reject
+ the null.
+ 
+\end_layout
+
+\begin_layout Standard
+Under the philosophy of protecting the null hypothesis, a desirable test
+ should have a small level.
+ Conventionally we take 
+\begin_inset Formula $\alpha=0.01,$
+\end_inset
+
+ 0.05 or 0.1.
+ There can be many tests of the correct size.
+ 
+\end_layout
+
+\begin_layout Example
+A trivial test function is 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)=1\left\{ 0\leq U\leq\alpha\right\} $
+\end_inset
+
+, where 
+\begin_inset Formula $U$
+\end_inset
+
+ is a random variable from a uniform distribution on 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+.
+ This test has correct size, but no power.
+\end_layout
+
+\begin_layout Standard
+Denote 
+\begin_inset Formula $\Psi_{\alpha}=\left\{ \phi:\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)\leq\alpha\right\} $
+\end_inset
+
+ as the class of test functions of level smaller than 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ A 
+\emph on
+uniformly most powerful test
+\emph default
+ 
+\begin_inset Formula $\phi^{*}\in\Psi_{\alpha}$
+\end_inset
+
+ is a test function such that, for every 
+\begin_inset Formula $\phi\in\Psi_{\alpha}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\beta_{\phi^{*}}\left(\theta\right)\geq\beta_{\phi}\left(\theta\right)
+\]
+
+\end_inset
+
+uniformly over 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "eg1"
+
+\end_inset
+
+Suppose a random sample of size 6 is generated from 
+\begin_inset Formula 
+\[
+\left(X_{1},\ldots,X_{6}\right)\sim\text{i.i.d.}N\left(\theta,1\right),
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is unknown.
+ We want to infer the population mean of the normal distribution.
+ The null hypothesis is 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+: 
+\begin_inset Formula $\theta\leq0$
+\end_inset
+
+ and the alternative is 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+: 
+\begin_inset Formula $\theta>0$
+\end_inset
+
+.
+ The test function 
+\begin_inset Formula 
+\[
+\phi\left(\mathbf{X}\right)=1\left(\bar{X}\geq1.64/\sqrt{6}\right)
+\]
+
+\end_inset
+
+ is the most powerful test among all tests of level 0.05.
+ The power function of 
+\begin_inset Formula $\phi^{*}$
+\end_inset
+
+ is 
+\begin_inset Formula $\beta_{\phi^{*}}\left(\theta\right)=\Phi\left(\sqrt{6}\theta-1.64\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Confidence Interval
+\end_layout
+
+\begin_layout Standard
+An 
+\emph on
+interval estimate
+\emph default
+ is a function 
+\begin_inset Formula $C:\mathcal{X}^{n}\mapsto\left\{ \Theta':\Theta'\subseteq\Theta\right\} $
+\end_inset
+
+ that maps a point in the sample space to a subset of the parameter space.
+ The 
+\emph on
+coverage probability
+\emph default
+ of an 
+\emph on
+interval estimator
+\emph default
+ 
+\begin_inset Formula $C\left(\mathbf{X}\right)$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)$
+\end_inset
+
+.
+ The coverage probability is the frequency that the interval estimator captures
+ the true parameter that generates the sample (In the frequentist perspective,
+ the parameter is fixed while the region is random), but not the probability
+ that 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is inside the given region (In the Bayesian perspective, the parameter
+ is random while the region is fixed conditional on 
+\begin_inset Formula $X$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Exercise
+Suppose a random sample of size 6 is generated from 
+\begin_inset Formula 
+\[
+\left(X_{1},\ldots,X_{6}\right)\sim\text{i.i.d. }N\left(\theta,1\right).
+\]
+
+\end_inset
+
+ Find the coverage probability of the random interval 
+\begin_inset Formula 
+\[
+\left[\bar{X}-1.96/\sqrt{6},\bar{X}+1.96/\sqrt{6}\right].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hypothesis testing and confidence interval are closely related.
+ Sometime it is difficult to directly construct the confidence interval,
+ but easier to test a hypothesis.
+ One way to construct confidence interval is by inverting a corresponding
+ hypothesis testing problem.
+\end_layout
+
+\begin_layout Standard
+Suppose 
+\begin_inset Formula $A_{\phi}\left(\theta\right)$
+\end_inset
+
+ the acceptance region of a test 
+\begin_inset Formula $\phi$
+\end_inset
+
+ whose size is 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and the null is 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $C\left(\mathbf{x}\right)$
+\end_inset
+
+ is constructed as 
+\begin_inset Formula 
+\[
+C\left(\mathbf{x}\right)=\left\{ \theta\in\Theta:\mathbf{x}\in A_{\phi}\left(\theta\right)\right\} ,
+\]
+
+\end_inset
+
+ the coverage probability 
+\begin_inset Formula $P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)=1-\alpha$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Section
 Hypothesis Testing: Application in OLS
+\end_layout
+
+\begin_layout Subsection
+Wald Test
 \end_layout
 
 \begin_layout Standard
@@ -161,14 +608,8 @@ P\left(\theta_{0}\in\widehat{C}_{n}\right)=P\left(\left\{ T_{n}\left(\theta_{0}\
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Wald Test
-\end_layout
-
-\begin_layout Standard
-If 
+\series default
+ If 
 \begin_inset Formula $\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
 \end_inset
 
