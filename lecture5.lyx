@@ -399,6 +399,82 @@ null distribution
  
 \end_layout
 
+\begin_layout Example
+The concept of 
+\emph on
+level
+\emph default
+ is useful if we do not have information to derive the exact size of a test.
+ If 
+\begin_inset Formula $\left(X_{1i},X_{2i}\right)_{i=1}^{n}$
+\end_inset
+
+ are randomly drawn from some unknown joint distribution, but we only know
+ that the marginal distribution is 
+\begin_inset Formula $X_{ji}\sim N\left(\theta_{j},1\right)$
+\end_inset
+
+, for 
+\begin_inset Formula $j=1,2$
+\end_inset
+
+.
+ In order to test the joint hypothesis 
+\begin_inset Formula $\theta_{1}=\theta_{2}=0$
+\end_inset
+
+, we can construct a test function
+\begin_inset Formula 
+\[
+\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)=1\left\{ \left\{ \left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right\} \cup\left\{ \left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right\} \right\} ,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{1-\alpha/4}$
+\end_inset
+
+ is the 
+\begin_inset Formula $\left(1-\alpha/4\right)$
+\end_inset
+
+-th quantile of the standard normal distribution.
+ The level of this test is 
+\begin_inset Formula 
+\begin{align*}
+P_{\theta_{1}=\theta_{2}=0}\left(\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) & \leq P_{\theta_{1}=0}\left(\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right)+P_{\theta_{2}=0}\left(\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right)\\
+ & =\alpha/2+\alpha/2=\alpha.
+\end{align*}
+
+\end_inset
+
+where the inequality follows by the Bonferroni inequality 
+\begin_inset Formula $P\left(A\cup B\right)\leq P\left(A\right)+P\left(B\right)$
+\end_inset
+
+.
+ Therefore, the level of 
+\begin_inset Formula $\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, but the exact size is unknown without the knowledge of the joint distribution.
+ (Even if we know the correlation of 
+\begin_inset Formula $X_{1i}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2i}$
+\end_inset
+
+, putting two marginally normal distributions together does not make a jointly
+ normal vector in general.)
+\end_layout
+
 \begin_layout Standard
 There can be many tests of a correct level.
  Denote the class of test functions of level smaller than 
@@ -1198,13 +1274,13 @@ R & 0
 \begin_layout Standard
 \begin_inset Formula 
 \begin{eqnarray*}
-\begin{pmatrix}\tilde{\beta}-\beta^{*}\\
+ &  & \begin{pmatrix}\tilde{\beta}-\beta^{*}\\
 \tilde{\lambda}
-\end{pmatrix} & = & \begin{pmatrix}\widehat{Q} & R'\\
+\end{pmatrix}=\begin{pmatrix}\widehat{Q} & R'\\
 R & 0
 \end{pmatrix}^{-1}\begin{pmatrix}\frac{1}{n}X'e\\
 0
-\end{pmatrix}.\\
+\end{pmatrix}\\
  & = & \begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
 \left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & -\left(R\widehat{Q}^{-1}R'\right)^{-1}
 \end{pmatrix}\begin{pmatrix}\frac{1}{n}X'e\\
@@ -1248,9 +1324,10 @@ If homoskedastic, then
 
 
 \begin_inset Formula 
-\[
-\frac{n\tilde{\lambda}'RQ^{-1}R'\tilde{\lambda}}{\sigma^{2}}=\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'XQ^{-1}X'\left(y-X\tilde{\beta}\right)=\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'P_{X}\left(y-X\tilde{\beta}\right).
-\]
+\begin{align*}
+\frac{n\tilde{\lambda}'RQ^{-1}R'\tilde{\lambda}}{\sigma^{2}} & =\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'XQ^{-1}X'\left(y-X\tilde{\beta}\right)\\
+ & =\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'P_{X}\left(y-X\tilde{\beta}\right).
+\end{align*}
 
 \end_inset
 
@@ -1269,13 +1346,11 @@ For likelihood ratio test, the starting point can be a criterion function
 
 .
  It does not have to be the likelihood function.
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
-\[
-L\left(\tilde{\beta}\right)-L\left(\widehat{\beta}\right)=\frac{\partial L}{\partial\beta}\left(\widehat{\beta}\right)+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\frac{\partial L}{\partial\beta\partial\beta}\left(\dot{\beta}\right)\left(\tilde{\beta}-\widehat{\beta}\right)=0+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right).
-\]
+\begin{align*}
+L\left(\tilde{\beta}\right)-L\left(\widehat{\beta}\right) & =\frac{\partial L}{\partial\beta}\left(\widehat{\beta}\right)+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\frac{\partial L}{\partial\beta\partial\beta}\left(\dot{\beta}\right)\left(\tilde{\beta}-\widehat{\beta}\right)\\
+ & =0+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right).
+\end{align*}
 
 \end_inset
 
