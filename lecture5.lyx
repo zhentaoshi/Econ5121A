@@ -123,6 +123,20 @@ today
 
 \end_layout
 
+\begin_layout Standard
+Notation: 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ denotes a random variable or random vector.
+ 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ is its realization.
+ 
+\end_layout
+
 \begin_layout Section
 Hypothesis Testing
 \end_layout
@@ -244,7 +258,7 @@ size
 \begin_inset Formula $\phi$
 \end_inset
 
- is a real number 
+ is 
 \begin_inset Formula 
 \[
 \alpha=\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right).
@@ -323,8 +337,8 @@ Under the philosophy of protecting the null hypothesis, a desirable test
 \end_layout
 
 \begin_layout Example
-A trivial test function is 
-\begin_inset Formula $\phi\left(\mathbf{x}\right)=1\left\{ 0\leq U\leq\alpha\right\} $
+A trivial test function, 
+\begin_inset Formula $\phi\left(\mathbf{X}\right)=1\left\{ 0\leq U\leq\alpha\right\} $
 \end_inset
 
 , where 
@@ -335,17 +349,64 @@ A trivial test function is
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
-.
- This test has correct size, but no power.
+, has correct size but no power.
+ Another trivial test function 
+\begin_inset Formula $\phi\left(\mathbf{X}\right)=1$
+\end_inset
+
+ has the biggest power but incorrect size.
+ 
 \end_layout
 
 \begin_layout Standard
-Denote 
-\begin_inset Formula $\Psi_{\alpha}=\left\{ \phi:\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)\leq\alpha\right\} $
+Usually, we design a test by proposing a test statistic 
+\begin_inset Formula $T_{n}:\mathcal{X}^{n}\mapsto\mathbb{R}^{+}$
 \end_inset
 
- as the class of test functions of level smaller than 
+ and a critical value 
+\begin_inset Formula $c_{\alpha}$
+\end_inset
+
+, and then define
+\begin_inset Formula 
+\[
+\phi\left(\mathbf{X}\right)=1\left\{ T_{n}\left(\mathbf{X}\right)>c_{\alpha}\right\} .
+\]
+
+\end_inset
+
+To ensure such a 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)$
+\end_inset
+
+ has correct size, we figure out the distribution of 
+\begin_inset Formula $T_{n}$
+\end_inset
+
+ under the null hypothesis (called the 
+\emph on
+null distribution
+\emph default
+), and choose 
+\begin_inset Formula $c_{\alpha}$
+\end_inset
+
+ according to the null distribution and the desirable size or level 
 \begin_inset Formula $\alpha$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+There can be many tests of a correct level.
+ Denote the class of test functions of level smaller than 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ as 
+\begin_inset Formula $\Psi_{\alpha}=\left\{ \phi:\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)\leq\alpha\right\} $
 \end_inset
 
 .
@@ -358,7 +419,7 @@ uniformly most powerful test
 \end_inset
 
  is a test function such that, for every 
-\begin_inset Formula $\phi\in\Psi_{\alpha}$
+\begin_inset Formula $\phi\in\Psi_{\alpha},$
 \end_inset
 
  
@@ -384,7 +445,7 @@ name "eg1"
 
 \end_inset
 
-Suppose a random sample of size 6 is generated from 
+ Suppose a random sample of size 6 is generated from 
 \begin_inset Formula 
 \[
 \left(X_{1},\ldots,X_{6}\right)\sim\text{i.i.d.}N\left(\theta,1\right),
@@ -415,24 +476,128 @@ Suppose a random sample of size 6 is generated from
 \end_inset
 
 .
- The test function 
+ All tests in 
 \begin_inset Formula 
 \[
-\phi\left(\mathbf{X}\right)=1\left(\bar{X}\geq1.64/\sqrt{6}\right)
+\Psi=\left\{ 1\left\{ \bar{X}\geq c/\sqrt{6}\right\} :c\geq1.64\right\} 
 \]
 
 \end_inset
 
- is the most powerful test among all tests of level 0.05.
- The power function of 
-\begin_inset Formula $\phi^{*}$
+ has the correct level.
+ Since 
+\begin_inset Formula $\bar{X}=N\left(\theta,1/\sqrt{6}\right)$
+\end_inset
+
+, the power function for those in 
+\begin_inset Formula $\Psi$
 \end_inset
 
  is 
-\begin_inset Formula $\beta_{\phi^{*}}\left(\theta\right)=\Phi\left(\sqrt{6}\theta-1.64\right)$
+\begin_inset Formula 
+\[
+\beta_{\phi}\left(\theta\right)=P\left(\bar{X}\geq\frac{c}{\sqrt{6}}\right)=P\left(\sqrt{6}\left(\bar{X}-\theta\right)\geq c-\sqrt{6}\theta\right)=1-\Phi\left(c-\sqrt{6}\theta\right).
+\]
+
+\end_inset
+
+The test function 
+\begin_inset Formula 
+\[
+\phi\left(\mathbf{X}\right)=1\left\{ \bar{X}\geq1.64/\sqrt{6}\right\} 
+\]
+
+\end_inset
+
+ is the most powerful test in 
+\begin_inset Formula $\Psi$
 \end_inset
 
 .
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Another commonly used indicator in hypothesis testing is 
+\begin_inset Formula $p$
+\end_inset
+
+-value:
+\begin_inset Formula 
+\[
+1-\inf_{\theta\in\Theta_{0}}P_{\theta}\left(T_{n}\left(\mathbf{x}\right)\leq T_{n}\left(\mathbf{X}\right)\right).
+\]
+
+\end_inset
+
+In the above expression, 
+\begin_inset Formula $T_{n}\left(\mathbf{x}\right)$
+\end_inset
+
+ is the realized value of the test statistic 
+\begin_inset Formula $T_{n}$
+\end_inset
+
+, while 
+\begin_inset Formula $T_{n}\left(\mathbf{X}\right)$
+\end_inset
+
+ is the random variable generated by 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+-value is closely connected to the corresponding test.
+ When 
+\begin_inset Formula $p$
+\end_inset
+
+-value is smaller than the specified test size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, the test reject the null hypothesis.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $p$
+\end_inset
+
+-value is a measure whether the data is consistent with the null hypothesis,
+ or whether the evidence from the data is compatible with the null hypothesis.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+-value is 
+\emph on
+not
+\emph default
+ the probability that the null hypothesis is true.
+ Under the frequentist perspective, the null hypothesis is either true or
+ false, with certainty.
+ The randomness of a test comes only from sampling, not from the hypothesis.
  
 \end_layout
 
@@ -445,7 +610,7 @@ An
 \emph on
 interval estimate
 \emph default
- is a function 
+ is a measurable function 
 \begin_inset Formula $C:\mathcal{X}^{n}\mapsto\left\{ \Theta':\Theta'\subseteq\Theta\right\} $
 \end_inset
 
@@ -468,15 +633,19 @@ interval estimator
 
 .
  The coverage probability is the frequency that the interval estimator captures
- the true parameter that generates the sample (In the frequentist perspective,
- the parameter is fixed while the region is random), but not the probability
- that 
+ the true parameter that generates the sample (From the frequentist perspective,
+ the parameter is fixed while the region is random).
+ It is 
+\emph on
+not
+\emph default
+ the probability that 
 \begin_inset Formula $\theta$
 \end_inset
 
- is inside the given region (In the Bayesian perspective, the parameter
+ is inside the given region (From the Bayesian perspective, the parameter
  is random while the region is fixed conditional on 
-\begin_inset Formula $X$
+\begin_inset Formula $\mathbf{X}$
 \end_inset
 
 .)
@@ -506,41 +675,33 @@ Suppose a random sample of size 6 is generated from
 Hypothesis testing and confidence interval are closely related.
  Sometime it is difficult to directly construct the confidence interval,
  but easier to test a hypothesis.
- One way to construct confidence interval is by inverting a corresponding
- hypothesis testing problem.
-\end_layout
-
-\begin_layout Standard
-Suppose 
-\begin_inset Formula $A_{\phi}\left(\theta\right)$
-\end_inset
-
- the acceptance region of a test 
+ One way to construct confidence interval is by 
+\emph on
+inverting a corresponding test
+\emph default
+.
+ Suppose 
 \begin_inset Formula $\phi$
 \end_inset
 
- whose size is 
+ is a test of size 
 \begin_inset Formula $\alpha$
-\end_inset
-
- and the null is 
-\begin_inset Formula $\theta$
 \end_inset
 
 .
  If 
-\begin_inset Formula $C\left(\mathbf{x}\right)$
+\begin_inset Formula $C\left(\mathbf{X}\right)$
 \end_inset
 
  is constructed as 
 \begin_inset Formula 
 \[
-C\left(\mathbf{x}\right)=\left\{ \theta\in\Theta:\mathbf{x}\in A_{\phi}\left(\theta\right)\right\} ,
+C\left(\mathbf{X}\right)=\left\{ \theta\in\Theta:\phi_{\theta}\left(\mathbf{X}\right)=0\right\} ,
 \]
 
 \end_inset
 
- the coverage probability 
+ then its coverage probability 
 \begin_inset Formula $P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)=1-\alpha$
 \end_inset
 
@@ -548,7 +709,7 @@ C\left(\mathbf{x}\right)=\left\{ \theta\in\Theta:\mathbf{x}\in A_{\phi}\left(\th
 \end_layout
 
 \begin_layout Section
-Hypothesis Testing: Application in OLS
+Application in OLS
 \end_layout
 
 \begin_layout Subsection
@@ -609,8 +770,17 @@ P\left(\theta_{0}\in\widehat{C}_{n}\right)=P\left(\left\{ T_{n}\left(\theta_{0}\
 
 
 \series default
- If 
-\begin_inset Formula $\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
+ Suppose the OLS estimator 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is asymptotic normal, i.e.
+ 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,\Omega\right)
+\]
+
 \end_inset
 
  where 
@@ -651,7 +821,7 @@ Now we intend to test the null hypothesis
 \end_inset
 
 .
- Under the null hypothesis, the Wald statistic 
+ Under the null, the Wald statistic 
 \begin_inset Formula 
 \[
 W_{n}=n\left(R\widehat{\beta}-r\right)'\left(R\widehat{\Omega}R'\right)^{-1}\left(R\widehat{\beta}-r\right)\stackrel{d}{\to}\chi_{q}^{2}
@@ -671,7 +841,13 @@ where
 \end_layout
 
 \begin_layout Example
-In a linear regression 
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:single"
+
+\end_inset
+
+ In a linear regression 
 \begin_inset Formula 
 \begin{eqnarray}
 y & = & x_{i}'\beta+e_{i}=\sum_{k=1}^{5}\beta_{k}x_{ik}+e_{i}.\nonumber \\
@@ -702,7 +878,7 @@ education
  
 \begin_inset Formula 
 \begin{equation}
-\sqrt{n}\widehat{\beta}_{1}=\sqrt{n}\left(\widehat{\beta}_{1}-\beta\right)=\sqrt{n}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)\sim N\left(0,\Omega_{11}\right),\label{eq:R11}
+\sqrt{n}\widehat{\beta}_{1}=\sqrt{n}\left(\widehat{\beta}_{1}-\beta_{1}\right)=\sqrt{n}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)\sim N\left(0,\Omega_{11}\right),\label{eq:R11}
 \end{equation}
 
 \end_inset
@@ -756,12 +932,36 @@ If
 \end_layout
 
 \begin_layout Standard
-Example 1 is a test about a single coefficient, and the test statistic is
- essentially a t-statistic.
- Example 2 gives a test about a joint hypothesis.
+Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:single"
+
+\end_inset
+
+ is a test about a single coefficient, and the test statistic is essentially
+ a 
+\emph on
+t
+\emph default
+-statistic.
+ Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:joint"
+
+\end_inset
+
+ gives a test about a joint hypothesis.
 \end_layout
 
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:joint"
+
+\end_inset
+
 We want to simultaneously test 
 \begin_inset Formula $\beta_{1}=1$
 \end_inset
@@ -808,7 +1008,21 @@ R=\begin{pmatrix}1 & 0 & 0 & 0 & 0\\
 \end_layout
 
 \begin_layout Standard
-Example 1 and 2 are linear restrictions.
+Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:single"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:joint"
+
+\end_inset
+
+ are linear restrictions.
  In order to test a nonlinear regression, we need the so-called 
 \emph on
 delta method
@@ -828,21 +1042,21 @@ delta method
 \end_inset
 
  If 
-\begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta^{*}\right)\stackrel{d}{\to}N\left(0,\Omega_{K\times K}\right)$
+\begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega_{K\times K}\right)$
 \end_inset
 
 , and 
 \begin_inset Formula $f:\mathbb{R}^{K}\mapsto\mathbb{R}^{q}$
 \end_inset
 
- is a continuous function for some 
+ is a continuously differentiable function for some 
 \begin_inset Formula $q\leq K$
 \end_inset
 
 , then 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta^{*}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)'\right).
+\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)'\right).
 \]
 
 \end_inset
@@ -875,13 +1089,13 @@ reference "eq:example"
 
 This is a nonlinear hypothesis.
  According to Theorem 1, if 
-\begin_inset Formula $\mathrm{rank}\left(\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)\right)=q\leq K$
+\begin_inset Formula $\mathrm{rank}\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\right)=q\leq K$
 \end_inset
 
 , we have
 \begin_inset Formula 
 \[
-n\left(f\left(\widehat{\theta}\right)-f\left(\theta^{*}\right)\right)'\left(\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta^{*}\right)'\right)^{-1}\left(f\left(\widehat{\theta}\right)-f\left(\theta^{*}\right)\right)\stackrel{d}{\to}\chi_{q}^{2},
+n\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)'\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)'\right)^{-1}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}\chi_{q}^{2},
 \]
 
 \end_inset
@@ -904,15 +1118,15 @@ where in this example,
 \end_inset
 
 Since 
-\begin_inset Formula $\widehat{\beta}\stackrel{p}{\to}\beta^{*}$
+\begin_inset Formula $\widehat{\beta}\stackrel{p}{\to}\beta_{0}$
 \end_inset
 
-, by Slutsky's theorem, if 
-\begin_inset Formula $\beta_{4}^{*}\neq0$
+, by the continuous mapping theorem theorem, if 
+\begin_inset Formula $\beta_{0,4}\neq0$
 \end_inset
 
 , we have 
-\begin_inset Formula $\frac{\partial}{\partial\beta}f\left(\widehat{\beta}\right)\stackrel{p}{\to}\frac{\partial}{\partial\beta}f\left(\beta^{*}\right)$
+\begin_inset Formula $\frac{\partial}{\partial\beta}f\left(\widehat{\beta}\right)\stackrel{p}{\to}\frac{\partial}{\partial\beta}f\left(\beta_{0}\right)$
 \end_inset
 
 .
@@ -927,16 +1141,8 @@ W_{n}=n\left(f\left(\widehat{\beta}\right)-20\right)'\left(\frac{\partial f}{\pa
 
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-I did not teach the LM and LR tests below.
- Do not read.
- 
-\end_layout
-
 \begin_layout Subsection
-Lagrangian Multiplier Test
+Lagrangian Multiplier Test*
 \end_layout
 
 \begin_layout Standard
@@ -1045,7 +1251,7 @@ If homoskedastic, then
 \end_layout
 
 \begin_layout Subsection
-Likelihood-Ratio test
+Likelihood-Ratio test*
 \end_layout
 
 \begin_layout Standard
@@ -1087,7 +1293,8 @@ Therefore
 and 
 \begin_inset Formula 
 \begin{eqnarray*}
-n\left(\tilde{\beta}-\beta\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right) & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ &  & n\left(\tilde{\beta}-\beta\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right)\\
+ & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
  & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
 \end{eqnarray*}
 
