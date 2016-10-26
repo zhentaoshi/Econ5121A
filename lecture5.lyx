@@ -541,7 +541,7 @@ Another commonly used indicator in hypothesis testing is
 -value:
 \begin_inset Formula 
 \[
-1-\inf_{\theta\in\Theta_{0}}P_{\theta}\left(T_{n}\left(\mathbf{x}\right)\leq T_{n}\left(\mathbf{X}\right)\right).
+\sup_{\theta\in\Theta_{0}}P_{\theta}\left(T_{n}\left(\mathbf{x}\right)\leq T_{n}\left(\mathbf{X}\right)\right).
 \]
 
 \end_inset
@@ -562,12 +562,16 @@ In the above expression,
 \begin_inset Formula $\mathbf{X}$
 \end_inset
 
+ under the null 
+\begin_inset Formula $\theta\in\Theta_{0}$
+\end_inset
+
 .
  
 \begin_inset Formula $p$
 \end_inset
 
--value is closely connected to the corresponding test.
+-value is closely related to the corresponding test.
  When 
 \begin_inset Formula $p$
 \end_inset
@@ -576,7 +580,7 @@ In the above expression,
 \begin_inset Formula $\alpha$
 \end_inset
 
-, the test reject the null hypothesis.
+, the test rejects the null hypothesis.
  
 \end_layout
 
@@ -610,7 +614,7 @@ An
 \emph on
 interval estimate
 \emph default
- is a measurable function 
+ is a function 
 \begin_inset Formula $C:\mathcal{X}^{n}\mapsto\left\{ \Theta':\Theta'\subseteq\Theta\right\} $
 \end_inset
 
@@ -673,7 +677,7 @@ Suppose a random sample of size 6 is generated from
 
 \begin_layout Standard
 Hypothesis testing and confidence interval are closely related.
- Sometime it is difficult to directly construct the confidence interval,
+ Sometimes it is difficult to directly construct the confidence interval,
  but easier to test a hypothesis.
  One way to construct confidence interval is by 
 \emph on
@@ -696,7 +700,7 @@ inverting a corresponding test
  is constructed as 
 \begin_inset Formula 
 \[
-C\left(\mathbf{X}\right)=\left\{ \theta\in\Theta:\phi_{\theta}\left(\mathbf{X}\right)=0\right\} ,
+C\left(\mathbf{x}\right)=\left\{ \theta\in\Theta:\phi_{\theta}\left(\mathbf{x}\right)=0\right\} ,
 \]
 
 \end_inset
@@ -857,10 +861,13 @@ E\left[e_{i}x_{i}\right] & = & \mathbf{0}_{5},\label{eq:example}
 \end_inset
 
 where 
-\begin_inset Formula $x_{i}=\left(\mbox{edu},\mbox{age},\mbox{experience},\mbox{experience}^{2},1\right)'$
+\begin_inset Formula 
+\[
+x=\left(\mbox{edu},\mbox{age},\mbox{experience},\mbox{experience}^{2},1\right)'.
+\]
+
 \end_inset
 
-.
  To test whether 
 \emph on
 education
