@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass article
 \begin_preamble
 
@@ -20,16 +22,16 @@ theorems-ams-extended-bytype
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format dvi
 \output_sync 1
@@ -49,7 +51,7 @@ theorems-ams-extended-bytype
 \pdf_backref false
 \pdf_pdfusetitle true
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 0
@@ -132,6 +134,23 @@ theorems-ams-extended-bytype
 
 \end_layout
 
+\begin_layout Standard
+This version: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Panel Data
 \end_layout
@@ -160,7 +179,7 @@ A panel dataset tracks the same individuals across time
  We maintain the linear equation 
 \begin_inset Formula 
 \begin{equation}
-y_{it}=\beta_{1}+x_{it}\beta_{2}+u_{it},\ i=1,\ldots,n;t=1,\ldots,T\label{eq:basic_eq}
+y_{it}=\beta_{1}+x_{it}\beta_{2}+u_{it},\ i=1,\ldots,n;\ t=1,\ldots,T\label{eq:basic_eq}
 \end{equation}
 
 \end_inset
@@ -216,7 +235,7 @@ reference "eq:basic_eq"
 \begin_inset Formula $\alpha_{i},i=1,\ldots,n$
 \end_inset
 
- .
+.
  The rest of this section develops the consistency and asymptotic distribution
  of the 
 \emph on

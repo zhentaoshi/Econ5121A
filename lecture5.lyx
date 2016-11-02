@@ -352,7 +352,7 @@ bigskip
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -361,7 +361,7 @@ bigskip
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -378,7 +378,7 @@ accept
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -422,7 +422,7 @@ correct decision
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -433,7 +433,7 @@ Type I error
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -449,7 +449,7 @@ Type I error
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -458,7 +458,7 @@ Type II error
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -492,7 +492,11 @@ bigskip
 \end_layout
 
 \begin_layout Plain Layout
-size = P(reject 
+size = 
+\emph on
+P
+\emph default
+(reject 
 \begin_inset Formula $H_{0}$
 \end_inset
 
@@ -504,7 +508,11 @@ size = P(reject
 \end_layout
 
 \begin_layout Plain Layout
-power = P(reject 
+power = 
+\emph on
+P
+\emph default
+(reject 
 \begin_inset Formula $H_{0}$
 \end_inset
 
@@ -990,10 +998,14 @@ C\left(\mathbf{x}\right)=\left\{ \theta\in\Theta:\phi_{\theta}\left(\mathbf{x}\r
 \end_inset
 
  then its coverage probability 
-\begin_inset Formula $P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)=1-\alpha$
+\begin_inset Formula 
+\[
+P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)=1-P_{\theta}\left(\phi_{\theta}\left(\mathbf{X}\right)=1\right)=1-\alpha.
+\]
+
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Section
@@ -1145,6 +1157,10 @@ E\left[e_{i}x_{i}\right] & = & \mathbf{0}_{5},\label{eq:example}
 \end_inset
 
 where 
+\begin_inset Formula $y$
+\end_inset
+
+ is wage and 
 \begin_inset Formula 
 \[
 x=\left(\mbox{edu},\mbox{age},\mbox{experience},\mbox{experience}^{2},1\right)'.
@@ -1154,9 +1170,13 @@ x=\left(\mbox{edu},\mbox{age},\mbox{experience},\mbox{experience}^{2},1\right)'.
 
  To test whether 
 \emph on
-education
+education 
 \emph default
- has effect on wage, we specify the null hypothesis 
+affects
+\emph on
+ wage
+\emph default
+, we specify the null hypothesis 
 \begin_inset Formula $\beta_{1}=0$
 \end_inset
 
