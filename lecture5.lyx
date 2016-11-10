@@ -250,6 +250,31 @@ power function
 
  The power function measures, at a given point, the probability that the
  test function rejects the null.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+power
+\emph default
+ of 
+\begin_inset Formula $\phi$
+\end_inset
+
+ at 
+\begin_inset Formula $\theta$
+\end_inset
+
+ for some 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+ is defined as the value of 
+\begin_inset Formula $\beta_{\phi}\left(\theta\right)$
+\end_inset
+
+.
  The 
 \emph on
 size
@@ -258,14 +283,19 @@ size
 \begin_inset Formula $\phi$
 \end_inset
 
- is 
-\begin_inset Formula 
-\[
-\alpha=\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right).
-\]
-
+ is define as 
+\begin_inset Formula $\alpha=\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right).$
 \end_inset
 
+ Notice that the definition of power depends on a 
+\begin_inset Formula $\theta$
+\end_inset
+
+ in the alternative, whereas that of size is independent of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ as it takes the supremum over the null.
  The 
 \emph on
 level
@@ -308,8 +338,11 @@ probability of committing Type II error
 \begin_inset Formula $\theta\in\Theta_{1}$
 \end_inset
 
+; in other words, it is one minus the power at 
+\begin_inset Formula $\theta$
+\end_inset
+
 .
- 
 \end_layout
 
 \begin_layout Standard
