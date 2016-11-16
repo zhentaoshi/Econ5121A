@@ -6,7 +6,6 @@
 \origin unavailable
 \textclass article
 \begin_preamble
-
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \lhead{Lecture Notes}
@@ -39,7 +38,7 @@ theorems-ams-extended-bytype
 \bibtex_command default
 \index_command default
 \paperfontsize 11
-\spacing onehalf
+\spacing double
 \use_hyperref true
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
@@ -47,12 +46,12 @@ theorems-ams-extended-bytype
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder true
-\pdf_colorlinks true
+\pdf_colorlinks false
 \pdf_backref false
 \pdf_pdfusetitle true
 \papersize default
 \use_geometry false
-\use_package amsmath 1
+\use_package amsmath 2
 \use_package amssymb 1
 \use_package cancel 0
 \use_package esint 1
@@ -96,7 +95,7 @@ theorems-ams-extended-bytype
 \quotes_language english
 \papercolumns 1
 \papersides 1
-\paperpagestyle default
+\paperpagestyle plain
 \tracking_changes false
 \output_changes true
 \html_math_output 0
@@ -123,7 +122,7 @@ theorems-ams-extended-bytype
 
 
 \begin_inset FormulaMacro
-\newcommand{\E}{E}
+\newcommand{\E}{\mathbb{E}}
 \end_inset
 
 
@@ -151,6 +150,10 @@ today
 
 \end_layout
 
+\begin_layout Section
+Generalized Method of Moments
+\end_layout
+
 \begin_layout Standard
 
 \emph on
@@ -161,7 +164,7 @@ Generalized method of moments
 method of moments
 \emph default
 .
- It seeks the parameter that minimizes a quadratic form of the moments.
+ It seeks the parameter value that minimizes a quadratic form of the moments.
  It is particularly useful in estimating structural models in which moment
  conditions can be derived from economic theory.
  GMM emerges as one of the most popular estimators in modern econometrics,
@@ -170,7 +173,7 @@ method of moments
  
 \end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 Examples of Endogeneity
 \end_layout
 
@@ -180,21 +183,23 @@ As econometricians mostly work with non-experimental data, we cannot overstate
  We go over a few examples.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Dynamic Panel Data Model
 \end_layout
 
-\begin_layout Standard
-We know that the first-difference (FD) estimator is consistent for (static)
+\end_inset
+
+ We know that the first-difference (FD) estimator is consistent for (static)
  panel data model.
  Nevertheless, the FD estimator encounters difficulty in a dynamic panel
  model 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
-y_{it}=\beta_{1}+\beta_{2}y_{it-1}+\beta_{3}x_{it}+\alpha_{i}+e_{it},
+y_{it}=\beta_{1}+\beta_{2}y_{it-1}+\beta_{3}x_{it}+\alpha_{i}+\epsilon_{it},
 \]
 
 \end_inset
@@ -202,7 +207,7 @@ y_{it}=\beta_{1}+\beta_{2}y_{it-1}+\beta_{3}x_{it}+\alpha_{i}+e_{it},
 even if we assume 
 \begin_inset Formula 
 \begin{equation}
-\E\left[e_{it}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{it-1},y_{it-2},\ldots,y_{i0}\right]=0.\label{eq:dyn_mean_0}
+\E\left[\epsilon_{it}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{it-1},y_{it-2},\ldots,y_{i0}\right]=0.\label{eq:dyn_mean_0}
 \end{equation}
 
 \end_inset
@@ -218,7 +223,7 @@ even if we assume
 , we have 
 \begin_inset Formula 
 \[
-\left(y_{it}-y_{it-1}\right)=\beta_{2}\left(y_{it-1}-y_{it-2}\right)+\beta_{3}\left(x_{it}-x_{it-1}\right)+\left(e_{it}-e_{it-1}\right).
+\left(y_{it}-y_{it-1}\right)=\beta_{2}\left(y_{it-1}-y_{it-2}\right)+\beta_{3}\left(x_{it}-x_{it-1}\right)+\left(\epsilon_{it}-\epsilon_{it-1}\right).
 \]
 
 \end_inset
@@ -231,13 +236,13 @@ reference "eq:dyn_mean_0"
 \end_inset
 
 ), 
-\begin_inset Formula $\E\left[\left(x_{it}-x_{it-1}\right)\left(e_{it}-e_{it-1}\right)\right]=0$
+\begin_inset Formula $\E\left[\left(x_{it}-x_{it-1}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=0$
 \end_inset
 
 , but 
 \begin_inset Formula 
 \[
-\E\left[\left(y_{it-1}-y_{it-2}\right)\left(e_{it}-e_{it-1}\right)\right]=-\beta_{2}\E\left[y_{it-1}e_{it-1}\right]=-\beta_{2}\E\left[e_{it-1}^{2}\right]\neq0.
+\E\left[\left(y_{it-1}-y_{it-2}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=-\beta_{2}\E\left[y_{it-1}\epsilon_{it-1}\right]=-\beta_{2}\E\left[\epsilon_{it-1}^{2}\right]\neq0.\qed
 \]
 
 \end_inset
@@ -245,13 +250,25 @@ reference "eq:dyn_mean_0"
 
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
 Keynesian-Type Macro Equations
 \end_layout
 
-\begin_layout Standard
-This is a model borrowed from Hayashi (2000, p.193) but originated from Haavelmo
- (1943).
+\end_inset
+
+ This is a model borrowed from Hayashi (2000, p.193) but originated from
+ Haavelmo (1943).
  An econometrician is interested in learning 
 \begin_inset Formula $\beta_{2}$
 \end_inset
@@ -320,16 +337,40 @@ reference "eq:keynes"
 \end_inset
 
 .
- 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
 \end_layout
 
-\begin_layout Subsection
-Classical Measurement Error
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Endogeneity also emerges when an explanatory variables is not directly observabl
-e but is replaced by a measurement with error.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Classical Measurement Error
+\end_layout
+
+\end_inset
+
+ Endogeneity also emerges when an explanatory variables is not directly
+ observable but is replaced by a measurement with error.
  Suppose the true linear model is 
 \begin_inset Formula 
 \begin{equation}
@@ -413,10 +454,39 @@ reference "eq:measurement_error2"
 \end_inset
 
 ) would not deliver a consistent estimator.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
 \end_layout
 
-\begin_layout Section
-GMM 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Demand-Supply System
+\end_layout
+
+\end_inset
+
+ See Hansen's Chapter 15.
 \end_layout
 
 \begin_layout Subsection
@@ -441,7 +511,7 @@ reference "eq:keynes"
  Consider the following linear structural model 
 \begin_inset Formula 
 \begin{equation}
-y_{i}=x_{1i}\beta_{1}+z_{1i}\beta_{2}+e_{i},\label{eq:basic_1}
+y_{i}=x_{1i}\beta_{1}+z_{1i}\beta_{2}+\epsilon_{i},\label{eq:basic_1}
 \end{equation}
 
 \end_inset
@@ -519,7 +589,7 @@ reference "eq:basic_1"
 ) as 
 \begin_inset Formula 
 \begin{equation}
-y_{i}=x_{i}\beta+e_{i},\label{eq:basic_2}
+y_{i}=x_{i}\beta+\epsilon_{i},\label{eq:basic_2}
 \end{equation}
 
 \end_inset
@@ -922,7 +992,7 @@ A.1
 \end_inset
 
  and 
-\begin_inset Formula $Z'e/n\top0_{L}$
+\begin_inset Formula $Z'\epsilon/n\top0_{L}$
 \end_inset
 
 .
@@ -935,7 +1005,7 @@ A.1 assumes that we can apply a law of large numbers, so that that the sample
 \end_inset
 
  and 
-\begin_inset Formula $Z'e/n$
+\begin_inset Formula $Z'\epsilon/n$
 \end_inset
 
  converge in probability to their population counterparts.
@@ -954,9 +1024,10 @@ Under A.1,
 The step is similar to the consistency proof of OLS.
  
 \begin_inset Formula 
-\[
-\widehat{\beta}=\left(X'ZWZ'X\right)^{-1}X'ZWZ'\left(X'\beta_{0}+e\right)=\beta_{0}+\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'e}{n}\top\beta_{0}\qedhere
-\]
+\begin{align*}
+\widehat{\beta} & =\left(X'ZWZ'X\right)^{-1}X'ZWZ'\left(X'\beta_{0}+\epsilon\right)\\
+ & =\beta_{0}+\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{n}\top\beta_{0}.\qedhere
+\end{align*}
 
 \end_inset
 
@@ -979,11 +1050,11 @@ A.2
 \end_inset
 
  
-\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'e_{i}\Rightarrow N\left(0_{L},\Omega\right)$
+\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'\epsilon_{i}\Rightarrow N\left(0_{L},\Omega\right)$
 \end_inset
 
 , where 
-\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}e_{i}^{2}\right].$
+\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}\epsilon_{i}^{2}\right].$
 \end_inset
 
 
@@ -1021,9 +1092,10 @@ Multiply
 
 ,
 \begin_inset Formula 
-\[
-\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'e}{\sqrt{n}}=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'e_{i}.
-\]
+\begin{align*}
+\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right) & =\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{\sqrt{n}}\\
+ & =\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'\epsilon_{i}.
+\end{align*}
 
 \end_inset
 
@@ -1032,7 +1104,7 @@ The conclusion follows as
 \end_inset
 
  and 
-\begin_inset Formula $\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum z_{i}'e_{i}\Rightarrow\Sigma'W\times N\left(0,\Omega\right)$
+\begin_inset Formula $\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum z_{i}'\epsilon_{i}\Rightarrow\Sigma'W\times N\left(0,\Omega\right)$
 \end_inset
 
 .
@@ -1072,7 +1144,11 @@ The choice
 
  an asymptotically efficient estimator, under which the asymptotic variance
  is 
-\begin_inset Formula $\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\Sigma'\Omega^{-1}\Omega\Omega^{-1}\Sigma\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}=\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}.$
+\begin_inset Formula 
+\[
+\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\Sigma'\Omega^{-1}\Omega\Omega^{-1}\Sigma\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}=\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}.
+\]
+
 \end_inset
 
 
@@ -1106,11 +1182,11 @@ Choose any valid
 
 .
  Save the residual 
-\begin_inset Formula $\widehat{e}_{i}=y_{i}-x_{i}\widehat{\beta}$
+\begin_inset Formula $\widehat{\epsilon}_{i}=y_{i}-x_{i}\widehat{\beta}$
 \end_inset
 
  and estimate the variance matrix 
-\begin_inset Formula $\widehat{\Omega}=\frac{1}{n}\sum z_{i}'z_{i}\widehat{e}_{i}^{2}.$
+\begin_inset Formula $\widehat{\Omega}=\frac{1}{n}\sum z_{i}'z_{i}\widehat{\epsilon}_{i}^{2}.$
 \end_inset
 
 
@@ -1134,13 +1210,13 @@ This second estimator is asymptotic efficient.
 
 \begin_layout Standard
 If we further assume conditional homoskedasticity, then 
-\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}e_{i}^{2}\right]=\E\left[z_{i}'z_{i}\E\left[e_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\E\left[z'_{i}z_{i}\right]$
+\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}\epsilon_{i}^{2}\right]=\E\left[z_{i}'z_{i}\E\left[\epsilon_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\E\left[z'_{i}z_{i}\right]$
 \end_inset
 
 .
  Therefore in the first-step of the two-step GMM we can estimate the variance
  of the error term by 
-\begin_inset Formula $\widehat{\sigma}^{2}=\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}$
+\begin_inset Formula $\widehat{\sigma}^{2}=\frac{1}{n}\sum_{i=1}^{n}\widehat{\epsilon}_{i}^{2}$
 \end_inset
 
  and the variance matrix by 
@@ -1173,14 +1249,13 @@ This is exactly the same expression of 2SLS for
 .
  Under conditional homoskedasticity, 2SLS is the efficient estimator; otherwise
  2SLS is inefficient.
-\begin_inset Note Note
-status open
+\end_layout
 
 \begin_layout Subsection
 GMM in Nonlinear Model
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 The principle of GMM can be used in models where the parameter enters the
  moment conditions nonlinearly.
  Let 
@@ -1224,7 +1299,7 @@ Nonlinear models nest the linear model as a special case.
 .
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 In practice we use the sample moments to mimic the population moments in
  the criterion function
 \begin_inset Formula 
@@ -1303,7 +1378,7 @@ The list of assumptions in the above statement is incomplete.
  
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Formula $Q_{n}\left(\beta\right)$
 \end_inset
 
@@ -1324,9 +1399,10 @@ The list of assumptions in the above statement is incomplete.
  checks whether a moment condition is violated.
  The test statistic is 
 \begin_inset Formula 
-\[
-J\left(\widehat{\beta}\right)=n\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)'\widehat{\Omega}^{-1}\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)=\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)'\widehat{\Omega}^{-1}\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)
-\]
+\begin{align*}
+J\left(\widehat{\beta}\right) & =n\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)'\widehat{\Omega}^{-1}\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)\\
+ & =\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)'\widehat{\Omega}^{-1}\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)
+\end{align*}
 
 \end_inset
 
@@ -1363,11 +1439,6 @@ J\left(\widehat{\beta}\right)\Rightarrow\chi^{2}\left(L-K\right)
 
 If the null hypothesis is false, then the test statistic tends to be large,
  and it is more likely to reject the null.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_body
