@@ -1,8 +1,8 @@
 ---
 title: "Panel Data Estimation"
 author: "Zhentao Shi"
-date: March 20, 2016
-output: html_document
+date: November 16, 2016
+output: pdf_document
 fontsize: 11pt
 ---
 
