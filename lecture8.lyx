@@ -242,7 +242,7 @@ reference "eq:dyn_mean_0"
 , but 
 \begin_inset Formula 
 \[
-\E\left[\left(y_{it-1}-y_{it-2}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=-\beta_{2}\E\left[y_{it-1}\epsilon_{it-1}\right]=-\beta_{2}\E\left[\epsilon_{it-1}^{2}\right]\neq0.\qed
+\E\left[\left(y_{it-1}-y_{it-2}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=-\E\left[y_{it-1}\epsilon_{it-1}\right]=-\E\left[\epsilon_{it-1}^{2}\right]\neq0.\qed
 \]
 
 \end_inset
@@ -1252,7 +1252,7 @@ This is exactly the same expression of 2SLS for
 \end_layout
 
 \begin_layout Subsection
-GMM in Nonlinear Model
+GMM in Nonlinear Model*
 \end_layout
 
 \begin_layout Standard
