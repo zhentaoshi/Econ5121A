@@ -242,7 +242,7 @@ reference "eq:dyn_mean_0"
 , but 
 \begin_inset Formula 
 \[
-\E\left[\left(y_{it-1}-y_{it-2}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=-\beta_{2}\E\left[y_{it-1}\epsilon_{it-1}\right]=-\beta_{2}\E\left[\epsilon_{it-1}^{2}\right]\neq0.\qed
+\E\left[\left(y_{it-1}-y_{it-2}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=-\E\left[y_{it-1}\epsilon_{it-1}\right]=-\E\left[\epsilon_{it-1}^{2}\right]\neq0.\qed
 \]
 
 \end_inset
@@ -491,7 +491,7 @@ reference "eq:keynes"
  Consider the following linear structural model 
 \begin_inset Formula 
 \begin{equation}
-y_{i}=x_{1i}\beta_{1}+z_{1i}\beta_{2}+\epsilon_{i},\label{eq:basic_1}
+y_{i}=x_{1i}'\beta_{1}+z_{1i}'\beta_{2}+\epsilon_{i},\label{eq:basic_1}
 \end{equation}
 
 \end_inset
@@ -532,7 +532,7 @@ where
 
 .
  Denote 
-\begin_inset Formula $x_{i}=\left(x_{1i},z_{1i}\right)$
+\begin_inset Formula $x_{i}=\left(x_{1i}',z_{1i}'\right)'$
 \end_inset
 
  as a 
@@ -540,7 +540,7 @@ where
 \end_inset
 
 -dimensional explanatory variable, and 
-\begin_inset Formula $z_{i}=\left(z_{1i},z_{2i}\right)$
+\begin_inset Formula $z_{i}=\left(z_{1i}',z_{2i}'\right)$
 \end_inset
 
  as an 
@@ -569,7 +569,7 @@ reference "eq:basic_1"
 ) as 
 \begin_inset Formula 
 \begin{equation}
-y_{i}=x_{i}\beta+\epsilon_{i},\label{eq:basic_2}
+y_{i}=x_{i}'\beta+\epsilon_{i},\label{eq:basic_2}
 \end{equation}
 
 \end_inset
@@ -616,7 +616,7 @@ reference "eq:basic_2"
  is the only value on the parameters space that satisfies the moment condition
 \begin_inset Formula 
 \begin{equation}
-\E\left[z_{i}'\left(y_{i}-x_{i}\beta\right)\right]=0_{L}.\label{eq:moment}
+\E\left[z_{i}\left(y_{i}-x_{i}'\beta\right)\right]=0_{L}.\label{eq:moment}
 \end{equation}
 
 \end_inset
@@ -636,7 +636,7 @@ Rank condition
 \end_inset
 
 
-\begin_inset Formula $\mathrm{rank}\left(\E\left[x_{i}'z_{i}\right]\right)=K$
+\begin_inset Formula $\mathrm{rank}\left(\E\left[z_{i}x_{i}'\right]\right)=K$
 \end_inset
 
 .
@@ -694,7 +694,7 @@ reference "eq:moment"
 ) we can express the parameter as 
 \begin_inset Formula 
 \begin{equation}
-\beta=\left(\E\left[z_{i}'x_{i}\right]\right)^{-1}\E\left[z_{i}'y_{i}\right].\label{eq:just}
+\beta=\left(\E\left[z_{i}x_{i}'\right]\right)^{-1}\E\left[z_{i}y_{i}\right].\label{eq:just}
 \end{equation}
 
 \end_inset
@@ -750,7 +750,7 @@ In order to express
  explicitly, we define a criterion function
 \begin_inset Formula 
 \[
-Q\left(\beta\right)=\E\left[z_{i}'\left(y_{i}-x_{i}\beta\right)\right]'W\E\left[z_{i}'\left(y_{i}-x_{i}\beta\right)\right],
+Q\left(\beta\right)=\E\left[z_{i}\left(y_{i}-x_{i}\beta\right)\right]'W\E\left[z_{i}\left(y_{i}-x_{i}\beta\right)\right],
 \]
 
 \end_inset
@@ -805,7 +805,7 @@ Since
  can be characterized by the first-order condition
 \begin_inset Formula 
 \[
-0_{K}=\frac{\partial}{\partial\beta}Q\left(\beta_{0}\right)=-\E\left[z_{i}'x_{i}\right]'W\E\left[z_{i}'\left(y_{i}-x_{i}\beta_{0}\right)\right]=-\E\left[x_{i}'z_{i}\right]W\E\left[z_{i}'\left(y_{i}-x_{i}\beta_{0}\right)\right]
+0_{K}=\frac{\partial}{\partial\beta}Q\left(\beta_{0}\right)=-\E\left[x_{i}z_{i}'\right]W\E\left[z_{i}\left(y_{i}-x_{i}\beta_{0}\right)\right]=-\E\left[x_{i}z_{i}'\right]W\E\left[z_{i}\left(y_{i}-x_{i}\beta_{0}\right)\right]
 \]
 
 \end_inset
@@ -813,13 +813,13 @@ Since
 Rearranging the above equation, we have 
 \begin_inset Formula 
 \[
-\E\left[x_{i}'z_{i}\right]W\E\left[z_{i}'x_{i}\right]\beta_{0}=\E\left[x_{i}'z_{i}\right]W\E\left[z_{i}'y_{i}\right].
+\E\left[x_{i}z_{i}'\right]W\E\left[z_{i}x_{i}'\right]\beta_{0}=\E\left[x_{i}z_{i}'\right]W\E\left[z_{i}y_{i}\right].
 \]
 
 \end_inset
 
 Denote 
-\begin_inset Formula $\Sigma=\E\left[z_{i}'x_{i}\right]$
+\begin_inset Formula $\Sigma=\E\left[z_{i}x_{i}'\right]$
 \end_inset
 
 .
@@ -830,7 +830,7 @@ Denote
  is invertible so that we can solve 
 \begin_inset Formula 
 \[
-\beta_{0}=\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\E\left[z_{i}'y_{i}\right].
+\beta_{0}=\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\E\left[z_{i}y_{i}\right].
 \]
 
 \end_inset
@@ -841,7 +841,7 @@ In practice, we use the sample moments to replace the corresponding population
  
 \begin_inset Formula 
 \begin{eqnarray*}
-\widehat{\beta} & = & \left(\frac{1}{n}\sum x_{i}'z_{i}W\frac{1}{n}\sum z_{i}'x_{i}\right)^{-1}\frac{1}{n}\sum x_{i}'z_{i}W\frac{1}{n}\sum z_{i}'y_{i}\\
+\widehat{\beta} & = & \left(\frac{1}{n}\sum x_{i}z_{i}'W\frac{1}{n}\sum z_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum x_{i}z_{i}'W\frac{1}{n}\sum z_{i}y_{i}\\
  & = & \left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'y}{n}\\
  & = & \left(X'ZWZ'X\right)^{-1}X'ZWZ'y.
 \end{eqnarray*}
@@ -859,7 +859,7 @@ The same GMM estimator
  can be obtained by minimizing 
 \begin_inset Formula 
 \[
-\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}'\left(y_{i}-x_{i}\beta\right)\right]'W\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}'\left(y_{i}-x_{i}\beta\right)\right]=\frac{\left(y-X\beta\right)'Z}{n}W\frac{Z'\left(y-X\beta\right)}{n},
+\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}\left(y_{i}-x_{i}\beta\right)\right]'W\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}\left(y_{i}-x_{i}\beta\right)\right]=\frac{\left(y-X\beta\right)'Z}{n}W\frac{Z'\left(y-X\beta\right)}{n},
 \]
 
 \end_inset
@@ -1089,11 +1089,11 @@ Choose any valid
 
 .
  Save the residual 
-\begin_inset Formula $\widehat{\epsilon}_{i}=y_{i}-x_{i}\widehat{\beta}$
+\begin_inset Formula $\widehat{\epsilon}_{i}=y_{i}-x_{i}'\widehat{\beta}$
 \end_inset
 
  and estimate the variance matrix 
-\begin_inset Formula $\widehat{\Omega}=\frac{1}{n}\sum z_{i}'z_{i}\widehat{\epsilon}_{i}^{2}.$
+\begin_inset Formula $\widehat{\Omega}=\frac{1}{n}\sum z_{i}z_{i}'\widehat{\epsilon}_{i}^{2}.$
 \end_inset
 
 
@@ -1117,7 +1117,7 @@ This second estimator is asymptotic efficient.
 
 \begin_layout Standard
 If we further assume conditional homoskedasticity, then 
-\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}\epsilon_{i}^{2}\right]=\E\left[z_{i}'z_{i}\E\left[\epsilon_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\E\left[z'_{i}z_{i}\right]$
+\begin_inset Formula $\Omega=\E\left[z_{i}z_{i}'\epsilon_{i}^{2}\right]=\E\left[z_{i}z_{i}'\E\left[\epsilon_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\E\left[z_{i}z_{i}'\right]$
 \end_inset
 
 .
@@ -1127,7 +1127,7 @@ If we further assume conditional homoskedasticity, then
 \end_inset
 
  and the variance matrix by 
-\begin_inset Formula $\widehat{\Omega}=\widehat{\sigma}^{2}\frac{1}{n}\sum_{i=1}^{n}z_{i}'z_{i}=\widehat{\sigma}^{2}Z'Z/n$
+\begin_inset Formula $\widehat{\Omega}=\widehat{\sigma}^{2}\frac{1}{n}\sum_{i=1}^{n}z_{i}z_{i}'=\widehat{\sigma}^{2}Z'Z/n$
 \end_inset
 
 .
