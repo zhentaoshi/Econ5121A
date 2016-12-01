@@ -613,13 +613,13 @@ Usually, we design a test by proposing a test statistic
 \end_inset
 
  and a critical value 
-\begin_inset Formula $c_{\alpha}$
+\begin_inset Formula $c_{1-\alpha}$
 \end_inset
 
 , and then define
 \begin_inset Formula 
 \[
-\phi\left(\mathbf{X}\right)=1\left\{ T_{n}\left(\mathbf{X}\right)>c_{\alpha}\right\} .
+\phi\left(\mathbf{X}\right)=1\left\{ T_{n}\left(\mathbf{X}\right)>c_{1-\alpha}\right\} .
 \]
 
 \end_inset
@@ -675,7 +675,7 @@ level
 , we can construct a test function
 \begin_inset Formula 
 \[
-\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)=1\left\{ \left\{ \left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right\} \cup\left\{ \left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right\} \right\} ,
+\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)=1\left\{ \left\{ \sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right\} \cup\left\{ \sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right\} \right\} ,
 \]
 
 \end_inset
@@ -692,7 +692,7 @@ where
  The level of this test is 
 \begin_inset Formula 
 \begin{align*}
-P_{\theta_{1}=\theta_{2}=0}\left(\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) & \leq P_{\theta_{1}=0}\left(\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right)+P_{\theta_{2}=0}\left(\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right)\\
+P_{\theta_{1}=\theta_{2}=0}\left(\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) & \leq P_{\theta_{1}=0}\left(\sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right)+P_{\theta_{2}=0}\left(\sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right)\\
  & =\alpha/2+\alpha/2=\alpha.
 \end{align*}
 
