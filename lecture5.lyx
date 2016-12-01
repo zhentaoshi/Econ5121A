@@ -1432,11 +1432,15 @@ reference "eq:example"
 \end_inset
 
 This is a nonlinear hypothesis.
- According to Theorem 1, if 
-\begin_inset Formula $\mathrm{rank}\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\right)=q\leq K$
+ If 
+\begin_inset Formula $q\leq K$
 \end_inset
 
-, we have
+ where 
+\begin_inset Formula $q$
+\end_inset
+
+ is the number of restrictions, we have
 \begin_inset Formula 
 \[
 n\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)'\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)'\right)^{-1}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}\chi_{q}^{2},
