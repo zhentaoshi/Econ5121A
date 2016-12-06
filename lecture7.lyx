@@ -685,7 +685,7 @@ Under this assumption, we can consistently estimate the variances from the
 \begin_inset Formula 
 \begin{eqnarray*}
 \widehat{\sigma}_{u}^{2} & = & \frac{1}{nT}\sum_{i=1}^{n}\sum_{t=1}^{T}\widehat{u}_{it}^{2}\\
-\widehat{\sigma}_{\epsilon}^{2} & = & \frac{1}{n}\sum_{i=1}^{n}\frac{1}{T\left(T-1\right)}\sum_{t=1}^{T}\sum_{r=1}^{T}\sum_{r\neq t}\widehat{u}_{it}\widehat{u}_{ir}.
+\widehat{\sigma}_{\alpha}^{2} & = & \frac{1}{n}\sum_{i=1}^{n}\frac{1}{T\left(T-1\right)}\sum_{t=1}^{T}\sum_{r=1}^{T}\sum_{r\neq t}\widehat{u}_{it}\widehat{u}_{ir}.
 \end{eqnarray*}
 
 \end_inset
@@ -710,7 +710,7 @@ RE asymptotic normality
  If RE.1 and RE.2 are satisfied, then 
 \begin_inset Formula 
 \[
-\left(\widehat{\sigma}_{u}^{2}\left(W'\widehat{\mathbf{S}}^{-1}W\right)^{-1}\right)^{-1/2}\left(\widehat{\boldsymbol{\beta}}^{RE}-\boldsymbol{\beta}_{0}\right)\Rightarrow N\left(0,I_{K+1}\right)
+\left(W'\widehat{\mathbf{S}}^{-1}W\right)^{1/2}\left(\widehat{\boldsymbol{\beta}}^{RE}-\boldsymbol{\beta}_{0}\right)\Rightarrow N\left(0,I_{K+1}\right)
 \]
 
 \end_inset
