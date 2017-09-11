@@ -1,4 +1,10 @@
-## Lecture Notes
+## This Year
+
+This year (Academic year 2017-2018) I intend to refresh my teaching content.
+Even if I update my lecture notes, they are not intended for class use.
+
+
+## Old Lecture Notes
 
 My lectures are based primarily on [Bruce Hansen's textbook](http://www.ssc.wisc.edu/~bhansen/econometrics/).
 
