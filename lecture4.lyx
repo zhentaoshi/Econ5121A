@@ -881,7 +881,7 @@ Big Op:
 \end_inset
 
  such that 
-\begin_inset Formula $P\left(x_{n}/r_{n}>c\right)<\varepsilon$
+\begin_inset Formula $P\left(\left|x_{n}\right|/r_{n}>c\right)<\varepsilon$
 \end_inset
 
 .
@@ -982,7 +982,7 @@ Delta method: if
 , then 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta'}\left(\theta\right)\Omega\left(\frac{\partial f}{\partial\theta}\left(\theta\right)\right)'\right).
+\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta'}\left(\theta_{0}\right)\Omega\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\right)'\right).
 \]
 
 \end_inset
@@ -1221,17 +1221,17 @@ For each
 \end_inset
 
 , 
-\begin_inset Formula $E\left[z_{ik}^{2}\right]=E\left[z_{ik}^{2}e_{i}^{2}\right]\leq\left(E\left[z_{ik}^{4}\right]E\left[e_{i}^{4}\right]\right)^{1/2}$
+\begin_inset Formula $E\left[z_{ik}^{2}\right]=E\left[x_{ik}^{2}e_{i}^{2}\right]\leq\left(E\left[x_{ik}^{4}\right]E\left[e_{i}^{4}\right]\right)^{1/2}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-For the estimation of variance, homoskedastic,
+For the estimation of variance, if the error is homoskedastic,
 \begin_inset Formula 
 \begin{align*}
- & \frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
+\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
  & =\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right).
 \end{align*}
 
@@ -1275,7 +1275,7 @@ As
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Subsection
 Asymptotic Distribution of Functional of Parameters
@@ -1349,7 +1349,7 @@ P\left(\theta:\left(\widehat{\beta}-\beta\right)V^{-1}\left(\widehat{\beta}-\bet
 For general heteroskedasticity,
 \begin_inset Formula 
 \begin{align*}
- & \frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
+\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
  & =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'e_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}.
 \end{align*}
 
