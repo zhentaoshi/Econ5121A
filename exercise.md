@@ -39,5 +39,9 @@ exercises: 5.1,4,6-8
 reading: Chapter 5.8-14
 
 
+## Weak 6 and 7
+reading: chapter 6.1-13, 7.1-3, 5, 6, 10-13
+exercises: 6.2-6, 7.1-3, 7
+
 
 ### plan before the class
