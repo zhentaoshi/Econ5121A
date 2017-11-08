@@ -5,7 +5,6 @@
 
 rm(list = ls( ) )
 library(plyr)
-# set.seed(999)
 
 
 # set the parameters
@@ -43,7 +42,8 @@ NN = c(5, 10, 20, 40 )
 BB = matrix(0, ncol = length(NN), nrow = Rep)
 for (r in 1:length(NN)){
   n = NN[r]
-  for (s in 1:Rep)   BB[s,r] = MonteCarlo(n, "T", df = 3)$bhat2
+  for (s in 1:Rep)   BB[s,r] = MonteCarlo(n, "T", df = 100)$bhat2
+  # change the degree of freedom to see the change of the graph
 }
 
 colnames(BB) = NN
@@ -76,7 +76,7 @@ report = function(n){
   TEST_SIZE[1] = mean( abs(Res) > qt(.975, n-2) )  
   TEST_SIZE[2] = mean( abs(Res) > qnorm(.975) ) 
   
-  Res = ldply( .data = 1:Rep, .fun = function(i) MonteCarlo(n, "T", df=1)$t_value_2  )
+  Res = ldply( .data = 1:Rep, .fun = function(i) MonteCarlo(n, "T", df=3)$t_value_2  )
   TEST_SIZE[3] = mean( abs(Res) > qnorm(.975) )
   
   return(TEST_SIZE)
@@ -85,7 +85,7 @@ report = function(n){
 
 
 RES = ldply(.data = NN, .fun = report, .progress = "text" )
-names(RES) = c("exact", "normal.asym", "t.asym")
+names(RES) = c("exact", "normal.asym", "asym with underlying T")
 RES$n = NN
 RES = RES[, c(4,1:3)] # beautify the results
 print(RES)

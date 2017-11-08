@@ -31,17 +31,25 @@ Chapter 4.1-3, 6, 10
 
 ## Week 4
 
-reading: 4.17, 5.1-7
+reading:
+Chapter 4.17, 5.1-7
 
-exercises: 5.1,4,6-8
+Exercises:
+Chapter 5.1,4,6-8
 
 ## Week 5
-reading: Chapter 5.8-14
+reading: 
+Chapter 5.8-14
+
+no exercise
 
 
 ## Weak 6 and 7
-reading: chapter 6.1-13, 7.1-3, 5, 6, 10-13
-exercises: 6.2-6, 7.1-3, 7
+reading:
+Chapter 6.1-13, 7.1-3, 5, 6, 10-13
+
+Exercises:
+Chapter 6.2-6, 7.1-3, 7
 
 
 ### plan before the class

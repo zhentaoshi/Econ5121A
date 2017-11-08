@@ -46,7 +46,7 @@ The sample size is chosen as $2^x$, where $x=1:20$. We have the following observ
 
 ```{r}
 NN = 2^(1:20)
-set.seed(888)
+# set.seed(888)
 
 LLN_plot("normal")
 

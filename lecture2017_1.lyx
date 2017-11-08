@@ -1,0 +1,375 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Lecture Notes}
+\rhead{Zhentao Shi}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format dvi
+\output_sync 1
+\output_sync_macro "\synctex=-1"
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing onehalf
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\branch abc
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch pf of gamma = 0
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+This version: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notation: 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ is a scalar, and 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times1$
+\end_inset
+
+ vector.
+ 
+\begin_inset Formula $Y$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector, and 
+\begin_inset Formula $X$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times K$
+\end_inset
+
+ matrix.
+\end_layout
+
+\begin_layout Section
+Least Squares
+\end_layout
+
+\begin_layout Subsection
+Estimator
+\end_layout
+
+\begin_layout Standard
+The OLS estimator from minimizing the sum of squared residuals 
+\begin_inset Formula 
+\[
+Q\left(\beta\right)=\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}=\left(Y-X\beta\right)'\left(Y-X\beta\right).
+\]
+
+\end_inset
+
+ By the first-order condition
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\beta}Q\left(\beta\right)=-2X'\left(Y-X\beta\right),
+\]
+
+\end_inset
+
+we have the OLS estimator
+\begin_inset Formula 
+\[
+\widehat{\beta}=\left(X'X\right)^{-1}X'y.
+\]
+
+\end_inset
+
+Moreover, the second-order condition 
+\begin_inset Formula 
+\[
+\frac{\partial^{2}}{\partial\beta\partial\beta'}Q\left(\beta\right)=2X'X
+\]
+
+\end_inset
+
+shows that 
+\begin_inset Formula $Q\left(\beta\right)$
+\end_inset
+
+ is convex in 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ (
+\begin_inset Formula $Q\left(\beta\right)$
+\end_inset
+
+ is strictly convex in 
+\begin_inset Formula $\beta$
+\end_inset
+
+ if 
+\begin_inset Formula $X'X$
+\end_inset
+
+ is positive definite.)
+\end_layout
+
+\begin_layout Standard
+Here we introduce some definitions and properties in OLS estimation.
+\end_layout
+
+\begin_layout Itemize
+Fitted value: 
+\begin_inset Formula $\widehat{Y}=X\widehat{\beta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Projector: 
+\begin_inset Formula $P_{X}=X\left(X'X\right)^{-1}X$
+\end_inset
+
+; Annihilator: 
+\begin_inset Formula $M_{X}=I_{n}-P_{X}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{X}M_{X}=M_{X}P_{X}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $AA=A$
+\end_inset
+
+, we call it an idempotent matrix.
+ Both 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{X}$
+\end_inset
+
+ are idempotent.
+ 
+\end_layout
+
+\begin_layout Itemize
+Residual: 
+\begin_inset Formula $\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X'\widehat{e}=XM_{X}e=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
+\end_inset
+
+ if 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ contains a constant.
+\end_layout
+
+\begin_layout Subsection
+Goodness of Fit
+\end_layout
+
+\begin_layout Standard
+The so-called R-square is the most popular measure of goodness-of-fit in
+ the linear regression.
+ R-square is well defined only when a constant is included in the regressors.
+ Let 
+\begin_inset Formula $M_{\iota}=I_{n}-\frac{1}{n}\iota\iota'$
+\end_inset
+
+, where 
+\begin_inset Formula $\iota$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector of 1's.
+ 
+\begin_inset Formula $M_{\iota}$
+\end_inset
+
+ is the 
+\emph on
+demeaner
+\emph default
+, in the sense that 
+\begin_inset Formula $M_{\iota}\left(z_{1},\ldots,z_{n}\right)'=\left(z_{1}-\overline{z},\ldots,z_{n}-\overline{z}\right)'$
+\end_inset
+
+, where 
+\begin_inset Formula $\bar{z}=\frac{1}{n}\sum_{i=1}^{n}z_{i}$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $X$
+\end_inset
+
+, we can decompose 
+\begin_inset Formula $Y=P_{X}Y+M_{X}Y=\widehat{Y}+\widehat{e}$
+\end_inset
+
+.
+ The total variation is 
+\begin_inset Formula 
+\[
+Y'M_{\iota}Y=\left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)=\widehat{Y}'M_{\iota}\widehat{Y}+2\widehat{Y}'M_{\iota}\widehat{e}+\widehat{e}'M_{\iota}\widehat{e}=\widehat{Y}'M_{\iota}\widehat{Y}+\widehat{e}'\widehat{e}
+\]
+
+\end_inset
+
+where the last equality follows by 
+\begin_inset Formula $M_{\iota}\widehat{e}=\widehat{e}$
+\end_inset
+
+ as 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
+\end_inset
+
+, and 
+\begin_inset Formula $\widehat{Y}'\widehat{e}=Y'P_{X}M_{X}e=0$
+\end_inset
+
+.
+ R-square is defined as 
+\begin_inset Formula $\widehat{Y}'M_{\iota}\widehat{Y}/Y'M_{\iota}Y$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
