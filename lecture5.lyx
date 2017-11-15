@@ -1486,7 +1486,19 @@ W_{n}=n\left(f\left(\widehat{\beta}\right)-20\right)'\left(\frac{\partial f}{\pa
 
 \end_inset
 
+This is a valid test with correct asymptotic size.
+ 
+\end_layout
 
+\begin_layout Example
+However, we can equivalently state the null hypothesis as 
+\begin_inset Formula $\beta_{3}+40\beta_{4}=0$
+\end_inset
+
+ and we can construct a Wald statistic accordingly.
+ In general, a linear hypothesis is preferred to a nonlinear one, due to
+ the approximation error in the delta method under the null and more importantly
+ the invalidity of the Taylor expansion under the alternative.
 \end_layout
 
 \begin_layout Subsection
@@ -1684,25 +1696,6 @@ We can view the optimization of the log-likelihood as a two-step optimization
 
 .
  
-\begin_inset Note Note
-status open
-
-\begin_layout Subsection
-Diagrams
-\end_layout
-
-\begin_layout Plain Layout
-Wald works on 
-\begin_inset Formula $R\widehat{\beta}-r=0$
-\end_inset
-
-.
- LM works on the first order condition.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_body

@@ -37,19 +37,21 @@ Chapter 4.17, 5.1-7
 Exercises:
 Chapter 5.1,4,6-8
 
-## Week 5
+## Week 5, 6
 reading: 
 Chapter 5.8-14
 
 no exercise
 
 
-## Weak 6 and 7
+## Week 7 and 8
 reading:
 Chapter 6.1-13, 7.1-3, 5, 6, 10-13
 
 Exercises:
 Chapter 6.2-6, 7.1-3, 7
 
+## Week 9
+reading: Chapter 9.1-10, 15, 16
 
-### plan before the class
+no exercise
