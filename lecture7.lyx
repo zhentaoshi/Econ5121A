@@ -299,8 +299,7 @@ where
 \end_inset
 
 .
- We then run OLS with the demeaned data, and obtain the within estimator
- 
+ Running OLS with the demeaned data, we obtain the within estimator 
 \begin_inset Formula 
 \[
 \widehat{\beta}_{2}^{FE}=\left(\tilde{X}'\tilde{X}\right)^{-1}\tilde{X}'\tilde{y},

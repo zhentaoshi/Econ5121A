@@ -55,3 +55,10 @@ Chapter 6.2-6, 7.1-3, 7
 reading: Chapter 9.1-10, 15, 16
 
 no exercise
+
+
+
+## Week 10
+reading: Chapter 9.17, 18
+
+Exercise: Chapter 9.2, 9.3. For Question 9.3, you can use whatever software.
