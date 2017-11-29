@@ -62,3 +62,9 @@ no exercise
 reading: Chapter 9.17, 18
 
 Exercise: Chapter 9.2, 9.3. For Question 9.3, you can use whatever software.
+
+
+## Week 12
+reading: Chapter 10.1-6, 7-9, 12; Chapter 11.1-10
+
+exercise: Chapter 10.1, 4, 5, 8; Chapter 11.2, 3

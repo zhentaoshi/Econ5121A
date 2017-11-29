@@ -486,7 +486,8 @@ Demand-Supply System
 
 \end_inset
 
- See Hansen's Chapter 15.
+ See Hansen's Chapter 10.
+ His example has no intercepts, which is not natural.
 \end_layout
 
 \begin_layout Subsection
@@ -1249,13 +1250,14 @@ This is exactly the same expression of 2SLS for
 .
  Under conditional homoskedasticity, 2SLS is the efficient estimator; otherwise
  2SLS is inefficient.
-\end_layout
+\begin_inset Note Note
+status open
 
 \begin_layout Subsection
 GMM in Nonlinear Model*
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 The principle of GMM can be used in models where the parameter enters the
  moment conditions nonlinearly.
  Let 
@@ -1299,7 +1301,7 @@ Nonlinear models nest the linear model as a special case.
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 In practice we use the sample moments to mimic the population moments in
  the criterion function
 \begin_inset Formula 
@@ -1378,7 +1380,7 @@ The list of assumptions in the above statement is incomplete.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Formula $Q_{n}\left(\beta\right)$
 \end_inset
 
@@ -1439,6 +1441,11 @@ J\left(\widehat{\beta}\right)\Rightarrow\chi^{2}\left(L-K\right)
 
 If the null hypothesis is false, then the test statistic tends to be large,
  and it is more likely to reject the null.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
