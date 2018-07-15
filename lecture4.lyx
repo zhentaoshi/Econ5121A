@@ -318,6 +318,14 @@ Squared-mean convergence:
 .
 \end_layout
 
+\begin_layout Example
+Another example (to be formalized): Gambling.
+ Each person contribute one dollar, and only one person will win all the
+ sum.
+ As the number of people goes larger, the average gain is still one dollar,
+ but the limit in probability becomes zero.
+\end_layout
+
 \begin_layout Standard
 Convergence in probability does not count what happens on a subset in the
  sample space of small probability.
