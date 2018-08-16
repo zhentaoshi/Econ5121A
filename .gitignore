@@ -3,6 +3,7 @@
 *.lyx#
 *.Rdata
 handwriting_notes/*.*
+*.ipynb_checkpoints*
 
 ## SWP
 *.bak
