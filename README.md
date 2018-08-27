@@ -1,7 +1,8 @@
 ### Chinese University of Hong Kong, Fall 2018
 # ECON5121A: Econometric Theory and Applications
 
-
+“All theory is gray, my friend. But forever green is the tree of life.”
+---Johann Wolfgang von Goethe: *Faust: Part I*
 
 ### Year 2018
 
@@ -14,7 +15,7 @@ I have substantially updated my lecture notes this year to bring forward the tea
 
 
 **Caveat**: This is an ongoing writing project.
-The text is very incomplete, and must contain many errors.
-**Use them at your own risk!**
+The text is incomplete, and must contain errors.
+*Use them at your own risk!*
 
 I encourage anyone, in particular students taking my class, to contribute or improve the notes. Send me pull requests.
