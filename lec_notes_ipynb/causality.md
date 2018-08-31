@@ -2,11 +2,11 @@ Unlike physical laws such as $E=mc^2$, economic phenomena can rarely be summariz
 
 Physical laws has strong signal-to-noise ratio.
 Economic laws usually do not have laboratory for experiment.
-Moreover, because the subject are human beings. Human beings are heterogenous and hard to control.
+Moreover, because the subject are human beings. Human beings are heterogeneous and hard to control.
 
 **example**: the boiling point of water. is affected by the purity of the water and the air pressure. If the water from different origins are
 different, it is still easy to distill and purify.
-However, humans from different culture background and family background are heterogenous and their is no way to "purify" them to be homogenous.
+However, humans from different culture background and family background are heterogeneous and their is no way to "purify" them to be homogenous.
 
 These are the difficulties that economists are faced with. If we control only very few factors, the signal-to-noise ratio is quite low.
 
@@ -78,7 +78,7 @@ study.
 
 Even when there is no genuine laboratory setting, economists seeks "quasi-natural
 experiment", which mimics the lab. Then the key is to verify the condition
-and the heterogenous about the subject.
+and the heterogeneous about the subject.
 
 There are some other techniques to make the conditional mean independence more plausible.
 For example, looking for IV, or add more control variables (to make them
