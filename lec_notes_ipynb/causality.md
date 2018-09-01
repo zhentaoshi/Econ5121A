@@ -1,41 +1,62 @@
-Unlike physical laws such as $E=mc^2$, economic phenomena can rarely be summarized by in a minimalistic manner.
+Unlike physical laws such as $E=mc^2$, economic phenomena can rarely be summarized in a minimalistic style. When using experiments to verify physical laws,
+scientists often manage to come up with smart design in which signal-to-noise ratio
+is so high that the small disturbances are kept at negligible level.
+On the contrary, economic laws do not fit a laboratory for experiment.
+What is worse, the subjects in economic studies---human beings---are heterogeneous and
+with many features hard to control. People from distinctive cultural and family background respond to the
+same issue differently and
+researchers can do little to homogenize them.
+The signal-to-noise ratio in economic laws are usually significantly lower than that of physical laws,
+mainly due to the lack of laboratory setting and the heterogeneous nature of the subjects  
 
-Physical laws has strong signal-to-noise ratio.
-Economic laws usually do not have laboratory for experiment.
-Moreover, because the subject are human beings. Human beings are heterogeneous and hard to control.
-
-**example**: the boiling point of water. is affected by the purity of the water and the air pressure. If the water from different origins are
-different, it is still easy to distill and purify.
-However, humans from different culture background and family background are heterogeneous and their is no way to "purify" them to be homogenous.
-
-These are the difficulties that economists are faced with. If we control only very few factors, the signal-to-noise ratio is quite low.
-
-**example**: educational return. Demand/supply elasticity. Think about experimental context when we have control of price.
+**Example**: Educational return and the demand-supply system are two classical topics in econometrics.
+The former faces two major difficulties: (i) learning ability is hard to measure; (ii) people are different.
+The trouble plagues the second is (i) no laboratory to allow the research to move keep one side constant
+and only manipulate the other side; (ii) markets are different locations are also different.
 
 
-### World View
+### Thought Experiment
 
-About the DGP. Pearl argues that econometrics takes a deterministic view, and the uncontrolled part is the unobservable factors. If the factors are observable, there
-is no uncertainty in the economic law. In this view, the distribution of the error
-term is simple the weight of the unobservable factor.
+The mainstream paradigm in econometrics and statistics is setting up a model, and use the data to estimate
+some unknown components of the model. The model is written with the purpose of either interpret the
+relationship between random variables or predict a variable of interest.
+If the purpose is interpretation, the model is viewed as a data generating process, that is, how the
+data is generated.
 
-Also under this view, the coefficient can be directly interpreted as the "ceteris paribus" (keep all other things constant.) There should no qualifiers like "on average".
+Suppose the DGP is as simple as possible,
+
+Pearl argues that econometrics takes a deterministic view, and the uncontrolled part is the unobservable factors. If the factors are observable, there
+is no uncertainty in the economic laws. In this view, the distribution of the error
+term is simply the weight of the unobservable factor.
+Also, the coefficient can be directly interpreted as the *ceteris paribus*, which is
+a Latin phrase meaning "keep all other things constant."
+$$y = \beta x + u$$
+
+
+Ideally, we would like to keep all other things the same can apply different levels of treatment to
+the same object. However, this is philosophically impossible since "You cannot step into the same river twice."
+(Heraclitus, 553 BC--475 BC)
+For physical objects, it is often possible to apply various treatment levels onto the same object as long
+as the inner structure of the objects is little altered by the previous treatment.
+The *treatment effect* is
+$$ TE = TE(x_1, x_2) = \frac{y(x_1) - y(x_2) }{x_1-x_2}
+= \frac{ (\beta x_1 + u) - (\beta x_2 + u) }{x_1-x_2} = \beta  $$
+at two treatment levels $x_1$ and $x_2$, $x_1 \neq x_2$.
+Here we use discrete treatment for simplicity. If the treatment can be specified arbitrarily close, then $x_1 - x_2 \to 0$ and
+$$TE(x_1) = \frac{\partial y(x)} { \partial x } \bigg |_{x = x_1}.$$
+
+
+However, such invariance to treatment is unavailable to living things. A person who receives high school education
+cannot be reduced to a person who receives elementary school education. Thus in order to learn the treatment
+effect, we need to put different people into at least two groups: a treatment group and a control group.
 
 
 However, according to the classification of Pearl, we have to distinguish the
 statistical model and the causal model. The statistical model are functions of the
 observable variables.
 
-For physical objects, we can apply different level of treatment onto the same object.
-We push a wooden block on a slope of 45 degree, and then put it to a slope of 30 degree.
-The temporal order of the experiment does not usually cause any difficulty.
 
-However, the case if different from economics. A person who receive high-school degree cannot be later inject with junior school degree. An object can only receive a treatment once. "A person cannot step into the same river twice."
 
-The *treatment effect* is
-$$ \beta_1 = \frac{y(x_1) - y|(x_2) }{x_1-x_2}. $$
-When $x_1 - x_2 \to 0$, it becomes the partial effect
-$\beta_1 = \partial y(x) / \partial x$.
 
 When one person cannot be treated twice, two different people who received different
 level of treatment still have their unobservable factor out of control.
