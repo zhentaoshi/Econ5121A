@@ -6,6 +6,7 @@ handwriting_notes/*.*
 *.ipynb_checkpoints*
 *lec_notes_lyx/*.md
 *lec_notes_lyx/*.tex
+*notebook.tex
 
 ## SWP
 *.bak
