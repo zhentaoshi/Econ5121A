@@ -18,5 +18,6 @@ I have substantially updated my lecture notes this year to bring forward the tea
 **Caveat**: This is an ongoing writing project.
 The text is incomplete, and must contain errors.
 *Use them at your own risk!*
+I edit the IPython notebooks (\*.ipynb) as the latest version. The PDF version may be behind, though it is print friendly.
 
 I encourage anyone, in particular students taking my class, to contribute or improve the notes. Send me pull requests.
