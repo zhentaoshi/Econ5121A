@@ -292,11 +292,12 @@
   \(\Theta\).
 \item
   The \emph{null hypothesis} \(\Theta_{0}\) is a subset of \(\Theta\) of
-  interest, typically suggested by scientific theory.
+  interest, ideally suggested by scientific theory.
 \item
   The \emph{alternative hypothesis}
   \(\Theta_{1}=\Theta\backslash\Theta_{0}\) is the complement of
-  \(\Theta_{0}\). * \emph{Hypothesis testing} is a decision whether to
+  \(\Theta_{0}\). 
+\item \emph{Hypothesis testing} is a decision whether to
   accept the null hypothesis or to reject it according to the observed
   evidence.
 \item
@@ -321,8 +322,7 @@
 \item
   The \emph{power} of \(\phi\) at \(\theta\) for some
   \(\theta\in\Theta_{1}\) is defined as the value of
-  \(\beta_{\phi}\left(\theta\right)\).
-\item
+  \(\beta_{\phi}\left(\theta\right)\). 
   The \emph{size} of the test \(\phi\) is define as
   \(\alpha=\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right).\)
   Notice that the definition of power depends on a \(\theta\) in the
@@ -345,16 +345,15 @@
     \begin{itemize}
 \tightlist
 \item
-  size = \emph{P}(reject \(H_{0}\)\textbar{}\(H_{0}\) true)
+  size = \emph{P}(reject \(H_{0}\) when \(H_{0}\) true)
 \item
-  power = \emph{P}(reject \(H_{0}\)\textbar{}\(H_{0}\) false)
+  power = \emph{P}(reject \(H_{0}\) when \(H_{0}\) false)
 \item
   The \emph{probability of committing Type I error} is
   \(\beta_{\phi}\left(\theta\right)\) for some \(\theta\in\Theta_{0}\).
 \item
   The \emph{probability of committing Type II error} is
-  \(1-\beta_{\phi}\left(\theta\right)\) for \(\theta\in\Theta_{1}\); in
-  other words, it is one minus the power at \(\theta\).
+  \(1-\beta_{\phi}\left(\theta\right)\) for \(\theta\in\Theta_{1}\).
 \end{itemize}
 
     The philosophy on the hypothesis testing has been debated for centuries.
@@ -367,12 +366,16 @@ desirable test should have a small level. Conventionally we take
 \(\alpha=0.01,\) 0.05 or 0.1. There can be many tests of the correct
 size.
 
+\bigskip 
+
 \textbf{Example} A trivial test function,
 \(\phi(\mathbf{X})=1\left\{ 0\leq U\leq\alpha\right\}\), where \(U\) is
 a random variable from a uniform distribution on \(\left[0,1\right]\),
-has correct size but no power. Another trivial test function
+has correct size $\alpha$ but no power. Another trivial test function
 \(\phi\left(\mathbf{X}\right)=1\) has the biggest power but useless
 size.
+
+\bigskip 
 
     Usually, we design a test by proposing a test statistic
 \(T_{n}:\mathcal{X}^{n}\mapsto\mathbb{R}^{+}\) and a critical value
@@ -385,8 +388,10 @@ figure out the distribution of \(T_{n}\) under the null hypothesis
 \(c_{1-\alpha}\) according to the null distribution and the desirable
 size or level \(\alpha\).
 
-The concept of \emph{level} is useful if we do not have information to
+The concept of \emph{level} is useful if we do not have sufficient information to
 derive the exact size of a test.
+
+\bigskip
 
 \textbf{Example} If \(\left(X_{1i},X_{2i}\right)_{i=1}^{n}\) are
 randomly drawn from some unknown joint distribution, but we know the
@@ -407,6 +412,9 @@ the exact size is unknown without the knowledge of the joint
 distribution. (Even if we know the correlation of \(X_{1i}\) and
 \(X_{2i}\), putting two marginally normal distributions together does
 not make a jointly normal vector in general.)
+
+\bigskip
+
 
     There can be many tests of a correct level. Denote the class of test
 functions of level smaller than \(\alpha\) as
