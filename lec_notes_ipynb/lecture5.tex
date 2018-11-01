@@ -132,7 +132,7 @@
     \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
     \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
     \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
-    
+    \renewcommand{\hat}{\widehat}
     
     % Define a nice break command that doesn't care if a line doesn't already
     % exist.
@@ -491,7 +491,61 @@ constructed as
 then its coverage probability
 \[P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)=1-P_{\theta}\left(\phi_{\theta}\left(\mathbf{X}\right)=1\right)=1-\alpha.\]
 
-    \section{Application in OLS}\label{application-in-ols}
+
+
+
+
+\section{Bayesian Credible Set}
+
+
+
+The Bayesian framework offers a coherent and natural language for statistical decision.
+However, the major criticism against Bayesian statistics is the arbitrariness of the choice
+of the prior. 
+
+In the Bayesian framework, both the data $\mathbf{X}_n$ and the parameter $\theta$ are random variables.
+Before she observes the data, she holds a \emph{prior distribution} $\pi$ about $\theta$.
+After observing the data, she updates the prior distribution to a
+\emph{posterior distribution} $p(\theta | \mathbf{X}_n)$. 
+The \emph{Bayes Theorem} connects the prior and the posterior as
+\[
+p( \theta| \mathbf{X}_n ) \propto f( \mathbf{X}_n | \theta ) \pi(\theta)
+\]
+where $f( \mathbf{X}_n | \theta )$ is the likelihood function.
+
+
+
+
+Here is a classical example to illustrate the Bayesian approach of statistical inference.
+Suppose we have an iid sample $(X_1,\ldots,X_n)$ drawn from a normal distribution with 
+unknown $\theta$ and known $\sigma$. For a researcher with a prior distribution 
+$\theta \sim N(\theta_0, \sigma_0^2)$, her posterior distribution is,
+by some routine calculation, the posterior is also a normal distribution
+\[
+p(\theta | \mathbf{x}) \sim N\left( \tilde{\theta}, \tilde{\sigma}^2   \right),
+\]
+where $ \tilde{\theta} = \frac{\sigma^2}{n \sigma_0^2 + \sigma^2} \theta_0 
++ \frac{n\sigma_0^2}{n\sigma_0^2 + \sigma^2} \bar{x} $ 
+and $\tilde{\sigma}^2 = \frac{\sigma_0^2 \sigma^2}{n\sigma_0^2 + \sigma^2}$.
+Thus the Bayesian credible set is 
+\[
+\left( \tilde{\theta} - z_{1-\alpha/2 } \cdot \tilde{\sigma},  \tilde{\theta} + z_{1-\alpha/2 }\cdot  \tilde{\sigma}  \right).
+\]
+This posterior distribution depends on $\theta_0$ and $\sigma_0^2$ from the posterior. 
+When the sample size is sufficiently large 
+the posterior can be approximated by $N( \bar{x}, \sigma^2 / n )$,
+where the prior information is overwhelmed by the information accumulated from the data.
+
+In contrast, a frequentist estimates $\hat{\theta} = \bar{x} \sim N(\theta, \sigma^2 / n) $. Her 
+confidence interval is 
+$$
+\left( \bar{x} - z_{1-\alpha/2 } \cdot \sigma/\sqrt{n},  
+\bar{x} - z_{1-\alpha/2 } \cdot \sigma/\sqrt{n} \right).
+$$
+
+
+
+\section{Application in OLS}\label{application-in-ols}
 
 \subsection{Wald Test}\label{wald-test}
 
@@ -545,6 +599,18 @@ regression, we need the so-called \emph{delta method}.
 and \(f:\mathbb{R}^{K}\mapsto\mathbb{R}^{q}\) is a continuously
 differentiable function for some \(q\leq K\), then
 \[\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)'\right).\]
+This result can be easily shown by a mean-value expansion
+\[
+f(\hat{\theta} ) - f(\theta_0) = \frac{ \partial f(\tilde{\theta}) }{\partial \theta} 
+(\hat{\theta} - \theta_0)
+\]
+where $\tilde{\theta}$ lies on the line segment connecting $\hat{\theta}$ and $\theta_0$.
+Multiply both sides by $\sqrt{n}$ and notice $\tilde{\theta} \stackrel{p}{\to} \theta_0$,
+by Slutsky theorem we have 
+$\sqrt{n} (f(\hat{\theta} ) - f(\theta_0) ) \stackrel{d}{\to}
+\frac{\partial f}{\partial\theta}\left(\theta_{0}\right) N(0,\Omega).
+ $
+
 
     In the example of linear regression, the optimal experience level can be
 found by setting the first order condition with respective to experience
@@ -593,7 +659,9 @@ R & 0
 \tilde{\lambda}
 \end{pmatrix}=\begin{pmatrix}\frac{1}{n}X'e\\
 0
-\end{pmatrix}.\]
+\end{pmatrix},\]
+where $\hat{Q} = X'X/n$.
+
 Thus we can explicitly express the estimator as
 \[\begin{aligned}
   \begin{pmatrix}\tilde{\beta}-\beta^{*}\\
@@ -606,23 +674,28 @@ R & 0
 0
 \end{pmatrix}\\
  & =  \begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
-\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}  -\left(R\widehat{Q}^{-1}R'\right)^{-1} & 0
+\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}  & 0
 \end{pmatrix}
 \begin{pmatrix}\frac{1}{n}X'e\\
 0
 \end{pmatrix}.\end{aligned}\]
 We conclude that
 \[
-\sqrt{n}\tilde{\lambda}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e \Rightarrow N\left(0,\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}\right).\]
+\sqrt{n}\tilde{\lambda}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e \stackrel{d}{\to} N\left(0,\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}\right).\]
 Let
 \(W=\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}\),
 we have
-\[n\tilde{\lambda}'W^{-1}\tilde{\lambda}\Rightarrow\chi_{q}^{2}.\] If
+\[n\tilde{\lambda}'W^{-1}\tilde{\lambda}\stackrel{d}{\to} \chi_{q}^{2}.\] If
 homoskedastic, then
 \(W=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}RQ^{-1}QQ^{-1}R'\left(RQ^{-1}R'\right)^{-1}=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}.\)
+Replace $W$ with the estimated $\hat{W}$,
 \[\begin{aligned}
-\frac{n\tilde{\lambda}'RQ^{-1}R'\tilde{\lambda}}{\sigma^{2}} & =\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'XQ^{-1}X'\left(y-X\tilde{\beta}\right)\\
- & =\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'P_{X}\left(y-X\tilde{\beta}\right).\end{aligned}\]
+\frac{n\tilde{\lambda}'R\hat{Q}^{-1}R'\tilde{\lambda}}{\hat{\sigma}^{2}} 
+& =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'X \hat{Q}^{-1} R'
+(R \hat{Q}^{-1} R')^{-1}
+R \hat{Q}^{-1}
+X'\left(y-X\tilde{\beta}\right)\\
+ & =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'P_{X \hat{Q}^{-1} R'}\left(y-X\tilde{\beta}\right).\end{aligned}\]
 
     \subsection{Likelihood-Ratio test}\label{likelihood-ratio-test}
 
