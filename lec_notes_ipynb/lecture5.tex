@@ -333,6 +333,8 @@
   \(\alpha\in\left(0,1\right)\) such that
   \(\alpha\geq\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)\),
   which is often used when it is difficult to attain the exact supremum.
+  A test of size $\alpha$ is also of level $\alpha$ or bigger; while a test of level $\alpha$
+  must have size smaller or equal to $\alpha$.
 \end{itemize}
 
     \begin{verbatim}
@@ -416,8 +418,8 @@ not make a jointly normal vector in general.)
 \bigskip
 
 
-    There can be many tests of a correct level. Denote the class of test
-functions of level smaller than \(\alpha\) as
+Denote the class of test
+functions of level \(\alpha\) as
 \(\Psi_{\alpha}=\left\{ \phi:\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)\leq\alpha\right\}\).
 A \emph{uniformly most powerful test} \(\phi^{*}\in\Psi_{\alpha}\) is a
 test function such that, for every \(\phi\in\Psi_{\alpha},\)
@@ -431,7 +433,7 @@ normal distribution. The null hypothesis is \(H_{0}\): \(\theta\leq0\)
 and the alternative is \(H_{1}\): \(\theta>0\). All tests in
 \[\Psi=\left\{ 1\left\{ \bar{X}\geq c/\sqrt{6}\right\} :c\geq1.64\right\}\]
 has the correct level. Since
-\(\bar{X}=N\left(\theta,1/\sqrt{6}\right)\), the power function for
+\(\bar{X}=N\left(\theta,1/6 \right)\), the power function for
 those in \(\Psi\) is
 \[\beta_{\phi}\left(\theta\right)=P\left(\bar{X}\geq\frac{c}{\sqrt{6}}\right)=P\left(\sqrt{6}\left(\bar{X}-\theta\right)\geq c-\sqrt{6}\theta\right)=1-\Phi\left(c-\sqrt{6}\theta\right)\]
 where \(\Phi\) is the cdf of standard normal. It is clear that
