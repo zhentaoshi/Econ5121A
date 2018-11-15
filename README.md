@@ -21,3 +21,5 @@ The text is incomplete, and must contain errors.
 I edit the IPython notebooks (\*.ipynb) as the latest version. The PDF version may be behind, though it is print friendly.
 
 I encourage anyone, in particular students taking my class, to contribute or improve the notes. Send me pull requests.
+
+**Important dates**: Midterm Oct 19. Final: Dec 7.
