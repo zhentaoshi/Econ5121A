@@ -1,15 +1,14 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
 \begin_preamble
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\lhead{Lecture Notes}
-\rhead{Zhentao Shi}
+\usepackage[T1]{fontenc}
+% Nicer default font (+ math font) than Computer Modern for most use cases
+\usepackage{mathpazo}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -31,6 +30,8 @@ theorems-ams-extended
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format dvi
 \output_sync 1
@@ -38,7 +39,7 @@ theorems-ams-extended
 \bibtex_command default
 \index_command default
 \paperfontsize 11
-\spacing double
+\spacing single
 \use_hyperref true
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
@@ -50,7 +51,7 @@ theorems-ams-extended
 \pdf_backref false
 \pdf_pdfusetitle true
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 2
 \use_package amssymb 1
 \use_package cancel 0
@@ -70,6 +71,7 @@ theorems-ams-extended
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \branch abc
 \selected 1
 \filename_suffix 0
@@ -92,7 +94,10 @@ theorems-ams-extended
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -133,25 +138,16 @@ theorems-ams-extended
 
 \end_layout
 
-\begin_layout Standard
-This version: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-today
+\begin_layout Title
+Generalized Method of Moments
 \end_layout
 
-\end_inset
-
-
+\begin_layout Author
+Zhentao Shi
 \end_layout
 
 \begin_layout Section
-Generalized Method of Moments
+Introduction
 \end_layout
 
 \begin_layout Standard
@@ -173,342 +169,13 @@ method of moments
  
 \end_layout
 
-\begin_layout Subsection
-Examples of Endogeneity
-\end_layout
-
-\begin_layout Standard
-As econometricians mostly work with non-experimental data, we cannot overstate
- the importance of the endogeneity problem.
- We go over a few examples.
-\end_layout
-
-\begin_layout Example
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Dynamic Panel Model
-\end_layout
-
-\end_inset
-
- We know that the first-difference (FD) estimator is consistent for (static)
- panel data model.
- Nevertheless, the FD estimator encounters difficulty in a dynamic panel
- model 
-\begin_inset Formula 
-\[
-y_{it}=\beta_{1}+\beta_{2}y_{it-1}+\beta_{3}x_{it}+\alpha_{i}+\epsilon_{it},
-\]
-
-\end_inset
-
-even if we assume 
-\begin_inset Formula 
-\begin{equation}
-\E\left[\epsilon_{it}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{it-1},y_{it-2},\ldots,y_{i0}\right]=0.\label{eq:dyn_mean_0}
-\end{equation}
-
-\end_inset
-
- When taking difference of the above equation for periods 
-\begin_inset Formula $t$
-\end_inset
-
- and 
-\begin_inset Formula $t-1$
-\end_inset
-
-, we have 
-\begin_inset Formula 
-\[
-\left(y_{it}-y_{it-1}\right)=\beta_{2}\left(y_{it-1}-y_{it-2}\right)+\beta_{3}\left(x_{it}-x_{it-1}\right)+\left(\epsilon_{it}-\epsilon_{it-1}\right).
-\]
-
-\end_inset
-
-Under (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:dyn_mean_0"
-
-\end_inset
-
-), 
-\begin_inset Formula $\E\left[\left(x_{it}-x_{it-1}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=0$
-\end_inset
-
-, but 
-\begin_inset Formula 
-\[
-\E\left[\left(y_{it-1}-y_{it-2}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=-\E\left[y_{it-1}\epsilon_{it-1}\right]=-\E\left[\epsilon_{it-1}^{2}\right]\neq0.\qed
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Keynesian-Type Macro Equations
-\end_layout
-
-\end_inset
-
- This is a model borrowed from Hayashi (2000, p.193) but originated from
- Haavelmo (1943).
- An econometrician is interested in learning 
-\begin_inset Formula $\beta_{2}$
-\end_inset
-
-, the marginal propensity of consumption, in the Keynesian-type equation
- 
-\begin_inset Formula 
-\begin{equation}
-C_{i}=\beta_{1}+\beta_{2}Y_{i}+u_{i}\label{eq:keynes}
-\end{equation}
-
-\end_inset
-
-where 
-\begin_inset Formula $C_{i}$
-\end_inset
-
- is household consumption, 
-\begin_inset Formula $Y_{i}$
-\end_inset
-
- is the GNP, and 
-\begin_inset Formula $u_{i}$
-\end_inset
-
- is the unobservable error.
- However, 
-\begin_inset Formula $Y_{i}$
-\end_inset
-
- and 
-\begin_inset Formula $C_{i}$
-\end_inset
-
- are connected by an accounting equality (with no error) 
-\begin_inset Formula 
-\[
-Y_{i}=C_{i}+I_{i},
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $I_{i}$
-\end_inset
-
- is investment.
- We assume 
-\begin_inset Formula $\E\left[u_{i}|I_{i}\right]=0$
-\end_inset
-
- as investment is determined in advance.
- OLS (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:keynes"
-
-\end_inset
-
-) will be inconsistent because in the reduced-form 
-\begin_inset Formula $Y_{i}=\frac{1}{1-\beta_{2}}\left(\beta_{1}+u_{i}+I_{i}\right)$
-\end_inset
-
- implies 
-\begin_inset Formula $\E\left[Y_{i}u_{i}\right]=\E\left[u_{i}^{2}\right]/\left(1-\beta_{2}\right)\neq0$
-\end_inset
-
-.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-qed
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Classical Measurement Error
-\end_layout
-
-\end_inset
-
- Endogeneity also emerges when an explanatory variables is not directly
- observable but is replaced by a measurement with error.
- Suppose the true linear model is 
-\begin_inset Formula 
-\begin{equation}
-y_{i}=\beta_{1}+\beta_{2}x_{i}^{*}+u_{i},\label{eq:measurement_error}
-\end{equation}
-
-\end_inset
-
- with 
-\begin_inset Formula $\E\left[u_{i}|x_{i}^{*}\right]=0$
-\end_inset
-
-.
- We cannot observe 
-\begin_inset Formula $x_{i}^{*}$
-\end_inset
-
- but we observe 
-\begin_inset Formula $x_{i}$
-\end_inset
-
-, a measurement of 
-\begin_inset Formula $x_{i}^{*}$
-\end_inset
-
-, and they are linked by 
-\begin_inset Formula 
-\[
-x_{i}=x_{i}^{*}+v_{i}
-\]
-
-\end_inset
-
- with 
-\begin_inset Formula $\E\left[v_{i}|x_{i}^{*},u_{i}\right]=0$
-\end_inset
-
-.
- Such a formulation of the measurement error is called the 
-\emph on
-classical measurement error
-\emph default
-.
- When we substitute out the unobservable 
-\begin_inset Formula $x_{i}^{*}$
-\end_inset
-
- in (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:measurement_error"
-
-\end_inset
-
-), we have 
-\begin_inset Formula 
-\begin{equation}
-y_{i}=\beta_{1}+\beta_{2}\left(x_{i}-v_{i}\right)+u_{i}=\beta_{1}+\beta_{2}x_{i}+e_{i}\label{eq:measurement_error2}
-\end{equation}
-
-\end_inset
-
-where 
-\begin_inset Formula $e_{i}=u_{i}-\beta_{2}v_{i}$
-\end_inset
-
-.
- The correlation
-\begin_inset Formula 
-\[
-\E\left[x_{i}e_{i}\right]=\E\left[\left(x_{i}^{*}+v_{i}\right)\left(u_{i}-\beta_{2}v_{i}\right)\right]=-\beta_{2}\E\left[v_{i}^{2}\right]\neq0.
-\]
-
-\end_inset
-
- OLS (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:measurement_error2"
-
-\end_inset
-
-) would not deliver a consistent estimator.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-qed
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-Demand-Supply System
-\end_layout
-
-\end_inset
-
- See Hansen's Chapter 10.
- His example has no intercepts, which is not natural.
-\end_layout
-
-\begin_layout Subsection
+\begin_layout Section
 GMM in Linear Model
 \end_layout
 
 \begin_layout Standard
 In this section we discuss GMM in a linear single structural equation.
  A structural equation is a model of economic interest.
- For example, (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:keynes"
-
-\end_inset
-
-) is a structural equation in which 
-\begin_inset Formula $\beta_{2}$
-\end_inset
-
- can be interpreted as the marginal propensity of consumption.
  Consider the following linear structural model 
 \begin_inset Formula 
 \begin{equation}
@@ -569,8 +236,19 @@ where
 \end_inset
 
 -dimensional exogenous vector.
- In the context of endogeneity, we can call the exogenous variable instrument
- variables, or simply instruments.
+ 
+\end_layout
+
+\begin_layout Standard
+In the context of endogeneity, we can call the exogenous variable 
+\emph on
+instrument variables
+\emph default
+, or simply 
+\emph on
+instruments
+\emph default
+.
  Let 
 \begin_inset Formula $\beta=\left(\beta_{1}',\beta_{2}'\right)'$
 \end_inset
@@ -622,7 +300,7 @@ identified
 \begin_inset Formula $\beta\neq\tilde{\beta}$
 \end_inset
 
-, cannot generate exactly the same distribution for the observable data.
+, cannot generate the same distribution for the observable data.
  In the context of (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -718,9 +396,10 @@ if
 
 , 
 \begin_inset Formula 
-\[
-\E\left[z_{i}\left(y_{i}-x_{i}'\tilde{\beta}\right)\right]=\E\left[z_{i}\left(y_{i}-x_{i}'\beta_{0}\right)\right]+\E\left[z_{i}x_{i}'\right]\left(\beta_{0}-\tilde{\beta}\right)=0_{L}+\E\left[z_{i}x_{i}'\right]\left(\beta_{0}-\tilde{\beta}\right).
-\]
+\begin{align*}
+\E\left[z_{i}\left(y_{i}-x_{i}'\tilde{\beta}\right)\right] & =\E\left[z_{i}\left(y_{i}-x_{i}'\beta_{0}\right)\right]+\E\left[z_{i}x_{i}'\right]\left(\beta_{0}-\tilde{\beta}\right)\\
+ & =0_{L}+\E\left[z_{i}x_{i}'\right]\left(\beta_{0}-\tilde{\beta}\right).
+\end{align*}
 
 \end_inset
 
@@ -809,7 +488,11 @@ which is exactly the 2SLS when
 \end_inset
 
 .
- In the rest of this section, we focus on the over-identified case (
+ 
+\end_layout
+
+\begin_layout Standard
+In the rest of this section, we focus on the over-identified case (
 \begin_inset Formula $L>K$
 \end_inset
 
@@ -825,8 +508,8 @@ reference "eq:moment"
 
 \end_inset
 
-) involves more equations than the number of parameters, directly taking
- the inverse as in (
+) involves more equations than the number of parameters, so that directly
+ taking the inverse as in (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:just"
@@ -1027,7 +710,8 @@ The step is similar to the consistency proof of OLS.
 \begin_inset Formula 
 \begin{align*}
 \widehat{\beta} & =\left(X'ZWZ'X\right)^{-1}X'ZWZ'\left(X'\beta_{0}+\epsilon\right)\\
- & =\beta_{0}+\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{n}\top\beta_{0}.\qedhere
+ & =\beta_{0}+\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{n}\\
+ & \top\beta_{0}+\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W0=\beta_{0}.\qedhere
 \end{align*}
 
 \end_inset
@@ -1101,14 +785,22 @@ Multiply
 \end_inset
 
 The conclusion follows as 
-\begin_inset Formula $\frac{X'Z}{n}W\frac{Z'X}{n}\top\Sigma'W\Sigma$
+\begin_inset Formula 
+\[
+\frac{X'Z}{n}W\frac{Z'X}{n}\top\Sigma'W\Sigma
+\]
+
 \end_inset
 
  and 
-\begin_inset Formula $\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum z_{i}'\epsilon_{i}\Rightarrow\Sigma'W\times N\left(0,\Omega\right)$
+\begin_inset Formula 
+\[
+\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum z_{i}'\epsilon_{i}\Rightarrow\Sigma'W\times N\left(0,\Omega\right).\qedhere
+\]
+
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -1250,14 +942,13 @@ This is exactly the same expression of 2SLS for
 .
  Under conditional homoskedasticity, 2SLS is the efficient estimator; otherwise
  2SLS is inefficient.
-\begin_inset Note Note
-status open
+\end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 GMM in Nonlinear Model*
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 The principle of GMM can be used in models where the parameter enters the
  moment conditions nonlinearly.
  Let 
@@ -1301,7 +992,7 @@ Nonlinear models nest the linear model as a special case.
 .
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 In practice we use the sample moments to mimic the population moments in
  the criterion function
 \begin_inset Formula 
@@ -1380,7 +1071,7 @@ The list of assumptions in the above statement is incomplete.
  
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Formula $Q_{n}\left(\beta\right)$
 \end_inset
 
@@ -1441,11 +1132,6 @@ J\left(\widehat{\beta}\right)\Rightarrow\chi^{2}\left(L-K\right)
 
 If the null hypothesis is false, then the test statistic tends to be large,
  and it is more likely to reject the null.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_body
