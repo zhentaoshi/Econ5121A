@@ -1,0 +1,1002 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "mathpazo" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+Notation: 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ is a scalar, and 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times1$
+\end_inset
+
+ vector.
+ 
+\begin_inset Formula $Y$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector, and 
+\begin_inset Formula $X$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times K$
+\end_inset
+
+ matrix.
+\end_layout
+
+\begin_layout Section
+Algebra of Least Squares
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "algebra-of-least-squares"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+OLS estimator
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "ols-estimator"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we have learned from the linear project model, the parameter 
+\begin_inset Formula $\beta$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}y_{i} & =x'_{i}\beta+e_{i}\\
+E[x_{i}e_{i}] & =0
+\end{aligned}
+\]
+
+\end_inset
+
+can be written as 
+\begin_inset Formula $\beta=\left(E\left[x_{i}x_{i}'\right]\right)^{-1}E\left[x_{i}y_{i}\right].$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+While population is something imaginary, in reality we possess a sample
+ of 
+\begin_inset Formula $n$
+\end_inset
+
+ observations.
+ We thus replace the population mean 
+\begin_inset Formula $E\left[\cdot\right]$
+\end_inset
+
+ by the sample mean, and the resulting estimator is 
+\begin_inset Formula 
+\[
+\widehat{\beta}=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}y_{i}=\left(X'X\right)^{-1}X'y.
+\]
+
+\end_inset
+
+This is one way to motivate the OLS estimator.
+\end_layout
+
+\begin_layout Standard
+Alternatively, we can derive the OLS estimator from minimizing the sum of
+ squared residuals 
+\begin_inset Formula 
+\[
+Q\left(\beta\right)=\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}=\left(Y-X\beta\right)'\left(Y-X\beta\right).
+\]
+
+\end_inset
+
+By the first-order condition 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\beta}Q\left(\beta\right)=-2X'\left(Y-X\beta\right),
+\]
+
+\end_inset
+
+the optimality condition gives exactly the same 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+.
+ Moreover, the second-order condition 
+\begin_inset Formula 
+\[
+\frac{\partial^{2}}{\partial\beta\partial\beta'}Q\left(\beta\right)=2X'X
+\]
+
+\end_inset
+
+shows that 
+\begin_inset Formula $Q\left(\beta\right)$
+\end_inset
+
+ is convex in 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ (
+\begin_inset Formula $Q\left(\beta\right)$
+\end_inset
+
+ is strictly convex in 
+\begin_inset Formula $\beta$
+\end_inset
+
+ if 
+\begin_inset Formula $X'X$
+\end_inset
+
+ is positive definite.)
+\end_layout
+
+\begin_layout Standard
+Here we introduce some definitions and properties in OLS estimation.
+\end_layout
+
+\begin_layout Itemize
+Fitted value: 
+\begin_inset Formula $\widehat{Y}=X\widehat{\beta}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Projector: 
+\begin_inset Formula $P_{X}=X\left(X'X\right)^{-1}X$
+\end_inset
+
+; Annihilator: 
+\begin_inset Formula $M_{X}=I_{n}-P_{X}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{X}M_{X}=M_{X}P_{X}=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $AA=A$
+\end_inset
+
+, we call it an idempotent matrix.
+ Both 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{X}$
+\end_inset
+
+ are idempotent.
+ 
+\end_layout
+
+\begin_layout Itemize
+Residual: 
+\begin_inset Formula $\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X'\widehat{e}=XM_{X}e=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
+\end_inset
+
+ if 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ contains a constant.
+ 
+\end_layout
+
+\begin_layout Subsection
+Goodness of Fit
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "goodness-of-fit"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The so-called R-square is the most popular measure of goodness-of-fit in
+ the linear regression.
+ R-square is well defined only when a constant is included in the regressors.
+ Let 
+\begin_inset Formula $M_{\iota}=I_{n}-\frac{1}{n}\iota\iota'$
+\end_inset
+
+, where 
+\begin_inset Formula $\iota$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector of 1's.
+ 
+\begin_inset Formula $M_{\iota}$
+\end_inset
+
+ is the 
+\emph on
+demeaner
+\emph default
+, in the sense that 
+\begin_inset Formula $M_{\iota}\left(z_{1},\ldots,z_{n}\right)'=\left(z_{1}-\overline{z},\ldots,z_{n}-\overline{z}\right)'$
+\end_inset
+
+, where 
+\begin_inset Formula $\bar{z}=\frac{1}{n}\sum_{i=1}^{n}z_{i}$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $X$
+\end_inset
+
+, we can decompose 
+\begin_inset Formula $Y=P_{X}Y+M_{X}Y=\widehat{Y}+\widehat{e}$
+\end_inset
+
+.
+ The total variation is 
+\begin_inset Formula 
+\[
+Y'M_{\iota}Y=\left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)=\widehat{Y}'M_{\iota}\widehat{Y}+2\widehat{Y}'M_{\iota}\widehat{e}+\widehat{e}'M_{\iota}\widehat{e}=\widehat{Y}'M_{\iota}\widehat{Y}+\widehat{e}'\widehat{e}
+\]
+
+\end_inset
+
+where the last equality follows by 
+\begin_inset Formula $M_{\iota}\widehat{e}=\widehat{e}$
+\end_inset
+
+ as 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
+\end_inset
+
+, and 
+\begin_inset Formula $\widehat{Y}'\widehat{e}=Y'P_{X}M_{X}e=0$
+\end_inset
+
+.
+ R-square is defined as 
+\begin_inset Formula $\widehat{Y}'M_{\iota}\widehat{Y}/Y'M_{\iota}Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Frish-Waugh-Lovell Theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "frish-waugh-lovell-theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The FWL theorem is an algebraic fact about the formula of a subvector of
+ the OLS estimator.
+ To derive the FWL theorem We need to use the inverse of partitioned matrix.
+ For a positive definite symmetric matrix 
+\begin_inset Formula $A=\begin{pmatrix}A_{11} & A_{12}\\
+A_{12}' & A_{22}
+\end{pmatrix}$
+\end_inset
+
+, the inverse can be written as 
+\begin_inset Formula 
+\[
+A^{-1}=\begin{pmatrix}\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & -\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1}A_{12}A_{22}^{-1}\\
+-A_{22}^{-1}A_{12}'\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & \left(A_{22}-A_{12}'A_{11}^{-1}A_{12}\right)^{-1}
+\end{pmatrix}.
+\]
+
+\end_inset
+
+In our context of OLS estimator,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\widehat{\beta} & =\begin{pmatrix}\widehat{\beta}_{1}\\
+\widehat{\beta}_{2}
+\end{pmatrix}=\begin{pmatrix}X_{1}'X_{1} & X_{1}'X_{2}\\
+X_{2}'X_{1} & X_{2}'X_{2}
+\end{pmatrix}^{-1}\begin{pmatrix}X_{1}y\\
+X_{2}y
+\end{pmatrix}\\
+ & =\begin{pmatrix}\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1} & -\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}\\
+\cdot & \cdot
+\end{pmatrix}\begin{pmatrix}X_{1}y\\
+X_{2}y
+\end{pmatrix}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The subvector
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\widehat{\beta}_{1} & =\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1}X_{1}y-\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}X_{2}y\\
+ & =\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1}\left(X_{1}y-X_{1}'P_{X_{2}}y\right)\\
+ & =\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1}X_{1}M_{X_{2}}y.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Similar derivation can also be carried out in the population linear projection.
+ See Hansen's Chapter 2.21-23.
+\end_layout
+
+\begin_layout Section
+Statistical Properties of Least Squares
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "statistical-properties-of-least-squares"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To talk about the statistical properties in finite sample, we impose the
+ following assumptions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\labelenumi}{\arabic{enumi}.}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+The data 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ is a random sample from the same data generating process 
+\begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $e_{i}|x_{i}\sim N\left(0,\sigma^{2}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Maximum Likelihood Estimation
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "maximum-likelihood-estimation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Under the normality assumption, 
+\begin_inset Formula $y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\gamma=\sigma^{2}$
+\end_inset
+
+.
+ The 
+\emph on
+conditional
+\emph default
+ likelihood of observing a sample 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right),
+\]
+
+\end_inset
+
+and the (conditional) log-likelihood function is 
+\begin_inset Formula 
+\[
+L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.
+\]
+
+\end_inset
+
+Therefore, the maximum likelihood estimator (MLE) coincides with the OLS
+ estimator, and 
+\begin_inset Formula $\widehat{\gamma}_{\mathrm{MLE}}=\widehat{e}'\widehat{e}/n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Finite Sample Distribution
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "finite-sample-distribution"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can show the finite-sample exact distribution of 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+.
+ 
+\emph on
+Finite sample distribution
+\emph default
+ means that the distribution holds for any 
+\begin_inset Formula $n$
+\end_inset
+
+; it is in contrast to 
+\emph on
+asymptotic distribution
+\emph default
+, which is a large sample approximation to the finite sample distribution.
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula 
+\[
+\widehat{\beta}=\left(X'X\right)^{-1}X'y=\left(X'X\right)^{-1}X'\left(X'\beta+e\right)=\beta+\left(X'X\right)^{-1}X'e,
+\]
+
+\end_inset
+
+we have the estimator 
+\begin_inset Formula $\widehat{\beta}|X\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right)$
+\end_inset
+
+, and 
+\begin_inset Formula 
+\[
+\widehat{\beta}_{k}|X\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\eta_{k}=\left(1\left\{ l=k\right\} \right)_{l=1,\ldots,K}$
+\end_inset
+
+ is the selector of the 
+\begin_inset Formula $k$
+\end_inset
+
+-th element.
+\end_layout
+
+\begin_layout Standard
+In reality, 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is an unknown parameter, and 
+\begin_inset Formula 
+\[
+s^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)=e'M_{X}e/\left(n-K\right)
+\]
+
+\end_inset
+
+is an unbiased estimator of 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ Consider the 
+\begin_inset Formula $T$
+\end_inset
+
+-statistic 
+\begin_inset Formula 
+\[
+T_{k}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}=\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
+\]
+
+\end_inset
+
+The numerator follows a standard normal, and the denominator follows 
+\begin_inset Formula $\frac{1}{n-K}\chi^{2}\left(n-K\right)$
+\end_inset
+
+.
+ Moreover, the numerator and the denominator are independent.
+ As a result, 
+\begin_inset Formula $T_{k}\sim t\left(n-K\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Mean and Variance
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "mean-and-variance"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we relax the normality assumption and statistical independence.
+ Instead, we assume a regression model 
+\begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\begin{aligned}E[e_{i}|x_{i}] & =0\\
+E\left[e_{i}^{2}|x_{i}\right] & =\sigma^{2}.
+\end{aligned}
+\]
+
+\end_inset
+
+where the first condition is the 
+\emph on
+mean independence
+\emph default
+ assumption, and the second condition is the 
+\emph on
+homoskedasticity
+\emph default
+ assumption.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example
+\series default
+ (Heteroskedasticity) If 
+\begin_inset Formula $e_{i}=x_{i}u_{i}$
+\end_inset
+
+, where 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is a scalar random variable, 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E\left[u_{i}\right]=0$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[u_{i}^{2}\right]=\sigma^{2}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $E\left[e_{i}|x_{i}\right]=0$
+\end_inset
+
+ but 
+\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=\sigma_{i}^{2}x_{i}^{2}$
+\end_inset
+
+ is a function of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ We say 
+\begin_inset Formula $e_{i}^{2}$
+\end_inset
+
+ is a heteroskedastic error.
+\end_layout
+
+\begin_layout Standard
+These assumptions are about the first and second moment of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ conditional on 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ Unlike the normality assumption, they do not restrict the entire distribution
+ of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Unbiasedness: 
+\begin_inset Formula 
+\[
+E\left[\widehat{\beta}|X\right]=E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]=\beta.
+\]
+
+\end_inset
+
+Unbiasedness does not rely on homoskedasticity.
+ 
+\end_layout
+
+\begin_layout Itemize
+Variance: 
+\begin_inset Formula 
+\[
+\begin{aligned}\mathrm{var}\left(\widehat{\beta}|X\right) & =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
+ & =E\left[\left(\widehat{\beta}-\beta\right)\left(\widehat{\beta}-\beta\right)'|X\right]\\
+ & =E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]\\
+ & =\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}\\
+ & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}\\
+ & =\sigma^{2}\left(X'X\right)^{-1}.
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Gauss-Markov Theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "gauss-markov-theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gauss-Markov theorem justifies the OLS estimator as the efficient estimator
+ among all linear unbiased ones.
+ 
+\emph on
+Efficient
+\emph default
+ here means that it enjoys the smallest variance in a family of estimators.
+\end_layout
+
+\begin_layout Standard
+There are numerous linearly unbiased estimators.
+ For example, 
+\begin_inset Formula $\left(Z'X\right)^{-1}Z'y$
+\end_inset
+
+ for 
+\begin_inset Formula $z_{i}=x_{i}^{2}$
+\end_inset
+
+ is unbiased because 
+\begin_inset Formula $E\left[\left(Z'X\right)^{-1}Z'y\right]=E\left[\left(Z'X\right)^{-1}Z'\left(X\beta+e\right)\right]=\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\tilde{\beta}=A'y$
+\end_inset
+
+ be a generic linear estimator, where 
+\begin_inset Formula $A$
+\end_inset
+
+ is any 
+\begin_inset Formula $n\times K$
+\end_inset
+
+ functions of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ As 
+\begin_inset Formula 
+\[
+E\left[A'y|X\right]=E\left[A'\left(X\beta+e\right)|X\right]=A'X\beta.
+\]
+
+\end_inset
+
+So the linearity and unbiasedness of 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ implies 
+\begin_inset Formula $A'X=I_{n}$
+\end_inset
+
+.
+ Moreover, the variance 
+\begin_inset Formula 
+\[
+\mbox{var}\left(A'y|X\right)=E\left[\left(A'y-\beta\right)\left(A'y-\beta\right)'|X\right]=E\left[A'ee'A|X\right]=\sigma^{2}A'A.
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $C=A-X\left(X'X\right)^{-1}.$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}A'A-\left(X'X\right)^{-1} & =\left(C+X\left(X'X\right)^{-1}\right)'\left(C+X\left(X'X\right)^{-1}\right)-\left(X'X\right)^{-1}\\
+ & =C'C+\left(X'X\right)^{-1}X'C+C'X\left(X'X\right)^{-1}\\
+ & =C'C,
+\end{aligned}
+\]
+
+\end_inset
+
+where the last equality follows as 
+\begin_inset Formula 
+\[
+\left(X'X\right)^{-1}X'C=\left(X'X\right)^{-1}X'\left(A-X\left(X'X\right)^{-1}\right)=\left(X'X\right)^{-1}-\left(X'X\right)^{-1}=0.
+\]
+
+\end_inset
+
+Therefore 
+\begin_inset Formula $A'A-\left(X'X\right)^{-1}$
+\end_inset
+
+ is a positive semi-definite matrix.
+ The variance of any 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ is no smaller than the OLS estimator 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Homoskedasticity is a restrictive assumption.
+ Under homoskedasticity, 
+\begin_inset Formula $\mathrm{var}\left(\widehat{\beta}\right)=\sigma^{2}\left(X'X\right)^{-1}$
+\end_inset
+
+.
+ Popular estimator of 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is the sample mean of the residuals 
+\begin_inset Formula $\widehat{\sigma}^{2}=\frac{1}{n}\widehat{e}'\widehat{e}$
+\end_inset
+
+ or the unbiased one 
+\begin_inset Formula $s^{2}=\frac{1}{n-K}\widehat{e}'\widehat{e}$
+\end_inset
+
+.
+ Under heteroskedasticity, Gauss-Markov theorem does not apply.
+\end_layout
+
+\end_body
+\end_document
