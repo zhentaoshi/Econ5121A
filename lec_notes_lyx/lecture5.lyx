@@ -1,30 +1,19 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
-\begin_preamble
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\lhead{Lecture Notes}
-\rhead{Zhentao Shi}
-\end_preamble
 \use_default_options false
-\begin_modules
-theorems-ams
-theorems-ams-extended
-\end_modules
 \maintain_unincluded_children false
 \language english
-\language_package default
-\inputencoding auto
-\fontencoding global
-\font_roman "default" "default"
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
 \font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_typewriter "mathpazo" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -32,55 +21,48 @@ theorems-ams-extended
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
-\default_output_format dvi
-\output_sync 1
-\output_sync_macro "\synctex=-1"
+\default_output_format default
+\output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize 11
-\spacing onehalf
+\spacing single
 \use_hyperref true
-\pdf_bookmarks true
+\pdf_bookmarks false
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
-\pdf_pdfborder true
+\pdf_breaklinks true
+\pdf_pdfborder false
 \pdf_colorlinks true
-\pdf_backref false
-\pdf_pdfusetitle true
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
 \papersize default
-\use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
 \use_package cancel 0
 \use_package esint 1
-\use_package mathdots 1
+\use_package mathdots 0
 \use_package mathtools 0
-\use_package mhchem 1
+\use_package mhchem 0
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine natbib
-\cite_engine_type authoryear
-\biblio_style plainnat
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
-\branch abc
-\selected 1
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch pf of gamma = 0
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
+\use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -93,35 +75,21 @@ theorems-ams-extended
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
 \end_header
 
 \begin_body
-
-\begin_layout Standard
-This version: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-today
-\end_layout
-
-\end_inset
-
-
-\end_layout
 
 \begin_layout Standard
 Notation: 
@@ -134,7 +102,6 @@ Notation:
 \end_inset
 
  is its realization.
- 
 \end_layout
 
 \begin_layout Section
@@ -142,6 +109,16 @@ Hypothesis Testing
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "hypothesis-testing"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 A 
 \emph on
 hypothesis
@@ -151,7 +128,11 @@ hypothesis
 \end_inset
 
 .
- The 
+ 
+\end_layout
+
+\begin_layout Itemize
+The 
 \emph on
 null hypothesis
 \emph default
@@ -163,8 +144,12 @@ null hypothesis
 \begin_inset Formula $\Theta$
 \end_inset
 
- of interest, typically suggested by some scientific theory.
- The 
+ of interest, ideally suggested by scientific theory.
+ 
+\end_layout
+
+\begin_layout Itemize
+The 
 \emph on
 alternative hypothesis
 \emph default
@@ -172,29 +157,47 @@ alternative hypothesis
 \begin_inset Formula $\Theta_{1}=\Theta\backslash\Theta_{0}$
 \end_inset
 
-
-\emph on
- 
-\emph default
-is the complement of 
+ is the complement of 
 \begin_inset Formula $\Theta_{0}$
 \end_inset
 
+.
+ 
+\end_layout
+
+\begin_layout Itemize
 
 \emph on
-.
- Hypothesis testing
+Hypothesis testing
 \emph default
  is a decision whether to accept the null hypothesis or to reject it according
  to the observed evidence.
+ 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+If 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+ is a singleton, we call it a 
+\emph on
+simple hypothesis
+\emph default
+; otherwise we call it a 
+\emph on
+composite hypothesis
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Itemize
 A 
 \emph on
-test function 
+test function
 \emph default
-is a mapping 
+ is a mapping 
 \begin_inset Formula 
 \[
 \phi:\mathcal{X}^{n}\mapsto\left\{ 0,1\right\} ,
@@ -202,7 +205,7 @@ is a mapping
 
 \end_inset
 
- where 
+where 
 \begin_inset Formula $\mathcal{X}$
 \end_inset
 
@@ -216,7 +219,11 @@ is a mapping
 \end_inset
 
 .
- The 
+ 
+\end_layout
+
+\begin_layout Itemize
+The 
 \emph on
 acceptance region
 \emph default
@@ -232,7 +239,11 @@ rejection region
 \begin_inset Formula $R_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi\left(\mathbf{x}\right)=1\right\} .$
 \end_inset
 
- The 
+ 
+\end_layout
+
+\begin_layout Itemize
+The 
 \emph on
 power function
 \emph default
@@ -248,12 +259,15 @@ power function
 
 \end_inset
 
- The power function measures, at a given point, the probability that the
- test function rejects the null.
+The power function measures, at a given point 
+\begin_inset Formula $\theta$
+\end_inset
+
+, the probability that the test function rejects the null.
  
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 The 
 \emph on
 power
@@ -295,8 +309,16 @@ size
 \begin_inset Formula $\theta$
 \end_inset
 
- as it takes the supremum over the null.
- The 
+ as it takes the supremum over the set of null 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+The 
 \emph on
 level
 \emph default
@@ -313,7 +335,76 @@ level
 \end_inset
 
 , which is often used when it is difficult to attain the exact supremum.
- The 
+ A test of size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is also of level 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ or bigger; while a test of level 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ must have size smaller or equal to 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Verbatim
+     | decision     |  reject $H_{1}$  | reject $H_{0}$
+\end_layout
+
+\begin_layout Verbatim
+     |--------------|------------------| ---------------
+\end_layout
+
+\begin_layout Verbatim
+     | $H_{0}$ true |     correct      | Type I error
+\end_layout
+
+\begin_layout Verbatim
+     | $H_{0}$ false| Type II error    |   correct
+\end_layout
+
+\begin_layout Itemize
+size = 
+\emph on
+P
+\emph default
+(reject 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ when 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ true) 
+\end_layout
+
+\begin_layout Itemize
+power = 
+\emph on
+P
+\emph default
+(reject 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ when 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ false) 
+\end_layout
+
+\begin_layout Itemize
+The 
 \emph on
 probability of committing Type I error
 \emph default
@@ -326,7 +417,11 @@ probability of committing Type I error
 \end_inset
 
 .
- The 
+ 
+\end_layout
+
+\begin_layout Itemize
+The 
 \emph on
 probability of committing Type II error
 \emph default
@@ -338,243 +433,19 @@ probability of committing Type II error
 \begin_inset Formula $\theta\in\Theta_{1}$
 \end_inset
 
-; in other words, it is one minus the power at 
-\begin_inset Formula $\theta$
-\end_inset
-
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float table
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Decisions and Status
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-bigskip
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="3" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-accept 
-\begin_inset Formula $H_{0}$
-\end_inset
-
- (reject 
-\begin_inset Formula $H_{1}$
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-reject 
-\begin_inset Formula $H_{0}$
-\end_inset
-
- (accept 
-\begin_inset Formula $H_{1}$
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $H_{0}$
-\end_inset
-
- true (
-\begin_inset Formula $H_{1}$
-\end_inset
-
- false)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-correct decision
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Type I error
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $H_{0}$
-\end_inset
-
- false (
-\begin_inset Formula $H_{1}$
-\end_inset
-
- true)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Type II error
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-correct decision
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-bigskip
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-size = 
-\emph on
-P
-\emph default
-(reject 
-\begin_inset Formula $H_{0}$
-\end_inset
-
-|
-\begin_inset Formula $H_{0}$
-\end_inset
-
- true)
-\end_layout
-
-\begin_layout Plain Layout
-power = 
-\emph on
-P
-\emph default
-(reject 
-\begin_inset Formula $H_{0}$
-\end_inset
-
-|
-\begin_inset Formula $H_{0}$
-\end_inset
-
- false)
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-There has been a philosophical debate for decades about the hypothesis testing
- framework.
- At present the prevailing framework in statistics education is the frequentist
- perspective.
- A frequentist views the parameter as a fixed constant, and they are conservativ
-e about the Type I error.
- Only if overwhelming evidence is demonstrated should a researcher reject
- the null.
  
 \end_layout
 
 \begin_layout Standard
-Under the philosophy of protecting the null hypothesis, a desirable test
+The philosophy on the hypothesis testing has been debated for centuries.
+ At present the prevailing framework in statistics textbooks is the frequentist
+ perspective.
+ A frequentist views the parameter as a fixed constant, and they keep a
+ conservative attitude about the Type I error.
+ Only if overwhelming evidence is demonstrated should a researcher reject
+ the null.
+ Under the philosophy of protecting the null hypothesis, a desirable test
  should have a small level.
  Conventionally we take 
 \begin_inset Formula $\alpha=0.01,$
@@ -582,12 +453,22 @@ Under the philosophy of protecting the null hypothesis, a desirable test
 
  0.05 or 0.1.
  There can be many tests of the correct size.
- 
 \end_layout
 
-\begin_layout Example
-A trivial test function, 
-\begin_inset Formula $\phi\left(\mathbf{X}\right)=1\left\{ 0\leq U\leq\alpha\right\} $
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example
+\series default
+ A trivial test function, 
+\begin_inset Formula $\phi(\mathbf{X})=1\left\{ 0\leq U\leq\alpha\right\} $
 \end_inset
 
 , where 
@@ -598,13 +479,23 @@ A trivial test function,
 \begin_inset Formula $\left[0,1\right]$
 \end_inset
 
-, has correct size but no power.
+, has correct size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ but no power.
  Another trivial test function 
 \begin_inset Formula $\phi\left(\mathbf{X}\right)=1$
 \end_inset
 
- has the biggest power but incorrect size.
- 
+ has the biggest power but useless size.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -616,7 +507,16 @@ Usually, we design a test by proposing a test statistic
 \begin_inset Formula $c_{1-\alpha}$
 \end_inset
 
-, and then define
+.
+ Given 
+\begin_inset Formula $T_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{1-\alpha}$
+\end_inset
+
+, we write the test function as 
 \begin_inset Formula 
 \[
 \phi\left(\mathbf{X}\right)=1\left\{ T_{n}\left(\mathbf{X}\right)>c_{1-\alpha}\right\} .
@@ -636,8 +536,8 @@ To ensure such a
 \emph on
 null distribution
 \emph default
-), and choose 
-\begin_inset Formula $c_{\alpha}$
+), and choose a critical value 
+\begin_inset Formula $c_{1-\alpha}$
 \end_inset
 
  according to the null distribution and the desirable size or level 
@@ -645,21 +545,35 @@ null distribution
 \end_inset
 
 .
- 
 \end_layout
 
-\begin_layout Example
+\begin_layout Standard
 The concept of 
 \emph on
 level
 \emph default
- is useful if we do not have information to derive the exact size of a test.
+ is useful if we do not have sufficient information to derive the exact
+ size of a test.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example
+\series default
  If 
 \begin_inset Formula $\left(X_{1i},X_{2i}\right)_{i=1}^{n}$
 \end_inset
 
- are randomly drawn from some unknown joint distribution, but we only know
- that the marginal distribution is 
+ are randomly drawn from some unknown joint distribution, but we know the
+ marginal distribution is 
 \begin_inset Formula $X_{ji}\sim N\left(\theta_{j},1\right)$
 \end_inset
 
@@ -672,7 +586,7 @@ level
 \begin_inset Formula $\theta_{1}=\theta_{2}=0$
 \end_inset
 
-, we can construct a test function
+, we can construct a test function 
 \begin_inset Formula 
 \[
 \phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)=1\left\{ \left\{ \sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right\} \cup\left\{ \sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right\} \right\} ,
@@ -691,14 +605,19 @@ where
 -th quantile of the standard normal distribution.
  The level of this test is 
 \begin_inset Formula 
-\begin{align*}
-P_{\theta_{1}=\theta_{2}=0}\left(\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) & \leq P_{\theta_{1}=0}\left(\sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right)+P_{\theta_{2}=0}\left(\sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right)\\
+\[
+\begin{aligned}P_{\theta_{1}=\theta_{2}=0}\left(\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) & \leq P_{\theta_{1}=0}\left(\sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right)+P_{\theta_{2}=0}\left(\sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right)\\
  & =\alpha/2+\alpha/2=\alpha.
-\end{align*}
+\end{aligned}
+\]
 
 \end_inset
 
-where the inequality follows by the Bonferroni inequality 
+where the inequality follows by the 
+\emph on
+Bonferroni inequality
+\emph default
+ 
 \begin_inset Formula $P\left(A\cup B\right)\leq P\left(A\right)+P\left(B\right)$
 \end_inset
 
@@ -725,8 +644,14 @@ where the inequality follows by the Bonferroni inequality
 \end_layout
 
 \begin_layout Standard
-There can be many tests of a correct level.
- Denote the class of test functions of level smaller than 
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Denote the class of test functions of level 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -760,16 +685,13 @@ uniformly over
 \end_inset
 
 .
- 
 \end_layout
 
-\begin_layout Example
-\begin_inset CommandInset label
-LatexCommand label
-name "eg1"
+\begin_layout Standard
 
-\end_inset
-
+\series bold
+Example
+\series default
  Suppose a random sample of size 6 is generated from 
 \begin_inset Formula 
 \[
@@ -778,7 +700,7 @@ name "eg1"
 
 \end_inset
 
- where 
+where 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -809,9 +731,9 @@ name "eg1"
 
 \end_inset
 
- has the correct level.
+has the correct level.
  Since 
-\begin_inset Formula $\bar{X}=N\left(\theta,1/\sqrt{6}\right)$
+\begin_inset Formula $\bar{X}=N\left(\theta,1/6\right)$
 \end_inset
 
 , the power function for those in 
@@ -821,12 +743,26 @@ name "eg1"
  is 
 \begin_inset Formula 
 \[
-\beta_{\phi}\left(\theta\right)=P\left(\bar{X}\geq\frac{c}{\sqrt{6}}\right)=P\left(\sqrt{6}\left(\bar{X}-\theta\right)\geq c-\sqrt{6}\theta\right)=1-\Phi\left(c-\sqrt{6}\theta\right).
+\beta_{\phi}\left(\theta\right)=P\left(\bar{X}\geq\frac{c}{\sqrt{6}}\right)=P\left(\sqrt{6}\left(\bar{X}-\theta\right)\geq c-\sqrt{6}\theta\right)=1-\Phi\left(c-\sqrt{6}\theta\right)
 \]
 
 \end_inset
 
-The test function 
+where 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is the cdf of standard normal.
+ It is clear that 
+\begin_inset Formula $\beta_{\phi}\left(\theta\right)$
+\end_inset
+
+ is monotonically decreasing in 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ Thus the test function 
 \begin_inset Formula 
 \[
 \phi\left(\mathbf{X}\right)=1\left\{ \bar{X}\geq1.64/\sqrt{6}\right\} 
@@ -834,28 +770,19 @@ The test function
 
 \end_inset
 
- is the most powerful test in 
+is the most powerful test in 
 \begin_inset Formula $\Psi$
 \end_inset
 
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-bigskip
-\end_layout
-
+, as 
+\begin_inset Formula $c=1.64$
 \end_inset
 
+ is the lower bound that 
+\begin_inset Formula $\Psi$
+\end_inset
 
+ allows.
 \end_layout
 
 \begin_layout Standard
@@ -863,7 +790,7 @@ Another commonly used indicator in hypothesis testing is
 \begin_inset Formula $p$
 \end_inset
 
--value:
+-value: 
 \begin_inset Formula 
 \[
 \sup_{\theta\in\Theta_{0}}P_{\theta}\left(T_{n}\left(\mathbf{x}\right)\leq T_{n}\left(\mathbf{X}\right)\right).
@@ -892,6 +819,41 @@ In the above expression,
 \end_inset
 
 .
+ The interpretation of the 
+\begin_inset Formula $p$
+\end_inset
+
+-value is tricky.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+-value is the probability that we observe 
+\begin_inset Formula $T_{n}(\mathbf{X})$
+\end_inset
+
+ being greater than the realized 
+\begin_inset Formula $T_{n}(\mathbf{x})$
+\end_inset
+
+ if the null hypothesis is true.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+-value is 
+\emph on
+not
+\emph default
+ the probability that the null hypothesis is true.
+ Under the frequentist perspective, the null hypothesis is either true or
+ false, with certainty.
+ The randomness of a test comes only from sampling, not from the hypothesis.
+\end_layout
+
+\begin_layout Standard
+It measures whether the data is consistent with the null hypothesis, or
+ whether the evidence from the data is compatible with the null hypothesis.
  
 \begin_inset Formula $p$
 \end_inset
@@ -906,32 +868,20 @@ In the above expression,
 \end_inset
 
 , the test rejects the null hypothesis.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula $p$
-\end_inset
-
--value is a measure whether the data is consistent with the null hypothesis,
- or whether the evidence from the data is compatible with the null hypothesis.
- 
-\begin_inset Formula $p$
-\end_inset
-
--value is 
-\emph on
-not
-\emph default
- the probability that the null hypothesis is true.
- Under the frequentist perspective, the null hypothesis is either true or
- false, with certainty.
- The randomness of a test comes only from sampling, not from the hypothesis.
- 
 \end_layout
 
 \begin_layout Section
 Confidence Interval
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "confidence-interval"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -980,7 +930,7 @@ not
 .)
 \end_layout
 
-\begin_layout Exercise
+\begin_layout Standard
 Suppose a random sample of size 6 is generated from 
 \begin_inset Formula 
 \[
@@ -989,7 +939,7 @@ Suppose a random sample of size 6 is generated from
 
 \end_inset
 
- Find the coverage probability of the random interval 
+Find the coverage probability of the random interval 
 \begin_inset Formula 
 \[
 \left[\bar{X}-1.96/\sqrt{6},\bar{X}+1.96/\sqrt{6}\right].
@@ -1030,7 +980,7 @@ C\left(\mathbf{x}\right)=\left\{ \theta\in\Theta:\phi_{\theta}\left(\mathbf{x}\r
 
 \end_inset
 
- then its coverage probability 
+then its coverage probability 
 \begin_inset Formula 
 \[
 P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)=1-P_{\theta}\left(\phi_{\theta}\left(\mathbf{X}\right)=1\right)=1-\alpha.
@@ -1042,56 +992,141 @@ P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)=1-P_{\theta}\left(\phi
 \end_layout
 
 \begin_layout Section
-Application in OLS
-\end_layout
-
-\begin_layout Subsection
-Wald Test
+Bayesian Credible Set
 \end_layout
 
 \begin_layout Standard
-
-\series bold
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subsection
-Inverting test for confidence interval
+The Bayesian framework offers a coherent and natural language for statistical
+ decision.
+ However, the major criticism against Bayesian statistics is the arbitrariness
+ of the choice of the prior.
 \end_layout
 
-\begin_layout Plain Layout
-How to find a confidence interval with coverage probability 
-\begin_inset Formula $1-\alpha$
+\begin_layout Standard
+In the Bayesian framework, both the data 
+\begin_inset Formula $\mathbf{X}_{n}$
 \end_inset
 
-? Invert a test.
- Let 
-\begin_inset Formula $T_{n}\left(\theta\right)$
+ and the parameter 
+\begin_inset Formula $\theta$
 \end_inset
 
- be a test statistic.
- For example, the t-statistic 
-\begin_inset Formula $\left(\widehat{\theta}-\theta\right)/s_{\widehat{\theta}}$
-\end_inset
-
-.
- I claim that the set 
-\begin_inset Formula $\widehat{C}_{n}:=\left\{ \theta\in\Theta:T_{n}\left(\theta\right)\leq c_{\alpha}\right\} $
-\end_inset
-
- is a confidence interval with the desirable coverage probability, where
+ are random variables.
+ Before she observes the data, she holds a 
+\emph on
+prior distribution
+\emph default
  
-\begin_inset Formula $c_{\alpha}$
+\begin_inset Formula $\pi$
 \end_inset
 
- is the critical value of a test of size 
-\begin_inset Formula $\alpha$
+ about 
+\begin_inset Formula $\theta$
 \end_inset
 
 .
+ After observing the data, she updates the prior distribution to a 
+\emph on
+posterior distribution
+\emph default
+ 
+\begin_inset Formula $p(\theta|\mathbf{X}_{n})$
+\end_inset
+
+.
+ The 
+\emph on
+Bayes Theorem
+\emph default
+ connects the prior and the posterior as 
 \begin_inset Formula 
 \[
-P\left(\theta_{0}\in\widehat{C}_{n}\right)=P\left(\left\{ T_{n}\left(\theta_{0}\right)\leq c_{\alpha}\right\} |H_{0}\right)=1-P\left(\left\{ T_{n}\left(\theta_{0}\right)\geq c_{\alpha}\right\} |H_{0}\right)=1-\alpha.
+p(\theta|\mathbf{X}_{n})\propto f(\mathbf{X}_{n}|\theta)\pi(\theta)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f(\mathbf{X}_{n}|\theta)$
+\end_inset
+
+ is the likelihood function.
+\end_layout
+
+\begin_layout Standard
+Here is a classical example to illustrate the Bayesian approach of statistical
+ inference.
+ Suppose we have an iid sample 
+\begin_inset Formula $(X_{1},\ldots,X_{n})$
+\end_inset
+
+ drawn from a normal distribution with unknown 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and known 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ For a researcher with a prior distribution 
+\begin_inset Formula $\theta\sim N(\theta_{0},\sigma_{0}^{2})$
+\end_inset
+
+, her posterior distribution is, by some routine calculation, the posterior
+ is also a normal distribution 
+\begin_inset Formula 
+\[
+p(\theta|\mathbf{x})\sim N\left(\tilde{\theta},\tilde{\sigma}^{2}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\theta}=\frac{\sigma^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\theta_{0}+\frac{n\sigma_{0}^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\bar{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{\sigma}^{2}=\frac{\sigma_{0}^{2}\sigma^{2}}{n\sigma_{0}^{2}+\sigma^{2}}$
+\end_inset
+
+.
+ Thus the Bayesian credible set is 
+\begin_inset Formula 
+\[
+\left(\tilde{\theta}-z_{1-\alpha/2}\cdot\tilde{\sigma},\tilde{\theta}+z_{1-\alpha/2}\cdot\tilde{\sigma}\right).
+\]
+
+\end_inset
+
+This posterior distribution depends on 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{0}^{2}$
+\end_inset
+
+ from the posterior.
+ When the sample size is sufficiently large the posterior can be approximated
+ by 
+\begin_inset Formula $N(\bar{x},\sigma^{2}/n)$
+\end_inset
+
+, where the prior information is overwhelmed by the information accumulated
+ from the data.
+\end_layout
+
+\begin_layout Standard
+In contrast, a frequentist estimates 
+\begin_inset Formula $\hat{\theta}=\bar{x}\sim N(\theta,\sigma^{2}/n)$
+\end_inset
+
+.
+ Her confidence interval is 
+\begin_inset Formula 
+\[
+\left(\bar{x}-z_{1-\alpha/2}\cdot\sigma/\sqrt{n},\bar{x}-z_{1-\alpha/2}\cdot\sigma/\sqrt{n}\right).
 \]
 
 \end_inset
@@ -1099,11 +1134,36 @@ P\left(\theta_{0}\in\widehat{C}_{n}\right)=P\left(\left\{ T_{n}\left(\theta_{0}\
 
 \end_layout
 
+\begin_layout Section
+Application in OLS
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "application-in-ols"
+
 \end_inset
 
 
-\series default
- Suppose the OLS estimator 
+\end_layout
+
+\begin_layout Subsection
+Wald Test
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "wald-test"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Suppose the OLS estimator 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
@@ -1116,7 +1176,7 @@ P\left(\theta_{0}\in\widehat{C}_{n}\right)=P\left(\left\{ T_{n}\left(\theta_{0}\
 
 \end_inset
 
- where 
+where 
 \begin_inset Formula $\Omega$
 \end_inset
 
@@ -1173,19 +1233,18 @@ where
 .
 \end_layout
 
-\begin_layout Example
-\begin_inset CommandInset label
-LatexCommand label
-name "exa:single"
+\begin_layout Standard
 
-\end_inset
-
- In a linear regression 
+\series bold
+Example
+\series default
+ (Single test) In a linear regression 
 \begin_inset Formula 
-\begin{eqnarray}
-y & = & x_{i}'\beta+e_{i}=\sum_{k=1}^{5}\beta_{k}x_{ik}+e_{i}.\nonumber \\
-E\left[e_{i}x_{i}\right] & = & \mathbf{0}_{5},\label{eq:example}
-\end{eqnarray}
+\[
+\begin{aligned}y & =x_{i}'\beta+e_{i}=\sum_{k=1}^{5}\beta_{k}x_{ik}+e_{i}.\nonumber\\
+E\left[e_{i}x_{i}\right] & =\mathbf{0}_{5},\label{eq:example}
+\end{aligned}
+\]
 
 \end_inset
 
@@ -1201,13 +1260,13 @@ x=\left(\mbox{edu},\mbox{age},\mbox{experience},\mbox{experience}^{2},1\right)'.
 
 \end_inset
 
- To test whether 
+To test whether 
 \emph on
-education 
+education
 \emph default
-affects
+ affects 
 \emph on
- wage
+wage
 \emph default
 , we specify the null hypothesis 
 \begin_inset Formula $\beta_{1}=0$
@@ -1227,7 +1286,7 @@ affects
 
 \end_inset
 
- where 
+where 
 \begin_inset Formula $\Omega{}_{11}$
 \end_inset
 
@@ -1240,7 +1299,7 @@ affects
 \end_inset
 
 .
- Therefore,
+ Therefore, 
 \begin_inset Formula 
 \[
 \sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}=\sqrt{\frac{\Omega_{11}}{\widehat{\Omega}_{11}}}\sqrt{n}\frac{\widehat{\beta}_{1}}{\Omega_{11}^{1/2}}
@@ -1268,45 +1327,22 @@ If
 
 \end_layout
 
-\begin_layout Example
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
-Example 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "exa:single"
-
-\end_inset
-
- is a test about a single coefficient, and the test statistic is essentially
- a 
+The above example is a test about a single coefficient, and the test statistic
+ is essentially a 
 \emph on
 t
 \emph default
 -statistic.
- Example 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "exa:joint"
-
-\end_inset
-
- gives a test about a joint hypothesis.
+ The following example gives a test about a joint hypothesis.
 \end_layout
 
-\begin_layout Example
-\begin_inset CommandInset label
-LatexCommand label
-name "exa:joint"
+\begin_layout Standard
 
-\end_inset
-
-We want to simultaneously test 
+\series bold
+Example
+\series default
+ (Joint test) We want to simultaneously test 
 \begin_inset Formula $\beta_{1}=1$
 \end_inset
 
@@ -1314,14 +1350,7 @@ We want to simultaneously test
 \begin_inset Formula $\beta_{3}+\beta_{4}=2$
 \end_inset
 
- in (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:example"
-
-\end_inset
-
-).
+ in the above example.
  The null hypothesis can be expressed in the general form 
 \begin_inset Formula $R\beta=r$
 \end_inset
@@ -1340,51 +1369,32 @@ R=\begin{pmatrix}1 & 0 & 0 & 0 & 0\\
 
 \end_inset
 
- and 
+and 
 \begin_inset Formula $r=\left(1,2\right)'$
 \end_inset
 
 .
-\begin_inset VSpace bigskip
+ Once we figure out 
+\begin_inset Formula $R$
 \end_inset
 
-
+, it is routine to construct the test.
 \end_layout
 
 \begin_layout Standard
-Example 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "exa:single"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "exa:joint"
-
-\end_inset
-
- are linear restrictions.
+These two examples are linear restrictions.
  In order to test a nonlinear regression, we need the so-called 
 \emph on
 delta method
 \emph default
 .
- 
 \end_layout
 
-\begin_layout Theorem
-\begin_inset Argument 1
-status open
+\begin_layout Standard
 
-\begin_layout Plain Layout
-delta method
-\end_layout
-
-\end_inset
-
+\series bold
+Delta method
+\series default
  If 
 \begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega_{K\times K}\right)$
 \end_inset
@@ -1405,19 +1415,46 @@ delta method
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Example
-In the regression (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:example"
+This result can be easily shown by a mean-value expansion 
+\begin_inset Formula 
+\[
+f(\hat{\theta})-f(\theta_{0})=\frac{\partial f(\tilde{\theta})}{\partial\theta}(\hat{\theta}-\theta_{0})
+\]
 
 \end_inset
 
-), the optimal experience level can be found by setting the first order
- condition with respective to experience to set, 
+where 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ lies on the line segment connecting 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ Multiply both sides by 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ and notice 
+\begin_inset Formula $\tilde{\theta}\stackrel{p}{\to}\theta_{0}$
+\end_inset
+
+, by Slutsky theorem we have 
+\begin_inset Formula $\sqrt{n}(f(\hat{\theta})-f(\theta_{0}))\stackrel{d}{\to}\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)N(0,\Omega).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the example of linear regression, the optimal experience level can be
+ found by setting the first order condition with respective to experience
+ to set, 
 \begin_inset Formula $\beta_{3}+2\beta_{4}\mbox{experience}^{*}=0$
 \end_inset
 
@@ -1440,7 +1477,7 @@ This is a nonlinear hypothesis.
 \begin_inset Formula $q$
 \end_inset
 
- is the number of restrictions, we have
+ is the number of restrictions, we have 
 \begin_inset Formula 
 \[
 n\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)'\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)'\right)^{-1}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}\chi_{q}^{2},
@@ -1487,10 +1524,9 @@ W_{n}=n\left(f\left(\widehat{\beta}\right)-20\right)'\left(\frac{\partial f}{\pa
 \end_inset
 
 This is a valid test with correct asymptotic size.
- 
 \end_layout
 
-\begin_layout Example
+\begin_layout Standard
 However, we can equivalently state the null hypothesis as 
 \begin_inset Formula $\beta_{3}+40\beta_{4}=0$
 \end_inset
@@ -1499,6 +1535,11 @@ However, we can equivalently state the null hypothesis as
  In general, a linear hypothesis is preferred to a nonlinear one, due to
  the approximation error in the delta method under the null and more importantly
  the invalidity of the Taylor expansion under the alternative.
+ It also highlights the problem of Wald test being 
+\emph on
+variant
+\emph default
+ for re-parametrization.
 \end_layout
 
 \begin_layout Subsection
@@ -1506,7 +1547,17 @@ Lagrangian Multiplier Test*
 \end_layout
 
 \begin_layout Standard
-Restricted least square
+\begin_inset CommandInset label
+LatexCommand label
+name "lagrangian-multiplier-test"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Restricted least square 
 \begin_inset Formula 
 \[
 \min_{\beta}\left(y-X\beta\right)'\left(y-X\beta\right)\mbox{ s.t. }R\beta=r.
@@ -1514,7 +1565,7 @@ Restricted least square
 
 \end_inset
 
-Turn it into an unrestricted problem
+Turn it into an unrestricted problem 
 \begin_inset Formula 
 \[
 L\left(\beta,\lambda\right)=\frac{1}{2n}\left(y-X\beta\right)'\left(y-X\beta\right)+\lambda'\left(R\beta-r\right).
@@ -1522,16 +1573,16 @@ L\left(\beta,\lambda\right)=\frac{1}{2n}\left(y-X\beta\right)'\left(y-X\beta\rig
 
 \end_inset
 
-The first-order condition
+The first-order condition 
 \begin_inset Formula 
-\begin{eqnarray*}
-\frac{\partial}{\partial\beta}L & = & -\frac{1}{n}X'\left(y-X\tilde{\beta}\right)+\tilde{\lambda}R=-\frac{1}{n}X'e+\frac{1}{n}X'X\left(\tilde{\beta}-\beta^{*}\right)+R'\tilde{\lambda}=0.\\
-\frac{\partial}{\partial\beta}L & = & R\tilde{\beta}-r=R\left(\tilde{\beta}-\beta^{*}\right)=0
-\end{eqnarray*}
+\begin{align*}
+\frac{\partial}{\partial\beta}L & =-\frac{1}{n}X'\left(y-X\tilde{\beta}\right)+\tilde{\lambda}R=-\frac{1}{n}X'e+\frac{1}{n}X'X\left(\tilde{\beta}-\beta^{*}\right)+R'\tilde{\lambda}=0.\\
+\frac{\partial}{\partial\lambda}L & =R\tilde{\beta}-r=R\left(\tilde{\beta}-\beta^{*}\right)=0
+\end{align*}
 
 \end_inset
 
-Combine these two equations into a linear system,
+Combine these two equations into a linear system, 
 \begin_inset Formula 
 \[
 \begin{pmatrix}\widehat{Q} & R'\\
@@ -1540,45 +1591,43 @@ R & 0
 \tilde{\lambda}
 \end{pmatrix}=\begin{pmatrix}\frac{1}{n}X'e\\
 0
-\end{pmatrix}.
+\end{pmatrix},
 \]
 
 \end_inset
 
+where 
+\begin_inset Formula $\hat{Q}=X'X/n$
+\end_inset
 
+.
 \end_layout
 
 \begin_layout Standard
+Thus we can explicitly express the estimator as 
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & \begin{pmatrix}\tilde{\beta}-\beta^{*}\\
+\[
+\begin{aligned}\begin{pmatrix}\tilde{\beta}-\beta^{*}\\
 \tilde{\lambda}
-\end{pmatrix}=\begin{pmatrix}\widehat{Q} & R'\\
+\end{pmatrix} & =\begin{pmatrix}\widehat{Q} & R'\\
 R & 0
 \end{pmatrix}^{-1}\begin{pmatrix}\frac{1}{n}X'e\\
 0
 \end{pmatrix}\\
- & = & \begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
-\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & -\left(R\widehat{Q}^{-1}R'\right)^{-1}
+ & =\begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
+\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & (R'Q^{-1}R)^{-1}
 \end{pmatrix}\begin{pmatrix}\frac{1}{n}X'e\\
 0
 \end{pmatrix}.
-\end{eqnarray*}
+\end{aligned}
+\]
 
 \end_inset
 
 We conclude that 
 \begin_inset Formula 
 \[
-\sqrt{n}\tilde{\lambda}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-\sqrt{n}\tilde{\lambda}\Rightarrow N\left(0,\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}\right).
+\sqrt{n}\tilde{\lambda}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\stackrel{d}{\to}N\left(0,\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}\right).
 \]
 
 \end_inset
@@ -1590,7 +1639,7 @@ Let
 , we have 
 \begin_inset Formula 
 \[
-n\tilde{\lambda}'W^{-1}\tilde{\lambda}\Rightarrow\chi_{q}^{2}.
+n\tilde{\lambda}'W^{-1}\tilde{\lambda}\stackrel{d}{\to}\chi_{q}^{2}.
 \]
 
 \end_inset
@@ -1599,12 +1648,21 @@ If homoskedastic, then
 \begin_inset Formula $W=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}RQ^{-1}QQ^{-1}R'\left(RQ^{-1}R'\right)^{-1}=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}.$
 \end_inset
 
+ Replace 
+\begin_inset Formula $W$
+\end_inset
 
+ with the estimated 
+\begin_inset Formula $\hat{W}$
+\end_inset
+
+, 
 \begin_inset Formula 
-\begin{align*}
-\frac{n\tilde{\lambda}'RQ^{-1}R'\tilde{\lambda}}{\sigma^{2}} & =\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'XQ^{-1}X'\left(y-X\tilde{\beta}\right)\\
- & =\frac{1}{n\sigma^{2}}\left(y-X\tilde{\beta}\right)'P_{X}\left(y-X\tilde{\beta}\right).
-\end{align*}
+\[
+\begin{aligned}\frac{n\tilde{\lambda}'R\hat{Q}^{-1}R'\tilde{\lambda}}{\hat{\sigma}^{2}} & =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'X\hat{Q}^{-1}R'(R\hat{Q}^{-1}R')^{-1}R\hat{Q}^{-1}X'\left(y-X\tilde{\beta}\right)\\
+ & =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'P_{X\hat{Q}^{-1}R'}\left(y-X\tilde{\beta}\right).
+\end{aligned}
+\]
 
 \end_inset
 
@@ -1616,6 +1674,16 @@ Likelihood-Ratio test*
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "likelihood-ratio-test"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 For likelihood ratio test, the starting point can be a criterion function
  
 \begin_inset Formula $L\left(\beta\right)=\left(y-X\beta\right)'\left(y-X\beta\right)$
@@ -1623,25 +1691,28 @@ For likelihood ratio test, the starting point can be a criterion function
 
 .
  It does not have to be the likelihood function.
+ 
 \begin_inset Formula 
-\begin{align*}
-L\left(\tilde{\beta}\right)-L\left(\widehat{\beta}\right) & =\frac{\partial L}{\partial\beta}\left(\widehat{\beta}\right)+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\frac{\partial L}{\partial\beta\partial\beta}\left(\dot{\beta}\right)\left(\tilde{\beta}-\widehat{\beta}\right)\\
+\[
+\begin{aligned}L\left(\tilde{\beta}\right)-L\left(\widehat{\beta}\right) & =\frac{\partial L}{\partial\beta}\left(\widehat{\beta}\right)+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\frac{\partial L}{\partial\beta\partial\beta}\left(\dot{\beta}\right)\left(\tilde{\beta}-\widehat{\beta}\right)\\
  & =0+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right).
-\end{align*}
+\end{aligned}
+\]
 
 \end_inset
 
 From the derivation of LM test, we have 
 \begin_inset Formula 
-\begin{eqnarray*}
-\sqrt{n}\left(\tilde{\beta}-\beta^{*}\right) & = & \left(\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\right)\frac{1}{\sqrt{n}}X'e\\
- & = & \frac{1}{\sqrt{n}}\left(X'X\right)X'e-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
- & = & \sqrt{n}\left(\widehat{\beta}-\beta^{*}\right)-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
-\end{eqnarray*}
+\[
+\begin{aligned}\sqrt{n}\left(\tilde{\beta}-\beta^{*}\right) & =\left(\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\right)\frac{1}{\sqrt{n}}X'e\\
+ & =\frac{1}{\sqrt{n}}\left(X'X\right)X'e-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ & =\sqrt{n}\left(\widehat{\beta}-\beta^{*}\right)-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
+\end{aligned}
+\]
 
 \end_inset
 
-Therefore
+Therefore 
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)=-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
@@ -1651,11 +1722,12 @@ Therefore
 
 and 
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & n\left(\tilde{\beta}-\beta\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right)\\
- & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
- & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
-\end{eqnarray*}
+\[
+\begin{aligned} & n\left(\tilde{\beta}-\beta\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right)\\
+ & =\frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ & =\frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
+\end{aligned}
+\]
 
 \end_inset
 
@@ -1668,7 +1740,7 @@ In general, it is a quadratic form of normal distributions.
 
 \end_inset
 
- has variance 
+has variance 
 \begin_inset Formula 
 \[
 \sigma^{2}\left(RQ^{-1}R'\right)^{-1/2}RQ^{-1}QQ^{-1}R'\left(RQ^{-1}R'\right)^{-1/2}=\sigma^{2}I_{q}.
@@ -1695,7 +1767,6 @@ We can view the optimization of the log-likelihood as a two-step optimization
 \end_inset
 
 .
- 
 \end_layout
 
 \end_body

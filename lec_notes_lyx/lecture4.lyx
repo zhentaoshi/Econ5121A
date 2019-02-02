@@ -1,30 +1,19 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
-\begin_preamble
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\lhead{Lecture Notes}
-\rhead{Zhentao Shi}
-\end_preamble
 \use_default_options false
-\begin_modules
-theorems-ams
-theorems-ams-extended
-\end_modules
 \maintain_unincluded_children false
 \language english
-\language_package default
-\inputencoding auto
-\fontencoding global
-\font_roman "default" "default"
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
 \font_sans "default" "default"
-\font_typewriter "default" "default"
+\font_typewriter "mathpazo" "default"
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
@@ -32,55 +21,48 @@ theorems-ams-extended
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
-\default_output_format dvi
-\output_sync 1
-\output_sync_macro "\synctex=-1"
+\default_output_format default
+\output_sync 0
 \bibtex_command default
 \index_command default
 \paperfontsize 11
-\spacing onehalf
+\spacing single
 \use_hyperref true
-\pdf_bookmarks true
+\pdf_bookmarks false
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
-\pdf_pdfborder true
+\pdf_breaklinks true
+\pdf_pdfborder false
 \pdf_colorlinks true
-\pdf_backref false
-\pdf_pdfusetitle true
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
 \papersize default
-\use_geometry false
-\use_package amsmath 1
-\use_package amssymb 1
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
 \use_package cancel 0
 \use_package esint 1
-\use_package mathdots 1
+\use_package mathdots 0
 \use_package mathtools 0
-\use_package mhchem 1
+\use_package mhchem 0
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine natbib
-\cite_engine_type authoryear
-\biblio_style plainnat
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 1
-\branch abc
-\selected 1
-\filename_suffix 0
-\color #faf0e6
-\end_branch
-\branch pf of gamma = 0
-\selected 0
-\filename_suffix 0
-\color #faf0e6
-\end_branch
+\use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -93,12 +75,15 @@ theorems-ams-extended
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
-\output_changes true
+\output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -106,25 +91,18 @@ theorems-ams-extended
 
 \begin_body
 
-\begin_layout Standard
-This version: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-today
+\begin_layout Section
+Asymptotics
 \end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "asymptotics"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Asymptotics
 \end_layout
 
 \begin_layout Standard
@@ -132,7 +110,6 @@ Asymptotic theory is concerned about the behavior of statistics when the
  sample size is arbitrarily large.
  It is a useful approximation technique to simplify complicated finite-sample
  analysis.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -140,7 +117,21 @@ Modes of Convergence
 \end_layout
 
 \begin_layout Standard
-Convergence of a deterministic sequence means that for any 
+\begin_inset CommandInset label
+LatexCommand label
+name "modes-of-convergence"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Convergence of a deterministic sequence 
+\begin_inset Formula $z_{1},z_{2},\ldots$
+\end_inset
+
+ means that for any 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
@@ -175,95 +166,17 @@ Convergence of a deterministic sequence means that for any
 \begin_layout Standard
 In contrast to the convergence of a deterministic sequence, we are interested
  in the convergence of random variables.
- Since a random variable is 
-\begin_inset Quotes eld
-\end_inset
-
-random
-\begin_inset Quotes erd
-\end_inset
-
-, we must define clearly what 
-\begin_inset Quotes eld
-\end_inset
-
+ Since a random variable has a probability measure associated to any event,
+ we must be clear what 
+\emph on
 convergence
-\begin_inset Quotes erd
-\end_inset
-
+\emph default
  means.
  Several modes of convergence are often encountered.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-almost sure convergence: for any 
-\begin_inset Formula $e>0$
-\end_inset
-
-, we have 
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\[
-P\left(\omega:\lim_{n\to\infty}\left|Z_{n}\left(\omega\right)-z\right|<e\right)=1
-\]
-
-\end_inset
-
-alternatively, 
-\begin_inset Formula $P\left(\limsup_{n\to\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|<e\right\} \right)=1$
-\end_inset
-
- or 
-\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\bigcap_{n}^{\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|<e\right\} \right)=1$
-\end_inset
-
-.
- Equivalently, 
-\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\bigcup_{n}^{\infty}\left\{ \left|Z_{n}\left(\omega\right)-z\right|>e\right\} \right)=0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-Random variable 
-\begin_inset Formula $X_{n}\left(u\right)=1\left\{ u\leq\frac{1}{n}\right\} $
-\end_inset
-
-, where 
-\begin_inset Formula $u\sim Uniform[0,1]$
-\end_inset
-
-.
- In this case,
-\begin_inset Formula 
-\[
-P\left(\bigcup_{n}^{\infty}\left\{ \left|X_{n}-0\right|>e\right\} \right)=P\left(X_{n}>e\right)=1/n\to0.
-\]
-
-\end_inset
-
-so 
-\begin_inset Formula $X_{n}\stackrel{a.s.}{\to}0$
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Itemize
-Convergence almost surely*
+Convergence almost surely* 
 \end_layout
 
 \begin_layout Itemize
@@ -276,6 +189,7 @@ Convergence in probability:
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -283,14 +197,19 @@ Squared-mean convergence:
 \begin_inset Formula $\lim_{n\to\infty}E\left[\left(z_{n}-z\right)^{2}\right]=0.$
 \end_inset
 
-
+ 
 \end_layout
 
-\begin_layout Example
-\begin_inset Formula $z_{n}$
+\begin_layout Standard
+
+\series bold
+Example
+\series default
+: 
+\begin_inset Formula $(z_{n})$
 \end_inset
 
- is a binary random variable: 
+ is a sequence of binary random variables: 
 \begin_inset Formula $z_{n}=\sqrt{n}$
 \end_inset
 
@@ -316,14 +235,6 @@ Squared-mean convergence:
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Example
-Another example (to be formalized): Gambling.
- Each person contribute one dollar, and only one person will win all the
- sum.
- As the number of people goes larger, the average gain is still one dollar,
- but the limit in probability becomes zero.
 \end_layout
 
 \begin_layout Standard
@@ -355,19 +266,23 @@ Convergence in distribution:
 \end_inset
 
  is continuous.
+ 
 \end_layout
 
 \begin_layout Standard
 Convergence in distribution is about 
 \emph on
-pointwise 
+pointwise
 \emph default
-convergence of CDF, not the random variables themselves.
- 
+ convergence of CDF, not the random variables themselves.
 \end_layout
 
-\begin_layout Example
-Let 
+\begin_layout Standard
+
+\series bold
+Example
+\series default
+: Let 
 \begin_inset Formula $x\sim N\left(0,1\right)$
 \end_inset
 
@@ -410,44 +325,25 @@ Let
 \end_inset
 
 .
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-revised up here.
- 9/22/2016
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+Squared-mean convergence implies convergence in probability.
+ Convergence in probability implies convergence in distribution.
 \end_layout
 
 \begin_layout Standard
 
 \emph on
-Cram
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-'{e}
-\end_layout
-
-\end_inset
-
-r-Wold device
+Cramér-Wold device
 \emph default
- handles convergence in distribution for random vectors? We say a sequence
- of 
+ handles convergence in distribution for random vectors.
+ We say a sequence of 
 \begin_inset Formula $K$
 \end_inset
 
--dimensional random vectors 
+-dimensional random vectors.
+ 
 \begin_inset Formula $\left(X_{n}\right)$
 \end_inset
 
@@ -455,7 +351,7 @@ r-Wold device
 \begin_inset Formula $X$
 \end_inset
 
- if we have 
+ if 
 \begin_inset Formula $\lambda'X_{n}\stackrel{d}{\to}\lambda'X$
 \end_inset
 
@@ -463,22 +359,17 @@ r-Wold device
 \begin_inset Formula $\lambda\in\mathbb{R}^{K}$
 \end_inset
 
- with 
-\begin_inset Formula $\lambda'\lambda=1$
-\end_inset
-
 .
 \end_layout
 
 \begin_layout Subsection
 Law of Large Numbers
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Though the results in this section hold for convergence almost surely, for
- simplicity we state them in terms of convergence in probability.
 \end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "law-of-large-numbers"
 
 \end_inset
 
@@ -491,7 +382,7 @@ e in probability of the sample average to its population counterpart.
  The basic form of LLN is: 
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{i=1}^{n}z_{i}-E\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}\right]\stackrel{p}{\to}0
+\frac{1}{n}\sum_{i=1}^{n}(z_{i}-E[z_{i}])\stackrel{p}{\to}0
 \]
 
 \end_inset
@@ -503,7 +394,6 @@ as
 .
  Various versions of LLN work under different assumptions about the distribution
 s and dependence of the random variables.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -527,11 +417,11 @@ observations,
 \begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
-Chebyshev LLN utilizes
+Chebyshev LLN utilizes Chebyshev inequality.
 \end_layout
 
 \begin_layout Itemize
@@ -552,14 +442,15 @@ Chebyshev inequality
 \end_inset
 
 , if 
-\begin_inset Formula $E\left[x^{2}\right]$
+\begin_inset Formula $E\left[x^{2}\right]<\infty$
 \end_inset
 
- exists.
+.
+ 
 \end_layout
 
 \begin_layout Standard
-Chebyshev inequality is a special case of 
+Chebyshev inequality is a special case of Markov inequality.
 \end_layout
 
 \begin_layout Itemize
@@ -580,19 +471,22 @@ Markov inequality
 \end_inset
 
 , if 
-\begin_inset Formula $E\left[\left|x\right|^{r}\right]$
+\begin_inset Formula $E\left[\left|x\right|^{r}\right]<\infty$
 \end_inset
 
- exists.
+.
+ 
 \end_layout
 
 \begin_layout Standard
 It is easy to verify Markov inequality.
+ 
 \begin_inset Formula 
-\begin{align*}
-E\left[\left|x\right|^{r}\right] & =\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}+\int_{\left|x\right|\leq\varepsilon}\left|x\right|^{r}dF_{X}\\
+\[
+\begin{aligned}E\left[\left|x\right|^{r}\right] & =\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}+\int_{\left|x\right|\leq\varepsilon}\left|x\right|^{r}dF_{X}\\
  & \geq\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}\geq\varepsilon^{r}\int_{\left|x\right|>\varepsilon}dF_{X}=\varepsilon^{r}P\left(\left|x\right|>\varepsilon\right).
-\end{align*}
+\end{aligned}
+\]
 
 \end_inset
 
@@ -618,13 +512,15 @@ Consider a partial sum
 \end_inset
 
 .
+ 
 \begin_inset Formula 
-\begin{align*}
-P\left(\left|\bar{x}-\bar{\mu}\right|\geq\varepsilon\right) & =P\left(\left|S_{n}-E\left[S_{n}\right]\right|\geq n\varepsilon\right)\\
+\[
+\begin{aligned}P\left(\left|\bar{x}-\bar{\mu}\right|\geq\varepsilon\right) & =P\left(\left|S_{n}-E\left[S_{n}\right]\right|\geq n\varepsilon\right)\\
  & \leq\left(n\varepsilon\right)^{-2}E\left[\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)^{2}\right]\\
  & =\left(n\varepsilon\right)^{-2}\mathrm{var}\left(\sum_{i=1}^{n}x_{i}\right)\\
  & =\left(n\varepsilon\right)^{-2}\left[\sum_{i=1}^{n}\mathrm{var}\left(x_{i}\right)+\sum_{i=1}^{n}\sum_{j\neq i}\mathrm{cov}\left(x_{i},x_{j}\right)\right].
-\end{align*}
+\end{aligned}
+\]
 
 \end_inset
 
@@ -654,9 +550,8 @@ Another useful LLN is
 Kolmogorov LLN
 \emph default
 .
- Since its derivation requires advanced knowledge of mathematics, we state
- the result without proof.
- 
+ Since its derivation requires advanced knowledge of probability theory,
+ we state the result without proof.
 \end_layout
 
 \begin_layout Itemize
@@ -676,7 +571,7 @@ observations and
 \begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -694,8 +589,19 @@ Central Limit Theorem
 \end_layout
 
 \begin_layout Standard
-The central limit theorem (CLT) is a collect of probability results about
- the convergence in distribution to a normally distributed random variable.
+\begin_inset CommandInset label
+LatexCommand label
+name "central-limit-theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The central limit theorem (CLT) is a collection of probability results about
+ the convergence in distribution to a stable law, usually the normal distributio
+n.
  The basic form of the CLT is: for a sample 
 \begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
 \end_inset
@@ -714,7 +620,6 @@ zero-mean
 
 Various versions of CLT work under different assumptions about the random
  variables.
- 
 \end_layout
 
 \begin_layout Standard
@@ -723,7 +628,6 @@ Various versions of CLT work under different assumptions about the random
 Lindeberg-Levy CLT
 \emph default
  is the simplest CLT.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -735,14 +639,7 @@ If the sample is i.i.d.,
 \begin_inset Formula $\mathrm{var}\left[x_{1}^{2}\right]=\sigma^{2}<\infty$
 \end_inset
 
-, then (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:clt"
-
-\end_inset
-
-) holds.
+, then CLT holds.
  
 \end_layout
 
@@ -772,11 +669,11 @@ characteristic function
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
-If 
+Here is a very heuristic argument.
+ If 
 \begin_inset Formula $E\left[\left|x\right|^{k}\right]<\infty$
 \end_inset
 
@@ -800,16 +697,17 @@ Under the assumption of Lindeberg-Levy CLT,
 
 \end_inset
 
- for all 
+for all 
 \begin_inset Formula $i$
 \end_inset
 
 , and by independence we have 
 \begin_inset Formula 
-\begin{align*}
-\varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) & =\prod_{i=1}^{n}\varphi_{x_{i}/\sqrt{n}}\left(t\right)=\left(1+i\cdot0-\frac{t^{2}}{2n}\sigma^{2}+o\left(\frac{t^{2}}{n}\right)\right)^{n}\\
+\[
+\begin{aligned}\varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) & =\prod_{i=1}^{n}\varphi_{x_{i}/\sqrt{n}}\left(t\right)=\left(1+i\cdot0-\frac{t^{2}}{2n}\sigma^{2}+o\left(\frac{t^{2}}{n}\right)\right)^{n}\\
  & \to\exp\left(-\frac{\sigma^{2}}{2}t^{2}\right),
-\end{align*}
+\end{aligned}
+\]
 
 \end_inset
 
@@ -842,6 +740,7 @@ where
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -850,10 +749,21 @@ Lyapunov CLT: i.n.i.d, finite
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Subsection
 Tools for Transformations
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "tools-for-transformations"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -873,6 +783,7 @@ Small op:
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -893,6 +804,7 @@ Big Op:
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -913,6 +825,7 @@ Continuous mapping theorem 1: If
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -933,6 +846,7 @@ Continuous mapping theorem 2: If
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -944,7 +858,7 @@ Slutsky's Theorem: If
 \begin_inset Formula $y_{n}\stackrel{p}{\to}a$
 \end_inset
 
-, then 
+, then
 \end_layout
 
 \begin_deeper
@@ -952,14 +866,14 @@ Slutsky's Theorem: If
 \begin_inset Formula $x_{n}+y_{n}\stackrel{d}{\to}x+a$
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $x_{n}y_{n}\stackrel{d}{\to}ax$
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -971,6 +885,7 @@ Slutsky's Theorem: If
 \end_inset
 
 .
+ 
 \end_layout
 
 \end_deeper
@@ -1003,15 +918,35 @@ Asymptotic Properties of OLS
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "asymptotic-properties-of-ols"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 We apply large sample theory to study the OLS estimator 
 \begin_inset Formula $\widehat{\beta}=\left(X'X\right)^{-1}X'Y.$
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Subsection
 Consistency
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "consistency"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1032,7 +967,7 @@ consistent
 \end_inset
 
 .
- To verify consistency, we write
+ To verify consistency, we write 
 \begin_inset Formula 
 \begin{equation}
 \widehat{\beta}-\beta=\left(X'X\right)^{-1}X'e=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}.\label{eq:ols_d}
@@ -1048,7 +983,7 @@ The first term
 
 \end_inset
 
- and the second term 
+and the second term 
 \begin_inset Formula 
 \[
 \frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{p}{\to}0.
@@ -1082,6 +1017,16 @@ Asymptotic Normality
 \end_layout
 
 \begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "asymptotic-normality"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 In finite sample, 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
@@ -1093,18 +1038,22 @@ In finite sample,
 
  under normality in the previous lecture.
  Without the restrictive normality assumption, how can we characterize the
- randomness of the OLS estimator? If we multiply 
+ randomness of the OLS estimator?
+\end_layout
+
+\begin_layout Standard
+We know from the previous section that 
+\begin_inset Formula $\hat{\beta}-\beta$
+\end_inset
+
+ degenerates to a constant.
+ To study its distribution, we must scale it up by a proper multiplier so
+ that in the limit it neither degenerates nor explodes.
+ If we multiply it by 
 \begin_inset Formula $\sqrt{n}$
 \end_inset
 
- on both sides of (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:ols_d"
-
-\end_inset
-
-), we have 
+, we have 
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\widehat{\beta}-\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}e_{i}.
@@ -1124,7 +1073,7 @@ n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\Sigma\right)
 
 \end_inset
 
- where 
+where 
 \begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]$
 \end_inset
 
@@ -1187,7 +1136,7 @@ Up to now we have derived the asymptotic distribution of
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
- is
+ is 
 \begin_inset Formula 
 \[
 \widehat{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right)
@@ -1199,7 +1148,51 @@ Up to now we have derived the asymptotic distribution of
 \end_layout
 
 \begin_layout Subsection
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+texorpdfstring{
+\end_layout
+
+\end_inset
+
 Estimation of the Variance*
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+Estimation of the Variance*
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "estimation-of-the-variance"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1236,16 +1229,17 @@ For each
 \end_layout
 
 \begin_layout Standard
-For the estimation of variance, if the error is homoskedastic,
+For the estimation of variance, if the error is homoskedastic, 
 \begin_inset Formula 
-\begin{align*}
-\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
+\[
+\begin{aligned}\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
  & =\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right).
-\end{align*}
+\end{aligned}
+\]
 
 \end_inset
 
-The second term
+The second term 
 \begin_inset Formula 
 \[
 \left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
@@ -1253,7 +1247,7 @@ The second term
 
 \end_inset
 
-The third term
+The third term 
 \begin_inset Formula 
 \[
 \left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)O_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
@@ -1282,97 +1276,27 @@ As
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Subsection
-Asymptotic Distribution of Functional of Parameters
-\end_layout
-
-\begin_layout Plain Layout
-A linear restriction that leads to the Wald test.
-\end_layout
-
-\begin_layout Plain Layout
-Hansen's textbook provides a few examples why we are interested in a function
- of parameters.
- For example, the optimal experience level of a worker.
- We derive the distribution by the delta method.
- It is particularly easy if the parameter of interest is of one dimensional.
- 
-\end_layout
-
-\begin_layout Plain Layout
-Besides point estimator, we might be interested in the interval estimator
- 
-\begin_inset Formula $C_{n}$
-\end_inset
-
-.
- What want to construct 
-\begin_inset Formula $\widehat{C}_{n}$
-\end_inset
-
- such that 
+For general heteroskedasticity, 
 \begin_inset Formula 
 \[
-\lim_{n\to\infty}P\left(\beta_{0}\in\widehat{C}_{n}\right)=1-\alpha.
-\]
-
-\end_inset
-
-If we construct 
-\begin_inset Formula $\widehat{C}_{n}=\left[\widehat{\beta}-1.96\widehat{\sigma}_{\beta},\widehat{\beta}+1.96\widehat{\sigma}\right]$
-\end_inset
-
-, then we have 
-\begin_inset Formula 
-\[
-P\left(\widehat{\beta}-1.96\widehat{\sigma}\leq\beta_{0}\leq\widehat{\beta}+1.96\widehat{\sigma}\right)=P\left(1.96\leq\frac{\widehat{\beta}-\beta_{0}}{\widehat{\sigma}}\leq1.96\right)=F_{n}\left(1.96\right)-F_{n}\left(-1.96\right)\to\Phi\left(1.96\right)-\Phi\left(-1.96\right).
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-If multiple dimension, then one way to construct the interval is 
-\begin_inset Formula 
-\[
-P\left(\theta:\left(\widehat{\beta}-\beta\right)V^{-1}\left(\widehat{\beta}-\beta\right)\leq q_{\chi^{2}}\right)
-\]
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For general heteroskedasticity,
-\begin_inset Formula 
-\begin{align*}
-\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
+\begin{aligned}\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
  & =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'e_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}.
-\end{align*}
+\end{aligned}
+\]
 
 \end_inset
 
 The third term is bounded by 
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & \mbox{trace}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}\right)\\
- & \leq & K\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\\
- & \leq & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
- & \leq & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
- & = & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left(\sum_{k=1}^{K}x_{ik}^{2}\right)^{2}\\
- & \leq & K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\sum_{k=1}^{K}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}=o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
-\end{eqnarray*}
+\[
+\begin{aligned} & \mbox{trace}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}\right)\\
+ & \leq K\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\\
+ & \leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
+ & \leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
+ & =K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left(\sum_{k=1}^{K}x_{ik}^{2}\right)^{2}\\
+ & \leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\sum_{k=1}^{K}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}=o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
+\end{aligned}
+\]
 
 \end_inset
 
@@ -1383,17 +1307,17 @@ where the third inequality follows by
 .
  The second term is bounded by 
 \begin_inset Formula 
-\begin{eqnarray*}
- &  & \left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}x_{ik'}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right|\\
- & \leq & \max_{k}\left|\widehat{\beta}_{k}-\beta_{k}\right|K\max_{k,k',k''}\left|\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{ik}x_{ik'}x_{ik''}\right|\\
- & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\right)^{1/4}K\max_{k,k',k''}\left(\frac{1}{n}\sum_{i=1}^{n}\left(x_{ik}x_{ik'}x_{ik''}\right)^{4/3}\right)^{3/4}\\
- & \leq & \left\Vert \widehat{\beta}-\beta\right\Vert _{2}K\max_{k}\left(\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\right)^{3/4}=o_{p}\left(1\right)O_{p}\left(1\right)
-\end{eqnarray*}
+\[
+\begin{aligned} & \left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}x_{ik'}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right|\\
+ & \leq\max_{k}\left|\widehat{\beta}_{k}-\beta_{k}\right|K\max_{k,k',k''}\left|\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{ik}x_{ik'}x_{ik''}\right|\\
+ & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\right)^{1/4}K\max_{k,k',k''}\left(\frac{1}{n}\sum_{i=1}^{n}\left(x_{ik}x_{ik'}x_{ik''}\right)^{4/3}\right)^{3/4}\\
+ & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}K\max_{k}\left(\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\right)^{3/4}=o_{p}\left(1\right)O_{p}\left(1\right)
+\end{aligned}
+\]
 
 \end_inset
 
 where the second and the third inequality hold by the Holder's inequality.
- 
 \end_layout
 
 \end_body

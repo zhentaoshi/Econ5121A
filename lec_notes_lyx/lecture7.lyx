@@ -1,21 +1,19 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin unavailable
 \textclass article
 \begin_preamble
-
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\lhead{Lecture Notes}
-\rhead{Zhentao Shi}
+\usepackage[T1]{fontenc}
+% Nicer default font (+ math font) than Computer Modern for most use cases
+\usepackage{mathpazo}
 \end_preamble
 \use_default_options false
 \begin_modules
-theorems-ams
-theorems-ams-extended
+theorems-ams-bytype
+theorems-ams-extended-bytype
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -32,6 +30,8 @@ theorems-ams-extended
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format dvi
 \output_sync 1
@@ -39,7 +39,7 @@ theorems-ams-extended
 \bibtex_command default
 \index_command default
 \paperfontsize 11
-\spacing onehalf
+\spacing single
 \use_hyperref true
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
@@ -47,11 +47,11 @@ theorems-ams-extended
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
 \pdf_pdfborder true
-\pdf_colorlinks true
+\pdf_colorlinks false
 \pdf_backref false
 \pdf_pdfusetitle true
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 0
@@ -71,6 +71,7 @@ theorems-ams-extended
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \branch abc
 \selected 1
 \filename_suffix 0
@@ -93,7 +94,10 @@ theorems-ams-extended
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -134,8 +138,166 @@ theorems-ams-extended
 
 \end_layout
 
+\begin_layout Title
+Lecture 7: Endogeneity
+\end_layout
+
+\begin_layout Author
+Zhentao Shi
+\end_layout
+
+\begin_layout Section
+Introduction 
+\end_layout
+
 \begin_layout Standard
-This version: 
+In microeconomic analysis, exogenous variables are the factors determined
+ outside of the economic system under consideration, and endogenous variables
+ are those decided within the economic system.
+ The terms 
+\begin_inset Quotes eld
+\end_inset
+
+endogenous
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+exogenous
+\begin_inset Quotes erd
+\end_inset
+
+ in microeconomics will be carried over into multiple-equation econometric
+ models.
+ While in a single-equation regression model 
+\begin_inset Formula 
+\begin{equation}
+y_{i}=x_{i}'\beta+e_{i}\label{eq:generative}
+\end{equation}
+
+\end_inset
+
+is only part of the equation system.
+ To make it simple, in the single-equation model we say an 
+\begin_inset Formula $x_{ik}$
+\end_inset
+
+ is 
+\emph on
+endogenous, 
+\emph default
+or is an 
+\emph on
+endogenous variable
+\emph default
+, if 
+\begin_inset Formula $\mathrm{cov}\left(x_{ik},\epsilon_{i}\right)\neq0$
+\end_inset
+
+; otherwise 
+\begin_inset Formula $x_{ik}$
+\end_inset
+
+ is an 
+\emph on
+exogenous variable
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Empirical economic works using linear regressions are routinely challenged
+ by questions about endogeneity.
+ We hear such questions so often in economic seminars and referee reports.
+ To defend empirical strategies in quantitative economic studies, it is
+ important to understand the source of potential endogeneity and thoroughly
+ discuss attempts for resolving endogeneity.
+\end_layout
+
+\begin_layout Standard
+Endogeneity usually implies difficulty in identifying the parameter of interest
+ with only 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+.
+ Identification is critical for the interpretation of empirical economic
+ research.
+ We say a parameter is 
+\emph on
+identified
+\emph default
+ if the mapping between the parameter in the generative model and the distributi
+on of the observed variable is one-to-one; otherwise we say the parameter
+ is 
+\emph on
+under-identified
+\emph default
+, or the parameter is failed to be identified.
+ This is an abstract definition, and let us discuss it in more family linear
+ regression context.
+ 
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Identification failure due to collinearity
+\end_layout
+
+\end_inset
+
+ The linear projection model implies the moment equation 
+\begin_inset Formula 
+\begin{equation}
+\E\left[x_{i}x_{i}'\right]\beta=\E\left[x_{i}y_{i}\right].\label{eq:k-equation-FOC}
+\end{equation}
+
+\end_inset
+
+If 
+\begin_inset Formula $E\left[x_{i}x_{i}'\right]$
+\end_inset
+
+ is of full rank, then 
+\begin_inset Formula $\beta=\left(\E\left[x_{i}x_{i}'\right]\right)^{-1}\E\left[x_{i}y_{i}\right]$
+\end_inset
+
+ is a function of the quantities of the population moment and it is identified.
+ On the contrary, if some 
+\begin_inset Formula $x_{k}$
+\end_inset
+
+'s are perfect collinear so that 
+\begin_inset Formula $\E\left[x_{i}x_{i}'\right]$
+\end_inset
+
+ is rank deficient, there are multiple 
+\begin_inset Formula $\beta$
+\end_inset
+
+ that satisfies the 
+\begin_inset Formula $k$
+\end_inset
+
+-equation system (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:k-equation-FOC"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Identification fails.
+ 
 \begin_inset ERT
 status open
 
@@ -143,44 +305,197 @@ status open
 
 
 \backslash
-today
+qed
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Panel Data
 \end_layout
 
 \begin_layout Standard
-A panel dataset tracks the same individuals across time 
-\begin_inset Formula $t=1,\ldots,T$
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Identification failure due to endogeneity
+\end_layout
+
+\end_inset
+
+ Suppose 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is a scalar random variable, 
+\begin_inset Formula 
+\[
+\begin{pmatrix}x_{i}\\
+e_{i}
+\end{pmatrix}\sim N\left(\begin{pmatrix}0\\
+0
+\end{pmatrix},\begin{pmatrix}1 & \sigma_{xe}\\
+\sigma_{xe} & 1
+\end{pmatrix}\right)
+\]
+
+\end_inset
+
+ follows a joint normal distribution, and the dependent variable 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ is generated from (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:generative"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The joint normal assumption implies that the conditional mean 
+\begin_inset Formula 
+\[
+\E\left[y_{i}|x_{i}\right]=\beta x_{i}+\E\left[e_{i}|x_{i}\right]=\left(\beta+\sigma_{xe}\right)x_{i}
+\]
+
+\end_inset
+
+ coincides with the linear projection model, and 
+\begin_inset Formula $\beta+\sigma_{xe}$
+\end_inset
+
+ is the linear projection coefficient.
+ From the observable random variable 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+, we can only learn 
+\begin_inset Formula $\beta+\sigma_{xe}$
 \end_inset
 
 .
- The potential endogeneity of the regressors motivates the panel data models.
- We assume the observations are i.i.d.
- across 
-\begin_inset Formula $i=1,\ldots,n$
+ As we cannot learn 
+\begin_inset Formula $\sigma_{xe}$
 \end_inset
 
-, while we allow some form of dependence within a group across 
-\begin_inset Formula $t=1,\ldots,T$
+ from the data due to the unobservable 
+\begin_inset Formula $e_{i}$
 \end_inset
 
- for the same 
+, there is no way to recover 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ This is exactly the 
+\emph on
+omitted variable bias
+\emph default
+ that we have discussed earlier in this course.
+ The gap lies between the available data 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ and the identification of the generative model.
+ In the special case that we assume 
+\begin_inset Formula $\sigma_{xe}=0$
+\end_inset
+
+, the endogeneity vanishes and 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is identified.
+ 
+\end_layout
+
+\begin_layout Example
+The linear projection model is so far the most general model in this course
+ that justifies OLS.
+ OLS is consistent for the linear projection coefficient.
+ By the definition of the linear projection model, 
+\begin_inset Formula $\E\left[x_{i}e_{i}\right]=0$
+\end_inset
+
+ so there is no room for endogeneity in the linear projection model.
+ In other words, if we talk about endogeneity, we must not be working with
+ the linear projection model, and the coefficients we pursue are not the
+ linear projection coefficients.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In econometrics we are often interested in the generative model that contains
+ richer economic interpretation, instead of the liner projection model which
+ is a mere statistical artifact.
+ The common practice in empirical research assumes that the observed data
+ are generated from a parsimonious model, and the next step is to estimate
+ the unknown parameters in the model.
+ Since it is often possible to name some factors not included in the regressors
+ but they are correlated with the included regressors and in the mean time
+ also affects 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+, endogeneity becomes a fundamental problem.
+ 
+\end_layout
+
+\begin_layout Standard
+To resolve endogeneity, we seek extra variables or data structure that may
+ guarantee the identification of the generative model.
+ The most often used methods are (i) fixed effect model (ii) instrumental
+ variables.
+ The fixed effect model requires that multiple observations, often across
+ time, are collected for each individual 
 \begin_inset Formula $i$
 \end_inset
 
 .
- We maintain the linear equation 
+ Moreover, the source of endogeneity is time invariant and enters the generative
+ model additively in the form 
 \begin_inset Formula 
-\begin{equation}
-y_{it}=\beta_{1}+x_{it}\beta_{2}+u_{it},\ i=1,\ldots,n;\ t=1,\ldots,T\label{eq:basic_eq}
-\end{equation}
+\[
+y_{it}=x_{it}'\beta+u_{it},
+\]
 
 \end_inset
 
@@ -188,541 +503,818 @@ where
 \begin_inset Formula $u_{it}=\alpha_{i}+\epsilon_{it}$
 \end_inset
 
+ is the composite error.
+ The panel data approach extends 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $\left(y_{it},x_{it}\right)_{i=1}^{T}$
+\end_inset
+
+ if data are available along the time dimension.
+\end_layout
+
+\begin_layout Standard
+The instrumental variable approach extends 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $\left(y_{i},x_{i},z_{i}\right)$
+\end_inset
+
+, where the extra random variable 
+\begin_inset Formula $z_{i}$
+\end_inset
+
  is called the 
 \emph on
-composite error
+instrument
+\emph default
+ 
+\emph on
+variable
 \emph default
 .
- Note that 
-\begin_inset Formula $\alpha_{i}$
+ It is assumed that 
+\begin_inset Formula $z_{i}$
 \end_inset
 
- is the time-invariant unobserved heterogeneity, while 
-\begin_inset Formula $\epsilon_{it}$
+ is orthogonal to the error 
+\begin_inset Formula $e_{i}$
 \end_inset
 
- varies across individuals and time periods.
+ .
+ Therefore, along with the generative model it adds an extra variable 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Before closing this section, we stress that either the panel data approach
+ or the instrumental variable approach entails extra information beyond
+ 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+.
+ Without such extra data, there is no way to resolve the identification
+ failure.
+ As an analogy regarding Consumer Theory in microeconomics, if we take 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ as our budget at hand, with such a mean budget we cannot afford to identify
+ a general generative model (with the error possibly correlated with the
+ regressors).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Subsection
+Generative vs Discriminative
+\end_layout
+
+\begin_layout Plain Layout
+The generative model is causal, in the sense that if we manipulate 
+\begin_inset Formula $x$
+\end_inset
+
+, then it will produce corresponding change.
+ Of course, we need to assume invariance or external validity.
+ 
+\series bold
+(check the definition of generative model from the Machine Learning book.)
+ Generative model is about conditioning argument.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+A true example of generative model is the EM algorithm of Acadilo and Jones
+ (2001?, ecta)
+\end_layout
+
+\begin_layout Plain Layout
+Graham, identification from the covariance structure.
+\end_layout
+
+\begin_layout Plain Layout
+Can we consistently estimate LIML with no excluded IV? Although such identificat
+ion is fragile.
+ I believe this is true.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+A true example of discriminative model is logistic regression.
+\end_layout
+
+\begin_layout Plain Layout
+2SLS is to introduce an excluded IV for conditioning 
+\begin_inset Formula $E\left[y-x\beta|z\right]=0.$
+\end_inset
+
+ The relationship between 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ is generative, while that of 
+\begin_inset Formula $\left(e,z\right)$
+\end_inset
+
+ is discrimitive.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+predictive regression is also about a generative model.
+\end_layout
+
+\begin_layout Plain Layout
+We do not need to view the parametric assumption as true.
+ it is QMLE.
+ The only difference is at the use of the risk function specification.
+ Just like the choice of utility function (CARA...) The choice is usually about
+ convenience and the desirable feature.
+ Therefore, it is possible to work with a LIML with a regularized covariance
+ matrix.
  
 \end_layout
 
 \begin_layout Section
-Fixed Effect
+Solution to endogeneity
 \end_layout
 
-\begin_layout Standard
-If 
-\begin_inset Formula $\mathrm{cov}\left(\alpha_{i},x_{it}\right)=0$
+\begin_layout Plain Layout
+LIML is a generative model.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+(Connection with the Cowles Commission researchers.
+ Haavolmo, Koopmans )
+\end_layout
+
+\begin_layout Plain Layout
+The problem of endogeneity, ultimately, is the identification problem.
+ Basically we only have 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
 \end_inset
 
-, OLS is consistent for (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:basic_eq"
+, from which we are unable to identify the model.
+ A cynical view would be that why do we work with such a model when we have
+ no way to identify it? But from another perspective, it is about what can
+ be done and what is available.
+ The generative model can be viewed as a ideal thought experiment.
+ The implication of the generative model gives guidance what is the possible
+ way to identify the parameter of interest.
+ It gives a benchmark.
+ 
+\end_layout
 
+\begin_layout Plain Layout
+This is in line with many microeconomic models about information and game
+ theory.
+ An individual's information is rarely directly observable and often time
+ have to counts on assumption.
+ In the case of game theory it also counts on the type of equilibrium (for
+ example Nash equilibrium.) Therefore, the generative model is about the
+ next step.
+ (The problem is that journal referees' are not satisfied with a thought
+ experiment framework.
+ Instead, they also demand that the researcher comes with a way to measure
+ it.) 
+\end_layout
+
+\begin_layout Plain Layout
+An analogy in physics is the gravity wave.
+ When Einstein wrote papers, they are often thought experiments and Einstein
+ suggested real world experiments to support or falsify his theories.
+ The endogeneity is something quite similar.
+\end_layout
+
+\begin_layout Plain Layout
+When endogeneity is modeled, what are the techniques to identify the parameter
+ of interest? As mentioned above, 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
 \end_inset
 
-); otherwise the consistency breaks down.
- The fixed effect model allows 
-\begin_inset Formula $\alpha_{i}$
+ solely cannot identify.
+ Therefore we have to introduce extra data.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+With the presence of 
+\begin_inset Formula $z$
 \end_inset
 
- and 
-\begin_inset Formula $x_{it}$
+, the control variable approach 
+\begin_inset Formula $y|x,z\sim y|x,u$
 \end_inset
 
- to be arbitrarily correlated.
- The trick to regain consistency is to eliminate 
-\begin_inset Formula $\alpha_{i},i=1,\ldots,n$
+ where 
+\begin_inset Formula $u=x-\gamma z$
 \end_inset
 
 .
- The rest of this section develops the consistency and asymptotic distribution
- of the 
-\emph on
-within estimator
-\emph default
-, the default fixed-effect (FE) estimator.
- The within estimator transforms the data by subtracting all the observable
- variables by the corresponding group means.
- Averaging the 
-\begin_inset Formula $T$
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula $f\left(y,x|z\right)=f\left(y|x,z\right)f\left(x,z\right)$
 \end_inset
 
- equations in (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:basic_eq"
+
+\end_layout
 
 \end_inset
 
-) for the same 
-\begin_inset Formula $i$
+
+\end_layout
+
+\begin_layout Section
+Examples
+\end_layout
+
+\begin_layout Standard
+As econometricians mostly work with non-experimental data, we cannot overstate
+ the importance of the endogeneity problem.
+ We go over a few examples.
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Dynamic Panel Model
+\end_layout
+
+\end_inset
+
+ We know that the first-difference (FD) estimator is consistent for (static)
+ panel data model.
+ Nevertheless, the FD estimator encounters difficulty in a dynamic panel
+ model 
+\begin_inset Formula 
+\[
+y_{it}=\beta_{1}+\beta_{2}y_{it-1}+\beta_{3}x_{it}+\alpha_{i}+\epsilon_{it},
+\]
+
+\end_inset
+
+even if we assume 
+\begin_inset Formula 
+\begin{equation}
+\E\left[\epsilon_{it}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{it-1},y_{it-2},\ldots,y_{i0}\right]=0.\label{eq:dyn_mean_0}
+\end{equation}
+
+\end_inset
+
+ When taking difference of the above equation for periods 
+\begin_inset Formula $t$
+\end_inset
+
+ and 
+\begin_inset Formula $t-1$
 \end_inset
 
 , we have 
 \begin_inset Formula 
-\begin{equation}
-\overline{y}_{i}=\beta_{1}+\overline{x}_{i}\beta_{2}+\bar{u}_{it}=\beta_{1}+\overline{x}_{i}\beta_{2}+\alpha_{i}+\bar{\epsilon}_{it}.\label{eq:group_mean}
-\end{equation}
+\[
+\left(y_{it}-y_{it-1}\right)=\beta_{2}\left(y_{it-1}-y_{it-2}\right)+\beta_{3}\left(x_{it}-x_{it-1}\right)+\left(\epsilon_{it}-\epsilon_{it-1}\right).
+\]
 
 \end_inset
 
-where 
-\begin_inset Formula $\overline{y}_{i}=\frac{1}{T}\sum_{t=1}^{T}y_{it}$
-\end_inset
-
-.
- Subtracting (
+Under (
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:group_mean"
+reference "eq:dyn_mean_0"
 
 \end_inset
 
-) from (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:basic_eq"
-
+), 
+\begin_inset Formula $\E\left[\left(x_{it}-x_{it-1}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=0$
 \end_inset
 
-) gives
-\begin_inset Formula 
-\begin{equation}
-\tilde{y}_{it}=\tilde{x}_{it}\beta_{2}+\tilde{\epsilon}_{it}\label{eq:FE_demean}
-\end{equation}
-
-\end_inset
-
-where 
-\begin_inset Formula $\tilde{y}_{it}=y_{it}-\overline{y}_{i}$
-\end_inset
-
-.
- Running OLS with the demeaned data, we obtain the within estimator 
+, but 
 \begin_inset Formula 
 \[
-\widehat{\beta}_{2}^{FE}=\left(\tilde{X}'\tilde{X}\right)^{-1}\tilde{X}'\tilde{y},
+\E\left[\left(y_{it-1}-y_{it-2}\right)\left(\epsilon_{it}-\epsilon_{it-1}\right)\right]=-\E\left[y_{it-1}\epsilon_{it-1}\right]=-\E\left[\epsilon_{it-1}^{2}\right]\neq0.\qed
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Classical Measurement Error
+\end_layout
+
+\end_inset
+
+ Endogeneity also emerges when an explanatory variables is not directly
+ observable but is replaced by a measurement with error.
+ Suppose the true linear model is 
+\begin_inset Formula 
+\begin{equation}
+y_{i}=\beta_{1}+\beta_{2}x_{i}^{*}+u_{i},\label{eq:measurement_error}
+\end{equation}
+
+\end_inset
+
+ with 
+\begin_inset Formula $\E\left[u_{i}|x_{i}^{*}\right]=0$
+\end_inset
+
+.
+ We cannot observe 
+\begin_inset Formula $x_{i}^{*}$
+\end_inset
+
+ but we observe 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, a measurement of 
+\begin_inset Formula $x_{i}^{*}$
+\end_inset
+
+, and they are linked by 
+\begin_inset Formula 
+\[
+x_{i}=x_{i}^{*}+v_{i}
+\]
+
+\end_inset
+
+ with 
+\begin_inset Formula $\E\left[v_{i}|x_{i}^{*},u_{i}\right]=0$
+\end_inset
+
+.
+ Such a formulation of the measurement error is called the 
+\emph on
+classical measurement error
+\emph default
+.
+ Substitute out the unobservable 
+\begin_inset Formula $x_{i}^{*}$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:measurement_error"
+
+\end_inset
+
+), 
+\begin_inset Formula 
+\begin{equation}
+y_{i}=\beta_{1}+\beta_{2}\left(x_{i}-v_{i}\right)+u_{i}=\beta_{1}+\beta_{2}x_{i}+e_{i}\label{eq:measurement_error2}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $e_{i}=u_{i}-\beta_{2}v_{i}$
+\end_inset
+
+.
+ The correlation
+\begin_inset Formula 
+\[
+\E\left[x_{i}e_{i}\right]=\E\left[\left(x_{i}^{*}+v_{i}\right)\left(u_{i}-\beta_{2}v_{i}\right)\right]=-\beta_{2}\E\left[v_{i}^{2}\right]\neq0.
+\]
+
+\end_inset
+
+ OLS (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:measurement_error2"
+
+\end_inset
+
+) would not deliver a consistent estimator.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Next, we give two examples of equation systems, one from microeconomics
+ and the other from macroeconomics.
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Demand-Supply System
+\end_layout
+
+\end_inset
+
+ Let 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $q_{i}$
+\end_inset
+
+ be a good's log-price and log-quantity on the 
+\begin_inset Formula $i$
+\end_inset
+
+-th market, and they are iid across markets.
+ We are interested in the demand curve 
+\begin_inset Formula 
+\begin{equation}
+p_{i}=\alpha_{d}-\beta_{d}q_{i}+e_{di}\label{eq:demand}
+\end{equation}
+
+\end_inset
+
+for some 
+\begin_inset Formula $\beta_{d}\geq0$
+\end_inset
+
+ and the supply curve
+\begin_inset Formula 
+\begin{equation}
+p_{i}=\alpha_{s}+\beta_{s}q_{i}+e_{si}\label{eq:supply}
+\end{equation}
+
+\end_inset
+
+for some 
+\begin_inset Formula $\beta_{s}\geq0$
+\end_inset
+
+.
+ We use a simple linear specification so that the coefficient 
+\begin_inset Formula $\beta_{d}$
+\end_inset
+
+ can be interpreted as demand elasticity and 
+\begin_inset Formula $\beta_{s}$
+\end_inset
+
+ as supply elasticity.
+ Undergraduate microeconomics teaches the deterministic form but we add
+ an error term to cope with the data.
+ Can we learn the elasticities by regression 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ on 
+\begin_inset Formula $q_{i}$
+\end_inset
+
+? 
+\end_layout
+
+\begin_layout Example
+The two equations can be written in a matrix form 
+\begin_inset Formula 
+\begin{equation}
+\begin{pmatrix}1 & \beta_{d}\\
+1 & -\beta_{s}
+\end{pmatrix}\begin{pmatrix}p_{i}\\
+q_{i}
+\end{pmatrix}=\begin{pmatrix}\alpha_{d}\\
+\alpha_{s}
+\end{pmatrix}+\begin{pmatrix}e_{di}\\
+e_{si}
+\end{pmatrix}.\label{eq:structural}
+\end{equation}
+
+\end_inset
+
+Microeconomic terminology calls 
+\begin_inset Formula $\left(p_{i},q_{i}\right)$
+\end_inset
+
+ endogenous variables and 
+\begin_inset Formula $\left(e_{di},e_{si}\right)$
+\end_inset
+
+ exogenous variables.
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:structural"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is a 
+\emph on
+structural equation
+\emph default
+ because it is motivated from economic theory so that the coefficients bear
+ economic meaning.
+ If we rule out the trivial case 
+\begin_inset Formula $\beta_{d}=\beta_{s}=0$
+\end_inset
+
+, we can solve 
+\begin_inset Formula 
+\begin{equation}
+\begin{pmatrix}p_{i}\\
+q_{i}
+\end{pmatrix}=\frac{1}{\beta_{s}+\beta_{d}}\begin{pmatrix}\beta_{s} & \beta_{d}\\
+1 & -1
+\end{pmatrix}\left[\begin{pmatrix}\alpha_{d}\\
+\alpha_{s}
+\end{pmatrix}+\begin{pmatrix}e_{di}\\
+e_{si}
+\end{pmatrix}\right].\label{eq:reduced}
+\end{equation}
+
+\end_inset
+
+This equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:reduced"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is called the 
+\emph on
+reduced form
+\emph default
+—the endogenous variables are expressed as explicit functions of the parameters
+ and the exogenous variables.
+ In particular, 
+\begin_inset Formula 
+\[
+q_{i}=\left(\alpha_{d}+e_{di}-\alpha_{s}-e_{si}\right)/\left(\beta_{s}+\beta_{d}\right)
+\]
+
+\end_inset
+
+so that the log-price is correlated with both 
+\begin_inset Formula $e_{si}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{di}$
+\end_inset
+
+.
+ As 
+\begin_inset Formula $q_{i}$
+\end_inset
+
+ is endogenous (in the econometric sense) in either (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:demand"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) or (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:supply"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), neither the demand elasticity nor the supply elasticity is identified
+ with 
+\begin_inset Formula $\left(p_{i},q_{i}\right)$
+\end_inset
+
+.
+ Indeed, as 
+\begin_inset Formula 
+\[
+q_{i}=\left(\beta_{s}\alpha_{d}+\beta_{d}\alpha_{s}+\beta_{s}e_{di}+\beta_{d}e_{si}\right)/\left(\beta_{s}+\beta_{d}\right)
+\]
+
+\end_inset
+
+from (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:reduced"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), the linear projection coefficient of 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ on 
+\begin_inset Formula $q_{i}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\frac{\mathrm{cov}\left(p_{i},q_{i}\right)}{\mathrm{var}\left(q_{i}\right)}=\frac{\beta_{s}\sigma_{d}^{2}-\beta_{d}\sigma_{s}^{2}+\left(\beta_{d}-\beta_{s}\right)\sigma_{sd}}{\beta_{d}^{2}\sigma_{d}^{2}+\beta_{d}\sigma_{s}^{2}+2\beta_{d}\beta_{s}\sigma_{sd}},
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\tilde{y}=\left(y_{it}\right)_{i,t}$
+\begin_inset Formula $\sigma_{d}^{2}=\mathrm{var}\left(e_{di}\right)$
 \end_inset
 
- stacks all the 
-\begin_inset Formula $nT$
+, 
+\begin_inset Formula $\sigma_{s}^{2}=\mathrm{var}\left(e_{si}\right)$
 \end_inset
 
- observations into a vector, and similarly defined is 
-\begin_inset Formula $\tilde{X}$
+ and 
+\begin_inset Formula $\sigma_{sd}=\mathrm{cov}\left(e_{di},e_{si}\right)$
 \end_inset
 
- as an 
-\begin_inset Formula $nT\times K$
+.
+\end_layout
+
+\begin_layout Example
+This is a classical example of the demand-supply system.
+ The structural parameter cannot be directly identified because the observed
+ 
+\begin_inset Formula $\left(p_{i},q_{i}\right)$
 \end_inset
 
- matrix, where 
-\begin_inset Formula $K$
+ is the outcome of an equilibrium—the crossing of the demand curve and the
+ supply curve.
+ To identify the demand curve, we will need an instrument that shifts the
+ supply curve only; and vice versa.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+qed
+\end_layout
+
 \end_inset
 
- is the dimension of 
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Keynesian-Type Macro Equations
+\end_layout
+
+\end_inset
+
+ This is a model borrowed from Hayashi (2000, p.193) but originated from
+ Haavelmo (1943).
+ An econometrician is interested in learning 
 \begin_inset Formula $\beta_{2}$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
-We know that OLS in (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:FE_demean"
-
-\end_inset
-
-) would be consistent if 
-\begin_inset Formula $\E\left[\tilde{\epsilon}_{it}|\tilde{x}_{it}\right]=0$
-\end_inset
-
-.
- Below we provide a sufficient condition, which is often called 
-\emph on
-strict exogeneity
-\emph default
-.
+, the marginal propensity of consumption, in the Keynesian-type equation
  
-\end_layout
-
-\begin_layout Assumption*
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-FE.1
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $\E\left[\epsilon_{it}|\alpha_{i},\mathbf{x}_{i}\right]=0$
-\end_inset
-
- where 
-\begin_inset Formula $\mathbf{x}_{i}=\left(x_{i1},\ldots,x_{iT}\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Its strictness is relative to the contemporary exogeneity 
-\begin_inset Formula $\E\left[\epsilon_{it}|x_{it}\right]=0$
-\end_inset
-
-.
- FE.1 is more restrictive as it assumes that the error 
-\begin_inset Formula $\epsilon_{it}$
-\end_inset
-
- is mean independent of the past, present and future explanatory variables.
-\end_layout
-
-\begin_layout Standard
-When we talk about the consistency in panel data, typically we are considering
- 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
- while 
-\begin_inset Formula $T$
-\end_inset
-
- stays fixed.
- This asymptotic framework is appropriate for panel datasets with many individua
-ls but only a few time periods.
-\end_layout
-
-\begin_layout Lemma*
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-FE consistency
-\end_layout
-
-\end_inset
-
- If FE.1 is satisfied, then 
-\begin_inset Formula $\widehat{\beta}_{2}^{FE}$
-\end_inset
-
- is consistent.
-\end_layout
-
-\begin_layout Standard
-The variance estimation for the FE estimator is a little bit tricky.
- We assume a homoskedasitcity condition to simplify the calculation.
- Violation of this assumption changes the form of the asymptotic variance,
- but does not jeopardize the asymptotic normality.
- 
-\end_layout
-
-\begin_layout Assumption*
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-FE.2
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Formula $\mathrm{var}\left(\epsilon_{i}|\mathbf{x}_{i}\right)=\sigma_{\epsilon}^{2}I_{T}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Under FE.1 and FE.2, 
-\begin_inset Formula $\widehat{\sigma}_{\epsilon}^{2}=\frac{1}{n\left(T-1\right)}\sum_{i=1}^{n}\sum_{t=1}^{T}\widehat{\tilde{\epsilon}}_{it}^{2}$
-\end_inset
-
- is a consistent estimator of 
-\begin_inset Formula $\sigma_{\epsilon}^{2}$
-\end_inset
-
-, where 
-\begin_inset Formula $\widehat{\tilde{\epsilon}}=\tilde{y}_{it}-\tilde{x}_{it}\widehat{\beta}_{2}^{FE}$
-\end_inset
-
-.
- Note that the denominator is 
-\begin_inset Formula $n\left(T-1\right)$
-\end_inset
-
-, not 
-\begin_inset Formula $nT$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Theorem*
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-FE asymptotic normality
-\end_layout
-
-\end_inset
-
- If FE.1 and FE.2 are satisfied, then 
 \begin_inset Formula 
-\[
-\frac{\left(\tilde{X}'\tilde{X}\right)^{1/2}}{\widehat{\sigma}_{\epsilon}}\left(\widehat{\beta}_{2}^{FE}-\beta_{2}^{0}\right)\Rightarrow N\left(0,I_{K}\right).
-\]
+\begin{equation}
+C_{i}=\beta_{1}+\beta_{2}Y_{i}+u_{i}\label{eq:keynes}
+\end{equation}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Remark*
-We implicitly assume some regularity conditions that allow us to invoke
- a law of large numbers and a central limit theorem.
- We ignore those technical details here.
- 
-\end_layout
-
-\begin_layout Section
-Random Effect
-\end_layout
-
-\begin_layout Standard
-The random effect estimator pursues efficiency at a knife-edge special case
- 
-\begin_inset Formula $\mathrm{cov}\left(\alpha_{i},x_{it}\right)=0$
+where 
+\begin_inset Formula $C_{i}$
 \end_inset
 
-.
- As mentioned above, FE is consistent when 
-\begin_inset Formula $\alpha_{i}$
+ is household consumption, 
+\begin_inset Formula $Y_{i}$
+\end_inset
+
+ is the GNP, and 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is the unobservable error.
+ However, 
+\begin_inset Formula $Y_{i}$
 \end_inset
 
  and 
-\begin_inset Formula $x_{it}$
+\begin_inset Formula $C_{i}$
 \end_inset
 
- are uncorrelated.
- However, an inspection of the covariance matrix reveals that OLS is inefficient.
- 
-\end_layout
-
-\begin_layout Standard
-The model is again (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:basic_eq"
-
-\end_inset
-
-), while we assume
-\end_layout
-
-\begin_layout Assumption*
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-RE.1
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Formula $\E\left[\epsilon_{it}|\alpha_{i},\mathbf{x}_{i}\right]=0$
-\end_inset
-
- and 
-\begin_inset Formula $\E\left[\alpha_{i}|\mathbf{x}_{i}\right]=0$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-RE.1 obviously implies 
-\begin_inset Formula $\mathrm{cov}\left(\alpha_{i},x_{it}\right)=0$
-\end_inset
-
-, so 
+ are connected by an accounting equality (with no error) 
 \begin_inset Formula 
 \[
-S=\mathrm{var}\left(u_{i}|\mathbf{x}_{i}\right)=\sigma_{\alpha}^{2}\mathbf{1}_{T}\mathbf{1}_{T}'+\sigma_{\epsilon}^{2}I_{T},\ \mbox{for all }i=1,\ldots,n.
-\]
-
-\end_inset
-
-Because the covariance matrix is not a scalar multiplication of the identity
- matrix, OLS is inefficient.
- 
-\end_layout
-
-\begin_layout Standard
-As mentioned before, FE estimation kills all time-invariant regressors.
- In contrast, RE allows time-invariant explanatory variables.
- Let us rewrite (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:basic_eq"
-
-\end_inset
-
-) as 
-\begin_inset Formula 
-\[
-y_{it}=w_{it}\boldsymbol{\beta}+u_{it},
+Y_{i}=C_{i}+I_{i},
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\boldsymbol{\beta}=\left(\beta_{1},\beta_{2}'\right)'$
+\begin_inset Formula $I_{i}$
 \end_inset
 
- and 
-\begin_inset Formula $w_{it}=\left(1,x_{it}\right)$
+ is investment.
+ We assume 
+\begin_inset Formula $\E\left[u_{i}|I_{i}\right]=0$
 \end_inset
 
- are 
-\begin_inset Formula $K+1$
-\end_inset
-
- vectors, i.e., 
-\begin_inset Formula $\boldsymbol{\beta}$
-\end_inset
-
- is the parameter including the intercept, and 
-\begin_inset Formula $w_{it}$
-\end_inset
-
- is the explanatory variables including the constant.
- Had we known 
-\begin_inset Formula $S$
-\end_inset
-
-, the GLS estimator would be 
-\begin_inset Formula 
-\[
-\widehat{\boldsymbol{\beta}}^{RE}=\left(\sum_{i=1}^{n}\mathbf{w}_{i}'S^{-1}\mathbf{w}_{i}\right)^{-1}\sum_{i=1}^{n}\mathbf{w}_{i}'S^{-1}\mathbf{y}_{i}=\left(W'\mathbf{S}^{-1}W\right)^{-1}W'\mathbf{S}^{-1}y
-\]
+ as investment is determined in advance.
+ OLS (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:keynes"
 
 \end_inset
 
-where 
-\begin_inset Formula $\mathbf{S}=I_{T}\otimes S$
+) will be inconsistent because in the reduced-form 
+\begin_inset Formula $Y_{i}=\frac{1}{1-\beta_{2}}\left(\beta_{1}+u_{i}+I_{i}\right)$
+\end_inset
+
+ implies 
+\begin_inset Formula $\E\left[Y_{i}u_{i}\right]=\E\left[u_{i}^{2}\right]/\left(1-\beta_{2}\right)\neq0$
 \end_inset
 
 .
- (``
-\begin_inset Formula $\otimes$
-\end_inset
-
-'' denotes the Kronecker product.) In practice, 
-\begin_inset Formula $\sigma_{\alpha}^{2}$
-\end_inset
-
- and 
-\begin_inset Formula $\sigma_{\epsilon}^{2}$
-\end_inset
-
- in 
-\begin_inset Formula $S$
-\end_inset
-
- are unknown, so we seek consistent estimators.
- Again, we impose a simplifying assumption parallel to FE.2.
- 
-\end_layout
-
-\begin_layout Assumption*
-\begin_inset Argument 1
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-RE.2
+
+
+\backslash
+qed
 \end_layout
 
 \end_inset
 
- 
-\begin_inset Formula $\mathrm{var}\left(\epsilon_{i}|\mathbf{x}_{i},\alpha_{i}\right)=\sigma_{\epsilon}^{2}I_{T}$
-\end_inset
 
- and 
-\begin_inset Formula $\mathrm{var}\left(\alpha_{i}|\mathbf{x}_{i}\right)=\sigma_{\alpha}^{2}.$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Under this assumption, we can consistently estimate the variances from the
- residuals 
-\begin_inset Formula $\widehat{u}_{it}=y_{it}-x_{it}\widehat{\boldsymbol{\beta}}^{RE}$
-\end_inset
-
-.
- That is 
-\begin_inset Formula 
-\begin{eqnarray*}
-\widehat{\sigma}_{u}^{2} & = & \frac{1}{nT}\sum_{i=1}^{n}\sum_{t=1}^{T}\widehat{u}_{it}^{2}\\
-\widehat{\sigma}_{\alpha}^{2} & = & \frac{1}{n}\sum_{i=1}^{n}\frac{1}{T\left(T-1\right)}\sum_{t=1}^{T}\sum_{r=1}^{T}\sum_{r\neq t}\widehat{u}_{it}\widehat{u}_{ir}.
-\end{eqnarray*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Again, we claim the asymptotic normality.
-\end_layout
-
-\begin_layout Theorem*
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-RE asymptotic normality
-\end_layout
-
-\end_inset
-
- If RE.1 and RE.2 are satisfied, then 
-\begin_inset Formula 
-\[
-\left(W'\widehat{\mathbf{S}}^{-1}W\right)^{1/2}\left(\widehat{\boldsymbol{\beta}}^{RE}-\boldsymbol{\beta}_{0}\right)\Rightarrow N\left(0,I_{K+1}\right)
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\widehat{\mathbf{S}}$
-\end_inset
-
- is a consistent estimator of 
-\begin_inset Formula $\mathbf{S}$
-\end_inset
-
-.
 \end_layout
 
 \end_body
