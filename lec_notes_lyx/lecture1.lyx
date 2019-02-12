@@ -93,9 +93,6 @@
 
 \begin_layout Section
 Probability
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "probability"
@@ -188,9 +185,6 @@ Interested readers may want to read this textbook for more examples.
 
 \begin_layout Subsection
 Probability Space
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "probability-space"
@@ -294,36 +288,16 @@ if
 \end_layout
 
 \begin_layout Standard
-It is easy to show that (a) 
-\begin_inset Formula $\Omega\in\mathcal{F}$
-\end_inset
-
- and (b) 
-\begin_inset Formula $\bigcap_{i\in\mathbb{N}}A_{i}\in\mathcal{F}$
-\end_inset
-
-.
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Proof:
-\end_layout
-
-\begin_layout Itemize
+Implications: (a) Since 
 \begin_inset Formula $\Omega=\emptyset^{c}\in\mathcal{F}$
 \end_inset
 
+, we have 
+\begin_inset Formula $\Omega\in\mathcal{F}$
+\end_inset
 
-\end_layout
-
-\begin_layout Itemize
-if 
+.
+ (b) If 
 \begin_inset Formula $A_{i}\in\mathcal{F}$
 \end_inset
 
@@ -340,12 +314,12 @@ if
 \end_inset
 
 .
- So 
+ Thus, if 
 \begin_inset Formula $\bigcup_{i\in\mathbb{N}}A_{i}^{c}\in\mathcal{F}$
 \end_inset
 
- , and 
-\begin_inset Formula $(\bigcup_{i\in\mathbb{N}}A_{i}^{c})^{c}=\bigcap_{i\in\mathbb{N}}A_{i}\in\mathcal{F}$
+ , then 
+\begin_inset Formula $\bigcap_{i\in\mathbb{N}}A_{i}=(\bigcup_{i\in\mathbb{N}}A_{i}^{c})^{c}\in\mathcal{F}$
 \end_inset
 
 .
@@ -361,10 +335,8 @@ if
 \begin_layout Standard
 
 \series bold
-Example:
-\end_layout
-
-\begin_layout Standard
+Example: 
+\series default
 Let 
 \begin_inset Formula $\Omega=\{1,2,3,4,5,6\}$
 \end_inset
@@ -385,14 +357,14 @@ include
 \begin_inset Formula $\mathcal{F}_{1}=\{\emptyset,\{1,2,3\},\{4,5,6\},\Omega\}$
 \end_inset
 
-
+;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\mathcal{F}_{2}=\{\emptyset,\{1,3,5\},\{2,4,6\},\Omega\}$
+\begin_inset Formula $\mathcal{F}_{2}=\{\emptyset,\{1,3\},\{2,4,5,6\},\Omega\}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Itemize
@@ -520,10 +492,8 @@ Borel
 \begin_layout Standard
 
 \series bold
-Example:
-\end_layout
-
-\begin_layout Standard
+Example: 
+\series default
 Let 
 \begin_inset Formula $\Omega=\{1,2,3,4,5,6\}$
 \end_inset
@@ -859,10 +829,8 @@ induced
 \begin_layout Standard
 
 \series bold
-Example:
-\end_layout
-
-\begin_layout Standard
+Example: 
+\series default
 Consider 
 \begin_inset Formula $\Omega=\{1,2,3,4,5,6\}.$
 \end_inset
@@ -906,23 +874,19 @@ Consider
 \end_layout
 
 \begin_layout Standard
-Note that
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Formula $X_{1}(B)=\begin{cases}
+Note that 
+\begin_inset Formula 
+\[
+X_{1}(B)=\begin{cases}
 \Omega & \textrm{if }\{0,1\}\subseteq B\\
 \{4,5,6\} & \textrm{if }0\notin B\textrm{ and}1\in B\\
 \{1,2,3\} & \textrm{if }0\in B\textrm{ and}1\notin B\\
 \emptyset & \textrm{if }0\notin B\textrm{ and}1\notin B
-\end{cases}$
+\end{cases}.
+\]
+
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Standard
 As all four sets on the right are measurable by 
 \begin_inset Formula $\mathcal{F}_{1}$
 \end_inset
@@ -1560,9 +1524,6 @@ E[X^{r}]=\frac{\mathrm{d}^{r}M_{X}(t)}{\mathrm{d}t^{r}}\big\vert_{t=0}.
 
 \begin_layout Section
 Multivariate Random Variable
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "multivariate-random-variable"
@@ -1634,9 +1595,6 @@ marginal density
 
 \begin_layout Subsection
 Independence
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "independence"
@@ -1727,6 +1685,13 @@ Bayes' Theorem
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \series bold
 Example:
@@ -1762,6 +1727,13 @@ status collapsed
 \end_inset
 
  is his or her application profile.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1848,9 +1820,6 @@ If
 
 \begin_layout Subsection
 Law of Iterated Expectations
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "law-of-iterated-expectations"
