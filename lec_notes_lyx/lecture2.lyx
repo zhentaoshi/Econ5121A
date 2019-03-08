@@ -282,56 +282,26 @@ regression error
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $E\left[\epsilon|x\right]=0$
+\begin_inset Formula $E\left[\epsilon|x\right]=E\left[y-m\left(x\right)|x\right]=E(y|x)-m(x)=0$
 \end_inset
 
 ,
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $E\left[\epsilon\right]=0$
+\begin_inset Formula $E\left[\epsilon\right]=E\left[E\left[\epsilon|x\right]\right]=E(0)=0$
 \end_inset
 
 ,
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $E\left[h\left(x\right)\epsilon\right]=0$
+For any function 
+\begin_inset Formula $h\left(x\right)$
 \end_inset
 
-, where 
-\begin_inset Formula $h$
-\end_inset
-
- is a function of 
-\begin_inset Formula $x$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Justification:
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $E\left[\epsilon|x\right]=E[y-m\left(x\right)|x]=E(y|x)-m(x)=0$
-\end_inset
-
-,
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $E\left[\epsilon\right]=E[E\left[\epsilon|x\right]]=E(0)=0$
-\end_inset
-
-,
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $E\left[h\left(x\right)\epsilon\right]=E[E[h\left(x\right)\epsilon|x]]=E[h(x)\cdot E[\epsilon|x]]=0$
+, we have 
+\begin_inset Formula $E\left[h\left(x\right)\epsilon\right]=E\left[E\left[h\left(x\right)\epsilon|x\right]\right]=E\left[h(x)\cdot E\left[\epsilon|x\right]\right]=0$
 \end_inset
 
 .
@@ -426,8 +396,8 @@ guess-and-verify.
 \begin_inset Formula 
 \[
 \begin{aligned}2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right] & =2E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)\right]\\
- & =2E[E[\epsilon\left(m\left(x\right)-g\left(x\right)\right)|x]]\\
- & =2E[\left(m\left(x\right)-g\left(x\right)\right)E[\epsilon|x]]=0.
+ & =2E\left[E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)|x\right]\right]\\
+ & =2E\left[\left(m\left(x\right)-g\left(x\right)\right)E\left[\epsilon|x\right]\right]=0.
 \end{aligned}
 \]
 
@@ -711,7 +681,7 @@ Even though in general
 
 .
  That is, 
-\begin_inset Formula $\beta=\arg\min\limits_{b\in\mathbb{R}^{K}} E\left[\left(m(x)-x'b\right)^{2}\right]$
+\begin_inset Formula $\beta=\arg\min\limits _{b\in\mathbb{R}^{K}}E\left[\left(m(x)-x'b\right)^{2}\right]$
 \end_inset
 
 .
@@ -771,7 +741,7 @@ Thus
 \begin_layout Standard
 We may rewrite the linear regression model, or the 
 \emph on
-linear projection model
+linear projection model,
 \emph default
  as
 \end_layout
@@ -828,10 +798,7 @@ Exercise
 \end_layout
 
 \begin_layout Subsection
-Omitted Variable Bias
-\end_layout
-
-\begin_layout Standard
+Omitted Variable Bias 
 \begin_inset CommandInset label
 LatexCommand label
 name "omitted-variable-bias"
