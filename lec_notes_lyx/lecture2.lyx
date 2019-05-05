@@ -689,36 +689,28 @@ Even though in general
 
 \begin_deeper
 \begin_layout Proof
-\begin_inset Formula $\arg\min\limits _{b\in\mathbb{R}^{K}}E\left[\left(m(x)-x'b\right)^{2}\right]$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Proof
-First order condition gives 
+The first-order condition gives 
 \begin_inset Formula $\frac{\partial}{\partial b}E\left[\left(m(x)-x'b\right)^{2}\right]=-2xE[(m(x)-x'b)]=0$
 \end_inset
 
 .
- Rearrange the terms and obtain
-\end_layout
+ Rearrange the terms and obtain 
+\begin_inset Formula $E[x\cdot m(x)]=E[xx']\beta$
+\end_inset
 
-\begin_layout Proof
+.
+ When 
+\begin_inset Formula $E[xx']$
+\end_inset
+
+ is invertible, we solve 
 \begin_inset Formula 
 \[
-\begin{aligned}E[x\cdot m(x)] & =E(xx')\beta\\
-\beta & =[E(xx')]^{-1}E[E[xy|x]]\\
- & =[E(xx')]^{-1}E(xy).
-\end{aligned}
+\beta=\left(E\left[xx'\right]\right){}^{-1}E[x\cdot m(x)]=\left(E\left[xx'\right]\right){}^{-1}E[E[xy|x]]=\left(E\left[xx'\right]\right){}^{-1}E(xy).
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Proof
 Thus 
 \begin_inset Formula $\beta$
 \end_inset
