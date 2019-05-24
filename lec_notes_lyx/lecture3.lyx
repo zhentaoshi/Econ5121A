@@ -300,26 +300,43 @@ If
 \end_inset
 
  are idempotent.
- 
 \end_layout
 
 \begin_layout Itemize
 Residual: 
-\begin_inset Formula $\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e$
+\begin_inset Formula $\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=Y-X(X'X)^{-1}X'Y=(I-P_{X})Y=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e$
 \end_inset
 
 .
- 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+(Note:
+\begin_inset Formula $M_{X}X=(I-P_{X})X=X-X=0\Longrightarrow M_{X}X\beta=0$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
-\begin_inset Formula $X'\widehat{e}=XM_{X}e=0$
+\begin_inset Formula $X'\widehat{e}=X'M_{X}e=0$
 \end_inset
 
 .
- 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+(Note:
+\begin_inset Formula $X'M_{X}=(M_{X}X)^{'}=0$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 \begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
 \end_inset
@@ -329,9 +346,41 @@ Residual:
 \end_inset
 
  contains a constant.
- 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+(Justification: 
+\begin_inset Formula $X'\widehat{e}=0$
+\end_inset
+
+ 
+\begin_inset Formula $\Longrightarrow$
+\end_inset
+
+
+\begin_inset Formula $\left[\begin{array}{cccc}
+* & * & ... & *\\
+* & * & ... & *\\
+... & ... & ... & ...\\
+1 & 1 & ... & 1
+\end{array}\right]\left[\begin{array}{c}
+\widehat{e}_{1}\\
+\widehat{e}_{2}\\
+...\\
+\widehat{e}_{n}
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+0\\
+...\\
+0
+\end{array}\right]\Longrightarrow\sum_{i=1}^{n}\widehat{e}_{i}=0$
+\end_inset
+
+ by the last row.)
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Goodness of Fit
 \end_layout
@@ -451,7 +500,12 @@ A^{-1}=\begin{pmatrix}\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & -\left
 
 \end_inset
 
-In our context of OLS estimator,
+In our context of OLS estimator, let 
+\begin_inset Formula $X=\left(\begin{array}{cc}
+X_{1} & X_{2}\end{array}\right)$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -459,15 +513,24 @@ In our context of OLS estimator,
 \begin{align*}
 \widehat{\beta} & =\begin{pmatrix}\widehat{\beta}_{1}\\
 \widehat{\beta}_{2}
-\end{pmatrix}=\begin{pmatrix}X_{1}'X_{1} & X_{1}'X_{2}\\
+\end{pmatrix}=(X'X)^{-1}X'Y\\
+ & =[(\begin{array}{c}
+X_{1}'\\
+X_{2}'
+\end{array})(\begin{array}{cc}
+X_{1} & X_{2}\end{array})]^{-1}(\begin{array}{c}
+X_{1}'Y\\
+X_{2}'Y
+\end{array})\\
+ & =\begin{pmatrix}X_{1}'X_{1} & X_{1}'X_{2}\\
 X_{2}'X_{1} & X_{2}'X_{2}
-\end{pmatrix}^{-1}\begin{pmatrix}X_{1}y\\
-X_{2}y
+\end{pmatrix}^{-1}\begin{pmatrix}X_{1}'Y\\
+X_{2}'Y
 \end{pmatrix}\\
- & =\begin{pmatrix}\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1} & -\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}\\
+ & =\begin{pmatrix}\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1} & -\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}\\
 \cdot & \cdot
-\end{pmatrix}\begin{pmatrix}X_{1}y\\
-X_{2}y
+\end{pmatrix}\begin{pmatrix}X_{1}'Y\\
+X_{2}'Y
 \end{pmatrix}.
 \end{align*}
 
@@ -483,11 +546,71 @@ The subvector
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\widehat{\beta}_{1} & =\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1}X_{1}y-\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}X_{2}y\\
- & =\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1}\left(X_{1}y-X_{1}'P_{X_{2}}y\right)\\
- & =\left(X_{1}M_{X_{2}}'X_{1}\right)^{-1}X_{1}M_{X_{2}}y.
+\widehat{\beta}_{1} & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'Y-\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}X_{2}'Y\\
+ & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}\left(X_{1}'Y-X_{1}'P_{X_{2}}Y\right)\\
+ & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'M_{X_{2}}Y.
 \end{align*}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula $\widehat{\beta}_{1}$
+\end_inset
+
+ can be obtained by the following:
+\end_layout
+
+\begin_layout Enumerate
+Regress 
+\begin_inset Formula $y$
+\end_inset
+
+ on 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, obtain residuals 
+\begin_inset Formula $\tilde{e_{2}}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Regress 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ on 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, obtain residuals 
+\begin_inset Formula $\tilde{X}_{2}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Regress 
+\begin_inset Formula $\tilde{e_{2}}$
+\end_inset
+
+ on 
+\begin_inset Formula $\tilde{X}_{2}$
+\end_inset
+
+, obtain OLS estimates 
+\begin_inset Formula $\widehat{\beta}_{1}$
+\end_inset
+
+ and residuals 
+\begin_inset Formula $\hat{e}.$
 \end_inset
 
 
@@ -535,7 +658,6 @@ The data
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Enumerate
@@ -561,11 +683,15 @@ name "maximum-likelihood-estimation"
 \end_layout
 
 \begin_layout Standard
-Under the normality assumption, 
+Since 
+\begin_inset Formula $y_{i}=x_{i}'\beta+e$
+\end_inset
+
+, so 
 \begin_inset Formula $y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right)$
 \end_inset
 
-, where 
+ under the normality assumption, where 
 \begin_inset Formula $\gamma=\sigma^{2}$
 \end_inset
 
@@ -594,8 +720,50 @@ L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2
 
 \end_inset
 
+The maximum likelihood estimator 
+\begin_inset Formula $\widehat{\beta}_{MLE}$
+\end_inset
+
+ can be found using the FOC:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\beta}L\left(\beta,\gamma\right)=\frac{1}{2\gamma}\sum_{i=1}^{n}2x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+X'Y=X'X\widehat{\beta}_{MLE}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\widehat{\beta}_{MLE}=(X'X)^{-1}X'Y
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Therefore, the maximum likelihood estimator (MLE) coincides with the OLS
- estimator, and 
+ estimator.
+ Similarly, another FOC gives 
 \begin_inset Formula $\widehat{\gamma}_{\mathrm{MLE}}=\widehat{e}'\widehat{e}/n$
 \end_inset
 
@@ -646,14 +814,30 @@ Since
 
 \end_inset
 
-we have the estimator 
-\begin_inset Formula $\widehat{\beta}|X\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right)$
+we have the estimator
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\widehat{\beta}|X & =\beta+\left(X'X\right)^{-1}X'e|X\\
+ & \sim\beta+\left(X'X\right)^{-1}X'N\left(0,\sigma^{2}\right)\\
+ & =N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)=N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right).
+\end{align*}
+
 \end_inset
 
-, and 
+
+\end_layout
+
+\begin_layout Standard
+Therefore,
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \[
-\widehat{\beta}_{k}|X\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
+\widehat{\beta}_{k}|X=\eta_{k}'\widehat{\beta}\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
 \]
 
 \end_inset
@@ -691,14 +875,23 @@ is an unbiased estimator of
 \begin_inset Formula $T$
 \end_inset
 
--statistic 
+-statistic
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
-\[
-T_{k}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}=\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
-\]
+\begin{align*}
+T_{k} & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\\
+ & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\cdot\frac{\sqrt{\sigma^{2}}}{\sqrt{s^{2}}}\\
+ & =\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
+\end{align*}
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
 The numerator follows a standard normal, and the denominator follows 
 \begin_inset Formula $\frac{1}{n-K}\chi^{2}\left(n-K\right)$
 \end_inset
