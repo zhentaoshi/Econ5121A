@@ -330,7 +330,7 @@ Residual:
 \begin_deeper
 \begin_layout Standard
 (Note:
-\begin_inset Formula $X'M_{X}=(M_{X}X)^{'}=0$
+\begin_inset Formula $X'M_{X}=0$
 \end_inset
 
 )
@@ -514,14 +514,11 @@ X_{1} & X_{2}\end{array}\right)$
 \widehat{\beta} & =\begin{pmatrix}\widehat{\beta}_{1}\\
 \widehat{\beta}_{2}
 \end{pmatrix}=(X'X)^{-1}X'Y\\
- & =[(\begin{array}{c}
-X_{1}'\\
+ & =\left(\begin{pmatrix}X_{1}'\\
 X_{2}'
-\end{array})(\begin{array}{cc}
-X_{1} & X_{2}\end{array})]^{-1}(\begin{array}{c}
-X_{1}'Y\\
+\end{pmatrix}\begin{pmatrix}X_{1} & X_{2}\end{pmatrix}\right)^{-1}\begin{pmatrix}X_{1}'Y\\
 X_{2}'Y
-\end{array})\\
+\end{pmatrix}\\
  & =\begin{pmatrix}X_{1}'X_{1} & X_{1}'X_{2}\\
 X_{2}'X_{1} & X_{2}'X_{2}
 \end{pmatrix}^{-1}\begin{pmatrix}X_{1}'Y\\
@@ -574,7 +571,7 @@ Regress
 \end_inset
 
 , obtain residuals 
-\begin_inset Formula $\tilde{e_{2}}$
+\begin_inset Formula $\tilde{e}_{2}$
 \end_inset
 
 ;
@@ -687,7 +684,7 @@ Since
 \begin_inset Formula $y_{i}=x_{i}'\beta+e$
 \end_inset
 
-, so 
+, we have 
 \begin_inset Formula $y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right)$
 \end_inset
 
@@ -815,14 +812,11 @@ Since
 \end_inset
 
 we have the estimator
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 \widehat{\beta}|X & =\beta+\left(X'X\right)^{-1}X'e|X\\
- & \sim\beta+\left(X'X\right)^{-1}X'N\left(0,\sigma^{2}\right)\\
- & =N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)=N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right).
+ & \sim\beta+\left(X'X\right)^{-1}X'\cdot N\left(0,\sigma^{2}\right)\\
+ & \sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right).
 \end{align*}
 
 \end_inset
@@ -831,10 +825,7 @@ we have the estimator
 \end_layout
 
 \begin_layout Standard
-Therefore,
-\end_layout
-
-\begin_layout Standard
+Therefore
 \begin_inset Formula 
 \[
 \widehat{\beta}_{k}|X=\eta_{k}'\widehat{\beta}\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
