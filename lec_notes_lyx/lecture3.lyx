@@ -153,16 +153,15 @@ name "ols-estimator"
 \end_layout
 
 \begin_layout Standard
-As we have learned from the linear project model, the parameter 
+As we have learned from the linear project model, the projection coefficient
+ 
 \begin_inset Formula $\beta$
 \end_inset
 
- 
+ in the regression 
 \begin_inset Formula 
 \[
-\begin{aligned}y_{i} & =x'_{i}\beta+e_{i}\\
-E[x_{i}e_{i}] & =0
-\end{aligned}
+\begin{aligned}y_{i} & =x'_{i}\beta+e_{i}\end{aligned}
 \]
 
 \end_inset
@@ -180,7 +179,11 @@ While population is something imaginary, in reality we possess a sample
 \begin_inset Formula $n$
 \end_inset
 
- observations.
+ observations 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+.
  We thus replace the population mean 
 \begin_inset Formula $E\left[\cdot\right]$
 \end_inset
@@ -206,10 +209,10 @@ Q\left(\beta\right)=\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}=\left(Y-X\b
 
 \end_inset
 
-By the first-order condition 
+Solving the first-order condition 
 \begin_inset Formula 
 \[
-\frac{\partial}{\partial\beta}Q\left(\beta\right)=-2X'\left(Y-X\beta\right),
+\frac{\partial}{\partial\beta}Q\left(\beta\right)=-2X'\left(Y-X\beta\right)=0,
 \]
 
 \end_inset
@@ -235,6 +238,10 @@ shows that
 \begin_inset Formula $\beta$
 \end_inset
 
+ due to the positive semi-definite matrix 
+\begin_inset Formula $X'X$
+\end_inset
+
 .
  (
 \begin_inset Formula $Q\left(\beta\right)$
@@ -252,7 +259,7 @@ shows that
 \end_layout
 
 \begin_layout Standard
-Here we introduce some definitions and properties in OLS estimation.
+Here are some definitions and properties of the OLS estimator.
 \end_layout
 
 \begin_layout Itemize
@@ -261,7 +268,6 @@ Fitted value:
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Itemize
@@ -308,35 +314,25 @@ Residual:
 \end_inset
 
 .
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-(Note:
+ (Note: 
 \begin_inset Formula $M_{X}X=(I-P_{X})X=X-X=0\Longrightarrow M_{X}X\beta=0$
 \end_inset
 
 )
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 \begin_inset Formula $X'\widehat{e}=X'M_{X}e=0$
 \end_inset
 
 .
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-(Note:
+ (Note again 
 \begin_inset Formula $X'M_{X}=0$
 \end_inset
 
 )
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 \begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
 \end_inset
@@ -360,24 +356,24 @@ Residual:
 
 
 \begin_inset Formula $\left[\begin{array}{cccc}
-* & * & ... & *\\
-* & * & ... & *\\
-... & ... & ... & ...\\
-1 & 1 & ... & 1
+1 & 1 & \cdots & 1\\
+* & * & \cdots & *\\
+\cdots & \cdots & \ddots & \vdots\\
+* & * & \cdots & *
 \end{array}\right]\left[\begin{array}{c}
 \widehat{e}_{1}\\
 \widehat{e}_{2}\\
-...\\
+\vdots\\
 \widehat{e}_{n}
 \end{array}\right]=\left[\begin{array}{c}
 0\\
 0\\
-...\\
+\vdots\\
 0
 \end{array}\right]\Longrightarrow\sum_{i=1}^{n}\widehat{e}_{i}=0$
 \end_inset
 
- by the last row.)
+ by the first row.)
 \end_layout
 
 \end_deeper
@@ -396,9 +392,12 @@ name "goodness-of-fit"
 \end_layout
 
 \begin_layout Standard
-The so-called R-square is the most popular measure of goodness-of-fit in
- the linear regression.
- R-square is well defined only when a constant is included in the regressors.
+The so-called 
+\emph on
+R-squared
+\emph default
+ is a popular measure of goodness-of-fit in the linear regression.
+ R-squared is well defined only when a constant is included in the regressors.
  Let 
 \begin_inset Formula $M_{\iota}=I_{n}-\frac{1}{n}\iota\iota'$
 \end_inset
@@ -459,7 +458,7 @@ where the last equality follows by
 \end_inset
 
 .
- R-square is defined as 
+ R-squared is defined as 
 \begin_inset Formula $\widehat{Y}'M_{\iota}\widehat{Y}/Y'M_{\iota}Y$
 \end_inset
 
@@ -481,8 +480,8 @@ name "frish-waugh-lovell-theorem"
 \end_layout
 
 \begin_layout Standard
-The FWL theorem is an algebraic fact about the formula of a subvector of
- the OLS estimator.
+The Frish-Waugh-Lovell (FWL) theorem is an algebraic fact about the formula
+ of a subvector of the OLS estimator.
  To derive the FWL theorem We need to use the inverse of partitioned matrix.
  For a positive definite symmetric matrix 
 \begin_inset Formula $A=\begin{pmatrix}A_{11} & A_{12}\\
@@ -525,7 +524,7 @@ X_{2}'X_{1} & X_{2}'X_{2}
 X_{2}'Y
 \end{pmatrix}\\
  & =\begin{pmatrix}\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1} & -\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}\\
-\cdot & \cdot
+* & *
 \end{pmatrix}\begin{pmatrix}X_{1}'Y\\
 X_{2}'Y
 \end{pmatrix}.
@@ -786,7 +785,7 @@ We can show the finite-sample exact distribution of
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
-.
+ assuming the error term follows a Gaussian distribution.
  
 \emph on
 Finite sample distribution
@@ -828,7 +827,7 @@ we have the estimator
 Therefore
 \begin_inset Formula 
 \[
-\widehat{\beta}_{k}|X=\eta_{k}'\widehat{\beta}\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
+\widehat{\beta}_{k}|X=\eta_{k}'\widehat{\beta}|X\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
 \]
 
 \end_inset
@@ -863,7 +862,7 @@ is an unbiased estimator of
 
 .
  Consider the 
-\begin_inset Formula $T$
+\begin_inset Formula $t$
 \end_inset
 
 -statistic
@@ -888,8 +887,8 @@ The numerator follows a standard normal, and the denominator follows
 \end_inset
 
 .
- Moreover, the numerator and the denominator are independent.
- As a result, 
+ Moreover, the numerator and the denominator are independent (Basu's theorem).
+ As a result, we conclude 
 \begin_inset Formula $T_{k}\sim t\left(n-K\right)$
 \end_inset
 
