@@ -181,7 +181,7 @@ Convergence almost surely*
 
 \begin_layout Itemize
 Convergence in probability: 
-\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\left|Z_{n}\left(\omega\right)-z\right|<\varepsilon\right)=1$
+\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\left|z_{n}\left(\omega\right)-z\right|<\varepsilon\right)=1$
 \end_inset
 
  for any 
@@ -197,7 +197,7 @@ Squared-mean convergence:
 \begin_inset Formula $\lim_{n\to\infty}E\left[\left(z_{n}-z\right)^{2}\right]=0.$
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -237,6 +237,30 @@ Example
 .
 \end_layout
 
+\begin_layout Quote
+
+\emph on
+Justification:
+\end_layout
+
+\begin_layout Quote
+\begin_inset Formula $z_{n}\stackrel{p}{\to}0$
+\end_inset
+
+: 
+\begin_inset Formula $\forall\varepsilon>0,P\left(\omega:\left|z_{n}\left(\omega\right)-0\right|<\varepsilon\right)=P\left(\omega:z_{n}\left(\omega\right)=0\right)=1-1/n\rightarrow0.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+\begin_inset Formula $z_{n}\stackrel{m.s.}{\nrightarrow}0:E\left[\left(z_{n}-0\right)^{2}\right]=n\cdot1/n+0\cdot(1-1/n)=1\nrightarrow0.$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 Convergence in probability does not count what happens on a subset in the
  sample space of small probability.
@@ -266,7 +290,6 @@ Convergence in distribution:
 \end_inset
 
  is continuous.
- 
 \end_layout
 
 \begin_layout Standard
@@ -325,6 +348,82 @@ Example
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example
+\series default
+: 
+\begin_inset Formula $(z_{n})$
+\end_inset
+
+ is a sequence of binary random variables: 
+\begin_inset Formula $z_{n}=\sqrt{n}$
+\end_inset
+
+ with probability 
+\begin_inset Formula $1/n$
+\end_inset
+
+, and 
+\begin_inset Formula $z_{n}=0$
+\end_inset
+
+ with probability 
+\begin_inset Formula $1-1/n$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $z_{n}\stackrel{d}{\to}z=0.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+
+\emph on
+Justification:
+\end_layout
+
+\begin_layout Quote
+\begin_inset Formula $F\left(z_{n}\right)=\begin{cases}
+0 & z_{n}<0\\
+1-1/n & 0\leq z_{n}\leq\sqrt{n}\\
+1 & z_{n}\geq\sqrt{n}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Quote
+\begin_inset Formula $F\left(z\right)=\begin{cases}
+0 & z<0\\
+1 & z\geq0
+\end{cases}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Quote
+It is obvious that 
+\begin_inset Formula $F\left(z_{n}\right)$
+\end_inset
+
+ converges to 
+\begin_inset Formula $F\left(z\right)$
+\end_inset
+
+ pointwise on the set where 
+\begin_inset Formula $F\left(z\right)$
+\end_inset
+
+ is continuous.
 \end_layout
 
 \begin_layout Standard
@@ -410,7 +509,7 @@ observations,
 \end_inset
 
  , and 
-\begin_inset Formula $\sigma^{2}=\mathrm{var}\left[x_{1}\right]<\infty$
+\begin_inset Formula $\sigma^{2}=\mathrm{var}\left[z_{1}\right]<\infty$
 \end_inset
 
  exists, then 
@@ -475,7 +574,6 @@ Markov inequality
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -885,7 +983,6 @@ Slutsky's Theorem: If
 \end_inset
 
 .
- 
 \end_layout
 
 \end_deeper
