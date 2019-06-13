@@ -247,6 +247,10 @@ The
 \emph on
 power function
 \emph default
+ 
+\begin_inset Formula $\beta:\Theta\mapsto[0,1]$
+\end_inset
+
  of the test 
 \begin_inset Formula $\phi$
 \end_inset
@@ -352,22 +356,25 @@ level
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Verbatim
+
      | decision     |  reject $H_{1}$  | reject $H_{0}$
 \end_layout
 
 \begin_layout Verbatim
+
      |--------------|------------------| ---------------
 \end_layout
 
 \begin_layout Verbatim
+
      | $H_{0}$ true |     correct      | Type I error
 \end_layout
 
 \begin_layout Verbatim
+
      | $H_{0}$ false| Type II error    |   correct
 \end_layout
 
@@ -740,15 +747,25 @@ has the correct level.
 \begin_inset Formula $\Psi$
 \end_inset
 
- is 
+ is
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
-\[
-\beta_{\phi}\left(\theta\right)=P\left(\bar{X}\geq\frac{c}{\sqrt{6}}\right)=P\left(\sqrt{6}\left(\bar{X}-\theta\right)\geq c-\sqrt{6}\theta\right)=1-\Phi\left(c-\sqrt{6}\theta\right)
-\]
+\begin{align*}
+\beta_{\phi}\left(\theta\right) & =P\left(\bar{X}\geq\frac{c}{\sqrt{6}}\right)\\
+ & =P\left(\frac{\bar{X}-\theta}{1/\sqrt{6}}\geq\frac{\frac{c}{\sqrt{6}}-\theta}{1/\sqrt{6}}\right)\\
+ & =P\left(N\geq c-\sqrt{6}\theta\right)\\
+ & =1-\Phi\left(c-\sqrt{6}\theta\right)
+\end{align*}
 
 \end_inset
 
 where 
+\begin_inset Formula $N=\frac{\bar{X}-\theta}{1/\sqrt{6}}$
+\end_inset
+
+ follows standard normal, and 
 \begin_inset Formula $\Phi$
 \end_inset
 
@@ -1277,6 +1294,10 @@ wage
 \begin_inset Formula $R=\left(1,0,0,0,0\right)$
 \end_inset
 
+ and 
+\begin_inset Formula $r=0$
+\end_inset
+
 .
  
 \begin_inset Formula 
@@ -1299,7 +1320,32 @@ where
 \end_inset
 
 .
- Therefore, 
+ Under 
+\begin_inset Formula $H_{0}:R\beta=\left(1,0,0,0,0\right)\left(\begin{array}{c}
+\beta_{1}\\
+\beta_{2}\\
+\beta_{3}\\
+\beta_{4}\\
+\beta_{5}
+\end{array}\right)=\beta_{1}=0$
+\end_inset
+
+, we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\sqrt{n}R\left(\widehat{\beta}-\beta\right) & =\sqrt{n}\widehat{\beta}_{1}\sim N\left(0,\Omega_{11}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Therefore, 
 \begin_inset Formula 
 \[
 \sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}=\sqrt{\frac{\Omega_{11}}{\widehat{\Omega}_{11}}}\sqrt{n}\frac{\widehat{\beta}_{1}}{\Omega_{11}^{1/2}}
@@ -1497,7 +1543,7 @@ where in this example,
  The gradient 
 \begin_inset Formula 
 \[
-\frac{\partial f}{\partial\beta}\left(\beta\right)=\left(0,0,-\frac{1}{2\beta_{4}},\frac{\beta_{3}}{2\beta_{4}^{2}}\right)
+\frac{\partial f}{\partial\beta}\left(\beta\right)=\left(0,0,-\frac{1}{2\beta_{4}},\frac{\beta_{3}}{2\beta_{4}^{2}},0\right)
 \]
 
 \end_inset
