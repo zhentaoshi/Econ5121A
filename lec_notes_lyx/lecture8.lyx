@@ -944,12 +944,12 @@ This is exactly the same expression of 2SLS for
 \end_layout
 
 \begin_layout Remark*
-2SLS gets its name because it can be obtained using 2 steps: first regress
+2SLS gets its name because it can be obtained using two steps: first regress
  
 \begin_inset Formula $X$
 \end_inset
 
- on all instrments 
+ on all instruments 
 \begin_inset Formula $Z$
 \end_inset
 
@@ -957,9 +957,9 @@ This is exactly the same expression of 2SLS for
 \begin_inset Formula $y$
 \end_inset
 
- on the fitted value.
- However, 2SLS can actually be obtained using the above equation as it is
- indeed a class of GMM.
+ on the fitted value along with the included exogenous variables.
+ However, 2SLS can actually be obtained by one step using the above equation.
+ It is a special case of GMM.
 \end_layout
 
 \begin_layout Section
@@ -1085,7 +1085,7 @@ where
 
 \begin_layout Remark*
 The list of assumptions in the above statement is incomplete.
- We only lay out the key conditions but neglect some technical details
+ We only lay out the key conditions but neglect some technical details.
 \end_layout
 
 \begin_layout Standard
