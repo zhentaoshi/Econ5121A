@@ -373,7 +373,6 @@ reference "eq:moment"
 \end_inset
 
 ) is identified if and only if the rank condition holds.
- 
 \end_layout
 
 \begin_layout Proof
@@ -582,7 +581,7 @@ Since
  can be characterized by the first-order condition
 \begin_inset Formula 
 \[
-0_{K}=\frac{\partial}{\partial\beta}Q\left(\beta_{0}\right)=-\E\left[x_{i}z_{i}'\right]W\E\left[z_{i}\left(y_{i}-x_{i}\beta_{0}\right)\right]=-\E\left[x_{i}z_{i}'\right]W\E\left[z_{i}\left(y_{i}-x_{i}\beta_{0}\right)\right]
+0_{K}=\frac{\partial}{\partial\beta}Q\left(\beta_{0}\right)=-\E\left[x_{i}z_{i}'\right]W\E\left[z_{i}\left(y_{i}-x_{i}\beta_{0}\right)\right]
 \]
 
 \end_inset
@@ -944,6 +943,25 @@ This is exactly the same expression of 2SLS for
  2SLS is inefficient.
 \end_layout
 
+\begin_layout Remark*
+2SLS gets its name because it can be obtained using 2 steps: first regress
+ 
+\begin_inset Formula $X$
+\end_inset
+
+ on all instrments 
+\begin_inset Formula $Z$
+\end_inset
+
+, and then regress 
+\begin_inset Formula $y$
+\end_inset
+
+ on the fitted value.
+ However, 2SLS can actually be obtained using the above equation as it is
+ indeed a class of GMM.
+\end_layout
+
 \begin_layout Section
 GMM in Nonlinear Model*
 \end_layout
@@ -1067,8 +1085,7 @@ where
 
 \begin_layout Remark*
 The list of assumptions in the above statement is incomplete.
- We only lay out the key conditions but neglect some technical details.
- 
+ We only lay out the key conditions but neglect some technical details
 \end_layout
 
 \begin_layout Standard
