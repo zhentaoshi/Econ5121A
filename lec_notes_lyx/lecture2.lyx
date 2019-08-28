@@ -94,6 +94,14 @@ theorems-ams
 
 \begin_body
 
+\begin_layout Title
+Regression and Projection
+\end_layout
+
+\begin_layout Author
+Zhentao Shi
+\end_layout
+
 \begin_layout Standard
 
 \series bold
@@ -140,11 +148,11 @@ We view the regression as a problem of supervised learning.
 \end_inset
 
 .
- We do not 
+ 
 \begin_inset Formula $x$
 \end_inset
 
- can perfectly predict 
+ cannot perfectly predict 
 \begin_inset Formula $y$
 \end_inset
 
@@ -210,7 +218,7 @@ risk
  For the quadratic loss function, the corresponding risk 
 \begin_inset Formula 
 \[
-R\left(y,g\left(x\right)\right)=E\left[\left(y-g\left(x\right)\right)^{2}\right],
+R\left(y,g\left(x\right)\right):=E\left[L\left(y,g\left(x\right)\right)\right]=E\left[\left(y-g\left(x\right)\right)^{2}\right],
 \]
 
 \end_inset
@@ -257,7 +265,7 @@ y=m\left(x\right)+\left(y-m\left(x\right)\right)=m\left(x\right)+\epsilon,
 \end_inset
 
  where 
-\begin_inset Formula $\epsilon\equiv y-m\left(x\right)$
+\begin_inset Formula $\epsilon:=y-m\left(x\right)$
 \end_inset
 
  is called the 
@@ -384,15 +392,12 @@ guess-and-verify.
 
 \end_inset
 
-.The first term is irrelevant to 
+The first term is irrelevant to 
 \begin_inset Formula $g\left(x\right)$
 \end_inset
 
 .
  The second term
-\end_layout
-
-\begin_layout Proof
 \begin_inset Formula 
 \[
 \begin{aligned}2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right] & =2E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)\right]\\
@@ -508,7 +513,7 @@ is a complex function of
 \end_inset
 
  for 
-\begin_inset Formula $\beta\in\mathbb{R}^{K}$
+\begin_inset Formula $b\in\mathbb{R}^{K}$
 \end_inset
 
 ? The minimization problem is
@@ -589,13 +594,13 @@ The linear function is not as restrictive as one might thought.
  For example, if 
 \begin_inset Formula 
 \[
-y=x_{1}\beta_{2}+x_{2}\beta_{2}+x_{1}^{2}\beta_{3}+e,
+y=x_{1}\beta_{1}+x_{2}\beta_{2}+x_{1}^{2}\beta_{3}+e,
 \]
 
 \end_inset
 
 then 
-\begin_inset Formula $\frac{\partial}{\partial x_{1}}m\left(x_{1},x_{2}\right)=\beta_{1}+x_{1}\beta_{3}$
+\begin_inset Formula $\frac{\partial}{\partial x_{1}}m\left(x_{1},x_{2}\right)=\beta_{1}+2x_{1}\beta_{3}$
 \end_inset
 
 , which is nonlinear in 
@@ -603,7 +608,7 @@ then
 \end_inset
 
 , while it is still linear in the parameter 
-\begin_inset Formula $\beta$
+\begin_inset Formula $\beta=\left(\beta_{1},\beta_{2},\beta_{3}\right)$
 \end_inset
 
  if we define a set of new regressors as 
@@ -695,7 +700,7 @@ The first-order condition gives
 
 .
  Rearrange the terms and obtain 
-\begin_inset Formula $E[x\cdot m(x)]=E[xx']\beta$
+\begin_inset Formula $E[x\cdot m(x)]=E[xx']b$
 \end_inset
 
 .
@@ -706,7 +711,7 @@ The first-order condition gives
  is invertible, we solve 
 \begin_inset Formula 
 \[
-\beta=\left(E\left[xx'\right]\right){}^{-1}E[x\cdot m(x)]=\left(E\left[xx'\right]\right){}^{-1}E[E[xy|x]]=\left(E\left[xx'\right]\right){}^{-1}E(xy).
+\left(E\left[xx'\right]\right){}^{-1}E[x\cdot m(x)]=\left(E\left[xx'\right]\right){}^{-1}E[E[xy|x]]=\left(E\left[xx'\right]\right){}^{-1}E[xy]=\beta.
 \]
 
 \end_inset
@@ -736,9 +741,6 @@ We may rewrite the linear regression model, or the
 linear projection model,
 \emph default
  as
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 \begin{array}[t]{c}
@@ -749,10 +751,6 @@ E[xe]=0,
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 where 
 \begin_inset Formula $e=y-x'\beta$
 \end_inset
