@@ -1,0 +1,1937 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "mathpazo" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Probability
+\begin_inset CommandInset label
+LatexCommand label
+name "probability"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Human beings are awed by uncertainty in daily life.
+ In the old days, Egyptians consulted oracles, Hebrews inquired prophets,
+ and Chinese counted on diviners to interpret tortoise shell or bone cracks.
+ Even in today's Hong Kong fortunetellers are abundant.
+\end_layout
+
+\begin_layout Standard
+Probability theory is a philosophy about uncertainty.
+ Over centuries, mathematicians strove to contribute to the understanding
+ of randomness.
+ As measure theory matured in the early 20th century, Russian mathematician
+ Andrey Kolmogorov (1903-1987) laid the foundation of modern probability
+ theory in his book published in 1933.
+ The formal mathematical language is a system that allows rigorous explorations
+ that have made fruitful advancements, and is now widely accepted as scientific
+ standard in academic and industrial research.
+\end_layout
+
+\begin_layout Standard
+With the advent of big data, computer scientists have come up with a plethora
+ of new algorithms that are aimed at revealing patterns from seemingly random
+ data.
+ 
+\emph on
+Machine learning
+\emph default
+ and 
+\emph on
+artificial intelligence
+\emph default
+ (AI) become buzz words.
+ They defeat best human Go players, automate manufacturers, power self-driving
+ vehicles, recognize human faces, and recommend online purchases.
+ Behind their industrial success, statistics sheds light on the behavior
+ of these algorithms.
+ While statistical theory is built on modern probability theory, the latter
+ is so far the most promising paradigm to rationalize existing algorithms
+ and engineer new ones.
+\end_layout
+
+\begin_layout Standard
+Economics has been an empirical social science since Adam Smith (1723-1790).
+ Many numerical anecdotes appear in his 
+\emph on
+Wealth of Nations
+\emph default
+ published in 1776.
+ Ragnar Frisch (1895-1973) and Jan Tinbergen (1903-1994), two pioneers econometr
+icians, were awarded in 1969 the first Nobel Prize in economics.
+ Econometrics provides quantitative insights about economic data.
+ It flourishes in real-world management practices, from households and firms
+ up to governance at the global level.
+ Today, the AI revolution is pumping fresh energy into research and exercise
+ of econometric methods, while its very foundation is again modern probability
+ theory.
+\end_layout
+
+\begin_layout Standard
+In this preparatory course, we will have a brief introduction of the axiomatic
+ probability theory along with familiar results covered in undergraduate
+ 
+\emph on
+probability and statistics
+\emph default
+.
+ This lecture note is at the level
+\end_layout
+
+\begin_layout Itemize
+Stachurski (2016): A Primer in Econometric Theory, or 
+\end_layout
+
+\begin_layout Itemize
+Casella and Berger (2002): Statistical Inference (second edition) 
+\end_layout
+
+\begin_layout Standard
+Interested readers may want to read this textbook for more examples.
+\end_layout
+
+\begin_layout Subsection
+Probability Space
+\begin_inset CommandInset label
+LatexCommand label
+name "probability-space"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A 
+\emph on
+sample space
+\emph default
+ 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is a collection of all possible outcomes.
+ It is a set of things.
+\end_layout
+
+\begin_layout Standard
+An 
+\emph on
+event
+\emph default
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ is a subset of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ It is something of interest on the sample space.
+\end_layout
+
+\begin_layout Standard
+A 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-
+\emph on
+field
+\emph default
+, denoted by 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+, is a collection of 
+\begin_inset Formula $(A_{i}\subseteq\Omega)_{i\in\mathbb{N}}$
+\end_inset
+
+ events such that
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\labelenumi}{\arabic{enumi}.}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\emptyset\in\mathcal{F}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+if an event 
+\begin_inset Formula $A\in\mathcal{F}$
+\end_inset
+
+, then 
+\begin_inset Formula $A^{c}\in\mathcal{F}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+if 
+\begin_inset Formula $A_{i}\in\mathcal{F}$
+\end_inset
+
+ for 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+, then 
+\begin_inset Formula $\bigcup_{i\in\mathbb{N}}A_{i}\in\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Implications: (a) Since 
+\begin_inset Formula $\Omega=\emptyset^{c}\in\mathcal{F}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\Omega\in\mathcal{F}$
+\end_inset
+
+.
+ (b) If 
+\begin_inset Formula $A_{i}\in\mathcal{F}$
+\end_inset
+
+ for 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+, then 
+\begin_inset Formula $A_{i}^{c}\in\mathcal{F}$
+\end_inset
+
+ for 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+.
+ Thus, if 
+\begin_inset Formula $\bigcup_{i\in\mathbb{N}}A_{i}^{c}\in\mathcal{F}$
+\end_inset
+
+ , then 
+\begin_inset Formula $\bigcap_{i\in\mathbb{N}}A_{i}=(\bigcup_{i\in\mathbb{N}}A_{i}^{c})^{c}\in\mathcal{F}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example: 
+\series default
+Let 
+\begin_inset Formula $\Omega=\{1,2,3,4,5,6\}$
+\end_inset
+
+.
+ Some examples of 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-
+\emph on
+fields 
+\emph default
+include
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{F}_{1}=\{\emptyset,\{1,2,3\},\{4,5,6\},\Omega\}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{F}_{2}=\{\emptyset,\{1,3\},\{2,4,5,6\},\Omega\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Counterexample: 
+\begin_inset Formula $\mathcal{F}_{3}=\{\emptyset,\{1,2\},\{4,6\},\Omega\}$
+\end_inset
+
+ is not a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-
+\emph on
+field 
+\emph default
+since 
+\emph on
+
+\begin_inset Formula $\{1,2,4,6\}=\{1,2\}\bigcup\{4,6\}$
+\end_inset
+
+
+\emph default
+ does not belong to 
+\begin_inset Formula $\mathcal{F}_{3}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field can be viewed as a well-organized structure built on the ground of
+ the sample space.
+ The pair 
+\begin_inset Formula $\left(\Omega,\mathcal{F}\right)$
+\end_inset
+
+ is called a 
+\emph on
+measure space
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathcal{G}=\{B_{1},B_{2},\ldots\}$
+\end_inset
+
+ be an arbitrary collection of sets, not necessarily a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field.
+ We say 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ is the smallest 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field generated by 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+ if 
+\begin_inset Formula $\mathcal{G}\subseteq\mathcal{F}$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathcal{F}\subseteq\mathcal{\tilde{F}}$
+\end_inset
+
+ for any 
+\begin_inset Formula $\mathcal{\tilde{F}}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mathcal{G}\subseteq\mathcal{\tilde{F}}$
+\end_inset
+
+.
+ A 
+\emph on
+Borel 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field
+\emph default
+ 
+\begin_inset Formula $\mathcal{R}$
+\end_inset
+
+ is the smallest 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field generated by the open sets on the real line 
+\begin_inset Formula $\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example: 
+\series default
+Let 
+\begin_inset Formula $\Omega=\{1,2,3,4,5,6\}$
+\end_inset
+
+ and 
+\begin_inset Formula $A=\{\{1\},\{1,3\}\}$
+\end_inset
+
+.
+ Then the smallest 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field generated by 
+\begin_inset Formula $A$
+\end_inset
+
+ is 
+\begin_inset Formula $\sigma(A)=\{\emptyset,\{1\},\{1,3\},\{3\},\{2,4,5,6\},\{2,3,4,5,6\},\{1,2,4,5,6\},\Omega\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A function 
+\begin_inset Formula $\mu:(\Omega,\mathcal{F})\mapsto\left[0,\infty\right]$
+\end_inset
+
+ is called a 
+\emph on
+measure
+\emph default
+ if it satisfies
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+(positiveness) 
+\begin_inset Formula $\mu\left(A\right)\geq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $A\in\mathcal{F}$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Enumerate
+(countable additivity) if 
+\begin_inset Formula $A_{i}\in\mathcal{F}$
+\end_inset
+
+, 
+\begin_inset Formula $i\in\mathbb{N}$
+\end_inset
+
+, are mutually disjoint, then 
+\begin_inset Formula 
+\[
+\mu\left(\bigcup_{i\in\mathbb{N}}A_{i}\right)=\sum_{i\in\mathbb{N}}\mu\left(A_{i}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Measure can be understand as weight or length.
+ In particular, we call 
+\begin_inset Formula $\mu$
+\end_inset
+
+ a 
+\emph on
+probability measure
+\emph default
+ if 
+\begin_inset Formula $\mu\left(\Omega\right)=1$
+\end_inset
+
+.
+ A probability measure is often denoted as 
+\begin_inset Formula $P$
+\end_inset
+
+.
+ The triple 
+\begin_inset Formula $\left(\Omega,\mathcal{F},P\right)$
+\end_inset
+
+ is called a 
+\emph on
+probability space
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+So far we have answered the question: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+What is a well-defined probability?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+, but we have not yet answered 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+How to assign the probability?
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There are two major schools of thinking on probability assignment.
+ One is 
+\emph on
+frequentist
+\emph default
+, who considers probability as the average chance of occurrence if a large
+ number of experiments are carried out.
+ The other is 
+\emph on
+Bayesian
+\emph default
+, who deems probability as a subjective brief.
+ The principles of these two schools are largely incompatible, while each
+ school has peculiar merit under different context.
+\end_layout
+
+\begin_layout Subsection
+Random Variable
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "random-variable"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The terminology 
+\emph on
+random variable
+\emph default
+ somewhat belies its formal definition of a deterministic mapping.
+ It is a link between two measurable spaces such that any event in the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field installed on the range can be traced back to an event in the 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field installed on the domain.
+\end_layout
+
+\begin_layout Standard
+Formally, a function 
+\begin_inset Formula $X:\Omega\mapsto\mathbb{R}$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(\Omega,\mathcal{F}\right)\backslash\left(\mathbb{R},\mathcal{R}\right)$
+\end_inset
+
+ 
+\emph on
+measurable
+\emph default
+ if 
+\begin_inset Formula 
+\[
+X^{-1}\left(B\right)=\left\{ \omega\in\Omega:X\left(\omega\right)\in B\right\} \in\mathcal{F}
+\]
+
+\end_inset
+
+for any 
+\begin_inset Formula $B\in\mathcal{R}.$
+\end_inset
+
+ 
+\emph on
+Random variable
+\emph default
+ is an alternative, and somewhat romantic, name for a measurable function.
+ We say a measurable is a 
+\emph on
+discrete random variable
+\emph default
+ if the set 
+\begin_inset Formula $\left\{ X\left(\omega\right):\omega\in\Omega\right\} $
+\end_inset
+
+ is finite or countable.
+ We say it is a 
+\emph on
+continuous random variable
+\emph default
+ if the set 
+\begin_inset Formula $\left\{ X\left(\omega\right):\omega\in\Omega\right\} $
+\end_inset
+
+ is uncountable.
+\end_layout
+
+\begin_layout Standard
+A measurable function connects two measurable spaces.
+ No probability is involved in its definition yet.
+ While if a probability measure 
+\begin_inset Formula $P$
+\end_inset
+
+ is installed on 
+\begin_inset Formula $(\Omega,\mathcal{F})$
+\end_inset
+
+, the measurable function 
+\begin_inset Formula $X$
+\end_inset
+
+ will induce a probability measure on 
+\begin_inset Formula $(\mathbb{R},\mathcal{R})$
+\end_inset
+
+.
+ It is easy to verify that 
+\begin_inset Formula $P_{X}:(\mathbb{R},\mathcal{R})\mapsto\left[0,1\right]$
+\end_inset
+
+ is also a probability measure if defined as 
+\begin_inset Formula 
+\[
+P_{X}\left(B\right)=P\left(X^{-1}\left(B\right)\right)
+\]
+
+\end_inset
+
+for any 
+\begin_inset Formula $B\in\mathcal{R}$
+\end_inset
+
+.
+ This 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+ is called the probability measure 
+\emph on
+induced
+\emph default
+ by the measurable function 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ The induced probability measure 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+ is an offspring of the parent probability measure 
+\begin_inset Formula $P$
+\end_inset
+
+ though the channel of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example: 
+\series default
+Consider 
+\begin_inset Formula $\Omega=\{1,2,3,4,5,6\}.$
+\end_inset
+
+ Let
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{F}_{1}=2^{\Omega}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathcal{F}_{2}=\{\emptyset,\{1,2,3\},\{4,5,6\},\Omega\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X_{1}(\omega)=1_{\{\omega\geq4\}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X_{2}(\omega)=\omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that 
+\begin_inset Formula 
+\[
+X_{1}(B)=\begin{cases}
+\Omega & \textrm{if }\{0,1\}\subseteq B\\
+\{4,5,6\} & \textrm{if }0\notin B\textrm{ and}1\in B\\
+\{1,2,3\} & \textrm{if }0\in B\textrm{ and}1\notin B\\
+\emptyset & \textrm{if }0\notin B\textrm{ and}1\notin B
+\end{cases}.
+\]
+
+\end_inset
+
+As all four sets on the right are measurable by 
+\begin_inset Formula $\mathcal{F}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{F}_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ is a random variable on both 
+\begin_inset Formula $(\Omega,\mathcal{F}_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $(\Omega,\mathcal{F}_{2})$
+\end_inset
+
+.
+ However, 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+is a random variable on 
+\begin_inset Formula $(\Omega,\mathcal{F}_{1})$
+\end_inset
+
+ but not 
+\begin_inset Formula $(\Omega,\mathcal{F}_{2})$
+\end_inset
+
+ since 
+\begin_inset Formula $X_{2}^{-1}(\{4\})=\{4\}\notin\mathcal{F}_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Distribution Function
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "distribution-function"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We go back to some terms that we have learned in a undergraduate probability
+ course.
+ A 
+\emph on
+(cumulative) distribution function
+\emph default
+ 
+\begin_inset Formula $F:\mathbb{R}\mapsto[0,1]$
+\end_inset
+
+ is defined as 
+\begin_inset Formula 
+\[
+F\left(x\right)=P\left(X\leq x\right)=P\left(\{X\leq x\}\right)=P\left(\left\{ \omega\in\Omega:X\left(\omega\right)\leq x\right\} \right).
+\]
+
+\end_inset
+
+It is often abbreviated as CDF, and it has the following properties.
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lim_{x\to-\infty}F\left(x\right)=0$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lim_{x\to\infty}F\left(x\right)=1$
+\end_inset
+
+, 
+\end_layout
+
+\begin_layout Enumerate
+non-decreasing,
+\end_layout
+
+\begin_layout Enumerate
+right-continuous 
+\begin_inset Formula $\lim_{y\to x^{+}}F\left(y\right)=F\left(x\right).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For continuous distribution, if there exists a function 
+\begin_inset Formula $f$
+\end_inset
+
+ such that for all 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula 
+\[
+F\left(x\right)=\int_{-\infty}^{x}f\left(y\right)\mathrm{d}y,
+\]
+
+\end_inset
+
+then 
+\begin_inset Formula $f$
+\end_inset
+
+ is called the 
+\emph on
+probability density function
+\emph default
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+, often abbreviated as PDF.
+ It is easy to show that 
+\begin_inset Formula $f\left(x\right)\geq0$
+\end_inset
+
+ and 
+\begin_inset Formula $\int_{a}^{b}f\left(x\right)dx=F\left(b\right)-F\left(a\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example:
+\series default
+ We have learned many parametric distributions like the binary distribution,
+ the Poisson distribution, the uniform distribution, the normal distribution,
+ 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $F$
+\end_inset
+
+ and so on.
+ They are parametric distributions, meaning that the CDF or PDF can be completel
+y characterized by a few parameters.
+\end_layout
+
+\begin_layout Section
+Expected Value
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "expected-value"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Integration
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "integration"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integration is one of the most fundamental operations in mathematical analysis.
+ We have studied Riemann's integral in the undergraduate calculus.
+ Riemann's integral is intuitive, but Lebesgue integral is a more general
+ approach to defining integration.
+\end_layout
+
+\begin_layout Standard
+Lebesgue integral is constructed by the following steps.
+ 
+\begin_inset Formula $X$
+\end_inset
+
+ is called a 
+\emph on
+simple function
+\emph default
+ on a measurable space 
+\begin_inset Formula $\left(\Omega,\mathcal{F}\right)$
+\end_inset
+
+ if 
+\begin_inset Formula $X=\sum_{i}a_{i}\cdot1\left\{ A_{i}\right\} $
+\end_inset
+
+ and this summation is finite, where 
+\begin_inset Formula $a_{i}\in\mathbb{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $\{A_{i}\in\mathcal{F}\}_{i\in\mathbb{N}}$
+\end_inset
+
+ is a partition of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ A simple function is measurable.
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $\left(\Omega,\mathcal{F},\mu\right)$
+\end_inset
+
+ be a measure space.
+ The integral of the simple function 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\int X\mathrm{d}\mu=\sum_{i}a_{i}\mu\left(A_{i}\right).
+\]
+
+\end_inset
+
+Unlike the Rieman integral, this definition of integration does not partition
+ the domain into splines of equal length.
+ Instead, it tracks the distinctive values of the function and the corresponding
+ measure.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a non-negative measurable function.
+ The integral of 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\int X\mathrm{d}\mu=\sup\left\{ \int Y\mathrm{d}\mu:0\leq Y\leq X,\text{ }Y\text{ is simple}\right\} .
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $X$
+\end_inset
+
+ be a measurable function.
+ Define 
+\begin_inset Formula $X^{+}=\max\left\{ X,0\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $X^{-}=-\min\left\{ X,0\right\} $
+\end_inset
+
+.
+ Both 
+\begin_inset Formula $X^{+}$
+\end_inset
+
+ and 
+\begin_inset Formula $X^{-}$
+\end_inset
+
+ are non-negative functions.
+ The integral of 
+\begin_inset Formula $X$
+\end_inset
+
+ with respect to 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\int X\mathrm{d}\mu=\int X^{+}\mathrm{d}\mu-\int X^{-}\mathrm{d}\mu.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Step 1 above defines the integral of a simple function.
+ Step 2 defines the integral of a non-negative function as the approximation
+ of steps functions from below.
+ Step 3 defines the integral of a general function as the difference of
+ the integral of two non-negative parts.
+\end_layout
+
+\begin_layout Standard
+If the measure 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is a probability measure 
+\begin_inset Formula $P$
+\end_inset
+
+, then the integral 
+\begin_inset Formula $\int X\mathrm{d}P$
+\end_inset
+
+ is called the 
+\emph on
+expected value,
+\emph default
+ or 
+\emph on
+expectation,
+\emph default
+ of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ We often use the notation 
+\begin_inset Formula $E\left[X\right]$
+\end_inset
+
+, instead of 
+\begin_inset Formula $\int X\mathrm{d}P$
+\end_inset
+
+, for convenience.
+\end_layout
+
+\begin_layout Standard
+Expectation provides the average of a random variable, despite that we cannot
+ foresee the realization of a random variable in a particular trial (otherwise
+ the study of uncertainty is trivial).
+ In the frequentist's view, the expectation is the average outcome if we
+ carry out a large number of independent trials.
+\end_layout
+
+\begin_layout Standard
+If we know the probability mass function of a discrete random variable,
+ its expectation is calculated as 
+\begin_inset Formula $E\left[X\right]=\sum_{x}xP\left(X=x\right)$
+\end_inset
+
+, which is the integral of a simple function.
+ If a continuous random variable has a PDF 
+\begin_inset Formula $f(x)$
+\end_inset
+
+, its expectation can be computed as 
+\begin_inset Formula $E\left[X\right]=\int xf\left(x\right)\mathrm{d}x$
+\end_inset
+
+.
+ These two expressions are unified as 
+\begin_inset Formula $E[X]=\int X\mathrm{d}P$
+\end_inset
+
+ by the Lebesgue integral.
+\end_layout
+
+\begin_layout Standard
+Here are some properties of the expectation.
+\end_layout
+
+\begin_layout Itemize
+The probability of an event 
+\begin_inset Formula $A$
+\end_inset
+
+ is the expectation of an indicator function.
+ 
+\begin_inset Formula $E\left[1\left\{ A\right\} \right]=1\times P(A)+0\times P(A^{c})=P\left(A\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E\left[X^{r}\right]$
+\end_inset
+
+ is call the 
+\begin_inset Formula $r$
+\end_inset
+
+-moment of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ The 
+\emph on
+mean
+\emph default
+ of a random variable is the first moment 
+\begin_inset Formula $\mu=E\left[X\right]$
+\end_inset
+
+, and the second 
+\emph on
+centered
+\emph default
+ moment is called the 
+\emph on
+variance
+\emph default
+ 
+\begin_inset Formula $\mathrm{var}\left[X\right]=E\left[\left(X-\mu\right)^{2}\right]$
+\end_inset
+
+.
+ The third centered moment 
+\begin_inset Formula $E\left[\left(X-\mu\right)^{3}\right]$
+\end_inset
+
+, called 
+\emph on
+skewness
+\emph default
+, is a measurement of the symmetry of a random variable, and the fourth
+ centered moment 
+\begin_inset Formula $E\left[\left(X-\mu\right)^{4}\right]$
+\end_inset
+
+, called 
+\emph on
+kurtosis
+\emph default
+, is a measurement of the tail thickness.
+ 
+\end_layout
+
+\begin_layout Itemize
+Moments do not always exist.
+ For example, the mean of the Cauchy distribution does not exist, and the
+ variance of the 
+\begin_inset Formula $t(2)$
+\end_inset
+
+ distribution does not exist.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E[\cdot]$
+\end_inset
+
+ is a linear operation.
+ If 
+\begin_inset Formula $\phi(\cdot)$
+\end_inset
+
+ is a linear function, then 
+\begin_inset Formula $E[\phi(X)]=\phi(E[X]).$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Jensen's inequality
+\emph default
+ is an important fact.
+ A function 
+\begin_inset Formula $\varphi(\cdot)$
+\end_inset
+
+ is convex if 
+\begin_inset Formula $\varphi(ax_{1}+(1-a)x_{2})\leq a\varphi(x_{1})+(1-a)\varphi(x_{2})$
+\end_inset
+
+ for all 
+\begin_inset Formula $x_{1},x_{2}$
+\end_inset
+
+ in the domain and 
+\begin_inset Formula $a\in[0,1]$
+\end_inset
+
+.
+ For instance, 
+\begin_inset Formula $x^{2}$
+\end_inset
+
+ is a convex function.
+ Jensen's inequality says that if 
+\begin_inset Formula $\varphi\left(\cdot\right)$
+\end_inset
+
+ is a convex function, then 
+\begin_inset Formula $\varphi\left(E\left[X\right]\right)\leq E\left[\varphi\left(X\right)\right].$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Markov inequality
+\emph default
+ is another simple but important fact.
+ If 
+\begin_inset Formula $E\left[\left|X\right|^{r}\right]$
+\end_inset
+
+ exists, then 
+\begin_inset Formula $P\left(\left|X\right|>\epsilon\right)\leq E\left[\left|X\right|^{r}\right]/\epsilon^{r}$
+\end_inset
+
+ for all 
+\begin_inset Formula $r\geq1$
+\end_inset
+
+.
+ 
+\emph on
+Chebyshev inequality
+\emph default
+ 
+\begin_inset Formula $P\left(\left|X\right|>\epsilon\right)\leq E\left[X^{2}\right]/\epsilon^{2}$
+\end_inset
+
+ is a special case of the Markov inequality when 
+\begin_inset Formula $r=2$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+The distribution of a random variable is completely characterized by its
+ CDF or PDF.
+ Moment is a function of the distribution.
+ To back out the underlying distribution from moments, we need to know the
+ moment-generating function (mgf) 
+\begin_inset Formula $M_{X}(t)=E[e^{tX}]$
+\end_inset
+
+ for 
+\begin_inset Formula $t\in\mathbb{R}$
+\end_inset
+
+ whenever the expectation exists.
+ The 
+\begin_inset Formula $r$
+\end_inset
+
+th moment can be computed from mgf as 
+\begin_inset Formula 
+\[
+E[X^{r}]=\frac{\mathrm{d}^{r}M_{X}(t)}{\mathrm{d}t^{r}}\big\vert_{t=0}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Multivariate Random Variable
+\begin_inset CommandInset label
+LatexCommand label
+name "multivariate-random-variable"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A bivariate random variable is a measurable function 
+\begin_inset Formula $X:\Omega\mapsto\mathbb{R}^{2}$
+\end_inset
+
+, and more generally a multivariate random variable is a measurable function
+ 
+\begin_inset Formula $X:\Omega\mapsto\mathbb{R}^{n}$
+\end_inset
+
+.
+ We can define the 
+\emph on
+joint CDF
+\emph default
+ as 
+\begin_inset Formula $F\left(x_{1},\ldots,x_{n}\right)=P\left(X_{1}\leq x_{1},\ldots,X_{n}\leq x_{n}\right)$
+\end_inset
+
+.
+ Joint PDF is defined similarly.
+\end_layout
+
+\begin_layout Standard
+It is sufficient to introduce the joint distribution, conditional distribution
+ and marginal distribution in the simple bivariate case, and these definitions
+ can be extended to multivariate distributions.
+ Suppose a bivariate random variable 
+\begin_inset Formula $(X,Y)$
+\end_inset
+
+ has a joint density 
+\begin_inset Formula $f(\cdot,\cdot)$
+\end_inset
+
+.
+ The 
+\emph on
+conditional density
+\emph default
+ can be roughly written as 
+\begin_inset Formula $f\left(y|x\right)=f\left(x,y\right)/f\left(x\right)$
+\end_inset
+
+ if we do not formally deal with the case 
+\begin_inset Formula $f(x)=0$
+\end_inset
+
+.
+ The 
+\emph on
+marginal density
+\emph default
+ 
+\begin_inset Formula $f\left(y\right)=\int f\left(x,y\right)dx$
+\end_inset
+
+ integrates out the coordinate that is not interested.
+\end_layout
+
+\begin_layout Subsection
+Independence
+\begin_inset CommandInset label
+LatexCommand label
+name "independence"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In a probability space 
+\begin_inset Formula $(\Omega,\mathcal{F},P)$
+\end_inset
+
+, for two events 
+\begin_inset Formula $A_{1},A_{2}\in\mathcal{F}$
+\end_inset
+
+ the 
+\emph on
+conditional probability
+\emph default
+ is 
+\begin_inset Formula 
+\[
+P\left(A_{1}|A_{2}\right)=\frac{P\left(A_{1}A_{2}\right)}{P\left(A_{2}\right)}
+\]
+
+\end_inset
+
+if 
+\begin_inset Formula $P(A_{2})\neq0$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $P(A_{2})=0$
+\end_inset
+
+, the conditional probability can still be valid in some cases, but we need
+ to introduce the 
+\emph on
+dominance
+\emph default
+ between two measures, which I choose not to do at this time.
+ In the definition of conditional probability, 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ plays the role of the outcome space so that 
+\begin_inset Formula $P(A_{1}A_{2})$
+\end_inset
+
+ is standardized by the total mass 
+\begin_inset Formula $P(A_{2})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ are symmetric, we also have 
+\begin_inset Formula $P(A_{1}A_{2})=P(A_{2}|A_{1})P(A_{1})$
+\end_inset
+
+.
+ It implies 
+\begin_inset Formula 
+\[
+P(A_{1}|A_{2})=\frac{P\left(A_{2}|A_{1}\right)P\left(A_{1}\right)}{P\left(A_{2}\right)}
+\]
+
+\end_inset
+
+This formula is the well-known 
+\emph on
+Bayes' Theorem
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example:
+\series default
+ 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ is the event 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+a student can survive CUHK's postgraduate program
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+"
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ is his or her application profile.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We say two events 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ are 
+\emph on
+independent
+\emph default
+ if 
+\begin_inset Formula $P(A_{1}A_{2})=P(A_{1})P(A_{2})$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $P(A_{2})\neq0$
+\end_inset
+
+, it is equivalent to 
+\begin_inset Formula $P(A_{1}|A_{2})=P(A_{1})$
+\end_inset
+
+.
+ In words, knowing 
+\begin_inset Formula $A_{2}$
+\end_inset
+
+ does not change the probability of 
+\begin_inset Formula $A_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Regarding the independence of two random variables, 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are 
+\emph on
+independent
+\emph default
+ if 
+\begin_inset Formula $P\left(X\in B_{1},Y\in B_{2}\right)=P\left(X\in B_{1}\right)P\left(Y\in B_{2}\right)$
+\end_inset
+
+ for any two Borel sets 
+\begin_inset Formula $B_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $B_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ are independent, 
+\begin_inset Formula $E[XY]=E[X]E[Y]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Law of Iterated Expectations
+\begin_inset CommandInset label
+LatexCommand label
+name "law-of-iterated-expectations"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given a probability space 
+\begin_inset Formula $\left(\Omega,\mathcal{F},P\right)$
+\end_inset
+
+, a sub 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra 
+\begin_inset Formula $\mathcal{G}\subseteq\mathcal{F}$
+\end_inset
+
+ and a 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+-measurable function 
+\begin_inset Formula $X$
+\end_inset
+
+ with 
+\begin_inset Formula $E\left|X\right|<\infty$
+\end_inset
+
+, the 
+\emph on
+conditional expectation
+\emph default
+ 
+\begin_inset Formula $E\left[X|\mathcal{G}\right]$
+\end_inset
+
+ is defined as a 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+-measurable function such that 
+\begin_inset Formula $\int_{A}X\mathrm{d}P=\int_{A}E\left[X|\mathcal{G}\right]\mathrm{d}P$
+\end_inset
+
+ for all 
+\begin_inset Formula $A\in\mathcal{G}$
+\end_inset
+
+.
+ 
+\emph on
+Law of iterated expectation
+\emph default
+ is a trivial fact if we take 
+\begin_inset Formula $A=\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the bivariate case, if the conditional density exists, the conditional
+ expectation can be computed as 
+\begin_inset Formula $E\left[Y|X\right]=\int yf\left(y|X\right)\mathrm{d}y$
+\end_inset
+
+.
+ The law of iterated expectation implies 
+\begin_inset Formula $E\left[E\left[Y|X\right]\right]=E\left[Y\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Below are some properties of conditional expectations
+\end_layout
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\renewcommand{\labelenumi}{\arabic{enumi}.}
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E\left[E\left[Y|X_{1},X_{2}\right]|X_{1}\right]=E\left[Y|X_{1}\right];$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E\left[E\left[Y|X_{1}\right]|X_{1},X_{2}\right]=E\left[Y|X_{1}\right];$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $E\left[h\left(X\right)Y|X\right]=h\left(X\right)E\left[Y|X\right].$
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
