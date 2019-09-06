@@ -12,6 +12,7 @@ I have substantially updated my lecture notes this year to bring forward the tea
 
 * [Course Syllabus](https://github.com/zhentaoshi/Econ5121A/blob/master/syllabus%202018.pdf)
 * [Lecture Notes](https://github.com/zhentaoshi/Econ5121A/tree/master/lec_notes_ipynb)
+* [Jupyter Notebooks (python)](https://mybinder.org/v2/gh/zhentaoshi/Econ5121A/master)
 
 
 **Caveat**: This is an ongoing writing project. The text is incomplete, and may contain errors.
