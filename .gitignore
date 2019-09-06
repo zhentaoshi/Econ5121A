@@ -9,6 +9,7 @@ handwriting_notes/*.*
 *lec_notes_ipynb/*.tex
 *lec_notes_ipynb/*.png
 *notebook.tex
+*.tex
 
 ## SWP
 *.bak
