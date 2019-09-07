@@ -6,3 +6,5 @@ dependencies:
   - matplotlib
   - pandas
   - statsmodels
+  - scipy
+  - sklearn
