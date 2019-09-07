@@ -528,9 +528,6 @@ X_{2}'Y
 
 \begin_layout Standard
 The subvector
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 \widehat{\beta}_{1} & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'Y-\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}X_{2}'Y\\
@@ -544,7 +541,7 @@ The subvector
 \end_layout
 
 \begin_layout Standard
-Note that 
+Notice that 
 \begin_inset Formula $\widehat{\beta}_{1}$
 \end_inset
 
@@ -585,7 +582,7 @@ Regress
 
 \begin_layout Enumerate
 Regress 
-\begin_inset Formula $\tilde{e_{2}}$
+\begin_inset Formula $\tilde{e}_{2}$
 \end_inset
 
  on 
@@ -596,23 +593,16 @@ Regress
 \begin_inset Formula $\widehat{\beta}_{1}$
 \end_inset
 
- and residuals 
-\begin_inset Formula $\hat{e}.$
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Standard
 Similar derivation can also be carried out in the population linear projection.
- See Hansen's Chapter 2.21-23.
+ See Hansen (2019) Chapter 2.22-23.
 \end_layout
 
 \begin_layout Section
 Statistical Properties of Least Squares
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "statistical-properties-of-least-squares"
@@ -623,43 +613,20 @@ name "statistical-properties-of-least-squares"
 \end_layout
 
 \begin_layout Standard
-To talk about the statistical properties in finite sample, we impose the
- following assumptions.
-\end_layout
-
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\labelenumi}{\arabic{enumi}.}
+In this section we return to the classical statistical framework under restricti
+ve distributional assumption 
+\begin_inset Formula $y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right)$
 \end_inset
 
- 
-\end_layout
-
-\begin_layout Enumerate
-The data 
-\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
-\end_inset
-
- is a random sample from the same data generating process 
-\begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
+, where 
+\begin_inset Formula $\gamma=\sigma^{2}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $e_{i}|x_{i}\sim N\left(0,\sigma^{2}\right)$
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Subsection
 Maximum Likelihood Estimation
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "maximum-likelihood-estimation"
@@ -670,24 +637,15 @@ name "maximum-likelihood-estimation"
 \end_layout
 
 \begin_layout Standard
-Since 
-\begin_inset Formula $y_{i}=x_{i}'\beta+e$
-\end_inset
-
-, we have 
-\begin_inset Formula $y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right)$
-\end_inset
-
- under the normality assumption, where 
-\begin_inset Formula $\gamma=\sigma^{2}$
-\end_inset
-
-.
- The 
+The 
 \emph on
 conditional
 \emph default
- likelihood of observing a sample 
+ likelihood of observing a 
+\emph on
+random sample
+\emph default
+ 
 \begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
 \end_inset
 
@@ -717,39 +675,24 @@ The maximum likelihood estimator
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\frac{\partial}{\partial\beta}L\left(\beta,\gamma\right)=\frac{1}{2\gamma}\sum_{i=1}^{n}2x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=0
+\frac{\partial}{\partial\beta}L\left(\beta,\gamma\right)=\frac{1}{2\gamma}\sum_{i=1}^{n}2x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=0.
 \]
 
 \end_inset
 
+Rearranging the above equation in matrix form 
+\begin_inset Formula $X'Y=X'X\widehat{\beta}_{MLE}$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
+, we explicitly solve 
 \begin_inset Formula 
 \[
-X'Y=X'X\widehat{\beta}_{MLE}
+\widehat{\beta}_{MLE}=(X'X)^{-1}X'Y.
 \]
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\widehat{\beta}_{MLE}=(X'X)^{-1}X'Y
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Therefore, the maximum likelihood estimator (MLE) coincides with the OLS
- estimator.
+The maximum likelihood estimator (MLE) coincides with the OLS estimator.
  Similarly, another FOC gives 
 \begin_inset Formula $\widehat{\gamma}_{\mathrm{MLE}}=\widehat{e}'\widehat{e}/n$
 \end_inset
@@ -758,7 +701,7 @@ Therefore, the maximum likelihood estimator (MLE) coincides with the OLS
 \end_layout
 
 \begin_layout Subsection
-Finite Sample Distribution
+Classical Finite Sample Distribution
 \end_layout
 
 \begin_layout Standard
@@ -790,32 +733,67 @@ Finite sample distribution
 asymptotic distribution
 \emph default
 , which is a large sample approximation to the finite sample distribution.
-\end_layout
+ Let the 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout Standard
-Since 
+error term
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $e_{i}=y_{i}-x_{i}'\beta$
+\end_inset
+
+, we have 
+\begin_inset Formula $e_{i}|x_{i}=y_{i}|x_{i}-x_{i}'\beta\sim N\left(0,\gamma\right)$
+\end_inset
+
+.
+ Since the conditional distribution of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ on 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is invariant with 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, the discrepancy 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ is statistical independent of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ Assume The estimator
 \begin_inset Formula 
 \[
-\widehat{\beta}=\left(X'X\right)^{-1}X'y=\left(X'X\right)^{-1}X'\left(X'\beta+e\right)=\beta+\left(X'X\right)^{-1}X'e,
+\widehat{\beta}=\left(X'X\right)^{-1}X'Y=\left(X'X\right)^{-1}X'\left(X'\beta+e\right)=\beta+\left(X'X\right)^{-1}X'e,
 \]
 
 \end_inset
 
-we have the estimator
+and its conditional distribution can be written as 
 \begin_inset Formula 
 \begin{align*}
 \widehat{\beta}|X & =\beta+\left(X'X\right)^{-1}X'e|X\\
- & \sim\beta+\left(X'X\right)^{-1}X'\cdot N\left(0,\sigma^{2}\right)\\
+ & \sim\beta+\left(X'X\right)^{-1}X'\cdot N\left(0_{n},\sigma^{2}\cdot I_{n}\right)\\
  & \sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right).
 \end{align*}
 
 \end_inset
 
+The 
+\begin_inset Formula $k$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
-Therefore
+-th element of the vector coefficient
 \begin_inset Formula 
 \[
 \widehat{\beta}_{k}|X=\eta_{k}'\widehat{\beta}|X\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
@@ -878,12 +856,15 @@ The numerator follows a standard normal, and the denominator follows
 \end_inset
 
 .
- Moreover, the numerator and the denominator are independent (Basu's theorem).
+ Moreover, the numerator and the denominator are statistically independent
+ (Basu's theorem).
  As a result, we conclude 
 \begin_inset Formula $T_{k}\sim t\left(n-K\right)$
 \end_inset
 
 .
+ This finite sample distribution is crucial when conducting statistical
+ inference.
 \end_layout
 
 \begin_layout Subsection
@@ -925,6 +906,59 @@ mean independence
 homoskedasticity
 \emph default
  assumption.
+ These assumptions are about the first and second 
+\emph on
+moments
+\emph default
+ of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ conditional on 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ Unlike the normality assumption, they do not restrict the 
+\emph on
+distribution
+\emph default
+ of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Unbiasedness: 
+\begin_inset Formula 
+\[
+E\left[\widehat{\beta}|X\right]=E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]=\beta.
+\]
+
+\end_inset
+
+Unbiasedness does not rely on homoskedasticity.
+ 
+\end_layout
+
+\begin_layout Itemize
+Variance: 
+\begin_inset Formula 
+\[
+\begin{aligned}\mathrm{var}\left(\widehat{\beta}|X\right) & =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
+ & =E\left[\left(\widehat{\beta}-\beta\right)\left(\widehat{\beta}-\beta\right)'|X\right]\\
+ & =E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]\\
+ & =\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}\\
+ & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}\\
+ & =\sigma^{2}\left(X'X\right)^{-1}.
+\end{aligned}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -975,55 +1009,6 @@ Example
 \end_inset
 
  is a heteroskedastic error.
-\end_layout
-
-\begin_layout Standard
-These assumptions are about the first and second moment of 
-\begin_inset Formula $e_{i}$
-\end_inset
-
- conditional on 
-\begin_inset Formula $x_{i}$
-\end_inset
-
-.
- Unlike the normality assumption, they do not restrict the entire distribution
- of 
-\begin_inset Formula $e_{i}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Unbiasedness: 
-\begin_inset Formula 
-\[
-E\left[\widehat{\beta}|X\right]=E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]=\beta.
-\]
-
-\end_inset
-
-Unbiasedness does not rely on homoskedasticity.
- 
-\end_layout
-
-\begin_layout Itemize
-Variance: 
-\begin_inset Formula 
-\[
-\begin{aligned}\mathrm{var}\left(\widehat{\beta}|X\right) & =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
- & =E\left[\left(\widehat{\beta}-\beta\right)\left(\widehat{\beta}-\beta\right)'|X\right]\\
- & =E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]\\
- & =\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}\\
- & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}\\
- & =\sigma^{2}\left(X'X\right)^{-1}.
-\end{aligned}
-\]
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
