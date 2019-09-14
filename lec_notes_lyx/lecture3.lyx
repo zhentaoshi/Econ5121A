@@ -82,6 +82,7 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\bullet 1 0 9 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -101,9 +102,6 @@ Zhentao Shi
 
 \begin_layout Section
 Asymptotics
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "asymptotics"
@@ -122,9 +120,6 @@ Asymptotic theory is concerned about the behavior of statistics when the
 
 \begin_layout Subsection
 Modes of Convergence
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "modes-of-convergence"
@@ -172,8 +167,8 @@ Convergence of a deterministic sequence
 \end_layout
 
 \begin_layout Standard
-In contrast to the convergence of a deterministic sequence, we are interested
- in the convergence of random variables.
+Instead a deterministic sequence, here we are interested in the convergence
+ of a sequence of random variables.
  Since a random variable has a probability measure associated to any event,
  we must be clear what 
 \emph on
@@ -188,16 +183,23 @@ Convergence almost surely*
 \end_layout
 
 \begin_layout Itemize
-Convergence in probability: 
-\begin_inset Formula $\lim_{n\to\infty}P\left(\omega:\left|z_{n}\left(\omega\right)-z\right|<\varepsilon\right)=1$
-\end_inset
-
- for any 
+Convergence in probability: for any 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
+, as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+ the probability 
+\begin_inset Formula $P\left(\omega:\left|z_{n}\left(\omega\right)-z\right|<\varepsilon\right)\to1$
+\end_inset
+
+ (or equivalently 
+\begin_inset Formula $P\left(\omega:\left|z_{n}\left(\omega\right)-z\right|\geq\varepsilon\right)\to0$
+\end_inset
+
 .
- 
 \end_layout
 
 \begin_layout Itemize
@@ -245,25 +247,37 @@ Example
 .
 \end_layout
 
-\begin_layout Quote
+\begin_layout Standard
 
 \emph on
-Justification:
-\end_layout
+Justification: 
+\emph default
+For any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
 
-\begin_layout Quote
+, we have 
+\begin_inset Formula $P\left(\omega:\left|z_{n}\left(\omega\right)-0\right|<\varepsilon\right)=P\left(\omega:z_{n}\left(\omega\right)=0\right)=1-1/n\rightarrow1.$
+\end_inset
+
+ Thus 
 \begin_inset Formula $z_{n}\stackrel{p}{\to}0$
 \end_inset
 
-: 
-\begin_inset Formula $\forall\varepsilon>0,P\left(\omega:\left|z_{n}\left(\omega\right)-0\right|<\varepsilon\right)=P\left(\omega:z_{n}\left(\omega\right)=0\right)=1-1/n\rightarrow0.$
+.
+ On the other hand, 
+\begin_inset Formula $E\left[\left(z_{n}-0\right)^{2}\right]=n\cdot1/n+0\cdot(1-1/n)=1\nrightarrow0.$
 \end_inset
 
+ Thus 
+\begin_inset Formula $z_{n}\stackrel{m.s.}{\nrightarrow}0$
+\end_inset
 
+.
 \end_layout
 
-\begin_layout Quote
-\begin_inset Formula $z_{n}\stackrel{m.s.}{\nrightarrow}0:E\left[\left(z_{n}-0\right)^{2}\right]=n\cdot1/n+0\cdot(1-1/n)=1\nrightarrow0.$
+\begin_layout Standard
+\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -435,6 +449,13 @@ It is obvious that
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Squared-mean convergence implies convergence in probability.
  Convergence in probability implies convergence in distribution.
 \end_layout
@@ -449,8 +470,7 @@ Cramér-Wold device
 \begin_inset Formula $K$
 \end_inset
 
--dimensional random vectors.
- 
+-dimensional random vectors 
 \begin_inset Formula $\left(X_{n}\right)$
 \end_inset
 
@@ -528,7 +548,11 @@ observations,
 \end_layout
 
 \begin_layout Standard
-Chebyshev LLN utilizes Chebyshev inequality.
+Chebyshev LLN utilizes 
+\emph on
+Chebyshev inequality
+\emph default
+.
 \end_layout
 
 \begin_layout Itemize
@@ -557,7 +581,11 @@ Chebyshev inequality
 \end_layout
 
 \begin_layout Standard
-Chebyshev inequality is a special case of Markov inequality.
+Chebyshev inequality is a special case of 
+\emph on
+Markov inequality
+\emph default
+.
 \end_layout
 
 \begin_layout Itemize
@@ -682,7 +710,7 @@ observations and
 
 \begin_layout Standard
 Compared to Chebyshev LLN, Kolmogorov LLN only requires the existence of
- the population mean, but not any higher moment.
+ the population mean, but not any higher moments.
  On the other hand, i.i.d.
 \begin_inset space ~
 \end_inset
@@ -836,7 +864,7 @@ Lindeberg condition
 , 
 \begin_inset Formula 
 \[
-\frac{1}{s_{n}^{2}}\sum_{i=1}^{n}\int_{\left|x_{i}\right|>\varepsilon s_{n}}x_{i}^{2}dPx_{i}\to0
+\frac{1}{s_{n}^{2}}\sum_{i=1}^{n}E\left[x_{i}^{2}\cdot\boldsymbol{1}\left\{ \left|x_{i}\right|\geq\varepsilon s_{n}\right\} \right]\to0
 \]
 
 \end_inset
@@ -972,7 +1000,7 @@ Slutsky's Theorem: If
 \begin_inset Formula $x_{n}+y_{n}\stackrel{d}{\to}x+a$
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Itemize
