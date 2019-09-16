@@ -30,7 +30,7 @@
 \index_command default
 \paperfontsize 11
 \spacing single
-\use_hyperref true
+\use_hyperref false
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
@@ -869,9 +869,6 @@ The numerator follows a standard normal, and the denominator follows
 
 \begin_layout Subsection
 Mean and Variance
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "mean-and-variance"
@@ -883,17 +880,16 @@ name "mean-and-variance"
 
 \begin_layout Standard
 Now we relax the normality assumption and statistical independence.
- Instead, we assume a regression model 
+ Instead, we represent the regression model as 
 \begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
 \end_inset
 
  and 
 \begin_inset Formula 
-\[
-\begin{aligned}E[e_{i}|x_{i}] & =0\\
-E\left[e_{i}^{2}|x_{i}\right] & =\sigma^{2}.
-\end{aligned}
-\]
+\begin{align*}
+E[e|X] & =0\\
+\mathrm{var}\left[e|X\right] & =\sigma^{2}I_{n}.
+\end{align*}
 
 \end_inset
 
@@ -958,7 +954,7 @@ Variance:
 
 \end_inset
 
-
+Homoskedasticity is essential in this derivation.
 \end_layout
 
 \begin_layout Standard
@@ -996,7 +992,7 @@ Example
 \end_inset
 
  but 
-\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=\sigma_{i}^{2}x_{i}^{2}$
+\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=\sigma^{2}x_{i}^{2}$
 \end_inset
 
  is a function of 
@@ -1009,6 +1005,46 @@ Example
 \end_inset
 
  is a heteroskedastic error.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Notice that the above derivation only applies when 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ are independent across 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ In time series the conditional zero mean condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:e_mean_zero"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) has to be strengthened to 
+\begin_inset Formula $E\left[e_{i}|x_{1},\ldots,x_{n}\right]=0$
+\end_inset
+
+ for unbiasedness.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
