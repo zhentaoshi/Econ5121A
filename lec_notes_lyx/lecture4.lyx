@@ -91,6 +91,14 @@
 
 \begin_body
 
+\begin_layout Title
+Hypothesis Testing
+\end_layout
+
+\begin_layout Author
+Zhentao Shi
+\end_layout
+
 \begin_layout Standard
 Notation: 
 \begin_inset Formula $\mathbf{X}$
@@ -359,22 +367,18 @@ level
 \end_layout
 
 \begin_layout Verbatim
-
      | decision     |  reject $H_{1}$  | reject $H_{0}$
 \end_layout
 
 \begin_layout Verbatim
-
      |--------------|------------------| ---------------
 \end_layout
 
 \begin_layout Verbatim
-
      | $H_{0}$ true |     correct      | Type I error
 \end_layout
 
 \begin_layout Verbatim
-
      | $H_{0}$ false| Type II error    |   correct
 \end_layout
 
@@ -889,9 +893,6 @@ It measures whether the data is consistent with the null hypothesis, or
 
 \begin_layout Section
 Confidence Interval
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "confidence-interval"
@@ -1086,12 +1087,12 @@ Here is a classical example to illustrate the Bayesian approach of statistical
 \end_inset
 
 .
- For a researcher with a prior distribution 
+ For a researcher holds a prior distribution 
 \begin_inset Formula $\theta\sim N(\theta_{0},\sigma_{0}^{2})$
 \end_inset
 
-, her posterior distribution is, by some routine calculation, the posterior
- is also a normal distribution 
+, her posterior distribution is, by some routine calculation, also a normal
+ distribution 
 \begin_inset Formula 
 \[
 p(\theta|\mathbf{x})\sim N\left(\tilde{\theta},\tilde{\sigma}^{2}\right),
@@ -1135,7 +1136,7 @@ This posterior distribution depends on
 \end_layout
 
 \begin_layout Standard
-In contrast, a frequentist estimates 
+In contrast, a frequentist will estimate 
 \begin_inset Formula $\hat{\theta}=\bar{x}\sim N(\theta,\sigma^{2}/n)$
 \end_inset
 
@@ -1153,9 +1154,6 @@ In contrast, a frequentist estimates
 
 \begin_layout Section
 Application in OLS
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "application-in-ols"
