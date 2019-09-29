@@ -167,7 +167,7 @@ Convergence of a deterministic sequence
 \end_layout
 
 \begin_layout Standard
-Instead a deterministic sequence, here we are interested in the convergence
+Instead of a deterministic sequence, here we are interested in the convergence
  of a sequence of random variables.
  Since a random variable has a probability measure associated to any event,
  we must be clear what 
@@ -878,19 +878,15 @@ where
 \end_layout
 
 \begin_layout Itemize
-Lyapunov CLT: i.n.i.d, finite 
-\begin_inset Formula $E\left[\left|x\right|^{3}\right]$
+Lyapunov CLT: i.n.i.d.: 
+\begin_inset Formula $\max_{i\leq n}E\left[\left|x_{i}\right|^{3}\right]<C<\infty$
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Subsection
 Tools for Transformations
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "tools-for-transformations"
@@ -901,7 +897,12 @@ name "tools-for-transformations"
 \end_layout
 
 \begin_layout Standard
-The original forms of LLN or CLT only deal with sample means.
+In their original forms, LLN deals with the sample mean, and CLT handles
+ the scaled (by 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+) and/or standardized (by standard deviation) sample mean.
  However, most of the econometric estimators of interest are functions of
  sample means.
  Therefore, we need tools to handle transformations.
@@ -1111,7 +1112,7 @@ consistent
 The first term 
 \begin_inset Formula 
 \[
-\widehat{Q}=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}Q=E\left[x_{i}x_{i}'\right].
+\widehat{Q}=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}Q=E\left[x_{i}x_{i}'\right],
 \]
 
 \end_inset
@@ -1129,7 +1130,11 @@ No matter whether
 \end_inset
 
  is an i.i.d., i.n.i.d., or dependent sample, as long as the convergence in probability
- holds for the above two expressions, we have 
+ holds for the above two expressions and 
+\begin_inset Formula $Q$
+\end_inset
+
+ is an invertible matrix, we have 
 \begin_inset Formula $\widehat{\beta}-\beta\stackrel{p}{\to}Q^{-1}0=0$
 \end_inset
 
@@ -1176,17 +1181,17 @@ In finite sample,
 
 \begin_layout Standard
 We know from the previous section that 
-\begin_inset Formula $\hat{\beta}-\beta$
+\begin_inset Formula $\hat{\beta}-\beta\stackrel{p}{\to}0$
 \end_inset
 
  degenerates to a constant.
  To study its distribution, we must scale it up by a proper multiplier so
  that in the limit it neither degenerates nor explodes.
- If we multiply it by 
+ The suitable scaling factor is 
 \begin_inset Formula $\sqrt{n}$
 \end_inset
 
-, we have 
+:
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\widehat{\beta}-\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}e_{i}.
@@ -1264,20 +1269,56 @@ Up to now we have derived the asymptotic distribution of
 \end_inset
 
 .
- (Of course, there are other ways to estimate the asymptotic variance.) Then
- a feasible version about the distribution of 
+ (Of course, there are other ways to estimate the asymptotic variance.) A
+ feasible version about the distribution of 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
  is 
 \begin_inset Formula 
 \[
-\widehat{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right)
+\widehat{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right).
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+In the special case of homoskedasticity, 
+\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]=E\left[x_{i}x_{i}'E\left[e_{i}^{2}|X\right]\right]=\sigma^{2}E\left[x_{i}x_{i}'\right]=\sigma^{2}Q$
+\end_inset
+
+ so that 
+\begin_inset Formula 
+\[
+n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}Q\right).
+\]
+
+\end_inset
+
+Again by the continuous mapping theorem,
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}Q^{-1}\times N\left(0,\sigma^{2}Q\right)\sim N\left(0,\sigma^{2}Q^{-1}\right).
+\]
+
+\end_inset
+
+We can estimate the unknown parameter 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ by either 
+\begin_inset Formula $\widehat{\sigma}^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)$
+\end_inset
+
+ or 
+\begin_inset Formula $\widehat{\sigma}^{2}=\widehat{e}'\widehat{e}/n$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1329,10 +1370,16 @@ name "estimation-of-the-variance"
 \end_layout
 
 \begin_layout Standard
-To show the finiteness of the variance, 
-\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right].$
+We show all elements of 
+\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]$
 \end_inset
 
+ is finite.
+ That is, 
+\begin_inset Formula $\left\Vert \Sigma\right\Vert _{\infty}:=\max_{i,j\leq K}\left|\sigma_{ij}\right|<\infty$
+\end_inset
+
+.
  Let 
 \begin_inset Formula $z_{i}=x_{i}e_{i}$
 \end_inset
