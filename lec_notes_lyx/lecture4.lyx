@@ -114,9 +114,6 @@ Notation:
 
 \begin_layout Section
 Hypothesis Testing
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "hypothesis-testing"
@@ -178,8 +175,8 @@ alternative hypothesis
 \emph on
 Hypothesis testing
 \emph default
- is a decision whether to accept the null hypothesis or to reject it according
- to the observed evidence.
+ is a decision whether to accept the null hypothesis or to reject it based
+ on the observed evidence.
  
 \end_layout
 
@@ -197,7 +194,27 @@ simple hypothesis
 composite hypothesis
 \emph default
 .
- 
+ For example, if the parameter space 
+\begin_inset Formula $\Theta=\mathbb{R}$
+\end_inset
+
+, then 
+\begin_inset Formula $\Theta_{0}=\left\{ 0\right\} $
+\end_inset
+
+ (or equivalently 
+\begin_inset Formula $\theta_{0}=0$
+\end_inset
+
+) is a simple hypothesis, while 
+\begin_inset Formula $\Theta_{0}=(-\infty,0]$
+\end_inset
+
+ (or equivalently 
+\begin_inset Formula $\theta_{0}\leq0$
+\end_inset
+
+) is a composite hypothesis.
 \end_layout
 
 \begin_layout Itemize
@@ -208,7 +225,7 @@ test function
  is a mapping 
 \begin_inset Formula 
 \[
-\phi:\mathcal{X}^{n}\mapsto\left\{ 0,1\right\} ,
+\phi_{\theta}:\mathcal{X}^{n}\mapsto\left\{ 0,1\right\} ,
 \]
 
 \end_inset
@@ -218,16 +235,21 @@ where
 \end_inset
 
  is the sample space.
- We accept the null hypothesis if 
-\begin_inset Formula $\phi\left(\mathbf{x}\right)=0$
+ The null hypothesis is accepted if 
+\begin_inset Formula $\phi_{\theta}\left(\mathbf{x}\right)=0$
 \end_inset
 
-, or reject it if 
-\begin_inset Formula $\phi\left(\mathbf{x}\right)=1$
+, or rejected if 
+\begin_inset Formula $\phi_{\theta}\left(\mathbf{x}\right)=1$
 \end_inset
 
 .
+ Notice that the test function depends on the hypothesized parameter value
  
+\begin_inset Formula $\theta$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -236,7 +258,7 @@ The
 acceptance region
 \emph default
  is defined as 
-\begin_inset Formula $A_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi\left(\mathbf{x}\right)=0\right\} ,$
+\begin_inset Formula $A_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi_{\theta}\left(\mathbf{x}\right)=0\right\} ,$
 \end_inset
 
  and the 
@@ -244,10 +266,10 @@ acceptance region
 rejection region
 \emph default
  is 
-\begin_inset Formula $R_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi\left(\mathbf{x}\right)=1\right\} .$
+\begin_inset Formula $R_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi_{\theta}\left(\mathbf{x}\right)=1\right\} .$
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Itemize
@@ -255,18 +277,14 @@ The
 \emph on
 power function
 \emph default
- 
-\begin_inset Formula $\beta:\Theta\mapsto[0,1]$
-\end_inset
-
- of the test 
-\begin_inset Formula $\phi$
+ of a test 
+\begin_inset Formula $\phi_{\theta}$
 \end_inset
 
  is 
 \begin_inset Formula 
 \[
-\beta_{\phi}\left(\theta\right)=P_{\theta}\left(\phi\left(\mathbf{X}\right)=1\right)=E_{\theta}\left(\phi\left(\mathbf{X}\right)\right).
+\beta_{\phi}\left(\theta\right)=P\left(\left\{ \phi_{\theta}\left(\mathbf{X}\right)=1\right\} \right)=E\left(\phi_{\theta}\left(\mathbf{X}\right)\right).
 \]
 
 \end_inset
@@ -276,7 +294,6 @@ The power function measures, at a given point
 \end_inset
 
 , the probability that the test function rejects the null.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -284,19 +301,11 @@ The
 \emph on
 power
 \emph default
- of 
-\begin_inset Formula $\phi$
-\end_inset
-
- at 
-\begin_inset Formula $\theta$
-\end_inset
-
- for some 
+ of of a test for some 
 \begin_inset Formula $\theta\in\Theta_{1}$
 \end_inset
 
- is defined as the value of 
+ is the value of 
 \begin_inset Formula $\beta_{\phi}\left(\theta\right)$
 \end_inset
 
@@ -305,12 +314,8 @@ power
 \emph on
 size
 \emph default
- of the test 
-\begin_inset Formula $\phi$
-\end_inset
-
- is define as 
-\begin_inset Formula $\alpha=\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right).$
+ of the test is 
+\begin_inset Formula $\alpha:=\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right).$
 \end_inset
 
  Notice that the definition of power depends on a 
@@ -321,7 +326,7 @@ size
 \begin_inset Formula $\theta$
 \end_inset
 
- as it takes the supremum over the set of null 
+ due to the supremum over the set of null 
 \begin_inset Formula $\Theta_{0}$
 \end_inset
 
@@ -338,7 +343,7 @@ level
 \begin_inset Formula $\phi$
 \end_inset
 
- is a value 
+ is any value 
 \begin_inset Formula $\alpha\in\left(0,1\right)$
 \end_inset
 
@@ -367,18 +372,22 @@ level
 \end_layout
 
 \begin_layout Verbatim
+
      | decision     |  reject $H_{1}$  | reject $H_{0}$
 \end_layout
 
 \begin_layout Verbatim
+
      |--------------|------------------| ---------------
 \end_layout
 
 \begin_layout Verbatim
+
      | $H_{0}$ true |     correct      | Type I error
 \end_layout
 
 \begin_layout Verbatim
+
      | $H_{0}$ false| Type II error    |   correct
 \end_layout
 
@@ -395,7 +404,7 @@ P
 \begin_inset Formula $H_{0}$
 \end_inset
 
- true) 
+ is true) 
 \end_layout
 
 \begin_layout Itemize
@@ -411,7 +420,7 @@ P
 \begin_inset Formula $H_{0}$
 \end_inset
 
- false) 
+ is false) 
 \end_layout
 
 \begin_layout Itemize
@@ -479,7 +488,11 @@ The philosophy on the hypothesis testing has been debated for centuries.
 Example
 \series default
  A trivial test function, 
-\begin_inset Formula $\phi(\mathbf{X})=1\left\{ 0\leq U\leq\alpha\right\} $
+\begin_inset Formula $\phi_{\theta}(\mathbf{X})=1\left\{ 0\leq U\leq\alpha\right\} $
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta\in\Theta$
 \end_inset
 
 , where 
@@ -495,8 +508,26 @@ Example
 \end_inset
 
  but no power.
- Another trivial test function 
-\begin_inset Formula $\phi\left(\mathbf{X}\right)=1$
+ We say a test is 
+\emph on
+unbiased
+\emph default
+ if 
+\begin_inset Formula $\beta_{\phi}\left(\theta\right)>\alpha$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+.
+ The trivial test mentioned here is not a unbiased one.
+ On the other extreme, the trivial test function 
+\begin_inset Formula $\phi_{\theta}\left(\mathbf{X}\right)=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta$
 \end_inset
 
  has the biggest power but useless size.
@@ -511,7 +542,7 @@ Example
 
 \begin_layout Standard
 Usually, we design a test by proposing a test statistic 
-\begin_inset Formula $T_{n}:\mathcal{X}^{n}\mapsto\mathbb{R}^{+}$
+\begin_inset Formula $T_{n}:\mathcal{X}^{n}\times\Theta\mapsto\mathbb{R}^{+}$
 \end_inset
 
  and a critical value 
@@ -530,7 +561,7 @@ Usually, we design a test by proposing a test statistic
 , we write the test function as 
 \begin_inset Formula 
 \[
-\phi\left(\mathbf{X}\right)=1\left\{ T_{n}\left(\mathbf{X}\right)>c_{1-\alpha}\right\} .
+\phi_{\theta}\left(\mathbf{X}\right)=1\left\{ T_{n}\left(\mathbf{X},\theta\right)>c_{1-\alpha}\right\} .
 \]
 
 \end_inset
@@ -539,7 +570,7 @@ To ensure such a
 \begin_inset Formula $\phi\left(\mathbf{x}\right)$
 \end_inset
 
- has correct size, we figure out the distribution of 
+ has correct size, we need to figure out the distribution of 
 \begin_inset Formula $T_{n}$
 \end_inset
 
@@ -600,7 +631,7 @@ Example
 , we can construct a test function 
 \begin_inset Formula 
 \[
-\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)=1\left\{ \left\{ \sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right\} \cup\left\{ \sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right\} \right\} ,
+\phi_{\theta_{1}=\theta_{2}=0}\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)=1\left\{ \left\{ \sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right\} \cup\left\{ \sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right\} \right\} ,
 \]
 
 \end_inset
@@ -617,7 +648,7 @@ where
  The level of this test is 
 \begin_inset Formula 
 \[
-\begin{aligned}P_{\theta_{1}=\theta_{2}=0}\left(\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) & \leq P_{\theta_{1}=0}\left(\sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right)+P_{\theta_{2}=0}\left(\sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right)\\
+\begin{aligned}P\left(\phi_{\theta_{1}=\theta_{2}=0}\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) & \leq P\left(\sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right)+P\left(\sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right)\\
  & =\alpha/2+\alpha/2=\alpha.
 \end{aligned}
 \]
@@ -629,11 +660,15 @@ where the inequality follows by the
 Bonferroni inequality
 \emph default
  
-\begin_inset Formula $P\left(A\cup B\right)\leq P\left(A\right)+P\left(B\right)$
+\begin_inset Formula 
+\[
+P\left(A\cup B\right)\leq P\left(A\right)+P\left(B\right).
+\]
+
 \end_inset
 
-.
- Therefore, the level of 
+(The seemingly trivial Bonferroni inequality is useful in many proofs of
+ probability results.) Therefore, the level of 
 \begin_inset Formula $\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)$
 \end_inset
 
@@ -769,7 +804,7 @@ where
 \begin_inset Formula $N=\frac{\bar{X}-\theta}{1/\sqrt{6}}$
 \end_inset
 
- follows standard normal, and 
+ follows the standard normal, and 
 \begin_inset Formula $\Phi$
 \end_inset
 
@@ -786,7 +821,7 @@ where
  Thus the test function 
 \begin_inset Formula 
 \[
-\phi\left(\mathbf{X}\right)=1\left\{ \bar{X}\geq1.64/\sqrt{6}\right\} 
+\phi_{\theta=0}\left(\mathbf{X}\right)=1\left\{ \bar{X}\geq1.64/\sqrt{6}\right\} 
 \]
 
 \end_inset
@@ -814,13 +849,13 @@ Another commonly used indicator in hypothesis testing is
 -value: 
 \begin_inset Formula 
 \[
-\sup_{\theta\in\Theta_{0}}P_{\theta}\left(T_{n}\left(\mathbf{x}\right)\leq T_{n}\left(\mathbf{X}\right)\right).
+\sup_{\theta\in\Theta_{0}}P\left(T_{n}\left(\mathbf{x},\theta\right)\leq T_{n}\left(\mathbf{X},\theta\right)\right).
 \]
 
 \end_inset
 
 In the above expression, 
-\begin_inset Formula $T_{n}\left(\mathbf{x}\right)$
+\begin_inset Formula $T_{n}\left(\mathbf{x},\theta\right)$
 \end_inset
 
  is the realized value of the test statistic 
@@ -828,7 +863,7 @@ In the above expression,
 \end_inset
 
 , while 
-\begin_inset Formula $T_{n}\left(\mathbf{X}\right)$
+\begin_inset Formula $T_{n}\left(\mathbf{X},\theta\right)$
 \end_inset
 
  is the random variable generated by 
@@ -850,11 +885,11 @@ In the above expression,
 \end_inset
 
 -value is the probability that we observe 
-\begin_inset Formula $T_{n}(\mathbf{X})$
+\begin_inset Formula $T_{n}(\mathbf{X},\theta)$
 \end_inset
 
  being greater than the realized 
-\begin_inset Formula $T_{n}(\mathbf{x})$
+\begin_inset Formula $T_{n}(\mathbf{x},\theta)$
 \end_inset
 
  if the null hypothesis is true.
@@ -870,11 +905,8 @@ not
  Under the frequentist perspective, the null hypothesis is either true or
  false, with certainty.
  The randomness of a test comes only from sampling, not from the hypothesis.
-\end_layout
-
-\begin_layout Standard
-It measures whether the data is consistent with the null hypothesis, or
- whether the evidence from the data is compatible with the null hypothesis.
+ It measures whether the dataset is consistent with the null hypothesis,
+ or whether the evidence from the data is compatible with the null hypothesis.
  
 \begin_inset Formula $p$
 \end_inset
@@ -888,7 +920,51 @@ It measures whether the data is consistent with the null hypothesis, or
 \begin_inset Formula $\alpha$
 \end_inset
 
-, the test rejects the null hypothesis.
+, the test rejects the null.
+\end_layout
+
+\begin_layout Standard
+So far we have been talking about hypothesis testing in finite sample.
+ The discussion and terminologies can be carried over to the asymptotic
+ world when 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ If we denote the power function as 
+\begin_inset Formula $\beta_{n,\phi}\left(\theta\right)$
+\end_inset
+
+, in which we make its dependence on the sample size 
+\begin_inset Formula $n$
+\end_inset
+
+ explicit, the test is of asymptotic size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ if 
+\begin_inset Formula $\limsup_{n\to\infty}\beta_{n,\phi}\left(\theta\right)\leq\alpha$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta\in\Theta_{0}$
+\end_inset
+
+.
+ A test is 
+\emph on
+consistent
+\emph default
+ if 
+\begin_inset Formula $\beta_{n,\phi}\left(\theta\right)\to1$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -929,9 +1005,31 @@ interval estimator
 \end_inset
 
 .
+ When 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is of one dimension, we usually call the interval estimator 
+\emph on
+confidence interval
+\emph default
+.
+ When 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is of multiple dimensions, we call the it 
+\emph on
+confidence region
+\emph default
+ and it of course includes the one-dimensional 
+\begin_inset Formula $\theta$
+\end_inset
+
+ as a special case.
  The coverage probability is the frequency that the interval estimator captures
  the true parameter that generates the sample (From the frequentist perspective,
- the parameter is fixed while the region is random).
+ the parameter is fixed while the confidence region is random).
  It is 
 \emph on
 not
@@ -940,8 +1038,9 @@ not
 \begin_inset Formula $\theta$
 \end_inset
 
- is inside the given region (From the Bayesian perspective, the parameter
- is random while the region is fixed conditional on 
+ is inside the given confidence interval (From the Bayesian perspective,
+ the parameter is random while the confidence region is fixed conditional
+ on 
 \begin_inset Formula $\mathbf{X}$
 \end_inset
 
@@ -949,7 +1048,11 @@ not
 \end_layout
 
 \begin_layout Standard
-Suppose a random sample of size 6 is generated from 
+
+\series bold
+Exercise
+\series default
+: Suppose a random sample of size 6 is generated from 
 \begin_inset Formula 
 \[
 \left(X_{1},\ldots,X_{6}\right)\sim\text{i.i.d. }N\left(\theta,1\right).
@@ -957,7 +1060,7 @@ Suppose a random sample of size 6 is generated from
 
 \end_inset
 
-Find the coverage probability of the random interval 
+Find the coverage probability of the random interval is
 \begin_inset Formula 
 \[
 \left[\bar{X}-1.96/\sqrt{6},\bar{X}+1.96/\sqrt{6}\right].
@@ -969,16 +1072,23 @@ Find the coverage probability of the random interval
 \end_layout
 
 \begin_layout Standard
-Hypothesis testing and confidence interval are closely related.
- Sometimes it is difficult to directly construct the confidence interval,
- but easier to test a hypothesis.
- One way to construct confidence interval is by 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hypothesis testing and confidence region are closely related.
+ Sometimes it is difficult to directly construct the confidence region,
+ but easy to test a hypothesis.
+ One way to construct confidence region is by 
 \emph on
-inverting a corresponding test
+inverting a test
 \emph default
 .
  Suppose 
-\begin_inset Formula $\phi$
+\begin_inset Formula $\phi_{\theta}$
 \end_inset
 
  is a test of size 
@@ -993,20 +1103,33 @@ inverting a corresponding test
  is constructed as 
 \begin_inset Formula 
 \[
-C\left(\mathbf{x}\right)=\left\{ \theta\in\Theta:\phi_{\theta}\left(\mathbf{x}\right)=0\right\} ,
+C\left(\mathbf{X}\right)=\left\{ \theta\in\Theta:\phi_{\theta}\left(\mathbf{X}\right)=0\right\} .
 \]
 
 \end_inset
 
-then its coverage probability 
+For any 
+\begin_inset Formula $\theta\in\Theta_{0}$
+\end_inset
+
+, its coverage probability 
 \begin_inset Formula 
 \[
-P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)=1-P_{\theta}\left(\phi_{\theta}\left(\mathbf{X}\right)=1\right)=1-\alpha.
+P\left(\theta\in C\left(\mathbf{X}\right)\right)=P\left(\left\{ \phi_{\theta}\left(\mathbf{X}\right)=0\right\} \right)=1-P\left(\left\{ \phi_{\theta}\left(\mathbf{X}\right)=1\right\} \right)=1-\beta_{\phi}\left(\theta\right)\geq1-\alpha
 \]
 
 \end_inset
 
+where the last inequality follows as 
+\begin_inset Formula $\beta_{\phi}\left(\theta\right)\leq\alpha$
+\end_inset
 
+.
+ If 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+ is a singleton, the equality holds.
 \end_layout
 
 \begin_layout Section
@@ -1075,7 +1198,7 @@ where
 Here is a classical example to illustrate the Bayesian approach of statistical
  inference.
  Suppose we have an iid sample 
-\begin_inset Formula $(X_{1},\ldots,X_{n})$
+\begin_inset Formula $\mathbf{X}_{n}=(X_{1},\ldots,X_{n})$
 \end_inset
 
  drawn from a normal distribution with unknown 
@@ -1087,7 +1210,7 @@ Here is a classical example to illustrate the Bayesian approach of statistical
 \end_inset
 
 .
- For a researcher holds a prior distribution 
+ If a researcher's prior distribution 
 \begin_inset Formula $\theta\sim N(\theta_{0},\sigma_{0}^{2})$
 \end_inset
 
@@ -1149,7 +1272,12 @@ In contrast, a frequentist will estimate
 
 \end_inset
 
+For any finite 
+\begin_inset Formula $n$
+\end_inset
 
+, the Bayesian credible set and the frequentist confidence interval are
+ different.
 \end_layout
 
 \begin_layout Section
@@ -1334,7 +1462,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\sqrt{n}R\left(\widehat{\beta}-\beta\right) & =\sqrt{n}\widehat{\beta}_{1}\sim N\left(0,\Omega_{11}\right)
+\sqrt{n}R\left(\widehat{\beta}-\beta\right) & =\sqrt{n}\widehat{\beta}_{1}\stackrel{d}{\to}N\left(0,\Omega_{11}\right)
 \end{align*}
 
 \end_inset
@@ -1346,7 +1474,7 @@ where
 Therefore, 
 \begin_inset Formula 
 \[
-\sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}=\sqrt{\frac{\Omega_{11}}{\widehat{\Omega}_{11}}}\sqrt{n}\frac{\widehat{\beta}_{1}}{\Omega_{11}^{1/2}}
+\sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}=\sqrt{\frac{\Omega_{11}}{\widehat{\Omega}_{11}}}\sqrt{n}\frac{\widehat{\beta}_{1}}{\sqrt{\Omega_{11}}}
 \]
 
 \end_inset
@@ -1379,6 +1507,13 @@ t
 \emph default
 -statistic.
  The following example gives a test about a joint hypothesis.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1423,6 +1558,13 @@ and
 \end_inset
 
 , it is routine to construct the test.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1497,8 +1639,8 @@ where
 
 \begin_layout Standard
 In the example of linear regression, the optimal experience level can be
- found by setting the first order condition with respective to experience
- to set, 
+ found by setting to zero the first order condition with respective to experienc
+e, 
 \begin_inset Formula $\beta_{3}+2\beta_{4}\mbox{experience}^{*}=0$
 \end_inset
 
@@ -1550,7 +1692,7 @@ Since
 \begin_inset Formula $\widehat{\beta}\stackrel{p}{\to}\beta_{0}$
 \end_inset
 
-, by the continuous mapping theorem theorem, if 
+, by the continuous mapping theorem, if 
 \begin_inset Formula $\beta_{0,4}\neq0$
 \end_inset
 
@@ -1576,14 +1718,15 @@ However, we can equivalently state the null hypothesis as
 \end_inset
 
  and we can construct a Wald statistic accordingly.
- In general, a linear hypothesis is preferred to a nonlinear one, due to
- the approximation error in the delta method under the null and more importantly
- the invalidity of the Taylor expansion under the alternative.
+ Asymptotically equivalent though, in general a linear hypothesis is preferred
+ to a nonlinear one, due to the approximation error in the delta method
+ under the null and more importantly the invalidity of the Taylor expansion
+ under the alternative.
  It also highlights the problem of Wald test being 
 \emph on
 variant
 \emph default
- for re-parametrization.
+ to re-parametrization.
 \end_layout
 
 \begin_layout Subsection
