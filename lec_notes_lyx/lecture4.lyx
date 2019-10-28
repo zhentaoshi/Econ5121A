@@ -371,22 +371,18 @@ level
 \end_layout
 
 \begin_layout Verbatim
-
      | decision     |  reject $H_{1}$  | reject $H_{0}$
 \end_layout
 
 \begin_layout Verbatim
-
      |--------------|------------------| ---------------
 \end_layout
 
 \begin_layout Verbatim
-
      | $H_{0}$ true |     correct      | Type I error
 \end_layout
 
 \begin_layout Verbatim
-
      | $H_{0}$ false| Type II error    |   correct
 \end_layout
 
@@ -630,13 +626,13 @@ Example
 , we can construct a test function 
 \begin_inset Formula 
 \[
-\phi_{\theta_{1}=\theta_{2}=0}\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)=1\left\{ \left\{ \sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right\} \cup\left\{ \sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right\} \right\} ,
+\phi_{\theta_{1}=\theta_{2}=0}\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)=1\left\{ \left\{ \sqrt{n}\left|\overline{X}_{1}\right|\geq z_{1-\alpha/4}\right\} \cup\left\{ \sqrt{n}\left|\overline{X}_{2}\right|\geq z_{1-\alpha/4}\right\} \right\} ,
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $c_{1-\alpha/4}$
+\begin_inset Formula $z_{1-\alpha/4}$
 \end_inset
 
  is the 
@@ -647,7 +643,7 @@ where
  The level of this test is 
 \begin_inset Formula 
 \[
-\begin{aligned}P\left(\phi_{\theta_{1}=\theta_{2}=0}\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) & \leq P\left(\sqrt{n}\left|\overline{X}_{1}\right|\geq c_{1-\alpha/4}\right)+P\left(\sqrt{n}\left|\overline{X}_{2}\right|\geq c_{1-\alpha/4}\right)\\
+\begin{aligned}P\left(\phi_{\theta_{1}=\theta_{2}=0}\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) & \leq P\left(\sqrt{n}\left|\overline{X}_{1}\right|\geq z_{1-\alpha/4}\right)+P\left(\sqrt{n}\left|\overline{X}_{2}\right|\geq z_{1-\alpha/4}\right)\\
  & =\alpha/2+\alpha/2=\alpha.
 \end{aligned}
 \]
