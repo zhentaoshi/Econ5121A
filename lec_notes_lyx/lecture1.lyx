@@ -695,7 +695,7 @@ Even though in general
 \begin_deeper
 \begin_layout Proof
 The first-order condition gives 
-\begin_inset Formula $\frac{\partial}{\partial b}E\left[\left(m(x)-x'b\right)^{2}\right]=-2xE[(m(x)-x'b)]=0$
+\begin_inset Formula $\frac{\partial}{\partial b}E\left[\left(m(x)-x'b\right)^{2}\right]=-2E[x(m(x)-x'b)]=0$
 \end_inset
 
 .
