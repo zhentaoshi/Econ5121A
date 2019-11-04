@@ -91,11 +91,16 @@
 
 \begin_body
 
-\begin_layout Section
+\begin_layout Title
 Panel Data
 \end_layout
 
-\begin_layout Standard
+\begin_layout Author
+Zhentao Shi
+\end_layout
+
+\begin_layout Section
+Panel Data
 \begin_inset CommandInset label
 LatexCommand label
 name "panel-data"
@@ -173,9 +178,6 @@ The most important techniques of panel data estimation are the fixed effect
 
 \begin_layout Subsection
 Fixed Effect
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "fixed-effect"
@@ -645,7 +647,7 @@ where
 \begin_layout Standard
 The complicated formula of the RE estimator is not important because again
  it will be handled by an econometric package automatically.
- what is important is the conceptual difference of FE and RE on their treatment
+ What is important is the conceptual difference of FE and RE on their treatment
  of the unobservable individual heterogeneity.
 \end_layout
 

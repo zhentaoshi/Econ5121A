@@ -1243,7 +1243,7 @@ This posterior distribution depends on
 \begin_inset Formula $\sigma_{0}^{2}$
 \end_inset
 
- from the posterior.
+ from the prior.
  When the sample size is sufficiently large the posterior can be approximated
  by 
 \begin_inset Formula $N(\bar{x},\sigma^{2}/n)$
@@ -1267,12 +1267,16 @@ In contrast, a frequentist will estimate
 
 \end_inset
 
-For any finite 
+The Bayesian credible set and the frequentist confidence interval are different
+ for any finite 
 \begin_inset Formula $n$
 \end_inset
 
-, the Bayesian credible set and the frequentist confidence interval are
- different.
+, but they coincide when hen 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -1905,7 +1909,7 @@ Therefore
 and 
 \begin_inset Formula 
 \[
-\begin{aligned} & n\left(\tilde{\beta}-\beta\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right)\\
+\begin{aligned} & n\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\left(\tilde{\beta}-\widehat{\beta}\right)\\
  & =\frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
  & =\frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
 \end{aligned}
