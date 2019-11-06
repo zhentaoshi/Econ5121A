@@ -20,4 +20,4 @@ I have substantially updated my lecture notes this year to bring forward the tea
 
 I encourage anyone, in particular students taking my class, to contribute or improve the notes. Send me pull requests.
 
-**Important dates**: Midterm Oct 21. Final: TBD.
+**Important dates**: Midterm Oct 21. Final: Dec 11.
