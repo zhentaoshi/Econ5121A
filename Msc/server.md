@@ -1,5 +1,10 @@
 # Jupyter Server
 
+
+The following instruction was applicable in 2018.
+In 2019, I am looking for a solution from Binder.
+
+
 The `*.ipynb` files are the Ipython notebooks. They can be opened in two ways:
 
 1. Install Anaconda and R kernel on a local computer
