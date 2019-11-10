@@ -621,11 +621,8 @@ Under this assumption, we can consistently estimate the variances from the
 \end_layout
 
 \begin_layout Standard
-Again, we claim the asymptotic normality.
-\end_layout
-
-\begin_layout Standard
-If RE.1 and RE.2 are satisfied, then 
+We claim the asymptotic normality without proof.
+ If RE.1 and RE.2 are satisfied, then 
 \begin_inset Formula 
 \[
 \left(\widehat{\sigma}_{u}^{2}\left(W'\widehat{\mathbf{S}}^{-1}W\right)^{-1}\right)^{-1/2}\left(\widehat{\boldsymbol{\beta}}^{RE}-\boldsymbol{\beta}_{0}\right)\stackrel{d}{\to}N\left(0,I_{K+1}\right)
@@ -645,8 +642,8 @@ where
 \end_layout
 
 \begin_layout Standard
-The complicated formula of the RE estimator is not important because again
- it will be handled by an econometric package automatically.
+The complicated formula of the RE estimator is not important because it
+ is be automatically handled by an econometric package.
  What is important is the conceptual difference of FE and RE on their treatment
  of the unobservable individual heterogeneity.
 \end_layout
