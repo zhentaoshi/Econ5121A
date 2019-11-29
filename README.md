@@ -20,4 +20,4 @@ I have substantially updated my lecture notes this year to bring forward the tea
 
 I encourage anyone, in particular students taking my class, to contribute or improve the notes. Send me pull requests.
 
-**Important dates**: Midterm Oct 21. Final: Dec 11.
+**Important dates**: Midterm Oct 21. Final: 11:30am -- 2:15pm on Jan 10 (Fri), 2020, at CYT 209A
