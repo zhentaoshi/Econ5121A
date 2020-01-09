@@ -6,6 +6,10 @@
 \origin unavailable
 \textclass article
 \use_default_options false
+\begin_modules
+theorems-ams
+theorems-ams-extended
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package none
@@ -380,6 +384,10 @@ Assumption FE.2
 \begin_inset Formula $\mathrm{var}\left(\epsilon_{i}|\alpha_{i},\mathbf{x}_{i}\right)=\sigma_{\epsilon}^{2}I_{T}$
 \end_inset
 
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
 .
 \end_layout
 
@@ -422,6 +430,95 @@ If FE.1 and FE.2 are satisfied, then
 \end_inset
 
 
+\end_layout
+
+\begin_layout Proof
+Let 
+\begin_inset Formula $M_{\iota}=I_{T}-\frac{1}{T}\iota_{T}\iota_{T}'$
+\end_inset
+
+ be the within-group demeaner, and 
+\begin_inset Formula $M=I_{n}\otimes M_{\iota}$
+\end_inset
+
+.
+ The FE estimator can be explicitly written as 
+\begin_inset Formula 
+\[
+\widehat{\beta}_{2}^{FE}=\left(\tilde{X}'\tilde{X}\right)^{-1}\tilde{X}'\tilde{Y}=\left(X'MX\right)^{-1}X'MY.
+\]
+
+\end_inset
+
+So 
+\begin_inset Formula 
+\[
+\sqrt{nT}\left(\widehat{\beta}_{2}^{FE}-\beta_{2}^{0}\right)=\left(\frac{X'MX}{nT}\right)^{-1}\frac{X'M\epsilon}{\sqrt{nT}}=\left(\frac{\tilde{X}'\tilde{X}}{nT}\right)^{-1}\frac{\tilde{X}'\epsilon}{\sqrt{nT}}
+\]
+
+\end_inset
+
+Since
+\begin_inset Formula 
+\begin{align*}
+\mathrm{var}\left(\frac{\tilde{X}'\epsilon}{\sqrt{nT}}|X\right) & =\frac{1}{nT}E\left(X'M\epsilon\epsilon'MX|X\right)=\frac{1}{nT}X'ME\left(\epsilon\epsilon'|X\right)MX=\left(\frac{\tilde{X}'\tilde{X}}{nT}\right)\sigma^{2},
+\end{align*}
+
+\end_inset
+
+We apply a law of large numbers and conclude 
+\begin_inset Formula 
+\[
+\left(\tilde{X}'\tilde{X}\right)^{1/2}\left(\widehat{\beta}_{2}^{FE}-\beta_{2}^{0}\right)\stackrel{d}{\to}N\left(0,\sigma_{\epsilon}^{2}I_{K}\right).
+\]
+
+\end_inset
+
+For simplicity, suppose we can direct observe 
+\begin_inset Formula $\tilde{\epsilon}_{it}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula 
+\[
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{1}{n\left(T-1\right)}E\left[\sum_{i=1}^{n}\sum_{t=1}^{T}\tilde{\epsilon}_{it}^{2}\right] & =\frac{1}{n}\sum_{i=1}^{n}\frac{1}{T-1}E\left[\epsilon_{i}'M_{\iota}\epsilon_{i}\right]\\
+ & =\frac{1}{n}\sum_{i=1}^{n}\frac{1}{T-1}\mathrm{tr}\left(E\left[M_{\iota}E\left[\epsilon_{i}\epsilon_{i}'|\mathbf{x}_{i}\right]\right]\right)\\
+ & =\frac{\sigma_{\epsilon}^{2}}{n}\sum_{i=1}^{n}\frac{1}{T-1}\mathrm{tr}\left(M_{\iota}\right)=\sigma_{\epsilon}^{2}.
+\end{align*}
+
+\end_inset
+
+Although in reality we only observe 
+\begin_inset Formula $\widehat{\tilde{\epsilon}}_{it}$
+\end_inset
+
+, we can show that the estimation error between 
+\begin_inset Formula $\widehat{\tilde{\epsilon}}_{it}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{\epsilon}_{it}$
+\end_inset
+
+ is negligible.
+ Thus by the law of large numbers
+\begin_inset Formula 
+\[
+\widehat{\sigma}_{\epsilon}^{2}=\frac{1}{n\left(T-1\right)}\sum_{i=1}^{n}\sum_{t=1}^{T}\widehat{\tilde{\epsilon}}_{it}^{2}\stackrel{d}{\to}\frac{1}{n\left(T-1\right)}E\left[\sum_{i=1}^{n}\sum_{t=1}^{T}\tilde{\epsilon}_{it}^{2}\right]=\sigma_{\epsilon}^{2}
+\]
+
+\end_inset
+
+is a consistent estimator of the variance.
+ The stated conclusion follows.
 \end_layout
 
 \begin_layout Standard
