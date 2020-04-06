@@ -11,7 +11,7 @@ My lectures are based primarily on [Bruce Hansen's textbook](http://www.ssc.wisc
 I have substantially updated my lecture notes this year to bring forward the teaching of R and demonstrate its use along with theory.
 
 * [Course Syllabus](https://github.com/zhentaoshi/Econ5121A/blob/master/syllabus%202018.pdf)
-* [Lecture Notes](https://github.com/zhentaoshi/Econ5121A/tree/master/lec_notes_ipynb)
+* [Lecture Notes](https://github.com/zhentaoshi/Econ5121A/tree/master/lec_notes_lyx)
 * [Jupyter Notebooks (python)](https://mybinder.org/v2/gh/zhentaoshi/Econ5121A/master)
 
 
