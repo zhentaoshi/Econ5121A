@@ -1,4 +1,4 @@
-Identification is a slippery concept, perhaps because "identification" is such a common word that used and misused in various contexts. In econometrics, identification means, as OP pointed out, "假设我们的模型正确，在这个模型下可以找到一个确定的参数与数据匹配”。那些说identification来自于village fixed effect之类的人，they misunderstand the definition.   
+Identification is a slippery concept, perhaps because "identification" is such a common word that used and misused in various contexts. In econometrics, identification means, as OP pointed out, "假设我们的模型正确，在这个模型下可以找到一个确定的参数与数据匹配”。  
 
 
 A correctly specified model is the prerequisite for any discussion of identification. In reality, all models are wrong. Thus when talking about identification, we are indulged in an imaginary world. If in such a thought experiment we still cannot unique distinguish the true parameter of the data generating process, then identification fails. In other words, we cannot determine what is the true model no matter how large the sample is.   
