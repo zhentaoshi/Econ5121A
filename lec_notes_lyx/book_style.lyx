@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -32,6 +32,8 @@ theorems-ams-extended
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -61,6 +63,7 @@ theorems-ams-extended
 \suppress_date true
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -73,7 +76,10 @@ theorems-ams-extended
 \tocdepth 1
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -180,7 +186,7 @@ Panel Data
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "lecture7.lyx"
+filename "lecture6.lyx"
 
 \end_inset
 
@@ -194,7 +200,7 @@ Generalized Method of Moments
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "lecture8.lyx"
+filename "lecture7.lyx"
 
 \end_inset
 

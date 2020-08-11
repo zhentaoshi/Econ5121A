@@ -6,6 +6,12 @@
 
 
 
+### Description
+
+This is an entry-level Ph.D. econometrics course. Under the asymptotic framework, it covers estimation and inference of the regression models and the instrumental variable models. It focuses on theory --- applying statistical theory to econometric models. It is NOT about how to apply econometric methods to empirical data.
+
+
+
 ### Textbooks
 
 The lectures are based primarily on Bruce Hansen's textbooks:
@@ -35,7 +41,7 @@ I encourage anyone, in particular students taking my class, to contribute or imp
 
 ### Lecture Hours
 
-Friday 8:30—11:15 am. The course will be taught online until further notification.
+Friday 8:30—11:15 am. The course will be taught online until further notice.
 
 Dates: September 11, 18, 25; October 9, 16, 23, 30; November 6, 13, 20, 27; Dec 4 (12 lectures)
 
@@ -46,3 +52,9 @@ Dates: September 11, 18, 25; October 9, 16, 23, 30; November 6, 13, 20, 27; Dec 
 * Attendance (15%): open webcam in each class
 * Assignment (35%): hand in one week after assignment
 * Final (50%): open-book, but no electric devices are allowed
+
+
+
+### Prerequisites
+
+Undergraduate level *multivariate calculus* (two semesters), *linear algebra* (one semester), and *probability and statistics* (one semester). Undergraduate *econometrics* is a plus, though not necessary.
