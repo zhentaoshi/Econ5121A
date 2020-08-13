@@ -28,7 +28,6 @@ Both are downloadable for free.
 
 My lecture notes and code demonstrations can be found at
 
-* [Course Syllabus](https://github.com/zhentaoshi/Econ5121A/blob/master/syllabus%202018.pdf)
 * [Lecture Notes](https://github.com/zhentaoshi/Econ5121A/tree/master/lec_notes_lyx)
 * [Jupyter Notebooks (python)](https://mybinder.org/v2/gh/zhentaoshi/Econ5121A/master)
 
