@@ -12,6 +12,8 @@ handwriting_notes/*.*
 *notebook.tex
 *.tex
 
+*.lnk
+
 ## SWP
 *.bak
 *.aaa
