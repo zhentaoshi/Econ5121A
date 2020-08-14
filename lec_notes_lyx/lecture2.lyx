@@ -28,8 +28,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 11
-\spacing single
+\paperfontsize 12
+\spacing double
 \use_hyperref false
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
@@ -42,7 +42,7 @@
 \pdf_pdfusetitle false
 \pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 0
@@ -835,9 +835,6 @@ is an unbiased estimator of
 \end_inset
 
 -statistic
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
 T_{k} & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\\

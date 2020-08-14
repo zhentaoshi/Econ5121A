@@ -28,8 +28,8 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 11
-\spacing single
+\paperfontsize 12
+\spacing double
 \use_hyperref true
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
@@ -42,7 +42,7 @@
 \pdf_pdfusetitle false
 \pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 0
@@ -491,9 +491,6 @@ Cramér-Wold device
 
 \begin_layout Subsection
 Law of Large Numbers
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "law-of-large-numbers"
@@ -1049,9 +1046,6 @@ Delta method: if
 
 \begin_layout Section
 Asymptotic Properties of OLS
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "asymptotic-properties-of-ols"
@@ -1152,9 +1146,6 @@ No matter whether
 
 \begin_layout Subsection
 Asymptotic Normality
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "asymptotic-normality"
@@ -1322,22 +1313,7 @@ We can estimate the unknown parameter
 \end_layout
 
 \begin_layout Subsection
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-Estimation of the Variance*
-\end_layout
-
-\begin_layout Standard
+Estimation of the Variance
 \begin_inset CommandInset label
 LatexCommand label
 name "estimation-of-the-variance"

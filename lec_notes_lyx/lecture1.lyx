@@ -31,8 +31,8 @@ theorems-ams
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 11
-\spacing single
+\paperfontsize 12
+\spacing double
 \use_hyperref true
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
@@ -45,7 +45,7 @@ theorems-ams
 \pdf_pdfusetitle false
 \pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
 \papersize default
-\use_geometry true
+\use_geometry false
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 0
@@ -122,6 +122,11 @@ Notation
  random vector.
 \end_layout
 
+\begin_layout Standard
+For the convenience of online teaching in the fall semester of 2020, the
+ layout is modified with wide margins and line space for note taking.
+\end_layout
+
 \begin_layout Section
 Conditional Expectation
 \begin_inset CommandInset label
@@ -175,8 +180,12 @@ e=y-g\left(x\right)
 \end_inset
 
 .
- Which one is the best? To answer this question, we need to decide a criterion
- to compare different 
+ Which one is the best? 
+\end_layout
+
+\begin_layout Standard
+To answer this question, we need to decide a criterion to compare different
+ 
 \begin_inset Formula $g$
 \end_inset
 
@@ -216,6 +225,7 @@ Since the data are random, we average the loss function across the joint
 risk
 \emph default
 .
+ Risk is a deterministic quality with no randomness any more.
  For the quadratic loss function, the corresponding risk 
 \begin_inset Formula 
 \[
@@ -229,7 +239,7 @@ R\left(y,g\left(x\right)\right):=E\left[L\left(y,g\left(x\right)\right)\right]=E
 mean squared error
 \emph default
  (MSE).
- MSE is a deterministic quantity since the randomness is integrated out.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -248,7 +258,7 @@ name "prop:CEF"
 \end_inset
 
  The conditional mean function 
-\begin_inset Formula $m\left(x\right)=E\left[y|x\right]$
+\begin_inset Formula $m\left(x\right)=E\left[y|x\right]=\int yf\left(y|x\right)\mathrm{d}y$
 \end_inset
 
  minimizes MSE.
@@ -381,9 +391,6 @@ guess-and-verify.
 \end_inset
 
 , the MSE can be decomposed into three terms
-\end_layout
-
-\begin_layout Proof
 \begin_inset Formula 
 \[
 \begin{aligned}E\left[\left(y-g\left(x\right)\right)^{2}\right] & =E\left[\left(y-m(x)+m(x)-g(x)\right)^{2}\right]\\
@@ -429,8 +436,8 @@ is again irrelevant of
 \end_layout
 
 \begin_layout Standard
-Our perspective so far deviates from mainstream econometric textbooks, most
- of which assume that the dependent variable 
+Our perspective so far deviates from many econometric textbooks that assume
+ that the dependent variable 
 \begin_inset Formula $y$
 \end_inset
 
@@ -490,18 +497,14 @@ As discussed in the previous section, the conditional mean function
 
  is the function that minimizes the MSE.
  However, 
-\begin_inset Formula 
-\[
-m\left(x\right)=E\left[y|x\right]=\int yf\left(y|x\right)\mathrm{d}y
-\]
-
+\begin_inset Formula $m\left(x\right)=E\left[y|x\right]$
 \end_inset
 
-is a complex function of 
+ is a complex function of 
 \begin_inset Formula $x$
 \end_inset
 
-, as it depends on the joint distribution of 
+, for it depends on the joint distribution of 
 \begin_inset Formula $\left(y,x\right)$
 \end_inset
 
