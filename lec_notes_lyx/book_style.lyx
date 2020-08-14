@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass extbook
+\textclass book
 \begin_preamble
 
 \usepackage{fancyhdr}
@@ -40,10 +40,10 @@ theorems-ams-extended
 \bibtex_command default
 \index_command default
 \paperfontsize 11
-\spacing double
+\spacing single
 \use_hyperref false
 \papersize default
-\use_geometry false
+\use_geometry true
 \use_package amsmath 2
 \use_package amssymb 2
 \use_package cancel 0
@@ -93,7 +93,7 @@ theorems-ams-extended
 \begin_body
 
 \begin_layout Title
-Introductory Econometrics: A Companion
+A Primer of Econometrics
 \end_layout
 
 \begin_layout Author
@@ -116,7 +116,7 @@ Review of Probability
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "lecture1.lyx"
+filename "lecture0.lyx"
 
 \end_inset
 
@@ -130,7 +130,7 @@ Regression Model
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "lecture2.lyx"
+filename "lecture1.lyx"
 
 \end_inset
 
@@ -144,7 +144,7 @@ Least Squares
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "lecture3.lyx"
+filename "lecture2.lyx"
 
 \end_inset
 
@@ -158,7 +158,7 @@ Large Sample Theory
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "lecture4.lyx"
+filename "lecture3.lyx"
 
 \end_inset
 
@@ -172,7 +172,7 @@ Hypothesis Testing
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "lecture5.lyx"
+filename "lecture4.lyx"
 
 \end_inset
 
@@ -181,6 +181,20 @@ filename "lecture5.lyx"
 
 \begin_layout Chapter
 Panel Data
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "lecture5.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Endogeneity
 \end_layout
 
 \begin_layout Standard
