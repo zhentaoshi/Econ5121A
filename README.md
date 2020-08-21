@@ -40,7 +40,9 @@ I encourage anyone, in particular students taking my class, to contribute or imp
 
 ### Lecture Hours
 
-Friday 8:30—11:15 am. The course will be taught online until further notice.
+Friday 8:30—11:15 am. [Zoom link](https://cuhk.zoom.us/j/9168284819).
+
+The course will be taught online until further notice.
 
 Dates: September 11, 18, 25; October 9, 16, 23, 30; November 6, 13, 20, 27; Dec 4 (12 lectures)
 
