@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass report
 \use_default_options false
 \begin_modules
 theorems-bytype
@@ -94,12 +94,8 @@ theorems-bytype
 
 \begin_body
 
-\begin_layout Title
+\begin_layout Chapter
 Regression and Projection
-\end_layout
-
-\begin_layout Author
-Zhentao Shi
 \end_layout
 
 \begin_layout Standard
@@ -112,7 +108,7 @@ Notation
 \end_inset
 
  is a scale random variable, and 
-\begin_inset Formula $x$
+\begin_inset Formula $x=\left(x_{1},\ldots,x_{K}\right)'$
 \end_inset
 
  is a 
@@ -120,6 +116,22 @@ Notation
 \end_inset
 
  random vector.
+ Throughout this course, a vector is a 
+\emph on
+column
+\emph default
+ vector, i.e.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+a one-column matrix.
 \end_layout
 
 \begin_layout Standard
@@ -1070,6 +1082,32 @@ In this lecture, we cover the conditional mean model.
 .
  All analyses are conducted in population.
  We have not touched data yet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ 
+\backslash
+today}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

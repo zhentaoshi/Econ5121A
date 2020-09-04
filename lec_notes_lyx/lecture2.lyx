@@ -4,8 +4,11 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass report
 \use_default_options false
+\begin_modules
+theorems-bytype
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package none
@@ -91,12 +94,8 @@
 
 \begin_body
 
-\begin_layout Title
+\begin_layout Chapter
 Least Squares
-\end_layout
-
-\begin_layout Author
-Zhentao Shi
 \end_layout
 
 \begin_layout Standard
@@ -105,7 +104,7 @@ Notation:
 \end_inset
 
  is a scalar, and 
-\begin_inset Formula $x_{i}$
+\begin_inset Formula $x_{i}=\left(x_{i1},\ldots,x_{iK}\right)'$
 \end_inset
 
  is a 
@@ -114,7 +113,7 @@ Notation:
 
  vector.
  
-\begin_inset Formula $Y$
+\begin_inset Formula $Y=\left(y_{1},\ldots,y_{n}\right)'$
 \end_inset
 
  is an 
@@ -122,7 +121,21 @@ Notation:
 \end_inset
 
  vector, and 
-\begin_inset Formula $X$
+\begin_inset Formula 
+\[
+X=\left[\begin{array}{c}
+x_{1}'\\
+x_{2}'\\
+\vdots\\
+x_{n}'
+\end{array}\right]=\left[\begin{array}{cccc}
+x_{11} & x_{12} & \cdots & x_{1K}\\
+x_{21} & x_{22} & \cdots & x_{2K}\\
+\cdots & \cdots & \ddots & \vdots\\
+x_{n1} & x_{22} & \cdots & x_{nK}
+\end{array}\right]
+\]
+
 \end_inset
 
  is an 
@@ -163,26 +176,96 @@ As we have learned from the linear project model, the projection coefficient
  in the regression 
 \begin_inset Formula 
 \[
-\begin{aligned}y_{i} & =x'_{i}\beta+e_{i}\end{aligned}
+\begin{aligned}y & =x'\beta+e\end{aligned}
 \]
 
 \end_inset
 
 can be written as 
-\begin_inset Formula $\beta=\left(E\left[x_{i}x_{i}'\right]\right)^{-1}E\left[x_{i}y_{i}\right].$
+\begin_inset Formula $\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right].$
 \end_inset
 
- While population is something imaginary, in reality we possess a sample
- of 
-\begin_inset Formula $n$
+ We draw a pair of 
+\begin_inset Formula $\left(y,x\right)$
 \end_inset
 
- observations 
+ from the joint distribution, and we mark it as 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $i=1,\ldots,n$
+\end_inset
+
+.
+ We possess a 
+\emph on
+sample
+\emph default
+ 
 \begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
 \end_inset
 
 .
- We thus replace the population mean 
+\end_layout
+
+\begin_layout Remark
+Is 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ random or deterministic? Before we make the observation, they are treated
+ as random variables whose realized values are uncertain.
+ After we make the observation, they become deterministic values which cannot
+ change.
+ 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ are treated as random when we talk about statistical properties about quantitie
+s based it — the statistical properties of a given fixed number is meaningless.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+All probability descriptions are thought experiments before observation.
+ In reality, we have at hand fixed numbers (more recently, words, audio,
+ video, etc., which can all be represented in digital formats with 0 and
+ 1s) to feed into a computational operation, and the operation will return
+ one or some numbers.
+ All statistical interpretation about these numbers are drawn from the probabili
+stic thought experiments.
+ A 
+\emph on
+thought experiment
+\emph default
+ is an academic jargon for a 
+\emph on
+story
+\emph default
+ in plan language.
+ Under the axiomatic approach of probability theory, such stories are mathematic
+al consistent and coherent.
+ Their scientific value depends on how close is the probability model to
+ the 
+\emph on
+truth
+\emph default
+.
+ In this course, we take truth as some existing mechanism that generates
+ data, and part of the data are observable to a researcher.
+ Since this is not a philosophical course, we do not go further to ask:
+ What is truth? Is there truth? 
+\end_layout
+
+\begin_layout Standard
+Replace the population mean 
 \begin_inset Formula $E\left[\cdot\right]$
 \end_inset
 
@@ -1188,6 +1271,32 @@ Homoskedasticity is a restrictive assumption.
 
 .
  Under heteroskedasticity, Gauss-Markov theorem does not apply.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ 
+\backslash
+today}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
