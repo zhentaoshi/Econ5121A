@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass report
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -91,22 +91,19 @@
 
 \begin_body
 
-\begin_layout Section
+\begin_layout Chapter
 Probability
-\begin_inset CommandInset label
-LatexCommand label
-name "probability"
+\end_layout
 
-\end_inset
-
-
+\begin_layout Section
+Introduction
 \end_layout
 
 \begin_layout Standard
 Human beings are awed by uncertainty in daily life.
  In the old days, Egyptians consulted oracles, Hebrews inquired prophets,
  and Chinese counted on diviners to interpret tortoise shell or bone cracks.
- Even in today's Hong Kong fortunetellers are abundant.
+ Fortunetellers are abundant in today's Hong Kong.
 \end_layout
 
 \begin_layout Standard
@@ -123,8 +120,7 @@ Probability theory is a philosophy about uncertainty.
 
 \begin_layout Standard
 With the advent of big data, computer scientists have come up with a plethora
- of new algorithms that are aimed at revealing patterns from seemingly random
- data.
+ of new algorithms that are aimed at revealing patterns from data.
  
 \emph on
 Machine learning
@@ -133,42 +129,46 @@ Machine learning
 \emph on
 artificial intelligence
 \emph default
- (AI) become buzz words.
- They defeat best human Go players, automate manufacturers, power self-driving
- vehicles, recognize human faces, and recommend online purchases.
- Behind their industrial success, statistics sheds light on the behavior
- of these algorithms.
- While statistical theory is built on modern probability theory, the latter
- is so far the most promising paradigm to rationalize existing algorithms
+ become buzz words that attract popular attention.
+ They defeated best human Go players, automated manufacturers, powered self-driv
+ing vehicles, recognized human faces, and recommended online purchases.
+ Some of these industrial successes are based on statistical theory, and
+ statistical theory is based on probability theory.
+ Although this probabilistic approach is not the only perspective to understand
+ the behavior of machine learning and artificial intelligence, it offers
+ one of the most promising paradigms to rationalize existing algorithms
  and engineer new ones.
 \end_layout
 
 \begin_layout Standard
 Economics has been an empirical social science since Adam Smith (1723-1790).
- Many numerical anecdotes appear in his 
+ Many numerical observations and anecdotes were scattered in his 
 \emph on
 Wealth of Nations
 \emph default
  published in 1776.
- Ragnar Frisch (1895-1973) and Jan Tinbergen (1903-1994), two pioneers econometr
-icians, were awarded in 1969 the first Nobel Prize in economics.
+ Ragnar Frisch (1895-1973) and Jan Tinbergen (1903-1994), two pioneer econometri
+cians, were awarded in 1969 the first Nobel Prize in economics.
  Econometrics provides quantitative insights about economic data.
  It flourishes in real-world management practices, from households and firms
  up to governance at the global level.
- Today, the AI revolution is pumping fresh energy into research and exercise
- of econometric methods, while its very foundation is again modern probability
- theory.
+ Today, the big data revolution is pumping fresh energy into research and
+ exercise of econometric methods, while its very foundation is again modern
+ probability theory.
 \end_layout
 
 \begin_layout Standard
-In this preparatory course, we will have a brief introduction of the axiomatic
- probability theory along with familiar results covered in undergraduate
- 
+In this lecture, we will have a brief introduction of the axiomatic probability
+ theory along with familiar results covered in undergraduate 
 \emph on
 probability and statistics
 \emph default
 .
  This lecture note is at the level
+\end_layout
+
+\begin_layout Itemize
+Hansen (2020): Introduction to Econometrics, or
 \end_layout
 
 \begin_layout Itemize
@@ -183,15 +183,12 @@ Casella and Berger (2002): Statistical Inference (second edition)
 Interested readers may want to read this textbook for more examples.
 \end_layout
 
+\begin_layout Section
+Axiomatic Probability
+\end_layout
+
 \begin_layout Subsection
 Probability Space
-\begin_inset CommandInset label
-LatexCommand label
-name "probability-space"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -512,10 +509,14 @@ Let
 \end_inset
 
  is 
-\begin_inset Formula $\sigma(A)=\{\emptyset,\{1\},\{1,3\},\{3\},\{2,4,5,6\},\{2,3,4,5,6\},\{1,2,4,5,6\},\Omega\}$
+\begin_inset Formula 
+\[
+\sigma(A)=\{\emptyset,\{1\},\{1,3\},\{3\},\{2,4,5,6\},\{2,3,4,5,6\},\{1,2,4,5,6\},\Omega\}.
+\]
+
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -1682,16 +1683,17 @@ This formula is the well-known
 Bayes' Theorem
 \emph default
 .
-\end_layout
+\begin_inset Note Note
+status open
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \series bold
 Example:
@@ -1727,6 +1729,11 @@ status collapsed
 \end_inset
 
  is his or her application profile.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1928,6 +1935,32 @@ Below are some properties of conditional expectations
 
 \begin_layout Enumerate
 \begin_inset Formula $E\left[h\left(X\right)Y|X\right]=h\left(X\right)E\left[Y|X\right].$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ 
+\backslash
+today}
+\end_layout
+
 \end_inset
 
 
