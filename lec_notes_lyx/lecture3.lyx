@@ -4,8 +4,11 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass report
 \use_default_options false
+\begin_modules
+theorems-bytype
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package none
@@ -30,7 +33,7 @@
 \index_command default
 \paperfontsize 12
 \spacing double
-\use_hyperref true
+\use_hyperref false
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
@@ -82,7 +85,6 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\bullet 1 0 9 -1
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -92,37 +94,89 @@
 
 \begin_body
 
-\begin_layout Title
-Asymptotic Theory
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{3}
 \end_layout
 
-\begin_layout Author
-Zhentao Shi
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Least Squares
+\end_layout
+
+\begin_layout Standard
+Notation: 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ is a scalar, and 
+\begin_inset Formula $x_{i}=\left(x_{i1},\ldots,x_{iK}\right)'$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times1$
+\end_inset
+
+ vector.
+ 
+\begin_inset Formula $Y=\left(y_{1},\ldots,y_{n}\right)'$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector, and 
+\begin_inset Formula 
+\[
+X=\left[\begin{array}{c}
+x_{1}'\\
+x_{2}'\\
+\vdots\\
+x_{n}'
+\end{array}\right]=\left[\begin{array}{cccc}
+x_{11} & x_{12} & \cdots & x_{1K}\\
+x_{21} & x_{22} & \cdots & x_{2K}\\
+\cdots & \cdots & \ddots & \vdots\\
+x_{n1} & x_{22} & \cdots & x_{nK}
+\end{array}\right]
+\]
+
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times K$
+\end_inset
+
+ matrix.
 \end_layout
 
 \begin_layout Section
-Asymptotics
+Algebra of Least Squares 
 \begin_inset CommandInset label
 LatexCommand label
-name "asymptotics"
+name "algebra-of-least-squares"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Asymptotic theory is concerned about the behavior of statistics when the
- sample size is arbitrarily large.
- It is a useful approximation technique to simplify complicated finite-sample
- analysis.
 \end_layout
 
 \begin_layout Subsection
-Modes of Convergence
+OLS estimator 
 \begin_inset CommandInset label
 LatexCommand label
-name "modes-of-convergence"
+name "ols-estimator"
 
 \end_inset
 
@@ -130,1328 +184,1223 @@ name "modes-of-convergence"
 \end_layout
 
 \begin_layout Standard
-Convergence of a deterministic sequence 
-\begin_inset Formula $z_{1},z_{2},\ldots$
+As we have learned from the linear project model, the projection coefficient
+ 
+\begin_inset Formula $\beta$
 \end_inset
 
- means that for any 
-\begin_inset Formula $\varepsilon>0$
+ in the regression 
+\begin_inset Formula 
+\[
+\begin{aligned}y & =x'\beta+e\end{aligned}
+\]
+
 \end_inset
 
-, there exists an 
-\begin_inset Formula $N\left(\varepsilon\right)$
+can be written as 
+\begin_inset Formula 
+\begin{equation}
+\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right].\label{eq:pop_OLS}
+\end{equation}
+
 \end_inset
 
- such that for all 
-\begin_inset Formula $n>N\left(\varepsilon\right)$
+ We draw a pair of 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ from the joint distribution, and we mark it as 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $i=1,\ldots,n$
+\end_inset
+
+.
+ We possess a 
+\emph on
+sample
+\emph default
+ 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+Is 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ random or deterministic? Before we make the observation, they are treated
+ as random variables whose realized values are uncertain.
+ After we make the observation, they become deterministic values which cannot
+ change.
+ 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ are treated as random when we talk about statistical properties about quantitie
+s based it — the statistical properties of a given fixed number is meaningless.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+All probability descriptions are thought experiments before observation.
+ In reality, we have at hand fixed numbers (more recently, words, audio,
+ video, etc., which can all be represented in digital formats with 0 and
+ 1s) to feed into a computational operation, and the operation will return
+ one or some numbers.
+ All statistical interpretation about these numbers are drawn from the probabili
+stic thought experiments.
+ A 
+\emph on
+thought experiment
+\emph default
+ is an academic jargon for a 
+\emph on
+story
+\emph default
+ in plan language.
+ Under the axiomatic approach of probability theory, such stories are mathematic
+al consistent and coherent.
+ But mathematics is a tautological system, not science.
+ Their scientific value of a probability model depends on how close it is
+ to the 
+\emph on
+truth
+\emph default
+.
+ In this course, we suppose that the data are generated from some mechanism,
+ which is taken as the truth.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Since this is not a philosophical course, we do not go further to ask: What
+ is truth? Is there truth?
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Probabilists suppose there is a dragon and try to tell the dragon's behaviors.
+ Statisticians observe many snakes on earth, and try to tell what a dragon
+ looks like.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The sample mean is a natural estimator of the population mean.
+ Replace the population mean 
+\begin_inset Formula $E\left[\cdot\right]$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pop_OLS"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) by the sample mean 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\cdot$
+\end_inset
+
+, and the resulting estimator is 
+\begin_inset Formula 
+\[
+\widehat{\beta}=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}y_{i}=\left(X'X\right)^{-1}X'y.
+\]
+
+\end_inset
+
+This is one way to motivate the OLS estimator.
+ 
+\end_layout
+
+\begin_layout Standard
+Alternatively, we can derive the OLS estimator from minimizing the sum of
+ squared residuals 
+\begin_inset Formula $\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}$
+\end_inset
+
+, or equivalently 
+\begin_inset Formula 
+\[
+Q\left(\beta\right)=\frac{1}{2n}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}=\frac{1}{2n}\left(Y-X\beta\right)'\left(Y-X\beta\right),
+\]
+
+\end_inset
+
+where the factor 
+\begin_inset Formula $\frac{1}{2n}$
+\end_inset
+
+ is nonrandom and does not change the minimizer.
+ Solve the first-order condition 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\beta}Q\left(\beta\right)=-\frac{1}{n}X'\left(Y-X\beta\right)=0.
+\]
+
+\end_inset
+
+This necessary condition for optimality gives exactly the same 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+.
+ Moreover, the second-order condition 
+\begin_inset Formula 
+\[
+\frac{\partial^{2}}{\partial\beta\partial\beta'}Q\left(\beta\right)=\frac{1}{n}X'X
+\]
+
+\end_inset
+
+shows that 
+\begin_inset Formula $Q\left(\beta\right)$
+\end_inset
+
+ is convex in 
+\begin_inset Formula $\beta$
+\end_inset
+
+ due to the positive semi-definite matrix 
+\begin_inset Formula $X'X$
+\end_inset
+
+.
+ (
+\begin_inset Formula $Q\left(\beta\right)$
+\end_inset
+
+ is strictly convex in 
+\begin_inset Formula $\beta$
+\end_inset
+
+ if 
+\begin_inset Formula $X'X$
+\end_inset
+
+ is positive definite.)
+\end_layout
+
+\begin_layout Standard
+Here are some definitions and properties of the OLS estimator.
+\end_layout
+
+\begin_layout Itemize
+Fitted value: 
+\begin_inset Formula $\widehat{Y}=X\widehat{\beta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Projector: 
+\begin_inset Formula $P_{X}=X\left(X'X\right)^{-1}X$
+\end_inset
+
+; Annihilator: 
+\begin_inset Formula $M_{X}=I_{n}-P_{X}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{X}X=X$
+\end_inset
+
+; 
+\begin_inset Formula $X'P_{X}=X'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $M_{X}X=0$
+\end_inset
+
+; 
+\begin_inset Formula $X'M_{X}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{X}M_{X}=M_{X}P_{X}=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $AA=A$
+\end_inset
+
+, we call it an 
+\emph on
+idempotent
+\emph default
+ matrix.
+ Both 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{X}$
+\end_inset
+
+ are idempotent.
+\end_layout
+
+\begin_layout Itemize
+Residual: 
+\begin_inset Formula $\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=Y-X(X'X)^{-1}X'Y=(I-P_{X})Y=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $X'\widehat{e}=X'M_{X}e=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
+\end_inset
+
+ if 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ contains a constant.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+(Justification: 
+\begin_inset Formula $X'\widehat{e}=\left[\begin{array}{cccc}
+1 & 1 & \cdots & 1\\
+* & * & \cdots & *\\
+\cdots & \cdots & \ddots & \vdots\\
+* & * & \cdots & *
+\end{array}\right]\left[\begin{array}{c}
+\widehat{e}_{1}\\
+\widehat{e}_{2}\\
+\vdots\\
+\widehat{e}_{n}
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+0\\
+\vdots\\
+0
+\end{array}\right]$
+\end_inset
+
+ and the the first row implies 
+\begin_inset Formula $\sum_{i=1}^{n}\widehat{e}_{i}=0$
+\end_inset
+
+.)
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Goodness of Fit 
+\begin_inset CommandInset label
+LatexCommand label
+name "goodness-of-fit"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+revised up here 9/4/2020.
+ to add: R-squared is not a good measure of the goodness of modeling.
+\end_layout
+
+\begin_layout Plain Layout
+trended time series.
+\end_layout
+
+\begin_layout Plain Layout
+predictive regression.
+\end_layout
+
+\begin_layout Plain Layout
+Shanghai index?
+\end_layout
+
+\end_inset
+
+ The so-called 
+\emph on
+R-squared
+\emph default
+ is a popular measure of goodness-of-fit in the linear regression.
+ R-squared is well defined only when a constant is included in the regressors.
+ Let 
+\begin_inset Formula $M_{\iota}=I_{n}-\frac{1}{n}\iota\iota'$
+\end_inset
+
+, where 
+\begin_inset Formula $\iota$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector of 1's.
+ 
+\begin_inset Formula $M_{\iota}$
+\end_inset
+
+ is the 
+\emph on
+demeaner
+\emph default
+, in the sense that 
+\begin_inset Formula $M_{\iota}\left(z_{1},\ldots,z_{n}\right)'=\left(z_{1}-\overline{z},\ldots,z_{n}-\overline{z}\right)'$
+\end_inset
+
+, where 
+\begin_inset Formula $\bar{z}=\frac{1}{n}\sum_{i=1}^{n}z_{i}$
+\end_inset
+
+.
+ For any 
+\begin_inset Formula $X$
+\end_inset
+
+, we can decompose 
+\begin_inset Formula $Y=P_{X}Y+M_{X}Y=\widehat{Y}+\widehat{e}$
+\end_inset
+
+.
+ The total variation is 
+\begin_inset Formula 
+\[
+Y'M_{\iota}Y=\left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)=\widehat{Y}'M_{\iota}\widehat{Y}+2\widehat{Y}'M_{\iota}\widehat{e}+\widehat{e}'M_{\iota}\widehat{e}=\widehat{Y}'M_{\iota}\widehat{Y}+\widehat{e}'\widehat{e}
+\]
+
+\end_inset
+
+where the last equality follows by 
+\begin_inset Formula $M_{\iota}\widehat{e}=\widehat{e}$
+\end_inset
+
+ as 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
+\end_inset
+
+, and 
+\begin_inset Formula $\widehat{Y}'\widehat{e}=Y'P_{X}M_{X}e=0$
+\end_inset
+
+.
+ R-squared is defined as 
+\begin_inset Formula $\widehat{Y}'M_{\iota}\widehat{Y}/Y'M_{\iota}Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Frish-Waugh-Lovell Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "frish-waugh-lovell-theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Frish-Waugh-Lovell (FWL) theorem is an algebraic fact about the formula
+ of a subvector of the OLS estimator.
+ To derive the FWL theorem We need to use the inverse of partitioned matrix.
+ For a positive definite symmetric matrix 
+\begin_inset Formula $A=\begin{pmatrix}A_{11} & A_{12}\\
+A_{12}' & A_{22}
+\end{pmatrix}$
+\end_inset
+
+, the inverse can be written as 
+\begin_inset Formula 
+\[
+A^{-1}=\begin{pmatrix}\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & -\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1}A_{12}A_{22}^{-1}\\
+-A_{22}^{-1}A_{12}'\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & \left(A_{22}-A_{12}'A_{11}^{-1}A_{12}\right)^{-1}
+\end{pmatrix}.
+\]
+
+\end_inset
+
+In our context of OLS estimator, let 
+\begin_inset Formula $X=\left(\begin{array}{cc}
+X_{1} & X_{2}\end{array}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\widehat{\beta} & =\begin{pmatrix}\widehat{\beta}_{1}\\
+\widehat{\beta}_{2}
+\end{pmatrix}=(X'X)^{-1}X'Y\\
+ & =\left(\begin{pmatrix}X_{1}'\\
+X_{2}'
+\end{pmatrix}\begin{pmatrix}X_{1} & X_{2}\end{pmatrix}\right)^{-1}\begin{pmatrix}X_{1}'Y\\
+X_{2}'Y
+\end{pmatrix}\\
+ & =\begin{pmatrix}X_{1}'X_{1} & X_{1}'X_{2}\\
+X_{2}'X_{1} & X_{2}'X_{2}
+\end{pmatrix}^{-1}\begin{pmatrix}X_{1}'Y\\
+X_{2}'Y
+\end{pmatrix}\\
+ & =\begin{pmatrix}\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1} & -\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}\\
+* & *
+\end{pmatrix}\begin{pmatrix}X_{1}'Y\\
+X_{2}'Y
+\end{pmatrix}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The subvector
+\begin_inset Formula 
+\begin{align*}
+\widehat{\beta}_{1} & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'Y-\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}X_{2}'Y\\
+ & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}\left(X_{1}'Y-X_{1}'P_{X_{2}}Y\right)\\
+ & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'M_{X_{2}}Y.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notice that 
+\begin_inset Formula $\widehat{\beta}_{1}$
+\end_inset
+
+ can be obtained by the following:
+\end_layout
+
+\begin_layout Enumerate
+Regress 
+\begin_inset Formula $y$
+\end_inset
+
+ on 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, obtain residuals 
+\begin_inset Formula $\tilde{e}_{2}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Regress 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ on 
+\begin_inset Formula $X_{2}$
+\end_inset
+
+, obtain residuals 
+\begin_inset Formula $\tilde{X}_{2}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Regress 
+\begin_inset Formula $\tilde{e}_{2}$
+\end_inset
+
+ on 
+\begin_inset Formula $\tilde{X}_{2}$
+\end_inset
+
+, obtain OLS estimates 
+\begin_inset Formula $\widehat{\beta}_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Similar derivation can also be carried out in the population linear projection.
+ See Hansen (2019) Chapter 2.22-23.
+\end_layout
+
+\begin_layout Section
+Statistical Properties of Least Squares
+\begin_inset CommandInset label
+LatexCommand label
+name "statistical-properties-of-least-squares"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this section we return to the classical statistical framework under restricti
+ve distributional assumption 
+\begin_inset Formula $y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\gamma=\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Maximum Likelihood Estimation
+\begin_inset CommandInset label
+LatexCommand label
+name "maximum-likelihood-estimation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+conditional
+\emph default
+ likelihood of observing a 
+\emph on
+random sample
+\emph default
+ 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right),
+\]
+
+\end_inset
+
+and the (conditional) log-likelihood function is 
+\begin_inset Formula 
+\[
+L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.
+\]
+
+\end_inset
+
+The maximum likelihood estimator 
+\begin_inset Formula $\widehat{\beta}_{MLE}$
+\end_inset
+
+ can be found using the FOC:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\beta}L\left(\beta,\gamma\right)=\frac{1}{2\gamma}\sum_{i=1}^{n}2x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=0.
+\]
+
+\end_inset
+
+Rearranging the above equation in matrix form 
+\begin_inset Formula $X'Y=X'X\widehat{\beta}_{MLE}$
+\end_inset
+
+, we explicitly solve 
+\begin_inset Formula 
+\[
+\widehat{\beta}_{MLE}=(X'X)^{-1}X'Y.
+\]
+
+\end_inset
+
+The maximum likelihood estimator (MLE) coincides with the OLS estimator.
+ Similarly, another FOC gives 
+\begin_inset Formula $\widehat{\gamma}_{\mathrm{MLE}}=\widehat{e}'\widehat{e}/n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Classical Finite Sample Distribution
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "finite-sample-distribution"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can show the finite-sample exact distribution of 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ assuming the error term follows a Gaussian distribution.
+ 
+\emph on
+Finite sample distribution
+\emph default
+ means that the distribution holds for any 
+\begin_inset Formula $n$
+\end_inset
+
+; it is in contrast to 
+\emph on
+asymptotic distribution
+\emph default
+, which is a large sample approximation to the finite sample distribution.
+ Let the 
+\begin_inset Quotes eld
+\end_inset
+
+error term
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $e_{i}=y_{i}-x_{i}'\beta$
 \end_inset
 
 , we have 
-\begin_inset Formula $\left|z_{n}-z\right|<\varepsilon$
+\begin_inset Formula $e_{i}|x_{i}=y_{i}|x_{i}-x_{i}'\beta\sim N\left(0,\gamma\right)$
+\end_inset
+
+.
+ Since the conditional distribution of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ on 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is invariant with 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, the discrepancy 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ is statistical independent of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ Assume The estimator
+\begin_inset Formula 
+\[
+\widehat{\beta}=\left(X'X\right)^{-1}X'Y=\left(X'X\right)^{-1}X'\left(X'\beta+e\right)=\beta+\left(X'X\right)^{-1}X'e,
+\]
+
+\end_inset
+
+and its conditional distribution can be written as 
+\begin_inset Formula 
+\begin{align*}
+\widehat{\beta}|X & =\beta+\left(X'X\right)^{-1}X'e|X\\
+ & \sim\beta+\left(X'X\right)^{-1}X'\cdot N\left(0_{n},\sigma^{2}\cdot I_{n}\right)\\
+ & \sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right).
+\end{align*}
+
+\end_inset
+
+The 
+\begin_inset Formula $k$
+\end_inset
+
+-th element of the vector coefficient
+\begin_inset Formula 
+\[
+\widehat{\beta}_{k}|X=\eta_{k}'\widehat{\beta}|X\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\eta_{k}=\left(1\left\{ l=k\right\} \right)_{l=1,\ldots,K}$
+\end_inset
+
+ is the selector of the 
+\begin_inset Formula $k$
+\end_inset
+
+-th element.
+\end_layout
+
+\begin_layout Standard
+In reality, 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is an unknown parameter, and 
+\begin_inset Formula 
+\[
+s^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)=e'M_{X}e/\left(n-K\right)
+\]
+
+\end_inset
+
+is an unbiased estimator of 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ Consider the 
+\begin_inset Formula $t$
+\end_inset
+
+-statistic
+\begin_inset Formula 
+\begin{align*}
+T_{k} & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\\
+ & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\cdot\frac{\sqrt{\sigma^{2}}}{\sqrt{s^{2}}}\\
+ & =\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The numerator follows a standard normal, and the denominator follows 
+\begin_inset Formula $\frac{1}{n-K}\chi^{2}\left(n-K\right)$
+\end_inset
+
+.
+ Moreover, the numerator and the denominator are statistically independent
+ (Basu's theorem).
+ As a result, we conclude 
+\begin_inset Formula $T_{k}\sim t\left(n-K\right)$
+\end_inset
+
+.
+ This finite sample distribution is crucial when conducting statistical
+ inference.
+\end_layout
+
+\begin_layout Subsection
+Mean and Variance
+\begin_inset CommandInset label
+LatexCommand label
+name "mean-and-variance"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we relax the normality assumption and statistical independence.
+ Instead, we represent the regression model as 
+\begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{align*}
+E[e|X] & =0\\
+\mathrm{var}\left[e|X\right] & =\sigma^{2}I_{n}.
+\end{align*}
+
+\end_inset
+
+where the first condition is the 
+\emph on
+mean independence
+\emph default
+ assumption, and the second condition is the 
+\emph on
+homoskedasticity
+\emph default
+ assumption.
+ These assumptions are about the first and second 
+\emph on
+moments
+\emph default
+ of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ conditional on 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ Unlike the normality assumption, they do not restrict the 
+\emph on
+distribution
+\emph default
+ of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Unbiasedness: 
+\begin_inset Formula 
+\[
+E\left[\widehat{\beta}|X\right]=E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]=\beta.
+\]
+
+\end_inset
+
+Unbiasedness does not rely on homoskedasticity.
+ 
+\end_layout
+
+\begin_layout Itemize
+Variance: 
+\begin_inset Formula 
+\[
+\begin{aligned}\mathrm{var}\left(\widehat{\beta}|X\right) & =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
+ & =E\left[\left(\widehat{\beta}-\beta\right)\left(\widehat{\beta}-\beta\right)'|X\right]\\
+ & =E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]\\
+ & =\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}\\
+ & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}\\
+ & =\sigma^{2}\left(X'X\right)^{-1}.
+\end{aligned}
+\]
+
+\end_inset
+
+Homoskedasticity is essential in this derivation.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Example
+\series default
+ (Heteroskedasticity) If 
+\begin_inset Formula $e_{i}=x_{i}u_{i}$
+\end_inset
+
+, where 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is a scalar random variable, 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E\left[u_{i}\right]=0$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[u_{i}^{2}\right]=\sigma^{2}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $E\left[e_{i}|x_{i}\right]=0$
+\end_inset
+
+ but 
+\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=\sigma^{2}x_{i}^{2}$
+\end_inset
+
+ is a function of 
+\begin_inset Formula $x_{i}$
 \end_inset
 
 .
  We say 
-\begin_inset Formula $z$
+\begin_inset Formula $e_{i}^{2}$
 \end_inset
 
- is the limit of 
-\begin_inset Formula $z_{n}$
-\end_inset
+ is a heteroskedastic error.
+\begin_inset Note Note
+status open
 
-, and write as 
-\begin_inset Formula $z_{n}\to z$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Instead of a deterministic sequence, here we are interested in the convergence
- of a sequence of random variables.
- Since a random variable has a probability measure associated to any event,
- we must be clear what 
-\emph on
-convergence
-\emph default
- means.
- Several modes of convergence are often encountered.
-\end_layout
-
-\begin_layout Itemize
-Convergence almost surely* 
-\end_layout
-
-\begin_layout Itemize
-Convergence in probability: for any 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, as 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
- the probability 
-\begin_inset Formula $P\left(\omega:\left|z_{n}\left(\omega\right)-z\right|<\varepsilon\right)\to1$
-\end_inset
-
- (or equivalently 
-\begin_inset Formula $P\left(\omega:\left|z_{n}\left(\omega\right)-z\right|\geq\varepsilon\right)\to0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Squared-mean convergence: 
-\begin_inset Formula $\lim_{n\to\infty}E\left[\left(z_{n}-z\right)^{2}\right]=0.$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Example
-\series default
-: 
-\begin_inset Formula $(z_{n})$
-\end_inset
-
- is a sequence of binary random variables: 
-\begin_inset Formula $z_{n}=\sqrt{n}$
-\end_inset
-
- with probability 
-\begin_inset Formula $1/n$
-\end_inset
-
-, and 
-\begin_inset Formula $z_{n}=0$
-\end_inset
-
- with probability 
-\begin_inset Formula $1-1/n$
-\end_inset
-
-.
- Then 
-\begin_inset Formula $z_{n}\stackrel{p}{\to}0$
-\end_inset
-
- but 
-\begin_inset Formula $z_{n}\stackrel{m.s.}{\nrightarrow}0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Justification: 
-\emph default
-For any 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, we have 
-\begin_inset Formula $P\left(\omega:\left|z_{n}\left(\omega\right)-0\right|<\varepsilon\right)=P\left(\omega:z_{n}\left(\omega\right)=0\right)=1-1/n\rightarrow1.$
-\end_inset
-
- Thus 
-\begin_inset Formula $z_{n}\stackrel{p}{\to}0$
-\end_inset
-
-.
- On the other hand, 
-\begin_inset Formula $E\left[\left(z_{n}-0\right)^{2}\right]=n\cdot1/n+0\cdot(1-1/n)=1\nrightarrow0.$
-\end_inset
-
- Thus 
-\begin_inset Formula $z_{n}\stackrel{m.s.}{\nrightarrow}0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-Convergence in probability does not count what happens on a subset in the
- sample space of small probability.
- Squared-mean convergence deals with the average over the entire probability
- space.
- If a random variable can take a wild value, even with small probability,
- it may blow away the squared-mean convergence.
- On the contrary, such irregularity does not undermine convergence in probabilit
-y.
-\end_layout
-
-\begin_layout Itemize
-Convergence in distribution: 
-\begin_inset Formula $x_{n}\stackrel{d}{\to}x$
-\end_inset
-
- if 
-\begin_inset Formula $F\left(x_{n}\right)\to F\left(x\right)$
-\end_inset
-
- for each 
-\begin_inset Formula $x$
-\end_inset
-
- on which 
-\begin_inset Formula $F\left(x\right)$
-\end_inset
-
- is continuous.
-\end_layout
-
-\begin_layout Standard
-Convergence in distribution is about 
-\emph on
-pointwise
-\emph default
- convergence of CDF, not the random variables themselves.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Example
-\series default
-: Let 
-\begin_inset Formula $x\sim N\left(0,1\right)$
-\end_inset
-
-.
- If 
-\begin_inset Formula $z_{n}=x+1/n$
-\end_inset
-
-, then 
-\begin_inset Formula $z_{n}\stackrel{p}{\to}x$
-\end_inset
-
- and of course 
-\begin_inset Formula $z_{n}\stackrel{d}{\to}x$
-\end_inset
-
-.
- However, if 
-\begin_inset Formula $z_{n}=-x+1/n$
-\end_inset
-
-, or 
-\begin_inset Formula $z_{n}=y+1/n$
-\end_inset
-
- where 
-\begin_inset Formula $y\sim N\left(0,1\right)$
-\end_inset
-
- is independent of 
-\begin_inset Formula $x$
-\end_inset
-
-, then 
-\begin_inset Formula $z_{n}\stackrel{d}{\to}x$
-\end_inset
-
- but 
-\begin_inset Formula $z_{n}\stackrel{p}{\nrightarrow}x$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Example
-\series default
-: 
-\begin_inset Formula $(z_{n})$
-\end_inset
-
- is a sequence of binary random variables: 
-\begin_inset Formula $z_{n}=\sqrt{n}$
-\end_inset
-
- with probability 
-\begin_inset Formula $1/n$
-\end_inset
-
-, and 
-\begin_inset Formula $z_{n}=0$
-\end_inset
-
- with probability 
-\begin_inset Formula $1-1/n$
-\end_inset
-
-.
- Then 
-\begin_inset Formula $z_{n}\stackrel{d}{\to}z=0.$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Quote
-
-\emph on
-Justification:
-\end_layout
-
-\begin_layout Quote
-\begin_inset Formula $F\left(z_{n}\right)=\begin{cases}
-0 & z_{n}<0\\
-1-1/n & 0\leq z_{n}\leq\sqrt{n}\\
-1 & z_{n}\geq\sqrt{n}
-\end{cases}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Quote
-\begin_inset Formula $F\left(z\right)=\begin{cases}
-0 & z<0\\
-1 & z\geq0
-\end{cases}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Quote
-It is obvious that 
-\begin_inset Formula $F\left(z_{n}\right)$
-\end_inset
-
- converges to 
-\begin_inset Formula $F\left(z\right)$
-\end_inset
-
- pointwise on the set where 
-\begin_inset Formula $F\left(z\right)$
-\end_inset
-
- is continuous.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Squared-mean convergence implies convergence in probability.
- Convergence in probability implies convergence in distribution.
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Cramér-Wold device
-\emph default
- handles convergence in distribution for random vectors.
- We say a sequence of 
-\begin_inset Formula $K$
-\end_inset
-
--dimensional random vectors 
-\begin_inset Formula $\left(X_{n}\right)$
-\end_inset
-
- converge in distribution to 
-\begin_inset Formula $X$
-\end_inset
-
- if 
-\begin_inset Formula $\lambda'X_{n}\stackrel{d}{\to}\lambda'X$
-\end_inset
-
- for any 
-\begin_inset Formula $\lambda\in\mathbb{R}^{K}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Law of Large Numbers
-\begin_inset CommandInset label
-LatexCommand label
-name "law-of-large-numbers"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-(Weak) law of large numbers (LLN) is a collection of statements about convergenc
-e in probability of the sample average to its population counterpart.
- The basic form of LLN is: 
-\begin_inset Formula 
-\[
-\frac{1}{n}\sum_{i=1}^{n}(z_{i}-E[z_{i}])\stackrel{p}{\to}0
-\]
-
-\end_inset
-
-as 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-.
- Various versions of LLN work under different assumptions about the distribution
-s and dependence of the random variables.
-\end_layout
-
-\begin_layout Itemize
-Chebyshev LLN: if 
-\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
-\end_inset
-
- is a sample of i.i.d.
-\begin_inset space ~
-\end_inset
-
-observations, 
-\begin_inset Formula $E\left[z_{1}\right]=\mu$
-\end_inset
-
- , and 
-\begin_inset Formula $\sigma^{2}=\mathrm{var}\left[z_{1}\right]<\infty$
-\end_inset
-
- exists, then 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-Chebyshev LLN utilizes 
-\emph on
-Chebyshev inequality
-\emph default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Chebyshev inequality
-\emph default
-: for any random variable 
-\begin_inset Formula $x$
-\end_inset
-
- , we have 
-\begin_inset Formula $P\left(\left|x\right|>\varepsilon\right)\leq E\left[x^{2}\right]/\varepsilon^{2}$
-\end_inset
-
- for any 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, if 
-\begin_inset Formula $E\left[x^{2}\right]<\infty$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-Chebyshev inequality is a special case of 
-\emph on
-Markov inequality
-\emph default
-.
-\end_layout
-
-\begin_layout Itemize
-
-\emph on
-Markov inequality
-\emph default
-: 
-\begin_inset Formula $P\left(\left|x\right|>\varepsilon\right)\leq E\left[\left|x\right|^{r}\right]/\varepsilon^{r}$
-\end_inset
-
- for 
-\begin_inset Formula $r\geq1$
-\end_inset
-
- and any 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, if 
-\begin_inset Formula $E\left[\left|x\right|^{r}\right]<\infty$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-It is easy to verify Markov inequality.
- 
-\begin_inset Formula 
-\[
-\begin{aligned}E\left[\left|x\right|^{r}\right] & =\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}+\int_{\left|x\right|\leq\varepsilon}\left|x\right|^{r}dF_{X}\\
- & \geq\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}\geq\varepsilon^{r}\int_{\left|x\right|>\varepsilon}dF_{X}=\varepsilon^{r}P\left(\left|x\right|>\varepsilon\right).
-\end{aligned}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Consider a partial sum 
-\begin_inset Formula $S_{n}=\sum_{i=1}^{n}x_{i}$
-\end_inset
-
-, where 
-\begin_inset Formula $\mu_{i}=E\left[x_{i}\right]$
-\end_inset
-
- and 
-\begin_inset Formula $\sigma_{i}^{2}=\mathrm{var}\left[x_{i}\right]$
-\end_inset
-
-.
- We apply the Chebyshev inequality to the sample mean 
-\begin_inset Formula $\overline{x}-\bar{\mu}=n^{-1}\left(S_{n}-E\left[S_{n}\right]\right)$
-\end_inset
-
-.
- 
-\begin_inset Formula 
-\[
-\begin{aligned}P\left(\left|\bar{x}-\bar{\mu}\right|\geq\varepsilon\right) & =P\left(\left|S_{n}-E\left[S_{n}\right]\right|\geq n\varepsilon\right)\\
- & \leq\left(n\varepsilon\right)^{-2}E\left[\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)^{2}\right]\\
- & =\left(n\varepsilon\right)^{-2}\mathrm{var}\left(\sum_{i=1}^{n}x_{i}\right)\\
- & =\left(n\varepsilon\right)^{-2}\left[\sum_{i=1}^{n}\mathrm{var}\left(x_{i}\right)+\sum_{i=1}^{n}\sum_{j\neq i}\mathrm{cov}\left(x_{i},x_{j}\right)\right].
-\end{aligned}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-From the above derivation, convergence in probability holds as long as the
- right-hand side shrinks to 0 as 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-.
- Actually, the convergence can be maintained under much more general conditions
- than just under the i.i.d.
-\begin_inset space ~
-\end_inset
-
-assumption.
- The random variables in the sample do not have to be identically distributed,
- and they do not have to be independent either.
-\end_layout
-
-\begin_layout Standard
-Another useful LLN is 
-\emph on
-Kolmogorov LLN
-\emph default
-.
- Since its derivation requires advanced knowledge of probability theory,
- we state the result without proof.
-\end_layout
-
-\begin_layout Itemize
-Kolmogorov LLN: if 
-\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
-\end_inset
-
- is a sample of i.i.d.
-\begin_inset space ~
-\end_inset
-
-observations and 
-\begin_inset Formula $E\left[z_{1}\right]=\mu$
-\end_inset
-
- exists, then 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Standard
-Compared to Chebyshev LLN, Kolmogorov LLN only requires the existence of
- the population mean, but not any higher moments.
- On the other hand, i.i.d.
-\begin_inset space ~
-\end_inset
-
-is essential for Kolmogorov LLN.
-\end_layout
-
-\begin_layout Subsection
-Central Limit Theorem
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "central-limit-theorem"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The central limit theorem (CLT) is a collection of probability results about
- the convergence in distribution to a stable law, usually the normal distributio
-n.
- The basic form of the CLT is: for a sample 
-\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
-\end_inset
-
- of 
-\emph on
-zero-mean
-\emph default
- random variables, 
-\begin_inset Formula 
-\begin{equation}
-\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}\right).\label{eq:clt}
-\end{equation}
-
-\end_inset
-
-Various versions of CLT work under different assumptions about the random
- variables.
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Lindeberg-Levy CLT
-\emph default
- is the simplest CLT.
-\end_layout
-
-\begin_layout Itemize
-If the sample is i.i.d., 
-\begin_inset Formula $E\left[x_{1}\right]=0$
-\end_inset
-
- and 
-\begin_inset Formula $\mathrm{var}\left[x_{1}^{2}\right]=\sigma^{2}<\infty$
-\end_inset
-
-, then CLT holds.
- 
-\end_layout
-
-\begin_layout Standard
-Lindeberg-Levy CLT is easy to verify by the characteristic function.
- For any random variable 
-\begin_inset Formula $x$
-\end_inset
-
-, the function 
-\begin_inset Formula $\varphi_{x}\left(t\right)=E\left[\exp\left(ixt\right)\right]$
-\end_inset
-
- is called its 
-\emph on
-characteristic function
-\emph default
-.
- The characteristic function fully describes a distribution, just like PDF
- or CDF.
- For example, the characteristic function of 
-\begin_inset Formula $N\left(\mu,\sigma^{2}\right)$
-\end_inset
-
- is 
-\begin_inset Formula $\exp\left(it\mu-\frac{1}{2}\sigma^{2}t^{2}\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Here is a very heuristic argument.
- If 
-\begin_inset Formula $E\left[\left|x\right|^{k}\right]<\infty$
-\end_inset
-
- for a positive integer 
-\begin_inset Formula $k$
-\end_inset
-
-, then 
-\begin_inset Formula 
-\[
-\varphi_{X}\left(t\right)=1+itE\left[X\right]+\frac{\left(it\right)^{2}}{2}E\left[X^{2}\right]+\ldots\frac{\left(it\right)^{k}}{k!}E\left[X^{k}\right]+o\left(t^{k}\right).
-\]
-
-\end_inset
-
-Under the assumption of Lindeberg-Levy CLT, 
-\begin_inset Formula 
-\[
-\varphi_{X_{i}/\sqrt{n}}\left(t\right)=1-\frac{t^{2}}{2n}\sigma^{2}+o\left(\frac{t^{2}}{n}\right)
-\]
-
+\begin_layout Plain Layout
+Notice that the above derivation only applies when 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
 \end_inset
 
-for all 
+ are independent across 
 \begin_inset Formula $i$
 \end_inset
 
-, and by independence we have 
+.
+ In time series the conditional zero mean condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:e_mean_zero"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) has to be strengthened to 
+\begin_inset Formula $E\left[e_{i}|x_{1},\ldots,x_{n}\right]=0$
+\end_inset
+
+ for unbiasedness.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Gauss-Markov Theorem
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "gauss-markov-theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gauss-Markov theorem justifies the OLS estimator as the efficient estimator
+ among all linear unbiased ones.
+ 
+\emph on
+Efficient
+\emph default
+ here means that it enjoys the smallest variance in a family of estimators.
+\end_layout
+
+\begin_layout Standard
+There are numerous linearly unbiased estimators.
+ For example, 
+\begin_inset Formula $\left(Z'X\right)^{-1}Z'y$
+\end_inset
+
+ for 
+\begin_inset Formula $z_{i}=x_{i}^{2}$
+\end_inset
+
+ is unbiased because 
+\begin_inset Formula $E\left[\left(Z'X\right)^{-1}Z'y\right]=E\left[\left(Z'X\right)^{-1}Z'\left(X\beta+e\right)\right]=\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\tilde{\beta}=A'y$
+\end_inset
+
+ be a generic linear estimator, where 
+\begin_inset Formula $A$
+\end_inset
+
+ is any 
+\begin_inset Formula $n\times K$
+\end_inset
+
+ functions of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ As 
 \begin_inset Formula 
 \[
-\begin{aligned}\varphi_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) & =\prod_{i=1}^{n}\varphi_{x_{i}/\sqrt{n}}\left(t\right)=\left(1+i\cdot0-\frac{t^{2}}{2n}\sigma^{2}+o\left(\frac{t^{2}}{n}\right)\right)^{n}\\
- & \to\exp\left(-\frac{\sigma^{2}}{2}t^{2}\right),
+E\left[A'y|X\right]=E\left[A'\left(X\beta+e\right)|X\right]=A'X\beta.
+\]
+
+\end_inset
+
+So the linearity and unbiasedness of 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ implies 
+\begin_inset Formula $A'X=I_{n}$
+\end_inset
+
+.
+ Moreover, the variance 
+\begin_inset Formula 
+\[
+\mbox{var}\left(A'y|X\right)=E\left[\left(A'y-\beta\right)\left(A'y-\beta\right)'|X\right]=E\left[A'ee'A|X\right]=\sigma^{2}A'A.
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $C=A-X\left(X'X\right)^{-1}.$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}A'A-\left(X'X\right)^{-1} & =\left(C+X\left(X'X\right)^{-1}\right)'\left(C+X\left(X'X\right)^{-1}\right)-\left(X'X\right)^{-1}\\
+ & =C'C+\left(X'X\right)^{-1}X'C+C'X\left(X'X\right)^{-1}\\
+ & =C'C,
 \end{aligned}
 \]
 
 \end_inset
 
-where the limit is exactly the characteristic function of 
-\begin_inset Formula $N\left(0,\sigma^{2}\right)$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Lindeberg-Feller CLT: i.n.i.d., and 
-\emph on
-Lindeberg condition
-\emph default
-: for any fixed 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, 
+where the last equality follows as 
 \begin_inset Formula 
 \[
-\frac{1}{s_{n}^{2}}\sum_{i=1}^{n}E\left[x_{i}^{2}\cdot\boldsymbol{1}\left\{ \left|x_{i}\right|\geq\varepsilon s_{n}\right\} \right]\to0
+\left(X'X\right)^{-1}X'C=\left(X'X\right)^{-1}X'\left(A-X\left(X'X\right)^{-1}\right)=\left(X'X\right)^{-1}-\left(X'X\right)^{-1}=0.
 \]
 
 \end_inset
 
-where 
-\begin_inset Formula $s_{n}=\left(\sum_{i=1}^{n}\sigma_{i}^{2}\right)^{1/2}$
+Therefore 
+\begin_inset Formula $A'A-\left(X'X\right)^{-1}$
 \end_inset
 
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Lyapunov CLT: i.n.i.d.: 
-\begin_inset Formula $\max_{i\leq n}E\left[\left|x_{i}\right|^{3}\right]<C<\infty$
+ is a positive semi-definite matrix.
+ The variance of any 
+\begin_inset Formula $\tilde{\beta}$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Subsection
-Tools for Transformations
-\begin_inset CommandInset label
-LatexCommand label
-name "tools-for-transformations"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In their original forms, LLN deals with the sample mean, and CLT handles
- the scaled (by 
-\begin_inset Formula $\sqrt{n}$
-\end_inset
-
-) and/or standardized (by standard deviation) sample mean.
- However, most of the econometric estimators of interest are functions of
- sample means.
- Therefore, we need tools to handle transformations.
-\end_layout
-
-\begin_layout Itemize
-Small op: 
-\begin_inset Formula $x_{n}=o_{p}\left(r_{n}\right)$
-\end_inset
-
- if 
-\begin_inset Formula $x_{n}/r_{n}\stackrel{p}{\to}0$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Big Op: 
-\begin_inset Formula $x_{n}=O_{p}\left(r_{n}\right)$
-\end_inset
-
- if for any 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, there exists a 
-\begin_inset Formula $c>0$
-\end_inset
-
- such that 
-\begin_inset Formula $P\left(\left|x_{n}\right|/r_{n}>c\right)<\varepsilon$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Continuous mapping theorem 1: If 
-\begin_inset Formula $x_{n}\stackrel{p}{\to}a$
-\end_inset
-
- and 
-\begin_inset Formula $f\left(\cdot\right)$
-\end_inset
-
- is continuous at 
-\begin_inset Formula $a$
-\end_inset
-
-, then 
-\begin_inset Formula $f\left(x_{n}\right)\stackrel{p}{\to}f\left(a\right)$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Continuous mapping theorem 2: If 
-\begin_inset Formula $x_{n}\stackrel{d}{\to}x$
-\end_inset
-
- and 
-\begin_inset Formula $f\left(\cdot\right)$
-\end_inset
-
- is continuous almost surely on the support of 
-\begin_inset Formula $x$
-\end_inset
-
-, then 
-\begin_inset Formula $f\left(x_{n}\right)\stackrel{d}{\to}f\left(x\right)$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Slutsky's Theorem: If 
-\begin_inset Formula $x_{n}\stackrel{d}{\to}x$
-\end_inset
-
- and 
-\begin_inset Formula $y_{n}\stackrel{p}{\to}a$
-\end_inset
-
-, then
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Formula $x_{n}+y_{n}\stackrel{d}{\to}x+a$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $x_{n}y_{n}\stackrel{d}{\to}ax$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $x_{n}/y_{n}\stackrel{d}{\to}x/a$
-\end_inset
-
- if 
-\begin_inset Formula $a\neq0$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Delta method: if 
-\begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
-\end_inset
-
-, and 
-\begin_inset Formula $f\left(\cdot\right)$
-\end_inset
-
- is continuously differentiable at 
-\begin_inset Formula $\theta_{0}$
-\end_inset
-
-, then 
-\begin_inset Formula 
-\[
-\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta'}\left(\theta_{0}\right)\Omega\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\right)'\right).
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Asymptotic Properties of OLS
-\begin_inset CommandInset label
-LatexCommand label
-name "asymptotic-properties-of-ols"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We apply large sample theory to study the OLS estimator 
-\begin_inset Formula $\widehat{\beta}=\left(X'X\right)^{-1}X'Y.$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-Consistency
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "consistency"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We say 
-\begin_inset Formula $\widehat{\beta}$
-\end_inset
-
- is 
-\emph on
-consistent
-\emph default
- if 
-\begin_inset Formula $\widehat{\beta}\stackrel{p}{\to}\beta$
-\end_inset
-
- as 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-.
- To verify consistency, we write 
-\begin_inset Formula 
-\begin{equation}
-\widehat{\beta}-\beta=\left(X'X\right)^{-1}X'e=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}.\label{eq:ols_d}
-\end{equation}
-
-\end_inset
-
-The first term 
-\begin_inset Formula 
-\[
-\widehat{Q}=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}Q=E\left[x_{i}x_{i}'\right],
-\]
-
-\end_inset
-
-and the second term 
-\begin_inset Formula 
-\[
-\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{p}{\to}0.
-\]
-
-\end_inset
-
-No matter whether 
-\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
-\end_inset
-
- is an i.i.d., i.n.i.d., or dependent sample, as long as the convergence in probability
- holds for the above two expressions and 
-\begin_inset Formula $Q$
-\end_inset
-
- is an invertible matrix, we have 
-\begin_inset Formula $\widehat{\beta}-\beta\stackrel{p}{\to}Q^{-1}0=0$
-\end_inset
-
- by the continuous mapping theorem.
- In other words, 
-\begin_inset Formula $\widehat{\beta}$
-\end_inset
-
- is a consistent estimator of 
-\begin_inset Formula $\beta$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Asymptotic Normality
-\begin_inset CommandInset label
-LatexCommand label
-name "asymptotic-normality"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In finite sample, 
-\begin_inset Formula $\widehat{\beta}$
-\end_inset
-
- is a random variable.
- We have shown the distribution of 
-\begin_inset Formula $\widehat{\beta}$
-\end_inset
-
- under normality in the previous lecture.
- Without the restrictive normality assumption, how can we characterize the
- randomness of the OLS estimator?
-\end_layout
-
-\begin_layout Standard
-We know from the previous section that 
-\begin_inset Formula $\hat{\beta}-\beta\stackrel{p}{\to}0$
-\end_inset
-
- degenerates to a constant.
- To study its distribution, we must scale it up by a proper multiplier so
- that in the limit it neither degenerates nor explodes.
- The suitable scaling factor is 
-\begin_inset Formula $\sqrt{n}$
-\end_inset
-
-:
-\begin_inset Formula 
-\[
-\sqrt{n}\left(\widehat{\beta}-\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}e_{i}.
-\]
-
-\end_inset
-
-Since 
-\begin_inset Formula $E\left[x_{i}e_{i}\right]=0$
-\end_inset
-
-, we apply a CLT to obtain 
-\begin_inset Formula 
-\[
-n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\Sigma\right)
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]$
-\end_inset
-
-.
- By the continuous mapping theorem, 
-\begin_inset Formula 
-\[
-\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}Q^{-1}\times N\left(0,\Sigma\right)\sim N\left(0,\Omega\right)
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}$
-\end_inset
-
- is called the 
-\emph on
-asymptotic variance
-\emph default
-.
- This is the 
-\emph on
-asymptotic normality
-\emph default
- of the OLS estimator.
-\end_layout
-
-\begin_layout Standard
-Up to now we have derived the asymptotic distribution of 
+ is no smaller than the OLS estimator 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
 .
- However, to make it feasible, we still have to estimator the asymptotic
- variance 
-\begin_inset Formula $\Omega$
-\end_inset
-
-.
- If 
-\begin_inset Formula $\widehat{\Sigma}$
-\end_inset
-
- is a consistent estimator of 
-\begin_inset Formula $\Sigma$
-\end_inset
-
-, then 
-\begin_inset Formula $\widehat{\Omega}=\widehat{Q}^{-1}\widehat{\Sigma}\widehat{Q}^{-1}$
-\end_inset
-
- is a consistent estimator of 
-\begin_inset Formula $\Omega$
-\end_inset
-
-.
- (Of course, there are other ways to estimate the asymptotic variance.) A
- feasible version about the distribution of 
-\begin_inset Formula $\widehat{\beta}$
-\end_inset
-
- is 
-\begin_inset Formula 
-\[
-\widehat{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right).
-\]
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-In the special case of homoskedasticity, 
-\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]=E\left[x_{i}x_{i}'E\left[e_{i}^{2}|X\right]\right]=\sigma^{2}E\left[x_{i}x_{i}'\right]=\sigma^{2}Q$
+Homoskedasticity is a restrictive assumption.
+ Under homoskedasticity, 
+\begin_inset Formula $\mathrm{var}\left(\widehat{\beta}\right)=\sigma^{2}\left(X'X\right)^{-1}$
 \end_inset
 
- so that 
-\begin_inset Formula 
-\[
-n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}Q\right).
-\]
-
-\end_inset
-
-Again by the continuous mapping theorem,
-\begin_inset Formula 
-\[
-\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}Q^{-1}\times N\left(0,\sigma^{2}Q\right)\sim N\left(0,\sigma^{2}Q^{-1}\right).
-\]
-
-\end_inset
-
-We can estimate the unknown parameter 
+.
+ Popular estimator of 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
- by either 
-\begin_inset Formula $\widehat{\sigma}^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)$
+ is the sample mean of the residuals 
+\begin_inset Formula $\widehat{\sigma}^{2}=\frac{1}{n}\widehat{e}'\widehat{e}$
 \end_inset
 
- or 
-\begin_inset Formula $\widehat{\sigma}^{2}=\widehat{e}'\widehat{e}/n$
+ or the unbiased one 
+\begin_inset Formula $s^{2}=\frac{1}{n-K}\widehat{e}'\widehat{e}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Subsection
-Estimation of the Variance
-\begin_inset CommandInset label
-LatexCommand label
-name "estimation-of-the-variance"
-
-\end_inset
-
-
+ Under heteroskedasticity, Gauss-Markov theorem does not apply.
 \end_layout
 
 \begin_layout Standard
-We show all elements of 
-\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]$
-\end_inset
+\begin_inset ERT
+status open
 
- is finite.
- That is, 
-\begin_inset Formula $\left\Vert \Sigma\right\Vert _{\infty}:=\max_{i,j\leq K}\left|\sigma_{ij}\right|<\infty$
-\end_inset
+\begin_layout Plain Layout
 
-.
- Let 
-\begin_inset Formula $z_{i}=x_{i}e_{i}$
-\end_inset
 
-, so 
-\begin_inset Formula $\Sigma=E\left[z_{i}z_{i}'\right]$
-\end_inset
-
-.
- Because of the Cachy-Schwarz inequality, 
-\begin_inset Formula 
-\[
-\left\Vert \Sigma\right\Vert _{\infty}=\max_{k=1,\ldots,K}E\left[z_{ik}^{2}\right].
-\]
-
-\end_inset
-
-For each 
-\begin_inset Formula $k$
-\end_inset
-
-, 
-\begin_inset Formula $E\left[z_{ik}^{2}\right]=E\left[x_{ik}^{2}e_{i}^{2}\right]\leq\left(E\left[x_{ik}^{4}\right]E\left[e_{i}^{4}\right]\right)^{1/2}$
-\end_inset
-
-.
+\backslash
+bigskip
 \end_layout
 
-\begin_layout Standard
-For the estimation of variance, if the error is homoskedastic, 
-\begin_inset Formula 
-\[
-\begin{aligned}\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
- & =\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right).
-\end{aligned}
-\]
+\begin_layout Plain Layout
 
-\end_inset
 
-The second term 
-\begin_inset Formula 
-\[
-\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
-\]
-
-\end_inset
-
-The third term 
-\begin_inset Formula 
-\[
-\left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\left(\widehat{\beta}-\beta\right)=o_{p}\left(1\right)O_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right).
-\]
-
-\end_inset
-
-As 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}=\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}+o_{p}\left(1\right)$
-\end_inset
-
- and 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}=\sigma_{e}^{2}+o_{p}\left(1\right)$
-\end_inset
-
-, we have 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}=\sigma_{e}^{2}+o_{p}\left(1\right)$
-\end_inset
-
-.
- In other words, 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}\stackrel{p}{\to}\sigma_{e}^{2}$
-\end_inset
-
-.
+\backslash
+texttt{ Zhentao Shi.
+ 
+\backslash
+today}
 \end_layout
 
-\begin_layout Standard
-For general heteroskedasticity, 
-\begin_inset Formula 
-\[
-\begin{aligned}\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
- & =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'e_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}.
-\end{aligned}
-\]
-
 \end_inset
 
-The third term is bounded by 
-\begin_inset Formula 
-\[
-\begin{aligned} & \mbox{trace}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}\right)\\
- & \leq K\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\\
- & \leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
- & \leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
- & =K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left(\sum_{k=1}^{K}x_{ik}^{2}\right)^{2}\\
- & \leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\sum_{k=1}^{K}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}=o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
-\end{aligned}
-\]
 
-\end_inset
-
-where the third inequality follows by 
-\begin_inset Formula $\left(a_{1}+\cdots+a_{K}\right)^{2}\leq K\left(a_{1}^{2}+\cdots+a_{K}^{2}\right)$
-\end_inset
-
-.
- The second term is bounded by 
-\begin_inset Formula 
-\[
-\begin{aligned} & \left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}x_{ik'}e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right|\\
- & \leq\max_{k}\left|\widehat{\beta}_{k}-\beta_{k}\right|K\max_{k,k',k''}\left|\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{ik}x_{ik'}x_{ik''}\right|\\
- & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\right)^{1/4}K\max_{k,k',k''}\left(\frac{1}{n}\sum_{i=1}^{n}\left(x_{ik}x_{ik'}x_{ik''}\right)^{4/3}\right)^{3/4}\\
- & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}K\max_{k}\left(\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\right)^{3/4}=o_{p}\left(1\right)O_{p}\left(1\right)
-\end{aligned}
-\]
-
-\end_inset
-
-where the second and the third inequality hold by the Holder's inequality.
 \end_layout
 
 \end_body

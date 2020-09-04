@@ -33,14 +33,14 @@ theorems-bytype
 \index_command default
 \paperfontsize 12
 \spacing double
-\use_hyperref false
+\use_hyperref true
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks true
-\pdf_pdfborder false
-\pdf_colorlinks true
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
 \pdf_backref section
 \pdf_pdfusetitle false
 \pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
@@ -102,7 +102,7 @@ status open
 
 
 \backslash
-setcounter{chapter}{1}
+setcounter{chapter}{2}
 \end_layout
 
 \end_inset
@@ -111,72 +111,55 @@ setcounter{chapter}{1}
 \end_layout
 
 \begin_layout Chapter
-Least Squares
+Regression and Projection
 \end_layout
 
 \begin_layout Standard
-Notation: 
-\begin_inset Formula $y_{i}$
+
+\series bold
+Notation
+\series default
+: In this note, 
+\begin_inset Formula $y$
 \end_inset
 
- is a scalar, and 
-\begin_inset Formula $x_{i}=\left(x_{i1},\ldots,x_{iK}\right)'$
+ is a scale random variable, and 
+\begin_inset Formula $x=\left(x_{1},\ldots,x_{K}\right)'$
 \end_inset
 
  is a 
 \begin_inset Formula $K\times1$
 \end_inset
 
- vector.
- 
-\begin_inset Formula $Y=\left(y_{1},\ldots,y_{n}\right)'$
-\end_inset
+ random vector.
+ Throughout this course, a vector is a 
+\emph on
+column
+\emph default
+ vector, i.e.
+\begin_inset ERT
+status open
 
- is an 
-\begin_inset Formula $n\times1$
-\end_inset
+\begin_layout Plain Layout
 
- vector, and 
-\begin_inset Formula 
-\[
-X=\left[\begin{array}{c}
-x_{1}'\\
-x_{2}'\\
-\vdots\\
-x_{n}'
-\end{array}\right]=\left[\begin{array}{cccc}
-x_{11} & x_{12} & \cdots & x_{1K}\\
-x_{21} & x_{22} & \cdots & x_{2K}\\
-\cdots & \cdots & \ddots & \vdots\\
-x_{n1} & x_{22} & \cdots & x_{nK}
-\end{array}\right]
-\]
+~
+\end_layout
 
 \end_inset
 
- is an 
-\begin_inset Formula $n\times K$
-\end_inset
+a one-column matrix.
+\end_layout
 
- matrix.
+\begin_layout Standard
+For the convenience of online teaching in the fall semester of 2020, the
+ layout is modified with wide margins and line space for note taking.
 \end_layout
 
 \begin_layout Section
-Algebra of Least Squares 
+Conditional Expectation
 \begin_inset CommandInset label
 LatexCommand label
-name "algebra-of-least-squares"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsection
-OLS estimator 
-\begin_inset CommandInset label
-LatexCommand label
-name "ols-estimator"
+name "conditional-expectation"
 
 \end_inset
 
@@ -184,69 +167,590 @@ name "ols-estimator"
 \end_layout
 
 \begin_layout Standard
-As we have learned from the linear project model, the projection coefficient
- 
-\begin_inset Formula $\beta$
+These days 
+\emph on
+machine learning
+\emph default
+ becomes popular in referring to algorithms processing data and distill
+ information.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+While computer scientists may not care much about a theoretical model that
+ generates the observable data, statisticians and econometricians are serious
+ about the model and study whether we can recover the model or some elements
+ of the model from the data.
+\end_layout
+
 \end_inset
 
- in the regression 
+ Machine learning is a basket big enough that even the simplest regression
+ models can be called as a category of it.
+ 
+\end_layout
+
+\begin_layout Standard
+We view a regression as 
+\emph on
+supervised learning
+\emph default
+.
+ Supervised learning uses a function of 
+\begin_inset Formula $x$
+\end_inset
+
+, say, 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+, to predict 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ cannot perfectly predict 
+\begin_inset Formula $y$
+\end_inset
+
+; otherwise their relationship is deterministic.
+ The prediction error
 \begin_inset Formula 
 \[
-\begin{aligned}y & =x'\beta+e\end{aligned}
+e=y-g\left(x\right)
 \]
 
 \end_inset
 
-can be written as 
+ depends on the choice of 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ There are numerous possible choices of 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ Which one is the best? Notice that this question is not concerned about
+ the underlying data generating process of the joint distribution of 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+.
+ We want to find a general rule to achieve accurate prediction of 
+\begin_inset Formula $y$
+\end_inset
+
+ given 
+\begin_inset Formula $x$
+\end_inset
+
+, no matter how this pair of variables is generated.
+\end_layout
+
+\begin_layout Standard
+To answer this question, we need to decide a criterion to compare different
+ 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ Such a criterion is called the 
+\emph on
+loss function
+\emph default
+ 
+\begin_inset Formula $L\left(y,g\left(x\right)\right)$
+\end_inset
+
+.
+ A particularly convenient one is the 
+\emph on
+quadratic loss
+\emph default
+, defined as 
+\begin_inset Formula 
+\[
+L\left(y,g\left(x\right)\right)=\left(y-g\left(x\right)\right)^{2}.
+\]
+
+\end_inset
+
+Since the data are random, 
+\begin_inset Formula $L\left(y,g\left(x\right)\right)$
+\end_inset
+
+ is also random.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Random
+\begin_inset Quotes erd
+\end_inset
+
+ means uncertainty: sometimes 
+\emph on
+this
+\emph default
+ happens, and sometimes 
+\emph on
+that
+\emph default
+ happens.
+ To get rid of the uncertainty, we average the loss function across the
+ joint distribution of 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ as 
+\begin_inset Formula $R\left(y,g\left(x\right)\right)=E\left[L\left(y,g\left(x\right)\right)\right]$
+\end_inset
+
+, which is called the 
+\emph on
+risk
+\emph default
+.
+ Risk is a deterministic quality.
+ For the quadratic loss function, the corresponding risk is
+\begin_inset Formula 
+\[
+R\left(y,g\left(x\right)\right):=E\left[L\left(y,g\left(x\right)\right)\right]=E\left[\left(y-g\left(x\right)\right)^{2}\right],
+\]
+
+\end_inset
+
+ is called the 
+\emph on
+mean squared error
+\emph default
+ (MSE).
+ MSE is the most widely used risk measure, although there exist many alternative
+ measures, for example the 
+\emph on
+mean absolute error
+\emph default
+ (MAE) 
+\begin_inset Formula $E\left[\left|y-g\left(x\right)\right|^{2}\right]$
+\end_inset
+
+.
+ The popularity of MSE comes from its convenience for analysis in closed-form,
+ which MAE does not enjoy.
+ This is similar to the choice of utility functions in economics.
+ There are only a few functional forms for the utility, for example CRRA,
+ CARA, and so on.
+ They are popular because they lead to close-form solutions that are easy
+ to handle.
+\end_layout
+
+\begin_layout Standard
+What is the optimal choice of 
+\begin_inset Formula $g$
+\end_inset
+
+ if we aim to minimize the MSE?
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:CEF"
+
+\end_inset
+
+ The conditional mean function 
+\begin_inset Formula $m\left(x\right)=E\left[y|x\right]=\int yf\left(y|x\right)\mathrm{d}y$
+\end_inset
+
+ minimizes MSE.
+\end_layout
+
+\begin_layout Standard
+Before we prove the above proposition, we first discuss some properties
+ of the conditional mean function.
+ Obviously
+\begin_inset Formula 
+\[
+y=m\left(x\right)+\left(y-m\left(x\right)\right)=m\left(x\right)+\epsilon,
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\epsilon:=y-m\left(x\right)$
+\end_inset
+
+ is called the 
+\emph on
+regression error
+\emph default
+.
+ This equation holds for 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ following any joint distribution, as long as 
+\begin_inset Formula $E\left[y|x\right]$
+\end_inset
+
+ exists.
+ The error term 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ satisfies these properties:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E\left[\epsilon|x\right]=E\left[y-m\left(x\right)|x\right]=E\left[y|x\right]-m(x)=0$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E\left[\epsilon\right]=E\left[E\left[\epsilon|x\right]\right]=E(0)=0$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+For any function 
+\begin_inset Formula $h\left(x\right)$
+\end_inset
+
+, we have 
+\begin_inset Formula $E\left[h\left(x\right)\epsilon\right]=E\left[E\left[h\left(x\right)\epsilon|x\right]\right]=E\left[h(x)E\left[\epsilon|x\right]\right]=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The last property implies that 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is uncorrelated with any function of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ In particular, when 
+\begin_inset Formula $h$
+\end_inset
+
+ is the identity function 
+\begin_inset Formula $h\left(x\right)=x$
+\end_inset
+
+, we have 
+\begin_inset Formula $E\left[x\epsilon\right]=\mathrm{cov}\left(x,\epsilon\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Proof of Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:CEF"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ The optimality of the conditional mean can be confirmed by 
+\begin_inset Quotes eld
+\end_inset
+
+guess-and-verify.
+\begin_inset Quotes erd
+\end_inset
+
+ For an arbitrary 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+, the MSE can be decomposed into three terms
+\begin_inset Formula 
+\[
+\begin{aligned}E\left[\left(y-g\left(x\right)\right)^{2}\right] & =E\left[\left(y-m(x)+m(x)-g(x)\right)^{2}\right]\\
+ & =E\left[\left(y-m\left(x\right)\right)^{2}\right]+2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right]+E\left[\left(m\left(x\right)-g\left(x\right)\right)^{2}\right].
+\end{aligned}
+\]
+
+\end_inset
+
+The first term is irrelevant to 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+.
+ The second term
+\begin_inset Formula 
+\[
+\begin{aligned}2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right] & =2E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)\right]\\
+ & =2E\left[E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)|x\right]\right]\\
+ & =2E\left[\left(m\left(x\right)-g\left(x\right)\right)E\left[\epsilon|x\right]\right]=0.
+\end{aligned}
+\]
+
+\end_inset
+
+is again irrelevant of 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+.
+ The third term, obviously, is minimized at 
+\begin_inset Formula $g\left(x\right)=m\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our perspective so far deviates from many econometric textbooks that assume
+ that the dependent variable 
+\begin_inset Formula $y$
+\end_inset
+
+ is generated as 
+\begin_inset Formula $g\left(x\right)+\epsilon$
+\end_inset
+
+ for some unknown function 
+\begin_inset Formula $g\left(\cdot\right)$
+\end_inset
+
+ and error term 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ such that 
+\begin_inset Formula $E\left[\epsilon|x\right]=0$
+\end_inset
+
+.
+ Instead, we take a predictive framework regardless the data generating
+ process.
+ What we observe are 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+ and we are solely interested in seeking a function 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+ to predict 
+\begin_inset Formula $y$
+\end_inset
+
+ as accurately as possible under the MSE criterion.
+\end_layout
+
+\begin_layout Section
+Linear Projection
+\begin_inset CommandInset label
+LatexCommand label
+name "linear-projection"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As discussed in the previous section, the conditional mean function 
+\begin_inset Formula $m(x)$
+\end_inset
+
+ is the function that minimizes the MSE.
+ However, 
+\begin_inset Formula $m\left(x\right)=E\left[y|x\right]$
+\end_inset
+
+ is a complex function of 
+\begin_inset Formula $x$
+\end_inset
+
+, for it depends on the joint distribution of 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+, which is mostly unknown in practice.
+ Now let us make the prediction task even simpler.
+ How about we minimize the MSE within all linear functions in the form of
+ 
+\begin_inset Formula $h\left(x\right)=h\left(x;b\right)=x'b$
+\end_inset
+
+ for 
+\begin_inset Formula $b\in\mathbb{R}^{K}$
+\end_inset
+
+? The minimization problem is
 \begin_inset Formula 
 \begin{equation}
-\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right].\label{eq:pop_OLS}
+\min_{b\in\mathbb{R}^{K}}E\left[\left(y-x'b\right)^{2}\right].\label{eq:linear_MSE}
 \end{equation}
 
 \end_inset
 
- We draw a pair of 
-\begin_inset Formula $\left(y,x\right)$
+Take the first-order condition of the MSE 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial b}E\left[\left(y-x'b\right)^{2}\right]=-2E\left[x\left(y-x'b\right)\right]=0.
+\]
+
 \end_inset
 
- from the joint distribution, and we mark it as 
-\begin_inset Formula $\left(y_{i},x_{i}\right)$
+Rearrange the above equation and we solve the optimal 
+\begin_inset Formula 
+\[
+\beta=\arg\min_{b\in\mathbb{R}^{K}}E\left[\left(y-x'b\right)^{2}\right]
+\]
+
 \end_inset
 
- for 
-\begin_inset Formula $i=1,\ldots,n$
+ as
+\begin_inset Formula 
+\[
+\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right]
+\]
+
 \end_inset
 
-.
- We possess a 
+ if 
+\begin_inset Formula $E\left[xx'\right]$
+\end_inset
+
+ is invertible.
+ Notice here that 
+\begin_inset Formula $b$
+\end_inset
+
+ is an arbitrary 
+\begin_inset Formula $K$
+\end_inset
+
+-vector, while 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is the optimizer.
+ The function 
+\begin_inset Formula $x'\beta$
+\end_inset
+
+ is called the 
 \emph on
-sample
+best linear projection
 \emph default
- 
-\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+ of 
+\begin_inset Formula $y$
 \end_inset
 
+ on 
+\begin_inset Formula $x$
+\end_inset
+
+, and the vector 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is called the 
+\emph on
+linear projection coefficient
+\emph default
 .
-\end_layout
-
-\begin_layout Remark
-Is 
-\begin_inset Formula $\left(y_{i},x_{i}\right)$
-\end_inset
-
- random or deterministic? Before we make the observation, they are treated
- as random variables whose realized values are uncertain.
- After we make the observation, they become deterministic values which cannot
- change.
- 
-\begin_inset Formula $\left(y_{i},x_{i}\right)$
-\end_inset
-
- are treated as random when we talk about statistical properties about quantitie
-s based it — the statistical properties of a given fixed number is meaningless.
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+The linear function is not as restrictive as one might thought.
+ It can be used to produce some nonlinear (in random variables) effect if
+ we re-define 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ For example, if 
+\begin_inset Formula 
+\[
+y=x_{1}\beta_{1}+x_{2}\beta_{2}+x_{1}^{2}\beta_{3}+e,
+\]
+
+\end_inset
+
+then 
+\begin_inset Formula $\frac{\partial}{\partial x_{1}}m\left(x_{1},x_{2}\right)=\beta_{1}+2x_{1}\beta_{3}$
+\end_inset
+
+, which is nonlinear in 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, while it is still linear in the parameter 
+\begin_inset Formula $\beta=\left(\beta_{1},\beta_{2},\beta_{3}\right)$
+\end_inset
+
+ if we define a set of new regressors as 
+\begin_inset Formula $\left(\tilde{x}_{1},\tilde{x}_{2},\tilde{x}_{3}\right)=\left(x_{1},x_{2},x_{1}^{2}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \begin_inset Separator plain
 \end_inset
 
@@ -254,991 +758,168 @@ s based it — the statistical properties of a given fixed number is meaningless
 \end_layout
 
 \begin_layout Remark
-All probability descriptions are thought experiments before observation.
- In reality, we have at hand fixed numbers (more recently, words, audio,
- video, etc., which can all be represented in digital formats with 0 and
- 1s) to feed into a computational operation, and the operation will return
- one or some numbers.
- All statistical interpretation about these numbers are drawn from the probabili
-stic thought experiments.
- A 
-\emph on
-thought experiment
-\emph default
- is an academic jargon for a 
-\emph on
-story
-\emph default
- in plan language.
- Under the axiomatic approach of probability theory, such stories are mathematic
-al consistent and coherent.
- But mathematics is a tautological system, not science.
- Their scientific value of a probability model depends on how close it is
- to the 
-\emph on
-truth
-\emph default
-.
- In this course, we suppose that the data are generated from some mechanism,
- which is taken as the truth.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Since this is not a philosophical course, we do not go further to ask: What
- is truth? Is there truth?
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Probabilists suppose there is a dragon and try to tell the dragon's behaviors.
- Statisticians observe many snakes on earth, and try to tell what a dragon
- looks like.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The sample mean is a natural estimator of the population mean.
- Replace the population mean 
-\begin_inset Formula $E\left[\cdot\right]$
-\end_inset
-
- in (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:pop_OLS"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-) by the sample mean 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\cdot$
-\end_inset
-
-, and the resulting estimator is 
-\begin_inset Formula 
-\[
-\widehat{\beta}=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}y_{i}=\left(X'X\right)^{-1}X'y.
-\]
-
-\end_inset
-
-This is one way to motivate the OLS estimator.
- 
-\end_layout
-
-\begin_layout Standard
-Alternatively, we can derive the OLS estimator from minimizing the sum of
- squared residuals 
-\begin_inset Formula $\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}$
-\end_inset
-
-, or equivalently 
-\begin_inset Formula 
-\[
-Q\left(\beta\right)=\frac{1}{2n}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}=\frac{1}{2n}\left(Y-X\beta\right)'\left(Y-X\beta\right),
-\]
-
-\end_inset
-
-where the factor 
-\begin_inset Formula $\frac{1}{2n}$
-\end_inset
-
- is nonrandom and does not change the minimizer.
- Solve the first-order condition 
-\begin_inset Formula 
-\[
-\frac{\partial}{\partial\beta}Q\left(\beta\right)=-\frac{1}{n}X'\left(Y-X\beta\right)=0.
-\]
-
-\end_inset
-
-This necessary condition for optimality gives exactly the same 
-\begin_inset Formula $\widehat{\beta}$
-\end_inset
-
-.
- Moreover, the second-order condition 
-\begin_inset Formula 
-\[
-\frac{\partial^{2}}{\partial\beta\partial\beta'}Q\left(\beta\right)=\frac{1}{n}X'X
-\]
-
-\end_inset
-
-shows that 
-\begin_inset Formula $Q\left(\beta\right)$
-\end_inset
-
- is convex in 
-\begin_inset Formula $\beta$
-\end_inset
-
- due to the positive semi-definite matrix 
-\begin_inset Formula $X'X$
-\end_inset
-
-.
- (
-\begin_inset Formula $Q\left(\beta\right)$
-\end_inset
-
- is strictly convex in 
-\begin_inset Formula $\beta$
-\end_inset
-
- if 
-\begin_inset Formula $X'X$
-\end_inset
-
- is positive definite.)
-\end_layout
-
-\begin_layout Standard
-Here are some definitions and properties of the OLS estimator.
-\end_layout
-
-\begin_layout Itemize
-Fitted value: 
-\begin_inset Formula $\widehat{Y}=X\widehat{\beta}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Projector: 
-\begin_inset Formula $P_{X}=X\left(X'X\right)^{-1}X$
-\end_inset
-
-; Annihilator: 
-\begin_inset Formula $M_{X}=I_{n}-P_{X}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $P_{X}X=X$
-\end_inset
-
-; 
-\begin_inset Formula $X'P_{X}=X'$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $M_{X}X=0$
-\end_inset
-
-; 
-\begin_inset Formula $X'M_{X}=0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $P_{X}M_{X}=M_{X}P_{X}=0$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
 If 
-\begin_inset Formula $AA=A$
+\begin_inset Formula $\left(y,x\right)$
 \end_inset
 
-, we call it an 
-\emph on
-idempotent
-\emph default
- matrix.
- Both 
-\begin_inset Formula $P_{X}$
-\end_inset
-
- and 
-\begin_inset Formula $M_{X}$
-\end_inset
-
- are idempotent.
-\end_layout
-
-\begin_layout Itemize
-Residual: 
-\begin_inset Formula $\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=Y-X(X'X)^{-1}X'Y=(I-P_{X})Y=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $X'\widehat{e}=X'M_{X}e=0$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
-\end_inset
-
- if 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- contains a constant.
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-(Justification: 
-\begin_inset Formula $X'\widehat{e}=\left[\begin{array}{cccc}
-1 & 1 & \cdots & 1\\
-* & * & \cdots & *\\
-\cdots & \cdots & \ddots & \vdots\\
-* & * & \cdots & *
-\end{array}\right]\left[\begin{array}{c}
-\widehat{e}_{1}\\
-\widehat{e}_{2}\\
-\vdots\\
-\widehat{e}_{n}
-\end{array}\right]=\left[\begin{array}{c}
-0\\
-0\\
-\vdots\\
-0
-\end{array}\right]$
-\end_inset
-
- and the the first row implies 
-\begin_inset Formula $\sum_{i=1}^{n}\widehat{e}_{i}=0$
-\end_inset
-
-.)
-\end_layout
-
-\end_deeper
-\begin_layout Subsection
-Goodness of Fit 
-\begin_inset CommandInset label
-LatexCommand label
-name "goodness-of-fit"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-revised up here 9/4/2020.
- to add: R-squared is not a good measure of the goodness of modeling.
-\end_layout
-
-\begin_layout Plain Layout
-trended time series.
-\end_layout
-
-\begin_layout Plain Layout
-predictive regression.
-\end_layout
-
-\begin_layout Plain Layout
-Shanghai index?
-\end_layout
-
-\end_inset
-
- The so-called 
-\emph on
-R-squared
-\emph default
- is a popular measure of goodness-of-fit in the linear regression.
- R-squared is well defined only when a constant is included in the regressors.
- Let 
-\begin_inset Formula $M_{\iota}=I_{n}-\frac{1}{n}\iota\iota'$
-\end_inset
-
-, where 
-\begin_inset Formula $\iota$
-\end_inset
-
- is an 
-\begin_inset Formula $n\times1$
-\end_inset
-
- vector of 1's.
- 
-\begin_inset Formula $M_{\iota}$
-\end_inset
-
- is the 
-\emph on
-demeaner
-\emph default
-, in the sense that 
-\begin_inset Formula $M_{\iota}\left(z_{1},\ldots,z_{n}\right)'=\left(z_{1}-\overline{z},\ldots,z_{n}-\overline{z}\right)'$
-\end_inset
-
-, where 
-\begin_inset Formula $\bar{z}=\frac{1}{n}\sum_{i=1}^{n}z_{i}$
-\end_inset
-
-.
- For any 
-\begin_inset Formula $X$
-\end_inset
-
-, we can decompose 
-\begin_inset Formula $Y=P_{X}Y+M_{X}Y=\widehat{Y}+\widehat{e}$
-\end_inset
-
-.
- The total variation is 
+ is jointly normal in the form 
 \begin_inset Formula 
 \[
-Y'M_{\iota}Y=\left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)=\widehat{Y}'M_{\iota}\widehat{Y}+2\widehat{Y}'M_{\iota}\widehat{e}+\widehat{e}'M_{\iota}\widehat{e}=\widehat{Y}'M_{\iota}\widehat{Y}+\widehat{e}'\widehat{e}
+\begin{pmatrix}y\\
+x
+\end{pmatrix}\sim\mathrm{N}\left(\begin{pmatrix}\mu_{y}\\
+\mu_{x}
+\end{pmatrix},\begin{pmatrix}\sigma_{y}^{2} & \rho\sigma_{y}\sigma_{x}\\
+\rho\sigma_{y}\sigma_{x} & \sigma_{x}^{2}
+\end{pmatrix}\right)
 \]
 
 \end_inset
 
-where the last equality follows by 
-\begin_inset Formula $M_{\iota}\widehat{e}=\widehat{e}$
+ where 
+\begin_inset Formula $\rho$
 \end_inset
 
- as 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
-\end_inset
-
-, and 
-\begin_inset Formula $\widehat{Y}'\widehat{e}=Y'P_{X}M_{X}e=0$
-\end_inset
-
-.
- R-squared is defined as 
-\begin_inset Formula $\widehat{Y}'M_{\iota}\widehat{Y}/Y'M_{\iota}Y$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Frish-Waugh-Lovell Theorem
-\begin_inset CommandInset label
-LatexCommand label
-name "frish-waugh-lovell-theorem"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The Frish-Waugh-Lovell (FWL) theorem is an algebraic fact about the formula
- of a subvector of the OLS estimator.
- To derive the FWL theorem We need to use the inverse of partitioned matrix.
- For a positive definite symmetric matrix 
-\begin_inset Formula $A=\begin{pmatrix}A_{11} & A_{12}\\
-A_{12}' & A_{22}
-\end{pmatrix}$
-\end_inset
-
-, the inverse can be written as 
+ is the correlation coefficient, then 
 \begin_inset Formula 
 \[
-A^{-1}=\begin{pmatrix}\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & -\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1}A_{12}A_{22}^{-1}\\
--A_{22}^{-1}A_{12}'\left(A_{11}-A_{12}A_{22}^{-1}A_{12}'\right)^{-1} & \left(A_{22}-A_{12}'A_{11}^{-1}A_{12}\right)^{-1}
-\end{pmatrix}.
+E\left[y|x\right]=\mu_{y}+\rho\frac{\sigma_{y}}{\sigma_{x}}\left(x-\mu_{x}\right)=\left(\mu_{y}-\rho\frac{\sigma_{y}}{\sigma_{x}}\mu_{x}\right)+\rho\frac{\sigma_{y}}{\sigma_{x}}x,
 \]
 
 \end_inset
 
-In our context of OLS estimator, let 
-\begin_inset Formula $X=\left(\begin{array}{cc}
-X_{1} & X_{2}\end{array}\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{align*}
-\widehat{\beta} & =\begin{pmatrix}\widehat{\beta}_{1}\\
-\widehat{\beta}_{2}
-\end{pmatrix}=(X'X)^{-1}X'Y\\
- & =\left(\begin{pmatrix}X_{1}'\\
-X_{2}'
-\end{pmatrix}\begin{pmatrix}X_{1} & X_{2}\end{pmatrix}\right)^{-1}\begin{pmatrix}X_{1}'Y\\
-X_{2}'Y
-\end{pmatrix}\\
- & =\begin{pmatrix}X_{1}'X_{1} & X_{1}'X_{2}\\
-X_{2}'X_{1} & X_{2}'X_{2}
-\end{pmatrix}^{-1}\begin{pmatrix}X_{1}'Y\\
-X_{2}'Y
-\end{pmatrix}\\
- & =\begin{pmatrix}\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1} & -\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}\\
-* & *
-\end{pmatrix}\begin{pmatrix}X_{1}'Y\\
-X_{2}'Y
-\end{pmatrix}.
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The subvector
-\begin_inset Formula 
-\begin{align*}
-\widehat{\beta}_{1} & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'Y-\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}X_{2}'Y\\
- & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}\left(X_{1}'Y-X_{1}'P_{X_{2}}Y\right)\\
- & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'M_{X_{2}}Y.
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Notice that 
-\begin_inset Formula $\widehat{\beta}_{1}$
-\end_inset
-
- can be obtained by the following:
-\end_layout
-
-\begin_layout Enumerate
-Regress 
-\begin_inset Formula $y$
-\end_inset
-
- on 
-\begin_inset Formula $X_{2}$
-\end_inset
-
-, obtain residuals 
-\begin_inset Formula $\tilde{e}_{2}$
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Enumerate
-Regress 
-\begin_inset Formula $X_{1}$
-\end_inset
-
- on 
-\begin_inset Formula $X_{2}$
-\end_inset
-
-, obtain residuals 
-\begin_inset Formula $\tilde{X}_{2}$
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Enumerate
-Regress 
-\begin_inset Formula $\tilde{e}_{2}$
-\end_inset
-
- on 
-\begin_inset Formula $\tilde{X}_{2}$
-\end_inset
-
-, obtain OLS estimates 
-\begin_inset Formula $\widehat{\beta}_{1}$
+is a liner function of 
+\begin_inset Formula $x$
 \end_inset
 
 .
+ In this example, the conditional mean coincides with a linear function.
 \end_layout
 
 \begin_layout Standard
-Similar derivation can also be carried out in the population linear projection.
- See Hansen (2019) Chapter 2.22-23.
-\end_layout
-
-\begin_layout Section
-Statistical Properties of Least Squares
-\begin_inset CommandInset label
-LatexCommand label
-name "statistical-properties-of-least-squares"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In this section we return to the classical statistical framework under restricti
-ve distributional assumption 
-\begin_inset Formula $y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right)$
-\end_inset
-
-, where 
-\begin_inset Formula $\gamma=\sigma^{2}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Maximum Likelihood Estimation
-\begin_inset CommandInset label
-LatexCommand label
-name "maximum-likelihood-estimation"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The 
-\emph on
-conditional
-\emph default
- likelihood of observing a 
-\emph on
-random sample
-\emph default
- 
-\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
-\end_inset
-
- is 
-\begin_inset Formula 
-\[
-\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right),
-\]
-
-\end_inset
-
-and the (conditional) log-likelihood function is 
-\begin_inset Formula 
-\[
-L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.
-\]
-
-\end_inset
-
-The maximum likelihood estimator 
-\begin_inset Formula $\widehat{\beta}_{MLE}$
-\end_inset
-
- can be found using the FOC:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\frac{\partial}{\partial\beta}L\left(\beta,\gamma\right)=\frac{1}{2\gamma}\sum_{i=1}^{n}2x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=0.
-\]
-
-\end_inset
-
-Rearranging the above equation in matrix form 
-\begin_inset Formula $X'Y=X'X\widehat{\beta}_{MLE}$
-\end_inset
-
-, we explicitly solve 
-\begin_inset Formula 
-\[
-\widehat{\beta}_{MLE}=(X'X)^{-1}X'Y.
-\]
-
-\end_inset
-
-The maximum likelihood estimator (MLE) coincides with the OLS estimator.
- Similarly, another FOC gives 
-\begin_inset Formula $\widehat{\gamma}_{\mathrm{MLE}}=\widehat{e}'\widehat{e}/n$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Subsection
-Classical Finite Sample Distribution
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "finite-sample-distribution"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We can show the finite-sample exact distribution of 
-\begin_inset Formula $\widehat{\beta}$
-\end_inset
-
- assuming the error term follows a Gaussian distribution.
- 
-\emph on
-Finite sample distribution
-\emph default
- means that the distribution holds for any 
-\begin_inset Formula $n$
-\end_inset
-
-; it is in contrast to 
-\emph on
-asymptotic distribution
-\emph default
-, which is a large sample approximation to the finite sample distribution.
- Let the 
-\begin_inset Quotes eld
-\end_inset
-
-error term
-\begin_inset Quotes erd
-\end_inset
-
- 
-\begin_inset Formula $e_{i}=y_{i}-x_{i}'\beta$
-\end_inset
-
-, we have 
-\begin_inset Formula $e_{i}|x_{i}=y_{i}|x_{i}-x_{i}'\beta\sim N\left(0,\gamma\right)$
-\end_inset
-
-.
- Since the conditional distribution of 
-\begin_inset Formula $e_{i}$
-\end_inset
-
- on 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- is invariant with 
-\begin_inset Formula $x_{i}$
-\end_inset
-
-, the discrepancy 
-\begin_inset Formula $e_{i}$
-\end_inset
-
- is statistical independent of 
-\begin_inset Formula $x_{i}$
-\end_inset
-
-.
- Assume The estimator
-\begin_inset Formula 
-\[
-\widehat{\beta}=\left(X'X\right)^{-1}X'Y=\left(X'X\right)^{-1}X'\left(X'\beta+e\right)=\beta+\left(X'X\right)^{-1}X'e,
-\]
-
-\end_inset
-
-and its conditional distribution can be written as 
-\begin_inset Formula 
-\begin{align*}
-\widehat{\beta}|X & =\beta+\left(X'X\right)^{-1}X'e|X\\
- & \sim\beta+\left(X'X\right)^{-1}X'\cdot N\left(0_{n},\sigma^{2}\cdot I_{n}\right)\\
- & \sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right).
-\end{align*}
-
-\end_inset
-
-The 
-\begin_inset Formula $k$
-\end_inset
-
--th element of the vector coefficient
-\begin_inset Formula 
-\[
-\widehat{\beta}_{k}|X=\eta_{k}'\widehat{\beta}|X\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\eta_{k}=\left(1\left\{ l=k\right\} \right)_{l=1,\ldots,K}$
-\end_inset
-
- is the selector of the 
-\begin_inset Formula $k$
-\end_inset
-
--th element.
-\end_layout
-
-\begin_layout Standard
-In reality, 
-\begin_inset Formula $\sigma^{2}$
-\end_inset
-
- is an unknown parameter, and 
-\begin_inset Formula 
-\[
-s^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)=e'M_{X}e/\left(n-K\right)
-\]
-
-\end_inset
-
-is an unbiased estimator of 
-\begin_inset Formula $\sigma^{2}$
-\end_inset
-
-.
- Consider the 
-\begin_inset Formula $t$
-\end_inset
-
--statistic
-\begin_inset Formula 
-\begin{align*}
-T_{k} & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\\
- & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\cdot\frac{\sqrt{\sigma^{2}}}{\sqrt{s^{2}}}\\
- & =\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The numerator follows a standard normal, and the denominator follows 
-\begin_inset Formula $\frac{1}{n-K}\chi^{2}\left(n-K\right)$
-\end_inset
-
-.
- Moreover, the numerator and the denominator are statistically independent
- (Basu's theorem).
- As a result, we conclude 
-\begin_inset Formula $T_{k}\sim t\left(n-K\right)$
-\end_inset
-
-.
- This finite sample distribution is crucial when conducting statistical
- inference.
-\end_layout
-
-\begin_layout Subsection
-Mean and Variance
-\begin_inset CommandInset label
-LatexCommand label
-name "mean-and-variance"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Now we relax the normality assumption and statistical independence.
- Instead, we represent the regression model as 
-\begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
-\end_inset
-
- and 
-\begin_inset Formula 
-\begin{align*}
-E[e|X] & =0\\
-\mathrm{var}\left[e|X\right] & =\sigma^{2}I_{n}.
-\end{align*}
-
-\end_inset
-
-where the first condition is the 
-\emph on
-mean independence
-\emph default
- assumption, and the second condition is the 
-\emph on
-homoskedasticity
-\emph default
- assumption.
- These assumptions are about the first and second 
-\emph on
-moments
-\emph default
- of 
-\begin_inset Formula $e_{i}$
-\end_inset
-
- conditional on 
-\begin_inset Formula $x_{i}$
-\end_inset
-
-.
- Unlike the normality assumption, they do not restrict the 
-\emph on
-distribution
-\emph default
- of 
-\begin_inset Formula $e_{i}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-Unbiasedness: 
-\begin_inset Formula 
-\[
-E\left[\widehat{\beta}|X\right]=E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]=\beta.
-\]
-
-\end_inset
-
-Unbiasedness does not rely on homoskedasticity.
- 
-\end_layout
-
-\begin_layout Itemize
-Variance: 
-\begin_inset Formula 
-\[
-\begin{aligned}\mathrm{var}\left(\widehat{\beta}|X\right) & =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
- & =E\left[\left(\widehat{\beta}-\beta\right)\left(\widehat{\beta}-\beta\right)'|X\right]\\
- & =E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]\\
- & =\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}\\
- & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}\\
- & =\sigma^{2}\left(X'X\right)^{-1}.
-\end{aligned}
-\]
-
-\end_inset
-
-Homoskedasticity is essential in this derivation.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Example
-\series default
- (Heteroskedasticity) If 
-\begin_inset Formula $e_{i}=x_{i}u_{i}$
-\end_inset
-
-, where 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- is a scalar random variable, 
-\begin_inset Formula $u_{i}$
-\end_inset
-
- is independent of 
-\begin_inset Formula $x_{i}$
-\end_inset
-
-, 
-\begin_inset Formula $E\left[u_{i}\right]=0$
-\end_inset
-
- and 
-\begin_inset Formula $E\left[u_{i}^{2}\right]=\sigma^{2}$
-\end_inset
-
-.
- Then 
-\begin_inset Formula $E\left[e_{i}|x_{i}\right]=0$
-\end_inset
-
- but 
-\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=\sigma^{2}x_{i}^{2}$
-\end_inset
-
- is a function of 
-\begin_inset Formula $x_{i}$
-\end_inset
-
-.
- We say 
-\begin_inset Formula $e_{i}^{2}$
-\end_inset
-
- is a heteroskedastic error.
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
-Notice that the above derivation only applies when 
-\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\begin_layout Remark
+Even though in general 
+\begin_inset Formula $m\left(x\right)\neq x'\beta$
 \end_inset
 
- are independent across 
-\begin_inset Formula $i$
+, the linear form 
+\begin_inset Formula $x'\beta$
+\end_inset
+
+ is still useful in approximating 
+\begin_inset Formula $m\left(x\right)$
 \end_inset
 
 .
- In time series the conditional zero mean condition (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:e_mean_zero"
-plural "false"
-caps "false"
-noprefix "false"
-
+ That is, 
+\begin_inset Formula $\beta=\arg\min\limits _{b\in\mathbb{R}^{K}}E\left[\left(m(x)-x'b\right)^{2}\right]$
 \end_inset
 
-) has to be strengthened to 
-\begin_inset Formula $E\left[e_{i}|x_{1},\ldots,x_{n}\right]=0$
-\end_inset
-
- for unbiasedness.
+.
 \end_layout
 
+\begin_deeper
+\begin_layout Proof
+The first-order condition gives 
+\begin_inset Formula $\frac{\partial}{\partial b}E\left[\left(m(x)-x'b\right)^{2}\right]=-2E[x(m(x)-x'b)]=0$
+\end_inset
+
+.
+ Rearrange the terms and obtain 
+\begin_inset Formula $E[x\cdot m(x)]=E[xx']b$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $E[xx']$
+\end_inset
+
+ is invertible, we solve 
+\begin_inset Formula 
+\[
+\left(E\left[xx'\right]\right){}^{-1}E[x\cdot m(x)]=\left(E\left[xx'\right]\right){}^{-1}E[E[xy|x]]=\left(E\left[xx'\right]\right){}^{-1}E[xy]=\beta.
+\]
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is also the best linear approximation to 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+ under MSE.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset VSpace bigskip
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+We may rewrite the linear regression model, or the 
+\emph on
+linear projection model,
+\emph default
+ as
+\begin_inset Formula 
+\[
+\begin{array}[t]{c}
+y=x'\beta+e\\
+E[xe]=0,
+\end{array}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $e=y-x'\beta$
+\end_inset
+
+ is called the 
+\emph on
+projection error
+\emph default
+, to be distinguished from 
+\begin_inset Formula $\epsilon=y-m(x).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Show (a) 
+\begin_inset Formula $E\left[xe\right]=0$
+\end_inset
+
+.
+ (b) If 
+\begin_inset Formula $x$
+\end_inset
+
+ contains a constant, then 
+\begin_inset Formula $E\left[e\right]=0$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
-Gauss-Markov Theorem
-\end_layout
-
-\begin_layout Standard
+Omitted Variable Bias 
 \begin_inset CommandInset label
 LatexCommand label
-name "gauss-markov-theorem"
+name "omitted-variable-bias"
 
 \end_inset
 
@@ -1246,135 +927,177 @@ name "gauss-markov-theorem"
 \end_layout
 
 \begin_layout Standard
-Gauss-Markov theorem justifies the OLS estimator as the efficient estimator
- among all linear unbiased ones.
- 
+We write the 
 \emph on
-Efficient
+long regression
 \emph default
- here means that it enjoys the smallest variance in a family of estimators.
-\end_layout
-
-\begin_layout Standard
-There are numerous linearly unbiased estimators.
- For example, 
-\begin_inset Formula $\left(Z'X\right)^{-1}Z'y$
-\end_inset
-
- for 
-\begin_inset Formula $z_{i}=x_{i}^{2}$
-\end_inset
-
- is unbiased because 
-\begin_inset Formula $E\left[\left(Z'X\right)^{-1}Z'y\right]=E\left[\left(Z'X\right)^{-1}Z'\left(X\beta+e\right)\right]=\beta$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Let 
-\begin_inset Formula $\tilde{\beta}=A'y$
-\end_inset
-
- be a generic linear estimator, where 
-\begin_inset Formula $A$
-\end_inset
-
- is any 
-\begin_inset Formula $n\times K$
-\end_inset
-
- functions of 
-\begin_inset Formula $X$
-\end_inset
-
-.
- As 
+ as 
 \begin_inset Formula 
 \[
-E\left[A'y|X\right]=E\left[A'\left(X\beta+e\right)|X\right]=A'X\beta.
+y=x_{1}'\beta_{1}+x_{2}'\beta_{2}+\beta_{3}+e_{\beta},
 \]
 
 \end_inset
 
-So the linearity and unbiasedness of 
-\begin_inset Formula $\tilde{\beta}$
-\end_inset
-
- implies 
-\begin_inset Formula $A'X=I_{n}$
-\end_inset
-
-.
- Moreover, the variance 
+and the 
+\emph on
+short regression
+\emph default
+ as 
 \begin_inset Formula 
 \[
-\mbox{var}\left(A'y|X\right)=E\left[\left(A'y-\beta\right)\left(A'y-\beta\right)'|X\right]=E\left[A'ee'A|X\right]=\sigma^{2}A'A.
+y=x_{1}'\gamma_{1}+\gamma_{2}+e_{\gamma}.
 \]
 
 \end_inset
 
-Let 
-\begin_inset Formula $C=A-X\left(X'X\right)^{-1}.$
+If 
+\begin_inset Formula $\beta_{1}$
 \end_inset
 
- 
+ in the long regression is the parameter of interest, omitting 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ as in the short regression will render 
+\emph on
+omitted variable bias
+\emph default
+ (meaning 
+\begin_inset Formula $\gamma_{1}\neq\beta_{1}$
+\end_inset
+
+) unless 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ are uncorrelated.
+\end_layout
+
+\begin_layout Standard
+We first demean all the variables in the two regressions, which is equivalent
+ as if we project out the effect of the constant.
+ The long regression becomes 
 \begin_inset Formula 
 \[
-\begin{aligned}A'A-\left(X'X\right)^{-1} & =\left(C+X\left(X'X\right)^{-1}\right)'\left(C+X\left(X'X\right)^{-1}\right)-\left(X'X\right)^{-1}\\
- & =C'C+\left(X'X\right)^{-1}X'C+C'X\left(X'X\right)^{-1}\\
- & =C'C,
+\tilde{y}=\tilde{x}_{1}'\beta_{1}+\tilde{x}_{2}'\beta_{2}+\tilde{e}_{\beta},
+\]
+
+\end_inset
+
+and the short regression becomes 
+\begin_inset Formula 
+\[
+\tilde{y}=\tilde{x}_{1}'\gamma_{1}+\tilde{e}_{\gamma},
+\]
+
+\end_inset
+
+where 
+\emph on
+tilde
+\emph default
+ denotes the demeaned variable.
+\end_layout
+
+\begin_layout Standard
+After demeaning, the cross-moment equals to the covariance.
+ The short regression coefficient 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{1} & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{y}\right]\\
+ & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\left(\tilde{x}_{1}'\beta_{1}+\tilde{x}_{2}'\beta_{2}+\tilde{e}_{\beta}\right)\right]\\
+ & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\beta+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}\\
+ & =\beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}.
 \end{aligned}
 \]
 
 \end_inset
 
-where the last equality follows as 
-\begin_inset Formula 
-\[
-\left(X'X\right)^{-1}X'C=\left(X'X\right)^{-1}X'\left(A-X\left(X'X\right)^{-1}\right)=\left(X'X\right)^{-1}-\left(X'X\right)^{-1}=0.
-\]
-
+Therefore, 
+\begin_inset Formula $\gamma_{1}=\beta_{1}$
 \end_inset
 
-Therefore 
-\begin_inset Formula $A'A-\left(X'X\right)^{-1}$
+ if and only if 
+\begin_inset Formula $E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}=0$
 \end_inset
 
- is a positive semi-definite matrix.
- The variance of any 
-\begin_inset Formula $\tilde{\beta}$
+, which demands either 
+\begin_inset Formula $E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]=0$
 \end_inset
 
- is no smaller than the OLS estimator 
-\begin_inset Formula $\widehat{\beta}$
+ or 
+\begin_inset Formula $\beta_{2}=0$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-Homoskedasticity is a restrictive assumption.
- Under homoskedasticity, 
-\begin_inset Formula $\mathrm{var}\left(\widehat{\beta}\right)=\sigma^{2}\left(X'X\right)^{-1}$
+Obviously we prefer to run the long regression to attain 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ if possible, as it is a model general model than the short regression.
+ However, sometimes 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ is simply unobservable so the long regression is infeasible.
+ When only the short regression is available, in some cases we are able
+ to sign the bias, meaning that we know whether 
+\begin_inset Formula $\gamma_{1}$
+\end_inset
+
+ is bigger or smaller than 
+\begin_inset Formula $\beta_{1}$
 \end_inset
 
 .
- Popular estimator of 
-\begin_inset Formula $\sigma^{2}$
-\end_inset
+\end_layout
 
- is the sample mean of the residuals 
-\begin_inset Formula $\widehat{\sigma}^{2}=\frac{1}{n}\widehat{e}'\widehat{e}$
-\end_inset
-
- or the unbiased one 
-\begin_inset Formula $s^{2}=\frac{1}{n-K}\widehat{e}'\widehat{e}$
+\begin_layout Exercise
+Show that 
+\begin_inset Formula $E\left[\left(y-x_{1}'\beta_{1}-x_{2}'\beta_{2}-\beta_{3}\right)^{2}\right]\leq E\left[\left(y-x_{1}'\gamma_{1}-\gamma_{2}\right)^{2}\right]$
 \end_inset
 
 .
- Under heteroskedasticity, Gauss-Markov theorem does not apply.
+\end_layout
+
+\begin_layout Standard
+This example of omitted variable bias is ubiquitous in applied econometrics.
+ Ideally we would like to directly observe some regressors but in reality
+ we do not have them at hand.
+ We should be aware of the potential consequence when the data are not as
+ ideal as we have wished.
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+In this lecture, we cover the conditional mean model.
+ Imagine that we are faced with a pair of random variable 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ drawn from some joint distribution, and our job is to look for a linear
+ or nonlinear function of 
+\begin_inset Formula $x$
+\end_inset
+
+ to best predict 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ All analyses are conducted in population.
+ We have not touched data yet.
 \end_layout
 
 \begin_layout Standard

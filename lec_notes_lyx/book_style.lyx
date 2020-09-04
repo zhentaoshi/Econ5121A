@@ -109,24 +109,6 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Chapter
-Review of Probability
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "lecture0.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Chapter
-Regression Model
-\end_layout
-
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
@@ -137,10 +119,6 @@ filename "lecture1.lyx"
 
 \end_layout
 
-\begin_layout Chapter
-Least Squares
-\end_layout
-
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
@@ -149,10 +127,6 @@ filename "lecture2.lyx"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Chapter
-Large Sample Theory
 \end_layout
 
 \begin_layout Standard
@@ -166,7 +140,7 @@ filename "lecture3.lyx"
 \end_layout
 
 \begin_layout Chapter
-Hypothesis Testing
+Large Sample Theory
 \end_layout
 
 \begin_layout Standard
@@ -180,7 +154,7 @@ filename "lecture4.lyx"
 \end_layout
 
 \begin_layout Chapter
-Panel Data
+Hypothesis Testing
 \end_layout
 
 \begin_layout Standard
@@ -194,7 +168,7 @@ filename "lecture5.lyx"
 \end_layout
 
 \begin_layout Chapter
-Endogeneity
+Panel Data
 \end_layout
 
 \begin_layout Standard
@@ -208,13 +182,36 @@ filename "lecture6.lyx"
 \end_layout
 
 \begin_layout Chapter
-Generalized Method of Moments
+Endogeneity
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
 filename "lecture7.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Chapter
+Generalized Method of Moments
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "lecture8.lyx"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
