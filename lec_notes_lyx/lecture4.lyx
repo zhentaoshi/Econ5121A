@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass report
 \use_default_options false
 \maintain_unincluded_children false
 \language english
@@ -92,12 +92,8 @@
 
 \begin_body
 
-\begin_layout Title
+\begin_layout Chapter
 Asymptotic Theory
-\end_layout
-
-\begin_layout Author
-Zhentao Shi
 \end_layout
 
 \begin_layout Section
@@ -871,7 +867,6 @@ where
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Itemize
@@ -1452,6 +1447,32 @@ where the third inequality follows by
 \end_inset
 
 where the second and the third inequality hold by the Holder's inequality.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ 
+\backslash
+today}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

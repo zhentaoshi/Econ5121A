@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass report
 \begin_preamble
 \usepackage[T1]{fontenc}
 % Nicer default font (+ math font) than Computer Modern for most use cases
@@ -110,40 +110,8 @@ theorems-ams-extended
 
 \begin_body
 
-\begin_layout Standard
-\begin_inset FormulaMacro
-\newcommand{\top}{\stackrel{\mathrm{p}}{\to}}
-\end_inset
-
- 
-\begin_inset FormulaMacro
-\newcommand{\Op}{O_{\mathrm{p}}}
-\end_inset
-
-
-\begin_inset FormulaMacro
-\newcommand{\op}{o_{\mathrm{p}}}
-\end_inset
-
-
-\begin_inset FormulaMacro
-\newcommand{\E}{\mathbb{E}}
-\end_inset
-
-
-\begin_inset FormulaMacro
-\newcommand{\d}{\mathrm{d}}
-\end_inset
-
-
-\end_layout
-
-\begin_layout Title
+\begin_layout Chapter
 Generalized Method of Moments
-\end_layout
-
-\begin_layout Author
-Zhentao Shi
 \end_layout
 
 \begin_layout Section
@@ -167,6 +135,31 @@ method of moments
  and it includes conventional methods like the two-stage least squares (2SLS)
  and the three-stage least square as special cases.
  
+\begin_inset FormulaMacro
+\renewcommand{\top}{\stackrel{\mathrm{p}}{\to}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\Op}{O_{\mathrm{p}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\op}{o_{\mathrm{p}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\renewcommand{\d}{\mathrm{d}}
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -961,7 +954,7 @@ This is exactly the same expression of 2SLS for
  However, 2SLS can actually be obtained by one step using the above equation.
  It is a special case of GMM.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Section
 GMM in Nonlinear Model*
@@ -1150,6 +1143,32 @@ J\left(\widehat{\beta}\right)\Rightarrow\chi^{2}\left(L-K\right)
 
 If the null hypothesis is false, then the test statistic tends to be large,
  and it is more likely to reject the null.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ 
+\backslash
+today}
 \end_layout
 
 \end_inset

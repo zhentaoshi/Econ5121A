@@ -255,10 +255,10 @@ s based it — the statistical properties of a given fixed number is meaningless
 
 \begin_layout Remark
 All probability descriptions are thought experiments before observation.
- In reality, we have at hand fixed numbers (more recently, words, audio,
- video, etc., which can all be represented in digital formats with 0 and
- 1s) to feed into a computational operation, and the operation will return
- one or some numbers.
+ In reality, we have at hand fixed numbers (more recently, words, photos,
+ audio clips, video clips, etc., which can all be represented in digital
+ formats with 0 and 1s) to feed into a computational operation, and the
+ operation will return one or some numbers.
  All statistical interpretation about these numbers are drawn from the probabili
 stic thought experiments.
  A 

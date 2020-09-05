@@ -14,8 +14,8 @@
 \end_preamble
 \use_default_options false
 \begin_modules
-theorems-ams
-theorems-ams-extended
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -139,10 +139,6 @@ filename "lecture3.lyx"
 
 \end_layout
 
-\begin_layout Chapter
-Large Sample Theory
-\end_layout
-
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
@@ -196,22 +192,9 @@ filename "lecture7.lyx"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Chapter
-Generalized Method of Moments
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset CommandInset include
 LatexCommand input
 filename "lecture8.lyx"
-
-\end_inset
-
-
-\end_layout
 
 \end_inset
 

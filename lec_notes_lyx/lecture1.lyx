@@ -6,6 +6,9 @@
 \origin unavailable
 \textclass report
 \use_default_options false
+\begin_modules
+theorems-bytype
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package none
@@ -100,25 +103,6 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Human beings are awed by uncertainty in daily life.
- In the old days, Egyptians consulted oracles, Hebrews inquired prophets,
- and Chinese counted on diviners to interpret tortoise shell or bone cracks.
- Fortunetellers are abundant in today's Hong Kong.
-\end_layout
-
-\begin_layout Standard
-Probability theory is a philosophy about uncertainty.
- Over centuries, mathematicians strove to contribute to the understanding
- of randomness.
- As measure theory matured in the early 20th century, Russian mathematician
- Andrey Kolmogorov (1903-1987) laid the foundation of modern probability
- theory in his book published in 1933.
- The formal mathematical language is a system that allows rigorous explorations
- that have made fruitful advancements, and is now widely accepted as scientific
- standard in academic and industrial research.
-\end_layout
-
-\begin_layout Standard
 With the advent of big data, computer scientists have come up with a plethora
  of new algorithms that are aimed at revealing patterns from data.
  
@@ -129,7 +113,7 @@ Machine learning
 \emph on
 artificial intelligence
 \emph default
- become buzz words that attract popular attention.
+ become buzz words that attract public attention.
  They defeated best human Go players, automated manufacturers, powered self-driv
 ing vehicles, recognized human faces, and recommended online purchases.
  Some of these industrial successes are based on statistical theory, and
@@ -157,9 +141,32 @@ cians, were awarded in 1969 the first Nobel Prize in economics.
  probability theory.
 \end_layout
 
+\begin_layout Section
+Axiomatic Probability
+\end_layout
+
 \begin_layout Standard
-In this lecture, we will have a brief introduction of the axiomatic probability
- theory along with familiar results covered in undergraduate 
+Human beings are awed by uncertainty in daily life.
+ In the old days, Egyptians consulted oracles, Hebrews inquired prophets,
+ and Chinese counted on diviners to interpret tortoise shell or bone cracks.
+ Fortunetellers are abundant in today's Hong Kong.
+\end_layout
+
+\begin_layout Standard
+Probability theory is a philosophy about uncertainty.
+ Over centuries, mathematicians strove to contribute to the understanding
+ of randomness.
+ As measure theory matured in the early 20th century, Russian mathematician
+ Andrey Kolmogorov (1903-1987) laid the foundation of modern probability
+ theory in his monograph published in 1933.
+ The formal mathematical language is a system that allows rigorous explorations
+ that have made fruitful advancements, and is now widely accepted as scientific
+ standard in academic and industrial research.
+\end_layout
+
+\begin_layout Standard
+In this lecture, we will briefly introduce the axiomatic probability theory
+ along with familiar results covered in undergraduate 
 \emph on
 probability and statistics
 \emph default
@@ -172,7 +179,7 @@ Hansen (2020): Introduction to Econometrics, or
 \end_layout
 
 \begin_layout Itemize
-Stachurski (2016): A Primer in Econometric Theory, or 
+Stachurski (2016): A Primer in Econometric Theory, or
 \end_layout
 
 \begin_layout Itemize
@@ -181,10 +188,6 @@ Casella and Berger (2002): Statistical Inference (second edition)
 
 \begin_layout Standard
 Interested readers may want to read this textbook for more examples.
-\end_layout
-
-\begin_layout Section
-Axiomatic Probability
 \end_layout
 
 \begin_layout Subsection
@@ -202,10 +205,7 @@ sample space
 
  is a collection of all possible outcomes.
  It is a set of things.
-\end_layout
-
-\begin_layout Standard
-An 
+ An 
 \emph on
 event
 \emph default
@@ -219,10 +219,7 @@ event
 
 .
  It is something of interest on the sample space.
-\end_layout
-
-\begin_layout Standard
-A 
+ A 
 \begin_inset Formula $\sigma$
 \end_inset
 
@@ -239,9 +236,6 @@ field
 \end_inset
 
  events such that
-\end_layout
-
-\begin_layout Standard
 \begin_inset FormulaMacro
 \newcommand{\labelenumi}{\arabic{enumi}.}
 \end_inset
@@ -322,18 +316,7 @@ Implications: (a) Since
 .
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Example: 
-\series default
+\begin_layout Example
 Let 
 \begin_inset Formula $\Omega=\{1,2,3,4,5,6\}$
 \end_inset
@@ -350,6 +333,7 @@ fields
 include
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 \begin_inset Formula $\mathcal{F}_{1}=\{\emptyset,\{1,2,3\},\{4,5,6\},\Omega\}$
 \end_inset
@@ -392,13 +376,7 @@ since
 .
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 The 
 \begin_inset Formula $\sigma$
@@ -479,18 +457,7 @@ Borel
 .
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Example: 
-\series default
+\begin_layout Example
 Let 
 \begin_inset Formula $\Omega=\{1,2,3,4,5,6\}$
 \end_inset
@@ -520,13 +487,6 @@ Let
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 A function 
 \begin_inset Formula $\mu:(\Omega,\mathcal{F})\mapsto\left[0,\infty\right]$
 \end_inset
@@ -535,10 +495,7 @@ A function
 \emph on
 measure
 \emph default
- if it satisfies
-\end_layout
-
-\begin_layout Standard
+ if it satisfies 
 \begin_inset FormulaMacro
 \renewcommand{\labelenumi}{\arabic{enumi}.}
 \end_inset
@@ -676,9 +633,6 @@ Bayesian
 
 \begin_layout Subsection
 Random Variable
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "random-variable"
@@ -693,7 +647,8 @@ The terminology
 \emph on
 random variable
 \emph default
- somewhat belies its formal definition of a deterministic mapping.
+ is a historic relic which belies its modern definition of a deterministic
+ mapping.
  It is a link between two measurable spaces such that any event in the 
 \begin_inset Formula $\sigma$
 \end_inset
@@ -818,20 +773,17 @@ induced
 \end_inset
 
 .
-\end_layout
+\begin_inset Note Note
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset VSpace bigskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Example: 
-\series default
+\begin_layout Example
 Consider 
 \begin_inset Formula $\Omega=\{1,2,3,4,5,6\}.$
 \end_inset
@@ -839,6 +791,7 @@ Consider
  Let
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 \begin_inset Formula $\mathcal{F}_{1}=2^{\Omega}$
 \end_inset
@@ -867,14 +820,15 @@ Consider
 
 \end_layout
 
-\begin_layout Standard
+\end_deeper
+\begin_layout Plain Layout
 \begin_inset VSpace smallskip
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Note that 
 \begin_inset Formula 
 \[
@@ -913,7 +867,7 @@ As all four sets on the right are measurable by
 \begin_inset Formula $X_{2}$
 \end_inset
 
-is a random variable on 
+ is a random variable on 
 \begin_inset Formula $(\Omega,\mathcal{F}_{1})$
 \end_inset
 
@@ -928,8 +882,6 @@ is a random variable on
 .
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
 \end_inset
 
 
@@ -1046,12 +998,8 @@ probability density function
 .
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Example:
-\series default
- We have learned many parametric distributions like the binary distribution,
+\begin_layout Example
+We have learned many parametric distributions like the binary distribution,
  the Poisson distribution, the uniform distribution, the normal distribution,
  
 \begin_inset Formula $\chi^{2}$
@@ -1320,8 +1268,12 @@ If we know the probability mass function of a discrete random variable,
  by the Lebesgue integral.
 \end_layout
 
+\begin_layout Subsection
+Properties of Expectations
+\end_layout
+
 \begin_layout Standard
-Here are some properties of the expectation.
+Here are some properties of mathematical expectations.
 \end_layout
 
 \begin_layout Itemize
@@ -1640,7 +1592,7 @@ if
 \emph on
 dominance
 \emph default
- between two measures, which I choose not to do at this time.
+ between two measures, which we do not elaborate here.
  In the definition of conditional probability, 
 \begin_inset Formula $A_{2}$
 \end_inset
@@ -1938,6 +1890,57 @@ Below are some properties of conditional expectations
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+If it is your first encounter of measure theory, the new definitions here
+ may seem overwhelmingly abstract.
+ A natural question is that: 
+\begin_inset Quotes eld
+\end_inset
+
+I earned high grade in my undergraduate probability and statistics; do I
+ really need the fancy mathematics in this lecture to do well in econometrics?
+\begin_inset Quotes erd
+\end_inset
+
+ The answer is yes and no.
+ 
+\emph on
+No 
+\emph default
+is in the sense that if you want to consume econometric methods, instead
+ of grasp the underlying theory, then the axiomatic probability does not
+ add much to your weaponry.
+ You can be an excellent economist or even applied econometrician without
+ knowing measure theory.
+ 
+\emph on
+Yes
+\emph default
+ is in the sense that without measure theory, we cannot even formally define
+ conditional expectation, which will be the subject of our next lecture
+ and is a core concept of econometrics.
+ The pillars of asymptotic theory — law of large numbers and central limit
+ theorem — can only be made accurate with this foundation.
+ If you are aspired to work on econometric theory, you will meet and use
+ measure theory so often in your future study and finally it becomes part
+ of your muscle memory.
+\end_layout
+
+\begin_layout Standard
+In this course, we try to keep a balance manner.
+ On the one hand, many econometrics topics can be presented with elementary
+ mathematics.
+ Whenever possible, econometrics should reach wider audience with a plain
+ appearance.
+ On the other hand, we introduce these concepts in this lecture and will
+ invoke them in the discussion of asymptotic theory later.
+ Your investment in advanced mathematics will not be wasted in vain.
 \end_layout
 
 \begin_layout Standard
