@@ -150,11 +150,6 @@ status open
 a one-column matrix.
 \end_layout
 
-\begin_layout Standard
-For the convenience of online teaching in the fall semester of 2020, the
- layout is modified with wide margins and line space for note taking.
-\end_layout
-
 \begin_layout Section
 Conditional Expectation
 \begin_inset CommandInset label
@@ -1037,17 +1032,35 @@ Therefore,
 .
 \end_layout
 
+\begin_layout Exercise
+Show that 
+\begin_inset Formula $E\left[\left(y-x_{1}'\beta_{1}-x_{2}'\beta_{2}-\beta_{3}\right)^{2}\right]\leq E\left[\left(y-x_{1}'\gamma_{1}-\gamma_{2}\right)^{2}\right]$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
 Obviously we prefer to run the long regression to attain 
 \begin_inset Formula $\beta_{1}$
 \end_inset
 
- if possible, as it is a model general model than the short regression.
+ if possible, for it is a more general model than the short regression and
+ achieves no larger variance in the projection residual.
  However, sometimes 
 \begin_inset Formula $x_{2}$
 \end_inset
 
- is simply unobservable so the long regression is infeasible.
+ is simply unobservable so the long regression is 
+\emph on
+infeasible
+\emph default
+.
+ This example of omitted variable bias is ubiquitous in applied econometrics.
+ Ideally we would like to directly observe some regressors but in reality
+ we do not have them at hand.
+ We should be aware of the potential consequence when the data are not as
+ ideal as we have wished.
  When only the short regression is available, in some cases we are able
  to sign the bias, meaning that we know whether 
 \begin_inset Formula $\gamma_{1}$
@@ -1058,22 +1071,6 @@ Obviously we prefer to run the long regression to attain
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Exercise
-Show that 
-\begin_inset Formula $E\left[\left(y-x_{1}'\beta_{1}-x_{2}'\beta_{2}-\beta_{3}\right)^{2}\right]\leq E\left[\left(y-x_{1}'\gamma_{1}-\gamma_{2}\right)^{2}\right]$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-This example of omitted variable bias is ubiquitous in applied econometrics.
- Ideally we would like to directly observe some regressors but in reality
- we do not have them at hand.
- We should be aware of the potential consequence when the data are not as
- ideal as we have wished.
 \end_layout
 
 \begin_layout Section
