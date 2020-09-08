@@ -29,7 +29,7 @@ theorems-bytype
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command default
+\bibtex_command bibtex
 \index_command default
 \paperfontsize 12
 \spacing double
@@ -56,9 +56,9 @@ theorems-bytype
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
-\biblio_style plain
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style chicagoa
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -746,10 +746,6 @@ then
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \begin_inset Separator plain
 \end_inset
 
@@ -796,7 +792,7 @@ is a liner function of
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_inset Separator plain
 \end_inset
 
 
@@ -1763,6 +1759,89 @@ where the second equality holds if
 \end_inset
 
 .
+ Without economic theory to defend the choice of the assumed DGP 
+\begin_inset Formula $y=m\left(d,x\right)+u$
+\end_inset
+
+, this is at best the 
+\emph on
+reduced-form
+\emph default
+ approach.
+ 
+\end_layout
+
+\begin_layout Exercise
+The structural approach models the economic mechanism, guided by economic
+ theory and considered to be 
+\begin_inset Quotes eld
+\end_inset
+
+deeper
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The reduced-form approach is convenient and can document stylized facts
+ when suitable economic theory is not immediately available.
+ There are constant debates about the pros and cons of the two approaches;
+ see 
+\emph on
+Journal of Economic Perspectives
+\emph default
+ Vol.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+24, No.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+2 Spring 2010.
+ In macroeconomics, the so-called Phillips curve, attributed to A.W.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Phillips about the negative correlation between inflation and unemployment,
+ is a stylized fact learned from the reduced-form approach.
+ The famous Lucas critique 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "lucas1976econometric"
+literal "false"
+
+\end_inset
+
+ exposed its lack of microfoundation and advocated modeling deep parameters
+ that are invariant to policy changes.
+ The latter is a structural approach.
+ Ironically, more 40 years has passed since Lucas critique equations with
+ little microfoundation still dominate the analytical apparatus of central
+ bankers.
+ At present (as of 2020), applied econometric research in China is dominated
+ by the reduced-form approach.
+ 
 \end_layout
 
 \begin_layout Section
@@ -1791,6 +1870,54 @@ In this lecture, we cover the conditional mean function and causality.
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Historical notes
+\series default
+: Regressions and conditional expectations are concepts from statistics
+ and they are imported to econometrics in early time.
+ Researchers at the Cowles Commission (now Cowles Foundation for Research
+ in Economics) — Jacob Marschak (1898–1977), Tjalling Koopmans (1910–1985,
+ Nobel Prize 1975), Trygve Haavelmo (1911–1999, Nobel Prize 1989) and their
+ colleagues — were trailblazers of the econometric structural approach.
+ 
+\end_layout
+
+\begin_layout Standard
+The potential outcome framework is not peculiar to economics.
+ It is widely used in other fields that heavily relying on data analysis
+ such as biostatistics and medical studies.
+ It was initiated by Jerzy Neyman (1894–1981) and extended by Donald B.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Rubin (1943– ), Professor of Statistics at Tsinghua University.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Extensive reading
+\series default
+: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lewbel2019identification"
+literal "false"
+
+\end_inset
+
+ offers comprehensive summary of identification in econometrics.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1810,6 +1937,18 @@ texttt{ Zhentao Shi.
 \backslash
 today}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
 
 \end_inset
 

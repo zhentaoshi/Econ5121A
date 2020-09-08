@@ -39,8 +39,8 @@ theorems-bytype
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks true
-\pdf_pdfborder false
-\pdf_colorlinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
 \pdf_backref section
 \pdf_pdfusetitle false
 \pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
@@ -56,9 +56,9 @@ theorems-bytype
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
-\biblio_style plain
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -162,8 +162,8 @@ Probability theory is a philosophy about uncertainty.
  Over centuries, mathematicians strove to contribute to the understanding
  of randomness.
  As measure theory matured in the early 20th century, Russian mathematician
- Andrey Kolmogorov (1903-1987) laid the foundation of modern probability
- theory in his monograph published in 1933.
+ Andrey Kolmogorov (1903-1987) built the edifice of modern probability theory
+ in his monograph published in 1933.
  The formal mathematical language is a system that allows rigorous explorations
  that have made fruitful advancements, and is now widely accepted as scientific
  standard in academic and industrial research.
@@ -1949,6 +1949,38 @@ In this course, we try to keep a balance manner.
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Historical note:
+\series default
+ Measure theory established in the early 20th century by the constellation
+ of French/German mathematicians Émile Borel, Henri Lebesgue, Johann Radon,
+ etc.
+ Generations of Russian mathematicians such as Andrey Markov and Andrey
+ Kolmogorov made fundamental contribution in mathematizing seemingly abstract
+ concepts of uncertainty and randomness.
+ Their names are immortalized by the Borel set, the Lebesgue measure, Radon-Niko
+dym theorem, Markov inequality, Kolmogorov's zero–one law and many other
+ terminologies named after them.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Extensive reading
+\series default
+: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "doob1996development"
+literal "false"
+
+\end_inset
+
+ summarized the development of axiomatic probability.
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1968,6 +2000,18 @@ texttt{ Zhentao Shi.
 \backslash
 today}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
 
 \end_inset
 

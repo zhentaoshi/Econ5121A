@@ -54,10 +54,11 @@ theorems-ams-extended-chap-bytype
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
-\biblio_style plain
-\use_bibtopic false
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style chicagoa
+\multibib child
+\use_bibtopic true
 \use_indices false
 \paperorientation portrait
 \suppress_date true
