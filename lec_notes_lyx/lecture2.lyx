@@ -1161,6 +1161,16 @@ under-identified
  of the observable data.
  In other words, a model is under-identified if from the observable data
  we cannot track back to a unique parameter in the model.
+ A correctly specified model is the prerequisite for any discussion of identific
+ation.
+ In reality, all models are wrong.
+ Thus when talking about identification, we are indulged in an imaginary
+ world.
+ If in such a thought experiment we still cannot unique distinguish the
+ true parameter of the data generating process, then identification fails.
+ In other words, we cannot determine what is the true model no matter how
+ large the sample is.
+ 
 \end_layout
 
 \begin_layout Subsection

@@ -584,6 +584,20 @@ Before closing this section, we stress that either the panel data approach
 .
 \end_layout
 
+\begin_layout Standard
+(
+\series bold
+New added paragraph
+\series default
+) There are two requirements for valid IVs: orthogonality and relevance.
+ Orthogonality entails that the model is correctly specified, so that we
+ can focus on relevance.
+ If relevance is violated, meaning that the IVs are not correlated with
+ the endogenous variable, then multiple parameters can generate the observable
+ data.
+ Identification, as in the standard definition in econometrics, breaks down.
+\end_layout
+
 \begin_layout Section
 Examples
 \end_layout
