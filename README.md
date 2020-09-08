@@ -16,11 +16,28 @@ This is an entry-level Ph.D. econometrics course. Under the asymptotic framework
 
 The lectures are based primarily on Bruce Hansen's textbooks:
 
-* Hansen (2020): Introduction to Econometrics [[link](https://www.ssc.wisc.edu/~bhansen/probability/)]
+* Hansen (2020): [Introduction to Econometrics](https://www.ssc.wisc.edu/~bhansen/probability/)] (**IE**)
 
-* Hansen (2020): Econometrics [[link](http://www.ssc.wisc.edu/~bhansen/econometrics/)]
+* Hansen (2020): [Econometrics](http://www.ssc.wisc.edu/~bhansen/econometrics/) (**E**) 
 
 Both are downloadable for free.
+
+
+
+
+
+Reading and Assignment will be updated each week as the class progresses.
+
+### Reading
+
+Week 0: IE Ch.1-6
+Weak 1: TBD
+
+
+
+### Assignment
+Week 1: TBD
+
 
 
 
