@@ -111,7 +111,7 @@ setcounter{chapter}{1}
 \end_layout
 
 \begin_layout Chapter
-Regression and Projection
+Regression, Projection and Causality
 \end_layout
 
 \begin_layout Standard
@@ -360,7 +360,7 @@ name "prop:CEF"
 
 \end_inset
 
- The conditional mean function 
+ The conditional mean function (CEF) 
 \begin_inset Formula $m\left(x\right)=E\left[y|x\right]=\int yf\left(y|x\right)\mathrm{d}y$
 \end_inset
 
@@ -423,10 +423,14 @@ For any function
 \end_inset
 
 , we have 
-\begin_inset Formula $E\left[h\left(x\right)\epsilon\right]=E\left[E\left[h\left(x\right)\epsilon|x\right]\right]=E\left[h(x)E\left[\epsilon|x\right]\right]=0$
+\begin_inset Formula 
+\[
+E\left[h\left(x\right)\epsilon\right]=E\left[E\left[h\left(x\right)\epsilon|x\right]\right]=E\left[h(x)E\left[\epsilon|x\right]\right]=0.
+\]
+
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -495,11 +499,11 @@ guess-and-verify.
 
 , the MSE can be decomposed into three terms
 \begin_inset Formula 
-\[
-\begin{aligned}E\left[\left(y-g\left(x\right)\right)^{2}\right] & =E\left[\left(y-m(x)+m(x)-g(x)\right)^{2}\right]\\
- & =E\left[\left(y-m\left(x\right)\right)^{2}\right]+2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right]+E\left[\left(m\left(x\right)-g\left(x\right)\right)^{2}\right].
-\end{aligned}
-\]
+\begin{eqnarray*}
+ &  & E\left[\left(y-g\left(x\right)\right)^{2}\right]\\
+ & = & E\left[\left(y-m(x)+m(x)-g(x)\right)^{2}\right]\\
+ & = & E\left[\left(y-m\left(x\right)\right)^{2}\right]+2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right]+E\left[\left(m\left(x\right)-g\left(x\right)\right)^{2}\right].
+\end{eqnarray*}
 
 \end_inset
 
@@ -1074,27 +1078,706 @@ infeasible
 \end_layout
 
 \begin_layout Section
+Causality
+\end_layout
+
+\begin_layout Subsection
+Structure and Identification
+\end_layout
+
+\begin_layout Standard
+Unlike physical laws such as Einstein's mass–energy equivalence 
+\begin_inset Formula $E=mc^{2}$
+\end_inset
+
+ and Newton's universal gravitation 
+\begin_inset Formula $F=Gm_{1}m_{2}/r^{2}$
+\end_inset
+
+, economic phenomena can rarely be summarized in such a minimalistic style.
+ When using experiments to verify physical laws, scientists often manage
+ to come up with smart design in which signal-to-noise ratio is so high
+ that the small disturbances are kept at negligible level.
+ On the contrary, economic laws do not fit a laboratory for experiment.
+ What is worse, the subjects in economic studies — human beings — are heterogene
+ous and with many features that are hard to control.
+ People from distinctive cultural and family background respond to the same
+ issue differently and researchers can do little to homogenize them.
+ The signal-to-noise ratio in economic laws are often significantly lower
+ than that of physical laws, mainly due to the lack of laboratory setting
+ and the heterogeneous nature of the subjects.
+ 
+\end_layout
+
+\begin_layout Standard
+Educational return and the demand-supply system are two classical topics
+ in econometrics.
+ A person's incomes is determined by too many random factors in the academic
+ and career path that is impossible to exhaustively observe and control.
+ The observable prices and quantities are outcomes of equilibrium so the
+ demand and supply affect each other.
+ 
+\end_layout
+
+\begin_layout Standard
+Generations of thinkers have been debating the definitions of causality.
+ In economics, an accepted definition is 
+\emph on
+structural causality
+\emph default
+.
+ Structural causality is a thought experiment.
+ It assumes that there is a data generating process (DGP) that produces
+ the observational data.
+ If we can use data to recover the DGP or some features of the DGP, then
+ we have learned causality or some implications of causality.
+ The DGP is often called the 
+\emph on
+model
+\emph default
+.
+ We set up a model, in which some parameters are unknown.
+ We would like to recover the unknown components of the model.
+ 
+\end_layout
+
+\begin_layout Standard
+A key issue to resolve before looking at the realized sample is 
+\emph on
+identification
+\emph default
+.
+ We say a model is 
+\emph on
+identified
+\emph default
+ if the each possible parameter of the model under consideration generates
+ distinctive features of the observable data.
+ A model is 
+\emph on
+under-identified
+\emph default
+ if more than one parameter in the model can generate exact the same features
+ of the observable data.
+ In other words, a model is under-identified if from the observable data
+ we cannot track back to a unique parameter in the model.
+\end_layout
+
+\begin_layout Subsection
+Treatment Effect
+\end_layout
+
+\begin_layout Standard
+We narrow down to the framework of the relationship between 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ One question of particular interest is 
+\emph on
+treatment effect
+\emph default
+.
+ The treatment effect is how much 
+\begin_inset Formula $y$
+\end_inset
+
+ will change if we change 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ by one unit while keep all other variables (including the unobservable
+ variables) the same.
+ The Latin phrase 
+\emph on
+ceteris paribus
+\emph default
+ means "keep all other things constant."
+\end_layout
+
+\begin_layout Example
+During the 2020 covid-19 pandemic, Hong Kong's unemployment rate rose to
+ a high-level and consumption collapsed.
+ In order to boost the economy, some Hong Kong residents were qualified
+ in receiving 10,000 HKD cash allowance from the government.
+ We are interested to learn how much does the 10,000 HKD allowance increase
+ people's consumption.
+ For an individual, we imagine two parallel worlds: one with the cash allowance
+ and one without.
+ The difference of the consumption in the world with the allowance, denoted
+ 
+\begin_inset Formula $Y\left(1\right)$
+\end_inset
+
+, and that in the world without the allowance, denoted 
+\begin_inset Formula $Y\left(0\right)$
+\end_inset
+
+, is the treatment effect of that particular person.
+ This thought experiment is called the 
+\emph on
+potential outcome framework
+\emph default
+.
+\end_layout
+
+\begin_layout Example
+However, in reality one and only one scenario happens, which echos the saying
+ of ancient Greek philosopher Heraclitus (553 BC--475 BC): "You cannot step
+ into the same river twice." While the individual treatment effect is infeasible,
+ we evaluate the treatment effect at the population level.
+ The 
+\emph on
+average treatment effect
+\emph default
+ (ATE) is defined as 
+\begin_inset Formula 
+\[
+ATE=E\left[Y\left(1\right)-Y\left(0\right)\right]=E\left[Y\left(1\right)\right]-E\left[Y\left(0\right)\right].
+\]
+
+\end_inset
+
+Notice that 
+\begin_inset Formula $E\left[Y\left(1\right)\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[Y\left(0\right)\right]$
+\end_inset
+
+ are still infeasible.
+ Now, let 
+\begin_inset Formula 
+\[
+D=1\left\{ \mbox{treatment received}\right\} 
+\]
+
+\end_inset
+
+ be a binary variable signifying the treatment, and 
+\begin_inset Formula $E\left[Y\left(1\right)|D=1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[Y\left(0\right)|D=0\right]$
+\end_inset
+
+ are feasible from the data.
+ If the two potential outcomes 
+\begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)$
+\end_inset
+
+ are independent of the assignment 
+\begin_inset Formula $D$
+\end_inset
+
+, then 
+\begin_inset Formula $E\left[Y\left(1\right)\right]=E\left[Y\left(1\right)|D=1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[Y\left(0\right)\right]=E\left[Y\left(0\right)|D=0\right]$
+\end_inset
+
+ so that ATE can be estimated from the data in a feasible way in that 
+\begin_inset Formula 
+\[
+ATE=E\left[Y\left(1\right)|D=1\right]-E\left[Y\left(0\right)|D=0\right].
+\]
+
+\end_inset
+
+Therefore, to evaluate ATE ideally we would like use a lottery to randomly
+ decide that some people receive the treatment (treatment group, with 
+\begin_inset Formula $D=1$
+\end_inset
+
+) and the others do not (control group, with 
+\begin_inset Formula $D=0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Example
+When we have other control variables, we can also define a finer treatment
+ effect conditional on 
+\begin_inset Formula $x$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+ATE\left(x\right)=E\left[Y\left(1\right)|x\right]-E\left[Y\left(0\right)|x\right].
+\]
+
+\end_inset
+
+ATE is the average effect in the population of individual is we hypothetical
+ give them the treatment, keeping all other factors 
+\begin_inset Formula $x$
+\end_inset
+
+ constant.
+ If conditioning on 
+\begin_inset Formula $x$
+\end_inset
+
+, the treatment 
+\begin_inset Formula $D$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)$
+\end_inset
+
+, then ATE becomes feasible:
+\begin_inset Formula 
+\[
+ATE\left(x\right)=E\left[Y\left(1\right)|D=1,x\right]-E\left[Y\left(0\right)|D=0,x\right]
+\]
+
+\end_inset
+
+The important condition 
+\begin_inset Formula $\left(\left(Y\left(1\right),Y\left(0\right)\right)\perp D\right)|x$
+\end_inset
+
+ is called the 
+\emph on
+conditional independence assumption
+\emph default
+ (CIA).
+\end_layout
+
+\begin_layout Example
+CIA is weaker than full independence 
+\begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)\perp D$
+\end_inset
+
+.
+ (This is the opposite to the conditional mean independence, where 
+\begin_inset Formula $E\left[u|x\right]=0$
+\end_inset
+
+ is stronger than 
+\begin_inset Formula $E\left[u\right]=0$
+\end_inset
+
+.) Consider the example 
+\begin_inset Formula $Y\left(1\right)=x+u\left(1\right)$
+\end_inset
+
+, 
+\begin_inset Formula $Y\left(0\right)=x+u\left(0\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $D=1\left\{ x+u_{d}\geq0\right\} $
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\left(\left(u\left(0\right),u\left(1\right)\right)\perp u_{d}\right)|x$
+\end_inset
+
+, then CIA is satisfied.
+ Obviously 
+\begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $D$
+\end_inset
+
+ are dependent however, since 
+\begin_inset Formula $x$
+\end_inset
+
+ is involved in both random variables.
+\end_layout
+
+\begin_layout Subsection
+ATE and CEF
+\end_layout
+
+\begin_layout Standard
+In the previous section the treatment 
+\begin_inset Formula $D$
+\end_inset
+
+ is binary.
+ Now we consider a continuous treatment 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ Suppose the DGP is 
+\begin_inset Formula $Y=h\left(D,x,u\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $D$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+ are observable and 
+\begin_inset Formula $u$
+\end_inset
+
+ is unobservable.
+ It is natural to define ATE with the continuous treatment (Hansen's book
+ Chapter 2.30 calls it 
+\emph on
+average causal effect
+\emph default
+) as
+\begin_inset Formula 
+\[
+ACE\left(d,x\right)=E\left[\lim_{\Delta\to0}\frac{h\left(d+\Delta,x,u\right)-h\left(d,x,u\right)}{\Delta}\right]=E\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right],
+\]
+
+\end_inset
+
+where the continuous differentiability of 
+\begin_inset Formula $h\left(d,x,u\right)$
+\end_inset
+
+ at 
+\begin_inset Formula $d$
+\end_inset
+
+ is implicitly assumed.
+ ATE here is the average effect in the population of individual is we hypothetic
+al move 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ is little bit, keeping all other factors 
+\begin_inset Formula $x$
+\end_inset
+
+ constant.
+ Some undergraduate textbooks loosely but intuitively interpret it as 
+\begin_inset Quotes eld
+\end_inset
+
+the effect to 
+\begin_inset Formula $y$
+\end_inset
+
+ if we change 
+\begin_inset Formula $d$
+\end_inset
+
+ by one unit 
+\begin_inset Formula $\left(\Delta=1\right)$
+\end_inset
+
+, keeping all other variables the same
+\begin_inset Quotes erd
+\end_inset
+
+ under the phrase 
+\emph on
+ceteris paribus.
+\end_layout
+
+\begin_layout Standard
+In the previous sections of this chapter, we have been focusing on the CEF
+ 
+\begin_inset Formula $m\left(d,x\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $d$
+\end_inset
+
+ is added to 
+\begin_inset Formula $x$
+\end_inset
+
+ as an additional variable of interest.
+ We did not intend to model the underlying economic mechanism 
+\begin_inset Formula $h\left(D,x,u\right)$
+\end_inset
+
+, which may be very complex.
+ Can we learn 
+\begin_inset Formula $ACE\left(d,x\right)$
+\end_inset
+
+ which bears the structural causal interpretation, from the mechanical 
+\begin_inset Formula $m\left(d,x\right)$
+\end_inset
+
+ which merely cares about best prediction? The answer is positive under
+ CIA 
+\begin_inset Formula $\left(u\perp D\right)|x$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial d}m\left(d,x\right) & =\frac{\partial}{\partial d}E\left[y|d,x\right]=\frac{\partial}{\partial d}E\left[h\left(d,x,u\right)|d,x\right]\\
+ & =\frac{\partial}{\partial d}\int h\left(d,x,u\right)f\left(u|d,x\right)du\\
+ & =\int\frac{\partial}{\partial d}\left[h\left(d,x,u\right)f\left(u|d,x\right)\right]du\\
+ & =\int\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]f\left(u|d,x\right)du+\int h\left(d,x,u\right)\left[\frac{\partial}{\partial d}f\left(u|d,x\right)\right]du,
+\end{align*}
+
+\end_inset
+
+where the third line implicitly assumes interchangeability between the integral
+ and partial derivative.
+ Under CIA, 
+\begin_inset Formula $\frac{\partial}{\partial d}f\left(u|d,x\right)=0$
+\end_inset
+
+ and the second term drops out.
+ Thus 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial d}m\left(d,x\right)=\int\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]f\left(u|d,x\right)du=E\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]=ATE\left(d,x\right).
+\]
+
+\end_inset
+
+This is an important results.
+ It says that if CIA holds, we can learn the causal effect of 
+\begin_inset Formula $d$
+\end_inset
+
+ on 
+\begin_inset Formula $y$
+\end_inset
+
+ by the partial derivative of CEF conditional on 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ In particular, if we further assume a linear CEF 
+\begin_inset Formula $m\left(d,x\right)=\beta_{1}d+\beta_{2}'x$
+\end_inset
+
+, then the causal effect is the coefficient 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The key assumption that links the CEF and the causal effect is CIA.
+ CIA is not an innocuous assumption.
+ In applications, we causal results are credible only when we can convincing
+ defend CIA.
+\end_layout
+
+\begin_layout Exercise
+Let factories' output be a Dobb-Douglas function 
+\begin_inset Formula $Y=AK^{\alpha}L^{\beta}$
+\end_inset
+
+, where the capital level 
+\begin_inset Formula $K$
+\end_inset
+
+ and labor 
+\begin_inset Formula $L$
+\end_inset
+
+ as well as the output 
+\begin_inset Formula $Y$
+\end_inset
+
+ is observable, while the 
+\begin_inset Quotes eld
+\end_inset
+
+technology
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ is unobservable.
+ Take logarithm on both sides of the equation:
+\begin_inset Formula 
+\begin{equation}
+y=u+\alpha k+\beta l\label{eq:causal}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $y=\log Y$
+\end_inset
+
+, 
+\begin_inset Formula $u=\log A$
+\end_inset
+
+, 
+\begin_inset Formula $k=\log K$
+\end_inset
+
+ and 
+\begin_inset Formula $l=\log L$
+\end_inset
+
+.
+ Suppose 
+\begin_inset Formula $\begin{pmatrix}u\\
+k\\
+l
+\end{pmatrix}\sim N\left(\begin{pmatrix}1\\
+1\\
+1
+\end{pmatrix},\begin{pmatrix}1 & 0.5 & 0\\
+0.5 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha=\beta=1/2$
+\end_inset
+
+ make the true DGP.
+ Here 
+\begin_inset Formula $w$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ is correlated, because factories of larger scale can afford robust to facilitat
+e automation.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+What is the partial derivative of CEF when we use 
+\begin_inset Formula $k$
+\end_inset
+
+ as a treatment variable for a fixed labor level 
+\begin_inset Formula $l$
+\end_inset
+
+? (Hint: the CEF is a linear function thanks to the joint normality.)
+\end_layout
+
+\begin_layout Enumerate
+Does it coincide with 
+\begin_inset Formula $\alpha=1/2$
+\end_inset
+
+, the coefficient in the causal model (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:causal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)? (Hint: No, because CIA is violated.)
+\end_layout
+
+\end_deeper
+\begin_layout Exercise
+Sometimes applied researchers assume by brute force that 
+\begin_inset Formula $y=m\left(d,x\right)+u$
+\end_inset
+
+ is the DGP and 
+\begin_inset Formula $E\left[u|d,x\right]=0$
+\end_inset
+
+, where 
+\begin_inset Formula $d$
+\end_inset
+
+ is the variable of interest and 
+\begin_inset Formula $x$
+\end_inset
+
+ is the vector of other control variables.
+ Under these assumptions, 
+\begin_inset Formula 
+\[
+ATE\left(d,x\right)=E\left[\frac{\partial}{\partial d}\left(m\left(d,x\right)+u\right)|d,x\right]=\frac{\partial m\left(d,x\right)}{\partial d}+\frac{\partial}{\partial d}E\left[u|d,x\right]=\frac{\partial m\left(d,x\right)}{\partial d},
+\]
+
+\end_inset
+
+where the second equality holds if 
+\begin_inset Formula $\frac{\partial}{\partial d}E\left[u|d,x\right]=E\left[\frac{\partial}{\partial d}u|d,x\right]$
+\end_inset
+
+.
+ At the first glance, it seems that the mean independence assumption 
+\begin_inset Formula $E\left[u|d,x\right]=0$
+\end_inset
+
+, which is weaker than CIA, implies the equivalence between 
+\begin_inset Formula $ATE\left(d,x\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial m\left(d,x\right)/\partial d$
+\end_inset
+
+ here.
+ However, such slight weakening is achieved by a strong assumption that
+ the DGP 
+\begin_inset Formula $h\left(d,x,u\right)$
+\end_inset
+
+ follows the additive separable form 
+\begin_inset Formula $m\left(d,x\right)+u$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
 Summary
 \end_layout
 
 \begin_layout Standard
-In this lecture, we cover the conditional mean model.
- Imagine that we are faced with a pair of random variable 
+In this lecture, we cover the conditional mean function and causality.
+ When we are faced with a pair of random variable 
 \begin_inset Formula $\left(y,x\right)$
 \end_inset
 
- drawn from some joint distribution, and our job is to look for a linear
- or nonlinear function of 
-\begin_inset Formula $x$
+ drawn from some joint distribution, the CEF is the best predictor.
+ When we go further into the structural causality some treatment 
+\begin_inset Formula $d$
 \end_inset
 
- to best predict 
+ to the dependent variable 
 \begin_inset Formula $y$
 \end_inset
 
-.
+, under CIA we can find equivalence between the ATE and the partial derivative
+ of CEF.
  All analyses are conducted in population.
- We have not touched data yet.
+ We have not touched sample yet.
 \end_layout
 
 \begin_layout Standard
