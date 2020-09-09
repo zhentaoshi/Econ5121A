@@ -7,7 +7,7 @@
 \textclass report
 \use_default_options false
 \begin_modules
-theorems-bytype
+theorems-ams-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \language english

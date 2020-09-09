@@ -4,11 +4,10 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass report
 \use_default_options false
 \begin_modules
-theorems-ams
-theorems-ams-extended
+theorems-ams-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -95,12 +94,24 @@ theorems-ams-extended
 
 \begin_body
 
-\begin_layout Title
-Panel Data
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{5}
 \end_layout
 
-\begin_layout Author
-Zhentao Shi
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Panel Data
 \end_layout
 
 \begin_layout Section

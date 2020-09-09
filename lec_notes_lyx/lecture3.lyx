@@ -147,7 +147,7 @@ x_{n}'
 \end{array}\right]=\left[\begin{array}{cccc}
 x_{11} & x_{12} & \cdots & x_{1K}\\
 x_{21} & x_{22} & \cdots & x_{2K}\\
-\cdots & \cdots & \ddots & \vdots\\
+\vdots & \vdots & \ddots & \vdots\\
 x_{n1} & x_{22} & \cdots & x_{nK}
 \end{array}\right]
 \]
@@ -283,18 +283,7 @@ truth
  which is taken as the truth.
  
 \begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Since this is not a philosophical course, we do not go further to ask: What
- is truth? Is there truth?
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Probabilists suppose there is a dragon and try to tell the dragon's behaviors.
@@ -889,9 +878,6 @@ The maximum likelihood estimator (MLE) coincides with the OLS estimator.
 
 \begin_layout Subsection
 Classical Finite Sample Distribution
-\end_layout
-
-\begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
 name "finite-sample-distribution"
@@ -1190,7 +1176,7 @@ Example
 
  is a heteroskedastic error.
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset VSpace bigskip
@@ -1375,6 +1361,39 @@ Homoskedasticity is a restrictive assumption.
 
 .
  Under heteroskedasticity, Gauss-Markov theorem does not apply.
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Historical notes
+\series default
+: Carl Friedrich Gauss (1777–1855) claimed he had come up with the operation
+ of OLS in 1795.
+ With only three data points at hand, Gauss successfully applied his method
+ to predict the location of the drawf planet Ceres in 1801.
+ While Gauss did not publish the work on OLS until 1809, Adrien-Marie Legendre
+ (1752–1833) presented this method in 1805.
+ Today people tend to attribute OLS to Gauss, assuming that a giant like
+ Gauss had no need to tell a lie to steal Legendre's discovery.
+ 
+\end_layout
+
+\begin_layout Standard
+MLE was promulgated and popularized by Ronald Fisher (1890–1962).
+ He was a major contributor of the frequentist approach which dominates
+ mathematical statistics today, and he sharply criticized the Bayesian approach.
+ Fisher collected the Iris flower dataset of 150 observations in his biological
+ study in 1936, which can be displayed in R by typing 
+\family typewriter
+iris
+\family default
+.
+ 
 \end_layout
 
 \begin_layout Standard

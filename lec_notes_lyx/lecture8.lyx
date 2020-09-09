@@ -12,8 +12,8 @@
 \end_preamble
 \use_default_options false
 \begin_modules
-theorems-ams
-theorems-ams-extended
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -110,6 +110,22 @@ theorems-ams-extended
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{7}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Chapter
 Generalized Method of Moments
 \end_layout
@@ -136,27 +152,27 @@ method of moments
  and the three-stage least square as special cases.
  
 \begin_inset FormulaMacro
-\renewcommand{\top}{\stackrel{\mathrm{p}}{\to}}
+\newcommand{\top}{\stackrel{\mathrm{p}}{\to}}
 \end_inset
 
  
 \begin_inset FormulaMacro
-\renewcommand{\Op}{O_{\mathrm{p}}}
+\newcommand{\Op}{O_{\mathrm{p}}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\renewcommand{\op}{o_{\mathrm{p}}}
+\newcommand{\op}{o_{\mathrm{p}}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\renewcommand{\E}{\mathbb{E}}
+\newcommand{\E}{\mathbb{E}}
 \end_inset
 
 
 \begin_inset FormulaMacro
-\renewcommand{\d}{\mathrm{d}}
+\newcommand{\d}{\mathrm{d}}
 \end_inset
 
 

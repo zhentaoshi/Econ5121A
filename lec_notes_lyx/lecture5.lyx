@@ -4,8 +4,12 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass article
+\textclass report
 \use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package none
@@ -91,12 +95,24 @@
 
 \begin_body
 
-\begin_layout Title
-Hypothesis Testing
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{4}
 \end_layout
 
-\begin_layout Author
-Zhentao Shi
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Hypothesis Testing
 \end_layout
 
 \begin_layout Standard
@@ -371,18 +387,22 @@ level
 \end_layout
 
 \begin_layout Verbatim
+
      | decision     |  reject $H_{1}$  | reject $H_{0}$
 \end_layout
 
 \begin_layout Verbatim
+
      |--------------|------------------| ---------------
 \end_layout
 
 \begin_layout Verbatim
+
      | $H_{0}$ true |     correct      | Type I error
 \end_layout
 
 \begin_layout Verbatim
+
      | $H_{0}$ false| Type II error    |   correct
 \end_layout
 
@@ -449,7 +469,6 @@ probability of committing Type II error
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -1953,6 +1972,32 @@ We can view the optimization of the log-likelihood as a two-step optimization
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ 
+\backslash
+today}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body

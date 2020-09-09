@@ -6,6 +6,10 @@
 \origin unavailable
 \textclass report
 \use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package none
@@ -91,6 +95,22 @@
 \end_header
 
 \begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{3}
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Chapter
 Asymptotic Theory
@@ -973,7 +993,6 @@ Continuous mapping theorem 2: If
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Itemize
