@@ -162,31 +162,22 @@ name "conditional-expectation"
 \end_layout
 
 \begin_layout Standard
-These days 
-\emph on
-machine learning
-\emph default
- becomes popular in referring to algorithms processing data and distill
- information.
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 While computer scientists may not care much about a theoretical model that
  generates the observable data, statisticians and econometricians are serious
- about the model and study whether we can recover the model or some elements
+ about the models and study whether we can recover the model or some elements
  of the model from the data.
 \end_layout
 
 \end_inset
 
- Machine learning is a basket big enough that even the simplest regression
- models can be called as a category of it.
- 
-\end_layout
-
-\begin_layout Standard
-We view a regression as 
+ Machine learning is a big basket that contains the regression models.
+ We motivate the conditional expectation model from the perspective of predictio
+n.
+ We view a regression as 
 \emph on
 supervised learning
 \emph default
@@ -232,7 +223,8 @@ e=y-g\left(x\right)
 
 .
  Which one is the best? Notice that this question is not concerned about
- the underlying data generating process of the joint distribution of 
+ the underlying data generating process (DGP) of the joint distribution
+ of 
 \begin_inset Formula $\left(y,x\right)$
 \end_inset
 
@@ -298,8 +290,8 @@ this
 that
 \emph default
  happens.
- To get rid of the uncertainty, we average the loss function across the
- joint distribution of 
+ To get rid of the uncertainty, we average the loss function with respect
+ to the joint distribution of 
 \begin_inset Formula $\left(y,x\right)$
 \end_inset
 
@@ -307,7 +299,7 @@ that
 \begin_inset Formula $R\left(y,g\left(x\right)\right)=E\left[L\left(y,g\left(x\right)\right)\right]$
 \end_inset
 
-, which is called the 
+, which is called 
 \emph on
 risk
 \emph default
@@ -316,7 +308,7 @@ risk
  For the quadratic loss function, the corresponding risk is
 \begin_inset Formula 
 \[
-R\left(y,g\left(x\right)\right):=E\left[L\left(y,g\left(x\right)\right)\right]=E\left[\left(y-g\left(x\right)\right)^{2}\right],
+R\left(y,g\left(x\right)\right)=E\left[\left(y-g\left(x\right)\right)^{2}\right],
 \]
 
 \end_inset
@@ -332,7 +324,7 @@ mean squared error
 mean absolute error
 \emph default
  (MAE) 
-\begin_inset Formula $E\left[\left|y-g\left(x\right)\right|^{2}\right]$
+\begin_inset Formula $E\left[\left|y-g\left(x\right)\right|\right]$
 \end_inset
 
 .
@@ -343,14 +335,11 @@ mean absolute error
  CARA, and so on.
  They are popular because they lead to close-form solutions that are easy
  to handle.
-\end_layout
-
-\begin_layout Standard
-What is the optimal choice of 
+ Now our quest is narrowed to: What is the optimal choice of 
 \begin_inset Formula $g$
 \end_inset
 
- if we aim to minimize the MSE?
+ if we minimize the MSE?
 \end_layout
 
 \begin_layout Proposition
@@ -411,7 +400,7 @@ regression error
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $E\left[\epsilon\right]=E\left[E\left[\epsilon|x\right]\right]=E(0)=0$
+\begin_inset Formula $E\left[\epsilon\right]=E\left[E\left[\epsilon|x\right]\right]=E\left[0\right]=0$
 \end_inset
 
 ,
@@ -485,7 +474,7 @@ noprefix "false"
 
 \end_inset
 
- The optimality of the conditional mean can be confirmed by 
+ The optimality of the CEF can be confirmed by 
 \begin_inset Quotes eld
 \end_inset
 
@@ -517,7 +506,7 @@ The first term is irrelevant to
 \[
 \begin{aligned}2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right] & =2E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)\right]\\
  & =2E\left[E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)|x\right]\right]\\
- & =2E\left[\left(m\left(x\right)-g\left(x\right)\right)E\left[\epsilon|x\right]\right]=0.
+ & =2E\left[\left(m\left(x\right)-g\left(x\right)\right)E\left[\epsilon|x\right]\right]=0
 \end{aligned}
 \]
 
@@ -565,8 +554,7 @@ Our perspective so far deviates from many econometric textbooks that assume
 \end_inset
 
 .
- Instead, we take a predictive framework regardless the data generating
- process.
+ Instead, we take a predictive approach regardless the DGP.
  What we observe are 
 \begin_inset Formula $y$
 \end_inset
@@ -598,7 +586,7 @@ name "linear-projection"
 \end_layout
 
 \begin_layout Standard
-As discussed in the previous section, the conditional mean function 
+The CEF 
 \begin_inset Formula $m(x)$
 \end_inset
 
@@ -637,12 +625,18 @@ As discussed in the previous section, the conditional mean function
 Take the first-order condition of the MSE 
 \begin_inset Formula 
 \[
-\frac{\partial}{\partial b}E\left[\left(y-x'b\right)^{2}\right]=-2E\left[x\left(y-x'b\right)\right]=0.
+\frac{\partial}{\partial b}E\left[\left(y-x'b\right)^{2}\right]=E\left[\frac{\partial}{\partial b}\left(y-x'b\right)^{2}\right]=-2E\left[x\left(y-x'b\right)\right],
 \]
 
 \end_inset
 
-Rearrange the above equation and we solve the optimal 
+where the first equality holds if 
+\begin_inset Formula $E\left[\left(y-x'b\right)^{2}\right]<\infty$
+\end_inset
+
+ so that the expectation and partial differentiation is interchangeable,
+ and the second equality hods by the chain rule and the linearity of expectation.
+ Set the first order condition to 0 and we solve 
 \begin_inset Formula 
 \[
 \beta=\arg\min_{b\in\mathbb{R}^{K}}E\left[\left(y-x'b\right)^{2}\right]
@@ -650,7 +644,7 @@ Rearrange the above equation and we solve the optimal
 
 \end_inset
 
- as
+ in the closed-form 
 \begin_inset Formula 
 \[
 \beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right]
@@ -684,7 +678,7 @@ Rearrange the above equation and we solve the optimal
 \emph on
 best linear projection
 \emph default
- of 
+ (BLP) of 
 \begin_inset Formula $y$
 \end_inset
 
@@ -788,7 +782,7 @@ is a liner function of
 \end_inset
 
 .
- In this example, the conditional mean coincides with a linear function.
+ In this example, the CEF is linear.
 \end_layout
 
 \begin_layout Standard
@@ -941,12 +935,21 @@ short regression
  as 
 \begin_inset Formula 
 \[
-y=x_{1}'\gamma_{1}+\gamma_{2}+e_{\gamma}.
+y=x_{1}'\gamma_{1}+\gamma_{2}+e_{\gamma},
 \]
 
 \end_inset
 
-If 
+where 
+\begin_inset Formula $e_{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{\gamma}$
+\end_inset
+
+ are the projection errors, respectively.
+ If 
 \begin_inset Formula $\beta_{1}$
 \end_inset
 
@@ -1006,7 +1009,7 @@ After demeaning, the cross-moment equals to the covariance.
 \[
 \begin{aligned}\gamma_{1} & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{y}\right]\\
  & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\left(\tilde{x}_{1}'\beta_{1}+\tilde{x}_{2}'\beta_{2}+\tilde{e}_{\beta}\right)\right]\\
- & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\beta+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}\\
+ & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}\\
  & =\beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}.
 \end{aligned}
 \]
@@ -1046,12 +1049,12 @@ Obviously we prefer to run the long regression to attain
 \end_inset
 
  if possible, for it is a more general model than the short regression and
- achieves no larger variance in the projection residual.
+ achieves no larger variance in the projection error.
  However, sometimes 
 \begin_inset Formula $x_{2}$
 \end_inset
 
- is simply unobservable so the long regression is 
+ is unobservable so the long regression is 
 \emph on
 infeasible
 \emph default
@@ -1062,7 +1065,7 @@ infeasible
  We should be aware of the potential consequence when the data are not as
  ideal as we have wished.
  When only the short regression is available, in some cases we are able
- to sign the bias, meaning that we know whether 
+ to sign the bias, meaning that we can argue whether 
 \begin_inset Formula $\gamma_{1}$
 \end_inset
 
@@ -1070,7 +1073,7 @@ infeasible
 \begin_inset Formula $\beta_{1}$
 \end_inset
 
-.
+ based on our knowledge.
 \end_layout
 
 \begin_layout Section
@@ -1093,12 +1096,12 @@ Unlike physical laws such as Einstein's mass–energy equivalence
 , economic phenomena can rarely be summarized in such a minimalistic style.
  When using experiments to verify physical laws, scientists often manage
  to come up with smart design in which signal-to-noise ratio is so high
- that the small disturbances are kept at negligible level.
+ that small disturbances are kept at a negligible level.
  On the contrary, economic laws do not fit a laboratory for experiment.
  What is worse, the subjects in economic studies — human beings — are heterogene
 ous and with many features that are hard to control.
- People from distinctive cultural and family background respond to the same
- issue differently and researchers can do little to homogenize them.
+ People from distinctive cultural and family backgrounds respond to the
+ same issue differently and researchers can do little to homogenize them.
  The signal-to-noise ratio in economic laws are often significantly lower
  than that of physical laws, mainly due to the lack of laboratory setting
  and the heterogeneous nature of the subjects.
@@ -1123,18 +1126,22 @@ structural causality
 \emph default
 .
  Structural causality is a thought experiment.
- It assumes that there is a data generating process (DGP) that produces
- the observational data.
+ It assumes that there is a DGP that produces the observational data.
  If we can use data to recover the DGP or some features of the DGP, then
  we have learned causality or some implications of causality.
- The DGP is often called the 
-\emph on
-model
-\emph default
-.
- We set up a model, in which some parameters are unknown.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We set up a DGP, in which some parameters are unknown.
  We would like to recover the unknown components of the model.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1143,7 +1150,7 @@ A key issue to resolve before looking at the realized sample is
 identification
 \emph default
 .
- We say a model is 
+ We say a model or DGP is 
 \emph on
 identified
 \emph default
@@ -1156,7 +1163,7 @@ under-identified
  if more than one parameter in the model can generate exact the same features
  of the observable data.
  In other words, a model is under-identified if from the observable data
- we cannot track back to a unique parameter in the model.
+ we cannot trace back to a unique parameter in the model.
  A correctly specified model is the prerequisite for any discussion of identific
 ation.
  In reality, all models are wrong.
@@ -1192,17 +1199,25 @@ treatment effect
 \begin_inset Formula $y$
 \end_inset
 
- will change if we change 
-\begin_inset Formula $x_{1}$
+ will change if we change a variable of interest, say 
+\begin_inset Formula $d$
 \end_inset
 
- by one unit while keep all other variables (including the unobservable
+, by one unit while keeping all other variables (including the unobservable
  variables) the same.
  The Latin phrase 
 \emph on
 ceteris paribus
 \emph default
- means "keep all other things constant."
+ means 
+\begin_inset Quotes eld
+\end_inset
+
+keep all other things constant.
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Example
@@ -1231,11 +1246,18 @@ potential outcome framework
 .
 \end_layout
 
-\begin_layout Example
+\begin_layout Standard
 However, in reality one and only one scenario happens, which echos the saying
- of ancient Greek philosopher Heraclitus (553 BC--475 BC): "You cannot step
- into the same river twice." While the individual treatment effect is infeasible,
- we evaluate the treatment effect at the population level.
+ of ancient Greek philosopher Heraclitus (553 BC--475 BC): 
+\begin_inset Quotes eld
+\end_inset
+
+You cannot step into the same river twice.
+\begin_inset Quotes erd
+\end_inset
+
+ While the individual treatment effect is infeasible, we evaluate the treatment
+ effect at the population level.
  The 
 \emph on
 average treatment effect
@@ -1290,7 +1312,7 @@ D=1\left\{ \mbox{treatment received}\right\}
 \begin_inset Formula $E\left[Y\left(0\right)\right]=E\left[Y\left(0\right)|D=0\right]$
 \end_inset
 
- so that ATE can be estimated from the data in a feasible way in that 
+ so that ATE can be estimated from the data in a feasible way as
 \begin_inset Formula 
 \[
 ATE=E\left[Y\left(1\right)|D=1\right]-E\left[Y\left(0\right)|D=0\right].
@@ -1310,7 +1332,7 @@ Therefore, to evaluate ATE ideally we would like use a lottery to randomly
 ).
 \end_layout
 
-\begin_layout Example
+\begin_layout Standard
 When we have other control variables, we can also define a finer treatment
  effect conditional on 
 \begin_inset Formula $x$
@@ -1324,7 +1346,7 @@ ATE\left(x\right)=E\left[Y\left(1\right)|x\right]-E\left[Y\left(0\right)|x\right
 
 \end_inset
 
-ATE is the average effect in the population of individual is we hypothetical
+ATE is the average effect in the population of individuals when we hypothetical
  give them the treatment, keeping all other factors 
 \begin_inset Formula $x$
 \end_inset
@@ -1362,20 +1384,8 @@ conditional independence assumption
 \end_layout
 
 \begin_layout Example
-CIA is weaker than full independence 
-\begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)\perp D$
-\end_inset
-
-.
- (This is the opposite to the conditional mean independence, where 
-\begin_inset Formula $E\left[u|x\right]=0$
-\end_inset
-
- is stronger than 
-\begin_inset Formula $E\left[u\right]=0$
-\end_inset
-
-.) Consider the example 
+CIA is more plausible than full independence.
+ Consider the example 
 \begin_inset Formula $Y\left(1\right)=x+u\left(1\right)$
 \end_inset
 
@@ -1448,7 +1458,7 @@ average causal effect
 ) as
 \begin_inset Formula 
 \[
-ACE\left(d,x\right)=E\left[\lim_{\Delta\to0}\frac{h\left(d+\Delta,x,u\right)-h\left(d,x,u\right)}{\Delta}\right]=E\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right],
+ATE\left(d,x\right)=E\left[\lim_{\Delta\to0}\frac{h\left(d+\Delta,x,u\right)-h\left(d,x,u\right)}{\Delta}\right]=E\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right],
 \]
 
 \end_inset
@@ -1462,44 +1472,33 @@ where the continuous differentiability of
 \end_inset
 
  is implicitly assumed.
- ATE here is the average effect in the population of individual is we hypothetic
-al move 
-\begin_inset Formula $\Delta$
+ Unlike the binary treatment case, here 
+\begin_inset Formula $d$
 \end_inset
 
- is little bit, keeping all other factors 
+ explicitly shows up in 
+\begin_inset Formula $ATE\left(d,x\right)$
+\end_inset
+
+ because the effect can vary at different values of 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ ATE here is the average effect in the population of individuals if we hypotheti
+cal move 
+\begin_inset Formula $d$
+\end_inset
+
+ a little bit, keeping all other factors 
 \begin_inset Formula $x$
 \end_inset
 
  constant.
- Some undergraduate textbooks loosely but intuitively interpret it as 
-\begin_inset Quotes eld
-\end_inset
-
-the effect to 
-\begin_inset Formula $y$
-\end_inset
-
- if we change 
-\begin_inset Formula $d$
-\end_inset
-
- by one unit 
-\begin_inset Formula $\left(\Delta=1\right)$
-\end_inset
-
-, keeping all other variables the same
-\begin_inset Quotes erd
-\end_inset
-
- under the phrase 
-\emph on
-ceteris paribus.
 \end_layout
 
 \begin_layout Standard
-In the previous sections of this chapter, we have been focusing on the CEF
- 
+In the previous sections, we focused on the CEF 
 \begin_inset Formula $m\left(d,x\right)$
 \end_inset
 
@@ -1517,8 +1516,8 @@ In the previous sections of this chapter, we have been focusing on the CEF
 \end_inset
 
 , which may be very complex.
- Can we learn 
-\begin_inset Formula $ACE\left(d,x\right)$
+ Can we learn the 
+\begin_inset Formula $ATE\left(d,x\right)$
 \end_inset
 
  which bears the structural causal interpretation, from the mechanical 
@@ -1526,23 +1525,22 @@ In the previous sections of this chapter, we have been focusing on the CEF
 \end_inset
 
  which merely cares about best prediction? The answer is positive under
- CIA 
+ CIA: 
 \begin_inset Formula $\left(u\perp D\right)|x$
 \end_inset
 
 .
 \begin_inset Formula 
 \begin{align*}
-\frac{\partial}{\partial d}m\left(d,x\right) & =\frac{\partial}{\partial d}E\left[y|d,x\right]=\frac{\partial}{\partial d}E\left[h\left(d,x,u\right)|d,x\right]\\
- & =\frac{\partial}{\partial d}\int h\left(d,x,u\right)f\left(u|d,x\right)du\\
+\frac{\partial}{\partial d}m\left(d,x\right) & =\frac{\partial}{\partial d}E\left[y|d,x\right]=\frac{\partial}{\partial d}E\left[h\left(d,x,u\right)|d,x\right]=\frac{\partial}{\partial d}\int h\left(d,x,u\right)f\left(u|d,x\right)du\\
  & =\int\frac{\partial}{\partial d}\left[h\left(d,x,u\right)f\left(u|d,x\right)\right]du\\
  & =\int\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]f\left(u|d,x\right)du+\int h\left(d,x,u\right)\left[\frac{\partial}{\partial d}f\left(u|d,x\right)\right]du,
 \end{align*}
 
 \end_inset
 
-where the third line implicitly assumes interchangeability between the integral
- and partial derivative.
+where the second line implicitly assumes interchangeability between the
+ integral and partial derivative.
  Under CIA, 
 \begin_inset Formula $\frac{\partial}{\partial d}f\left(u|d,x\right)=0$
 \end_inset
@@ -1556,7 +1554,7 @@ where the third line implicitly assumes interchangeability between the integral
 
 \end_inset
 
-This is an important results.
+This is an important result.
  It says that if CIA holds, we can learn the causal effect of 
 \begin_inset Formula $d$
 \end_inset
@@ -1582,9 +1580,9 @@ This is an important results.
 \end_layout
 
 \begin_layout Standard
-The key assumption that links the CEF and the causal effect is CIA.
+The key condition that links the CEF and the causal effect is CIA.
  CIA is not an innocuous assumption.
- In applications, we causal results are credible only when we can convincing
+ In applications, our causal results are credible only when we can convincing
  defend CIA.
 \end_layout
 
@@ -1666,11 +1664,11 @@ l
 \end_inset
 
  and 
-\begin_inset Formula $x_{1}$
+\begin_inset Formula $k$
 \end_inset
 
- is correlated, because factories of larger scale can afford robust to facilitat
-e automation.
+ are correlated, because factories of larger scale can afford robots to
+ facilitate automation.
 \end_layout
 
 \begin_deeper
@@ -1736,7 +1734,7 @@ where the second equality holds if
 \end_inset
 
 .
- At the first glance, it seems that the mean independence assumption 
+ At a first glance, it seems that the mean independence assumption 
 \begin_inset Formula $E\left[u|d,x\right]=0$
 \end_inset
 
@@ -1749,8 +1747,8 @@ where the second equality holds if
 \end_inset
 
  here.
- However, such slight weakening is achieved by a strong assumption that
- the DGP 
+ However, such slight weakening is achieved by a very strong assumption
+ that the DGP 
 \begin_inset Formula $h\left(d,x,u\right)$
 \end_inset
 
@@ -1772,18 +1770,17 @@ reduced-form
 \end_layout
 
 \begin_layout Exercise
-The structural approach models the economic mechanism, guided by economic
- theory and considered to be 
-\begin_inset Quotes eld
-\end_inset
-
-deeper
-\begin_inset Quotes erd
-\end_inset
-
-.
- The reduced-form approach is convenient and can document stylized facts
- when suitable economic theory is not immediately available.
+The 
+\emph on
+structural approach
+\emph default
+ here models the economic mechanism, guided by economic theory.
+ The 
+\emph on
+reduced-form approach
+\emph default
+ is convenient and can document stylized facts when suitable economic theory
+ is not immediately available.
  There are constant debates about the pros and cons of the two approaches;
  see 
 \emph on
@@ -1825,7 +1822,7 @@ status open
 
 Phillips about the negative correlation between inflation and unemployment,
  is a stylized fact learned from the reduced-form approach.
- The famous Lucas critique 
+ The Lucas critique 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "lucas1976econometric"
@@ -1836,9 +1833,9 @@ literal "false"
  exposed its lack of microfoundation and advocated modeling deep parameters
  that are invariant to policy changes.
  The latter is a structural approach.
- Ironically, more 40 years has passed since Lucas critique equations with
- little microfoundation still dominate the analytical apparatus of central
- bankers.
+ Ironically, more 40 years has passed since the Lucas critique, equations
+ with little microfoundation still dominate the analytical apparatus of
+ central bankers.
  At present (as of 2020), applied econometric research in China is dominated
  by the reduced-form approach.
  
@@ -1855,7 +1852,7 @@ In this lecture, we cover the conditional mean function and causality.
 \end_inset
 
  drawn from some joint distribution, the CEF is the best predictor.
- When we go further into the structural causality some treatment 
+ When we go further into the structural causality about some treatment 
 \begin_inset Formula $d$
 \end_inset
 
@@ -1863,7 +1860,7 @@ In this lecture, we cover the conditional mean function and causality.
 \begin_inset Formula $y$
 \end_inset
 
-, under CIA we can find equivalence between the ATE and the partial derivative
+, under CIA we can find equivalence between ATE and the partial derivative
  of CEF.
  All analyses are conducted in population.
  We have not touched sample yet.
@@ -1885,8 +1882,7 @@ Historical notes
 
 \begin_layout Standard
 The potential outcome framework is not peculiar to economics.
- It is widely used in other fields that heavily relying on data analysis
- such as biostatistics and medical studies.
+ It is widely used in other fields such as biostatistics and medical studies.
  It was initiated by Jerzy Neyman (1894–1981) and extended by Donald B.
 \begin_inset ERT
 status open
@@ -1914,7 +1910,7 @@ literal "false"
 
 \end_inset
 
- offers comprehensive summary of identification in econometrics.
+ offers a comprehensive summary of identification in econometrics.
 \end_layout
 
 \begin_layout Standard
