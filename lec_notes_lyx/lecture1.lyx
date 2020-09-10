@@ -130,20 +130,21 @@ ing vehicles, recognized human faces, and recommended online purchases.
 \end_layout
 
 \begin_layout Standard
-Economics has been an empirical social science since Adam Smith (1723-1790).
+Economics has been an empirical social science since Adam Smith (1723–1790).
  Many numerical observations and anecdotes were scattered in his 
 \emph on
 Wealth of Nations
 \emph default
  published in 1776.
- Ragnar Frisch (1895-1973) and Jan Tinbergen (1903-1994), two pioneer econometri
-cians, were awarded in 1969 the first Nobel Prize in economics.
+ Ragnar Frisch (1895–1973) and Jan Tinbergen (1903--1994), two pioneer econometr
+icians, were awarded in 1969 the first Nobel Prize in economics.
  Econometrics provides quantitative insights about economic data.
  It flourishes in real-world management practices, from households and firms
  up to governance at the global level.
  Today, the big data revolution is pumping fresh energy into research and
- exercise of econometric methods, while its very foundation is again modern
- probability theory.
+ exercises of econometric methods.
+ The mathematical foundation of econometric theory is built on probability
+ theory as well.
 \end_layout
 
 \begin_layout Section
@@ -161,12 +162,12 @@ Human beings are awed by uncertainty in daily life.
 Probability theory is a philosophy about uncertainty.
  Over centuries, mathematicians strove to contribute to the understanding
  of randomness.
- As measure theory matured in the early 20th century, Russian mathematician
- Andrey Kolmogorov (1903-1987) built the edifice of modern probability theory
- in his monograph published in 1933.
+ As measure theory matured in the early 20th century, Andrey Kolmogorov
+ (1903-1987) built the edifice of modern probability theory in his monograph
+ published in 1933.
  The formal mathematical language is a system that allows rigorous explorations
- that have made fruitful advancements, and is now widely accepted as scientific
- standard in academic and industrial research.
+ which have made fruitful advancements, and is now widely accepted in academic
+ and industrial research.
 \end_layout
 
 \begin_layout Standard
@@ -236,11 +237,7 @@ field
 \begin_inset Formula $\mathcal{F}$
 \end_inset
 
-, is a collection of 
-\begin_inset Formula $(A_{i}\subseteq\Omega)_{i\in\mathbb{N}}$
-\end_inset
-
- events such that
+, is a collection of events such that
 \begin_inset FormulaMacro
 \newcommand{\labelenumi}{\arabic{enumi}.}
 \end_inset
@@ -321,6 +318,50 @@ Implications: (a) Since
 .
 \end_layout
 
+\begin_layout Remark
+Intuitively, a 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field is a pool which is closed for countable sets to conduct union, difference
+, and intersection operations.
+ These are algebraic operations of sets.
+ 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field is also called 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-algebra.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $\emptyset$
+\end_inset
+
+ and 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ can also be compared to 
+\begin_inset Formula $0$
+\end_inset
+
+ and 
+\begin_inset Formula $1$
+\end_inset
+
+, respectively.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Example
 Let 
 \begin_inset Formula $\Omega=\{1,2,3,4,5,6\}$
@@ -383,6 +424,9 @@ since
 
 \end_deeper
 \begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
 The 
 \begin_inset Formula $\sigma$
 \end_inset
@@ -573,54 +617,22 @@ probability space
 
 \begin_layout Standard
 So far we have answered the question: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
+\begin_inset Quotes eld
 \end_inset
 
-What is a well-defined probability?
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
+What is a mathematically well-defined probability?
+\begin_inset Quotes erd
 \end_inset
 
 , but we have not yet answered 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
+\begin_inset Quotes eld
 \end_inset
 
 How to assign the probability?
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"
-\end_layout
-
+\begin_inset Quotes erd
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-There are two major schools of thinking on probability assignment.
+ There are two major schools of thinking on probability assignment.
  One is 
 \emph on
 frequentist
@@ -633,7 +645,8 @@ Bayesian
 \emph default
 , who deems probability as a subjective brief.
  The principles of these two schools are largely incompatible, while each
- school has peculiar merit under different context.
+ school has merits and difficulties, which will be elaborated when discussing
+ hypothesis testing.
 \end_layout
 
 \begin_layout Subsection
@@ -940,7 +953,7 @@ It is often abbreviated as CDF, and it has the following properties.
 \begin_inset Formula $\lim_{x\to-\infty}F\left(x\right)=0$
 \end_inset
 
-, 
+,
 \end_layout
 
 \begin_layout Enumerate
@@ -1005,8 +1018,8 @@ probability density function
 
 \begin_layout Example
 We have learned many parametric distributions like the binary distribution,
- the Poisson distribution, the uniform distribution, the normal distribution,
- 
+ the Poisson distribution, the uniform distribution, the exponential distributio
+n, the normal distribution, 
 \begin_inset Formula $\chi^{2}$
 \end_inset
 
@@ -1018,9 +1031,9 @@ We have learned many parametric distributions like the binary distribution,
 \begin_inset Formula $F$
 \end_inset
 
- and so on.
+ distributions and so on.
  They are parametric distributions, meaning that the CDF or PDF can be completel
-y characterized by a few parameters.
+y characterized by very few parameters.
 \end_layout
 
 \begin_layout Section
@@ -1454,7 +1467,7 @@ Chebyshev inequality
 \begin_layout Itemize
 The distribution of a random variable is completely characterized by its
  CDF or PDF.
- Moment is a function of the distribution.
+ A moment is a function of the distribution.
  To back out the underlying distribution from moments, we need to know the
  moment-generating function (mgf) 
 \begin_inset Formula $M_{X}(t)=E[e^{tX}]$
@@ -1477,7 +1490,7 @@ E[X^{r}]=\frac{\mathrm{d}^{r}M_{X}(t)}{\mathrm{d}t^{r}}\big\vert_{t=0}.
 
 \end_inset
 
-
+Just like moments, mgf does not always exist.
 \end_layout
 
 \begin_layout Section
@@ -1552,14 +1565,7 @@ marginal density
 \end_layout
 
 \begin_layout Subsection
-Independence
-\begin_inset CommandInset label
-LatexCommand label
-name "independence"
-
-\end_inset
-
-
+Conditional Probability and Bayes' Theorem
 \end_layout
 
 \begin_layout Standard
@@ -1584,20 +1590,10 @@ P\left(A_{1}|A_{2}\right)=\frac{P\left(A_{1}A_{2}\right)}{P\left(A_{2}\right)}
 \end_inset
 
 if 
-\begin_inset Formula $P(A_{2})\neq0$
+\begin_inset Formula $P(A_{2})>0$
 \end_inset
 
 .
- If 
-\begin_inset Formula $P(A_{2})=0$
-\end_inset
-
-, the conditional probability can still be valid in some cases, but we need
- to introduce the 
-\emph on
-dominance
-\emph default
- between two measures, which we do not elaborate here.
  In the definition of conditional probability, 
 \begin_inset Formula $A_{2}$
 \end_inset
@@ -1611,6 +1607,16 @@ dominance
 \end_inset
 
 .
+ If 
+\begin_inset Formula $P(A_{2})=0$
+\end_inset
+
+, the conditional probability can still be valid in some cases, but we need
+ to introduce the 
+\emph on
+dominance
+\emph default
+ between two measures, which we do not elaborate here.
 \end_layout
 
 \begin_layout Standard
@@ -1635,7 +1641,7 @@ P(A_{1}|A_{2})=\frac{P\left(A_{2}|A_{1}\right)P\left(A_{1}\right)}{P\left(A_{2}\
 
 \end_inset
 
-This formula is the well-known 
+This formula is the 
 \emph on
 Bayes' Theorem
 \emph default
@@ -1693,8 +1699,12 @@ status collapsed
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_layout Subsection
+Independence
+\begin_inset CommandInset label
+LatexCommand label
+name "independence"
+
 \end_inset
 
 
@@ -1775,11 +1785,12 @@ If
 \begin_inset Formula $Y$
 \end_inset
 
- are independent, 
+ are independent, then 
 \begin_inset Formula $E[XY]=E[X]E[Y]$
 \end_inset
 
 .
+ The expectation of their product is the product of their expectations.
 \end_layout
 
 \begin_layout Subsection
@@ -1839,15 +1850,31 @@ conditional expectation
 \end_inset
 
 .
- 
-\emph on
-Law of iterated expectation
-\emph default
- is a trivial fact if we take 
+\end_layout
+
+\begin_layout Standard
+Taking 
 \begin_inset Formula $A=\Omega$
 \end_inset
 
+, we have 
+\begin_inset Formula $E\left[X\right]=\int X\mathrm{d}P=\int E\left[X|\mathcal{G}\right]\mathrm{d}P=E\left[E\left[X|\mathcal{G}\right]\right]$
+\end_inset
+
 .
+ The 
+\emph on
+law of iterated expectation
+\emph default
+ 
+\begin_inset Formula 
+\[
+E\left[X\right]=E\left[E\left[X|\mathcal{G}\right]\right]
+\]
+
+\end_inset
+
+is a trivial fact which follows this definition of the conditional expectation.
 \end_layout
 
 \begin_layout Standard
@@ -1918,11 +1945,11 @@ I earned high grade in my undergraduate probability and statistics; do I
 \emph on
 No 
 \emph default
-is in the sense that if you want to consume econometric methods, instead
- of grasp the underlying theory, then the axiomatic probability does not
- add much to your weaponry.
- You can be an excellent economist or even applied econometrician without
- knowing measure theory.
+is in the sense that if you want to use econometric methods, instead of
+ grasp the underlying theory, then the axiomatic probability does not add
+ much to your weaponry.
+ You can be an excellent economist or applied econometrician without knowing
+ measure theoretic probability.
  
 \emph on
 Yes
@@ -1930,8 +1957,8 @@ Yes
  is in the sense that without measure theory, we cannot even formally define
  conditional expectation, which will be the subject of our next lecture
  and is a core concept of econometrics.
- The pillars of asymptotic theory — law of large numbers and central limit
- theorem — can only be made accurate with this foundation.
+ Moreover, the pillars of asymptotic theory — law of large numbers and central
+ limit theorem — can only be made accurate with this foundation.
  If you are aspired to work on econometric theory, you will meet and use
  measure theory so often in your future study and finally it becomes part
  of your muscle memory.
@@ -1942,7 +1969,7 @@ In this course, we try to keep a balance manner.
  On the one hand, many econometrics topics can be presented with elementary
  mathematics.
  Whenever possible, econometrics should reach wider audience with a plain
- appearance.
+ appearance, instead of intimidating people by arcane languages.
  On the other hand, we introduce these concepts in this lecture and will
  invoke them in the discussion of asymptotic theory later.
  Your investment in advanced mathematics will not be wasted in vain.
@@ -1951,17 +1978,26 @@ In this course, we try to keep a balance manner.
 \begin_layout Standard
 
 \series bold
-Historical note:
+Historical notes:
 \series default
- Measure theory established in the early 20th century by the constellation
- of French/German mathematicians Émile Borel, Henri Lebesgue, Johann Radon,
- etc.
+ Measure theory was established in the early 20th century by a constellation
+ of French/German mathematicians, represented by Émile Borel, Henri Lebesgue,
+ Johann Radon, etc.
  Generations of Russian mathematicians such as Andrey Markov and Andrey
- Kolmogorov made fundamental contribution in mathematizing seemingly abstract
+ Kolmogorov made fundamental contributions in mathematizing seemingly abstract
  concepts of uncertainty and randomness.
- Their names are immortalized by the Borel set, the Lebesgue measure, Radon-Niko
-dym theorem, Markov inequality, Kolmogorov's zero–one law and many other
- terminologies named after them.
+ Their names are immortalized by the Borel set, the Lebesgue integral, the
+ Radon measure, Markov chain, Kolmogorov's zero–one law and many other terminolo
+gies named after them.
+\end_layout
+
+\begin_layout Standard
+Today, the technology of collecting data and the processing data is unbelievably
+ cheaper than that 100 years ago.
+ Unfortunately, the cost of learning mathematics and developing mathematics
+ has not been significantly lowered over one century.
+ Only a small handful of talents, like you, enjoy the privilege and luxury
+ to appreciate the ideas of these great minds.
 \end_layout
 
 \begin_layout Standard
@@ -1977,7 +2013,8 @@ literal "false"
 
 \end_inset
 
- summarized the development of axiomatic probability.
+ summarized the development of axiomatic probability in the first half of
+ the 20th century.
 \end_layout
 
 \begin_layout Standard
