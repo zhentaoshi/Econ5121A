@@ -325,7 +325,7 @@ mean absolute error
 
 .
  The popularity of MSE comes from its convenience for analysis in closed-form,
- which MAE does not enjoy.
+ which MAE does not enjoy due to its nondifferentiability.
  This is similar to the choice of utility functions in economics.
  There are only a few functional forms for the utility, for example CRRA,
  CARA, and so on.
@@ -745,6 +745,7 @@ then
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Standard

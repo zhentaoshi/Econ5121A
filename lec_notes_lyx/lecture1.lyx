@@ -101,6 +101,18 @@ Probability
 \begin_layout Standard
 For the convenience of online teaching in the fall semester of 2020, the
  layout is modified with wide margins and line space for note taking.
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+This note is relatively complete.
+ I have little to add after teaching on 9/11/2020.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -930,16 +942,6 @@ Distribution Function
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "distribution-function"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 We go back to some terms that we have learned in a undergraduate probability
  course.
  A 
@@ -993,6 +995,26 @@ right-continuous
 \end_inset
 
 
+\end_layout
+
+\begin_layout Exercise
+Draw the CDF of a binary distribution; that is, 
+\begin_inset Formula $X=1$
+\end_inset
+
+ with probability 
+\begin_inset Formula $p\in\left(0,1\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $X=0$
+\end_inset
+
+ with probability 
+\begin_inset Formula $1-p$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1089,10 +1111,7 @@ Integration is one of the most fundamental operations in mathematical analysis.
  We have studied Riemann's integral in the undergraduate calculus.
  Riemann's integral is intuitive, but Lebesgue integral is a more general
  approach to defining integration.
-\end_layout
-
-\begin_layout Standard
-Lebesgue integral is constructed by the following steps.
+ Lebesgue integral is constructed by the following steps.
  
 \begin_inset Formula $X$
 \end_inset
@@ -1236,6 +1255,21 @@ The Step 1 above defines the integral of a simple function.
  of steps functions from below.
  Step 3 defines the integral of a general function as the difference of
  the integral of two non-negative parts.
+\end_layout
+
+\begin_layout Remark
+The integrand that highlights the difference between the Lebesgue integral
+ and Riemann integral is the Dirichelet function on the unit interval 
+\begin_inset Formula $1\left\{ x\in\mathbb{Q}\cap[0,1]\right\} $
+\end_inset
+
+.
+ It is not Riemann-integrable whereas its Lebesgue integral.
+ is well defined and 
+\begin_inset Formula $\int1\left\{ x\in\mathbb{Q}\cap[0,1]\right\} dx=0$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1829,11 +1863,15 @@ Given a probability space
 \begin_inset Formula $\left(\Omega,\mathcal{F},P\right)$
 \end_inset
 
-, a sub 
+, a 
+\emph on
+sub 
 \begin_inset Formula $\sigma$
 \end_inset
 
--algebra 
+-algebra
+\emph default
+ 
 \begin_inset Formula $\mathcal{G}\subseteq\mathcal{F}$
 \end_inset
 
@@ -1862,7 +1900,11 @@ conditional expectation
 \end_inset
 
 -measurable function such that 
-\begin_inset Formula $\int_{A}Y\mathrm{d}P=\int_{A}E\left[Y|\mathcal{G}\right]\mathrm{d}P$
+\begin_inset Formula 
+\[
+\int_{A}Y\mathrm{d}P=\int_{A}E\left[Y|\mathcal{G}\right]\mathrm{d}P
+\]
+
 \end_inset
 
  for all 
@@ -1870,6 +1912,24 @@ conditional expectation
 \end_inset
 
 .
+ Here 
+\begin_inset Formula $\mathcal{G}$
+\end_inset
+
+ is a coarse 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field and 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ is a finer 
+\begin_inset Formula $\sigma$
+\end_inset
+
+-field.
+ 
 \end_layout
 
 \begin_layout Standard
