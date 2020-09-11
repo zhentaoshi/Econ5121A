@@ -204,12 +204,8 @@ supervised learning
 \end_inset
 
 ; otherwise their relationship is deterministic.
- The prediction error
-\begin_inset Formula 
-\[
-e=y-g\left(x\right)
-\]
-
+ The prediction error 
+\begin_inset Formula $y-g\left(x\right)$
 \end_inset
 
  depends on the choice of 
@@ -413,9 +409,9 @@ For any function
 
 , we have 
 \begin_inset Formula 
-\[
-E\left[h\left(x\right)\epsilon\right]=E\left[E\left[h\left(x\right)\epsilon|x\right]\right]=E\left[h(x)E\left[\epsilon|x\right]\right]=0.
-\]
+\begin{equation}
+E\left[h\left(x\right)\epsilon\right]=E\left[E\left[h\left(x\right)\epsilon|x\right]\right]=E\left[h(x)E\left[\epsilon|x\right]\right]=0.\label{eq:uncorr}
+\end{equation}
 
 \end_inset
 
@@ -504,15 +500,27 @@ The first term is irrelevant to
  The second term
 \begin_inset Formula 
 \[
-\begin{aligned}2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right] & =2E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)\right]\\
- & =2E\left[E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)|x\right]\right]\\
- & =2E\left[\left(m\left(x\right)-g\left(x\right)\right)E\left[\epsilon|x\right]\right]=0
-\end{aligned}
+\begin{aligned}2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right] & =2E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)\right]=0\end{aligned}
 \]
 
 \end_inset
 
-is again irrelevant of 
+by invoking (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uncorr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) with 
+\begin_inset Formula $h\left(x\right)=m\left(x\right)-g\left(x\right)$
+\end_inset
+
+.
+ The second term is again irrelevant of 
 \begin_inset Formula $g\left(x\right)$
 \end_inset
 
@@ -1877,7 +1885,6 @@ Historical notes
  in Economics) — Jacob Marschak (1898–1977), Tjalling Koopmans (1910–1985,
  Nobel Prize 1975), Trygve Haavelmo (1911–1999, Nobel Prize 1989) and their
  colleagues — were trailblazers of the econometric structural approach.
- 
 \end_layout
 
 \begin_layout Standard

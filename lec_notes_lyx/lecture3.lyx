@@ -635,6 +635,15 @@ where the last equality follows by
 .
 \end_layout
 
+\begin_layout Standard
+The magnitude of R-squared varies in different contexts.
+ In macro models with the lagged dependent variables are presents, it is
+ not unusually to observe R-squared larger than 90%.
+ In cross sectional regressions it is often below 20%.
+ In financial market shorter-term predictive models, a person may become
+ a billion if he can systematically achieve 2% out-of-sample R-squared.
+\end_layout
+
 \begin_layout Subsection
 Frish-Waugh-Lovell Theorem
 \begin_inset CommandInset label
@@ -1113,7 +1122,7 @@ Unbiasedness does not rely on homoskedasticity.
 Variance: 
 \begin_inset Formula 
 \[
-\begin{aligned}\mathrm{var}\left(\widehat{\beta}|X\right) & =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
+\begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] & =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
  & =E\left[\left(\widehat{\beta}-\beta\right)\left(\widehat{\beta}-\beta\right)'|X\right]\\
  & =E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]\\
  & =\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}\\
@@ -1127,12 +1136,8 @@ Variance:
 Homoskedasticity is essential in this derivation.
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Example
-\series default
- (Heteroskedasticity) If 
+\begin_layout Example
+(Heteroskedasticity) If 
 \begin_inset Formula $e_{i}=x_{i}u_{i}$
 \end_inset
 
@@ -1343,7 +1348,7 @@ Therefore
 \begin_layout Standard
 Homoskedasticity is a restrictive assumption.
  Under homoskedasticity, 
-\begin_inset Formula $\mathrm{var}\left(\widehat{\beta}\right)=\sigma^{2}\left(X'X\right)^{-1}$
+\begin_inset Formula $\mathrm{var}\left[\widehat{\beta}\right]=\sigma^{2}\left(X'X\right)^{-1}$
 \end_inset
 
 .
@@ -1365,6 +1370,16 @@ Homoskedasticity is a restrictive assumption.
 
 \begin_layout Section
 Summary
+\end_layout
+
+\begin_layout Standard
+The linear algebraic properties holds in finite sample no matter the data
+ are taken as fixed numbers or random variables.
+ The exact distribution under the normality assumption of the error term
+ is the classical statistical results.
+ The Gauss Markov theorem holds under two crucial assumptions: linear CEF
+ and homoskedasticity.
+ 
 \end_layout
 
 \begin_layout Standard
