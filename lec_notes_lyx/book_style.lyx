@@ -7,10 +7,10 @@
 \textclass book
 \begin_preamble
 
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\lhead{Lecture Notes}
-\rhead{Zhentao Shi}
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\lhead{Lecture Notes}
+%\rhead{Zhentao Shi}
 \end_preamble
 \use_default_options false
 \begin_modules
@@ -99,6 +99,22 @@ A Primer of Econometrics
 
 \begin_layout Author
 Zhentao Shi
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{2}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

@@ -7,7 +7,7 @@
 \textclass report
 \use_default_options false
 \begin_modules
-theorems-bytype
+theorems-ams-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -2078,6 +2078,22 @@ Historical notes:
  Their names are immortalized by the Borel set, the Lebesgue integral, the
  Radon measure, Markov chain, Kolmogorov's zero–one law and many other terminolo
 gies named after them.
+ 
+\end_layout
+
+\begin_layout Standard
+Fascinating questions about probability attracted great economists.
+ Francis Edgeworth (1845–1926) wrote extensively on probability and statistics.
+ John Maynard Keynes (1883–1946) published 
+\emph on
+A Treatise on Probability
+\emph default
+ in 1921 which mixed probability and mathematics, although this piece of
+ work was not as influential as his 
+\emph on
+General Theory of Employment, Interest and Money
+\emph default
+ in 1936 which later revolutionized economics.
 \end_layout
 
 \begin_layout Standard
@@ -2122,9 +2138,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- 
-\backslash
-today}
+ Sep 12, 2020.}
 \end_layout
 
 \end_inset

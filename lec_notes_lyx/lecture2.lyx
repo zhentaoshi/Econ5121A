@@ -1919,6 +1919,17 @@ literal "false"
 \end_inset
 
  offers a comprehensive summary of identification in econometrics.
+ Accounting is an applied field with many claimed causal inference drawn
+ from simple regressions; it is encouraging to hear 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "gow2016causal"
+literal "false"
+
+\end_inset
+
+ to reflect causality in their practices.
+ 
 \end_layout
 
 \begin_layout Standard
