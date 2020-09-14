@@ -7,7 +7,7 @@
 \textclass report
 \use_default_options false
 \begin_modules
-theorems-bytype
+theorems-ams-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -161,6 +161,26 @@ x_{n1} & x_{22} & \cdots & x_{nK}
  matrix.
 \end_layout
 
+\begin_layout Standard
+The ordinary least squares (OLS) is the most basic estimation technique
+ in econometrics.
+ It is simple and transparent.
+ Understanding it thoroughly paves the way to study more sophisticated linear
+ estimators.
+ Many nonlinear estimators resemble the behavior of OLS in a neighborhood
+ of the true value.
+ 
+\end_layout
+
+\begin_layout Standard
+In this lecture, we study the finite sample properties of OLS.
+ We first learn a series of facts from the linear algebra.
+ Next, we derive the finite-sample exact distribution under the normality
+ of the error term.
+ Finally, the Gauss-Markov theorem justifies the optimality of OLS under
+ the classical assumptions.
+\end_layout
+
 \begin_layout Section
 Algebra of Least Squares 
 \begin_inset CommandInset label
@@ -173,7 +193,7 @@ name "algebra-of-least-squares"
 \end_layout
 
 \begin_layout Subsection
-OLS estimator 
+OLS 
 \begin_inset CommandInset label
 LatexCommand label
 name "ols-estimator"
@@ -217,7 +237,7 @@ can be written as
 \begin_inset Formula $i=1,\ldots,n$
 \end_inset
 
-.
+ repeated experiments.
  We possess a 
 \emph on
 sample
@@ -237,13 +257,13 @@ Is
  random or deterministic? Before we make the observation, they are treated
  as random variables whose realized values are uncertain.
  After we make the observation, they become deterministic values which cannot
- change.
+ vary anymore.
  
 \begin_inset Formula $\left(y_{i},x_{i}\right)$
 \end_inset
 
- are treated as random when we talk about statistical properties about quantitie
-s based it — the statistical properties of a given fixed number is meaningless.
+ are treated as random when we talk about statistical properties — statistical
+ properties of a fixed number is meaningless.
 \end_layout
 
 \begin_layout Standard
@@ -257,8 +277,8 @@ s based it — the statistical properties of a given fixed number is meaningless
 All probability descriptions are thought experiments before observation.
  In reality, we have at hand fixed numbers (more recently, words, photos,
  audio clips, video clips, etc., which can all be represented in digital
- formats with 0 and 1s) to feed into a computational operation, and the
- operation will return one or some numbers.
+ formats with 0 and 1) to feed into a computational operation, and the operation
+ will return one or some numbers.
  All statistical interpretation about these numbers are drawn from the probabili
 stic thought experiments.
  A 
@@ -269,18 +289,38 @@ thought experiment
 \emph on
 story
 \emph default
- in plan language.
+ in plain language.
  Under the axiomatic approach of probability theory, such stories are mathematic
 al consistent and coherent.
  But mathematics is a tautological system, not science.
- Their scientific value of a probability model depends on how close it is
+ The scientific value of a probability model depends on how close it is
  to the 
 \emph on
 truth
 \emph default
-.
+ or implications of the truth.
  In this course, we suppose that the data are generated from some mechanism,
  which is taken as the truth.
+ In the linear regression model for example, the joint distribution of 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ is the truth, while we are interested in the linear projection coefficient
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+, which is an implication of the truth as in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pop_OLS"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
  
 \begin_inset Note Note
 status collapsed
@@ -319,12 +359,17 @@ noprefix "false"
 , and the resulting estimator is 
 \begin_inset Formula 
 \[
-\widehat{\beta}=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}y_{i}=\left(X'X\right)^{-1}X'y.
+\widehat{\beta}=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}y_{i}=\left(X'X\right)^{-1}X'y
 \]
 
 \end_inset
 
-This is one way to motivate the OLS estimator.
+if 
+\begin_inset Formula $X'X$
+\end_inset
+
+ is invertible.
+ This is one way to motivate the OLS estimator.
  
 \end_layout
 
@@ -356,7 +401,7 @@ where the factor
 \end_inset
 
 This necessary condition for optimality gives exactly the same 
-\begin_inset Formula $\widehat{\beta}$
+\begin_inset Formula $\widehat{\beta}=\left(X'X\right)^{-1}X'y$
 \end_inset
 
 .
@@ -381,7 +426,7 @@ shows that
 \end_inset
 
 .
- (
+ (The function 
 \begin_inset Formula $Q\left(\beta\right)$
 \end_inset
 
@@ -478,6 +523,16 @@ Residual:
 \end_inset
 
 .
+ Notice 
+\begin_inset Formula $\widehat{e}$
+\end_inset
+
+ and 
+\begin_inset Formula $e$
+\end_inset
+
+ are two different objects.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -489,7 +544,7 @@ Residual:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
+\begin_inset Formula $\sum_{i=1}^{n}\widehat{e}_{i}=0$
 \end_inset
 
  if 
@@ -497,11 +552,12 @@ Residual:
 \end_inset
 
  contains a constant.
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-(Justification: 
+(Because 
 \begin_inset Formula $X'\widehat{e}=\left[\begin{array}{cccc}
 1 & 1 & \cdots & 1\\
 * & * & \cdots & *\\
@@ -562,7 +618,7 @@ Shanghai index?
 
 \end_inset
 
- The so-called 
+ 
 \emph on
 R-squared
 \emph default
@@ -598,11 +654,30 @@ demeaner
 \end_inset
 
 .
- For any 
-\begin_inset Formula $X$
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R^{2}=\frac{\widehat{Y}'M_{\iota}\widehat{Y}}{Y'M_{\iota}Y}=\frac{\frac{1}{n}\sum_{i=1}^{n}\left(\widehat{y_{i}}-\overline{y}\right)^{2}}{\frac{1}{n}\sum_{i=1}^{n}\left(y-\overline{y}\right)^{2}}
+\]
+
 \end_inset
 
-, we can decompose 
+is the ratio between the predicted variance and the total variance.
+\end_layout
+
+\begin_layout Exercise
+Show 
+\begin_inset Formula $\overline{y}=\frac{1}{n}\sum_{i=1}^{n}y_{i}=\sum_{i=1}^{n}\widehat{y}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can decompose 
 \begin_inset Formula $Y=P_{X}Y+M_{X}Y=\widehat{Y}+\widehat{e}$
 \end_inset
 
@@ -623,13 +698,13 @@ where the last equality follows by
 \begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
 \end_inset
 
-, and 
+ (This property fails if the regression has no constant), and 
 \begin_inset Formula $\widehat{Y}'\widehat{e}=Y'P_{X}M_{X}e=0$
 \end_inset
 
 .
- R-squared is defined as 
-\begin_inset Formula $\widehat{Y}'M_{\iota}\widehat{Y}/Y'M_{\iota}Y$
+ 
+\begin_inset Formula $ $
 \end_inset
 
 .
@@ -658,7 +733,7 @@ name "frish-waugh-lovell-theorem"
 \begin_layout Standard
 The Frish-Waugh-Lovell (FWL) theorem is an algebraic fact about the formula
  of a subvector of the OLS estimator.
- To derive the FWL theorem We need to use the inverse of partitioned matrix.
+ To derive the FWL theorem we need to use the inverse of partitioned matrix.
  For a positive definite symmetric matrix 
 \begin_inset Formula $A=\begin{pmatrix}A_{11} & A_{12}\\
 A_{12}' & A_{22}
@@ -783,7 +858,7 @@ Regress
 
 \begin_layout Standard
 Similar derivation can also be carried out in the population linear projection.
- See Hansen (2019) Chapter 2.22-23.
+ See Hansen (2020) [E] Chapter 2.22-23.
 \end_layout
 
 \begin_layout Section
@@ -807,7 +882,30 @@ ve distributional assumption
 \begin_inset Formula $\gamma=\sigma^{2}$
 \end_inset
 
+ to ease the differentiation.
+ This assumption is equivalent to 
+\begin_inset Formula $e_{i}|x_{i}=\left(y_{i}-x_{i}'\beta\right)|x_{i}\sim N\left(0,\gamma\right)$
+\end_inset
+
 .
+ Because the distribution of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ is invariant to 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, the error term 
+\begin_inset Formula $e_{i}\sim N\left(0,\gamma\right)$
+\end_inset
+
+ and is statistically independent of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ This is a very strong assumption.
 \end_layout
 
 \begin_layout Subsection
@@ -915,45 +1013,91 @@ Finite sample distribution
 asymptotic distribution
 \emph default
 , which is a large sample approximation to the finite sample distribution.
- Let the 
-\begin_inset Quotes eld
-\end_inset
-
-error term
-\begin_inset Quotes erd
-\end_inset
-
+ We first review some properties of a generic jointly normal random variables.
  
-\begin_inset Formula $e_{i}=y_{i}-x_{i}'\beta$
+\end_layout
+
+\begin_layout Fact
+\begin_inset CommandInset label
+LatexCommand label
+name "fact31"
+
 \end_inset
 
-, we have 
-\begin_inset Formula $e_{i}|x_{i}=y_{i}|x_{i}-x_{i}'\beta\sim N\left(0,\gamma\right)$
+ Let 
+\begin_inset Formula $z\sim N\left(\mu,\Omega\right)$
 \end_inset
 
-.
- Since the conditional distribution of 
-\begin_inset Formula $e_{i}$
+ be an 
+\begin_inset Formula $l\times1$
 \end_inset
 
- on 
-\begin_inset Formula $x_{i}$
-\end_inset
-
- is invariant with 
-\begin_inset Formula $x_{i}$
-\end_inset
-
-, the discrepancy 
-\begin_inset Formula $e_{i}$
-\end_inset
-
- is statistical independent of 
-\begin_inset Formula $x_{i}$
+ random vector with a positive definite variance-covariance matrix 
+\begin_inset Formula $\Omega$
 \end_inset
 
 .
- Assume The estimator
+ Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be an 
+\begin_inset Formula $m\times l$
+\end_inset
+
+ non-random matrix where 
+\begin_inset Formula $m\leq l$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $Az\sim N\left(A\mu,A\Omega A'\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Fact
+\begin_inset CommandInset label
+LatexCommand label
+name "fact32"
+
+\end_inset
+
+If 
+\begin_inset Formula $z\sim N\left(0,1\right)$
+\end_inset
+
+, 
+\begin_inset Formula $w\sim\chi^{2}\left(d\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $z$
+\end_inset
+
+ and 
+\begin_inset Formula $w$
+\end_inset
+
+ are independent.
+ Then 
+\begin_inset Formula $\frac{z}{\sqrt{w/d}}\sim t\left(d\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The OLS estimator
 \begin_inset Formula 
 \[
 \widehat{\beta}=\left(X'X\right)^{-1}X'Y=\left(X'X\right)^{-1}X'\left(X'\beta+e\right)=\beta+\left(X'X\right)^{-1}X'e,
@@ -966,12 +1110,23 @@ and its conditional distribution can be written as
 \begin{align*}
 \widehat{\beta}|X & =\beta+\left(X'X\right)^{-1}X'e|X\\
  & \sim\beta+\left(X'X\right)^{-1}X'\cdot N\left(0_{n},\sigma^{2}\cdot I_{n}\right)\\
- & \sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right).
+ & \sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right)
 \end{align*}
 
 \end_inset
 
-The 
+by Fact 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fact31"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The 
 \begin_inset Formula $k$
 \end_inset
 
@@ -1019,17 +1174,12 @@ is an unbiased estimator of
 -statistic
 \begin_inset Formula 
 \begin{align*}
-T_{k} & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\\
- & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\cdot\frac{\sqrt{\sigma^{2}}}{\sqrt{s^{2}}}\\
+T_{k} & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\cdot\frac{\sqrt{\sigma^{2}}}{\sqrt{s^{2}}}\\
  & =\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
 \end{align*}
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 The numerator follows a standard normal, and the denominator follows 
 \begin_inset Formula $\frac{1}{n-K}\chi^{2}\left(n-K\right)$
 \end_inset
@@ -1041,9 +1191,18 @@ The numerator follows a standard normal, and the denominator follows
 \begin_inset Formula $T_{k}\sim t\left(n-K\right)$
 \end_inset
 
+ by Fact 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fact32"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
 .
- This finite sample distribution is crucial when conducting statistical
- inference.
+ This finite sample distribution allows us to conduct statistical inference.
 \end_layout
 
 \begin_layout Subsection
@@ -1060,7 +1219,7 @@ name "mean-and-variance"
 \begin_layout Standard
 Now we relax the normality assumption and statistical independence.
  Instead, we represent the regression model as 
-\begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
+\begin_inset Formula $y=x'\beta+e$
 \end_inset
 
  and 
