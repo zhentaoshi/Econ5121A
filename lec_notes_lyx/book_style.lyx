@@ -11,6 +11,11 @@
 %\pagestyle{fancy}
 %\lhead{Lecture Notes}
 %\rhead{Zhentao Shi}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
 \end_preamble
 \use_default_options false
 \begin_modules

@@ -5,6 +5,12 @@
 \save_transient_properties true
 \origin unavailable
 \textclass report
+\begin_preamble
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\end_preamble
 \use_default_options false
 \begin_modules
 theorems-ams-chap-bytype
@@ -382,7 +388,7 @@ Alternatively, we can derive the OLS estimator from minimizing the sum of
 , or equivalently 
 \begin_inset Formula 
 \[
-Q\left(\beta\right)=\frac{1}{2n}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}=\frac{1}{2n}\left(Y-X\beta\right)'\left(Y-X\beta\right),
+Q\left(\beta\right)=\frac{1}{2n}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}=\frac{1}{2n}\left(Y-X\beta\right)'\left(Y-X\beta\right)=\frac{1}{2n}\left\Vert Y-X\beta\right\Vert ^{2},
 \]
 
 \end_inset
@@ -391,7 +397,11 @@ where the factor
 \begin_inset Formula $\frac{1}{2n}$
 \end_inset
 
- is nonrandom and does not change the minimizer.
+ is nonrandom and does not change the minimizer, and 
+\begin_inset Formula $\left\Vert \cdot\right\Vert $
+\end_inset
+
+ is the Euclidean norm of a vector.
  Solve the first-order condition 
 \begin_inset Formula 
 \[
@@ -454,11 +464,11 @@ Fitted value:
 \end_layout
 
 \begin_layout Itemize
-Projector: 
+Projection matrix: 
 \begin_inset Formula $P_{X}=X\left(X'X\right)^{-1}X$
 \end_inset
 
-; Annihilator: 
+; Residual maker matrix: 
 \begin_inset Formula $M_{X}=I_{n}-P_{X}$
 \end_inset
 
@@ -584,6 +594,222 @@ Residual:
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+The operation of OLS bears a natural geometric interpretation.
+ Notice 
+\begin_inset Formula $\mathcal{X}=\left\{ W:W=X\beta,\ \beta\in\mathbb{R}^{K}\right\} $
+\end_inset
+
+ is the linear space spanned by the 
+\begin_inset Formula $K$
+\end_inset
+
+ columns of 
+\begin_inset Formula $X=\left[X_{\cdot1},\ldots,X_{\cdot K}\right]$
+\end_inset
+
+, which is of 
+\begin_inset Formula $K$
+\end_inset
+
+-dimension if the columns are linearly independent.
+ The OLS estimator is the minimizer of 
+\begin_inset Formula $\min_{\beta\in\mathbb{R}^{K}}\left\Vert Y-X\beta\right\Vert $
+\end_inset
+
+ (Square the Euclidean norm or not does not change the minimizer because
+ 
+\begin_inset Formula $a^{2}$
+\end_inset
+
+ is a monotonic transformation for 
+\begin_inset Formula $a\geq0$
+\end_inset
+
+).
+ In other words, 
+\begin_inset Formula $X\widehat{\beta}$
+\end_inset
+
+ is the point in 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ such that it is the closest to the vector 
+\begin_inset Formula $Y$
+\end_inset
+
+ in terms of the Euclidean norm.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+definecolor{dtsfsf}{rgb}{0.8274509803921568,0.1843137254901961,0.1843137254901961}
+ 
+\backslash
+definecolor{wrwrwr}{rgb}{0.3803921568627451,0.3803921568627451,0.3803921568627451}
+ 
+\backslash
+definecolor{rvwvcq}{rgb}{0.08235294117647059,0.396078431372549,0.7529411764705882}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm,
+ scale=0.5] 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+clip(-20.36,-10.76) rectangle (3.16,11.16); 
+\backslash
+draw [->,line width=2pt,color=wrwrwr] (-14.94,-1.92) -- (-5.88,-1.8); 
+\backslash
+draw [->,line width=2pt,color=wrwrwr] (-14.94,-1.92) -- (-5.86,5.1); 
+\backslash
+draw [->,line width=2pt,color=wrwrwr] (-5.88,-1.8) -- (-5.86,5.1); 
+\backslash
+draw [->,line width=2pt,color=wrwrwr] (-5.86,5.1) -- (-5.86,5.1); 
+\backslash
+draw [->,line width=2pt,color=wrwrwr] (-5.86,5.1) -- (-5.86,5.1); 
+\backslash
+draw [->,line width=2pt,color=wrwrwr] (-5.86,5.1) -- (-5.86,5.1); 
+\backslash
+draw [->,line width=2pt,color=wrwrwr] (-5.86,5.1) -- (-5.86,5.1); 
+\backslash
+draw (-10.26,-2) node[anchor=north west] {$
+\backslash
+hat{Y} = X 
+\backslash
+hat{
+\backslash
+beta}$}; 
+\backslash
+draw (-10.56,2.94) node[anchor=north west] {$Y$}; 
+\backslash
+draw (-5.4,2.04) node[anchor=north west] {$
+\backslash
+hat{e}$}; 
+\backslash
+draw (-10.12,-3.12) node[anchor=north west] {projection}; 
+\backslash
+draw (-5.42,1.14) node[anchor=north west] {residual}; 
+\backslash
+draw [line width=2pt,color=dtsfsf,domain=-20.36:3.16] plot(
+\backslash
+x,{(-15.6024--0.12*
+\backslash
+x)/9.06}); 
+\backslash
+draw (-4.48,-1.72) node[anchor=north west] {$
+\backslash
+mathcal{X}$}; 
+\backslash
+begin{scriptsize} 
+\backslash
+draw [fill=rvwvcq] (-14.94,-1.92) circle (2.5pt); 
+\backslash
+draw [fill=rvwvcq] (-5.88,-1.8) circle (2.5pt); 
+\backslash
+draw [fill=rvwvcq] (-5.86,5.1) circle (2.5pt); 
+\backslash
+draw [fill=rvwvcq] (-5.86,5.1) circle (2.5pt); 
+\backslash
+end{scriptsize} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The relationship 
+\begin_inset Formula $Y=X\widehat{\beta}+\widehat{e}$
+\end_inset
+
+ decomposes 
+\begin_inset Formula $Y$
+\end_inset
+
+ into two orthogonal vectors 
+\begin_inset Formula $X\widehat{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\widehat{e}$
+\end_inset
+
+ as 
+\begin_inset Formula $\left\langle X\widehat{\beta},\widehat{e}\right\rangle =\widehat{\beta}X'\widehat{e}=0$
+\end_inset
+
+, where 
+\begin_inset Formula $\left\langle \cdot,\cdot\right\rangle $
+\end_inset
+
+ is the 
+\emph on
+inner product
+\emph default
+ of two vectors.
+ Therefore 
+\begin_inset Formula $X\widehat{\beta}$
+\end_inset
+
+ is the 
+\emph on
+projection
+\emph default
+ of 
+\begin_inset Formula $Y$
+\end_inset
+
+ onto 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+, and 
+\begin_inset Formula $\widehat{e}$
+\end_inset
+
+ is the corresponding 
+\emph on
+projection residuals.
+ 
+\emph default
+The Pythagorean theorem implies
+\begin_inset Formula 
+\[
+\left\Vert Y\right\Vert ^{2}=\Vert X\widehat{\beta}\Vert^{2}+\left\Vert \widehat{e}\right\Vert ^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Goodness of Fit 
 \begin_inset CommandInset label
@@ -1219,14 +1445,14 @@ name "mean-and-variance"
 \begin_layout Standard
 Now we relax the normality assumption and statistical independence.
  Instead, we represent the regression model as 
-\begin_inset Formula $y=x'\beta+e$
+\begin_inset Formula $Y=X\beta+e$
 \end_inset
 
  and 
 \begin_inset Formula 
 \begin{align*}
-E[e|X] & =0\\
-\mathrm{var}\left[e|X\right] & =\sigma^{2}I_{n}.
+E[e|X] & =0_{n}\\
+\mathrm{var}\left[e|X\right] & =E\left[ee'|X\right]=\sigma^{2}I_{n}.
 \end{align*}
 
 \end_inset
@@ -1253,10 +1479,7 @@ moments
 \end_inset
 
 .
- Unlike the normality assumption, they do not restrict the 
-\emph on
-distribution
-\emph default
+ Unlike the normality assumption, they do not restrict the distribution
  of 
 \begin_inset Formula $e_{i}$
 \end_inset
@@ -1267,14 +1490,14 @@ distribution
 \begin_layout Itemize
 Unbiasedness: 
 \begin_inset Formula 
-\[
-E\left[\widehat{\beta}|X\right]=E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]=\beta.
-\]
+\begin{align*}
+E\left[\widehat{\beta}|X\right] & =E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]\\
+ & =\beta+\left(X'X\right)^{-1}XE\left[e|X\right]=\beta.
+\end{align*}
 
 \end_inset
 
 Unbiasedness does not rely on homoskedasticity.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -1284,15 +1507,26 @@ Variance:
 \begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] & =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
  & =E\left[\left(\widehat{\beta}-\beta\right)\left(\widehat{\beta}-\beta\right)'|X\right]\\
  & =E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]\\
- & =\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}\\
- & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}\\
- & =\sigma^{2}\left(X'X\right)^{-1}.
+ & =\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}
 \end{aligned}
 \]
 
 \end_inset
 
-Homoskedasticity is essential in this derivation.
+where the second equality holds as 
+\begin_inset Formula $E\left[\widehat{\beta}\right]=E\left[E\left[\widehat{\beta}|X\right]\right]=\beta$
+\end_inset
+
+.
+ Under the assumption of homoskedasticity, it can be simplified as
+\begin_inset Formula 
+\[
+\begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}=\sigma^{2}\left(X'X\right)^{-1}.\end{aligned}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Example
@@ -1308,7 +1542,7 @@ Homoskedasticity is essential in this derivation.
 \begin_inset Formula $u_{i}$
 \end_inset
 
- is independent of 
+ is statistically independent of 
 \begin_inset Formula $x_{i}$
 \end_inset
 
@@ -1381,23 +1615,40 @@ noprefix "false"
 
 \end_layout
 
+\begin_layout Example
+It is important to notice that independently and identically distributed
+ sample (iid) 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ does not imply homoskedasticity.
+ Homoskedasticity or heterskdasticity is about the relationship between
+ 
+\begin_inset Formula $\left(x_{i},e_{i}=y_{i}-\beta x\right)$
+\end_inset
+
+, whereas iid is about the relationship between 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(y_{j},x_{j}\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Gauss-Markov Theorem
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "gauss-markov-theorem"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Gauss-Markov theorem justifies the OLS estimator as the efficient estimator
- among all linear unbiased ones.
+Gauss-Markov theorem is concerned about the optimality of OLS.
+ It justifies OLS as the efficient estimator among all linear unbiased ones.
  
 \emph on
 Efficient
@@ -1406,7 +1657,12 @@ Efficient
 \end_layout
 
 \begin_layout Standard
-There are numerous linearly unbiased estimators.
+We have shown that OLS is unbiased in that 
+\begin_inset Formula $E\left[\widehat{\beta}\right]=\beta$
+\end_inset
+
+.
+ There are numerous linearly unbiased estimators.
  For example, 
 \begin_inset Formula $\left(Z'X\right)^{-1}Z'y$
 \end_inset
@@ -1417,6 +1673,56 @@ There are numerous linearly unbiased estimators.
 
  is unbiased because 
 \begin_inset Formula $E\left[\left(Z'X\right)^{-1}Z'y\right]=E\left[\left(Z'X\right)^{-1}Z'\left(X\beta+e\right)\right]=\beta$
+\end_inset
+
+.
+ We cannot say OLS is better than those other unbiased estimators because
+ they are equally good in this aspect.
+ Thus, we move to the second order property of variance: an estimator is
+ better if its variance is smaller.
+\end_layout
+
+\begin_layout Fact
+For two generic random vectors 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ of the same size, we say 
+\begin_inset Formula $X$
+\end_inset
+
+'s variance is smaller or equal to 
+\begin_inset Formula $Y$
+\end_inset
+
+'s variance if 
+\begin_inset Formula $\left(\Omega_{Y}-\Omega_{X}\right)$
+\end_inset
+
+ is a positive semi-definite matrix.
+ The comparison is defined this way because for any non-zero constant vector
+ 
+\begin_inset Formula $c$
+\end_inset
+
+, the variance of the linear combination of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathrm{var}\left(c'X\right)=c'\Omega_{X}c\leq c'\Omega_{Y}c=\mathrm{var}\left(c'Y\right)
+\]
+
+\end_inset
+
+is no bigger than the same linear combination of 
+\begin_inset Formula $Y$
 \end_inset
 
 .
@@ -1502,6 +1808,8 @@ Therefore
 \end_inset
 
 .
+ The above derivation shows OLS achieves the smallest variance among all
+ linear unbiased estimators.
 \end_layout
 
 \begin_layout Standard
