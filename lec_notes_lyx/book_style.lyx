@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass book
+\textclass report
 \begin_preamble
 
 %\usepackage{fancyhdr}
