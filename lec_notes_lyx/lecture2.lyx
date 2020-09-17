@@ -1106,13 +1106,13 @@ Unlike physical laws such as Einstein's mass–energy equivalence
  When using experiments to verify physical laws, scientists often manage
  to come up with smart design in which signal-to-noise ratio is so high
  that small disturbances are kept at a negligible level.
- On the contrary, economic laws do not fit a laboratory for experiment.
+ On the contrary, economic laws do not fit a laboratory for experimentation.
  What is worse, the subjects in economic studies — human beings — are heterogene
 ous and with many features that are hard to control.
  People from distinctive cultural and family backgrounds respond to the
  same issue differently and researchers can do little to homogenize them.
- The signal-to-noise ratio in economic laws are often significantly lower
- than that of physical laws, mainly due to the lack of laboratory setting
+ The signal-to-noise ratios in economic laws are often significantly lower
+ than those of physical laws, mainly due to the lack of laboratory setting
  and the heterogeneous nature of the subjects.
  
 \end_layout
@@ -1180,8 +1180,8 @@ ation.
  world.
  If in such a thought experiment we still cannot unique distinguish the
  true parameter of the data generating process, then identification fails.
- In other words, we cannot determine what is the true model no matter how
- large the sample is.
+ We cannot determine what is the true model no matter how large the sample
+ is.
  
 \end_layout
 
@@ -1234,7 +1234,7 @@ During the 2020 covid-19 pandemic, Hong Kong's unemployment rate rose to
  a high-level and consumption collapsed.
  In order to boost the economy, some Hong Kong residents were qualified
  in receiving 10,000 HKD cash allowance from the government.
- We are interested to learn how much does the 10,000 HKD allowance increase
+ We are interested in learning how much does the 10,000 HKD allowance increase
  people's consumption.
  For an individual, we imagine two parallel worlds: one with the cash allowance
  and one without.
@@ -1257,7 +1257,7 @@ potential outcome framework
 
 \begin_layout Standard
 However, in reality one and only one scenario happens, which echos the saying
- of ancient Greek philosopher Heraclitus (553 BC--475 BC): 
+ of ancient Greek philosopher Heraclitus (553 BC--475 BC) 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1330,11 +1330,19 @@ ATE=E\left[Y\left(1\right)|D=1\right]-E\left[Y\left(0\right)|D=0\right].
 \end_inset
 
 Therefore, to evaluate ATE ideally we would like use a lottery to randomly
- decide that some people receive the treatment (treatment group, with 
+ decide that some people receive the treatment (
+\emph on
+treatment group
+\emph default
+, with 
 \begin_inset Formula $D=1$
 \end_inset
 
-) and the others do not (control group, with 
+) and the others do not (
+\emph on
+control group
+\emph default
+, with 
 \begin_inset Formula $D=0$
 \end_inset
 
@@ -1412,7 +1420,7 @@ CIA is more plausible than full independence.
 \end_inset
 
 , then CIA is satisfied.
- Obviously 
+ Nevertheless 
 \begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)$
 \end_inset
 
@@ -1420,11 +1428,11 @@ CIA is more plausible than full independence.
 \begin_inset Formula $D$
 \end_inset
 
- are dependent however, since 
+ are statistically dependent, since 
 \begin_inset Formula $x$
 \end_inset
 
- is involved in both random variables.
+ is involved in all random variables.
 \end_layout
 
 \begin_layout Subsection
@@ -1442,7 +1450,7 @@ In the previous section the treatment
 \end_inset
 
 .
- Suppose the DGP is 
+ Suppose the DGP, or the structural model, is 
 \begin_inset Formula $Y=h\left(D,x,u\right)$
 \end_inset
 
@@ -1496,10 +1504,14 @@ where the continuous differentiability of
 .
  ATE here is the average effect in the population of individuals if we hypotheti
 cal move 
+\begin_inset Formula $D$
+\end_inset
+
+ a tiny bit around 
 \begin_inset Formula $d$
 \end_inset
 
- a little bit, keeping all other factors 
+, keeping all other factors 
 \begin_inset Formula $x$
 \end_inset
 
@@ -1549,7 +1561,7 @@ In the previous sections, we focused on the CEF
 \end_inset
 
 where the second line implicitly assumes interchangeability between the
- integral and partial derivative.
+ integral and the partial derivative.
  Under CIA, 
 \begin_inset Formula $\frac{\partial}{\partial d}f\left(u|d,x\right)=0$
 \end_inset
@@ -1578,18 +1590,18 @@ This is an important result.
 
 .
  In particular, if we further assume a linear CEF 
-\begin_inset Formula $m\left(d,x\right)=\beta_{1}d+\beta_{2}'x$
+\begin_inset Formula $m\left(d,x\right)=\beta_{d}d+\beta_{x}'x$
 \end_inset
 
 , then the causal effect is the coefficient 
-\begin_inset Formula $\beta_{1}$
+\begin_inset Formula $\beta_{d}$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-The key condition that links the CEF and the causal effect is CIA.
+CIA is the key condition that links the CEF and the causal effect.
  CIA is not an innocuous assumption.
  In applications, our causal results are credible only when we can convincing
  defend CIA.
@@ -1775,7 +1787,6 @@ where the second equality holds if
 reduced-form
 \emph default
  approach.
- 
 \end_layout
 
 \begin_layout Exercise
@@ -1842,12 +1853,9 @@ literal "false"
  exposed its lack of microfoundation and advocated modeling deep parameters
  that are invariant to policy changes.
  The latter is a structural approach.
- Ironically, more 40 years has passed since the Lucas critique, equations
+ Ironically, more than 40 years has passed since the Lucas critique, equations
  with little microfoundation still dominate the analytical apparatus of
  central bankers.
- At present (as of 2020), applied econometric research in China is dominated
- by the reduced-form approach.
- 
 \end_layout
 
 \begin_layout Section
@@ -1872,7 +1880,7 @@ In this lecture, we cover the conditional mean function and causality.
 , under CIA we can find equivalence between ATE and the partial derivative
  of CEF.
  All analyses are conducted in population.
- We have not touched sample yet.
+ We have not touched the sample yet.
 \end_layout
 
 \begin_layout Standard
@@ -1948,9 +1956,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- 
-\backslash
-today}
+ Sep 17, 2020}
 \end_layout
 
 \end_inset
