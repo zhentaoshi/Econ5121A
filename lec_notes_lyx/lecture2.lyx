@@ -887,7 +887,7 @@ where
 
  is called the 
 \emph on
-projection error
+linear projection error
 \emph default
 , to be distinguished from 
 \begin_inset Formula $\epsilon=y-m(x).$
@@ -1011,6 +1011,19 @@ tilde
  denotes the demeaned variable.
 \end_layout
 
+\begin_layout Exercise
+Show 
+\begin_inset Formula $\tilde{e}_{\beta}=e_{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{e}_{\gamma}=e_{\gamma}$
+\end_inset
+
+.
+ 
+\end_layout
+
 \begin_layout Standard
 After demeaning, the cross-moment equals to the covariance.
  The short regression coefficient 
@@ -1019,13 +1032,18 @@ After demeaning, the cross-moment equals to the covariance.
 \begin{aligned}\gamma_{1} & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{y}\right]\\
  & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\left(\tilde{x}_{1}'\beta_{1}+\tilde{x}_{2}'\beta_{2}+\tilde{e}_{\beta}\right)\right]\\
  & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}\\
- & =\beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}.
+ & =\beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2},
 \end{aligned}
 \]
 
 \end_inset
 
-Therefore, 
+where the third line holds as 
+\begin_inset Formula $E\left[\tilde{x}_{1}\tilde{e}_{\beta}\right]=0$
+\end_inset
+
+.
+ Therefore, 
 \begin_inset Formula $\gamma_{1}=\beta_{1}$
 \end_inset
 
@@ -1265,13 +1283,17 @@ You cannot step into the same river twice.
 \begin_inset Quotes erd
 \end_inset
 
- While the individual treatment effect is infeasible, we evaluate the treatment
- effect at the population level.
- The 
+ The individual treatment effect is infeasible (
+\emph on
+infeasible
+\emph default
+ means it cannot be computed from data), because one and only one outcome
+ is realized.
+ With many people available, we can define 
 \emph on
 average treatment effect
 \emph default
- (ATE) is defined as 
+ (ATE) as 
 \begin_inset Formula 
 \[
 ATE=E\left[Y\left(1\right)-Y\left(0\right)\right]=E\left[Y\left(1\right)\right]-E\left[Y\left(0\right)\right].
@@ -1287,16 +1309,15 @@ Notice that
 \begin_inset Formula $E\left[Y\left(0\right)\right]$
 \end_inset
 
- are still infeasible.
- Now, let 
+ are still infeasible before we observe a companion variable 
 \begin_inset Formula 
 \[
-D=1\left\{ \mbox{treatment received}\right\} 
+D=1\left\{ \mbox{treatment received}\right\} .
 \]
 
 \end_inset
 
- be a binary variable signifying the treatment, and 
+Once each individual's treatment status is observable, 
 \begin_inset Formula $E\left[Y\left(1\right)|D=1\right]$
 \end_inset
 
@@ -1305,7 +1326,10 @@ D=1\left\{ \mbox{treatment received}\right\}
 \end_inset
 
  are feasible from the data.
- If the two potential outcomes 
+\end_layout
+
+\begin_layout Standard
+If the two potential outcomes 
 \begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)$
 \end_inset
 

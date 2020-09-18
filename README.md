@@ -14,7 +14,7 @@ Reading and Assignment will be updated each week as the class progresses.
 
 * Week 0: [IE] Ch.1--Ch.6
 * Week 1: [E] Ch.1, Ch.2.1--17; Ch.2.31
-* Week2: [E] Ch.2.18--21; Ch.2.24--30
+* Week 2: [E] Ch.2.18--21; Ch.2.24--30
 
 
 
