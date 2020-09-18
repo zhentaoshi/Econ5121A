@@ -106,6 +106,22 @@ A Primer of Econometrics
 Zhentao Shi
 \end_layout
 
+\begin_layout Date
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -120,6 +136,16 @@ setcounter{page}{2}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+This PDF document is compiled as an overview of the contents to be covered
+ in Econ5121A.
+ 
+\end_layout
+
+\begin_layout Standard
+Don't print this document! All chapters will be revised as the course progresses.
 \end_layout
 
 \begin_layout Standard
