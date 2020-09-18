@@ -24,7 +24,7 @@ Reading and Assignment will be updated each week as the class progresses.
   * [E] Ex 2.1, 2, 6, 10--14
 * Week 2: [E] Ex 2.4, 7, 18, 21; lecture notes Ex.2.3
 
-
+<img src="https://github.com/zhentaoshi/Econ5121A/blob/master/online_teaching.jpg" alt="online_teaching" width="600"/>
 
 
 
