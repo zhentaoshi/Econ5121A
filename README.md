@@ -6,6 +6,28 @@
 
 
 
+
+
+Reading and Assignment will be updated each week as the class progresses.
+
+### Reading
+
+* Week 0: [IE] Ch.1--Ch.6
+* Week 1: [E] Ch.1, Ch.2.1--17; Ch.2.31
+* Week2: [E] Ch.2.18--21; Ch.2.24--30
+
+
+
+### Assignment
+* Week 1: 
+  * [IE] Ex.1.5, 9; Ex.2.8, 11, 16; Ex.4.7, 12; Ex.5.5, 6, 15; 
+  * [E] Ex 2.1, 2, 6, 10--14
+* Week 2: [E] Ex 2.4, 7, 18, 21; lecture notes Ex.2.3
+
+
+
+
+
 ### Description
 
 This is an entry-level Ph.D. econometrics course. Under the asymptotic framework, it covers estimation and inference of the regression models and the instrumental variable models. It focuses on theory --- applying statistical theory to econometric models. It is NOT about how to apply econometric methods to empirical data.
@@ -21,24 +43,6 @@ The lectures are based primarily on Bruce Hansen's textbooks:
 * Hansen (2020): [Econometrics](http://www.ssc.wisc.edu/~bhansen/econometrics/) (**E**) 
 
 Both are downloadable for free.
-
-
-
-
-
-Reading and Assignment will be updated each week as the class progresses.
-
-### Reading
-
-* Week 0: [IE] Ch.1--Ch.6
-* Weak 1: [E] Ch.1, Ch.2.1--17; Ch.2.31
-
-
-
-### Assignment
-* Week 1: 
-  * [IE] Ex.1.5, 9; Ex.2.8, 11, 16; Ex.4.7, 12; Ex.5.5, 6, 15; 
-  * [E] Ex 2.1, 2, 6, 10--14
 
 
 
