@@ -931,6 +931,26 @@ print( t(X) %*% ehat )
 
 \begin_layout Plain Layout
 
+MX = diag(n) - X %*% solve( crossprod(X) ) %*% t(X)
+\end_layout
+
+\begin_layout Plain Layout
+
+data.frame(e = e, ehat = ehat, MXY = MX%*%Y, MXe = MX%*%e ) %>% head()
+\end_layout
+
+\begin_layout Plain Layout
+
+cat("The mean of the residual is ", mean(ehat), "and the sum is", sum(ehat),
+      "
+\backslash
+nBut the mean of the true error term is", mean(e), "
+\backslash
+n")
+\end_layout
+
+\begin_layout Plain Layout
+
 @
 \end_layout
 

@@ -602,39 +602,30 @@ Software
 \end_layout
 
 \begin_layout Standard
-I have been using **R** since I started my postgraduate study in Peking
- University in 2005.
- **R** helps me with my daily research and teaching.
-\end_layout
-
-\begin_layout Standard
-**R** has many advantages.
- First, it inherits the standard program syntax from **C**.
- It is quick to learn for anyone with prior programming experience.
- Moreover, once you master **R**, it is easy to switch to other chosen language,
- if not **R**, in your workplace in the future.
-\end_layout
-
-\begin_layout Standard
-Second, backed by a vast statistician community, **R** enjoys a large selection
+I am a native R speaker ever since my postgraduate study in Peking University
+ in 2005, before which I had no serious commitment to any programming languages.
+ R helps me with my daily research and teaching.
+ R has many advantages.
+ First, it inherits the standard program language syntax.
+ Once you master R, it is easy to switch to other workplace languages if
+ it is not R.
+ Second, supported by a vast statistician community, R enjoys a large selection
  of packages, including the most recent ones.
- Indeed, once they publish a paper, statisticians often write and upload
- a companion package so that other researchers can adopt their methods.
-\end_layout
-
-\begin_layout Standard
-Third, **R** is free.
+ When they publish papers, many statisticians develop companion packages
+ for researchers to adopt their methods.
+ Third, R is free.
  It was the primary reason that I chose it at the very beginning.
- In the era of open-source software, an algorithm written in **R** is much
- easier to share, test, and improve, since anyone can run the code on any
- platform, free of license and fee headache.
+ In the era of open-source software, an algorithm written in R is much easier
+ to share, test, and improve, since anyone can run the code on any platform,
+ free of license and fee headache.
+ 
 \end_layout
 
 \begin_layout Standard
-**R** is not without limitations.
+R is not without limitations.
  For example, speed is a concern when running big and complex jobs.
  However, it will not be an issue in the problems that we will encounter
- in the first year postgraduate study.
+ in this course.
 \end_layout
 
 \begin_layout Standard
