@@ -1011,7 +1011,7 @@ tilde
  denotes the demeaned variable.
 \end_layout
 
-\begin_layout Exercise
+\begin_layout Exercise*
 Show 
 \begin_inset Formula $\tilde{e}_{\beta}=e_{\beta}$
 \end_inset
@@ -1628,7 +1628,7 @@ CIA is the key condition that links the CEF and the causal effect.
 \end_layout
 
 \begin_layout Exercise
-Let factories' output be a Dobb-Douglas function 
+Let factories' output be a Cobb-Douglas function 
 \begin_inset Formula $Y=AK^{\alpha}L^{\beta}$
 \end_inset
 
@@ -1701,7 +1701,7 @@ l
 
  make the true DGP.
  Here 
-\begin_inset Formula $w$
+\begin_inset Formula $u$
 \end_inset
 
  and 

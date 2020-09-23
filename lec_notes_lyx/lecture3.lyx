@@ -2504,7 +2504,7 @@ Historical notes
 : Carl Friedrich Gauss (1777–1855) claimed he had come up with the operation
  of OLS in 1795.
  With only three data points at hand, Gauss successfully applied his method
- to predict the location of the drawf planet Ceres in 1801.
+ to predict the location of the dwarf planet Ceres in 1801.
  While Gauss did not publish the work on OLS until 1809, Adrien-Marie Legendre
  (1752–1833) presented this method in 1805.
  Today people tend to attribute OLS to Gauss, assuming that a giant like
@@ -2516,7 +2516,7 @@ Historical notes
 MLE was promulgated and popularized by Ronald Fisher (1890–1962).
  He was a major contributor of the frequentist approach which dominates
  mathematical statistics today, and he sharply criticized the Bayesian approach.
- Fisher collected the Iris flower dataset of 150 observations in his biological
+ Fisher collected the iris flower dataset of 150 observations in his biological
  study in 1936, which can be displayed in R by typing 
 \family typewriter
 iris
