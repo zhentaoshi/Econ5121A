@@ -168,23 +168,60 @@ x_{n1} & x_{22} & \cdots & x_{nK}
 \end_layout
 
 \begin_layout Standard
-The ordinary least squares (OLS) is the most basic estimation technique
- in econometrics.
+Ordinary least squares (OLS) is the most basic estimation technique in econometr
+ics.
  It is simple and transparent.
  Understanding it thoroughly paves the way to study more sophisticated linear
  estimators.
- Many nonlinear estimators resemble the behavior of OLS in a neighborhood
- of the true value.
+ Moreover, many nonlinear estimators resemble the behavior of linear estimators
+ in a neighborhood of the true value.
  
 \end_layout
 
 \begin_layout Standard
 In this lecture, we study the finite sample properties of OLS.
- We first learn a series of facts from the linear algebra.
- Next, we derive the finite-sample exact distribution under the normality
- of the error term.
+ We first learn a series of facts from the linear algebra operation.
+ Next, noticing that OLS coincides with the maximum likelihood estimator
+ if the error term follows a normal distribution, we derive its finite-sample
+ exact distribution which can be used for statistical inference.
  Finally, the Gauss-Markov theorem justifies the optimality of OLS under
  the classical assumptions.
+\end_layout
+
+\begin_layout Standard
+To manipulate Leopold Kronecker's famous saying 
+\begin_inset Quotes eld
+\end_inset
+
+God made the integers; all else is the works of man
+\begin_inset Quotes erd
+\end_inset
+
+, I would say 
+\begin_inset Quotes eld
+\end_inset
+
+Gauss made OLS; all else is the works of applied researchers.
+\begin_inset Quotes erd
+\end_inset
+
+ Popularity of OLS goes far beyond our dismal science.
+ But be aware that OLS is a pure statistical or supervised machine learning
+ method which reveals correlation instead of causality.
+ Rather, economic theory hypothesizes causality while data are collected
+ to test the theory or quantify the effect.
+  
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+According to Karl Popper, empirical evidence can only falsify a hypothesis
+ but can never verify a hypothesis.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -262,14 +299,14 @@ Is
 
  random or deterministic? Before we make the observation, they are treated
  as random variables whose realized values are uncertain.
- After we make the observation, they become deterministic values which cannot
- vary anymore.
  
 \begin_inset Formula $\left(y_{i},x_{i}\right)$
 \end_inset
 
- are treated as random when we talk about statistical properties — statistical
+ is treated as random when we talk about statistical properties — statistical
  properties of a fixed number is meaningless.
+ After we make the observation, they become deterministic values which cannot
+ vary anymore.
 \end_layout
 
 \begin_layout Standard
@@ -280,8 +317,7 @@ Is
 \end_layout
 
 \begin_layout Remark
-All probability descriptions are thought experiments before observation.
- In reality, we have at hand fixed numbers (more recently, words, photos,
+In reality, we have at hand fixed numbers (more recently, words, photos,
  audio clips, video clips, etc., which can all be represented in digital
  formats with 0 and 1) to feed into a computational operation, and the operation
  will return one or some numbers.
@@ -382,13 +418,13 @@ if
 \begin_layout Standard
 Alternatively, we can derive the OLS estimator from minimizing the sum of
  squared residuals 
-\begin_inset Formula $\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}$
+\begin_inset Formula $\sum_{i=1}^{n}\left(y_{i}-x_{i}'b\right)^{2}$
 \end_inset
 
 , or equivalently 
 \begin_inset Formula 
 \[
-Q\left(\beta\right)=\frac{1}{2n}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}=\frac{1}{2n}\left(Y-X\beta\right)'\left(Y-X\beta\right)=\frac{1}{2n}\left\Vert Y-X\beta\right\Vert ^{2},
+Q\left(b\right)=\frac{1}{2n}\sum_{i=1}^{n}\left(y_{i}-x_{i}'b\right)^{2}=\frac{1}{2n}\left(Y-Xb\right)'\left(Y-Xb\right)=\frac{1}{2n}\left\Vert Y-Xb\right\Vert ^{2},
 \]
 
 \end_inset
@@ -405,7 +441,7 @@ where the factor
  Solve the first-order condition 
 \begin_inset Formula 
 \[
-\frac{\partial}{\partial\beta}Q\left(\beta\right)=-\frac{1}{n}X'\left(Y-X\beta\right)=0.
+\frac{\partial}{\partial b}Q\left(b\right)=-\frac{1}{n}X'\left(Y-Xb\right)=0.
 \]
 
 \end_inset
@@ -418,17 +454,17 @@ This necessary condition for optimality gives exactly the same
  Moreover, the second-order condition 
 \begin_inset Formula 
 \[
-\frac{\partial^{2}}{\partial\beta\partial\beta'}Q\left(\beta\right)=\frac{1}{n}X'X
+\frac{\partial^{2}}{\partial b\partial b'}Q\left(b\right)=\frac{1}{n}X'X
 \]
 
 \end_inset
 
 shows that 
-\begin_inset Formula $Q\left(\beta\right)$
+\begin_inset Formula $Q\left(b\right)$
 \end_inset
 
  is convex in 
-\begin_inset Formula $\beta$
+\begin_inset Formula $b$
 \end_inset
 
  due to the positive semi-definite matrix 
@@ -437,11 +473,11 @@ shows that
 
 .
  (The function 
-\begin_inset Formula $Q\left(\beta\right)$
+\begin_inset Formula $Q\left(b\right)$
 \end_inset
 
  is strictly convex in 
-\begin_inset Formula $\beta$
+\begin_inset Formula $b$
 \end_inset
 
  if 
@@ -570,9 +606,9 @@ Residual:
 (Because 
 \begin_inset Formula $X'\widehat{e}=\left[\begin{array}{cccc}
 1 & 1 & \cdots & 1\\
-* & * & \cdots & *\\
+\heartsuit & \heartsuit & \cdots & \heartsuit\\
 \cdots & \cdots & \ddots & \vdots\\
-* & * & \cdots & *
+\heartsuit & \heartsuit & \cdots & \heartsuit
 \end{array}\right]\left[\begin{array}{c}
 \widehat{e}_{1}\\
 \widehat{e}_{2}\\
@@ -590,14 +626,27 @@ Residual:
 \begin_inset Formula $\sum_{i=1}^{n}\widehat{e}_{i}=0$
 \end_inset
 
-.)
+.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\heartsuit$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ indicates the entries irrelevant to our purpose.)
 \end_layout
 
 \end_deeper
 \begin_layout Standard
 The operation of OLS bears a natural geometric interpretation.
  Notice 
-\begin_inset Formula $\mathcal{X}=\left\{ W:W=X\beta,\ \beta\in\mathbb{R}^{K}\right\} $
+\begin_inset Formula $\mathcal{X}=\left\{ Xb:b\in\mathbb{R}^{K}\right\} $
 \end_inset
 
  is the linear space spanned by the 
@@ -614,7 +663,7 @@ The operation of OLS bears a natural geometric interpretation.
 
 -dimension if the columns are linearly independent.
  The OLS estimator is the minimizer of 
-\begin_inset Formula $\min_{\beta\in\mathbb{R}^{K}}\left\Vert Y-X\beta\right\Vert $
+\begin_inset Formula $\min_{b\in\mathbb{R}^{K}}\left\Vert Y-Xb\right\Vert $
 \end_inset
 
  (Square the Euclidean norm or not does not change the minimizer because
@@ -811,141 +860,6 @@ The Pythagorean theorem implies
 \end_layout
 
 \begin_layout Subsection
-Goodness of Fit 
-\begin_inset CommandInset label
-LatexCommand label
-name "goodness-of-fit"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-revised up here 9/4/2020.
- to add: R-squared is not a good measure of the goodness of modeling.
-\end_layout
-
-\begin_layout Plain Layout
-trended time series.
-\end_layout
-
-\begin_layout Plain Layout
-predictive regression.
-\end_layout
-
-\begin_layout Plain Layout
-Shanghai index?
-\end_layout
-
-\end_inset
-
- 
-\emph on
-R-squared
-\emph default
- is a popular measure of goodness-of-fit in the linear regression.
- R-squared is well defined only when a constant is included in the regressors.
- Let 
-\begin_inset Formula $M_{\iota}=I_{n}-\frac{1}{n}\iota\iota'$
-\end_inset
-
-, where 
-\begin_inset Formula $\iota$
-\end_inset
-
- is an 
-\begin_inset Formula $n\times1$
-\end_inset
-
- vector of 1's.
- 
-\begin_inset Formula $M_{\iota}$
-\end_inset
-
- is the 
-\emph on
-demeaner
-\emph default
-, in the sense that 
-\begin_inset Formula $M_{\iota}\left(z_{1},\ldots,z_{n}\right)'=\left(z_{1}-\overline{z},\ldots,z_{n}-\overline{z}\right)'$
-\end_inset
-
-, where 
-\begin_inset Formula $\bar{z}=\frac{1}{n}\sum_{i=1}^{n}z_{i}$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-R^{2}=\frac{\widehat{Y}'M_{\iota}\widehat{Y}}{Y'M_{\iota}Y}=\frac{\frac{1}{n}\sum_{i=1}^{n}\left(\widehat{y_{i}}-\overline{y}\right)^{2}}{\frac{1}{n}\sum_{i=1}^{n}\left(y-\overline{y}\right)^{2}}
-\]
-
-\end_inset
-
-is the ratio between the predicted variance and the total variance.
-\end_layout
-
-\begin_layout Exercise
-Show 
-\begin_inset Formula $\overline{y}=\frac{1}{n}\sum_{i=1}^{n}y_{i}=\sum_{i=1}^{n}\widehat{y}.$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-We can decompose 
-\begin_inset Formula $Y=P_{X}Y+M_{X}Y=\widehat{Y}+\widehat{e}$
-\end_inset
-
-.
- The total variation is 
-\begin_inset Formula 
-\[
-Y'M_{\iota}Y=\left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)=\widehat{Y}'M_{\iota}\widehat{Y}+2\widehat{Y}'M_{\iota}\widehat{e}+\widehat{e}'M_{\iota}\widehat{e}=\widehat{Y}'M_{\iota}\widehat{Y}+\widehat{e}'\widehat{e}
-\]
-
-\end_inset
-
-where the last equality follows by 
-\begin_inset Formula $M_{\iota}\widehat{e}=\widehat{e}$
-\end_inset
-
- as 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
-\end_inset
-
- (This property fails if the regression has no constant), and 
-\begin_inset Formula $\widehat{Y}'\widehat{e}=Y'P_{X}M_{X}e=0$
-\end_inset
-
-.
- 
-\begin_inset Formula $ $
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-The magnitude of R-squared varies in different contexts.
- In macro models with the lagged dependent variables are presents, it is
- not unusually to observe R-squared larger than 90%.
- In cross sectional regressions it is often below 20%.
- In financial market shorter-term predictive models, a person may become
- a billion if he can systematically achieve 2% out-of-sample R-squared.
-\end_layout
-
-\begin_layout Subsection
 Frish-Waugh-Lovell Theorem
 \begin_inset CommandInset label
 LatexCommand label
@@ -987,9 +901,9 @@ X_{1} & X_{2}\end{array}\right)$
 \begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\widehat{\beta} & =\begin{pmatrix}\widehat{\beta}_{1}\\
+\begin{pmatrix}\widehat{\beta}_{1}\\
 \widehat{\beta}_{2}
-\end{pmatrix}=(X'X)^{-1}X'Y\\
+\end{pmatrix} & =\widehat{\beta}=(X'X)^{-1}X'Y\\
  & =\left(\begin{pmatrix}X_{1}'\\
 X_{2}'
 \end{pmatrix}\begin{pmatrix}X_{1} & X_{2}\end{pmatrix}\right)^{-1}\begin{pmatrix}X_{1}'Y\\
@@ -1001,7 +915,7 @@ X_{2}'X_{1} & X_{2}'X_{2}
 X_{2}'Y
 \end{pmatrix}\\
  & =\begin{pmatrix}\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1} & -\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}\\
-* & *
+\heartsuit & \heartsuit
 \end{pmatrix}\begin{pmatrix}X_{1}'Y\\
 X_{2}'Y
 \end{pmatrix}.
@@ -1017,6 +931,7 @@ The subvector
 \begin_inset Formula 
 \begin{align*}
 \widehat{\beta}_{1} & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'Y-\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'X_{2}\left(X_{2}'X_{2}\right)^{-1}X_{2}'Y\\
+ & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'Y-\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'P_{X_{2}}Y\\
  & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}\left(X_{1}'Y-X_{1}'P_{X_{2}}Y\right)\\
  & =\left(X_{1}'M_{X_{2}}'X_{1}\right)^{-1}X_{1}'M_{X_{2}}Y.
 \end{align*}
@@ -1036,15 +951,15 @@ Notice that
 
 \begin_layout Enumerate
 Regress 
-\begin_inset Formula $y$
+\begin_inset Formula $Y$
 \end_inset
 
  on 
 \begin_inset Formula $X_{2}$
 \end_inset
 
-, obtain residuals 
-\begin_inset Formula $\tilde{e}_{2}$
+, obtain the residual 
+\begin_inset Formula $\tilde{Y}$
 \end_inset
 
 ;
@@ -1059,8 +974,8 @@ Regress
 \begin_inset Formula $X_{2}$
 \end_inset
 
-, obtain residuals 
-\begin_inset Formula $\tilde{X}_{2}$
+, obtain the residual 
+\begin_inset Formula $\tilde{X}_{1}$
 \end_inset
 
 ;
@@ -1068,11 +983,11 @@ Regress
 
 \begin_layout Enumerate
 Regress 
-\begin_inset Formula $\tilde{e}_{2}$
+\begin_inset Formula $\tilde{Y}$
 \end_inset
 
  on 
-\begin_inset Formula $\tilde{X}_{2}$
+\begin_inset Formula $\tilde{X}_{1}$
 \end_inset
 
 , obtain OLS estimates 
@@ -1085,6 +1000,382 @@ Regress
 \begin_layout Standard
 Similar derivation can also be carried out in the population linear projection.
  See Hansen (2020) [E] Chapter 2.22-23.
+\end_layout
+
+\begin_layout Subsection
+Goodness of Fit 
+\begin_inset CommandInset label
+LatexCommand label
+name "goodness-of-fit"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider the regression with the intercept 
+\begin_inset Formula $Y=X_{1}\beta_{1}+\beta_{2}+e.$
+\end_inset
+
+ The OLS estimator gives 
+\begin_inset Formula 
+\begin{equation}
+Y=\widehat{Y}+\widehat{e}=\left(X_{1}\widehat{\beta}_{1}+\widehat{\beta}_{2}\right)+\widehat{e}.\label{eq:decomp_1}
+\end{equation}
+
+\end_inset
+
+Applying the FWL theorem with 
+\begin_inset Formula $X_{2}=\iota$
+\end_inset
+
+, where 
+\begin_inset Formula $\iota$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector of 1's.
+ Then 
+\begin_inset Formula $M_{X_{2}}=M_{\iota}=I_{n}-\frac{1}{n}\iota\iota'$
+\end_inset
+
+.
+ Notice 
+\begin_inset Formula $M_{\iota}$
+\end_inset
+
+ is the 
+\emph on
+demeaner
+\emph default
+ in that 
+\begin_inset Formula $M_{\iota}z=z-\bar{z}$
+\end_inset
+
+.
+ It subtract the vector mean 
+\begin_inset Formula $\bar{z}=\frac{1}{n}\sum_{i=1}^{n}z_{i}$
+\end_inset
+
+ from the original vector 
+\begin_inset Formula $z$
+\end_inset
+
+.
+ The above three-step procedure becomes
+\end_layout
+
+\begin_layout Enumerate
+Regress 
+\begin_inset Formula $Y$
+\end_inset
+
+ on 
+\begin_inset Formula $\iota$
+\end_inset
+
+, and the residual is 
+\begin_inset Formula $M_{\iota}Y$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Regress 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ on 
+\begin_inset Formula $\iota$
+\end_inset
+
+, and the residual is 
+\begin_inset Formula $M_{\iota}X_{1}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Regress 
+\begin_inset Formula $M_{\iota}Y$
+\end_inset
+
+ on 
+\begin_inset Formula $M_{\iota}X_{1}$
+\end_inset
+
+, and the OLS estimates is exactly the same as 
+\begin_inset Formula $\widehat{\beta}_{1}$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:decomp_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+The last step gives the decomposition
+\begin_inset Formula 
+\begin{equation}
+M_{\iota}Y=M_{\iota}X_{1}\widehat{\beta}_{1}+\tilde{e},\label{eq:decomp_2}
+\end{equation}
+
+\end_inset
+
+and the Pythagorean theorem implies
+\begin_inset Formula 
+\[
+\left\Vert M_{\iota}Y\right\Vert ^{2}=\Vert M_{\iota}X_{1}\widehat{\beta}_{1}\Vert^{2}+\left\Vert \widehat{e}\right\Vert ^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset CommandInset label
+LatexCommand label
+name "ex:e_equiv"
+
+\end_inset
+
+ Show that 
+\begin_inset Formula $\widehat{e}$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:decomp_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is exactly the same as 
+\begin_inset Formula $\tilde{e}$
+\end_inset
+
+ in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:decomp_2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+R-squared
+\emph default
+ is a popular measure of goodness-of-fit in the linear regression.
+ The (in-sample) R-squared
+\begin_inset Formula 
+\[
+R^{2}=\frac{\left\Vert M_{\iota}Y\right\Vert ^{2}-\left\Vert \tilde{e}\right\Vert ^{2}}{\left\Vert M_{\iota}Y\right\Vert ^{2}}
+\]
+
+\end_inset
+
+is well defined only when a constant is included in the regressors.
+\end_layout
+
+\begin_layout Exercise
+Show 
+\begin_inset Formula $R^{2}=\frac{\widehat{Y}'M_{\iota}\widehat{Y}}{Y'M_{\iota}Y}=\frac{\sum_{i=1}^{n}\left(\widehat{y_{i}}-\overline{y}\right)^{2}}{\sum_{i=1}^{n}\left(y_{i}-\overline{y}\right)^{2}}$
+\end_inset
+
+ as in the decomposition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:decomp_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We can decompose 
+\begin_inset Formula $Y=P_{X}Y+M_{X}Y=\widehat{Y}+\widehat{e}$
+\end_inset
+
+.
+ The total variation is 
+\begin_inset Formula 
+\[
+Y'M_{\iota}Y=\left(\widehat{Y}+\widehat{e}\right)'M_{\iota}\left(\widehat{Y}+\widehat{e}\right)=\widehat{Y}'M_{\iota}\widehat{Y}+2\widehat{Y}'M_{\iota}\widehat{e}+\widehat{e}'M_{\iota}\widehat{e}=\widehat{Y}'M_{\iota}\widehat{Y}+\widehat{e}'\widehat{e}
+\]
+
+\end_inset
+
+where the last equality follows by 
+\begin_inset Formula $M_{\iota}\widehat{e}=\widehat{e}$
+\end_inset
+
+ as 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}=0$
+\end_inset
+
+ (This property fails if the regression has no constant), and 
+\begin_inset Formula $\widehat{Y}'\widehat{e}=Y'P_{X}M_{X}e=0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The magnitude of R-squared varies in different contexts.
+ In macro models with the lagged dependent variables, it is not unusually
+ to observe R-squared larger than 90%.
+ In cross sectional regressions it is often below 20%.
+\end_layout
+
+\begin_layout Exercise
+Consider a short regression 
+\begin_inset Quotes eld
+\end_inset
+
+regress 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ on 
+\begin_inset Formula $x_{1i}$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ and a long regression 
+\begin_inset Quotes eld
+\end_inset
+
+regress 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ on 
+\begin_inset Formula $\left(x_{1i},x_{2i}\right)$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Given the same dataset 
+\begin_inset Formula $\left(Y,X_{1},X_{2}\right)$
+\end_inset
+
+, show that the R-squared from the short regression is no larger than that
+ from the long regression.
+ In other words, we can always (weakly) increase 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+ by adding more regressors.
+\end_layout
+
+\begin_layout Standard
+Conventionally we consider the regressions when the number of regressors
+ 
+\begin_inset Formula $K$
+\end_inset
+
+ is much smaller the sample size 
+\begin_inset Formula $n$
+\end_inset
+
+.
+ In the era of big data, it can happen that we have more potential regressors
+ than the sample size.
+\end_layout
+
+\begin_layout Exercise
+Show 
+\begin_inset Formula $R^{2}=1$
+\end_inset
+
+ when 
+\begin_inset Formula $K\geq n$
+\end_inset
+
+.
+ (When 
+\begin_inset Formula $K>n$
+\end_inset
+
+, the matrix 
+\begin_inset Formula $X'X$
+\end_inset
+
+ must be rank deficient.
+ We can generalize the definition OLS fitting as any vector that minimizes
+ 
+\begin_inset Formula $\left\Vert Y-Xb\right\Vert ^{2}$
+\end_inset
+
+ though the minimizer is not unique.
+\end_layout
+
+\begin_layout Standard
+With a new dataset 
+\begin_inset Formula $\left(Y^{\mathrm{new}},X^{\mathrm{new}}\right)$
+\end_inset
+
+, the 
+\emph on
+out-of-sample
+\emph default
+ (OOS) R-squared is 
+\begin_inset Formula 
+\[
+OOS\ R^{2}=\frac{\widehat{\beta}^{\prime}X^{\mathrm{new}\prime}M_{\iota}X^{\mathrm{new}}\widehat{\beta}}{Y^{\mathrm{new}\prime}M_{\iota}Y^{\mathrm{new}}}.
+\]
+
+\end_inset
+
+OOS R-squred measures the goodness of fit in a new dataset given the coefficient
+ estimated from the original data.
+ In financial market shorter-term predictive models, a person may become
+ a billion if he can systematically achieve 2% OOS R-squared.
 \end_layout
 
 \begin_layout Section
@@ -1101,7 +1392,11 @@ name "statistical-properties-of-least-squares"
 \begin_layout Standard
 In this section we return to the classical statistical framework under restricti
 ve distributional assumption 
-\begin_inset Formula $y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right)$
+\begin_inset Formula 
+\begin{equation}
+y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right)\label{eq:normal_yx}
+\end{equation}
+
 \end_inset
 
 , where 
@@ -1146,45 +1441,99 @@ name "maximum-likelihood-estimation"
 \end_layout
 
 \begin_layout Standard
-The 
-\emph on
-conditional
-\emph default
- likelihood of observing a 
-\emph on
-random sample
-\emph default
- 
+The likelihood of observing a pair 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align*}
+f_{yx}\left(y_{i},x_{i}\right) & =f_{y|x}\left(y_{i}|x_{i}\right)f_{x}\left(x\right)\\
+ & =\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right)\times f_{x}\left(x\right),
+\end{align*}
+
+\end_inset
+
+ where 
+\begin_inset Formula $f_{yx}$
+\end_inset
+
+ is the joint pdf, 
+\begin_inset Formula $f_{y|x}$
+\end_inset
+
+ is the conditional pdf and 
+\begin_inset Formula $f_{x}$
+\end_inset
+
+ is the marginal pdf of 
+\begin_inset Formula $x$
+\end_inset
+
+, and the second equality holds under the assumption (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:normal_yx"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The likelihood a random sample 
 \begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
 \end_inset
 
  is 
 \begin_inset Formula 
-\[
-\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right),
-\]
+\begin{align*}
+\prod_{i=1}^{n}f_{yx}\left(y_{i},x_{i}\right) & =\prod_{i=1}^{n}f_{y|x}\left(y_{i}|x_{i}\right)f_{x}\left(x\right)\\
+ & =\prod_{i=1}^{n}f_{y|x}\left(y_{i}|x_{i}\right)\times\prod_{i=1}^{n}f_{x}\left(x\right)\\
+ & =\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right)\times\prod_{i=1}^{n}f_{x}\left(x\right).
+\end{align*}
 
 \end_inset
 
-and the (conditional) log-likelihood function is 
+The parameters of interest 
+\begin_inset Formula $\left(\beta,\gamma\right)$
+\end_inset
+
+ are irrelevant to the second term 
+\begin_inset Formula $\prod_{i=1}^{n}f_{x}\left(x\right)$
+\end_inset
+
+ for they appear only in the conditional likelihood 
 \begin_inset Formula 
 \[
-L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.
+\prod_{i=1}^{n}f_{y|x}\left(y_{i}|x_{i}\right)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right).
 \]
 
 \end_inset
 
-The maximum likelihood estimator 
+We focus on the conditional likelihood.
+ To facilitate derivation, we work with the conditional log-likelihood function
+ 
+\begin_inset Formula 
+\[
+L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2},
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $\log\left(\cdot\right)$
+\end_inset
+
+ is a monotonic transformation that does not change the maximizer.
+ The maximum likelihood estimator 
 \begin_inset Formula $\widehat{\beta}_{MLE}$
 \end_inset
 
  can be found using the FOC:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
-\frac{\partial}{\partial\beta}L\left(\beta,\gamma\right)=\frac{1}{2\gamma}\sum_{i=1}^{n}2x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=0.
+\frac{\partial}{\partial\beta}L\left(\beta,\gamma\right)=\frac{1}{2\gamma}\sum_{i=1}^{n}2x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=\frac{1}{\gamma}\sum_{i=1}^{n}x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=0.
 \]
 
 \end_inset
@@ -1202,11 +1551,26 @@ Rearranging the above equation in matrix form
 \end_inset
 
 The maximum likelihood estimator (MLE) coincides with the OLS estimator.
- Similarly, another FOC gives 
+ Similarly, the other FOC with respect to 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ gives 
 \begin_inset Formula $\widehat{\gamma}_{\mathrm{MLE}}=\widehat{e}'\widehat{e}/n$
 \end_inset
 
 .
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+revise up here Sep 23, 2020.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1239,7 +1603,7 @@ Finite sample distribution
 asymptotic distribution
 \emph default
 , which is a large sample approximation to the finite sample distribution.
- We first review some properties of a generic jointly normal random variables.
+ We first review some properties of a generic jointly normal random vector.
  
 \end_layout
 
@@ -1894,9 +2258,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- 
-\backslash
-today}
+ Sep 23.}
 \end_layout
 
 \end_inset

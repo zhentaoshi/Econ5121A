@@ -1081,11 +1081,7 @@ Obviously we prefer to run the long regression to attain
 \begin_inset Formula $x_{2}$
 \end_inset
 
- is unobservable so the long regression is 
-\emph on
-infeasible
-\emph default
-.
+ is unobservable so the long regression is unavailable.
  This example of omitted variable bias is ubiquitous in applied econometrics.
  Ideally we would like to directly observe some regressors but in reality
  we do not have them at hand.
@@ -1283,12 +1279,12 @@ You cannot step into the same river twice.
 \begin_inset Quotes erd
 \end_inset
 
- The individual treatment effect is infeasible (
+ The individual treatment effect is not operational (
 \emph on
-infeasible
+operational
 \emph default
- means it cannot be computed from data), because one and only one outcome
- is realized.
+ means it can be computed from data at the population level), because one
+ and only one outcome is realized.
  With many people available, we can define 
 \emph on
 average treatment effect
@@ -1309,7 +1305,7 @@ Notice that
 \begin_inset Formula $E\left[Y\left(0\right)\right]$
 \end_inset
 
- are still infeasible before we observe a companion variable 
+ are still not operational before we observe a companion variable 
 \begin_inset Formula 
 \[
 D=1\left\{ \mbox{treatment received}\right\} .
@@ -1325,7 +1321,7 @@ Once each individual's treatment status is observable,
 \begin_inset Formula $E\left[Y\left(0\right)|D=0\right]$
 \end_inset
 
- are feasible from the data.
+ are operational from the data.
 \end_layout
 
 \begin_layout Standard
@@ -1345,7 +1341,7 @@ If the two potential outcomes
 \begin_inset Formula $E\left[Y\left(0\right)\right]=E\left[Y\left(0\right)|D=0\right]$
 \end_inset
 
- so that ATE can be estimated from the data in a feasible way as
+ so that ATE can be estimated from the data in an operational  way as
 \begin_inset Formula 
 \[
 ATE=E\left[Y\left(1\right)|D=1\right]-E\left[Y\left(0\right)|D=0\right].
@@ -1405,7 +1401,7 @@ ATE is the average effect in the population of individuals when we hypothetical
 \begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)$
 \end_inset
 
-, then ATE becomes feasible:
+, then ATE becomes operational:
 \begin_inset Formula 
 \[
 ATE\left(x\right)=E\left[Y\left(1\right)|D=1,x\right]-E\left[Y\left(0\right)|D=0,x\right]
