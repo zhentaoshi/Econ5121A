@@ -21,6 +21,7 @@
 \begin_modules
 theorems-ams-chap-bytype
 theorems-ams-extended-chap-bytype
+knitr
 \end_modules
 \maintain_unincluded_children false
 \language english

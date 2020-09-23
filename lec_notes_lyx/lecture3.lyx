@@ -14,6 +14,7 @@
 \use_default_options false
 \begin_modules
 theorems-ams-chap-bytype
+knitr
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -859,6 +860,85 @@ The Pythagorean theorem implies
 
 \end_layout
 
+\begin_layout Standard
+Here is a simple simulated example to demonstrate the properties of OLS.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(magrittr); set.seed(2020-9-23)
+\end_layout
+
+\begin_layout Plain Layout
+
+n = 10 # sample size  
+\end_layout
+
+\begin_layout Plain Layout
+
+K = 4  # number of paramters
+\end_layout
+
+\begin_layout Plain Layout
+
+b0 = as.matrix( c(0.5, 1, -1, 1) ) # the true coefficient
+\end_layout
+
+\begin_layout Plain Layout
+
+X = cbind(1, matrix( rnorm(n * (K-1)), nrow = n ) )  # the regressor matrix
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+e = rnorm(n) # the error term
+\end_layout
+
+\begin_layout Plain Layout
+
+Y = X %*% b0 + e # generate the dependent variable
+\end_layout
+
+\begin_layout Plain Layout
+
+bhat = solve(t(X)%*%X, t(X) %*% Y ) %>% print()
+\end_layout
+
+\begin_layout Plain Layout
+
+lm( Y ~ X -1 ) %>% print()
+\end_layout
+
+\begin_layout Plain Layout
+
+ehat = Y - X %*% bhat 
+\end_layout
+
+\begin_layout Plain Layout
+
+print( t(X) %*% ehat )
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Frish-Waugh-Lovell Theorem
 \begin_inset CommandInset label
@@ -1000,6 +1080,68 @@ Regress
 \begin_layout Standard
 Similar derivation can also be carried out in the population linear projection.
  See Hansen (2020) [E] Chapter 2.22-23.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+X1 = X[,1:2];X2 = X[,3:4]
+\end_layout
+
+\begin_layout Plain Layout
+
+PX2 = X2 %*% solve( t(X2) %*% X2) %*% t(X2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+MX2 = diag(rep(1,n)) - PX2
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+bhat1 =  solve(t(X1)%*% MX2 %*% X1, t(X1) %*% MX2 %*% Y )
+\end_layout
+
+\begin_layout Plain Layout
+
+print(bhat1)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ehat1 = MX2 %*% Y - MX2 %*% X1 %*% bhat1  
+\end_layout
+
+\begin_layout Plain Layout
+
+print(cbind(ehat, ehat1))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1353,6 +1495,45 @@ Show
 \end_inset
 
  though the minimizer is not unique.
+\end_layout
+
+\begin_layout Exercise
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+n = 5; K = 6; 
+\end_layout
+
+\begin_layout Plain Layout
+
+Y = rnorm(n)
+\end_layout
+
+\begin_layout Plain Layout
+
+X = matrix( rnorm(n*K), n)
+\end_layout
+
+\begin_layout Plain Layout
+
+summary( lm(Y~X) )
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
