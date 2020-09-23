@@ -2161,6 +2161,108 @@ noprefix "false"
 \end_layout
 
 \begin_layout Example
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<custom-dev, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Plain Layout
+
+my_pdf = function(file, width, height) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  pdf(file, width = 4, height = 4) 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<dev-demo, dev='my_pdf', fig.ext='pdf'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+n = 100; X = rnorm(n)
+\end_layout
+
+\begin_layout Plain Layout
+
+e1 = rnorm(n); 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot( y = e1, x = X, col = 
+\begin_inset Quotes eld
+\end_inset
+
+blue
+\begin_inset Quotes erd
+\end_inset
+
+, ylab = 
+\begin_inset Quotes eld
+\end_inset
+
+e
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+e2 = X * rnorm(n); 
+\end_layout
+
+\begin_layout Plain Layout
+
+points( y = e2, x = X, col = 
+\begin_inset Quotes eld
+\end_inset
+
+red
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
 It is important to notice that independently and identically distributed
  sample (iid) 
 \begin_inset Formula $\left(y_{i},x_{i}\right)$

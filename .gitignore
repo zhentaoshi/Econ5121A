@@ -9,6 +9,8 @@ handwriting_notes/*.*
 *lec_notes_lyx/misc/*.*
 *lec_notes_ipynb/*.tex
 *lec_notes_ipynb/*.png
+*lec_notes_lyx/cache*
+*lec_notes_lyx/figure*
 *notebook.tex
 *.tex
 
