@@ -693,6 +693,72 @@ The operation of OLS bears a natural geometric interpretation.
 \end_layout
 
 \begin_layout Standard
+The relationship 
+\begin_inset Formula $Y=X\widehat{\beta}+\widehat{e}$
+\end_inset
+
+ decomposes 
+\begin_inset Formula $Y$
+\end_inset
+
+ into two orthogonal vectors 
+\begin_inset Formula $X\widehat{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\widehat{e}$
+\end_inset
+
+ as 
+\begin_inset Formula $\left\langle X\widehat{\beta},\widehat{e}\right\rangle =\widehat{\beta}X'\widehat{e}=0$
+\end_inset
+
+, where 
+\begin_inset Formula $\left\langle \cdot,\cdot\right\rangle $
+\end_inset
+
+ is the 
+\emph on
+inner product
+\emph default
+ of two vectors.
+ Therefore 
+\begin_inset Formula $X\widehat{\beta}$
+\end_inset
+
+ is the 
+\emph on
+projection
+\emph default
+ of 
+\begin_inset Formula $Y$
+\end_inset
+
+ onto 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+, and 
+\begin_inset Formula $\widehat{e}$
+\end_inset
+
+ is the corresponding 
+\emph on
+projection residuals.
+ 
+\emph default
+The Pythagorean theorem implies
+\begin_inset Formula 
+\[
+\left\Vert Y\right\Vert ^{2}=\Vert X\widehat{\beta}\Vert^{2}+\left\Vert \widehat{e}\right\Vert ^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -794,74 +860,37 @@ end{tikzpicture}
 
 \end_layout
 
-\begin_layout Standard
-The relationship 
-\begin_inset Formula $Y=X\widehat{\beta}+\widehat{e}$
+\begin_layout Example
+Here is a simple simulated example to demonstrate the properties of OLS.
+ Given 
+\begin_inset Formula $\left(x_{1i},x_{2i},x_{3i},e_{i}\right)\sim N\left(0,I_{4}\right)$
 \end_inset
 
- decomposes 
-\begin_inset Formula $Y$
+, the dependent variable 
+\begin_inset Formula $y_{i}$
 \end_inset
 
- into two orthogonal vectors 
-\begin_inset Formula $X\widehat{\beta}$
-\end_inset
-
- and 
-\begin_inset Formula $\widehat{e}$
-\end_inset
-
- as 
-\begin_inset Formula $\left\langle X\widehat{\beta},\widehat{e}\right\rangle =\widehat{\beta}X'\widehat{e}=0$
-\end_inset
-
-, where 
-\begin_inset Formula $\left\langle \cdot,\cdot\right\rangle $
-\end_inset
-
- is the 
-\emph on
-inner product
-\emph default
- of two vectors.
- Therefore 
-\begin_inset Formula $X\widehat{\beta}$
-\end_inset
-
- is the 
-\emph on
-projection
-\emph default
- of 
-\begin_inset Formula $Y$
-\end_inset
-
- onto 
-\begin_inset Formula $\mathcal{X}$
-\end_inset
-
-, and 
-\begin_inset Formula $\widehat{e}$
-\end_inset
-
- is the corresponding 
-\emph on
-projection residuals.
- 
-\emph default
-The Pythagorean theorem implies
+ is generated from 
 \begin_inset Formula 
 \[
-\left\Vert Y\right\Vert ^{2}=\Vert X\widehat{\beta}\Vert^{2}+\left\Vert \widehat{e}\right\Vert ^{2}.
+y_{i}=0.5+2\cdot x_{1i}-1\cdot x_{2i}+e_{i}
 \]
 
 \end_inset
 
+The researcher does not know 
+\begin_inset Formula $x_{3i}$
+\end_inset
 
-\end_layout
+ is redundant, and he regresses 
+\begin_inset Formula $y_{i}$
+\end_inset
 
-\begin_layout Standard
-Here is a simple simulated example to demonstrate the properties of OLS.
+ on 
+\begin_inset Formula $\left(1,x_{1i},x_{2i},x_{3i}\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -880,7 +909,7 @@ library(magrittr); set.seed(2020-9-23)
 
 \begin_layout Plain Layout
 
-n = 10 # sample size  
+n = 20 # sample size  
 \end_layout
 
 \begin_layout Plain Layout
@@ -890,7 +919,7 @@ K = 4  # number of paramters
 
 \begin_layout Plain Layout
 
-b0 = as.matrix( c(0.5, 1, -1, 1) ) # the true coefficient
+b0 = as.matrix( c(0.5, 2, -1, 0) ) # the true coefficient
 \end_layout
 
 \begin_layout Plain Layout
@@ -911,12 +940,49 @@ Y = X %*% b0 + e # generate the dependent variable
 
 \begin_layout Plain Layout
 
-bhat = solve(t(X)%*%X, t(X) %*% Y ) %>% print()
+bhat = solve(t(X) %*% X, t(X) %*% Y ) %>% as.vector() %>% print()
 \end_layout
 
 \begin_layout Plain Layout
 
-lm( Y ~ X -1 ) %>% print()
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The estimated coefficient 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Sexpr{ format(bhat, digits=3) }
+\end_layout
+
+\end_inset
+
+).
+ It is close to the true value, but not very accurate due to the small sample
+ size.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -926,7 +992,7 @@ ehat = Y - X %*% bhat
 
 \begin_layout Plain Layout
 
-print( t(X) %*% ehat )
+as.vector( t(X) %*% ehat ) %>% print()
 \end_layout
 
 \begin_layout Plain Layout
@@ -941,12 +1007,30 @@ data.frame(e = e, ehat = ehat, MXY = MX%*%Y, MXe = MX%*%e ) %>% head()
 
 \begin_layout Plain Layout
 
-cat("The mean of the residual is ", mean(ehat), "and the sum is", sum(ehat),
-      "
+cat("The mean of the residual is ", mean(ehat), ".
 \backslash
-nBut the mean of the true error term is", mean(e), "
-\backslash
-n")
+n
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+cat(
+\begin_inset Quotes eld
+\end_inset
+
+The mean of the true error term is", mean(e), 
+\begin_inset Quotes eld
+\end_inset
+
+.
+\begin_inset Quotes erd
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1132,12 +1216,12 @@ MX2 = diag(rep(1,n)) - PX2
 
 \begin_layout Plain Layout
 
-bhat1 =  solve(t(X1)%*% MX2 %*% X1, t(X1) %*% MX2 %*% Y )
+bhat1 <- (solve(t(X1)%*% MX2 %*% X1, t(X1) %*% MX2 %*% Y )) %>%
 \end_layout
 
 \begin_layout Plain Layout
 
-print(bhat1)
+  as.vector() %>% print()
 \end_layout
 
 \begin_layout Plain Layout
@@ -1151,7 +1235,7 @@ ehat1 = MX2 %*% Y - MX2 %*% X1 %*% bhat1
 
 \begin_layout Plain Layout
 
-print(cbind(ehat, ehat1))
+data.frame(ehat = ehat, ehat1 = ehat1) %>% head() %>% print()
 \end_layout
 
 \begin_layout Plain Layout

@@ -8,7 +8,7 @@
 \use_default_options false
 \begin_modules
 theorems-ams-chap-bytype
-theorems-ams-extended-chap-bytype
+knitr
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -226,12 +226,7 @@ Squared-mean convergence:
 
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Example
-\series default
-: 
+\begin_layout Example
 \begin_inset Formula $(z_{n})$
 \end_inset
 
@@ -261,14 +256,7 @@ Example
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Justification: 
-\emph default
-For any 
+ For any 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
@@ -290,13 +278,6 @@ For any
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -330,20 +311,12 @@ Convergence in distribution:
  is continuous.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Example
 Convergence in distribution is about 
 \emph on
 pointwise
 \emph default
- convergence of CDF, not the random variables themselves.
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Example
-\series default
-: Let 
+ convergence of CDF, not the random variables themselves.Let 
 \begin_inset Formula $x\sim N\left(0,1\right)$
 \end_inset
 
@@ -389,11 +362,13 @@ Example
 \end_layout
 
 \begin_layout Standard
+\begin_inset Separator plain
+\end_inset
 
-\series bold
-Example
-\series default
-: 
+
+\end_layout
+
+\begin_layout Example
 \begin_inset Formula $(z_{n})$
 \end_inset
 
@@ -418,16 +393,7 @@ Example
 \begin_inset Formula $z_{n}\stackrel{d}{\to}z=0.$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Quote
-
-\emph on
-Justification:
-\end_layout
-
-\begin_layout Quote
+ Because 
 \begin_inset Formula $F\left(z_{n}\right)=\begin{cases}
 0 & z_{n}<0\\
 1-1/n & 0\leq z_{n}\leq\sqrt{n}\\
@@ -435,10 +401,8 @@ Justification:
 \end{cases}$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Quote
+.
+ 
 \begin_inset Formula $F\left(z\right)=\begin{cases}
 0 & z<0\\
 1 & z\geq0
@@ -446,10 +410,7 @@ Justification:
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Quote
-It is obvious that 
+ It is obvious that 
 \begin_inset Formula $F\left(z_{n}\right)$
 \end_inset
 
@@ -465,23 +426,9 @@ It is obvious that
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Squared-mean convergence implies convergence in probability.
  Convergence in probability implies convergence in distribution.
-\end_layout
-
-\begin_layout Standard
-
-\emph on
-Cramér-Wold device
-\emph default
- handles convergence in distribution for random vectors.
+ Cramer-Wold device handles convergence in distribution for random vectors.
  We say a sequence of 
 \begin_inset Formula $K$
 \end_inset
@@ -507,13 +454,6 @@ Cramér-Wold device
 
 \begin_layout Subsection
 Law of Large Numbers
-\begin_inset CommandInset label
-LatexCommand label
-name "law-of-large-numbers"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -731,11 +671,140 @@ Compared to Chebyshev LLN, Kolmogorov LLN only requires the existence of
 is essential for Kolmogorov LLN.
 \end_layout
 
-\begin_layout Subsection
-Central Limit Theorem
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
+
+sample.mean = function( n, distribution ){
+\end_layout
+
+\begin_layout Plain Layout
+
+# get sample mean for a given distribution
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (distribution == "normal"){ y = rnorm( n ) } 
+\end_layout
+
+\begin_layout Plain Layout
+
+  else if (distribution == "t2") {y = rt(n, 2) }
+\end_layout
+
+\begin_layout Plain Layout
+
+  else if (distribution == "cauchy") {y = rcauchy(n) }
+\end_layout
+
+\begin_layout Plain Layout
+
+  return( mean(y) )
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+LLN.plot = function(distribution){
+\end_layout
+
+\begin_layout Plain Layout
+
+# draw the sample mean graph
+\end_layout
+
+\begin_layout Plain Layout
+
+  ybar = rep(0, length(NN) )
+\end_layout
+
+\begin_layout Plain Layout
+
+  for ( i in 1:length(NN)){
+\end_layout
+
+\begin_layout Plain Layout
+
+    n = NN[i]; ybar[i] = sample.mean(n, distribution)
+\end_layout
+
+\begin_layout Plain Layout
+
+  }  
+\end_layout
+
+\begin_layout Plain Layout
+
+  plot(ybar, type = "l", col = "red", ylab = "mean", xlab = "", 
+\end_layout
+
+\begin_layout Plain Layout
+
+  lwd = 2, main = distribution)
+\end_layout
+
+\begin_layout Plain Layout
+
+  abline(h = 0, lty = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+  return(ybar)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# calculation
+\end_layout
+
+\begin_layout Plain Layout
+
+NN = 2^(1:20); set.seed(888); par(mfrow = c(3,1))
+\end_layout
+
+\begin_layout Plain Layout
+
+l1 = LLN.plot("normal"); l2 = LLN.plot("t2"); l3 = LLN.plot("cauchy")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Central Limit Theorem
 \begin_inset CommandInset label
 LatexCommand label
 name "central-limit-theorem"
@@ -895,6 +964,170 @@ Lyapunov CLT: i.n.i.d.:
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+This is a simulated example.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+Z_fun = function(n, distribution){
+\end_layout
+
+\begin_layout Plain Layout
+
+  if (distribution == "normal"){
+\end_layout
+
+\begin_layout Plain Layout
+
+      z = sqrt(n) * mean(rnorm(n))
+\end_layout
+
+\begin_layout Plain Layout
+
+	} else if (distribution == "chisq2") {
+\end_layout
+
+\begin_layout Plain Layout
+
+      df = 2; 
+\end_layout
+
+\begin_layout Plain Layout
+
+      x = rchisq(n,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+      z = sqrt(n) * ( mean(x) - df ) / sqrt(2*df)
+\end_layout
+
+\begin_layout Plain Layout
+
+      }
+\end_layout
+
+\begin_layout Plain Layout
+
+  return (z)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+CLT_plot = function(n, distribution){
+\end_layout
+
+\begin_layout Plain Layout
+
+  Rep = 10000
+\end_layout
+
+\begin_layout Plain Layout
+
+  ZZ = rep(0, Rep)
+\end_layout
+
+\begin_layout Plain Layout
+
+  for (i in 1:Rep) {ZZ[i] = Z_fun(n, distribution)}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  xbase = seq(-4.0, 4.0, length.out = 100)
+\end_layout
+
+\begin_layout Plain Layout
+
+  hist( ZZ, breaks = 100, freq = FALSE, 
+\end_layout
+
+\begin_layout Plain Layout
+
+    xlim = c( min(xbase), max(xbase) ),
+\end_layout
+
+\begin_layout Plain Layout
+
+    main = paste0(
+\begin_inset Quotes eld
+\end_inset
+
+hist with sample size 
+\begin_inset Quotes erd
+\end_inset
+
+, n) )
+\end_layout
+
+\begin_layout Plain Layout
+
+  lines(x = xbase, y = dnorm(xbase), col = "red")
+\end_layout
+
+\begin_layout Plain Layout
+
+  return (ZZ)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+par(mfrow = c(3,1))
+\end_layout
+
+\begin_layout Plain Layout
+
+phist = CLT_plot(2, "chisq2")
+\end_layout
+
+\begin_layout Plain Layout
+
+phist = CLT_plot(10, "chisq2")
+\end_layout
+
+\begin_layout Plain Layout
+
+phist = CLT_plot(100, "chisq2")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
