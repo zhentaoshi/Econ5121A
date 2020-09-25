@@ -15,6 +15,7 @@ Reading and Assignment will be updated each week as the class progresses.
 * Week 0: [IE] Ch.1--Ch.6
 * Week 1: [E] Ch.1, Ch.2.1--17; Ch.2.31
 * Week 2: [E] Ch.2.18--21; Ch.2.24--30
+* Week 3: [E] Ch.3.1-18, 3.24; Appendix A.1-13, 20, 22
 
 
 
@@ -23,6 +24,7 @@ Reading and Assignment will be updated each week as the class progresses.
   * [IE] Ex.1.5, 9; Ex.2.8, 11, 16; Ex.4.7, 12; Ex.5.5, 6, 15; 
   * [E] Ex 2.1, 2, 6, 10--14
 * Week 2: [E] Ex 2.4, 7, 18, 21; lecture notes Ex.2.3
+* Week 3: [E] Ex 3.2, 3-9, 11, 21
 
 <img src="https://github.com/zhentaoshi/Econ5121A/blob/master/online_teaching.JPG" alt="online_teaching" width="600"/>
 
