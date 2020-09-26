@@ -117,21 +117,27 @@ Asymptotic Theory
 \end_layout
 
 \begin_layout Section
-Asymptotics
-\begin_inset CommandInset label
-LatexCommand label
-name "asymptotics"
-
-\end_inset
-
-
+Introduction
 \end_layout
 
 \begin_layout Standard
-Asymptotic theory is concerned about the behavior of statistics when the
- sample size is arbitrarily large.
- It is a useful approximation technique to simplify complicated finite-sample
+Our universe, though enormous, consists of fewer than 
+\begin_inset Formula $10^{82}$
+\end_inset
+
+ atoms, which is a finite number.
+ However, mathematical ideas are not bounded by the secular reality.
+ Asymptotic theory is concerned about the behavior of statistics when the
+ sample size is arbitrarily large, up to infinity.
+ It is an approximation technique to simplify complicated finite-sample
  analysis.
+ It is the cornerstone of modern econometrics that seeks general conditions
+ beyond the classical ones.
+ 
+\end_layout
+
+\begin_layout Standard
+However, in reality we always have a finite sample — 
 \end_layout
 
 \begin_layout Subsection
@@ -394,14 +400,17 @@ pointwise
 \end_inset
 
  Because 
-\begin_inset Formula $F\left(z_{n}\right)=\begin{cases}
+\begin_inset Formula 
+\[
+F\left(z_{n}\right)=\begin{cases}
 0 & z_{n}<0\\
 1-1/n & 0\leq z_{n}\leq\sqrt{n}\\
 1 & z_{n}\geq\sqrt{n}
-\end{cases}$
+\end{cases}.
+\]
+
 \end_inset
 
-.
  
 \begin_inset Formula $F\left(z\right)=\begin{cases}
 0 & z<0\\

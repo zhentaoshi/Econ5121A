@@ -969,14 +969,13 @@ This is exactly the same expression of 2SLS for
  on the fitted value along with the included exogenous variables.
  However, 2SLS can actually be obtained by one step using the above equation.
  It is a special case of GMM.
-\begin_inset Note Note
-status collapsed
+\end_layout
 
-\begin_layout Section
+\begin_layout Subsection
 GMM in Nonlinear Model*
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 The principle of GMM can be used in models where the parameter enters the
  moment conditions nonlinearly.
  Let 
@@ -1020,7 +1019,7 @@ Nonlinear models nest the linear model as a special case.
 .
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 In practice we use the sample moments to mimic the population moments in
  the criterion function
 \begin_inset Formula 
@@ -1098,7 +1097,7 @@ The list of assumptions in the above statement is incomplete.
  We only lay out the key conditions but neglect some technical details.
 \end_layout
 
-\begin_layout Plain Layout
+\begin_layout Standard
 \begin_inset Formula $Q_{n}\left(\beta\right)$
 \end_inset
 
@@ -1159,11 +1158,6 @@ J\left(\widehat{\beta}\right)\Rightarrow\chi^{2}\left(L-K\right)
 
 If the null hypothesis is false, then the test statistic tends to be large,
  and it is more likely to reject the null.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard

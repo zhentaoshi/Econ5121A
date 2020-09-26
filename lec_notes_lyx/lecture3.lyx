@@ -2637,6 +2637,238 @@ iris
  
 \end_layout
 
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be any 
+\begin_inset Formula $n\times K$
+\end_inset
+
+ generic real matrix.
+ 
+\emph on
+Singular value decomposition
+\emph default
+ (SVD) factorizes 
+\begin_inset Formula $A=USV'$
+\end_inset
+
+, where 
+\begin_inset Formula $U$
+\end_inset
+
+ is a 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ real unitary matrix (A real unitary matrix is invertible and 
+\begin_inset Formula $U'U=UU'=I$
+\end_inset
+
+, which implies 
+\begin_inset Formula $U^{-1}=U'$
+\end_inset
+
+), 
+\begin_inset Formula $S=\begin{bmatrix}S_{1}\\
+0_{\left(n-K\right)\times K}
+\end{bmatrix}$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times K$
+\end_inset
+
+ rectangular diagonal matrix with 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ a 
+\begin_inset Formula $K\times K$
+\end_inset
+
+ diagonal matrix of non-negative real elements, and 
+\begin_inset Formula $V$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times K$
+\end_inset
+
+ real unitary matrix.
+\end_layout
+
+\begin_layout Standard
+We apply SVD to the projection matrix 
+\begin_inset Formula $P_{X}=X\left(X'X\right)^{-1}X$
+\end_inset
+
+, where 
+\begin_inset Formula $X$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times K$
+\end_inset
+
+ data matrix with 
+\begin_inset Formula $K$
+\end_inset
+
+ linearly independent columns (which implies 
+\begin_inset Formula $n\geq K$
+\end_inset
+
+).
+ Substitute 
+\begin_inset Formula $X=USV'$
+\end_inset
+
+ into 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+P_{X} & =USV'\left(VS'U'USV'\right)^{-1}VS'U'=USV'\left(VS'SV'\right)^{-1}VS'U'\\
+ & =USV'V^{\prime-1}\left(S'S\right)^{-1}V^{-1}VS'U'=US\left(S'S\right)^{-1}S'U'\\
+ & =U\begin{bmatrix}S_{1}\\
+0
+\end{bmatrix}S_{1}^{-1}S_{1}^{-1}\begin{bmatrix}S_{1} & 0\end{bmatrix}U'=U\begin{bmatrix}I_{K} & 0_{K\times(n-K)}\\
+0_{(n-K)\times K} & 0_{(n-K)\times(n-K)}
+\end{bmatrix}U'\\
+ & =U\,\mathrm{diag}\left(\iota_{K},0_{n-K}\right)U'.
+\end{align*}
+
+\end_inset
+
+ All symmetric matrices are diagonalizable, and the the last expression
+ is the diagonalization of 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+.
+ The projection matrix 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+ has 
+\begin_inset Formula $K$
+\end_inset
+
+ repeated eigenvalues of 1 and 
+\begin_inset Formula $\left(n-K\right)$
+\end_inset
+
+ repeated eigenvalues of 0, and obviously 
+\begin_inset Formula $\mathrm{rank}(P_{X})=K$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Two generic square matrices 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+ are 
+\emph on
+similar
+\emph default
+ if there exists an invertible matrix 
+\begin_inset Formula $Q$
+\end_inset
+
+ such that 
+\begin_inset Formula $A=Q^{-1}BQ$
+\end_inset
+
+.
+ By this definition, 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+ is similar to the diagonal matrix 
+\begin_inset Formula $\mathrm{diag}\left(\iota_{K},0_{n-K}\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $M_{X}=I_{n}-P_{X}$
+\end_inset
+
+ is similar to 
+\begin_inset Formula $\mathrm{diag}\left(0_{K},\iota_{n-K}\right)$
+\end_inset
+
+ because 
+\begin_inset Formula 
+\begin{align*}
+U'\,M_{X}U & =U'\,\left(I_{n}-P_{X}\right)U=U'U-U'\,P_{X}U\\
+ & =I_{n}-\mathrm{diag}\left(\iota_{K},0_{n-K}\right)=\mathrm{diag}\left(0_{K},\iota_{n-K}\right).
+\end{align*}
+
+\end_inset
+
+It implies that 
+\begin_inset Formula $\mathrm{rank}(M_{X})=n-K$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Both 
+\begin_inset Formula $P_{X}$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{X}$
+\end_inset
+
+ are symmetric idempotent matrices.
+ For a general idempotent matrices 
+\begin_inset Formula $C$
+\end_inset
+
+ which does not have to be symmetric, we state the following facts without
+ proof:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $D$
+\end_inset
+
+ is diagonalizable;
+\end_layout
+
+\begin_layout Itemize
+All eigenvalues of 
+\begin_inset Formula $D$
+\end_inset
+
+ are either 0 and 1;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{rank}\left(D\right)=\mathrm{trace}\left(D\right)$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -2653,7 +2885,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Sep 25.}
+ Sep 26.}
 \end_layout
 
 \end_inset
