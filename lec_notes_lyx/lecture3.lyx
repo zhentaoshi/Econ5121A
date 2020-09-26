@@ -166,6 +166,15 @@ x_{n1} & x_{22} & \cdots & x_{nK}
 \end_inset
 
  matrix.
+ 
+\begin_inset Formula $I_{n}$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ identity matrix.
 \end_layout
 
 \begin_layout Standard
@@ -480,7 +489,7 @@ shows that
 \end_inset
 
  due to the positive semi-definite matrix 
-\begin_inset Formula $\frac{1}{n}X'X$
+\begin_inset Formula $X'X/n$
 \end_inset
 
 .
@@ -493,10 +502,70 @@ shows that
 \end_inset
 
  if 
-\begin_inset Formula $\frac{1}{n}X'X$
+\begin_inset Formula $X'X/n$
 \end_inset
 
  is positive definite.)
+\end_layout
+
+\begin_layout Remark
+In the derivation of OLS we presumes that the 
+\begin_inset Formula $K$
+\end_inset
+
+ columns in 
+\begin_inset Formula $X$
+\end_inset
+
+ are 
+\emph on
+linearly independent
+\emph default
+, which means there is no 
+\begin_inset Formula $K\times1$
+\end_inset
+
+ vector 
+\begin_inset Formula $b$
+\end_inset
+
+ such that 
+\begin_inset Formula $b\neq0_{K}$
+\end_inset
+
+ and 
+\begin_inset Formula $Xb=0_{n}$
+\end_inset
+
+.
+ Linear independence of the columns implies 
+\begin_inset Formula $n\geq K$
+\end_inset
+
+, and the invertibility of 
+\begin_inset Formula $X'X/n$
+\end_inset
+
+.
+ Linear independence is violated when some regressors are 
+\emph on
+perfectly collinear
+\emph default
+, for example when we use dummy variables to indicate categorical variables
+ and put all these categories into the regression.
+ Perfect collinearity is not an issue in practice, for modern econometrics
+ software detects and reports such a defect.
+ What is much more treacherous is 
+\emph on
+nearly collinear
+\emph default
+, meaning that the minimal eigenvalue of 
+\begin_inset Formula $X'X/n$
+\end_inset
+
+ is close to 0, though not exactly equal to 0.
+ We will talk about the consequence of near collinearity in the chapter
+ of asymptotic theory.
 \end_layout
 
 \begin_layout Standard
@@ -574,11 +643,23 @@ idempotent
 
  are idempotent.
  All eigenvalues of an idempotent matrix must be either 1 or 0.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\mathrm{rank}\left(P_{X}\right)=K$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathrm{rank}\left(M_{X}\right)=n-K$
+\end_inset
+
+ (See the Appendix of this chapter).
 \end_layout
 
 \begin_layout Itemize
 Residual: 
-\begin_inset Formula $\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=Y-X(X'X)^{-1}X'Y=(I-P_{X})Y=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e$
+\begin_inset Formula $\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=Y-X(X'X)^{-1}X'Y=(I_{n}-P_{X})Y=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e$
 \end_inset
 
 .
@@ -595,7 +676,7 @@ Residual:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $X'\widehat{e}=X'M_{X}e=0$
+\begin_inset Formula $X'\widehat{e}=X'M_{X}e=0_{K}$
 \end_inset
 
 .
@@ -722,7 +803,7 @@ The relationship
 \end_inset
 
  as 
-\begin_inset Formula $\left\langle X\widehat{\beta},\widehat{e}\right\rangle =\widehat{\beta}X'\widehat{e}=0$
+\begin_inset Formula $\left\langle X\widehat{\beta},\widehat{e}\right\rangle =\widehat{\beta}X'\widehat{e}=0_{K}^{\prime}$
 \end_inset
 
 , where 
@@ -875,7 +956,7 @@ end{tikzpicture}
 \begin_layout Example
 Here is a simple simulated example to demonstrate the properties of OLS.
  Given 
-\begin_inset Formula $\left(x_{1i},x_{2i},x_{3i},e_{i}\right)\sim N\left(0,I_{4}\right)$
+\begin_inset Formula $\left(x_{1i},x_{2i},x_{3i},e_{i}\right)^{\prime}\sim N\left(0_{4},I_{4}\right)$
 \end_inset
 
 , the dependent variable 
