@@ -63,9 +63,9 @@ knitr
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
-\biblio_style plain
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -509,7 +509,7 @@ shows that
 \end_layout
 
 \begin_layout Remark
-In the derivation of OLS we presumes that the 
+In the derivation of OLS we presume that the 
 \begin_inset Formula $K$
 \end_inset
 
@@ -542,7 +542,7 @@ linearly independent
 \begin_inset Formula $n\geq K$
 \end_inset
 
-, and the invertibility of 
+ and the invertibility of 
 \begin_inset Formula $X'X/n$
 \end_inset
 
@@ -553,9 +553,9 @@ perfectly collinear
 \emph default
 , for example when we use dummy variables to indicate categorical variables
  and put all these categories into the regression.
- Perfect collinearity is not an issue in practice, for modern econometrics
- software detects and reports such a defect.
- What is much more treacherous is 
+ Modern econometrics software automatically detects and reports perfect
+ collinearity.
+ What is treacherous is 
 \emph on
 nearly collinear
 \emph default
@@ -1533,7 +1533,7 @@ R-squared
  The (in-sample) R-squared
 \begin_inset Formula 
 \[
-R^{2}=1-\frac{\left\Vert \tilde{e}\right\Vert ^{2}}{\left\Vert M_{\iota}Y\right\Vert ^{2}}
+R^{2}=\frac{\Vert M_{\iota}X_{1}\widehat{\beta}_{1}\Vert^{2}}{\left\Vert M_{\iota}Y\right\Vert ^{2}}=1-\frac{\left\Vert \tilde{e}\right\Vert ^{2}}{\left\Vert M_{\iota}Y\right\Vert ^{2}}.
 \]
 
 \end_inset
@@ -1543,7 +1543,11 @@ is well defined only when a constant is included in the regressors.
 
 \begin_layout Exercise
 Show 
-\begin_inset Formula $R^{2}=\frac{\widehat{Y}'M_{\iota}\widehat{Y}}{Y'M_{\iota}Y}=\frac{\sum_{i=1}^{n}\left(\widehat{y_{i}}-\overline{y}\right)^{2}}{\sum_{i=1}^{n}\left(y_{i}-\overline{y}\right)^{2}}$
+\begin_inset Formula 
+\[
+R^{2}=\frac{\widehat{Y}'M_{\iota}\widehat{Y}}{Y'M_{\iota}Y}=\frac{\sum_{i=1}^{n}\left(\widehat{y_{i}}-\overline{y}\right)^{2}}{\sum_{i=1}^{n}\left(y_{i}-\overline{y}\right)^{2}}
+\]
+
 \end_inset
 
  as in the decomposition (
@@ -1557,6 +1561,15 @@ noprefix "false"
 \end_inset
 
 ).
+ In other words, it is the ratio between the sample variance of 
+\begin_inset Formula $\widehat{Y}$
+\end_inset
+
+ and the sample variance of 
+\begin_inset Formula $Y$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -2744,7 +2757,7 @@ Singular value decomposition
 \begin_inset Formula $U$
 \end_inset
 
- is a 
+ is an 
 \begin_inset Formula $n\times n$
 \end_inset
 
@@ -2774,7 +2787,11 @@ Singular value decomposition
 \begin_inset Formula $K\times K$
 \end_inset
 
- diagonal matrix of non-negative real elements, and 
+ diagonal matrix of non-negative real elements (called 
+\emph on
+singular values
+\emph default
+), and 
 \begin_inset Formula $V$
 \end_inset
 
@@ -2802,11 +2819,7 @@ We apply SVD to the projection matrix
 \begin_inset Formula $K$
 \end_inset
 
- linearly independent columns (which implies 
-\begin_inset Formula $n\geq K$
-\end_inset
-
-).
+ linearly independent columns.
  Substitute 
 \begin_inset Formula $X=USV'$
 \end_inset
@@ -2830,7 +2843,7 @@ P_{X} & =USV'\left(VS'U'USV'\right)^{-1}VS'U'=USV'\left(VS'SV'\right)^{-1}VS'U'\
 
 \end_inset
 
- All symmetric matrices are diagonalizable, and the the last expression
+ All real symmetric matrices are diagonalizable, and the the last expression
  is the diagonalization of 
 \begin_inset Formula $P_{X}$
 \end_inset
@@ -2924,27 +2937,39 @@ Both
 \begin_inset Formula $C$
 \end_inset
 
- which does not have to be symmetric, we state the following facts without
- proof:
+ which does not have to be symmetric,
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $D$
+\begin_inset Formula $C$
 \end_inset
 
- is diagonalizable;
+ is diagonalizable (See 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "p.148"
+key "horn2012matrix"
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+This fact immediately implies that
 \end_layout
 
 \begin_layout Itemize
 All eigenvalues of 
-\begin_inset Formula $D$
+\begin_inset Formula $C$
 \end_inset
 
  are either 0 and 1;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\mathrm{rank}\left(D\right)=\mathrm{trace}\left(D\right)$
+\begin_inset Formula $\mathrm{rank}\left(C\right)=\mathrm{trace}\left(C\right)$
 \end_inset
 
 .
@@ -2968,6 +2993,18 @@ bigskip
 texttt{ Zhentao Shi.
  Sep 26.}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
 
 \end_inset
 
