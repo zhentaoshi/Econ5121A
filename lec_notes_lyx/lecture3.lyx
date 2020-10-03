@@ -2163,7 +2163,17 @@ The numerator follows a standard normal, and the denominator follows
 
 .
  Moreover, the numerator and the denominator are statistically independent
- (Basu's theorem).
+ (See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Basu's-Theorem"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
  As a result, we conclude 
 \begin_inset Formula $T_{k}\sim t\left(n-K\right)$
 \end_inset
@@ -2728,11 +2738,17 @@ MLE was promulgated and popularized by Ronald Fisher (1890–1962).
 iris
 \family default
 .
- 
+ Fisher invented the many concepts in classical mathematical statistics,
+ such as sufficient statistic, ancillary statistic, completeness, and exponentia
+l family, etc.
 \end_layout
 
 \begin_layout Section
 Appendix
+\end_layout
+
+\begin_layout Subsection
+Idempotent Matrix
 \end_layout
 
 \begin_layout Standard
@@ -2975,6 +2991,222 @@ All eigenvalues of
 .
 \end_layout
 
+\begin_layout Subsection
+Basu's Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Basu's-Theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Y=\left(y_{1},\ldots,y_{n}\right)$
+\end_inset
+
+ consists of 
+\begin_inset Formula $n$
+\end_inset
+
+ iid observations.
+ We say 
+\begin_inset Formula $T\left(Y\right)$
+\end_inset
+
+ is a sufficient statistic for a parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+ if the conditional probability 
+\begin_inset Formula $f\left(Y|T\left(Y\right)\right)$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ For example, for 
+\begin_inset Formula $y_{i}\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+ with known 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ and unknown 
+\begin_inset Formula $\mu$
+\end_inset
+
+, We verify that the sample mean 
+\begin_inset Formula $\bar{y}=n^{-1}\sum_{i=1}^{n}y_{i}$
+\end_inset
+
+ is a sufficient statistic for 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Notice that the joint density of 
+\begin_inset Formula $Y$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align*}
+f\left(Y\right) & =\left(2\pi\sigma\right)^{-n/2}\exp\left(-\frac{1}{2}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
+ & =\left(2\pi\sigma^{2}\right)^{-n/2}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}\right)\exp\left(-\frac{n}{2\sigma^{2}}\left(\bar{y}-\mu\right)^{2}\right).
+\end{align*}
+
+\end_inset
+
+Because 
+\begin_inset Formula $\bar{y}\sim N\left(\mu,\sigma^{2}/n\right),$
+\end_inset
+
+ the marginal density is 
+\begin_inset Formula 
+\[
+f\left(\bar{y}\right)=\left(2\pi\sigma^{2}/n\right)^{-1/2}\exp\left(-\frac{1}{2\sigma^{2}/n}\left(\bar{y}-\mu\right)^{2}\right).
+\]
+
+\end_inset
+
+The conditional density is 
+\begin_inset Formula 
+\[
+f\left(Y|\bar{y}\right)=\frac{f\left(Y\right)}{f\left(\bar{y}\right)}=\frac{\left(2\pi\sigma^{2}\right)^{-n/2}}{\left(2\pi\sigma^{2}/n\right)^{-1/2}}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}\right)
+\]
+
+\end_inset
+
+is independent of 
+\begin_inset Formula $\mu$
+\end_inset
+
+, and thus 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ is a sufficient statistic for 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In the meantime, the sample standard deviation 
+\begin_inset Formula $s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)$
+\end_inset
+
+ is an 
+\emph on
+ancillary statistic
+\emph default
+ for 
+\begin_inset Formula $\mu$
+\end_inset
+
+ , because the distribution of 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $\mu.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+A parametric distribution indexed by 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is a member of the 
+\emph on
+exponential family
+\emph default
+ is its PDF can be written as 
+\begin_inset Formula $f\left(Y|\theta\right)=h\left(Y\right)g\left(\theta\right)\exp\left(\eta\left(\theta\right)'T\left(Y\right)\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $g\left(\theta\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\eta\left(\theta\right)$
+\end_inset
+
+ are functions depend, only on 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $h\left(Y\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $T\left(Y\right)$
+\end_inset
+
+ are functions depend only on 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ It is easy to see that 
+\begin_inset Formula 
+\[
+f(y_{i})=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{1}{2\sigma^{2}}\left(y_{i}-\mu\right)^{2}\right)=\exp\left(-\frac{y_{i}^{2}}{2\sigma^{2}}\right)\cdot\frac{1}{\sqrt{2\pi}\sigma}\exp\left(-\frac{\mu^{2}}{2\sigma^{2}}\right)\cdot\exp\left(\frac{\mu}{2\sigma^{2}}y_{i}\right)
+\]
+
+\end_inset
+
+ with known 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ and unknown 
+\begin_inset Formula $\mu$
+\end_inset
+
+ satisfies the definition of the exponential family.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Basu's theorem says that a 
+\emph on
+complete
+\emph default
+ sufficient statistic is statistically independent from any ancillary statistic.
+ For a normal distribution with unknown mean and known variance, the sample
+ mean 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ is the sufficient statistic and the sample standard deviation 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ is an ancillary statistic.
+ 
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -2991,7 +3223,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Sep 26.}
+ Oct 3.}
 \end_layout
 
 \end_inset
