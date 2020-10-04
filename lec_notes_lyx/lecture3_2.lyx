@@ -1,0 +1,1387 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass report
+\begin_preamble
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.15}
+\usepackage{mathrsfs}
+\usetikzlibrary{arrows}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "mathpazo" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing double
+\use_hyperref false
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{3}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Least Squares: Exact Distribution
+\end_layout
+
+\begin_layout Standard
+Notation: 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ is a scalar, and 
+\begin_inset Formula $x_{i}=\left(x_{i1},\ldots,x_{iK}\right)'$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times1$
+\end_inset
+
+ vector.
+ 
+\begin_inset Formula $Y$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times1$
+\end_inset
+
+ vector, and 
+\begin_inset Formula $X$
+\end_inset
+
+ is an 
+\begin_inset Formula $n\times K$
+\end_inset
+
+ matrix.
+\end_layout
+
+\begin_layout Standard
+We continue with properties of OLS.
+ Noticing that OLS coincides with the maximum likelihood estimator if the
+ error term follows a normal distribution, we derive its finite-sample exact
+ distribution which can be used for statistical inference.
+ The Gauss-Markov theorem justifies the optimality of OLS under the classical
+ assumptions.
+\end_layout
+
+\begin_layout Standard
+In this chapter we return to the classical statistical framework under restricti
+ve distributional assumption 
+\begin_inset Formula 
+\begin{equation}
+y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right),\label{eq:normal_yx}
+\end{equation}
+
+\end_inset
+
+ where 
+\begin_inset Formula $\gamma=\sigma^{2}$
+\end_inset
+
+ to ease the differentiation.
+ This assumption is equivalent to 
+\begin_inset Formula $e_{i}|x_{i}=\left(y_{i}-x_{i}'\beta\right)|x_{i}\sim N\left(0,\gamma\right)$
+\end_inset
+
+.
+ Because the distribution of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ is invariant to 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, the error term 
+\begin_inset Formula $e_{i}\sim N\left(0,\gamma\right)$
+\end_inset
+
+ and is statistically independent of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ This is a very strong assumption.
+\end_layout
+
+\begin_layout Section
+Maximum Likelihood Estimation
+\end_layout
+
+\begin_layout Standard
+The likelihood of observing a pair 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align*}
+f_{yx}\left(y_{i},x_{i}\right) & =f_{y|x}\left(y_{i}|x_{i}\right)f_{x}\left(x\right)\\
+ & =\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right)\times f_{x}\left(x\right),
+\end{align*}
+
+\end_inset
+
+ where 
+\begin_inset Formula $f_{yx}$
+\end_inset
+
+ is the joint pdf, 
+\begin_inset Formula $f_{y|x}$
+\end_inset
+
+ is the conditional pdf and 
+\begin_inset Formula $f_{x}$
+\end_inset
+
+ is the marginal pdf of 
+\begin_inset Formula $x$
+\end_inset
+
+, and the second equality holds under the assumption (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:normal_yx"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The likelihood a random sample 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align*}
+\prod_{i=1}^{n}f_{yx}\left(y_{i},x_{i}\right) & =\prod_{i=1}^{n}f_{y|x}\left(y_{i}|x_{i}\right)f_{x}\left(x\right)\\
+ & =\prod_{i=1}^{n}f_{y|x}\left(y_{i}|x_{i}\right)\times\prod_{i=1}^{n}f_{x}\left(x\right)\\
+ & =\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right)\times\prod_{i=1}^{n}f_{x}\left(x\right).
+\end{align*}
+
+\end_inset
+
+The parameters of interest 
+\begin_inset Formula $\left(\beta,\gamma\right)$
+\end_inset
+
+ are irrelevant to the second term 
+\begin_inset Formula $\prod_{i=1}^{n}f_{x}\left(x\right)$
+\end_inset
+
+ for they appear only in the conditional likelihood 
+\begin_inset Formula 
+\[
+\prod_{i=1}^{n}f_{y|x}\left(y_{i}|x_{i}\right)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right).
+\]
+
+\end_inset
+
+We focus on the conditional likelihood.
+ To facilitate derivation, we work with the conditional log-likelihood function
+ 
+\begin_inset Formula 
+\[
+L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2},
+\]
+
+\end_inset
+
+for 
+\begin_inset Formula $\log\left(\cdot\right)$
+\end_inset
+
+ is a monotonic transformation that does not change the maximizer.
+ The maximum likelihood estimator 
+\begin_inset Formula $\widehat{\beta}_{MLE}$
+\end_inset
+
+ can be found using the FOC:
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial\beta}L\left(\beta,\gamma\right)=\frac{1}{2\gamma}\sum_{i=1}^{n}2x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=\frac{1}{\gamma}\sum_{i=1}^{n}x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=0.
+\]
+
+\end_inset
+
+Rearranging the above equation in matrix form 
+\begin_inset Formula $X'Y=X'X\widehat{\beta}_{MLE}$
+\end_inset
+
+, we explicitly solve 
+\begin_inset Formula 
+\[
+\widehat{\beta}_{MLE}=(X'X)^{-1}X'Y.
+\]
+
+\end_inset
+
+The maximum likelihood estimator (MLE) coincides with the OLS estimator.
+ Similarly, the other FOC with respect to 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ gives 
+\begin_inset Formula $\widehat{\gamma}_{\mathrm{MLE}}=\widehat{e}'\widehat{e}/n$
+\end_inset
+
+.
+ 
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+revise up here Sep 23, 2020.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Finite Sample Distribution
+\end_layout
+
+\begin_layout Standard
+We can show the finite-sample exact distribution of 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ assuming the error term follows a Gaussian distribution.
+ 
+\emph on
+Finite sample distribution
+\emph default
+ means that the distribution holds for any 
+\begin_inset Formula $n$
+\end_inset
+
+; it is in contrast to 
+\emph on
+asymptotic distribution
+\emph default
+, which is a large sample approximation to the finite sample distribution.
+ We first review some properties of a generic jointly normal random vector.
+ 
+\end_layout
+
+\begin_layout Fact
+\begin_inset CommandInset label
+LatexCommand label
+name "fact31"
+
+\end_inset
+
+ Let 
+\begin_inset Formula $z\sim N\left(\mu,\Omega\right)$
+\end_inset
+
+ be an 
+\begin_inset Formula $l\times1$
+\end_inset
+
+ random vector with a positive definite variance-covariance matrix 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be an 
+\begin_inset Formula $m\times l$
+\end_inset
+
+ non-random matrix where 
+\begin_inset Formula $m\leq l$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $Az\sim N\left(A\mu,A\Omega A'\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Fact
+\begin_inset CommandInset label
+LatexCommand label
+name "fact32"
+
+\end_inset
+
+If 
+\begin_inset Formula $z\sim N\left(0,1\right)$
+\end_inset
+
+, 
+\begin_inset Formula $w\sim\chi^{2}\left(d\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $z$
+\end_inset
+
+ and 
+\begin_inset Formula $w$
+\end_inset
+
+ are independent.
+ Then 
+\begin_inset Formula $\frac{z}{\sqrt{w/d}}\sim t\left(d\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The OLS estimator
+\begin_inset Formula 
+\[
+\widehat{\beta}=\left(X'X\right)^{-1}X'Y=\left(X'X\right)^{-1}X'\left(X'\beta+e\right)=\beta+\left(X'X\right)^{-1}X'e,
+\]
+
+\end_inset
+
+and its conditional distribution can be written as 
+\begin_inset Formula 
+\begin{align*}
+\widehat{\beta}|X & =\beta+\left(X'X\right)^{-1}X'e|X\\
+ & \sim\beta+\left(X'X\right)^{-1}X'\cdot N\left(0_{n},\sigma^{2}\cdot I_{n}\right)\\
+ & \sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right)
+\end{align*}
+
+\end_inset
+
+by Fact 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fact31"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The 
+\begin_inset Formula $k$
+\end_inset
+
+-th element of the vector coefficient
+\begin_inset Formula 
+\[
+\widehat{\beta}_{k}|X=\eta_{k}'\widehat{\beta}|X\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\eta_{k}=\left(1\left\{ l=k\right\} \right)_{l=1,\ldots,K}$
+\end_inset
+
+ is the selector of the 
+\begin_inset Formula $k$
+\end_inset
+
+-th element.
+\end_layout
+
+\begin_layout Standard
+In reality, 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is an unknown parameter, and 
+\begin_inset Formula 
+\[
+s^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)=e'M_{X}e/\left(n-K\right)
+\]
+
+\end_inset
+
+is an unbiased estimator of 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+.
+ Consider the 
+\begin_inset Formula $t$
+\end_inset
+
+-statistic
+\begin_inset Formula 
+\begin{align*}
+T_{k} & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\cdot\frac{\sqrt{\sigma^{2}}}{\sqrt{s^{2}}}\\
+ & =\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
+\end{align*}
+
+\end_inset
+
+The numerator follows a standard normal, and the denominator follows 
+\begin_inset Formula $\frac{1}{n-K}\chi^{2}\left(n-K\right)$
+\end_inset
+
+.
+ Moreover, the numerator and the denominator are statistically independent
+ (See Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basu's-Theorem"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ As a result, we conclude 
+\begin_inset Formula $T_{k}\sim t\left(n-K\right)$
+\end_inset
+
+ by Fact 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fact32"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ This finite sample distribution allows us to conduct statistical inference.
+\end_layout
+
+\begin_layout Section
+Mean and Variance
+\begin_inset CommandInset label
+LatexCommand label
+name "mean-and-variance"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we relax the normality assumption and statistical independence.
+ Instead, we represent the regression model as 
+\begin_inset Formula $Y=X\beta+e$
+\end_inset
+
+ and 
+\begin_inset Formula 
+\begin{align*}
+E[e|X] & =0_{n}\\
+\mathrm{var}\left[e|X\right] & =E\left[ee'|X\right]=\sigma^{2}I_{n}.
+\end{align*}
+
+\end_inset
+
+where the first condition is the 
+\emph on
+mean independence
+\emph default
+ assumption, and the second condition is the 
+\emph on
+homoskedasticity
+\emph default
+ assumption.
+ These assumptions are about the first and second 
+\emph on
+moments
+\emph default
+ of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ conditional on 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ Unlike the normality assumption, they do not restrict the distribution
+ of 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Unbiasedness: 
+\begin_inset Formula 
+\begin{align*}
+E\left[\widehat{\beta}|X\right] & =E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]\\
+ & =\beta+\left(X'X\right)^{-1}XE\left[e|X\right]=\beta.
+\end{align*}
+
+\end_inset
+
+Unbiasedness does not rely on homoskedasticity.
+\end_layout
+
+\begin_layout Itemize
+Variance: 
+\begin_inset Formula 
+\[
+\begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] & =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
+ & =E\left[\left(\widehat{\beta}-\beta\right)\left(\widehat{\beta}-\beta\right)'|X\right]\\
+ & =E\left[\left(X'X\right)^{-1}X'ee'X\left(X'X\right)^{-1}|X\right]\\
+ & =\left(X'X\right)^{-1}X'E\left[ee'|X\right]X\left(X'X\right)^{-1}
+\end{aligned}
+\]
+
+\end_inset
+
+where the second equality holds as 
+\begin_inset Formula $E\left[\widehat{\beta}\right]=E\left[E\left[\widehat{\beta}|X\right]\right]=\beta$
+\end_inset
+
+.
+ Under the assumption of homoskedasticity, it can be simplified as
+\begin_inset Formula 
+\[
+\begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}=\sigma^{2}\left(X'X\right)^{-1}.\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+(Heteroskedasticity) If 
+\begin_inset Formula $e_{i}=x_{i}u_{i}$
+\end_inset
+
+, where 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ is a scalar random variable, 
+\begin_inset Formula $u_{i}$
+\end_inset
+
+ is statistically independent of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $E\left[u_{i}\right]=0$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[u_{i}^{2}\right]=\sigma^{2}$
+\end_inset
+
+.
+ Then 
+\begin_inset Formula $E\left[e_{i}|x_{i}\right]=0$
+\end_inset
+
+ but 
+\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=\sigma^{2}x_{i}^{2}$
+\end_inset
+
+ is a function of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ We say 
+\begin_inset Formula $e_{i}^{2}$
+\end_inset
+
+ is a heteroskedastic error.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Notice that the above derivation only applies when 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ are independent across 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ In time series the conditional zero mean condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:e_mean_zero"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) has to be strengthened to 
+\begin_inset Formula $E\left[e_{i}|x_{1},\ldots,x_{n}\right]=0$
+\end_inset
+
+ for unbiasedness.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<custom-dev, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Plain Layout
+
+my_pdf = function(file, width, height) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  pdf(file, width = 4, height = 4) 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<dev-demo, dev='my_pdf', fig.ext='pdf'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+n = 100; X = rnorm(n)
+\end_layout
+
+\begin_layout Plain Layout
+
+e1 = rnorm(n); 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot( y = e1, x = X, col = 
+\begin_inset Quotes eld
+\end_inset
+
+blue
+\begin_inset Quotes erd
+\end_inset
+
+, ylab = 
+\begin_inset Quotes eld
+\end_inset
+
+e
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+e2 = X * rnorm(n); 
+\end_layout
+
+\begin_layout Plain Layout
+
+points( y = e2, x = X, col = 
+\begin_inset Quotes eld
+\end_inset
+
+red
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+It is important to notice that independently and identically distributed
+ sample (iid) 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ does not imply homoskedasticity.
+ Homoskedasticity or heterskdasticity is about the relationship between
+ 
+\begin_inset Formula $\left(x_{i},e_{i}=y_{i}-\beta x\right)$
+\end_inset
+
+, whereas iid is about the relationship between 
+\begin_inset Formula $\left(y_{i},x_{i}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(y_{j},x_{j}\right)$
+\end_inset
+
+ for 
+\begin_inset Formula $i\neq j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Gauss-Markov Theorem
+\end_layout
+
+\begin_layout Standard
+Gauss-Markov theorem is concerned about the optimality of OLS.
+ It justifies OLS as the efficient estimator among all linear unbiased ones.
+ 
+\emph on
+Efficient
+\emph default
+ here means that it enjoys the smallest variance in a family of estimators.
+\end_layout
+
+\begin_layout Standard
+We have shown that OLS is unbiased in that 
+\begin_inset Formula $E\left[\widehat{\beta}\right]=\beta$
+\end_inset
+
+.
+ There are numerous linearly unbiased estimators.
+ For example, 
+\begin_inset Formula $\left(Z'X\right)^{-1}Z'y$
+\end_inset
+
+ for 
+\begin_inset Formula $z_{i}=x_{i}^{2}$
+\end_inset
+
+ is unbiased because 
+\begin_inset Formula $E\left[\left(Z'X\right)^{-1}Z'y\right]=E\left[\left(Z'X\right)^{-1}Z'\left(X\beta+e\right)\right]=\beta$
+\end_inset
+
+.
+ We cannot say OLS is better than those other unbiased estimators because
+ they are equally good in this aspect.
+ Thus, we move to the second order property of variance: an estimator is
+ better if its variance is smaller.
+\end_layout
+
+\begin_layout Fact
+For two generic random vectors 
+\begin_inset Formula $X$
+\end_inset
+
+ and 
+\begin_inset Formula $Y$
+\end_inset
+
+ of the same size, we say 
+\begin_inset Formula $X$
+\end_inset
+
+'s variance is smaller or equal to 
+\begin_inset Formula $Y$
+\end_inset
+
+'s variance if 
+\begin_inset Formula $\left(\Omega_{Y}-\Omega_{X}\right)$
+\end_inset
+
+ is a positive semi-definite matrix.
+ The comparison is defined this way because for any non-zero constant vector
+ 
+\begin_inset Formula $c$
+\end_inset
+
+, the variance of the linear combination of 
+\begin_inset Formula $X$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathrm{var}\left(c'X\right)=c'\Omega_{X}c\leq c'\Omega_{Y}c=\mathrm{var}\left(c'Y\right)
+\]
+
+\end_inset
+
+is no bigger than the same linear combination of 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\tilde{\beta}=A'y$
+\end_inset
+
+ be a generic linear estimator, where 
+\begin_inset Formula $A$
+\end_inset
+
+ is any 
+\begin_inset Formula $n\times K$
+\end_inset
+
+ functions of 
+\begin_inset Formula $X$
+\end_inset
+
+.
+ As 
+\begin_inset Formula 
+\[
+E\left[A'y|X\right]=E\left[A'\left(X\beta+e\right)|X\right]=A'X\beta.
+\]
+
+\end_inset
+
+So the linearity and unbiasedness of 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ implies 
+\begin_inset Formula $A'X=I_{n}$
+\end_inset
+
+.
+ Moreover, the variance 
+\begin_inset Formula 
+\[
+\mbox{var}\left(A'y|X\right)=E\left[\left(A'y-\beta\right)\left(A'y-\beta\right)'|X\right]=E\left[A'ee'A|X\right]=\sigma^{2}A'A.
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula $C=A-X\left(X'X\right)^{-1}.$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\begin{aligned}A'A-\left(X'X\right)^{-1} & =\left(C+X\left(X'X\right)^{-1}\right)'\left(C+X\left(X'X\right)^{-1}\right)-\left(X'X\right)^{-1}\\
+ & =C'C+\left(X'X\right)^{-1}X'C+C'X\left(X'X\right)^{-1}\\
+ & =C'C,
+\end{aligned}
+\]
+
+\end_inset
+
+where the last equality follows as 
+\begin_inset Formula 
+\[
+\left(X'X\right)^{-1}X'C=\left(X'X\right)^{-1}X'\left(A-X\left(X'X\right)^{-1}\right)=\left(X'X\right)^{-1}-\left(X'X\right)^{-1}=0.
+\]
+
+\end_inset
+
+Therefore 
+\begin_inset Formula $A'A-\left(X'X\right)^{-1}$
+\end_inset
+
+ is a positive semi-definite matrix.
+ The variance of any 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ is no smaller than the OLS estimator 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+.
+ The above derivation shows OLS achieves the smallest variance among all
+ linear unbiased estimators.
+\end_layout
+
+\begin_layout Standard
+Homoskedasticity is a restrictive assumption.
+ Under homoskedasticity, 
+\begin_inset Formula $\mathrm{var}\left[\widehat{\beta}\right]=\sigma^{2}\left(X'X\right)^{-1}$
+\end_inset
+
+.
+ Popular estimator of 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is the sample mean of the residuals 
+\begin_inset Formula $\widehat{\sigma}^{2}=\frac{1}{n}\widehat{e}'\widehat{e}$
+\end_inset
+
+ or the unbiased one 
+\begin_inset Formula $s^{2}=\frac{1}{n-K}\widehat{e}'\widehat{e}$
+\end_inset
+
+.
+ Under heteroskedasticity, Gauss-Markov theorem does not apply.
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+The linear algebraic properties holds in finite sample no matter the data
+ are taken as fixed numbers or random variables.
+ The exact distribution under the normality assumption of the error term
+ is the classical statistical results.
+ The Gauss Markov theorem holds under two crucial assumptions: linear CEF
+ and homoskedasticity.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Historical notes
+\series default
+: MLE was promulgated and popularized by Ronald Fisher (1890–1962).
+ He was a major contributor of the frequentist approach which dominates
+ mathematical statistics today, and he sharply criticized the Bayesian approach.
+ Fisher collected the iris flower dataset of 150 observations in his biological
+ study in 1936, which can be displayed in R by typing 
+\family typewriter
+iris
+\family default
+.
+ Fisher invented the many concepts in classical mathematical statistics,
+ such as sufficient statistic, ancillary statistic, completeness, and exponentia
+l family, etc.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Further reading
+\series default
+: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "phillips1983exact"
+literal "false"
+
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "white1980heteroskedasticity"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Appendix 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Basu's-Theorem"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Y=\left(y_{1},\ldots,y_{n}\right)$
+\end_inset
+
+ consists of 
+\begin_inset Formula $n$
+\end_inset
+
+ iid observations.
+ We say 
+\begin_inset Formula $T\left(Y\right)$
+\end_inset
+
+ is a sufficient statistic for a parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+ if the conditional probability 
+\begin_inset Formula $f\left(Y|T\left(Y\right)\right)$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ For example, for 
+\begin_inset Formula $y_{i}\sim N\left(\mu,\sigma^{2}\right)$
+\end_inset
+
+ with known 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ and unknown 
+\begin_inset Formula $\mu$
+\end_inset
+
+, We verify that the sample mean 
+\begin_inset Formula $\bar{y}=n^{-1}\sum_{i=1}^{n}y_{i}$
+\end_inset
+
+ is a sufficient statistic for 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Notice that the joint density of 
+\begin_inset Formula $Y$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align*}
+f\left(Y\right) & =\left(2\pi\sigma\right)^{-n/2}\exp\left(-\frac{1}{2}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
+ & =\left(2\pi\sigma^{2}\right)^{-n/2}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}\right)\exp\left(-\frac{n}{2\sigma^{2}}\left(\bar{y}-\mu\right)^{2}\right).
+\end{align*}
+
+\end_inset
+
+Because 
+\begin_inset Formula $\bar{y}\sim N\left(\mu,\sigma^{2}/n\right),$
+\end_inset
+
+ the marginal density is 
+\begin_inset Formula 
+\[
+f\left(\bar{y}\right)=\left(2\pi\sigma^{2}/n\right)^{-1/2}\exp\left(-\frac{1}{2\sigma^{2}/n}\left(\bar{y}-\mu\right)^{2}\right).
+\]
+
+\end_inset
+
+The conditional density is 
+\begin_inset Formula 
+\[
+f\left(Y|\bar{y}\right)=\frac{f\left(Y\right)}{f\left(\bar{y}\right)}=\frac{\left(2\pi\sigma^{2}\right)^{-n/2}}{\left(2\pi\sigma^{2}/n\right)^{-1/2}}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}\right)
+\]
+
+\end_inset
+
+is independent of 
+\begin_inset Formula $\mu$
+\end_inset
+
+, and thus 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ is a sufficient statistic for 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In the meantime, the sample standard deviation 
+\begin_inset Formula $s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)$
+\end_inset
+
+ is an 
+\emph on
+ancillary statistic
+\emph default
+ for 
+\begin_inset Formula $\mu$
+\end_inset
+
+ , because the distribution of 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $\mu.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Basu's theorem
+\emph default
+ says that a 
+\emph on
+complete
+\emph default
+ sufficient statistic is statistically independent from any ancillary statistic.
+ For a normal distribution with unknown mean and known variance, the sample
+ mean 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ is the sufficient statistic and the sample standard deviation 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ is an ancillary statistic.
+ 
+\end_layout
+
+\begin_layout Standard
+A parametric distribution indexed by 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is a member of the 
+\emph on
+exponential family
+\emph default
+ is its PDF can be written as 
+\begin_inset Formula 
+\[
+f\left(Y|\theta\right)=h\left(Y\right)g\left(\theta\right)\exp\left(\eta\left(\theta\right)'T\left(Y\right)\right),
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $g\left(\theta\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\eta\left(\theta\right)$
+\end_inset
+
+ are functions depend, only on 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $h\left(Y\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $T\left(Y\right)$
+\end_inset
+
+ are functions depend only on 
+\begin_inset Formula $Y$
+\end_inset
+
+.
+ The normal distribution with known 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ and unknown 
+\begin_inset Formula $\mu$
+\end_inset
+
+ belongs to the exponential family in view of the decomposition
+\begin_inset Formula 
+\begin{align*}
+f(Y) & =\left(\sqrt{2\pi}\sigma\right)^{-n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
+ & =\underbrace{\exp\left(-\sum_{i=1}^{n}\frac{y_{i}^{2}}{2\sigma^{2}}\right)}_{h\left(Y\right)}\cdot\underbrace{\left(\sqrt{2\pi}\sigma\right)^{-n}\exp\left(-\frac{n}{2\sigma^{2}}\mu^{2}\right)}_{g\left(\theta\right)}\cdot\underbrace{\exp\left(\frac{\mu n}{2\sigma^{2}}\bar{y}\right)}_{\exp\left(\eta\left(\theta\right)'T\left(Y\right)\right)}.
+\end{align*}
+
+\end_inset
+
+The exponential family is a class of distributions with the special functional
+ form which is convenient for deriving sufficient statistics as well as
+ other desirable properties in classical mathematical statistics.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ Oct 3.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
