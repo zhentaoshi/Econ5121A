@@ -161,11 +161,21 @@ We continue with properties of OLS.
  distribution which can be used for statistical inference.
  The Gauss-Markov theorem justifies the optimality of OLS under the classical
  assumptions.
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
+write about Kullback-Leibler distance in future versions.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-In this chapter we return to the classical statistical framework under restricti
-ve distributional assumption 
+In this chapter we employ the classical statistical framework under restrictive
+ distributional assumption 
 \begin_inset Formula 
 \begin{equation}
 y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right),\label{eq:normal_yx}
@@ -1345,6 +1355,181 @@ The exponential family is a class of distributions with the special functional
  form which is convenient for deriving sufficient statistics as well as
  other desirable properties in classical mathematical statistics.
  
+\end_layout
+
+\begin_layout Subsection
+MLE
+\end_layout
+
+\begin_layout Standard
+There are only very few 
+\emph on
+principles
+\emph default
+ in statistics, and maximum likelihood is one of them.
+ Consider a random sample of 
+\begin_inset Formula $Z=\left(z_{1},z_{2},\ldots,z_{n}\right)$
+\end_inset
+
+ drawn from a parametric distribution pdf 
+\begin_inset Formula $f_{z}\left(z_{i};\theta\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $z$
+\end_inset
+
+ can be either a scalar random variable or a random vector.
+ A parametric distribution is complete characterized by a finite dimensional
+ parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ We know that 
+\begin_inset Formula $\theta$
+\end_inset
+
+ belongs to a parameter space 
+\begin_inset Formula $\Theta$
+\end_inset
+
+.
+ We want to estimate 
+\begin_inset Formula $\theta$
+\end_inset
+
+ by the data.
+ 
+\end_layout
+
+\begin_layout Standard
+The log-likelihood of observing the entire sample 
+\begin_inset Formula $Z$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+L\left(\theta;Z\right):=\log\left(\prod_{i=1}^{n}f_{z}\left(z_{i};\theta\right)\right)=\sum_{i=1}^{n}\log f_{z}\left(z_{i};\theta\right).
+\]
+
+\end_inset
+
+In reality the sample 
+\begin_inset Formula $Z$
+\end_inset
+
+ is given and for each 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+ we can evaluate 
+\begin_inset Formula $L\left(\theta;Z\right)$
+\end_inset
+
+.
+ The maximum likelihood estimator is 
+\begin_inset Formula 
+\[
+\widehat{\theta}_{MLE}:=\arg\min_{\theta\in\Theta}L\left(\theta;Z\right).
+\]
+
+\end_inset
+
+A natural question to ask is: why maximizing the log-likelihood function
+ is desirable? An intuitive explanation is that 
+\begin_inset Formula $\widehat{\theta}_{MLE}$
+\end_inset
+
+ makes observing 
+\begin_inset Formula $Z$
+\end_inset
+
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+most likely
+\begin_inset Quotes erd
+\end_inset
+
+ in the entire parametric space.
+ 
+\end_layout
+
+\begin_layout Standard
+Here we provide a more formal justification.
+ Suppose that the true parameter value that generates the data is 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+, so that the true distribution is 
+\begin_inset Formula $f_{z}\left(z_{i};\theta_{0}\right)$
+\end_inset
+
+.
+ For any generic point 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+, it will produce a generic distribution 
+\begin_inset Formula $f_{z}\left(z_{i};\theta\right)$
+\end_inset
+
+.
+ How different are the two distributions? To measure the difference, we
+ need to introduce a concept of distance.
+ One of them is called 
+\emph on
+Kullback-Leibler distance
+\emph default
+, defined as 
+\begin_inset Formula 
+\[
+D\left(f_{z}\left(z_{i};\theta\right),f_{z}\left(z_{i};\theta_{0}\right)\right)=E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right].
+\]
+
+\end_inset
+
+We say it is a 
+\begin_inset Quotes eld
+\end_inset
+
+distance
+\begin_inset Quotes erd
+\end_inset
+
+ because it is non-negative.
+ To see this, because 
+\begin_inset Formula $-\log\left(\cdot\right)$
+\end_inset
+
+ is a strictly convex function, by Jensen's inequality
+\begin_inset Formula 
+\begin{align*}
+E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right] & =E_{\theta_{0}}\left[-\log\frac{f_{z}\left(z_{i};\theta\right)}{f_{z}\left(z_{i};\theta_{0}\right)}\right]\geq-\log\left(E_{\theta_{0}}\left[\frac{f_{z}\left(z_{i};\theta\right)}{f_{z}\left(z_{i};\theta_{0}\right)}\right]\right)\\
+ & =-\log\left(\int\frac{f_{z}\left(z_{i};\theta\right)}{f_{z}\left(z_{i};\theta_{0}\right)}f_{z}\left(z_{i};\theta_{0}\right)dz_{i}\right)=-\log\left(\int f_{z}\left(z_{i};\theta\right)dz_{i}\right)\\
+ & =-\log1=0,
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\int f_{z}\left(z_{i};\theta\right)dz_{i}=1$
+\end_inset
+
+ for any pdf.
+ Equality holds if and only if 
+\begin_inset Formula $f_{z}\left(z_{i};\theta\right)=f_{z}\left(z_{i};\theta_{0}\right)$
+\end_inset
+
+ almost everywhere.
+ 
+\end_layout
+
+\begin_layout Standard
+The maximum likelihood principle says that 
 \end_layout
 
 \begin_layout Standard
