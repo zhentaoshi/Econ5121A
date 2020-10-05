@@ -137,26 +137,36 @@ Our universe, though enormous, consists of fewer than
 \end_layout
 
 \begin_layout Standard
-However, in reality we always have a finite sample — 
+However, in reality we always have a finite sample, and in most cases it
+ is difficult to increase the sample size for more accurate evaluation of
+ the parameter of interest.
+ In this sense, both the classical parametric approach and the asymptotic
+ approach deviate from the reality, and it is difficult to judge which one
+ is better.
+ One may argue that the data size increases in the era of big data.
+ However, the size of the model is also growing.
+ The way I view the prevalence of asymptotic theory is its mathematical
+ amenability.
+ The required mathematical level to work with asymptotic theory, seemingly
+ advance though, is lower than that for the finite sample theory.
+ The underlying economics theory predicts that for substitute goods, if
+ the price of one good is lowered, the demand increases.
+ 
 \end_layout
 
 \begin_layout Subsection
 Modes of Convergence
-\begin_inset CommandInset label
-LatexCommand label
-name "modes-of-convergence"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-Convergence of a deterministic sequence 
+Before we talk about convergence of random variables, we first review what
+ is convergence for a non-random sequence.
+ Let 
 \begin_inset Formula $z_{1},z_{2},\ldots$
 \end_inset
 
- means that for any 
+ be an infinite sequence of non-random variables.
+ Convergence of this non-random sequence means that for any 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
@@ -189,10 +199,18 @@ Convergence of a deterministic sequence
 \end_layout
 
 \begin_layout Standard
-Instead of a deterministic sequence, here we are interested in the convergence
+Instead of a deterministic sequence, we are interested in the convergence
  of a sequence of random variables.
- Since a random variable has a probability measure associated to any event,
- we must be clear what 
+ Since a random variable is 
+\begin_inset Quotes eld
+\end_inset
+
+random
+\begin_inset Quotes erd
+\end_inset
+
+ thanks to the induced probability measure by the measurable function, we
+ must be clear what 
 \emph on
 convergence
 \emph default
@@ -205,7 +223,11 @@ Convergence almost surely*
 \end_layout
 
 \begin_layout Itemize
-Convergence in probability: for any 
+
+\emph on
+Convergence in probability
+\emph default
+: for any 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
@@ -222,14 +244,34 @@ Convergence in probability: for any
 \end_inset
 
 .
+ Denoted as 
+\begin_inset Formula $z_{n}\stackrel{p}{\to}z$
+\end_inset
+
+.
+ The limit 
+\begin_inset Formula $z$
+\end_inset
+
+ can be either a random variable or a non-random constant.
+ 
 \end_layout
 
 \begin_layout Itemize
-Squared-mean convergence: 
+
+\emph on
+Squared-mean convergence
+\emph default
+: 
 \begin_inset Formula $\lim_{n\to\infty}E\left[\left(z_{n}-z\right)^{2}\right]=0.$
 \end_inset
 
+ Denoted as 
+\begin_inset Formula $z_{n}\stackrel{m.s.}{\to}z$
+\end_inset
 
+.
+ 
 \end_layout
 
 \begin_layout Example
@@ -291,10 +333,17 @@ Convergence in probability does not count what happens on a subset in the
  sample space of small probability.
  Squared-mean convergence deals with the average over the entire probability
  space.
- If a random variable can take a wild value, even with small probability,
+ If a random variable can take a wild value, with small probability though,
  it may blow away the squared-mean convergence.
  On the contrary, such irregularity does not undermine convergence in probabilit
 y.
+\end_layout
+
+\begin_layout Standard
+Both convergence in probability and squared-mean convergence are about convergen
+ce of random variables to a target random variable or constant.
+ Instead, convergence in distribution is the convergence of CDF, but the
+ random variable.
 \end_layout
 
 \begin_layout Itemize
@@ -1294,6 +1343,29 @@ Delta method: if
 \[
 \sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta'}\left(\theta_{0}\right)\Omega\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\right)'\right).
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Proof: take a Taylor expansion of 
+\begin_inset Formula $f\left(\widehat{\theta}\right)$
+\end_inset
+
+ around 
+\begin_inset Formula $f\left(\theta_{0}\right)$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+to be filled.
+\end_layout
 
 \end_inset
 
