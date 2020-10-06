@@ -126,32 +126,58 @@ Our universe, though enormous, consists of fewer than
 \end_inset
 
  atoms, which is a finite number.
- However, mathematical ideas are not bounded by the secular reality.
- Asymptotic theory is concerned about the behavior of statistics when the
- sample size is arbitrarily large, up to infinity.
- It is an approximation technique to simplify complicated finite-sample
+ However, mathematical ideas are not bounded by secular realities.
+ Asymptotic theory is about behaviors of statistics when the sample size
+ is arbitrarily large up to infinity.
+ It is a set of approximation techniques to simplify complicated finite-sample
  analysis.
- It is the cornerstone of modern econometrics that seeks general conditions
- beyond the classical ones.
- 
+ Asymptotic theory is the cornerstone of modern econometrics.
+ It sheds lights on estimation and inference procedures under much more
+ general conditions than what exact finite sample theory can accommodate.
 \end_layout
 
 \begin_layout Standard
-However, in reality we always have a finite sample, and in most cases it
- is difficult to increase the sample size for more accurate evaluation of
- the parameter of interest.
- In this sense, both the classical parametric approach and the asymptotic
- approach deviate from the reality, and it is difficult to judge which one
- is better.
- One may argue that the data size increases in the era of big data.
- However, the size of the model is also growing.
- The way I view the prevalence of asymptotic theory is its mathematical
- amenability.
- The required mathematical level to work with asymptotic theory, seemingly
+Nevertheless, we always have at hand a finite sample, and mostly it is difficult
+ to increase the sample size.
+ Asymptotic theory rarely answers 
+\begin_inset Quotes eld
+\end_inset
+
+how large is large
+\begin_inset Quotes erd
+\end_inset
+
+, and we must be cautious about the treacherous landscape of asymptopia.
+ In the era of big data, albeit the sheer size of data increases dramatically,
+ we build more sophisticated models to better capture heterogeneity in the
+ data.
+ Large sample is a relative notion to the complexity of the model and underlying
+ (in)dependence structure of the data.
+\end_layout
+
+\begin_layout Standard
+Both the classical parametric approach, which is based on hard-to-verify
+ parametric assumptions, and the asymptotic approach, which is based on
+ imagery infinite sequences, deviate from the reality.
+ Which approach is more constructive can only be judged in case by case.
+ The prevalence of asymptotic theory is its mathematical amenability and
+ generality.
+ The law of evolution elevates asymptotic theory to the throne of statistic
+ analysis of our time.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The required mathematical level to work with asymptotic theory, seemingly
  advance though, is lower than that for the finite sample theory.
  The underlying economics theory predicts that for substitute goods, if
  the price of one good is lowered, the demand increases.
  
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
