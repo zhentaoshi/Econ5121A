@@ -118,7 +118,7 @@ setcounter{chapter}{3}
 \end_layout
 
 \begin_layout Chapter
-Least Squares: Exact Distribution
+Least Squares: Finite Sample Theory
 \end_layout
 
 \begin_layout Section
@@ -253,13 +253,14 @@ divergence
 \emph default
 , defined as 
 \begin_inset Formula 
-\[
-D_{f}\left(\theta,\theta_{0}\right)=D\left(f_{z}\left(z_{i};\theta\right),f_{z}\left(z_{i};\theta_{0}\right)\right):=E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right].
-\]
+\begin{align*}
+D_{f}\left(\theta,\theta_{0}\right) & =D\left(f_{z}\left(z_{i};\theta\right),f_{z}\left(z_{i};\theta_{0}\right)\right):=E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right]\\
+ & =E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta_{0}\right)\right]-E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta\right)\right].
+\end{align*}
 
 \end_inset
 
-We say it is a 
+We call it a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -286,7 +287,7 @@ where
 \begin_inset Formula $\int f_{z}\left(z_{i};\theta\right)dz_{i}=1$
 \end_inset
 
- for any PDF.
+ for any pdf.
  The equality holds if and only if 
 \begin_inset Formula $f_{z}\left(z_{i};\theta\right)=f_{z}\left(z_{i};\theta_{0}\right)$
 \end_inset
@@ -311,6 +312,35 @@ where
  is the unique solution.
 \end_layout
 
+\begin_layout Standard
+In information theory, 
+\begin_inset Formula $-E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta_{0}\right)\right]$
+\end_inset
+
+ is the 
+\emph on
+entropy
+\emph default
+ of the continuous distribution of 
+\begin_inset Formula $f_{z}\left(z_{i};\theta_{0}\right)$
+\end_inset
+
+.
+ The Kullback-Leibler can be interpreted as the gap between 
+\begin_inset Formula $-E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta\right)\right]$
+\end_inset
+
+, which is a function of 
+\begin_inset Formula $\theta$
+\end_inset
+
+, and the entropy at the true value 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+, which is the maximal chaos a thermodynamic system can achieve.
+\end_layout
+
 \begin_layout Example
 Consider the Gaussian location model 
 \begin_inset Formula $z_{i}\sim N\left(\mu,1\right)$
@@ -321,7 +351,36 @@ Consider the Gaussian location model
 \end_inset
 
  is the unknown parameter to be estimated.
- The (averaged) log-likelihood function for 
+ The likelihood of observing 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ is 
+\begin_inset Formula $f_{z}\left(z_{i};\mu\right)=\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(z_{i}-\mu\right)^{2}\right)$
+\end_inset
+
+.
+ The likelihood of observing the sample 
+\begin_inset Formula $Z$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+f_{Z}\left(\mu;Z\right)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(x_{i}-\mu\right)^{2}\right)
+\]
+
+\end_inset
+
+ and the log-likelihood is 
+\begin_inset Formula 
+\[
+L_{n}=-\frac{n}{2}\log\left(2\pi\right)-\frac{1}{2}\sum_{i=1}^{n}\left(z_{i}-\mu\right)^{2}.
+\]
+
+\end_inset
+
+The (averaged) log-likelihood function for 
 \begin_inset Formula $n$
 \end_inset
 
@@ -333,7 +392,7 @@ Consider the Gaussian location model
 
 \end_inset
 
-Here we use the averaged log-likelihood 
+We work with the averaged log-likelihood 
 \begin_inset Formula $\ell_{n}$
 \end_inset
 
@@ -341,23 +400,13 @@ Here we use the averaged log-likelihood
 \begin_inset Formula $L_{n}$
 \end_inset
 
- in (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:raw_likelihood"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-), to make it directly comparable with its population counterpart 
+, to make it directly comparable with its population counterpart 
 \begin_inset Formula 
 \begin{align*}
-E\left[\ell_{n}\left(\mu\right)\right] & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(z_{i}-\mu\right)^{2}\right]\\
+E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right] & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(z_{i}-\mu\right)^{2}\right]\\
  & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(\left(z_{i}-\mu_{0}\right)+\left(\mu_{0}-\mu\right)\right)^{2}\right]\\
  & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(z_{i}-\mu_{0}\right)^{2}\right]-E\left[z_{i}-\mu_{0}\right]\left(\mu_{0}-\mu\right)-\frac{1}{2}\left(\mu_{0}-\mu\right)^{2}\\
- & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}-\frac{1}{2}\left(\mu_{0}-\mu\right)^{2}.
+ & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}-\frac{1}{2}\left(\mu-\mu_{0}\right)^{2}.
 \end{align*}
 
 \end_inset
@@ -371,7 +420,7 @@ Obviously,
 \end_inset
 
  while 
-\begin_inset Formula $E\left[\ell_{n}\left(\mu\right)\right]$
+\begin_inset Formula $E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]$
 \end_inset
 
  is maximized at 
@@ -379,6 +428,21 @@ Obviously,
 \end_inset
 
 .
+ The Kullback-Leibler distance in this example is 
+\begin_inset Formula 
+\begin{align*}
+D\left(\mu,\mu_{0}\right) & =E_{\mu_{0}}\left[\ell_{n}\left(\mu_{0}\right)\right]-E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]\\
+ & =-E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]-\mathrm{entropy}\left(\mu_{0}\right)\\
+ & =\frac{1}{2}\left(\mu-\mu_{0}\right)^{2},
+\end{align*}
+
+\end_inset
+
+ where 
+\begin_inset Formula $-E_{\mu_{0}}\left[\ell_{n}\left(\mu_{0}\right)\right]=\frac{1}{2}\left(\log\left(2\pi\right)+1\right)$
+\end_inset
+
+ is the entropy of the normal distribution with unit variance.
 \end_layout
 
 \begin_layout Example
@@ -397,13 +461,47 @@ We use the following code to demonstrate the population log-likelihood
 .
 \end_layout
 
+\begin_layout Example
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<graph-size, echo=FALSE>>= 
+\end_layout
+
+\begin_layout Plain Layout
+
+my_pdf = function(file, width, height) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  pdf(file, width = 5, height = 5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<<>>=
+<<mle, dev='my_pdf', fig.ext='pdf'>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -502,6 +600,7 @@ for (rr in 1:3){
 
 \begin_layout Plain Layout
 
+# draw the graph
 \end_layout
 
 \begin_layout Plain Layout
@@ -527,6 +626,11 @@ matplot(x = mu_base, y = cbind( L(mu_base), lnz),
 \begin_layout Plain Layout
 
 abline(v = mu0, lty = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(h = L(mu0), lty = 3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -697,11 +801,11 @@ The parameters of interest
 \end_inset
 
 We focus on the conditional likelihood.
- To facilitate derivation, we work with the conditional log-likelihood function
- 
+ To facilitate derivation, we work with the (averaged) conditional log-likelihoo
+d function 
 \begin_inset Formula 
 \[
-L\left(\beta,\gamma\right)=-\frac{n}{2}\log2\pi-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2},
+\ell_{n}\left(\beta,\gamma\right)=-\frac{1}{2}\log2\pi-\frac{1}{2}\log\gamma-\frac{1}{2n\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2},
 \]
 
 \end_inset
@@ -718,24 +822,29 @@ for
  can be found using the FOC:
 \begin_inset Formula 
 \[
-\frac{\partial}{\partial\beta}L\left(\beta,\gamma\right)=\frac{1}{2\gamma}\sum_{i=1}^{n}2x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=\frac{1}{\gamma}\sum_{i=1}^{n}x_{i}\left(y_{i}-x_{i}'\beta\right)^{2}=0.
+\frac{\partial}{\partial\beta}\ell_{n}\left(\beta,\gamma\right)=\frac{1}{n\gamma}\sum_{i=1}^{n}x_{i}\left(y_{i}-x_{i}'\beta\right)=0.
 \]
 
 \end_inset
 
 Rearranging the above equation in matrix form 
-\begin_inset Formula $X'Y=X'X\widehat{\beta}_{MLE}$
+\begin_inset Formula $X'X\widehat{\beta}_{MLE}=X'Y$
 \end_inset
 
 , we explicitly solve 
 \begin_inset Formula 
 \[
-\widehat{\beta}_{MLE}=(X'X)^{-1}X'Y.
+\widehat{\beta}_{MLE}=(X'X)^{-1}X'Y
 \]
 
 \end_inset
 
-The maximum likelihood estimator (MLE) coincides with the OLS estimator.
+when 
+\begin_inset Formula $X'X$
+\end_inset
+
+ is invertible.
+ The maximum likelihood estimator (MLE) coincides with the OLS estimator.
  Similarly, the other FOC with respect to 
 \begin_inset Formula $\gamma$
 \end_inset
@@ -745,17 +854,6 @@ The maximum likelihood estimator (MLE) coincides with the OLS estimator.
 \end_inset
 
 .
- 
-\begin_inset Note Comment
-status open
-
-\begin_layout Plain Layout
-revise up here Sep 23, 2020.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -1173,41 +1271,7 @@ status open
 
 \begin_layout Plain Layout
 
-<<custom-dev, echo=FALSE>>= 
-\end_layout
-
-\begin_layout Plain Layout
-
-my_pdf = function(file, width, height) {
-\end_layout
-
-\begin_layout Plain Layout
-
-  pdf(file, width = 4, height = 4) 
-\end_layout
-
-\begin_layout Plain Layout
-
-} 
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<dev-demo, dev='my_pdf', fig.ext='pdf'>>=
+<<hsk, dev='my_pdf', fig.ext='pdf'>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1217,7 +1281,7 @@ n = 100; X = rnorm(n)
 
 \begin_layout Plain Layout
 
-e1 = rnorm(n); 
+e1 = rnorm(n)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1243,7 +1307,7 @@ e
 
 \begin_layout Plain Layout
 
-e2 = X * rnorm(n); 
+e2 = X * rnorm(n)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1276,7 +1340,7 @@ It is important to notice that independently and identically distributed
 \end_inset
 
  does not imply homoskedasticity.
- Homoskedasticity or heterskdasticity is about the relationship between
+ Homoskedasticity or heterskedasticity is about the relationship between
  
 \begin_inset Formula $\left(x_{i},e_{i}=y_{i}-\beta x\right)$
 \end_inset

@@ -47,7 +47,17 @@ knitr
 \index_command default
 \paperfontsize 11
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_author "Zhentao Shi"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry true
 \use_package amsmath 2
@@ -100,7 +110,7 @@ knitr
 \begin_body
 
 \begin_layout Title
-A Primer of Econometrics
+Lecture Notes on Econometrics
 \end_layout
 
 \begin_layout Author
@@ -238,6 +248,16 @@ filename "lecture7.lyx"
 \begin_inset CommandInset include
 LatexCommand input
 filename "lecture8.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "lecture9.lyx"
 
 \end_inset
 
