@@ -243,18 +243,15 @@ A more formal justification requires an explicitly defined distance.
 \end_inset
 
 .
- To measure their difference, we introduce the 
+ To measure their difference, we introduce 
 \emph on
-Kullback-Leibler distance
+Kullback-Leibler divergence
 \emph default
-, or Kullback-Leibler 
-\emph on
-divergence
-\emph default
-, defined as 
+, or Kullback-Leibler distance, defined as the logarithms of the expected
+ likelihood ratio
 \begin_inset Formula 
 \begin{align*}
-D_{f}\left(\theta,\theta_{0}\right) & =D\left(f_{z}\left(z_{i};\theta\right),f_{z}\left(z_{i};\theta_{0}\right)\right):=E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right]\\
+D_{f}\left(\theta_{0}\Vert\theta\right) & =D\left(f_{z}\left(z_{i};\theta_{0}\right)\Vert f_{z}\left(z_{i};\theta\right)\right):=E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right]\\
  & =E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta_{0}\right)\right]-E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta\right)\right].
 \end{align*}
 
@@ -268,12 +265,29 @@ distance
 \begin_inset Quotes erd
 \end_inset
 
- because it is non-negative.
- To see this, notice that 
+ because it is non-negative, although it is not symmetric 
+\begin_inset Formula $D_{f}\left(\theta_{1},\theta_{2}\right)\neq D_{f}\left(\theta_{2},\theta_{1}\right)$
+\end_inset
+
+ and it does not satisfy the triangle inequality.
+ To see 
+\begin_inset Formula $D_{f}\left(\theta,\theta_{0}\right)$
+\end_inset
+
+ is non-negative, notice that 
 \begin_inset Formula $-\log\left(\cdot\right)$
 \end_inset
 
  is strictly convex and then by Jensen's inequality
+\begin_inset CommandInset citation
+LatexCommand citet
+after "p.19"
+key "cover2006elements"
+literal "false"
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align*}
 E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right] & =E_{\theta_{0}}\left[-\log\frac{f_{z}\left(z_{i};\theta\right)}{f_{z}\left(z_{i};\theta_{0}\right)}\right]\geq-\log\left(E_{\theta_{0}}\left[\frac{f_{z}\left(z_{i};\theta\right)}{f_{z}\left(z_{i};\theta_{0}\right)}\right]\right)\\
@@ -326,19 +340,40 @@ entropy
 \end_inset
 
 .
- The Kullback-Leibler can be interpreted as the gap between 
-\begin_inset Formula $-E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta\right)\right]$
+ Entropy measures the uncertainty of a random variable; the larger is the
+ value, the more chaotic is the random variable.
+ The Kullback-Leibler is the 
+\emph on
+relative entropy
+\emph default
+ between the distribution 
+\begin_inset Formula $f_{z}\left(z_{i};\theta_{0}\right)$
 \end_inset
 
-, which is a function of 
-\begin_inset Formula $\theta$
+ and 
+\begin_inset Formula $f_{z}\left(z_{i};\theta\right)$
 \end_inset
 
-, and the entropy at the true value 
-\begin_inset Formula $\theta_{0}$
+.
+ It measures the inefficiency of assuming that the distribution is 
+\begin_inset Formula $f_{z}\left(z_{i};\theta\right)$
 \end_inset
 
-, which is the maximal chaos a thermodynamic system can achieve.
+ when the true distribution is indeed 
+\begin_inset Formula $f_{z}\left(z_{i};\theta_{0}\right)$
+\end_inset
+
+.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+after "p.19"
+key "cover2006elements"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Example
@@ -428,13 +463,11 @@ Obviously,
 \end_inset
 
 .
- The Kullback-Leibler distance in this example is 
+ The Kullback-Leibler divergence in this example is 
 \begin_inset Formula 
-\begin{align*}
-D\left(\mu,\mu_{0}\right) & =E_{\mu_{0}}\left[\ell_{n}\left(\mu_{0}\right)\right]-E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]\\
- & =-E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]-\mathrm{entropy}\left(\mu_{0}\right)\\
- & =\frac{1}{2}\left(\mu-\mu_{0}\right)^{2},
-\end{align*}
+\[
+D\left(\mu,\mu_{0}\right)=E_{\mu_{0}}\left[\ell_{n}\left(\mu_{0}\right)\right]-E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]=\frac{1}{2}\left(\mu-\mu_{0}\right)^{2},
+\]
 
 \end_inset
 
