@@ -435,10 +435,11 @@ We work with the averaged log-likelihood
 \begin_inset Formula $L_{n}$
 \end_inset
 
-, to make it directly comparable with its population counterpart 
+, to make it directly comparable with the expected log density 
 \begin_inset Formula 
 \begin{align*}
-E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right] & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(z_{i}-\mu\right)^{2}\right]\\
+E_{\mu_{0}}\left[f_{z}\left(z;\mu\right)\right] & =E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]\\
+ & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(z_{i}-\mu\right)^{2}\right]\\
  & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(\left(z_{i}-\mu_{0}\right)+\left(\mu_{0}-\mu\right)\right)^{2}\right]\\
  & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(z_{i}-\mu_{0}\right)^{2}\right]-E\left[z_{i}-\mu_{0}\right]\left(\mu_{0}-\mu\right)-\frac{1}{2}\left(\mu_{0}-\mu\right)^{2}\\
  & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}-\frac{1}{2}\left(\mu-\mu_{0}\right)^{2}.
@@ -446,7 +447,8 @@ E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right] & =-\frac{1}{2}\log\left(2\pi\r
 
 \end_inset
 
-Obviously, 
+where the first equality holds because of random sampling.
+ Obviously, 
 \begin_inset Formula $\ell_{n}\left(\mu\right)$
 \end_inset
 

@@ -771,7 +771,7 @@ sample.mean = function( n, distribution ){
 
 \begin_layout Plain Layout
 
-# get sample mean for a given distribution
+  # get sample mean for a given distribution
 \end_layout
 
 \begin_layout Plain Layout
@@ -810,37 +810,47 @@ LLN.plot = function(distribution){
 
 \begin_layout Plain Layout
 
-# draw the sample mean graph
+  # draw the sample mean graph
 \end_layout
 
 \begin_layout Plain Layout
 
-  ybar = rep(0, length(NN) )
+  ybar = matrix(0, length(NN), 3 )
 \end_layout
 
 \begin_layout Plain Layout
 
-  for ( i in 1:length(NN)){
+  for (rr in 1:3){
 \end_layout
 
 \begin_layout Plain Layout
 
-    n = NN[i]; ybar[i] = sample.mean(n, distribution)
+    for ( ii in 1:length(NN)){
 \end_layout
 
 \begin_layout Plain Layout
 
-  }  
+      n = NN[ii]; ybar[ii, rr] = sample.mean(n, distribution)
 \end_layout
 
 \begin_layout Plain Layout
 
-  plot(ybar, type = "l", col = "red", ylab = "mean", xlab = "", 
+    }  
 \end_layout
 
 \begin_layout Plain Layout
 
-  lwd = 2, main = distribution)
+  }
+\end_layout
+
+\begin_layout Plain Layout
+
+  matplot(ybar, type = "l", ylab = "mean", xlab = "", 
+\end_layout
+
+\begin_layout Plain Layout
+
+       lwd = 1, lty = 1, main = distribution)
 \end_layout
 
 \begin_layout Plain Layout
@@ -860,16 +870,12 @@ LLN.plot = function(distribution){
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
 # calculation
 \end_layout
 
 \begin_layout Plain Layout
 
-NN = 2^(1:20); set.seed(888); par(mfrow = c(3,1))
+NN = 2^(1:20); set.seed(2020-10-7); par(mfrow = c(3,1))
 \end_layout
 
 \begin_layout Plain Layout
