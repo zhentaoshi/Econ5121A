@@ -65,7 +65,7 @@ I encourage anyone, in particular students taking my class, to contribute or imp
 
 ### Lecture Hours
 
-Friday 8:30—11:15 am. [Zoom link](https://cuhk.zoom.us/j/9168284819).
+Friday 8:30—11:15 am. [Zoom link](https://cuhk.zoom.us/j/92063037640).
 
 The course will be taught online until further notice.
 
