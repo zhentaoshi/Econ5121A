@@ -121,6 +121,16 @@ setcounter{chapter}{3}
 Least Squares: Finite Sample Theory
 \end_layout
 
+\begin_layout Standard
+We continue with properties of OLS.
+ We will show that OLS coincides with the maximum likelihood estimator if
+ the error term follows a normal distribution.
+ We derive its finite-sample exact distribution which can be used for statistica
+l inference.
+ The Gauss-Markov theorem justifies the optimality of OLS under the classical
+ assumptions.
+\end_layout
+
 \begin_layout Section
 Maximum Likelihood
 \end_layout
@@ -190,7 +200,7 @@ In reality the sample
 \end_inset
 
  we can evaluate 
-\begin_inset Formula $L\left(\theta;Z\right)$
+\begin_inset Formula $L_{n}\left(\theta;Z\right)$
 \end_inset
 
 .
@@ -238,17 +248,17 @@ A more formal justification requires an explicitly defined distance.
 \begin_inset Formula $\theta\in\Theta$
 \end_inset
 
- produce 
+ produces 
 \begin_inset Formula $f_{z}\left(z_{i};\theta\right)$
 \end_inset
 
 .
- To measure their difference, we introduce 
+ To measure their difference, we introduce the 
 \emph on
 Kullback-Leibler divergence
 \emph default
-, or Kullback-Leibler distance, defined as the logarithms of the expected
- likelihood ratio
+, or the Kullback-Leibler distance, defined as the logarithms of the expected
+ log-likelihood ratio
 \begin_inset Formula 
 \begin{align*}
 D_{f}\left(\theta_{0}\Vert\theta\right) & =D\left(f_{z}\left(z_{i};\theta_{0}\right)\Vert f_{z}\left(z_{i};\theta\right)\right):=E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right]\\
@@ -265,13 +275,13 @@ distance
 \begin_inset Quotes erd
 \end_inset
 
- because it is non-negative, although it is not symmetric 
-\begin_inset Formula $D_{f}\left(\theta_{1},\theta_{2}\right)\neq D_{f}\left(\theta_{2},\theta_{1}\right)$
+ because it is non-negative, although it is not symmetric in that 
+\begin_inset Formula $D_{f}\left(\theta_{1}\Vert\theta_{2}\right)\neq D_{f}\left(\theta_{2}\vert\theta_{1}\right)$
 \end_inset
 
  and it does not satisfy the triangle inequality.
  To see 
-\begin_inset Formula $D_{f}\left(\theta,\theta_{0}\right)$
+\begin_inset Formula $D_{f}\left(\theta_{0}\Vert\theta\right)$
 \end_inset
 
  is non-negative, notice that 
@@ -279,15 +289,6 @@ distance
 \end_inset
 
  is strictly convex and then by Jensen's inequality
-\begin_inset CommandInset citation
-LatexCommand citet
-after "p.19"
-key "cover2006elements"
-literal "false"
-
-\end_inset
-
-
 \begin_inset Formula 
 \begin{align*}
 E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right] & =E_{\theta_{0}}\left[-\log\frac{f_{z}\left(z_{i};\theta\right)}{f_{z}\left(z_{i};\theta_{0}\right)}\right]\geq-\log\left(E_{\theta_{0}}\left[\frac{f_{z}\left(z_{i};\theta\right)}{f_{z}\left(z_{i};\theta_{0}\right)}\right]\right)\\
@@ -320,7 +321,7 @@ where
 \end_inset
 
  (identification), then 
-\begin_inset Formula $\theta_{0}=\arg\min_{\theta\in\Theta}D_{f}\left(\theta,\theta_{0}\right)$
+\begin_inset Formula $\theta_{0}=\arg\min_{\theta\in\Theta}D_{f}\left(\theta_{0}\Vert\theta\right)$
 \end_inset
 
  is the unique solution.
@@ -342,7 +343,7 @@ entropy
 .
  Entropy measures the uncertainty of a random variable; the larger is the
  value, the more chaotic is the random variable.
- The Kullback-Leibler is the 
+ The Kullback-Leibler distance is the 
 \emph on
 relative entropy
 \emph default
@@ -402,7 +403,7 @@ Consider the Gaussian location model
  is 
 \begin_inset Formula 
 \[
-f_{Z}\left(\mu;Z\right)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(x_{i}-\mu\right)^{2}\right)
+f_{Z}\left(Z;\mu\right)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(z_{i}-\mu\right)^{2}\right)
 \]
 
 \end_inset
@@ -410,12 +411,12 @@ f_{Z}\left(\mu;Z\right)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{
  and the log-likelihood is 
 \begin_inset Formula 
 \[
-L_{n}=-\frac{n}{2}\log\left(2\pi\right)-\frac{1}{2}\sum_{i=1}^{n}\left(z_{i}-\mu\right)^{2}.
+L_{n}\left(\mu;Z\right)=-\frac{n}{2}\log\left(2\pi\right)-\frac{1}{2}\sum_{i=1}^{n}\left(z_{i}-\mu\right)^{2}.
 \]
 
 \end_inset
 
-The (averaged) log-likelihood function for 
+The (averaged) log-likelihood function for the 
 \begin_inset Formula $n$
 \end_inset
 
@@ -439,9 +440,9 @@ We work with the averaged log-likelihood
 \begin_inset Formula 
 \begin{align*}
 E_{\mu_{0}}\left[f_{z}\left(z;\mu\right)\right] & =E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]\\
- & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(z_{i}-\mu\right)^{2}\right]\\
- & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(\left(z_{i}-\mu_{0}\right)+\left(\mu_{0}-\mu\right)\right)^{2}\right]\\
- & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E\left[\left(z_{i}-\mu_{0}\right)^{2}\right]-E\left[z_{i}-\mu_{0}\right]\left(\mu_{0}-\mu\right)-\frac{1}{2}\left(\mu_{0}-\mu\right)^{2}\\
+ & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E_{\mu_{0}}\left[\left(z_{i}-\mu\right)^{2}\right]\\
+ & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E_{\mu_{0}}\left[\left(\left(z_{i}-\mu_{0}\right)+\left(\mu_{0}-\mu\right)\right)^{2}\right]\\
+ & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E_{\mu_{0}}\left[\left(z_{i}-\mu_{0}\right)^{2}\right]-E_{\mu_{0}}\left[z_{i}-\mu_{0}\right]\left(\mu_{0}-\mu\right)-\frac{1}{2}\left(\mu_{0}-\mu\right)^{2}\\
  & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}-\frac{1}{2}\left(\mu-\mu_{0}\right)^{2}.
 \end{align*}
 
@@ -468,7 +469,7 @@ where the first equality holds because of random sampling.
  The Kullback-Leibler divergence in this example is 
 \begin_inset Formula 
 \[
-D\left(\mu,\mu_{0}\right)=E_{\mu_{0}}\left[\ell_{n}\left(\mu_{0}\right)\right]-E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]=\frac{1}{2}\left(\mu-\mu_{0}\right)^{2},
+D\left(\mu_{0}\Vert\mu\right)=E_{\mu_{0}}\left[\ell_{n}\left(\mu_{0}\right)\right]-E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]=\frac{1}{2}\left(\mu-\mu_{0}\right)^{2},
 \]
 
 \end_inset
@@ -489,11 +490,11 @@ We use the following code to demonstrate the population log-likelihood
 \begin_inset Formula $\mu_{0}=2$
 \end_inset
 
- and the 3 sample realizations when 
+ (solid line) and the 3 sample realizations when 
 \begin_inset Formula $n=4$
 \end_inset
 
-.
+ (dashed lines).
 \end_layout
 
 \begin_layout Example
@@ -716,15 +717,6 @@ Notation:
 \end_layout
 
 \begin_layout Standard
-We continue with properties of OLS.
- Noticing that OLS coincides with the maximum likelihood estimator if the
- error term follows a normal distribution, we derive its finite-sample exact
- distribution which can be used for statistical inference.
- The Gauss-Markov theorem justifies the optimality of OLS under the classical
- assumptions.
-\end_layout
-
-\begin_layout Standard
 In this chapter we employ the classical statistical framework under restrictive
  distributional assumption 
 \begin_inset Formula 
@@ -794,7 +786,7 @@ f_{yx}\left(y_{i},x_{i}\right) & =f_{y|x}\left(y_{i}|x_{i}\right)f_{x}\left(x\ri
 \begin_inset Formula $x$
 \end_inset
 
-, and the second equality holds under the assumption (
+, and the second equality holds under (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:normal_yx"
@@ -805,7 +797,7 @@ noprefix "false"
 \end_inset
 
 ).
- The likelihood a random sample 
+ The likelihood of the random sample 
 \begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
 \end_inset
 
@@ -827,7 +819,11 @@ The parameters of interest
 \begin_inset Formula $\prod_{i=1}^{n}f_{x}\left(x\right)$
 \end_inset
 
- for they appear only in the conditional likelihood 
+ for they appear only in the 
+\emph on
+conditional likelihood 
+\emph default
+
 \begin_inset Formula 
 \[
 \prod_{i=1}^{n}f_{y|x}\left(y_{i}|x_{i}\right)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}'\beta\right)^{2}\right).
@@ -856,21 +852,28 @@ for
 
  can be found using the FOC:
 \begin_inset Formula 
-\[
-\frac{\partial}{\partial\beta}\ell_{n}\left(\beta,\gamma\right)=\frac{1}{n\gamma}\sum_{i=1}^{n}x_{i}\left(y_{i}-x_{i}'\beta\right)=0.
-\]
+\begin{align*}
+\frac{\partial}{\partial\beta}\ell_{n}\left(\beta,\gamma\right) & =\frac{1}{n\gamma}\sum_{i=1}^{n}x_{i}\left(y_{i}-x_{i}'\beta\right)=0\\
+\frac{\partial}{\partial\gamma}\ell_{n}\left(\beta,\gamma\right) & =-\frac{1}{2\gamma}+\frac{1}{2n\gamma^{2}}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.
+\end{align*}
 
 \end_inset
 
-Rearranging the above equation in matrix form 
-\begin_inset Formula $X'X\widehat{\beta}_{MLE}=X'Y$
-\end_inset
-
-, we explicitly solve 
+Rearranging the above equations in matrix form: 
 \begin_inset Formula 
-\[
-\widehat{\beta}_{MLE}=(X'X)^{-1}X'Y
-\]
+\begin{align*}
+X'X\beta & =X'Y\\
+\gamma & =\frac{1}{n}\left(Y-X\beta\right)'\left(Y-X\beta\right).
+\end{align*}
+
+\end_inset
+
+We solve
+\begin_inset Formula 
+\begin{align*}
+\widehat{\beta}_{MLE} & =(X'X)^{-1}X'Y\\
+\widehat{\gamma}_{\mathrm{MLE}} & =\frac{1}{n}\left(Y-X\widehat{\beta}_{MLE}\right)'\left(Y-X\widehat{\beta}_{MLE}\right)=\widehat{e}'\widehat{e}/n
+\end{align*}
 
 \end_inset
 
@@ -879,16 +882,15 @@ when
 \end_inset
 
  is invertible.
- The maximum likelihood estimator (MLE) coincides with the OLS estimator.
- Similarly, the other FOC with respect to 
-\begin_inset Formula $\gamma$
+ The MLE of the slope coefficient 
+\begin_inset Formula $\widehat{\beta}_{MLE}$
 \end_inset
 
- gives 
-\begin_inset Formula $\widehat{\gamma}_{\mathrm{MLE}}=\widehat{e}'\widehat{e}/n$
+ coincides with the OLS estimator, and 
+\begin_inset Formula $\widehat{e}$
 \end_inset
 
-.
+ is exactly the OLS residual.
 \end_layout
 
 \begin_layout Section
@@ -1182,7 +1184,11 @@ E\left[\widehat{\beta}|X\right] & =E\left[\left(X'X\right)^{-1}XY|X\right]=E\lef
 
 \end_inset
 
-Unbiasedness does not rely on homoskedasticity.
+By the law of iterated expectations, the unconditional expectation 
+\begin_inset Formula $E\left[\widehat{\beta}\right]=E\left[E\left[\widehat{\beta}|X\right]\right]=\beta.$
+\end_inset
+
+ Unbiasedness does not rely on homoskedasticity.
 \end_layout
 
 \begin_layout Itemize
@@ -1198,12 +1204,11 @@ Variance:
 
 \end_inset
 
-where the second equality holds as 
-\begin_inset Formula $E\left[\widehat{\beta}\right]=E\left[E\left[\widehat{\beta}|X\right]\right]=\beta$
-\end_inset
+where the second equality holds as
+\end_layout
 
-.
- Under the assumption of homoskedasticity, it can be simplified as
+\begin_layout Itemize
+Under the assumption of homoskedasticity, it can be simplified as
 \begin_inset Formula 
 \[
 \begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}=\sigma^{2}\left(X'X\right)^{-1}.\end{aligned}
@@ -1375,12 +1380,12 @@ It is important to notice that independently and identically distributed
 \end_inset
 
  does not imply homoskedasticity.
- Homoskedasticity or heterskedasticity is about the relationship between
+ Homoskedasticity or heteroskedasticity is about the relationship between
  
 \begin_inset Formula $\left(x_{i},e_{i}=y_{i}-\beta x\right)$
 \end_inset
 
-, whereas iid is about the relationship between 
+ within an observation, whereas iid is about the relationship between 
 \begin_inset Formula $\left(y_{i},x_{i}\right)$
 \end_inset
 
@@ -1392,7 +1397,7 @@ It is important to notice that independently and identically distributed
 \begin_inset Formula $i\neq j$
 \end_inset
 
-.
+ across observations.
 \end_layout
 
 \begin_layout Section
@@ -1430,9 +1435,9 @@ We have shown that OLS is unbiased in that
 
 .
  We cannot say OLS is better than those other unbiased estimators because
- they are equally good in this aspect.
- Thus, we move to the second order property of variance: an estimator is
- better if its variance is smaller.
+ they are all unbiased — they are equally good at this aspect.
+ We move to the second order property of variance: an estimator is better
+ if its variance is smaller.
 \end_layout
 
 \begin_layout Fact
@@ -1593,9 +1598,7 @@ Summary
 \end_layout
 
 \begin_layout Standard
-The linear algebraic properties holds in finite sample no matter the data
- are taken as fixed numbers or random variables.
- The exact distribution under the normality assumption of the error term
+The exact distribution under the normality assumption of the error term
  is the classical statistical results.
  The Gauss Markov theorem holds under two crucial assumptions: linear CEF
  and homoskedasticity.
@@ -1634,7 +1637,7 @@ literal "false"
 
 \end_inset
 
- offers a comprehensive treatment of exact small sample theory in econometrics.
+ offered a comprehensive treatment of exact small sample theory in econometrics.
  After that, theoretical studies in econometrics swiftly shifted to large
  sample theory, which we will introduce in the next chapter.
 \end_layout
@@ -2210,7 +2213,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Oct 6.}
+ Oct 8.}
 \end_layout
 
 \end_inset
