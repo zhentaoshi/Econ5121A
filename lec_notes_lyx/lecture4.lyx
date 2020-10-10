@@ -439,7 +439,7 @@ We work with the averaged log-likelihood
 , to make it directly comparable with the expected log density 
 \begin_inset Formula 
 \begin{align*}
-E_{\mu_{0}}\left[f_{z}\left(z;\mu\right)\right] & =E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]\\
+E_{\mu_{0}}\left[\log f_{z}\left(z;\mu\right)\right] & =E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]\\
  & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E_{\mu_{0}}\left[\left(z_{i}-\mu\right)^{2}\right]\\
  & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E_{\mu_{0}}\left[\left(\left(z_{i}-\mu_{0}\right)+\left(\mu_{0}-\mu\right)\right)^{2}\right]\\
  & =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E_{\mu_{0}}\left[\left(z_{i}-\mu_{0}\right)^{2}\right]-E_{\mu_{0}}\left[z_{i}-\mu_{0}\right]\left(\mu_{0}-\mu\right)-\frac{1}{2}\left(\mu_{0}-\mu\right)^{2}\\
@@ -854,7 +854,7 @@ for
 \begin_inset Formula 
 \begin{align*}
 \frac{\partial}{\partial\beta}\ell_{n}\left(\beta,\gamma\right) & =\frac{1}{n\gamma}\sum_{i=1}^{n}x_{i}\left(y_{i}-x_{i}'\beta\right)=0\\
-\frac{\partial}{\partial\gamma}\ell_{n}\left(\beta,\gamma\right) & =-\frac{1}{2\gamma}+\frac{1}{2n\gamma^{2}}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}.
+\frac{\partial}{\partial\gamma}\ell_{n}\left(\beta,\gamma\right) & =-\frac{1}{2\gamma}+\frac{1}{2n\gamma^{2}}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2}=0.
 \end{align*}
 
 \end_inset
@@ -1012,8 +1012,8 @@ and its conditional distribution can be written as
 \begin_inset Formula 
 \begin{align*}
 \widehat{\beta}|X & =\beta+\left(X'X\right)^{-1}X'e|X\\
- & \sim\beta+\left(X'X\right)^{-1}X'\cdot N\left(0_{n},\sigma^{2}\cdot I_{n}\right)\\
- & \sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)\sim N\left(\beta,\sigma^{2}\left(X'X\right)^{-1}\right)
+ & \sim\beta+\left(X'X\right)^{-1}X'\cdot N\left(0_{n},\gamma I_{n}\right)\\
+ & \sim N\left(\beta,\gamma\left(X'X\right)^{-1}X'X\left(X'X\right)^{-1}\right)\sim N\left(\beta,\gamma\left(X'X\right)^{-1}\right)
 \end{align*}
 
 \end_inset
@@ -1036,7 +1036,7 @@ noprefix "false"
 -th element of the vector coefficient
 \begin_inset Formula 
 \[
-\widehat{\beta}_{k}|X=\eta_{k}'\widehat{\beta}|X\sim N\left(\beta_{k},\sigma^{2}\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\sigma^{2}\left(X'X\right)_{kk}^{-1}\right),
+\widehat{\beta}_{k}|X=\eta_{k}'\widehat{\beta}|X\sim N\left(\beta_{k},\gamma\eta_{k}'\left(X'X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\gamma\left[\left(X'X\right)^{-1}\right]_{kk}\right),
 \]
 
 \end_inset
@@ -1066,30 +1066,146 @@ s^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)=e'M_{X}e/\left(n-K\right)
 \end_inset
 
 is an unbiased estimator of 
-\begin_inset Formula $\sigma^{2}$
+\begin_inset Formula $\gamma$
 \end_inset
 
 .
- Consider the 
-\begin_inset Formula $t$
-\end_inset
-
--statistic
+ (Because 
 \begin_inset Formula 
 \begin{align*}
-T_{k} & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}=\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\cdot\frac{\sqrt{\sigma^{2}}}{\sqrt{s^{2}}}\\
- & =\frac{\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}}.
+E\left[s^{2}|X\right] & =\frac{1}{n-K}E\left[e'M_{X}e|X\right]=\frac{1}{n-K}\mathrm{trace}\left(E\left[e'M_{X}e|X\right]\right)\\
+ & =\frac{1}{n-K}\mathrm{trace}\left(E\left[M_{X}ee'|X\right]\right)=\frac{1}{n-K}\mathrm{trace}\left(M_{X}E\left[ee'|X\right]\right)\\
+ & =\frac{1}{n-K}\mathrm{trace}\left(M_{X}\gamma I_{n}\right)=\frac{\gamma}{n-K}\mathrm{trace}\left(M_{X}\right)=\gamma
 \end{align*}
 
 \end_inset
 
-The numerator follows a standard normal, and the denominator follows 
-\begin_inset Formula $\frac{1}{n-K}\chi^{2}\left(n-K\right)$
+where we use the property of trace 
+\begin_inset Formula $\mathrm{trace}\left(AB\right)=\mathrm{trace}\left(BA\right)$
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Standard
+Under the null hypothesis 
+\begin_inset Formula $H_{0}:\beta_{k}=\beta_{k}^{*}$
+\end_inset
+
+, where 
+\begin_inset Formula $\beta_{k}^{*}$
+\end_inset
+
+ is the hypothesized value we want to test.
+ We can construct a 
+\begin_inset Formula $t$
+\end_inset
+
+-statistic 
+\begin_inset Formula 
+\[
+T_{k}=\frac{\widehat{\beta}_{k}-\beta_{k}^{*}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}},
+\]
+
+\end_inset
+
+which is 
+\emph on
+infeasible
+\emph default
+ is that sense that it can be directly computed from the data because there
+ is no unknown object in this statistic.
+ When the hypothesis is true, 
+\begin_inset Formula $\beta_{k}=\beta_{k}^{*}$
+\end_inset
+
+ and thus 
+\begin_inset Formula 
+\begin{align}
+T_{k} & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\nonumber \\
+ & =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}\cdot\frac{\sqrt{\sigma^{2}}}{\sqrt{s^{2}}}\nonumber \\
+ & =\frac{\left(\widehat{\beta}_{k}-\beta_{0,k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}},\label{eq:t-stat}
+\end{align}
+
+\end_inset
+
+where we introduce the population quantity 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ into the second equality to help derive the distribution of the numerator
+ and the denominator of the last expression.
+ The numerator 
+\begin_inset Formula $\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}\sim N\left(0,1\right)$
+\end_inset
+
+, and the denominator 
+\begin_inset Formula $\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}$
+\end_inset
+
+ follows 
+\begin_inset Formula $\sqrt{\frac{1}{n-K}\chi^{2}\left(n-K\right)}$
 \end_inset
 
 .
- Moreover, the numerator and the denominator are statistically independent
- (See Section 
+ Moreover, because 
+\begin_inset Formula 
+\begin{align*}
+\begin{bmatrix}\widehat{\beta}-\beta\\
+\widehat{e}
+\end{bmatrix} & =\begin{bmatrix}\left(X'X\right)^{-1}X'e\\
+M_{X}e
+\end{bmatrix}=\begin{bmatrix}\left(X'X\right)^{-1}X'\\
+M_{X}
+\end{bmatrix}e\\
+ & \sim\begin{bmatrix}\left(X'X\right)^{-1}X'\\
+M_{X}
+\end{bmatrix}\cdot N\left(0,\gamma I_{n}\right)\sim N\left(0,\gamma\begin{bmatrix}\left(X'X\right)^{-1} & 0\\
+0 & M_{X}
+\end{bmatrix}\right)
+\end{align*}
+
+\end_inset
+
+are jointly normal with zero off-diagonal blocks, 
+\begin_inset Formula $\left(\widehat{\beta}-\beta\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\widehat{e}$
+\end_inset
+
+ are statistically independent.
+ (This claim is true, although the covariance matrix of the 
+\begin_inset Formula $\widehat{e}$
+\end_inset
+
+ is singular.) Given that 
+\begin_inset Formula $X$
+\end_inset
+
+ is viewed as if non-random, the numerator and the denominator of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:t-stat"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) are statistically independent as well is a function since the former is
+ a function of 
+\begin_inset Formula $\left(\widehat{\beta}-\beta\right)$
+\end_inset
+
+ and latter is a function of 
+\begin_inset Formula $\widehat{e}$
+\end_inset
+
+.
+ (Alternatively, the statistically independent can be verified by Basu's
+ theorem, See Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Basu's-Theorem"
@@ -1099,8 +1215,7 @@ noprefix "false"
 
 \end_inset
 
-).
- As a result, we conclude 
+.) As a result, we conclude 
 \begin_inset Formula $T_{k}\sim t\left(n-K\right)$
 \end_inset
 
@@ -1211,7 +1326,10 @@ where the second equality holds as
 Under the assumption of homoskedasticity, it can be simplified as
 \begin_inset Formula 
 \[
-\begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}=\sigma^{2}\left(X'X\right)^{-1}.\end{aligned}
+\begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}\\
+ & =\sigma^{2}\left(X'X\right)^{-1}X'I_{n}X\left(X'X\right)^{-1}\\
+ & =\sigma^{2}\left(X'X\right)^{-1}.
+\end{aligned}
 \]
 
 \end_inset
@@ -1241,16 +1359,16 @@ Under the assumption of homoskedasticity, it can be simplified as
 \end_inset
 
  and 
-\begin_inset Formula $E\left[u_{i}^{2}\right]=\sigma^{2}$
+\begin_inset Formula $E\left[u_{i}^{2}\right]=\sigma_{u}^{2}$
 \end_inset
 
 .
  Then 
-\begin_inset Formula $E\left[e_{i}|x_{i}\right]=0$
+\begin_inset Formula $E\left[e_{i}|x_{i}\right]=E\left[x_{i}u_{i}|x_{i}\right]=x_{i}E\left[u_{i}|x_{i}\right]=0$
 \end_inset
 
  but 
-\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=\sigma^{2}x_{i}^{2}$
+\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=E\left[x_{i}^{2}u_{i}^{2}|x_{i}\right]=x_{i}^{2}E\left[u_{i}^{2}|x_{i}\right]=\sigma_{u}^{2}x_{i}^{2}$
 \end_inset
 
  is a function of 
@@ -1321,12 +1439,12 @@ n = 100; X = rnorm(n)
 
 \begin_layout Plain Layout
 
-e1 = rnorm(n)
+u = rnorm(n)
 \end_layout
 
 \begin_layout Plain Layout
 
-plot( y = e1, x = X, col = 
+plot( y = u, x = X, col = 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1347,12 +1465,12 @@ e
 
 \begin_layout Plain Layout
 
-e2 = X * rnorm(n)
+e = X * rnorm(n)
 \end_layout
 
 \begin_layout Plain Layout
 
-points( y = e2, x = X, col = 
+points( y = e, x = X, col = 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1697,7 +1815,12 @@ f_{y}\left(y\right)=\left(2\pi\right)^{-n/2}\left(\mathrm{det}\left(\Sigma\right
 
 \end_inset
 
- and the moment generating function is
+where 
+\begin_inset Formula $\mathrm{det}\left(\cdot\right)$
+\end_inset
+
+ is the determinant of a matrix.
+ The moment generating function is
 \begin_inset Formula 
 \[
 M_{y}\left(t\right)=\exp\left(t'\mu+\frac{1}{2}t'\Sigma t\right).
@@ -1833,7 +1956,7 @@ This result is very convenient if we are interested in some component if
 \end_inset
 
 ; (iii) 
-\begin_inset Formula $e_{i}\sim N\left(0,\sigma^{2}\right)$
+\begin_inset Formula $e_{i}\sim N\left(0,\gamma\right)$
 \end_inset
 
  is
@@ -1851,7 +1974,7 @@ and the finite sample exact distribution of
  is 
 \begin_inset Formula 
 \[
-\left(\widehat{\beta}-\beta\right)|X\sim N\left(0,\sigma^{2}\left(X'X\right)^{-1}\right)
+\left(\widehat{\beta}-\beta\right)|X\sim N\left(0,\gamma\left(X'X\right)^{-1}\right)
 \]
 
 \end_inset
@@ -1877,13 +2000,13 @@ noprefix "false"
 ,
 \begin_inset Formula 
 \[
-\left(\widehat{\beta}_{k}-\beta_{k}\right)/\left(X'X\right)_{kk}^{-1}\sim N\left(0,\sigma^{2}\right)
+\left(\widehat{\beta}_{k}-\beta_{k}\right)/\left(X'X\right)_{kk}^{-1}\sim N\left(0,\gamma\right)
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\left(X'X\right)_{kk}^{-1}$
+\begin_inset Formula $\left[\left(X'X\right)^{-1}\right]_{kk}$
 \end_inset
 
  is the 
@@ -1980,7 +2103,7 @@ The last result, which is useful in linear regression, is that if
 \end_layout
 
 \begin_layout Subsection
-Basu's Theorem 
+Basu's Theorem* 
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Basu's-Theorem"
@@ -2003,7 +2126,11 @@ name "subsec:Basu's-Theorem"
 \begin_inset Formula $T\left(Y\right)$
 \end_inset
 
- is a sufficient statistic for a parameter 
+ is a
+\emph on
+ sufficient statistic
+\emph default
+ for a parameter 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -2016,79 +2143,8 @@ name "subsec:Basu's-Theorem"
 \end_inset
 
 .
- For example, for 
-\begin_inset Formula $y_{i}\sim N\left(\mu,\sigma^{2}\right)$
-\end_inset
-
- with known 
-\begin_inset Formula $\sigma^{2}$
-\end_inset
-
- and unknown 
-\begin_inset Formula $\mu$
-\end_inset
-
-, We verify that the sample mean 
-\begin_inset Formula $\bar{y}=n^{-1}\sum_{i=1}^{n}y_{i}$
-\end_inset
-
- is a sufficient statistic for 
-\begin_inset Formula $\mu$
-\end_inset
-
-.
- Notice that the joint density of 
-\begin_inset Formula $Y$
-\end_inset
-
- is 
-\begin_inset Formula 
-\begin{align*}
-f\left(Y\right) & =\left(2\pi\sigma\right)^{-n/2}\exp\left(-\frac{1}{2}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
- & =\left(2\pi\sigma^{2}\right)^{-n/2}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}\right)\exp\left(-\frac{n}{2\sigma^{2}}\left(\bar{y}-\mu\right)^{2}\right).
-\end{align*}
-
-\end_inset
-
-Because 
-\begin_inset Formula $\bar{y}\sim N\left(\mu,\sigma^{2}/n\right),$
-\end_inset
-
- the marginal density is 
-\begin_inset Formula 
-\[
-f\left(\bar{y}\right)=\left(2\pi\sigma^{2}/n\right)^{-1/2}\exp\left(-\frac{1}{2\sigma^{2}/n}\left(\bar{y}-\mu\right)^{2}\right).
-\]
-
-\end_inset
-
-The conditional density is 
-\begin_inset Formula 
-\[
-f\left(Y|\bar{y}\right)=\frac{f\left(Y\right)}{f\left(\bar{y}\right)}=\frac{\left(2\pi\sigma^{2}\right)^{-n/2}}{\left(2\pi\sigma^{2}/n\right)^{-1/2}}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}\right)
-\]
-
-\end_inset
-
-is independent of 
-\begin_inset Formula $\mu$
-\end_inset
-
-, and thus 
-\begin_inset Formula $\bar{y}$
-\end_inset
-
- is a sufficient statistic for 
-\begin_inset Formula $\mu$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-In the meantime, the sample standard deviation 
-\begin_inset Formula $s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)$
+ We say 
+\begin_inset Formula $S\left(Y\right)$
 \end_inset
 
  is an 
@@ -2096,18 +2152,14 @@ In the meantime, the sample standard deviation
 ancillary statistic
 \emph default
  for 
-\begin_inset Formula $\mu$
+\begin_inset Formula $\theta$
 \end_inset
 
- , because the distribution of 
-\begin_inset Formula $s^{2}$
+ if its distribution does not depend on 
+\begin_inset Formula $\theta$
 \end_inset
 
- does not depend on 
-\begin_inset Formula $\mu.$
-\end_inset
-
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -2120,21 +2172,12 @@ Basu's theorem
 complete
 \emph default
  sufficient statistic is statistically independent from any ancillary statistic.
- For a normal distribution with unknown mean and known variance, the sample
- mean 
-\begin_inset Formula $\bar{y}$
-\end_inset
-
- is the sufficient statistic and the sample standard deviation 
-\begin_inset Formula $s^{2}$
-\end_inset
-
- is an ancillary statistic.
- 
 \end_layout
 
 \begin_layout Standard
-A parametric distribution indexed by 
+Sufficient statistic is closely related to the exponential family in classical
+ mathematical statistics.
+ A parametric distribution indexed by 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -2175,7 +2218,128 @@ f\left(Y|\theta\right)=h\left(Y\right)g\left(\theta\right)\exp\left(\eta\left(\t
 \end_inset
 
 .
- The normal distribution with known 
+\end_layout
+
+\begin_layout Example
+(Univariate Gaussian location model.) For a normal distribution 
+\begin_inset Formula $y_{i}\sim N\left(\mu,\gamma\right)$
+\end_inset
+
+ with known 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and unknown 
+\begin_inset Formula $\mu$
+\end_inset
+
+, the sample mean 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ is the sufficient statistic and the sample standard deviation 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ is an ancillary statistic.
+\end_layout
+
+\begin_layout Example
+We first verify that the sample mean 
+\begin_inset Formula $\bar{y}=n^{-1}\sum_{i=1}^{n}y_{i}$
+\end_inset
+
+ is a sufficient statistic for 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ Notice that the joint density of 
+\begin_inset Formula $Y$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align*}
+f\left(Y\right) & =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
+ & =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(\left(y_{i}-\bar{y}\right)+\left(\bar{y}-\mu\right)\right)^{2}\right)\\
+ & =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(\left(y_{i}-\bar{y}\right)^{2}+2\left(y_{i}-\bar{y}\right)\left(\bar{y}-\mu\right)+\left(\bar{y}-\mu\right)^{2}\right)\right)\\
+ & =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}\right)\exp\left(-\frac{n}{2\gamma}\left(\bar{y}-\mu\right)^{2}\right).
+\end{align*}
+
+\end_inset
+
+Because 
+\begin_inset Formula $\bar{y}\sim N\left(\mu,\gamma/n\right),$
+\end_inset
+
+ the marginal density is 
+\begin_inset Formula 
+\[
+f\left(\bar{y}\right)=\left(2\pi\gamma/n\right)^{-1/2}\exp\left(-\frac{n}{2\gamma}\left(\bar{y}-\mu\right)^{2}\right).
+\]
+
+\end_inset
+
+For 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ is a statistic of 
+\begin_inset Formula $Y$
+\end_inset
+
+, we have 
+\begin_inset Formula $f\left(Y,\bar{y}\right)=f\left(Y\right)$
+\end_inset
+
+.
+ The conditional density is 
+\begin_inset Formula 
+\[
+f\left(Y|\bar{y}\right)=\frac{f\left(Y,\bar{y}\right)}{f\left(\bar{y}\right)}=\frac{f\left(Y\right)}{f\left(\bar{y}\right)}=\sqrt{n}\left(2\pi\gamma\right)^{-\frac{n-1}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}\right)
+\]
+
+\end_inset
+
+is independent of 
+\begin_inset Formula $\mu$
+\end_inset
+
+, and thus 
+\begin_inset Formula $\bar{y}$
+\end_inset
+
+ is a sufficient statistic for 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+ In the meantime, the sample standard deviation 
+\begin_inset Formula $s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)$
+\end_inset
+
+ is an 
+\emph on
+ancillary statistic
+\emph default
+ for 
+\begin_inset Formula $\mu$
+\end_inset
+
+ , because the distribution of 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $\mu.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The normal distribution with known 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
@@ -2186,8 +2350,8 @@ f\left(Y|\theta\right)=h\left(Y\right)g\left(\theta\right)\exp\left(\eta\left(\t
  belongs to the exponential family in view of the decomposition
 \begin_inset Formula 
 \begin{align*}
-f(Y) & =\left(\sqrt{2\pi}\sigma\right)^{-n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
- & =\underbrace{\exp\left(-\sum_{i=1}^{n}\frac{y_{i}^{2}}{2\sigma^{2}}\right)}_{h\left(Y\right)}\cdot\underbrace{\left(\sqrt{2\pi}\sigma\right)^{-n}\exp\left(-\frac{n}{2\sigma^{2}}\mu^{2}\right)}_{g\left(\theta\right)}\cdot\underbrace{\exp\left(\frac{\mu n}{2\sigma^{2}}\bar{y}\right)}_{\exp\left(\eta\left(\theta\right)'T\left(Y\right)\right)}.
+f(Y) & =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
+ & =\underbrace{\exp\left(-\sum_{i=1}^{n}\frac{y_{i}^{2}}{2\gamma}\right)}_{h\left(Y\right)}\cdot\underbrace{\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{n}{2\gamma}\mu^{2}\right)}_{g\left(\theta\right)}\cdot\underbrace{\exp\left(\frac{\mu}{2\gamma}n\bar{y}\right)}_{\exp\left(\eta\left(\theta\right)'T\left(Y\right)\right)}.
 \end{align*}
 
 \end_inset
@@ -2195,6 +2359,105 @@ f(Y) & =\left(\sqrt{2\pi}\sigma\right)^{-n}\exp\left(-\frac{1}{2\sigma^{2}}\sum_
 The exponential family is a class of distributions with the special functional
  form which is convenient for deriving sufficient statistics as well as
  other desirable properties in classical mathematical statistics.
+\end_layout
+
+\begin_layout Example
+(Conditional Gaussian location model.) If 
+\begin_inset Formula $y_{i}\sim N\left(x_{i}\beta,\gamma\right)$
+\end_inset
+
+ with known 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ and unknown 
+\begin_inset Formula $\beta$
+\end_inset
+
+, We verify that the sample mean 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is a sufficient statistic for 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ Notice that the joint density of 
+\begin_inset Formula $Y$
+\end_inset
+
+ given 
+\begin_inset Formula $X$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{align*}
+f\left(Y|X\right) & =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
+ & =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\left(Y-X\widehat{\beta}\right)'\left(Y-X\widehat{\beta}\right)\right)\exp\left(-\frac{1}{2\gamma}\left(\widehat{\beta}-\beta\right)'X'X\left(\widehat{\beta}-\beta\right)\right).
+\end{align*}
+
+\end_inset
+
+Because 
+\begin_inset Formula $\widehat{\beta}\sim N\left(\beta,\gamma\left(X'X\right)^{-1}\right),$
+\end_inset
+
+ the marginal density is 
+\begin_inset Formula 
+\[
+f\left(\widehat{\beta}|X\right)=\left(2\pi\gamma\right)^{-\frac{K}{2}}\left(\mathrm{det}\left(\left(X'X\right)^{-1}\right)\right)^{-1/2}\exp\left(-\frac{1}{2\gamma}\left(\widehat{\beta}-\beta\right)'X'X\left(\widehat{\beta}-\beta\right)\right).
+\]
+
+\end_inset
+
+The conditional density is 
+\begin_inset Formula 
+\begin{align*}
+f\left(Y|\widehat{\beta},X\right) & =\frac{f\left(Y|X\right)}{f\left(\widehat{\beta}|X\right)}\\
+ & =\left(2\pi\gamma\right)^{-\frac{n-K}{2}}\left(\mathrm{det}\left(\left(X'X\right)^{-1}\right)\right)^{-1/2}\exp\left(-\frac{1}{2\gamma}\left(Y-X\widehat{\beta}\right)'\left(Y-X\widehat{\beta}\right)\right)
+\end{align*}
+
+\end_inset
+
+is independent of 
+\begin_inset Formula $\beta$
+\end_inset
+
+, and thus 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is a sufficient statistic for 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In the meantime, the sample standard deviation 
+\begin_inset Formula $s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-x_{i}\widehat{\beta}\right)$
+\end_inset
+
+ is an 
+\emph on
+ancillary statistic
+\emph default
+ for 
+\begin_inset Formula $\beta$
+\end_inset
+
+ , because the distribution of 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ does not depend on 
+\begin_inset Formula $\beta.$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2213,7 +2476,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Oct 8.}
+ Oct 10.}
 \end_layout
 
 \end_inset
