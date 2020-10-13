@@ -128,12 +128,12 @@ Our universe, though enormous, consists of fewer than
  analysis.
  Asymptotic theory is the cornerstone of modern econometrics.
  It sheds lights on estimation and inference procedures under much more
- general conditions than what exact finite sample theory can accommodate.
+ general conditions than what are covered by exact finite sample theory.
 \end_layout
 
 \begin_layout Standard
 Nevertheless, we always have at hand a finite sample, and mostly it is difficult
- to increase the sample size.
+ to increase the sample size in reality.
  Asymptotic theory rarely answers 
 \begin_inset Quotes eld
 \end_inset
@@ -142,7 +142,11 @@ how large is large
 \begin_inset Quotes erd
 \end_inset
 
-, and we must be cautious about the treacherous landscape of asymptopia.
+, and we must be cautious about the treacherous landscape of 
+\emph on
+asymptopia
+\emph default
+.
  In the era of big data, albeit the sheer size of data increases dramatically,
  we build more sophisticated models to better capture heterogeneity in the
  data.
@@ -152,13 +156,13 @@ how large is large
 
 \begin_layout Standard
 Both the classical parametric approach, which is based on hard-to-verify
- parametric assumptions, and the asymptotic approach, which is based on
- imaginary infinite sequences, deviate from the reality.
- Which approach is more constructive can only be judged in case by case.
+ parametric assumptions, and the asymptotic approach, which is predicated
+ on imaginary infinite sequences, deviate from the reality.
+ Which approach is more constructive can only be judged case by case.
  The prevalence of asymptotic theory is its mathematical amenability and
  generality.
- The law of evolution elevates asymptotic theory to the throne of statistic
- analysis of our time.
+ The law of evolution elevates asymptotic theory to the throne of mathematical
+ statistics of our time.
 \begin_inset Note Note
 status collapsed
 
@@ -180,14 +184,21 @@ Modes of Convergence
 \end_layout
 
 \begin_layout Standard
-Before we talk about convergence of random variables, we first review what
- is convergence for a non-random sequence.
+We first review what is 
+\emph on
+convergence
+\emph default
+ for a non-random sequence, which you learned in high school.
  Let 
 \begin_inset Formula $z_{1},z_{2},\ldots$
 \end_inset
 
  be an infinite sequence of non-random variables.
- Convergence of this non-random sequence means that for any 
+ 
+\end_layout
+
+\begin_layout Definition
+Convergence of this non-random sequence means that for any 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
@@ -212,7 +223,7 @@ Before we talk about convergence of random variables, we first review what
 \begin_inset Formula $z_{n}$
 \end_inset
 
-, and write as 
+, and write 
 \begin_inset Formula $z_{n}\to z$
 \end_inset
 
@@ -237,57 +248,106 @@ convergence
 \emph default
  means.
  Several modes of convergence are often encountered.
-\end_layout
+ 
+\begin_inset Note Note
+status open
 
-\begin_layout Itemize
+\begin_layout Plain Layout
 Convergence almost surely* 
 \end_layout
 
-\begin_layout Itemize
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
 
 \emph on
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\emph off
 Convergence in probability
+\end_layout
+
+\end_inset
+
+
 \emph default
-: for any 
+ We say a sequence of random variables 
+\begin_inset Formula $\left(z_{n}\right)$
+\end_inset
+
+ converges in probability to 
+\begin_inset Formula $z$
+\end_inset
+
+, where 
+\begin_inset Formula $z$
+\end_inset
+
+ can be either a random variable or a non-random constant, if for any 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
-, as 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
- the probability 
-\begin_inset Formula $P\left(\omega:\left|z_{n}\left(\omega\right)-z\right|<\varepsilon\right)\to1$
+, the probability 
+\begin_inset Formula $P\left\{ \omega:\left|z_{n}\left(\omega\right)-z\right|<\varepsilon\right\} \to1$
 \end_inset
 
  (or equivalently 
-\begin_inset Formula $P\left(\omega:\left|z_{n}\left(\omega\right)-z\right|\geq\varepsilon\right)\to0$
+\begin_inset Formula $P\left\{ \omega:\left|z_{n}\left(\omega\right)-z\right|\geq\varepsilon\right\} \to0$
+\end_inset
+
+) as 
+\begin_inset Formula $n\to\infty$
 \end_inset
 
 .
- Denoted as 
+ We can write 
 \begin_inset Formula $z_{n}\stackrel{p}{\to}z$
 \end_inset
 
 .
- The limit 
-\begin_inset Formula $z$
-\end_inset
-
- can be either a random variable or a non-random constant.
  
 \end_layout
 
-\begin_layout Itemize
-
-\emph on
-Squared-mean convergence
-\emph default
-: 
-\begin_inset Formula $\lim_{n\to\infty}E\left[\left(z_{n}-z\right)^{2}\right]=0.$
+\begin_layout Standard
+\begin_inset Separator plain
 \end_inset
 
- Denoted as 
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Squared-mean convergence
+\end_layout
+
+\end_inset
+
+ A sequence of random variables 
+\begin_inset Formula $\left(z_{n}\right)$
+\end_inset
+
+ converges in squared-mean to 
+\begin_inset Formula $z$
+\end_inset
+
+, where 
+\begin_inset Formula $z$
+\end_inset
+
+ can be either a random variable or a non-random constant, if 
+\begin_inset Formula $E\left[\left(z_{n}-z\right)^{2}\right]\to0.$
+\end_inset
+
+ It is denoted as 
 \begin_inset Formula $z_{n}\stackrel{m.s.}{\to}z$
 \end_inset
 
@@ -295,7 +355,42 @@ Squared-mean convergence
  
 \end_layout
 
+\begin_layout Definition
+In these definitions 
+\begin_inset Formula $P\left\{ \omega:\left|z_{n}\left(\omega\right)-z\right|<\varepsilon\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[\left(z_{n}-z\right)^{2}\right]$
+\end_inset
+
+ are non-random quantities.
+ Thus we can talk about their convergence in the usual sense.
+ 
+\end_layout
+
+\begin_layout Standard
+Squared-mean convergence is stronger than convergence in probability.
+ That is, 
+\begin_inset Formula $z_{n}\stackrel{m.s.}{\to}z$
+\end_inset
+
+ implies 
+\begin_inset Formula $z_{n}\stackrel{p}{\to}z$
+\end_inset
+
+ but the converse is untrue.
+ Here is an example.
+\end_layout
+
 \begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "eg:in_p_in_ms"
+
+\end_inset
+
+
 \begin_inset Formula $(z_{n})$
 \end_inset
 
@@ -325,32 +420,43 @@ Squared-mean convergence
 \end_inset
 
 .
- For any 
+ To verify these claims, notice that for any 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
 , we have 
-\begin_inset Formula $P\left(\omega:\left|z_{n}\left(\omega\right)-0\right|<\varepsilon\right)=P\left(\omega:z_{n}\left(\omega\right)=0\right)=1-1/n\rightarrow1.$
+\begin_inset Formula $P\left(\omega:\left|z_{n}\left(\omega\right)-0\right|<\varepsilon\right)=P\left(\omega:z_{n}\left(\omega\right)=0\right)=1-1/n\rightarrow1$
 \end_inset
 
- Thus 
+ and thereby 
 \begin_inset Formula $z_{n}\stackrel{p}{\to}0$
 \end_inset
 
 .
  On the other hand, 
-\begin_inset Formula $E\left[\left(z_{n}-0\right)^{2}\right]=n\cdot1/n+0\cdot(1-1/n)=1\nrightarrow0.$
+\begin_inset Formula $E\left[\left(z_{n}-0\right)^{2}\right]=n\cdot1/n+0\cdot(1-1/n)=1\nrightarrow0,$
 \end_inset
 
- Thus 
+ so 
 \begin_inset Formula $z_{n}\stackrel{m.s.}{\nrightarrow}0$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Standard
-Convergence in probability does not count what happens on a subset in the
+\begin_layout Remark
+Example 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eg:in_p_in_ms"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ highlights the difference between the two modes of convergence.
+ Convergence in probability does not count what happens on a subset in the
  sample space of small probability.
  Squared-mean convergence deals with the average over the entire probability
  space.
@@ -358,41 +464,117 @@ Convergence in probability does not count what happens on a subset in the
  it may blow away the squared-mean convergence.
  On the contrary, such irregularity does not undermine convergence in probabilit
 y.
+ 
 \end_layout
 
 \begin_layout Standard
 Both convergence in probability and squared-mean convergence are about convergen
 ce of random variables to a target random variable or constant.
- Instead, convergence in distribution is the convergence of CDF, but the
- random variable.
+ Instead, 
+\emph on
+convergence in distribution
+\emph default
+ is about the convergence of CDF, but not the random variable.
+ Let 
+\begin_inset Formula $F_{z_{n}}\left(\cdot\right)$
+\end_inset
+
+ be the CDF of 
+\begin_inset Formula $z_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $F_{z}\left(\cdot\right)$
+\end_inset
+
+ be the CDF of 
+\begin_inset Formula $z$
+\end_inset
+
+.
+ 
 \end_layout
 
-\begin_layout Itemize
-Convergence in distribution: 
-\begin_inset Formula $x_{n}\stackrel{d}{\to}x$
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Convergence in distribution
+\end_layout
+
+\end_inset
+
+ We say a sequence of random variables 
+\begin_inset Formula $\left(z_{n}\right)$
+\end_inset
+
+ converges in distribution to a random variable 
+\begin_inset Formula $z$
 \end_inset
 
  if 
-\begin_inset Formula $F\left(x_{n}\right)\to F\left(x\right)$
+\begin_inset Formula $F_{z_{n}}\left(a\right)\to F_{z}\left(a\right)$
 \end_inset
 
- for each 
-\begin_inset Formula $x$
+ as 
+\begin_inset Formula $n\to\infty$
 \end_inset
 
- on which 
-\begin_inset Formula $F\left(x\right)$
+ at each point 
+\begin_inset Formula $a\in\mathbb{R}$
+\end_inset
+
+ such that where 
+\begin_inset Formula $F_{z}\left(\cdot\right)$
 \end_inset
 
  is continuous.
+ We write 
+\begin_inset Formula $z_{n}\stackrel{d}{\to}z$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+Convergence in distribution is the weakest mode.
+ If 
+\begin_inset Formula $z_{n}\stackrel{p}{\to}z$
+\end_inset
+
+, then 
+\begin_inset Formula $z_{n}\stackrel{d}{\to}z$
+\end_inset
+
+.
+ The converse is not true in general, unless 
+\begin_inset Formula $z$
+\end_inset
+
+ is a non-random constant (A constant 
+\begin_inset Formula $z$
+\end_inset
+
+ can be viewed as a degenerate random variables, with a corresponding 
+\begin_inset Quotes eld
+\end_inset
+
+CDF
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $F_{z}\left(\cdot\right)=1\left\{ \cdot\geq z\right\} $
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Example
-Convergence in distribution is about 
-\emph on
-pointwise
-\emph default
- convergence of CDF, not the random variables themselves.Let 
+Let 
 \begin_inset Formula $x\sim N\left(0,1\right)$
 \end_inset
 
@@ -449,11 +631,11 @@ pointwise
 \end_inset
 
  is a sequence of binary random variables: 
-\begin_inset Formula $z_{n}=\sqrt{n}$
+\begin_inset Formula $z_{n}=n$
 \end_inset
 
  with probability 
-\begin_inset Formula $1/n$
+\begin_inset Formula $1/\sqrt{n}$
 \end_inset
 
 , and 
@@ -461,7 +643,7 @@ pointwise
 \end_inset
 
  with probability 
-\begin_inset Formula $1-1/n$
+\begin_inset Formula $1-1/\sqrt{n}$
 \end_inset
 
 .
@@ -472,63 +654,97 @@ pointwise
  Because 
 \begin_inset Formula 
 \[
-F\left(z_{n}\right)=\begin{cases}
-0 & z_{n}<0\\
-1-1/n & 0\leq z_{n}\leq\sqrt{n}\\
-1 & z_{n}\geq\sqrt{n}
+F_{z_{n}}\left(a\right)=\begin{cases}
+0 & a<0\\
+1-1/\sqrt{n} & 0\leq a\leq n\\
+1 & a\geq n
 \end{cases}.
 \]
 
 \end_inset
 
  
-\begin_inset Formula $F\left(z\right)=\begin{cases}
-0 & z<0\\
-1 & z\geq0
+\begin_inset Formula $F_{z}\left(a\right)=\begin{cases}
+0, & a<0\\
+1 & a\geq0
 \end{cases}$
 \end_inset
 
 .
- It is obvious that 
-\begin_inset Formula $F\left(z_{n}\right)$
+ It is easy to verify that 
+\begin_inset Formula $F_{z_{n}}\left(a\right)$
 \end_inset
 
  converges to 
-\begin_inset Formula $F\left(z\right)$
+\begin_inset Formula $F_{z}\left(a\right)$
 \end_inset
 
- pointwise on the set where 
-\begin_inset Formula $F\left(z\right)$
+ 
+\emph on
+pointwisely
+\emph default
+ on each point in 
+\begin_inset Formula $\left(-\infty,0\right)\cup\left(0,+\infty\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $F_{z}\left(a\right)$
 \end_inset
 
  is continuous.
+ However, under the 
+\begin_inset Formula $L_{2}$
+\end_inset
+
+ distance with respect to the Lebesgue measure on the real line, the function
+ 
+\begin_inset Formula $F_{z_{n}}$
+\end_inset
+
+ does not converge to 
+\begin_inset Formula $F_{z}$
+\end_inset
+
+ as 
+\begin_inset Formula $\left\Vert F_{z_{n}}-F_{z}\right\Vert _{2}=\sqrt{\int_{-\infty}^{\infty}\left(F_{z_{n}}\left(a\right)-F_{z}\left(a\right)\right)^{2}da}=1$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-Squared-mean convergence implies convergence in probability.
- Convergence in probability implies convergence in distribution.
- Cramer-Wold device handles convergence in distribution for random vectors.
+So far we have talked about convergence of scalar variables.
+ These three modes of converges can be easily generalized to random vectors.
+ In particular, the 
+\emph on
+Cramer-Wold device
+\emph default
+ collapses a random vector into a random vector via arbitrary linear combination.
  We say a sequence of 
 \begin_inset Formula $K$
 \end_inset
 
 -dimensional random vectors 
-\begin_inset Formula $\left(X_{n}\right)$
+\begin_inset Formula $\left(z_{n}\right)$
 \end_inset
 
  converge in distribution to 
-\begin_inset Formula $X$
+\begin_inset Formula $z$
 \end_inset
 
  if 
-\begin_inset Formula $\lambda'X_{n}\stackrel{d}{\to}\lambda'X$
+\begin_inset Formula $\lambda'z_{n}\stackrel{d}{\to}\lambda'z$
 \end_inset
 
  for any 
 \begin_inset Formula $\lambda\in\mathbb{R}^{K}$
 \end_inset
 
-.
+ and 
+\begin_inset Formula $\left\Vert \lambda\right\Vert _{2}=1.$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -551,11 +767,19 @@ as
 \end_inset
 
 .
- Various versions of LLN work under different assumptions about the distribution
-s and dependence of the random variables.
+ Various versions of LLN work under different assumptions about some features
+ and/or dependence of the underlying random variables.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Subsection
+Cherbyshev LLN
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Chebyshev LLN: if 
 \begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
 \end_inset
@@ -579,8 +803,15 @@ observations,
  
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Chebyshev LLN utilizes 
+We illustrate development of LLN by the example of Chebyshev LLN, which
+ can be proved by elementary calculation.
+ It utilizes 
 \emph on
 Chebyshev inequality
 \emph default
@@ -592,24 +823,40 @@ Chebyshev inequality
 \emph on
 Chebyshev inequality
 \emph default
-: for any random variable 
+: If a random variable 
 \begin_inset Formula $x$
 \end_inset
 
- , we have 
+ has finite second moment 
+\begin_inset Formula $E\left[x^{2}\right]<\infty$
+\end_inset
+
+, then we have 
 \begin_inset Formula $P\left(\left|x\right|>\varepsilon\right)\leq E\left[x^{2}\right]/\varepsilon^{2}$
 \end_inset
 
- for any 
+ for any constant 
 \begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, if 
-\begin_inset Formula $E\left[x^{2}\right]<\infty$
 \end_inset
 
 .
  
+\end_layout
+
+\begin_layout Exercise
+Show that if 
+\begin_inset Formula $r_{2}\geq r_{1}\geq1$
+\end_inset
+
+, then 
+\begin_inset Formula $E\left[\left|x\right|^{r_{2}}\right]<\infty$
+\end_inset
+
+ implies 
+\begin_inset Formula $E\left[\left|x\right|^{r_{1}}\right]<\infty.$
+\end_inset
+
+ (Hint: use Holder's inequality.)
 \end_layout
 
 \begin_layout Standard
@@ -625,26 +872,34 @@ Markov inequality
 \emph on
 Markov inequality
 \emph default
-: 
+: If a random variable 
+\begin_inset Formula $x$
+\end_inset
+
+ has finite 
+\begin_inset Formula $r$
+\end_inset
+
+-th absolute moment 
+\begin_inset Formula $E\left[\left|x\right|^{r}\right]<\infty$
+\end_inset
+
+ for some 
+\begin_inset Formula $r\ge1$
+\end_inset
+
+, then we have 
 \begin_inset Formula $P\left(\left|x\right|>\varepsilon\right)\leq E\left[\left|x\right|^{r}\right]/\varepsilon^{r}$
 \end_inset
 
- for 
-\begin_inset Formula $r\geq1$
-\end_inset
-
- and any 
+ any constant 
 \begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, if 
-\begin_inset Formula $E\left[\left|x\right|^{r}\right]<\infty$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Proof
 It is easy to verify Markov inequality.
  
 \begin_inset Formula 
@@ -656,11 +911,25 @@ It is easy to verify Markov inequality.
 
 \end_inset
 
-
+We arrange the inequality and we obtain Markov inequality.
 \end_layout
 
 \begin_layout Standard
-Consider a partial sum 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+revise up here.
+ 13/10/2020.
+\end_layout
+
+\end_inset
+
+ Now we apply Cherbyshev inequality to the 
+\emph on
+partial sum
+\emph default
+ 
 \begin_inset Formula $S_{n}=\sum_{i=1}^{n}x_{i}$
 \end_inset
 
