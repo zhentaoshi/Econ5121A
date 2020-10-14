@@ -56,9 +56,9 @@ knitr
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
-\biblio_style plain
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -112,7 +112,7 @@ setcounter{chapter}{4}
 \end_layout
 
 \begin_layout Chapter
-Asymptotic Theory
+An Introduction to Asymptotic Theory
 \end_layout
 
 \begin_layout Standard
@@ -227,6 +227,10 @@ Convergence of this non-random sequence means that for any
 \begin_inset Formula $z_{n}\to z$
 \end_inset
 
+ or 
+\begin_inset Formula $\lim_{n\to\infty}z_{n}=z$
+\end_inset
+
 .
 \end_layout
 
@@ -248,17 +252,6 @@ convergence
 \emph default
  means.
  Several modes of convergence are often encountered.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Convergence almost surely* 
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Definition
@@ -310,8 +303,11 @@ Convergence in probability
 \begin_inset Formula $z_{n}\stackrel{p}{\to}z$
 \end_inset
 
+ or 
+\begin_inset Formula $\mathrm{plim}_{n\to\infty}z_{n}=z$
+\end_inset
+
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -705,8 +701,12 @@ pointwisely
 \begin_inset Formula $F_{z}$
 \end_inset
 
- as 
+ since 
 \begin_inset Formula $\left\Vert F_{z_{n}}-F_{z}\right\Vert _{2}=\sqrt{\int_{-\infty}^{\infty}\left(F_{z_{n}}\left(a\right)-F_{z}\left(a\right)\right)^{2}da}=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $n$
 \end_inset
 
 .
@@ -776,42 +776,9 @@ Cherbyshev LLN
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Chebyshev LLN: if 
-\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
-\end_inset
-
- is a sample of i.i.d.
-\begin_inset space ~
-\end_inset
-
-observations, 
-\begin_inset Formula $E\left[z_{1}\right]=\mu$
-\end_inset
-
- , and 
-\begin_inset Formula $\sigma^{2}=\mathrm{var}\left[z_{1}\right]<\infty$
-\end_inset
-
- exists, then 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
-\end_inset
-
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 We illustrate development of LLN by the example of Chebyshev LLN, which
  can be proved by elementary calculation.
- It utilizes 
+ It utilizes the
 \emph on
 Chebyshev inequality
 \emph default
@@ -827,7 +794,7 @@ Chebyshev inequality
 \begin_inset Formula $x$
 \end_inset
 
- has finite second moment 
+ has a finite second moment 
 \begin_inset Formula $E\left[x^{2}\right]<\infty$
 \end_inset
 
@@ -860,7 +827,7 @@ Show that if
 \end_layout
 
 \begin_layout Standard
-Chebyshev inequality is a special case of 
+The Chebyshev inequality is a special case of the 
 \emph on
 Markov inequality
 \emph default
@@ -876,7 +843,7 @@ Markov inequality
 \begin_inset Formula $x$
 \end_inset
 
- has finite 
+ has a finite 
 \begin_inset Formula $r$
 \end_inset
 
@@ -905,27 +872,18 @@ It is easy to verify Markov inequality.
 \begin_inset Formula 
 \[
 \begin{aligned}E\left[\left|x\right|^{r}\right] & =\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}+\int_{\left|x\right|\leq\varepsilon}\left|x\right|^{r}dF_{X}\\
- & \geq\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}\geq\varepsilon^{r}\int_{\left|x\right|>\varepsilon}dF_{X}=\varepsilon^{r}P\left(\left|x\right|>\varepsilon\right).
+ & \geq\int_{\left|x\right|>\varepsilon}\left|x\right|^{r}dF_{X}\\
+ & \geq\varepsilon^{r}\int_{\left|x\right|>\varepsilon}dF_{X}=\varepsilon^{r}P\left\{ \left|x\right|>\varepsilon\right\} .
 \end{aligned}
 \]
 
 \end_inset
 
-We arrange the inequality and we obtain Markov inequality.
+Rearrange the inequality and we obtain the Markov inequality.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-revise up here.
- 13/10/2020.
-\end_layout
-
-\end_inset
-
- Now we apply Cherbyshev inequality to the 
+Let the 
 \emph on
 partial sum
 \emph default
@@ -943,33 +901,81 @@ partial sum
 
 .
  We apply the Chebyshev inequality to the sample mean 
-\begin_inset Formula $\overline{x}-\bar{\mu}=n^{-1}\left(S_{n}-E\left[S_{n}\right]\right)$
+\begin_inset Formula $z_{n}=\overline{x}-\bar{\mu}=n^{-1}\left(S_{n}-E\left[S_{n}\right]\right)$
 \end_inset
 
 .
  
 \begin_inset Formula 
-\[
-\begin{aligned}P\left(\left|\bar{x}-\bar{\mu}\right|\geq\varepsilon\right) & =P\left(\left|S_{n}-E\left[S_{n}\right]\right|\geq n\varepsilon\right)\\
+\begin{align}
+\begin{aligned}P\left\{ \left|z_{n}\right|\geq\varepsilon\right\}  & =P\left\{ \left|S_{n}-E\left[S_{n}\right]\right|\geq n\varepsilon\right\} \\
  & \leq\left(n\varepsilon\right)^{-2}E\left[\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)^{2}\right]\\
  & =\left(n\varepsilon\right)^{-2}\mathrm{var}\left(\sum_{i=1}^{n}x_{i}\right)\\
  & =\left(n\varepsilon\right)^{-2}\left[\sum_{i=1}^{n}\mathrm{var}\left(x_{i}\right)+\sum_{i=1}^{n}\sum_{j\neq i}\mathrm{cov}\left(x_{i},x_{j}\right)\right].
 \end{aligned}
-\]
+\label{eq:cheby_mean}
+\end{align}
 
+\end_inset
+
+Convergence in probability holds if the right-hand side shrinks to 0 as
+ 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ For example, If 
+\begin_inset Formula $x_{1},\ldots,x_{n}$
+\end_inset
+
+ are iid with 
+\begin_inset Formula $\mathrm{var}\left(x_{1}\right)=\sigma^{2}$
+\end_inset
+
+, then the RHS of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:cheby_mean"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is 
+\begin_inset Formula $\left(n\varepsilon\right)^{-2}\left(n\sigma^{2}\right)=o\left(n^{-1}\right)\to0$
+\end_inset
+
+.
+ This results gives Chebyshev LLN:
+\end_layout
+
+\begin_layout Itemize
+Chebyshev LLN: If 
+\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
+\end_inset
+
+ is a sample of i.i.d.
+\begin_inset space ~
+\end_inset
+
+observations, 
+\begin_inset Formula $E\left[z_{1}\right]=\mu$
+\end_inset
+
+ , and 
+\begin_inset Formula $\sigma^{2}=\mathrm{var}\left[z_{1}\right]<\infty$
+\end_inset
+
+ exists, then 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-From the above derivation, convergence in probability holds as long as the
- right-hand side shrinks to 0 as 
-\begin_inset Formula $n\to\infty$
-\end_inset
-
-.
- Actually, the convergence can be maintained under much more general conditions
+Actually, the convergence can be maintained under much more general conditions
  than just under the i.i.d.
 \begin_inset space ~
 \end_inset
@@ -979,18 +985,71 @@ assumption.
  and they do not have to be independent either.
 \end_layout
 
+\begin_layout Exercise
+Consider an inid (independent but non-identically distributed) sample 
+\begin_inset Formula $\left(x_{1},\ldots,x_{n}\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\mathrm{var}\left(x_{1}\right)=\sqrt{n}\sigma_{i}^{2}$
+\end_inset
+
+.
+ Use the Chebyshev inequality to show that 
+\begin_inset Formula $n^{-1}\sum_{i=1}^{n}x_{i}\stackrel{p}{\to}0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Consider the time series moving average model 
+\begin_inset Formula $x_{i}=\varepsilon_{i}+\theta\varepsilon_{i-1}$
+\end_inset
+
+ for 
+\begin_inset Formula $i=1,\ldots,n$
+\end_inset
+
+, where 
+\begin_inset Formula $\left|\theta\right|<1$
+\end_inset
+
+, 
+\begin_inset Formula $\mathrm{var}\left[\varepsilon_{i}\right]=\sigma^{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $\left(\varepsilon_{i}\right)_{i=0}^{n}$
+\end_inset
+
+ iid.
+ Use the Chebyshev inequality to show that 
+\begin_inset Formula $n^{-1}\sum_{i=1}^{n}x_{i}\stackrel{p}{\to}0$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
 Another useful LLN is 
 \emph on
 Kolmogorov LLN
 \emph default
 .
- Since its derivation requires advanced knowledge of probability theory,
+ Since its derivation requires more advanced knowledge of probability theory,
  we state the result without proof.
 \end_layout
 
 \begin_layout Itemize
-Kolmogorov LLN: if 
+Kolmogorov LLN: If 
 \begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
 \end_inset
 
@@ -1003,10 +1062,10 @@ observations and
 \end_inset
 
  exists, then 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}\stackrel{p}{\to}\mu$
 \end_inset
 
- 
+.
 \end_layout
 
 \begin_layout Standard
@@ -1190,17 +1249,25 @@ Central Limit Theorem
 
 \begin_layout Standard
 The central limit theorem (CLT) is a collection of probability results about
- the convergence in distribution to a stable law, usually the normal distributio
-n.
- The basic form of the CLT is: for a sample 
-\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
+ the convergence in distribution to a stable distribution.
+ The limiting distribution is usually the Gaussian distribution.
+ The basic form of the CLT is: 
+\begin_inset Newline newline
 \end_inset
 
- of 
+Under some conditions, the sample average of 
 \emph on
 zero-mean
 \emph default
- random variables, 
+ random variables 
+\begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
+\end_inset
+
+ multiplied by 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ satisfies 
 \begin_inset Formula 
 \begin{equation}
 \frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}\right).\label{eq:clt}
@@ -1221,7 +1288,11 @@ Lindeberg-Levy CLT
 \end_layout
 
 \begin_layout Itemize
-If the sample is i.i.d., 
+If the sample 
+\begin_inset Formula $\left(x_{1},\ldots,x_{n}\right)$
+\end_inset
+
+ is i.i.d., 
 \begin_inset Formula $E\left[x_{1}\right]=0$
 \end_inset
 
@@ -1234,7 +1305,11 @@ If the sample is i.i.d.,
 \end_layout
 
 \begin_layout Standard
-Lindeberg-Levy CLT can be proved by the moment generating function.
+Lindeberg-Levy CLT can be proved by the 
+\emph on
+moment generating function
+\emph default
+.
  For any random variable 
 \begin_inset Formula $x$
 \end_inset
@@ -1249,7 +1324,7 @@ moment generating function
 \emph default
  (MGF) if it exists.
  MGF fully describes a distribution, just like PDF or CDF.
- For example, the characteristic function of 
+ For example, the MGF of 
 \begin_inset Formula $N\left(\mu,\sigma^{2}\right)$
 \end_inset
 
@@ -1261,7 +1336,7 @@ moment generating function
 \end_layout
 
 \begin_layout Standard
-Here is a very heuristic proof.
+Here is a heuristic proof.
  If 
 \begin_inset Formula $E\left[\left|x\right|^{k}\right]<\infty$
 \end_inset
@@ -1281,7 +1356,7 @@ M_{X}\left(t\right)=1+tE\left[X\right]+\frac{t^{2}}{2}E\left[X^{2}\right]+\ldots
 Under the assumption of Lindeberg-Levy CLT, 
 \begin_inset Formula 
 \[
-M_{X_{i}/\sqrt{n}}\left(t\right)=1+\frac{t^{2}}{2n}\sigma^{2}+O\left(\frac{t^{3}}{n^{3/2}}\right)
+M_{\frac{X_{i}}{\sqrt{n}}}\left(t\right)=1+\frac{t^{2}}{2n}\sigma^{2}+O\left(\frac{t^{3}}{n^{3/2}}\right)
 \]
 
 \end_inset
@@ -1293,7 +1368,7 @@ for all
 , and by independence we have 
 \begin_inset Formula 
 \[
-\begin{aligned}M_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) & =\prod_{i=1}^{n}M_{x_{i}/\sqrt{n}}\left(t\right)=\left(1+\frac{t^{2}}{2n}\sigma^{2}+O\left(\frac{t^{3}}{n^{3/2}}\right)\right)^{n}\\
+\begin{aligned}M_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) & =\prod_{i=1}^{n}M_{\frac{X_{i}}{\sqrt{n}}}\left(t\right)=\left(1+\frac{t^{2}}{2n}\sigma^{2}+O\left(\frac{t^{3}}{n^{3/2}}\right)\right)^{n}\\
  & \to\exp\left(\frac{\sigma^{2}}{2}t^{2}\right),
 \end{aligned}
 \]
@@ -1331,10 +1406,13 @@ characteristic function
 \end_inset
 
  is the imaginary number.
- The characteristic function is indeed the Fourier transformation of the
- probability measure and it always exists.
- Such a proof will require background knowledge of Fourier transformation
- and inversion, which we do not pursuit here.
+ The characteristic function is the 
+\emph on
+Fourier transform
+\emph default
+ of the probability measure and it always exists.
+ Such a proof will require background knowledge of Fourier transform and
+ inverse transform, which we do not pursuit here.
  
 \begin_inset Note Note
 status collapsed
@@ -1420,44 +1498,54 @@ where the limit is exactly the characteristic function of
 \end_layout
 
 \begin_layout Itemize
-Lindeberg-Feller CLT: i.n.i.d., and 
+Lindeberg-Feller CLT: 
+\begin_inset Formula $\left(x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ is inid.
+ If the 
 \emph on
 Lindeberg condition
 \emph default
-: for any fixed 
+ is satisfied (for any fixed 
 \begin_inset Formula $\varepsilon>0$
 \end_inset
 
 , 
+\begin_inset Formula $\frac{1}{s_{n}^{2}}\sum_{i=1}^{n}E\left[x_{i}^{2}\cdot\boldsymbol{1}\left\{ \left|x_{i}\right|\geq\varepsilon s_{n}\right\} \right]\to0$
+\end_inset
+
+ where 
+\begin_inset Formula $s_{n}=\sqrt{\sum_{i=1}^{n}\sigma_{i}^{2}}$
+\end_inset
+
+), then we have 
 \begin_inset Formula 
 \[
-\frac{1}{s_{n}^{2}}\sum_{i=1}^{n}E\left[x_{i}^{2}\cdot\boldsymbol{1}\left\{ \left|x_{i}\right|\geq\varepsilon s_{n}\right\} \right]\to0
+\frac{\sum_{i=1}^{n}x_{i}}{s_{n}}\stackrel{d}{\to}N\left(0,1\right).
 \]
 
-\end_inset
-
-where 
-\begin_inset Formula $s_{n}=\left(\sum_{i=1}^{n}\sigma_{i}^{2}\right)^{1/2}$
-\end_inset
-
-, then 
-\begin_inset Formula $\frac{\sum_{i=1}^{n}x_{i}}{s_{n}}\stackrel{d}{\to}N\left(0,1\right).$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Itemize
-Lyapunov CLT: i.n.i.d.: If 
-\begin_inset Formula 
-\[
-\max_{i\leq n}E\left[\left|x_{i}\right|^{3}\right]<C<\infty,
-\]
-
+Lyapunov CLT: 
+\begin_inset Formula $\left(x_{i}\right)_{i=1}^{n}$
 \end_inset
 
- then 
-\begin_inset Formula $\frac{\sum_{i=1}^{n}x_{i}}{s_{n}}\stackrel{d}{\to}N\left(0,1\right).$
+ is inid.
+ If 
+\begin_inset Formula $\max_{i\leq n}E\left[\left|x_{i}\right|^{3}\right]<C<\infty,$
+\end_inset
+
+ then we have 
+\begin_inset Formula 
+\[
+\frac{\sum_{i=1}^{n}x_{i}}{s_{n}}\stackrel{d}{\to}N\left(0,1\right).
+\]
+
 \end_inset
 
 
@@ -1640,41 +1728,16 @@ In their original forms, LLN deals with the sample mean, and CLT handles
 ) and/or standardized (by standard deviation) sample mean.
  However, most of the econometric estimators of interest are functions of
  sample means.
- Therefore, we need tools to handle transformations.
-\end_layout
+ For example, in the OLS estimator 
+\begin_inset Formula 
+\[
+\widehat{\beta}=\left(\frac{1}{n}\sum_{i}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i}x_{i}y_{i}
+\]
 
-\begin_layout Itemize
-Small op: 
-\begin_inset Formula $x_{n}=o_{p}\left(r_{n}\right)$
 \end_inset
 
- if 
-\begin_inset Formula $x_{n}/r_{n}\stackrel{p}{\to}0$
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Itemize
-Big Op: 
-\begin_inset Formula $x_{n}=O_{p}\left(r_{n}\right)$
-\end_inset
-
- if for any 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
-, there exists a 
-\begin_inset Formula $c>0$
-\end_inset
-
- such that 
-\begin_inset Formula $P\left(\left|x_{n}\right|/r_{n}>c\right)<\varepsilon$
-\end_inset
-
-.
- 
+ involves matrix inverse and the matrix-vector multiplication.
+ We need tools to handle transformations.
 \end_layout
 
 \begin_layout Itemize
@@ -1719,7 +1782,7 @@ Continuous mapping theorem 2: If
 \end_layout
 
 \begin_layout Itemize
-Slutsky's Theorem: If 
+Slutsky's theorem: If 
 \begin_inset Formula $x_{n}\stackrel{d}{\to}x$
 \end_inset
 
@@ -1757,6 +1820,13 @@ Slutsky's Theorem: If
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+Slutsky's theorem is indeed just special cases of the continuous mapping
+ theorem 2.
+ Only because the addition, multiplication and division are encountered
+ so frequently in practice, we list is as a separate theorem.
+\end_layout
+
 \begin_layout Itemize
 Delta method: if 
 \begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
@@ -1865,7 +1935,79 @@ Because
 \end_inset
 
 and the conclusion follows.
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+Asymptotic theory is a topic with vast breadth and depth.
+ In this chapter we only scratch the very surface of it.
+ We will discuss in the next chapter how to apply the asymptotic tools we
+ learned here to the OLS estimator.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Historical notes
+\series default
+: Before 1980s, most econometricians did not have a good training in mathematica
+l rigor to master asymptotic theory.
+ A few prominent young (at that time) econometricians came to the field
+ and changed the situation, among them were Halbert White (UCSD), Peter
+ C.B.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Phillips (Yale) and Peter Robinson (LSE), to name a few.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Further reading
+\series default
+: Halbert White (1950-2012) wrote an accessible book 
+\begin_inset CommandInset citation
+LatexCommand citep
+after "first edition 1984"
+key "white2014asymptotic"
+literal "false"
+
+\end_inset
+
+ to introduce asymptotics to econometricians.
+ This book remains popular among researchers and graduate students of economics.
  
+\begin_inset CommandInset citation
+LatexCommand citet
+key "davidson1994stochastic"
+literal "false"
+
+\end_inset
+
+ is a longer and more self-contained monograph.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
