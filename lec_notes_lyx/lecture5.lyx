@@ -40,7 +40,7 @@ knitr
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks true
-\pdf_pdfborder false
+\pdf_pdfborder true
 \pdf_colorlinks false
 \pdf_backref section
 \pdf_pdfusetitle false
@@ -147,7 +147,7 @@ how large is large
 asymptopia
 \emph default
 .
- In the era of big data, albeit the sheer size of data increases dramatically,
+ In the era of big data, albeit the sheer size of data balloons dramatically,
  we build more sophisticated models to better capture heterogeneity in the
  data.
  Large sample is a relative notion to the complexity of the model and underlying
@@ -251,7 +251,7 @@ random
 convergence
 \emph default
  means.
- Several modes of convergence are often encountered.
+ Several modes of convergence are widely used.
 \end_layout
 
 \begin_layout Definition
@@ -352,17 +352,15 @@ Squared-mean convergence
 \end_layout
 
 \begin_layout Definition
-In these definitions 
-\begin_inset Formula $P\left\{ \omega:\left|z_{n}\left(\omega\right)-z\right|<\varepsilon\right\} $
+In these definitions either 
+\begin_inset Formula $P\left\{ \omega:\left|z_{n}\left(\omega\right)-z\right|>\varepsilon\right\} $
 \end_inset
 
- and 
+ or 
 \begin_inset Formula $E\left[\left(z_{n}-z\right)^{2}\right]$
 \end_inset
 
- are non-random quantities.
- Thus we can talk about their convergence in the usual sense.
- 
+ is a non-random quantity, and it converges to 0 as a non-random sequence.
 \end_layout
 
 \begin_layout Standard
@@ -466,6 +464,15 @@ y.
 \begin_layout Standard
 Both convergence in probability and squared-mean convergence are about convergen
 ce of random variables to a target random variable or constant.
+ That is, the distribution of 
+\begin_inset Formula $z_{n}-z$
+\end_inset
+
+ is concentrated around 0 as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
  Instead, 
 \emph on
 convergence in distribution
@@ -688,7 +695,12 @@ pointwisely
 \end_inset
 
  is continuous.
- However, under the 
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+However, under the 
 \begin_inset Formula $L_{2}$
 \end_inset
 
@@ -710,6 +722,11 @@ pointwisely
 \end_inset
 
 .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -776,11 +793,11 @@ Cherbyshev LLN
 \end_layout
 
 \begin_layout Standard
-We illustrate development of LLN by the example of Chebyshev LLN, which
- can be proved by elementary calculation.
+We illustrate LLN by the simple example of Chebyshev LLN, which can be proved
+ by elementary calculation.
  It utilizes the
 \emph on
-Chebyshev inequality
+ Chebyshev inequality
 \emph default
 .
 \end_layout
@@ -799,7 +816,7 @@ Chebyshev inequality
 \end_inset
 
 , then we have 
-\begin_inset Formula $P\left(\left|x\right|>\varepsilon\right)\leq E\left[x^{2}\right]/\varepsilon^{2}$
+\begin_inset Formula $P\left\{ \left|x\right|>\varepsilon\right\} \leq E\left[x^{2}\right]/\varepsilon^{2}$
 \end_inset
 
  for any constant 
@@ -856,7 +873,7 @@ Markov inequality
 \end_inset
 
 , then we have 
-\begin_inset Formula $P\left(\left|x\right|>\varepsilon\right)\leq E\left[\left|x\right|^{r}\right]/\varepsilon^{r}$
+\begin_inset Formula $P\left\{ \left|x\right|>\varepsilon\right\} \leq E\left[\left|x\right|^{r}\right]/\varepsilon^{r}$
 \end_inset
 
  any constant 
@@ -867,7 +884,7 @@ Markov inequality
 \end_layout
 
 \begin_layout Proof
-It is easy to verify Markov inequality.
+It is easy to verify the Markov inequality.
  
 \begin_inset Formula 
 \[
@@ -879,7 +896,7 @@ It is easy to verify Markov inequality.
 
 \end_inset
 
-Rearrange the inequality and we obtain the Markov inequality.
+Rearrange the above inequality and we obtain the Markov inequality.
 \end_layout
 
 \begin_layout Standard
@@ -905,20 +922,17 @@ partial sum
 \end_inset
 
 .
- 
 \begin_inset Formula 
 \begin{align}
-\begin{aligned}P\left\{ \left|z_{n}\right|\geq\varepsilon\right\}  & =P\left\{ \left|S_{n}-E\left[S_{n}\right]\right|\geq n\varepsilon\right\} \\
- & \leq\left(n\varepsilon\right)^{-2}E\left[\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)^{2}\right]\\
- & =\left(n\varepsilon\right)^{-2}\mathrm{var}\left(\sum_{i=1}^{n}x_{i}\right)\\
- & =\left(n\varepsilon\right)^{-2}\left[\sum_{i=1}^{n}\mathrm{var}\left(x_{i}\right)+\sum_{i=1}^{n}\sum_{j\neq i}\mathrm{cov}\left(x_{i},x_{j}\right)\right].
-\end{aligned}
-\label{eq:cheby_mean}
+P\left\{ \left|z_{n}\right|\geq\varepsilon\right\}  & =P\left\{ n^{-1}\left|S_{n}-E\left[S_{n}\right]\right|\geq\varepsilon\right\} \nonumber \\
+ & \leq E\left[\left(n^{-1}\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)\right)^{2}\right]/\varepsilon^{2}\nonumber \\
+ & =\left(n\varepsilon\right)^{-2}\left\{ E\left[\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)^{2}\right]+\sum_{i=1}^{n}\sum_{j\neq i}E\left[\left(x_{i}-\mu_{i}\right)\left(x_{j}-\mu_{j}\right)\right]\right\} \nonumber \\
+ & =\left(n\varepsilon\right)^{-2}\left\{ \sum_{i=1}^{n}\mathrm{var}\left(x_{i}\right)+\sum_{i=1}^{n}\sum_{j\neq i}\mathrm{cov}\left(x_{i},x_{j}\right)\right\} .\label{eq:cheby_mean}
 \end{align}
 
 \end_inset
 
-Convergence in probability holds if the right-hand side shrinks to 0 as
+ Convergence in probability holds if the right-hand side shrinks to 0 as
  
 \begin_inset Formula $n\to\infty$
 \end_inset
@@ -947,7 +961,7 @@ noprefix "false"
 \end_inset
 
 .
- This results gives Chebyshev LLN:
+ This result gives the Chebyshev LLN:
 \end_layout
 
 \begin_layout Itemize
@@ -955,11 +969,7 @@ Chebyshev LLN: If
 \begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
 \end_inset
 
- is a sample of i.i.d.
-\begin_inset space ~
-\end_inset
-
-observations, 
+ is a sample of iid observations, 
 \begin_inset Formula $E\left[z_{1}\right]=\mu$
 \end_inset
 
@@ -968,19 +978,15 @@ observations,
 \end_inset
 
  exists, then 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}-\mu\stackrel{p}{\to}0.$
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}z_{i}\stackrel{p}{\to}\mu.$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Actually, the convergence can be maintained under much more general conditions
- than just under the i.i.d.
-\begin_inset space ~
-\end_inset
-
-assumption.
+The convergence in probability can be indeed maintained under much more
+ general conditions than under iid case.
  The random variables in the sample do not have to be identically distributed,
  and they do not have to be independent either.
 \end_layout
@@ -991,7 +997,11 @@ Consider an inid (independent but non-identically distributed) sample
 \end_inset
 
  with 
-\begin_inset Formula $\mathrm{var}\left(x_{1}\right)=\sqrt{n}\sigma_{i}^{2}$
+\begin_inset Formula $E\left[x_{i}\right]=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathrm{var}\left[x_{i}\right]=\sqrt{n}\sigma_{i}^{2}$
 \end_inset
 
 .
@@ -1023,6 +1033,10 @@ Consider the time series moving average model
 \end_inset
 
 , 
+\begin_inset Formula $E\left[\varepsilon_{i}\right]=0$
+\end_inset
+
+, 
 \begin_inset Formula $\mathrm{var}\left[\varepsilon_{i}\right]=\sigma^{2}$
 \end_inset
 
@@ -1039,7 +1053,7 @@ Consider the time series moving average model
 \end_layout
 
 \begin_layout Standard
-Another useful LLN is 
+Another useful LLN is the 
 \emph on
 Kolmogorov LLN
 \emph default
@@ -1053,11 +1067,7 @@ Kolmogorov LLN: If
 \begin_inset Formula $\left(z_{1},\ldots,z_{n}\right)$
 \end_inset
 
- is a sample of i.i.d.
-\begin_inset space ~
-\end_inset
-
-observations and 
+ is a sample of iid observations and 
 \begin_inset Formula $E\left[z_{1}\right]=\mu$
 \end_inset
 
@@ -1069,13 +1079,9 @@ observations and
 \end_layout
 
 \begin_layout Standard
-Compared to Chebyshev LLN, Kolmogorov LLN only requires the existence of
- the population mean, but not any higher moments.
- On the other hand, i.i.d.
-\begin_inset space ~
-\end_inset
-
-is essential for Kolmogorov LLN.
+Compared with the Chebyshev LLN, the Kolmogorov LLN only requires the existence
+ of the population mean, but not any higher moments.
+ On the other hand, iid is essential for the Kolmogorov LLN.
 \end_layout
 
 \begin_layout Example
@@ -1251,11 +1257,15 @@ Central Limit Theorem
 The central limit theorem (CLT) is a collection of probability results about
  the convergence in distribution to a stable distribution.
  The limiting distribution is usually the Gaussian distribution.
- The basic form of the CLT is: 
-\begin_inset Newline newline
-\end_inset
+ The basic form of the CLT is:
+\end_layout
 
-Under some conditions, the sample average of 
+\begin_layout Itemize
+
+\emph on
+Under some conditions to be spelled out
+\emph default
+, the sample average of 
 \emph on
 zero-mean
 \emph default
@@ -1269,18 +1279,23 @@ zero-mean
 
  satisfies 
 \begin_inset Formula 
-\begin{equation}
-\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}\right).\label{eq:clt}
-\end{equation}
+\[
+\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}\right)
+\]
 
 \end_inset
 
-Various versions of CLT work under different assumptions about the random
- variables.
+as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-
+Various versions of CLT work under different assumptions about the random
+ variables.
+ 
 \emph on
 Lindeberg-Levy CLT
 \emph default
@@ -1292,7 +1307,7 @@ If the sample
 \begin_inset Formula $\left(x_{1},\ldots,x_{n}\right)$
 \end_inset
 
- is i.i.d., 
+ is iid, 
 \begin_inset Formula $E\left[x_{1}\right]=0$
 \end_inset
 
@@ -1300,8 +1315,11 @@ If the sample
 \begin_inset Formula $\mathrm{var}\left[x_{1}^{2}\right]=\sigma^{2}<\infty$
 \end_inset
 
-, then CLT holds.
- 
+, then 
+\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}\right)$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1335,8 +1353,16 @@ moment generating function
 .
 \end_layout
 
-\begin_layout Standard
-Here is a heuristic proof.
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Heuristic proof of Lindeberg-Levy CLT
+\end_layout
+
+\end_inset
+
  If 
 \begin_inset Formula $E\left[\left|x\right|^{k}\right]<\infty$
 \end_inset
@@ -1382,7 +1408,7 @@ where the limit is exactly the characteristic function of
 .
 \end_layout
 
-\begin_layout Standard
+\begin_layout Remark
 This proof with MGF is simple and elementary.
  Its drawback is that not all distributions have a well-defined MGF.
  A more general proof can be carried out by replacing MGF with the 
@@ -1821,10 +1847,10 @@ Slutsky's theorem: If
 
 \end_deeper
 \begin_layout Standard
-Slutsky's theorem is indeed just special cases of the continuous mapping
- theorem 2.
+Slutsky's theorem consists of special cases of the continuous mapping theorem
+ 2.
  Only because the addition, multiplication and division are encountered
- so frequently in practice, we list is as a separate theorem.
+ so frequently in practice, we list it as a separate theorem.
 \end_layout
 
 \begin_layout Itemize
@@ -1848,7 +1874,7 @@ Delta method: if
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
-), then 
+), then we have 
 \begin_inset Formula 
 \[
 \sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta'}\left(\theta_{0}\right)\Omega\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\right)'\right).
@@ -1910,7 +1936,7 @@ Because
 \end_inset
 
  and 
-\begin_inset Formula $\frac{\partial}{\partial\theta}f\left(\cdot\right)$
+\begin_inset Formula $\frac{\partial}{\partial\theta'}f\left(\cdot\right)$
 \end_inset
 
  is continuous at 
@@ -1918,7 +1944,7 @@ Because
 \end_inset
 
 , we have 
-\begin_inset Formula $\partial f\left(\dot{\theta}\right)/\partial\theta\stackrel{p}{\to}\partial f\left(\theta_{0}\right)/\partial\theta$
+\begin_inset Formula $\frac{\partial}{\partial\theta'}f\left(\dot{\theta}\right)\stackrel{p}{\to}\frac{\partial f\left(\theta_{0}\right)}{\partial\theta'}$
 \end_inset
 
  by the continuous mapping theorem 1.
@@ -1986,7 +2012,7 @@ literal "false"
 \end_inset
 
  to introduce asymptotics to econometricians.
- This book remains popular among researchers and graduate students of economics.
+ This book remains popular among researchers and graduate students in economics.
  
 \begin_inset CommandInset citation
 LatexCommand citet
