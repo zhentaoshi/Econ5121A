@@ -32,7 +32,7 @@ Reading and Assignment will be updated each week as the class progresses.
   * [E] Ex 4.3--5, 12, 13, 15, 16, 23, Ex 5.1--3, 8
 * Week 5:
   * [IE] Ex 7.1, 3, 4, 5(a)--(d)
-  * [E] Ex 4.15, 18, 20, 23
+  * [E] Ex 4.18, 20
 
 <img src="https://github.com/zhentaoshi/Econ5121A/blob/master/online_teaching.JPG" alt="online_teaching" width="600"/>
 
