@@ -8,7 +8,6 @@
 \use_default_options false
 \begin_modules
 theorems-ams-chap-bytype
-knitr
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -116,13 +115,13 @@ Asymptotic Properties of Least Squares
 \end_layout
 
 \begin_layout Standard
-We have learned a little bit of asymptotic theory in the previous chapter.
- We apply large sample theory to study asymptotic properties of the OLS
- estimator 
+We have learned some basic asymptotic theory in the previous chapter.
+ We apply these results to study asymptotic properties of the OLS estimator
+ 
 \begin_inset Formula $\widehat{\beta}=\left(X'X\right)^{-1}X'Y$
 \end_inset
 
-, which is of key interest of our course.
+, which is of key interest in our course.
 \end_layout
 
 \begin_layout Section
@@ -130,7 +129,30 @@ Consistency
 \end_layout
 
 \begin_layout Standard
-For a generic estimator 
+
+\emph on
+Consistency
+\emph default
+ is the most basic requirement for estimators in large sample.
+ Intuitively, it says that when the sample size is arbitrarily large, a
+ desirable estimator should be arbitrarily close (in the sense of convergence
+ in probability) to the population quantity of interest.
+ Otherwise, if an estimator still deviates from the object of interest,
+ it is hard to persuade other researchers to use such an estimator.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Consistency
+\end_layout
+
+\end_inset
+
+ For a generic estimator 
 \begin_inset Formula $\widehat{\theta}$
 \end_inset
 
@@ -154,7 +176,7 @@ consistent
 \begin_inset Formula $\theta$
 \end_inset
 
- is some non-random quantity.
+ is some non-random object.
 \end_layout
 
 \begin_layout Standard
@@ -182,7 +204,7 @@ consistent
 \begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
 \end_inset
 
- for 
+ with 
 \begin_inset Formula $E\left[x_{i}e_{i}\right]=0$
 \end_inset
 
@@ -195,7 +217,12 @@ consistent
 
 \end_inset
 
-The first term, by LLN, 
+
+\end_layout
+
+\begin_layout Standard
+For simplicity, in this chapter we discuss the iid setting only.
+ The first term, by LLN, 
 \begin_inset Formula 
 \[
 \widehat{Q}:=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\stackrel{p}{\to}Q:=E\left[x_{i}x_{i}'\right].
@@ -228,24 +255,14 @@ Here
 
 \end_inset
 
-No matter whether 
-\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
-\end_inset
-
- is an iid, or inid, or dependent sample, as long as the convergence in
- probability holds for the above two expressions and 
-\begin_inset Formula $Q$
-\end_inset
-
- is an invertible matrix, we have 
+The continuous mapping theorem immediately implies 
 \begin_inset Formula 
 \[
-\widehat{\beta}-\beta\stackrel{p}{\to}Q^{-1}0=0
+\widehat{\beta}-\beta\stackrel{p}{\to}Q^{-1}\times0=0.
 \]
 
 \end_inset
 
- by the continuous mapping theorem.
  In other words, 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
@@ -257,8 +274,21 @@ No matter whether
 .
 \end_layout
 
+\begin_layout Remark
+No matter whether 
+\begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
+\end_inset
+
+ is an iid, or inid, or dependent sample, as long as the convergence in
+ probability holds for the above two expressions and 
+\begin_inset Formula $Q$
+\end_inset
+
+ is an invertible matrix, consistency holds.
+\end_layout
+
 \begin_layout Section
-Asymptotic Normality
+Asymptotic Distribution
 \end_layout
 
 \begin_layout Standard
@@ -271,7 +301,7 @@ In finite sample,
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
- under normality in the previous lecture.
+ under normality before.
  Without the restrictive normality assumption, how can we characterize the
  randomness of the OLS estimator?
 \end_layout
@@ -288,7 +318,8 @@ We know from the previous section that
 \begin_inset Formula $\sqrt{n}$
 \end_inset
 
-:
+, as in a CLT.
+ 
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\widehat{\beta}-\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\right)^{-1}\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}e_{i}.
@@ -303,7 +334,7 @@ Since
 , we apply a CLT to obtain 
 \begin_inset Formula 
 \[
-n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\Sigma\right)
+\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\Sigma\right)
 \]
 
 \end_inset
@@ -315,9 +346,9 @@ where
 .
  By the continuous mapping theorem, 
 \begin_inset Formula 
-\[
-\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}Q^{-1}\times N\left(0,\Sigma\right)\sim N\left(0,\Omega\right)
-\]
+\begin{equation}
+\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}Q^{-1}\times N\left(0,\Sigma\right)\sim N\left(0,\Omega\right)\label{eq:asym_norm}
+\end{equation}
 
 \end_inset
 
@@ -335,6 +366,158 @@ asymptotic variance
 asymptotic normality
 \emph default
  of the OLS estimator.
+ 
+\end_layout
+
+\begin_layout Standard
+The asymptotic variance 
+\begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}$
+\end_inset
+
+ is called of the 
+\emph on
+sandwich form
+\emph default
+.
+ It can be simplified under conditional homoskedasticity, which gives 
+\begin_inset Formula 
+\[
+\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]=E\left[x_{i}x_{i}'E\left[e_{i}^{2}|X\right]\right]=\sigma^{2}E\left[x_{i}x_{i}'\right]=\sigma^{2}Q.
+\]
+
+\end_inset
+
+In this case, 
+\begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}=\sigma^{2}Q^{-1}$
+\end_inset
+
+, and thus 
+\begin_inset Formula 
+\begin{equation}
+\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,\sigma^{2}Q^{-1}\right).\label{eq:asym_norm_homo}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+If we are interested in the 
+\begin_inset Formula $k$
+\end_inset
+
+-th parameter 
+\begin_inset Formula $\beta_{k}$
+\end_inset
+
+, then the joint distribution in (
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) implies 
+\begin_inset Formula 
+\begin{align}
+\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right) & =\sqrt{n}\eta_{k}'\left(\widehat{\beta}-\beta\right)\nonumber \\
+ & \stackrel{d}{\to}N\left(0,\sigma^{2}\eta_{k}'Q^{-1}\eta_{k}\right)\sim N\left(0,\sigma^{2}[Q^{-1}]_{kk}\right).\qedhere\label{eq:asym_norm_homok}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+If we multiply 
+\begin_inset Formula $\Omega^{-1/2}$
+\end_inset
+
+ on both sides of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{equation}
+\Omega^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right).\label{eq:asym_norm-pivot}
+\end{equation}
+
+\end_inset
+
+We say the asymptotic distribution in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm-pivot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $N\left(0,I_{K}\right)$
+\end_inset
+
+, is pivotal because it does not involve any known parameter.
+ In contrast, the asymptotic distribution in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is not pivotal because 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is unknown in 
+\begin_inset Formula $N\left(0,\Omega\right)$
+\end_inset
+
+.
+ If we are interested in the 
+\begin_inset Formula $k$
+\end_inset
+
+-th parameter 
+\begin_inset Formula $\beta_{k}$
+\end_inset
+
+, we can write it into the pivotal form as 
+\begin_inset Formula 
+\begin{equation}
+\frac{\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right)}{\sqrt{\sigma^{2}[Q^{-1}]_{kk}}}\stackrel{d}{\to}N\left(0,1\right).\label{eq:asym_norm_homok_pivot}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Asymptotic Inference
 \end_layout
 
 \begin_layout Standard
@@ -343,71 +526,180 @@ Up to now we have derived the asymptotic distribution of
 \end_inset
 
 .
- However, to make it feasible, we still have to estimator the asymptotic
- variance 
+ However, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm-pivot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ will be useful for statistical inference only if 
 \begin_inset Formula $\Omega$
 \end_inset
 
-.
- If 
-\begin_inset Formula $\widehat{\Sigma}$
-\end_inset
-
- is a consistent estimator of 
-\begin_inset Formula $\Sigma$
-\end_inset
-
-, then 
-\begin_inset Formula $\widehat{\Omega}=\widehat{Q}^{-1}\widehat{\Sigma}\widehat{Q}^{-1}$
-\end_inset
-
- is a consistent estimator of 
+ is known.
+ In reality 
 \begin_inset Formula $\Omega$
 \end_inset
 
-.
- (Of course, there are other ways to estimate the asymptotic variance.) A
- feasible version about the distribution of 
-\begin_inset Formula $\widehat{\beta}$
+ is mostly unknown, and therefore we will need to estimate it to make statistica
+l inference feasible.
+ Suppose 
+\begin_inset Formula $\tilde{\Omega}$
 \end_inset
 
- is 
+ is any consistent estimator for 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ in that 
+\begin_inset Formula $\tilde{\Omega}\stackrel{p}{\to}\Omega$
+\end_inset
+
+.
+ When we replace 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm-pivot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ with 
+\begin_inset Formula $\tilde{\Omega}$
+\end_inset
+
+, we have 
 \begin_inset Formula 
-\[
-\widehat{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right).
-\]
+\begin{align*}
+\tilde{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right) & =\left(\tilde{\Omega}^{-1/2}\Omega^{1/2}\right)\Omega^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right).
+\end{align*}
 
 \end_inset
 
+Because 
+\begin_inset Formula $\Omega$
+\end_inset
 
+ is positive definite, we have the first factor 
+\begin_inset Formula $\tilde{\Omega}^{-1/2}\Omega^{1/2}\stackrel{p}{\to}I_{K}$
+\end_inset
+
+ by the continuous mapping theorem.
+ The second factor is asymptotic normal by 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm-pivot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Thus Slutsky's theorem implies
+\begin_inset Formula 
+\begin{equation}
+\tilde{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right)\label{eq:asym_norm_feasible}
+\end{equation}
+
+\end_inset
+
+and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm_feasible"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is a feasible statistic for asymptotic inference.
+ 
 \end_layout
 
 \begin_layout Standard
-In the special case of homoskedasticity, 
-\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]=E\left[x_{i}x_{i}'E\left[e_{i}^{2}|X\right]\right]=\sigma^{2}E\left[x_{i}x_{i}'\right]=\sigma^{2}Q$
+The next question is how to estimate 
+\begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}$
 \end_inset
 
- so that 
-\begin_inset Formula 
-\[
-n^{-1/2}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}Q\right).
-\]
-
+.
+ We have had 
+\begin_inset Formula $\widehat{Q}\stackrel{p}{\to}Q$
 \end_inset
 
-Again by the Slutsky's theorem, 
-\begin_inset Formula 
-\[
-\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}Q^{-1}\times N\left(0,\sigma^{2}Q\right)\sim N\left(0,\sigma^{2}Q^{-1}\right).
-\]
-
+.
+ If we have a consistent estimator 
+\begin_inset Formula $\tilde{\Sigma}$
 \end_inset
 
-We can estimate the unknown parameter 
+ for 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+, then we can plug in these consistent estimator to give 
+\begin_inset Formula $\tilde{\Omega}=\widehat{Q}^{-1}\tilde{\Sigma}\widehat{Q}^{-1}$
+\end_inset
+
+.
+ The tricky question is how to consistently estimate 
+\begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]$
+\end_inset
+
+.
+ We cannot use the sample mean of 
+\begin_inset Formula $x_{i}x_{i}'e_{i}^{2}$
+\end_inset
+
+ to estimate 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ because 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+ is unobservable.
+ Under homoskedasticity 
+\begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}=\sigma^{2}Q^{-1}$
+\end_inset
+
+, similarly we cannot use the sample mean of 
+\begin_inset Formula $e_{i}^{2}$
+\end_inset
+
+ to estimate 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
- by either 
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Naturally, one may attempt to use the OLS residual 
+\begin_inset Formula $\widehat{e}_{i}=\widehat{y}_{i}-x_{i}'\widehat{\beta}$
+\end_inset
+
+ to replace the regression error 
+\begin_inset Formula $e_{i}$
+\end_inset
+
+, so that we would have the plug-in estimators 
+\begin_inset Formula $\widehat{\Omega}=\widehat{\sigma}^{2}\widehat{Q}^{-1}$
+\end_inset
+
+ for homoskedasticity, where 
 \begin_inset Formula $\widehat{\sigma}^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)$
 \end_inset
 
@@ -415,19 +707,47 @@ We can estimate the unknown parameter
 \begin_inset Formula $\widehat{\sigma}^{2}=\widehat{e}'\widehat{e}/n$
 \end_inset
 
- and estimate 
-\begin_inset Formula $Q^{-1}$
+, and 
+\begin_inset Formula $\widehat{\Omega}=\widehat{Q}^{-1}\widehat{\Sigma}\widehat{Q}^{-1}$
 \end_inset
 
- by the plug-in estimator 
-\begin_inset Formula $\widehat{Q}^{-1}$
+ for heteroskedasticity, where 
+\begin_inset Formula $\widehat{\Sigma}=n^{-1}\sum_{i}x_{i}x_{i}'\widehat{e}_{i}^{2}$
 \end_inset
 
 .
+ 
 \end_layout
 
-\begin_layout Standard
-Recall that under the classical normal-error assumption, the 
+\begin_layout Remark
+If we choose 
+\begin_inset Formula $\widehat{\sigma}^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)$
+\end_inset
+
+ and replace 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm_homok_pivot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, then the resulting statistic 
+\begin_inset Formula $T_{k}=\frac{\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right)}{\sqrt{\widehat{\sigma}^{2}[\widehat{Q}^{-1}]_{kk}}}$
+\end_inset
+
+ is exactly the 
+\begin_inset Formula $t$
+\end_inset
+
+-statistic in the finite sample analysis.
+ Recall that under the classical normal-error assumption, the 
 \begin_inset Formula $t$
 \end_inset
 
@@ -455,14 +775,44 @@ Recall that under the classical normal-error assumption, the
 \begin_inset Formula $t$
 \end_inset
 
--statistic, we must draw the critical values from the normal distribution.
+-statistic, we must draw the critical values from the normal distribution,
+ because 
+\begin_inset Formula 
+\[
+T_{k}=\frac{\sqrt{\sigma^{2}[Q^{-1}]_{kk}}}{\sqrt{\widehat{\sigma}^{2}[\widehat{Q}^{-1}]_{kk}}}\cdot\frac{\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right)}{\sqrt{\sigma^{2}[Q^{-1}]_{kk}}}\stackrel{d}{\to}1\times N\left(0,1\right)\sim N\left(0,1\right)
+\]
+
+\end_inset
+
+by Slutsky's theorem if 
+\begin_inset Formula $\widehat{\sigma}^{2}\stackrel{p}{\to}\sigma^{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+The next section will give sufficient conditions for 
+\begin_inset Formula $\widehat{\sigma}^{2}\stackrel{p}{\to}\sigma^{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\widehat{\Sigma}\stackrel{p}{\to}\Sigma$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Section
-Consistent Estimation of Variance
+Consistency of Feasible Variance Estimator
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 In order to construct 
 \begin_inset Formula $t$
 \end_inset
@@ -512,6 +862,11 @@ In order to construct
 \end_inset
 
  in the estimation of the variance?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
