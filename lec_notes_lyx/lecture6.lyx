@@ -39,7 +39,7 @@ theorems-ams-chap-bytype
 \pdf_bookmarksopen false
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks true
-\pdf_pdfborder false
+\pdf_pdfborder true
 \pdf_colorlinks false
 \pdf_backref section
 \pdf_pdfusetitle false
@@ -55,9 +55,9 @@ theorems-ams-chap-bytype
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
-\biblio_style plain
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -122,6 +122,25 @@ We have learned some basic asymptotic theory in the previous chapter.
 \end_inset
 
 , which is of key interest in our course.
+ We will show (i) 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is a consistent estimator of the linear projection coefficient 
+\begin_inset Formula $\beta$
+\end_inset
+
+; (ii) 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is asymptotically normal; (iii) the asymptotic normality allows asymptotic
+ inference of 
+\begin_inset Formula $\beta$
+\end_inset
+
+; (iv) under what condition the variance components in the test statistic
+ can be consistently estimated so that the testing procedure is make feasible.
 \end_layout
 
 \begin_layout Section
@@ -137,9 +156,9 @@ Consistency
  Intuitively, it says that when the sample size is arbitrarily large, a
  desirable estimator should be arbitrarily close (in the sense of convergence
  in probability) to the population quantity of interest.
- Otherwise, if an estimator still deviates from the object of interest,
- it is hard to persuade other researchers to use such an estimator.
- 
+ Otherwise, if an estimator still deviates from the object of interest under
+ infinite sample size, it is hard to persuade other researchers to use such
+ an estimator unless compelling justification is provided.
 \end_layout
 
 \begin_layout Definition
@@ -263,7 +282,7 @@ The continuous mapping theorem immediately implies
 
 \end_inset
 
- In other words, 
+ The OLS estimator 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
@@ -279,12 +298,12 @@ No matter whether
 \begin_inset Formula $\left(y_{i},x_{i}\right)_{i=1}^{n}$
 \end_inset
 
- is an iid, or inid, or dependent sample, as long as the convergence in
- probability holds for the above two expressions and 
+ is an iid, or inid, or dependent sample, consistency holds as long as the
+ convergence in probability holds for the above two expressions and 
 \begin_inset Formula $Q$
 \end_inset
 
- is an invertible matrix, consistency holds.
+ is an invertible matrix.
 \end_layout
 
 \begin_layout Section
@@ -366,7 +385,6 @@ asymptotic variance
 asymptotic normality
 \emph default
  of the OLS estimator.
- 
 \end_layout
 
 \begin_layout Standard
@@ -379,7 +397,15 @@ The asymptotic variance
 sandwich form
 \emph default
 .
- It can be simplified under conditional homoskedasticity, which gives 
+ It can be simplified under conditional homoskedasticity 
+\begin_inset Formula $E\left[e_{i}^{2}|x_{i}\right]=\sigma^{2}$
+\end_inset
+
+ for all 
+\begin_inset Formula $i$
+\end_inset
+
+, which gives 
 \begin_inset Formula 
 \[
 \Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]=E\left[x_{i}x_{i}'E\left[e_{i}^{2}|X\right]\right]=\sigma^{2}E\left[x_{i}x_{i}'\right]=\sigma^{2}Q.
@@ -425,12 +451,20 @@ noprefix "false"
 \begin_inset Formula 
 \begin{align}
 \sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right) & =\sqrt{n}\eta_{k}'\left(\widehat{\beta}-\beta\right)\nonumber \\
- & \stackrel{d}{\to}N\left(0,\sigma^{2}\eta_{k}'Q^{-1}\eta_{k}\right)\sim N\left(0,\sigma^{2}[Q^{-1}]_{kk}\right).\qedhere\label{eq:asym_norm_homok}
+ & \stackrel{d}{\to}N\left(0,\sigma^{2}\eta_{k}'Q^{-1}\eta_{k}\right)\sim N\left(0,\sigma^{2}[Q^{-1}]_{kk}\right),\label{eq:asym_norm_homok}
 \end{align}
 
 \end_inset
 
+where 
+\begin_inset Formula $\eta_{k}=\left(0,\ldots,0,1,0\ldots,0\right)'$
+\end_inset
 
+ is the selector of the 
+\begin_inset Formula $k$
+\end_inset
+
+-th element.
 \end_layout
 
 \begin_layout Standard
@@ -441,11 +475,11 @@ noprefix "false"
 \end_layout
 
 \begin_layout Remark
-If we multiply 
+If 
 \begin_inset Formula $\Omega^{-1/2}$
 \end_inset
 
- on both sides of 
+ is multiplied on both sides of 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:asym_norm"
@@ -477,7 +511,11 @@ noprefix "false"
 \begin_inset Formula $N\left(0,I_{K}\right)$
 \end_inset
 
-, is pivotal because it does not involve any known parameter.
+, is 
+\emph on
+pivotal
+\emph default
+ because it does not involve any unknown parameter.
  In contrast, the asymptotic distribution in 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -505,7 +543,17 @@ noprefix "false"
 \begin_inset Formula $\beta_{k}$
 \end_inset
 
-, we can write it into the pivotal form as 
+, we can write 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm-pivot"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ into the pivotal form as 
 \begin_inset Formula 
 \begin{equation}
 \frac{\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right)}{\sqrt{\sigma^{2}[Q^{-1}]_{kk}}}\stackrel{d}{\to}N\left(0,1\right).\label{eq:asym_norm_homok_pivot}
@@ -527,6 +575,16 @@ Up to now we have derived the asymptotic distribution of
 
 .
  However, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:asym_norm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ or 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:asym_norm-pivot"
@@ -581,7 +639,7 @@ noprefix "false"
 , we have 
 \begin_inset Formula 
 \begin{align*}
-\tilde{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right) & =\left(\tilde{\Omega}^{-1/2}\Omega^{1/2}\right)\Omega^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right).
+\tilde{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right) & =\tilde{\Omega}^{-1/2}\Omega^{1/2}\times\Omega^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right).
 \end{align*}
 
 \end_inset
@@ -629,8 +687,12 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-The next question is how to estimate 
+The next question is how to consistently estimate 
 \begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}$
+\end_inset
+
+, or equivalent how to come up with an 
+\begin_inset Formula $\tilde{\Omega}$
 \end_inset
 
 .
@@ -647,7 +709,7 @@ The next question is how to estimate
 \begin_inset Formula $\Sigma$
 \end_inset
 
-, then we can plug in these consistent estimator to give 
+, then we can plug in these consistent estimators to form 
 \begin_inset Formula $\tilde{\Omega}=\widehat{Q}^{-1}\tilde{\Sigma}\widehat{Q}^{-1}$
 \end_inset
 
@@ -674,7 +736,7 @@ The next question is how to estimate
 \begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}=\sigma^{2}Q^{-1}$
 \end_inset
 
-, similarly we cannot use the sample mean of 
+, and similarly we cannot use the sample mean of 
 \begin_inset Formula $e_{i}^{2}$
 \end_inset
 
@@ -683,7 +745,72 @@ The next question is how to estimate
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Example
+Heteroskedasticity is ubiquitous in econometrics.
+ A regression example that naturally generates conditional heteroskedasticity
+ is the 
+\emph on
+linear probability model
+\emph default
  
+\begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
+\end_inset
+
+, where 
+\begin_inset Formula $y_{i}\in\left\{ 0,1\right\} $
+\end_inset
+
+ is a binary dependent variable.
+ Assume CEF as 
+\begin_inset Formula $E\left[y_{i}|x_{i}\right]=x_{i}'\beta$
+\end_inset
+
+, so we can use OLS to consistently estimate 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Notice that the error term 
+\begin_inset Formula 
+\[
+e_{i}=\begin{cases}
+1-x_{i}'\beta, & \text{if }y_{i}=1\\
+-x_{i}'\beta & \text{if }y_{i}=0
+\end{cases}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The conditional variance 
+\begin_inset Formula 
+\[
+\mathrm{var}\left[e_{i}|x_{i}\right]=\mathrm{var}\left[y_{i}|x_{i}\right]=E\left[y_{i}|x_{i}\right]\left(1-E\left[y_{i}|x_{i}\right]\right)=x_{i}'\beta\left(1-x_{i}'\beta\right)
+\]
+
+\end_inset
+
+ explicitly depends on 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ In other words, the conditional variance varies with 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -716,7 +843,13 @@ Naturally, one may attempt to use the OLS residual
 \end_inset
 
 .
- 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Remark
@@ -791,7 +924,14 @@ by Slutsky's theorem if
 .
 \end_layout
 
-\begin_layout Remark
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The next section will give sufficient conditions for 
 \begin_inset Formula $\widehat{\sigma}^{2}\stackrel{p}{\to}\sigma^{2}$
 \end_inset
@@ -801,7 +941,6 @@ The next section will give sufficient conditions for
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Section
@@ -963,7 +1102,8 @@ Cauchy-Schwarz inequality for random variables
 \end_layout
 
 \begin_layout Standard
-Because of the Cauchy-Schwarz inequality, 
+Because of the Cauchy-Schwarz inequality (cross moments are no larger than
+ variance)
 \begin_inset Formula 
 \[
 \left\Vert \Sigma\right\Vert _{\infty}=\max_{k\in[K]}E\left[z_{ik}^{2}\right],
@@ -988,16 +1128,20 @@ E\left[z_{ik}^{2}\right]=E\left[x_{ik}^{2}e_{i}^{2}\right]\leq\left(E\left[x_{ik
 
 \end_inset
 
- where the last inequality again follows by the Cachy-Schwarz inequality.
- It implies that the sufficient conditions for finite variance are 
-\begin_inset Formula $\max_{k}E\left[x_{ik}^{4}\right]<\infty$
+ where the last inequality again follows by the Cauchy-Schwarz inequality.
+ It implies that the 
+\emph on
+sufficient conditions
+\emph default
+ for finite variance are 
+\begin_inset Formula 
+\begin{equation}
+\max_{k}E\left[x_{ik}^{4}\right]<\infty\ \ \mbox{and }\ \ E\left[e_{i}^{4}\right]<\infty.\label{eq:4th_moment}
+\end{equation}
+
 \end_inset
 
- and 
-\begin_inset Formula $E\left[e_{i}^{4}\right]<\infty$
-\end_inset
-
-.
+We will maintain these conditions in the following derivation.
 \end_layout
 
 \begin_layout Subsection
@@ -1007,32 +1151,16 @@ Homoskedasticity
 \begin_layout Standard
 For the estimation of variance, if the error is homoskedastic, 
 \begin_inset Formula 
-\[
+\begin{equation}
 \begin{aligned}\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
  & =\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right).
 \end{aligned}
-\]
+\label{eq:v-homo1}
+\end{equation}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Notice 
-\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{i}\stackrel{p}{\to}E\left[e_{i}x_{i}\right]=0$
-\end_inset
-
-, the second term 
-\begin_inset Formula 
-\begin{align}
-\left|\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)\right| & \leq2\left\Vert \frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}\right\Vert _{2}\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\nonumber \\
- & =o_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right)\label{eq:homo1}
-\end{align}
-
-\end_inset
-
-by Cauchy-Schwarz inequality.
 \end_layout
 
 \begin_layout Definition
@@ -1115,18 +1243,30 @@ Cauchy-Schwarz inequality for vectors
 \end_layout
 
 \begin_layout Standard
-The third term 
+Notice 
+\begin_inset Formula $\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{i}\stackrel{p}{\to}E\left[e_{i}x_{i}\right]=0$
+\end_inset
+
+, the second term of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:v-homo1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is 
 \begin_inset Formula 
 \begin{align}
-\left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\left(\widehat{\beta}-\beta\right) & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\lambda_{\max}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\nonumber \\
- & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\mathrm{trace}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\nonumber \\
- & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\max_{k}\left\{ \frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{ik}^{2}\right\} \nonumber \\
- & =o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).\label{eq:homo2}
+\left|\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)\right| & \leq2\left\Vert \frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}\right\Vert _{2}\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\nonumber \\
+ & =o_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right)\label{eq:homo1}
 \end{align}
 
 \end_inset
 
-
+by Cauchy-Schwarz inequality.
 \end_layout
 
 \begin_layout Fact
@@ -1134,7 +1274,7 @@ The third term
 status open
 
 \begin_layout Plain Layout
-quadratic inequality
+Quadratic inequality
 \end_layout
 
 \end_inset
@@ -1158,12 +1298,55 @@ quadratic inequality
 , we have the 
 \begin_inset Formula 
 \[
-\left\Vert u\right\Vert _{2}^{2}\lambda_{\min}\left(A\right)\leq u'Au\leq\left\Vert u\right\Vert _{2}^{2}\lambda_{\max}\left(A\right)
+\left\Vert u\right\Vert _{2}^{2}\lambda_{\min}\left(A\right)\leq u'Au\leq\left\Vert u\right\Vert _{2}^{2}\lambda_{\max}\left(A\right).
 \]
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+The third term of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:v-homo1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is bounded by 
+\begin_inset Formula 
+\begin{align}
+\left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\left(\widehat{\beta}-\beta\right) & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\lambda_{\max}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\nonumber \\
+ & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\mathrm{trace}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\nonumber \\
+ & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\max_{k}\left\{ \frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{ik}^{2}\right\} \nonumber \\
+ & =o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right),\label{eq:homo2}
+\end{align}
+
+\end_inset
+
+where the stochastic order follows by 
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{ik}^{2}\stackrel{p}{\to}E\left[e_{i}^{2}x_{ik}^{2}\right]\leq E\left[e_{i}^{4}\right]E\left[x_{ik}^{4}\right]<\infty
+\]
+
+\end_inset
+
+in view of the condition 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:4th_moment"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1190,12 +1373,12 @@ noprefix "false"
 ) implies that 
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}=\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+o_{p}\left(1\right)\stackrel{p}{\to}\sigma_{e}^{2}.
+\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}=\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+o_{p}\left(1\right)+o_{p}\left(1\right)=\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+o_{p}\left(1\right)\stackrel{p}{\to}\sigma_{e}^{2}.
 \]
 
 \end_inset
 
-
+(See Appendix for the operations of small op and big Op.)
 \end_layout
 
 \begin_layout Subsection
@@ -1207,11 +1390,12 @@ The basic strategy of proof is similar for the general case of heteroskedasticit
 y, though each step is more complicated.
  
 \begin_inset Formula 
-\[
+\begin{equation}
 \begin{aligned}\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
  & =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'e_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\cdot e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}.
 \end{aligned}
-\]
+\label{eq:v-hetero}
+\end{equation}
 
 \end_inset
 
@@ -1277,7 +1461,11 @@ Holder's inequality
 \end_inset
 
 , 
-\begin_inset Formula $\left|u'v\right|\leq\left\Vert u\right\Vert _{p}\left\Vert q\right\Vert _{q}$
+\begin_inset Formula 
+\[
+\left|u'v\right|\leq\left\Vert u\right\Vert _{p}\left\Vert q\right\Vert _{q}
+\]
+
 \end_inset
 
  for any 
@@ -1289,7 +1477,10 @@ Holder's inequality
 \end_inset
 
 .
- Cauchy-Schwarz inequality is a special case of Holder's inequality when
+\end_layout
+
+\begin_layout Remark
+Cauchy-Schwarz inequality is a special case of Holder's inequality when
  
 \begin_inset Formula $p=q=2$
 \end_inset
@@ -1298,7 +1489,17 @@ Holder's inequality
 \end_layout
 
 \begin_layout Standard
-The second term is bounded by 
+The second term of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:v-hetero"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is bounded by 
 \begin_inset Formula 
 \[
 \begin{aligned} & \max_{k,k'}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}x_{ik'}\cdot e_{i}x_{i}'\left(\widehat{\beta}-\beta\right)\right|\\
@@ -1320,29 +1521,44 @@ where the third inequality hold by the Holder's inequality with
 \begin_inset Formula $q=4/3$
 \end_inset
 
-.
+, and the stochastic order is guaranteed if under suitable conditions 
+\begin_inset Formula 
+\[
+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\stackrel{p}{\to}E\left[e_{i}^{4}\right]<\infty\ \ \text{and }\ \ \frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\stackrel{p}{\to}E\left[x_{ik}^{4}\right]<\infty.
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-The third term is bounded by 
+The third term of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:v-hetero"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ is bounded by 
 \begin_inset Formula 
 \[
-\begin{aligned} & \mbox{trace}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}'\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}\right)\\
- & \leq K\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left[\left(\widehat{\beta}-\beta\right)'x_{i}\right]^{2}\\
- & \leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
- & \leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left\Vert x_{i}\right\Vert _{2}^{2}\left\Vert x_{i}\right\Vert _{2}^{2}\\
- & =K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\frac{1}{n}\sum_{i=1}^{n}\left(\sum_{k=1}^{K}x_{ik}^{2}\right)^{2}\\
- & \leq K\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\sum_{k=1}^{K}\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}=o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
+\begin{aligned} & \max_{k_{1},k_{2}}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik_{1}}x_{ik_{2}}\left(\left(\widehat{\beta}-\beta\right)'x_{i}\right)^{2}\right|\\
+ & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k_{1},k_{2}}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik_{1}}x_{ik_{2}}\left(x_{i}x_{i}'\right)\right|\\
+ & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k_{1},k_{2},k_{3},k_{4}}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik_{1}}x_{ik_{2}}x_{ik_{3}}x_{ik_{4}}\right|\\
+ & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k_{1},k_{2}}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik_{1}}^{2}x_{ik_{2}}^{2}\right|\\
+ & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\right|\\
+ & =o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
 \end{aligned}
 \]
 
 \end_inset
 
-where the third inequality follows by 
-\begin_inset Formula $\left(a_{1}+\cdots+a_{K}\right)^{2}\leq K\left(a_{1}^{2}+\cdots+a_{K}^{2}\right)$
-\end_inset
-
-.
+where the third and the fourth inequalities follow by applying Cauchy Schwarz
+ inequality.
 \end_layout
 
 \begin_layout Section
@@ -1350,14 +1566,41 @@ Summary
 \end_layout
 
 \begin_layout Standard
-These derivations of the variances look complicated at first glance, but
- is indeed often encountered in econometric theory.
+One of the most important techniques in asymptotic theory is manipulating
+ inequalities.
+ These derivations of the variances look complicated at first glance, but
+ is often encountered in proofs of theoretical results.
  After many years of torment, you will be accustomed to these routine calculatio
 ns.
 \end_layout
 
 \begin_layout Standard
-In this chapter all vectors are of finite dimensional.
+
+\series bold
+Historical notes
+\series default
+: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "white1980heteroskedasticity"
+literal "false"
+
+\end_inset
+
+ drew attention of economic contexts that violate the classical statistical
+ assumptions in linear regressions.
+ It seeded econometricians' care, or obsession, in variance estimation for
+ statistical inference.
+ The following decades has witnessed a plethora of proposals of variance
+ estimation that deal with various deviation from the classical assumptions.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Further reading
+\series default
+: In this chapter all vectors are of finite dimensional.
  Some results can be extended to allow infinite 
 \begin_inset Formula $K$
 \end_inset
@@ -1371,20 +1614,53 @@ In this chapter all vectors are of finite dimensional.
 \end_inset
 
 .
- Such asymptotic development will require multiple indices goes beyond the
- simplest case of 
+ Such asymptotic development will require multiple indices, and it goes
+ beyond the simplest case of 
 \begin_inset Formula $n\to\infty$
 \end_inset
 
  that we learned here.
+ Big data is accompanied by big model, in which the model itself is indexed
+ by the sample size and can grow more sophisticated as 
+\begin_inset Formula $n$
+\end_inset
+
+ get bigger.
+ In the proofs of my latest paper 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "shi2020high"
+literal "false"
+
+\end_inset
+
+, You will find loads of inequality operations of similar flavor to this
+ chapter.
 \end_layout
 
 \begin_layout Section
 Appendix
 \end_layout
 
-\begin_layout Subsection
-big O, small O notation
+\begin_layout Standard
+We introduce the 
+\begin_inset Quotes eld
+\end_inset
+
+big Op and small op
+\begin_inset Quotes erd
+\end_inset
+
+ notation.
+ They are the stochastic counterparts of the 
+\begin_inset Quotes eld
+\end_inset
+
+big O and small o
+\begin_inset Quotes erd
+\end_inset
+
+ notation in deterministic cases.
 \end_layout
 
 \begin_layout Itemize
@@ -1446,6 +1722,12 @@ Some operations:
 \end_layout
 
 \begin_layout Standard
+The big Op and small op notation allows us to keep using equalities in calculati
+on while expressing the stochastic order of random objects.
+ 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1461,10 +1743,20 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- 
-\backslash
-today}
+ Oct 21, 2020.}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
 
 \end_inset
 
