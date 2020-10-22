@@ -1,11 +1,6 @@
 ### Chinese University of Hong Kong, Fall 2020
 # ECON5121A: Econometric Theory and Applications
 
-“All theory is gray, my friend. But forever green is the tree of life.”
----Johann Wolfgang von Goethe: *Faust: Part I*
-
-
-
 
 
 Reading and Assignment will be updated each week as the class progresses.
@@ -35,6 +30,11 @@ Reading and Assignment will be updated each week as the class progresses.
   * [E] Ex 4.18, 20
 
 <img src="https://github.com/zhentaoshi/Econ5121A/blob/master/online_teaching.JPG" alt="online_teaching" width="600"/>
+
+“All theory is gray, my friend. But forever green is the tree of life.”
+---Johann Wolfgang von Goethe: *Faust: Part I*
+
+
 
 
 

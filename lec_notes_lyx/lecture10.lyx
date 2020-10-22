@@ -130,10 +130,6 @@ setcounter{chapter}{9}
 Generalized Method of Moments
 \end_layout
 
-\begin_layout Section
-Introduction
-\end_layout
-
 \begin_layout Standard
 
 \emph on
@@ -179,7 +175,7 @@ method of moments
 \end_layout
 
 \begin_layout Section
-GMM in Linear Model
+Instrumental Regression
 \end_layout
 
 \begin_layout Standard
@@ -834,6 +830,14 @@ reference "eq:normality"
  
 \end_layout
 
+\begin_layout Section
+Two-Step GMM
+\end_layout
+
+\begin_layout Subsection
+General Case
+\end_layout
+
 \begin_layout Claim*
 The choice 
 \begin_inset Formula $W=\Omega^{-1}$
@@ -909,6 +913,10 @@ Set
 This second estimator is asymptotic efficient.
 \end_layout
 
+\begin_layout Subsection
+Two Stage Least Squares
+\end_layout
+
 \begin_layout Standard
 If we further assume conditional homoskedasticity, then 
 \begin_inset Formula $\Omega=\E\left[z_{i}z_{i}'\epsilon_{i}^{2}\right]=\E\left[z_{i}z_{i}'\E\left[\epsilon_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\E\left[z_{i}z_{i}'\right]$
@@ -971,7 +979,7 @@ This is exactly the same expression of 2SLS for
  It is a special case of GMM.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 GMM in Nonlinear Model*
 \end_layout
 
@@ -1158,6 +1166,26 @@ J\left(\widehat{\beta}\right)\Rightarrow\chi^{2}\left(L-K\right)
 
 If the null hypothesis is false, then the test statistic tends to be large,
  and it is more likely to reject the null.
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+GMM comes from econometrics.
+ In statistics it is called estimating equations.
+ 
+\end_layout
+
+\begin_layout Standard
+Empirical likelihood is an alternative estimator.
+ 
+\end_layout
+
+\begin_layout Standard
+GMM has many issues.
+ It becomes a big literature to fix these problems.
 \end_layout
 
 \begin_layout Standard

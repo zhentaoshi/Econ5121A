@@ -1136,10 +1136,14 @@ where we introduce the population quantity
  into the second equality to help derive the distribution of the numerator
  and the denominator of the last expression.
  The numerator 
-\begin_inset Formula $\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}\sim N\left(0,1\right)$
+\begin_inset Formula 
+\[
+\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X'X\right)^{-1}\right]_{kk}}\sim N\left(0,1\right),
+\]
+
 \end_inset
 
-, and the denominator 
+ and the denominator 
 \begin_inset Formula $\sqrt{\frac{e'}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}$
 \end_inset
 

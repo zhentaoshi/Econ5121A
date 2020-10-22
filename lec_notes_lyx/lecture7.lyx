@@ -128,18 +128,7 @@ Notation:
  is its realization.
 \end_layout
 
-\begin_layout Section
-Hypothesis Testing
-\begin_inset CommandInset label
-LatexCommand label
-name "hypothesis-testing"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
+\begin_layout Standard
 A 
 \emph on
 hypothesis
@@ -149,11 +138,7 @@ hypothesis
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Itemize
-The 
+ Hypothesis testing checks whether the data support a 
 \emph on
 null hypothesis
 \emph default
@@ -161,16 +146,13 @@ null hypothesis
 \begin_inset Formula $\Theta_{0}$
 \end_inset
 
- is a subset of 
+, which is a subset of 
 \begin_inset Formula $\Theta$
 \end_inset
 
- of interest, ideally suggested by scientific theory.
- 
-\end_layout
-
-\begin_layout Itemize
-The 
+ of interest.
+ Ideally the null hypothesis should be suggested by scientific theory.
+ The 
 \emph on
 alternative hypothesis
 \emph default
@@ -183,19 +165,17 @@ alternative hypothesis
 \end_inset
 
 .
- 
+ Based on the observed evidence, hypothesis testing decides to accept the
+ null hypothesis or to reject it.
+ If the null hypothesis is rejected by the data, the data is incompatible
+ with the associated scientific theory.
 \end_layout
 
-\begin_layout Itemize
-
-\emph on
-Hypothesis testing
-\emph default
- is a decision, based on the observed evidence, to accept the null hypothesis
- or to reject it.
+\begin_layout Section
+Decision Rule and Errors
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 If 
 \begin_inset Formula $\Theta_{0}$
 \end_inset
@@ -230,9 +210,10 @@ composite hypothesis
 \end_inset
 
 ) is a composite hypothesis.
+ 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 A 
 \emph on
 test function
@@ -265,29 +246,24 @@ where
 \end_inset
 
 .
-\end_layout
+ We call the set 
+\begin_inset Formula $A_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi_{\theta}\left(\mathbf{x}\right)=0\right\} $
+\end_inset
 
-\begin_layout Itemize
-The 
+ the 
 \emph on
 acceptance region
 \emph default
- is defined as 
-\begin_inset Formula $A_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi_{\theta}\left(\mathbf{x}\right)=0\right\} ,$
+, and its complement 
+\begin_inset Formula $R_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi_{\theta}\left(\mathbf{x}\right)=1\right\} $
 \end_inset
 
- and the 
+ the 
 \emph on
-rejection region
-\emph default
- is 
-\begin_inset Formula $R_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi_{\theta}\left(\mathbf{x}\right)=1\right\} .$
-\end_inset
-
-
+rejection region.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 The 
 \emph on
 power function
@@ -311,7 +287,7 @@ The power function measures, at a given point
 , the probability that the test function rejects the null.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
 The 
 \emph on
 power
@@ -350,11 +326,7 @@ size
 \end_inset
 
 .
- 
-\end_layout
-
-\begin_layout Itemize
-The 
+ The 
 \emph on
 level
 \emph default
@@ -386,23 +358,186 @@ level
 .
 \end_layout
 
-\begin_layout Verbatim
-     | decision     |  reject $H_{1}$  | reject $H_{0}$
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Decisions and States
 \end_layout
 
-\begin_layout Verbatim
-     |--------------|------------------| ---------------
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
 \end_layout
 
-\begin_layout Verbatim
-     | $H_{0}$ true |     correct      | Type I error
+\end_inset
+
+
 \end_layout
 
-\begin_layout Verbatim
-     | $H_{0}$ false| Type II error    |   correct
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
-\begin_layout Itemize
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+accept 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ (reject 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+reject 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ (accept 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ true (
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ false)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+correct decision
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Type I error
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ false (
+\begin_inset Formula $H_{1}$
+\end_inset
+
+ true)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Type II error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+correct decision
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 size = 
 \emph on
 P
@@ -411,14 +546,14 @@ P
 \begin_inset Formula $H_{0}$
 \end_inset
 
- when 
+|
 \begin_inset Formula $H_{0}$
 \end_inset
 
- is true) 
+ true)
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Plain Layout
 power = 
 \emph on
 P
@@ -427,11 +562,16 @@ P
 \begin_inset Formula $H_{0}$
 \end_inset
 
- when 
+|
 \begin_inset Formula $H_{0}$
 \end_inset
 
- is false) 
+ false)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1294,29 +1434,17 @@ The Bayesian credible set and the frequentist confidence interval are different
 .
 \end_layout
 
+\begin_layout Standard
+Neymann-Pearson lemma for LRT.
+ Wilks' theorem.
+\end_layout
+
 \begin_layout Section
 Application in OLS
-\begin_inset CommandInset label
-LatexCommand label
-name "application-in-ols"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
 Wald Test
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "wald-test"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1744,21 +1872,12 @@ variant
 \end_layout
 
 \begin_layout Subsection
-Lagrangian Multiplier Test*
+Lagrangian Multiplier Test
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "lagrangian-multiplier-test"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Restricted least square 
+The Lagrangian multiplier test the regression coefficient is based on the
+ restricted estimator 
 \begin_inset Formula 
 \[
 \min_{\beta}\left(y-X\beta\right)'\left(y-X\beta\right)\mbox{ s.t. }R\beta=r.
@@ -1766,15 +1885,39 @@ Restricted least square
 
 \end_inset
 
-Turn it into an unrestricted problem 
+We know that the restricted minimization problem can be converted into an
+ unrestricted problem 
 \begin_inset Formula 
-\[
-L\left(\beta,\lambda\right)=\frac{1}{2n}\left(y-X\beta\right)'\left(y-X\beta\right)+\lambda'\left(R\beta-r\right).
-\]
+\begin{equation}
+L\left(\beta,\lambda\right)=\frac{1}{2n}\left(y-X\beta\right)'\left(y-X\beta\right)+\lambda'\left(R\beta-r\right),\label{eq:Lagran}
+\end{equation}
 
 \end_inset
 
-The first-order condition 
+where 
+\begin_inset Formula $L\left(\beta,\lambda\right)$
+\end_inset
+
+ is called the Lagrangian, and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is the Lagrangian multiplier.
+ 
+\end_layout
+
+\begin_layout Standard
+Set the first-order condition of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Lagran"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ as zero:
 \begin_inset Formula 
 \begin{align*}
 \frac{\partial}{\partial\beta}L & =-\frac{1}{n}X'\left(y-X\tilde{\beta}\right)+\tilde{\lambda}R=-\frac{1}{n}X'e+\frac{1}{n}X'X\left(\tilde{\beta}-\beta^{*}\right)+R'\tilde{\lambda}=0.\\
@@ -1783,7 +1926,20 @@ The first-order condition
 
 \end_inset
 
-Combine these two equations into a linear system, 
+where 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{\lambda}$
+\end_inset
+
+ denote the roots of these equation, and 
+\begin_inset Formula $\beta^{*}$
+\end_inset
+
+ is the hypothesized true value.
+ The two equations can be written as a linear system
 \begin_inset Formula 
 \[
 \begin{pmatrix}\widehat{Q} & R'\\
@@ -1804,36 +1960,56 @@ where
 .
 \end_layout
 
+\begin_layout Fact
+\begin_inset Formula 
+\[
+\begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
+\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & (R'Q^{-1}R)^{-1}
+\end{pmatrix}\begin{pmatrix}\widehat{Q} & R'\\
+R & 0
+\end{pmatrix}=I_{K+q}.
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-Thus we can explicitly express the estimator as 
+Given the above fact, we can explicitly express
 \begin_inset Formula 
 \[
 \begin{aligned}\begin{pmatrix}\tilde{\beta}-\beta^{*}\\
 \tilde{\lambda}
-\end{pmatrix} & =\begin{pmatrix}\widehat{Q} & R'\\
-R & 0
-\end{pmatrix}^{-1}\begin{pmatrix}\frac{1}{n}X'e\\
-0
-\end{pmatrix}\\
- & =\begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
+\end{pmatrix} & =\begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
 \left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & (R'Q^{-1}R)^{-1}
 \end{pmatrix}\begin{pmatrix}\frac{1}{n}X'e\\
 0
-\end{pmatrix}.
-\end{aligned}
+\end{pmatrix}\end{aligned}
+.
 \]
 
 \end_inset
 
-We conclude that 
+The 
+\begin_inset Formula $\tilde{\lambda}$
+\end_inset
+
+ component is 
 \begin_inset Formula 
-\[
-\sqrt{n}\tilde{\lambda}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\stackrel{d}{\to}N\left(0,\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}\right).
-\]
+\begin{align*}
+\sqrt{n}\tilde{\lambda} & =\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ & \stackrel{d}{\to}N\left(0,\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}\right)
+\end{align*}
 
 \end_inset
 
-Let 
+as 
+\begin_inset Formula $\widehat{Q}\stackrel{p}{\to}Q$
+\end_inset
+
+.
+ Denote 
 \begin_inset Formula $W=\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}$
 \end_inset
 
@@ -1845,7 +2021,30 @@ n\tilde{\lambda}'W^{-1}\tilde{\lambda}\stackrel{d}{\to}\chi_{q}^{2}.
 
 \end_inset
 
-If homoskedastic, then 
+Let 
+\begin_inset Formula $\widehat{W}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{\Omega}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\widehat{\Omega}\stackrel{p}{\to}\Omega$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{align*}
+n\tilde{\lambda}'\widehat{W}^{-1}\tilde{\lambda} & =n\tilde{\lambda}'W^{-1}\tilde{\lambda}+n\tilde{\lambda}'\left(\widehat{W}^{-1}-W^{-1}\right)\tilde{\lambda}\\
+ & =n\tilde{\lambda}'W^{-1}\tilde{\lambda}+o_{p}\left(1\right)\stackrel{d}{\to}\chi_{q}^{2}.
+\end{align*}
+
+\end_inset
+
+This is the general expression of the LM test.
+ 
+\end_layout
+
+\begin_layout Standard
+In the special case of homoskedasticity, 
 \begin_inset Formula $W=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}RQ^{-1}QQ^{-1}R'\left(RQ^{-1}R'\right)^{-1}=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}.$
 \end_inset
 
@@ -1857,7 +2056,7 @@ If homoskedastic, then
 \begin_inset Formula $\hat{W}$
 \end_inset
 
-, 
+, we have 
 \begin_inset Formula 
 \[
 \begin{aligned}\frac{n\tilde{\lambda}'R\hat{Q}^{-1}R'\tilde{\lambda}}{\hat{\sigma}^{2}} & =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'X\hat{Q}^{-1}R'(R\hat{Q}^{-1}R')^{-1}R\hat{Q}^{-1}X'\left(y-X\tilde{\beta}\right)\\
@@ -1871,17 +2070,7 @@ If homoskedastic, then
 \end_layout
 
 \begin_layout Subsection
-Likelihood-Ratio test*
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "likelihood-ratio-test"
-
-\end_inset
-
-
+Likelihood-Ratio test
 \end_layout
 
 \begin_layout Standard
@@ -1933,7 +2122,11 @@ and
 \end_inset
 
 In general, it is a quadratic form of normal distributions.
- If homoskedastic, then 
+ 
+\end_layout
+
+\begin_layout Standard
+In the special case of homoskedasticity,
 \begin_inset Formula 
 \[
 \left(R\widehat{Q}^{-1}R'\right)^{-1/2}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
@@ -1970,6 +2163,29 @@ We can view the optimization of the log-likelihood as a two-step optimization
 .
 \end_layout
 
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+Abraham Wald, Pearson and Neyman.
+ 
+\end_layout
+
+\begin_layout Standard
+Bayes comes back in big data.
+ 
+\end_layout
+
+\begin_layout Standard
+Optimal test 
+\end_layout
+
+\begin_layout Standard
+Leo Lehmann two books: point estimation and hypothesis testing are volumes.
+ Classical notion.
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -1985,7 +2201,7 @@ bigskip
 
 
 \backslash
-texttt{ Zhentao Shi.
+texttt{Zhentao Shi.
  
 \backslash
 today}
