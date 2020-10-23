@@ -948,67 +948,6 @@ Consistency of Feasible Variance Estimator
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-In order to construct 
-\begin_inset Formula $t$
-\end_inset
-
--statistic, we need to estimate the asymptotic variance of 
-\begin_inset Formula $\widehat{\beta}$
-\end_inset
-
-, denoted as 
-\begin_inset Formula $\Omega$
-\end_inset
-
-.
- The asymptotic variance takes different forms under homoskedasticity (
-\begin_inset Formula $\Omega=\sigma^{2}Q^{-1}$
-\end_inset
-
-) and heteroskedasticity (
-\begin_inset Formula $\Omega=Q^{-1}\Sigma Q^{-1}$
-\end_inset
-
-).
- The definitions of 
-\begin_inset Formula $\sigma^{2}$
-\end_inset
-
- and 
-\begin_inset Formula $\Sigma$
-\end_inset
-
- both involve the regression error 
-\begin_inset Formula $e_{i}$
-\end_inset
-
-, which is unobservable.
- We only have 
-\begin_inset Formula $\widehat{e}_{i}$
-\end_inset
-
- instead.
- It is valid to replace 
-\begin_inset Formula $e_{i}$
-\end_inset
-
- with 
-\begin_inset Formula $\widehat{e}_{i}$
-\end_inset
-
- in the estimation of the variance?
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 We first show under what conditions all elements of 
 \begin_inset Formula $\Sigma=E\left[x_{i}x_{i}'e_{i}^{2}\right]$
 \end_inset
