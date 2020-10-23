@@ -1001,7 +1001,11 @@ Consider an inid (independent but non-identically distributed) sample
 \end_inset
 
  and 
-\begin_inset Formula $\mathrm{var}\left[x_{i}\right]=\sqrt{n}\sigma_{i}^{2}$
+\begin_inset Formula $\mathrm{var}\left[x_{i}\right]=\sqrt{n}c$
+\end_inset
+
+ for some constant 
+\begin_inset Formula $c>0$
 \end_inset
 
 .
@@ -1312,7 +1316,7 @@ If the sample
 \end_inset
 
  and 
-\begin_inset Formula $\mathrm{var}\left[x_{1}^{2}\right]=\sigma^{2}<\infty$
+\begin_inset Formula $\mathrm{var}\left[x_{1}\right]=\sigma^{2}<\infty$
 \end_inset
 
 , then 
