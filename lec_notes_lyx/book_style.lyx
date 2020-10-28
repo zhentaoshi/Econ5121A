@@ -28,7 +28,7 @@ knitr
 \language_package none
 \inputencoding auto
 \fontencoding default
-\font_roman "default" "default"
+\font_roman "palatino" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
 \font_math "auto" "auto"

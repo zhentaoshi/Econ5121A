@@ -9,6 +9,7 @@
 \begin_modules
 theorems-ams-chap-bytype
 theorems-ams-extended-chap-bytype
+knitr
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -32,8 +33,8 @@ theorems-ams-extended-chap-bytype
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 11
-\spacing single
+\paperfontsize 12
+\spacing double
 \use_hyperref true
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
@@ -41,7 +42,7 @@ theorems-ams-extended-chap-bytype
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks true
 \pdf_pdfborder false
-\pdf_colorlinks true
+\pdf_colorlinks false
 \pdf_backref section
 \pdf_pdfusetitle false
 \pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
@@ -169,6 +170,13 @@ alternative hypothesis
  null hypothesis or to reject it.
  If the null hypothesis is rejected by the data, the data is incompatible
  with the associated scientific theory.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+to be completed: Neymann-Pearson lemma for LRT.
+ Wilks' theorem.
 \end_layout
 
 \begin_layout Section
@@ -755,12 +763,8 @@ level
 
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Example
-\series default
- If 
+\begin_layout Example
+If 
 \begin_inset Formula $\left(X_{1i},X_{2i}\right)_{i=1}^{n}$
 \end_inset
 
@@ -883,12 +887,8 @@ uniformly over
 .
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Example
-\series default
- Suppose a random sample of size 6 is generated from 
+\begin_layout Example
+Suppose a random sample of size 6 is generated from 
 \begin_inset Formula 
 \[
 \left(X_{1},\ldots,X_{6}\right)\sim\text{i.i.d.}N\left(\theta,1\right),
@@ -937,15 +937,10 @@ has the correct level.
 \end_inset
 
  is
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{align*}
-\beta_{\phi}\left(\theta\right) & =P\left(\bar{X}\geq\frac{c}{\sqrt{6}}\right)\\
- & =P\left(\frac{\bar{X}-\theta}{1/\sqrt{6}}\geq\frac{\frac{c}{\sqrt{6}}-\theta}{1/\sqrt{6}}\right)\\
- & =P\left(N\geq c-\sqrt{6}\theta\right)\\
- & =1-\Phi\left(c-\sqrt{6}\theta\right)
+\beta_{\phi}\left(\theta\right) & =P\left(\bar{X}\geq\frac{c}{\sqrt{6}}\right)=P\left(\frac{\bar{X}-\theta}{1/\sqrt{6}}\geq\frac{\frac{c}{\sqrt{6}}-\theta}{1/\sqrt{6}}\right)\\
+ & =P\left(N\geq c-\sqrt{6}\theta\right)=1-\Phi\left(c-\sqrt{6}\theta\right)
 \end{align*}
 
 \end_inset
@@ -1197,12 +1192,8 @@ not
 .)
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Exercise
-\series default
-: Suppose a random sample of size 6 is generated from 
+\begin_layout Exercise
+Suppose a random sample of size 6 is generated from 
 \begin_inset Formula 
 \[
 \left(X_{1},\ldots,X_{6}\right)\sim\text{i.i.d. }N\left(\theta,1\right).
@@ -1280,6 +1271,215 @@ where the last inequality follows as
 \end_inset
 
  is a singleton, the equality holds.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(2020-10-28)
+\end_layout
+
+\begin_layout Plain Layout
+
+# function for two-sided confidence interval
+\end_layout
+
+\begin_layout Plain Layout
+
+CI <- function(x) {# x is a vector of random variables
+\end_layout
+
+\begin_layout Plain Layout
+
+  # nominal coverage probability is 90%
+\end_layout
+
+\begin_layout Plain Layout
+
+  n <- length(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+  mu <- mean(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+  sig <- sd(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+  upper <- mu + 1.645 / sqrt(n) * sig
+\end_layout
+
+\begin_layout Plain Layout
+
+  lower <- mu - 1.645/ sqrt(n) * sig
+\end_layout
+
+\begin_layout Plain Layout
+
+  return(list(lower = lower, upper = upper))
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Empirical coverage probability
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Rep <- 1000
+\end_layout
+
+\begin_layout Plain Layout
+
+sample_size <- 10
+\end_layout
+
+\begin_layout Plain Layout
+
+capture <- rep(0, Rep)
+\end_layout
+
+\begin_layout Plain Layout
+
+Bounds <- matrix(0, nrow = Rep, ncol = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+for (i in 1:Rep) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  mu <- 2
+\end_layout
+
+\begin_layout Plain Layout
+
+  x <- rpois(sample_size, mu)
+\end_layout
+
+\begin_layout Plain Layout
+
+  bounds <- CI(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+  capture[i] <- ((bounds$lower <= mu) & (mu <= bounds$upper))
+\end_layout
+
+\begin_layout Plain Layout
+
+  Bounds[i,] <- unlist( bounds )
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+cat("the emprical coverage probability = ", mean(capture)) # empirical size
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Plot confidence intervals for 25 replications.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+Bounds25 <- Bounds[1:25, ]
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(1, type="n", xlab="", ylab="", 
+\end_layout
+
+\begin_layout Plain Layout
+
+     ylim=c(min(Bounds25), max(Bounds25)), xlim=c(1, 25))
+\end_layout
+
+\begin_layout Plain Layout
+
+segments(x0= 1:25, y0=Bounds25[,1], x1 = 1:25, y1 = Bounds25[,2])
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(h=2, col = "red", lty = 2, lwd = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1434,11 +1634,6 @@ The Bayesian credible set and the frequentist confidence interval are different
 .
 \end_layout
 
-\begin_layout Standard
-Neymann-Pearson lemma for LRT.
- Wilks' theorem.
-\end_layout
-
 \begin_layout Section
 Application in OLS
 \end_layout
@@ -1518,12 +1713,8 @@ where
 .
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Example
-\series default
- (Single test) In a linear regression 
+\begin_layout Example
+(Single test) In a linear regression 
 \begin_inset Formula 
 \[
 \begin{aligned}y & =x_{i}'\beta+e_{i}=\sum_{k=1}^{5}\beta_{k}x_{ik}+e_{i}.\nonumber\\
@@ -1589,31 +1780,18 @@ where
 
 .
  Under 
-\begin_inset Formula $H_{0}:R\beta=\left(1,0,0,0,0\right)\left(\begin{array}{c}
-\beta_{1}\\
-\beta_{2}\\
-\beta_{3}\\
-\beta_{4}\\
-\beta_{5}
-\end{array}\right)=\beta_{1}=0$
-\end_inset
-
-, we have
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-\sqrt{n}R\left(\widehat{\beta}-\beta\right) & =\sqrt{n}\widehat{\beta}_{1}\stackrel{d}{\to}N\left(0,\Omega_{11}\right)
-\end{align*}
+\[
+H_{0}:R\beta=\left(1,0,0,0,0\right)\left(\beta_{1},\ldots,\beta_{5}\right)'=\beta_{1}=0,
+\]
 
 \end_inset
 
+ we have 
+\begin_inset Formula $\sqrt{n}R\left(\widehat{\beta}-\beta\right)=\sqrt{n}\widehat{\beta}_{1}\stackrel{d}{\to}N\left(0,\Omega_{11}\right).$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
-Therefore, 
+ Therefore, 
 \begin_inset Formula 
 \[
 \sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}=\sqrt{\frac{\Omega_{11}}{\widehat{\Omega}_{11}}}\sqrt{n}\frac{\widehat{\beta}_{1}}{\sqrt{\Omega_{11}}}
@@ -1658,12 +1836,8 @@ t
 
 \end_layout
 
-\begin_layout Standard
-
-\series bold
-Example
-\series default
- (Joint test) We want to simultaneously test 
+\begin_layout Example
+(Joint test) We want to simultaneously test 
 \begin_inset Formula $\beta_{1}=1$
 \end_inset
 
@@ -1702,7 +1876,7 @@ and
 , it is routine to construct the test.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Example
 \begin_inset VSpace medskip
 \end_inset
 
@@ -1711,14 +1885,14 @@ and
 
 \begin_layout Standard
 These two examples are linear restrictions.
- In order to test a nonlinear regression, we need the so-called 
-\emph on
-delta method
-\emph default
-.
-\end_layout
+ In order to test a nonlinear regression, we use the delta method.
+ 
+\series bold
 
-\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 
 \series bold
 Delta method
@@ -1779,7 +1953,12 @@ where
 
 \end_layout
 
-\begin_layout Standard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
 In the example of linear regression, the optimal experience level can be
  found by setting to zero the first order condition with respective to experienc
 e, 
@@ -1958,6 +2137,10 @@ where
 \end_inset
 
 .
+\begin_inset VSpace medskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Fact
@@ -1970,6 +2153,10 @@ R & 0
 \end{pmatrix}=I_{K+q}.
 \]
 
+\end_inset
+
+
+\begin_inset VSpace medskip
 \end_inset
 
 
