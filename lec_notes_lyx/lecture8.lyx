@@ -170,7 +170,7 @@ alternative hypothesis
  Based on the observed evidence, hypothesis testing decides to accept the
  null hypothesis or to reject it.
  If the null hypothesis is rejected by the data, the data is incompatible
- with the associated scientific theory.
+ with the proposed scientific theory.
 \end_layout
 
 \begin_layout Section
@@ -207,7 +207,7 @@ composite hypothesis
 \begin_inset Formula $\theta_{0}=0$
 \end_inset
 
-) is a simple hypothesis, while 
+) is a simple hypothesis, whereas 
 \begin_inset Formula $\Theta_{0}=(-\infty,0]$
 \end_inset
 
@@ -387,7 +387,7 @@ status open
 
 
 \backslash
-bigskip
+medskip
 \end_layout
 
 \end_inset
@@ -527,54 +527,6 @@ correct decision
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-bigskip
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-size = 
-\emph on
-P
-\emph default
-(reject 
-\begin_inset Formula $H_{0}$
-\end_inset
-
-|
-\begin_inset Formula $H_{0}$
-\end_inset
-
- true)
-\end_layout
-
-\begin_layout Plain Layout
-power = 
-\emph on
-P
-\emph default
-(reject 
-\begin_inset Formula $H_{0}$
-\end_inset
-
-|
-\begin_inset Formula $H_{0}$
-\end_inset
-
- false)
-\end_layout
-
 \end_inset
 
 
@@ -613,14 +565,48 @@ probability of committing Type II error
 .
 \end_layout
 
+\begin_layout Itemize
+size = 
+\emph on
+P
+\emph default
+(reject 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+|
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ true)
+\end_layout
+
+\begin_layout Itemize
+power = 
+\emph on
+P
+\emph default
+(reject 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+|
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ false)
+\end_layout
+
 \begin_layout Standard
 The philosophy on hypothesis testing has been debated for centuries.
- At present the prevailing framework in statistics textbooks is the frequentist
- perspective.
- A frequentist views the parameter as a fixed constant, and they keep a
- conservative attitude about the Type I error.
- Only if overwhelming evidence is demonstrated shall a researcher reject
- the null.
+ At present the prevailing framework in statistics textbooks is the 
+\emph on
+frequentist perspective
+\emph default
+.
+ A frequentist views the parameter as a fixed constant.
+ They keep a conservative attitude about the Type I error: Only if overwhelming
+ evidence is demonstrated shall a researcher reject the null.
  Under the philosophy of protecting the null hypothesis, a desirable test
  should have a small level.
  Conventionally we take 
@@ -686,7 +672,7 @@ unbiased
 \begin_inset Formula $\theta$
 \end_inset
 
- has the biggest power but incorrect size.
+ enjoys the biggest power but suffers incorrect size.
 \end_layout
 
 \begin_layout Standard
@@ -743,22 +729,6 @@ null distribution
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-The concept of 
-\emph on
-level
-\emph default
- is useful if we do not have sufficient information to derive the exact
- size of a test.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -825,8 +795,11 @@ not
  Under the frequentist perspective, the null hypothesis is either true or
  false, with certainty.
  The randomness of a test comes only from sampling, not from the hypothesis.
- It measures whether the dataset is consistent with the null hypothesis,
- or whether the evidence from the data is compatible with the null hypothesis.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+-value measures whether the dataset is compatible with the null hypothesis.
  
 \begin_inset Formula $p$
 \end_inset
@@ -880,7 +853,7 @@ consistent
 \begin_inset Formula $\beta_{n,\phi}\left(\theta\right)\to1$
 \end_inset
 
- for all 
+ for every 
 \begin_inset Formula $\theta\in\Theta_{1}$
 \end_inset
 
@@ -895,7 +868,13 @@ consistent
 \end_layout
 
 \begin_layout Example
-If 
+The concept of 
+\emph on
+level
+\emph default
+ is useful if we do not have sufficient information to derive the exact
+ size of a test.
+ If 
 \begin_inset Formula $\left(X_{1i},X_{2i}\right)_{i=1}^{n}$
 \end_inset
 
@@ -974,13 +953,6 @@ P\left(A\cup B\right)\leq P\left(A\right)+P\left(B\right).
  normal vector in general.)
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Optimality
 \end_layout
@@ -1015,7 +987,7 @@ uniformly most powerful test
 
 \end_inset
 
-uniformly over 
+for every 
 \begin_inset Formula $\theta\in\Theta_{1}$
 \end_inset
 
@@ -1026,7 +998,7 @@ uniformly over
 Suppose a random sample of size 6 is generated from 
 \begin_inset Formula 
 \[
-\left(X_{1},\ldots,X_{6}\right)\sim\text{i.i.d.}N\left(\theta,1\right),
+\left(X_{1},\ldots,X_{6}\right)\sim\text{iid.}N\left(\theta,1\right),
 \]
 
 \end_inset
@@ -1088,7 +1060,7 @@ where
 \begin_inset Formula $\Phi$
 \end_inset
 
- is the cdf of standard normal.
+ is the cdf of the standard normal.
  It is clear that 
 \begin_inset Formula $\beta_{\phi}\left(\theta\right)$
 \end_inset
@@ -1115,10 +1087,14 @@ is the most powerful test in
 \end_inset
 
  is the lower bound that 
-\begin_inset Formula $\Psi$
+\begin_inset Formula $\Psi_{\alpha}$
 \end_inset
 
- allows.
+ allows in order to keep the level 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1202,19 +1178,14 @@ likelihood-ratio statistic
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Fact
-Because 
+If the information matrix equality is satisfied and 
 \begin_inset Formula $\widehat{\theta}\stackrel{p}{\to}\theta_{0}$
 \end_inset
 
-.
- We thus have 
+, then 
 \begin_inset Formula 
 \[
-\left(-\frac{1}{n}\frac{\partial^{2}}{\partial\theta\partial\theta'}L_{n}\left(\dot{\theta}\right)\right)^{1/2}\left[\sqrt{n}\left(\theta_{0}-\widehat{\theta}\right)\right]\stackrel{d}{\to}\mathcal{I}^{1/2}\left(\theta_{0}\right)\times N\left(0,\mathcal{I}^{-1}\left(\theta_{0}\right)\right)\sim N\left(0,I_{k}\right).
+\left(-\frac{1}{n}\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\right)^{1/2}\left[\sqrt{n}\left(\theta_{0}-\widehat{\theta}\right)\right]\stackrel{d}{\to}\mathcal{I}^{1/2}\left(\theta_{0}\right)\times N\left(0,\mathcal{I}^{-1}\left(\theta_{0}\right)\right)\sim N\left(0,I_{k}\right).
 \]
 
 \end_inset
@@ -1344,7 +1315,7 @@ An
 interval estimate
 \emph default
  is a function 
-\begin_inset Formula $C:\mathcal{X}^{n}\mapsto\left\{ \Theta':\Theta'\subseteq\Theta\right\} $
+\begin_inset Formula $C:\mathcal{X}^{n}\mapsto\left\{ \Theta_{1}:\Theta_{1}\subseteq\Theta\right\} $
 \end_inset
 
  that maps a point in the sample space to a subset of the parameter space.
@@ -1388,8 +1359,9 @@ confidence region
 
  as a special case.
  The coverage probability is the frequency that the interval estimator captures
- the true parameter that generates the sample (From the frequentist perspective,
- the parameter is fixed while the confidence region is random).
+ the true parameter that generates the sample.
+ From the frequentist perspective, the parameter is fixed while the confidence
+ region is random.
  It is 
 \emph on
 not
@@ -1398,9 +1370,9 @@ not
 \begin_inset Formula $\theta$
 \end_inset
 
- is inside the given confidence interval (From the Bayesian perspective,
- the parameter is random while the confidence region is fixed conditional
- on 
+ is inside the given confidence interval.
+ (From the Bayesian perspective, the parameter is random while the confidence
+ region is fixed conditional on 
 \begin_inset Formula $\mathbf{X}$
 \end_inset
 
@@ -1411,7 +1383,7 @@ not
 Suppose a random sample of size 6 is generated from 
 \begin_inset Formula 
 \[
-\left(X_{1},\ldots,X_{6}\right)\sim\text{i.i.d. }N\left(\theta,1\right).
+\left(X_{1},\ldots,X_{6}\right)\sim\text{iid }N\left(\theta,1\right).
 \]
 
 \end_inset
@@ -1419,7 +1391,7 @@ Suppose a random sample of size 6 is generated from
 Find the coverage probability of the random interval is
 \begin_inset Formula 
 \[
-\left[\bar{X}-1.96/\sqrt{6},\bar{X}+1.96/\sqrt{6}\right].
+\left[\bar{X}-1.96/\sqrt{6},\ \bar{X}+1.96/\sqrt{6}\right].
 \]
 
 \end_inset
@@ -1471,7 +1443,7 @@ For any
 , its coverage probability 
 \begin_inset Formula 
 \[
-P\left(\theta\in C\left(\mathbf{X}\right)\right)=P\left(\left\{ \phi_{\theta}\left(\mathbf{X}\right)=0\right\} \right)=1-P\left(\left\{ \phi_{\theta}\left(\mathbf{X}\right)=1\right\} \right)=1-\beta_{\phi}\left(\theta\right)\geq1-\alpha
+P\left\{ \theta\in C\left(\mathbf{X}\right)\right\} =P\left\{ \phi_{\theta}\left(\mathbf{X}\right)=0\right\} =1-P\left(\left\{ \phi_{\theta}\left(\mathbf{X}\right)=1\right\} \right)=1-\beta_{\phi}\left(\theta\right)\geq1-\alpha
 \]
 
 \end_inset
@@ -1800,7 +1772,7 @@ where
  Thus the Bayesian credible set is 
 \begin_inset Formula 
 \[
-\left(\tilde{\theta}-z_{1-\alpha/2}\cdot\tilde{\sigma},\tilde{\theta}+z_{1-\alpha/2}\cdot\tilde{\sigma}\right).
+\left(\tilde{\theta}-z_{1-\alpha/2}\cdot\tilde{\sigma},\ \tilde{\theta}+z_{1-\alpha/2}\cdot\tilde{\sigma}\right).
 \]
 
 \end_inset
@@ -1832,7 +1804,7 @@ In contrast, a frequentist will estimate
  Her confidence interval is 
 \begin_inset Formula 
 \[
-\left(\bar{x}-z_{1-\alpha/2}\cdot\sigma/\sqrt{n},\bar{x}-z_{1-\alpha/2}\cdot\sigma/\sqrt{n}\right).
+\left(\bar{x}-z_{1-\alpha/2}\cdot\sigma/\sqrt{n},\ \bar{x}-z_{1-\alpha/2}\cdot\sigma/\sqrt{n}\right).
 \]
 
 \end_inset
@@ -1842,7 +1814,7 @@ The Bayesian credible set and the frequentist confidence interval are different
 \begin_inset Formula $n$
 \end_inset
 
-, but they coincide when hen 
+, but they coincide when 
 \begin_inset Formula $n\to\infty$
 \end_inset
 
