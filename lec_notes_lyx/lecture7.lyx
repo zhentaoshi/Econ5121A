@@ -127,11 +127,11 @@ Consistency
 \end_layout
 
 \begin_layout Standard
-We specify the distribution (pdf) of the data as 
+We specify a parametric distribution (pdf) 
 \begin_inset Formula $f\left(z;\theta\right)$
 \end_inset
 
-, and a parameter space 
+ and a parameter space 
 \begin_inset Formula $\Theta$
 \end_inset
 
@@ -140,16 +140,17 @@ We specify the distribution (pdf) of the data as
 \begin_inset Formula $Q\left(\theta\right)=E\left[\log f\left(\theta\right)\right]$
 \end_inset
 
-, and the 
-\begin_inset Quotes eld
-\end_inset
-
-true value
-\begin_inset Quotes erd
-\end_inset
-
- as 
+, and 
 \begin_inset Formula $\theta_{0}=\sup_{\theta\in\Theta}Q\left(\theta\right)$
+\end_inset
+
+ maximizes the population quantity.
+ Suppose 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is an interior of 
+\begin_inset Formula $\Theta$
 \end_inset
 
 .
@@ -414,7 +415,7 @@ where the second equality follows a Taylor expansion of
  Rearrange the above equation:
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)=-\left(\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\ddot{\theta}\right)\right)^{-1}\sqrt{n}\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right).
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)=-\left(\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\right)^{-1}\sqrt{n}\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right).
 \]
 
 \end_inset
@@ -454,7 +455,7 @@ When
 
 .
  Suppose 
-\begin_inset Formula $\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\ddot{\theta}\right)\stackrel{p}{\to}E\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]$
+\begin_inset Formula $\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\stackrel{p}{\to}E\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]$
 \end_inset
 
 .
@@ -767,7 +768,27 @@ noprefix "false"
 \end_layout
 
 \begin_layout Section
+Cramer-Rao Lower Bound
+\end_layout
+
+\begin_layout Section
 Summary
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Further reading
+\series default
+: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "white1996estimation"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

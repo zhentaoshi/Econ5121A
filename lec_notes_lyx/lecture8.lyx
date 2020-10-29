@@ -127,15 +127,7 @@ Notation:
 \end_inset
 
  is its realization.
- Given a sample and a parametric model, 
-\begin_inset Formula $L_{n}\left(\theta\right)=\prod_{i=1}^{n}f\left(x_{i};\theta\right)$
-\end_inset
-
- is the likelihood function and 
-\begin_inset Formula $\ell_{n}\left(\theta\right)=\sum_{i=1}^{n}\log f\left(x_{i};\theta\right)$
-\end_inset
-
- is the log-likelihood.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1237,15 +1229,38 @@ and
 \begin_layout Subsection
 
 \series bold
-Neymann-Pearson Lemma
+Neyman-Pearson Lemma
+\end_layout
+
+\begin_layout Standard
+(
+\series bold
+Incomplete
+\series default
+.
+ 
+\series bold
+Don't read
+\series default
+)
+\end_layout
+
+\begin_layout Standard
+Given a sample and a parametric model, 
+\begin_inset Formula $L_{n}\left(\theta\right)=\prod_{i=1}^{n}f\left(x_{i};\theta\right)$
+\end_inset
+
+ is the likelihood function and 
+\begin_inset Formula $\ell_{n}\left(\theta\right)=\sum_{i=1}^{n}\log f\left(x_{i};\theta\right)$
+\end_inset
+
+ is the log-likelihood.
 \end_layout
 
 \begin_layout Standard
 It is know that under given size, LRT is the most powerful test for single
  vs single test.
-\end_layout
-
-\begin_layout Standard
+ 
 \begin_inset Formula $\phi\left(\theta\right)=1\left\{ L_{n}\left(\widehat{\theta}\right)/L_{n}\left(\theta_{0}\right)>c\right\} $
 \end_inset
 
@@ -1280,11 +1295,29 @@ For another test
 \begin{align*}
 \int\phi\left(x\right)f\left(\theta_{1}\right) & =\int\phi\left(x\right)f\left(\theta_{1}\right)-c\left[\int\phi\left(x\right)f\left(\theta_{0}\right)-\int\psi\left(x\right)f\left(\theta_{0}\right)\right]\\
  & =\int\phi\left(x\right)f\left(\theta_{1}\right)-c\int\phi\left(x\right)f\left(\theta_{0}\right)+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
- & =\int\phi\left(x\right)\left(f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\right)+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
- & =\int_{\left\{ f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)>0\right\} }\phi\left(x\right)\left(f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\right)+\int_{\left\{ f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\leq0\right\} }\phi\left(x\right)\left(f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\right)+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
- & =\int_{\left\{ f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)>0\right\} }\left(f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\right)+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
- & \geq\int_{\left\{ f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)>0\right\} }\psi\left(x\right)\left(f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\right)+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
- & \geq\int_{\left\{ f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)>0\right\} }\psi\left(x\right)\left(f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\right)+\int_{\left\{ f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\leq0\right\} }\psi\left(x\right)\left(f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\right)+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
+ & =\int\phi\left(x\right)\left(f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\right)+c\int\psi\left(x\right)f\left(\theta_{0}\right).
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Define 
+\begin_inset Formula $\xi_{c}:=f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)$
+\end_inset
+
+.
+ We continue the derivation:
+\begin_inset Formula 
+\begin{align*}
+ & =\int\phi\left(x\right)\xi_{c}+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
+ & =\int_{\left\{ \xi_{c}>0\right\} }\phi\left(x\right)\xi_{c}+\int_{\left\{ \xi_{c}\leq0\right\} }\phi\left(x\right)\xi_{c}+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
+ & =\int_{\left\{ \xi_{c}>0\right\} }\xi_{c}+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
+ & \geq\int_{\left\{ \xi_{c}>0\right\} }\psi\left(x\right)\xi_{c}+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
+ & \geq\int_{\left\{ \xi_{c}>0\right\} }\psi\left(x\right)\xi_{c}+\int_{\left\{ \xi_{c}\leq0\right\} }\psi\left(x\right)\xi_{c}+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
+ & =\int\psi\left(x\right)\xi_{c}+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
  & =\int\psi\left(x\right)\left(f\left(\theta_{1}\right)-cf\left(\theta_{0}\right)\right)+c\int\psi\left(x\right)f\left(\theta_{0}\right)\\
  & =\int\psi\left(x\right)f\left(\theta_{1}\right)
 \end{align*}
@@ -2557,8 +2590,7 @@ Optimal test
 \end_layout
 
 \begin_layout Standard
-Leo Lehmann two books: point estimation and hypothesis testing are volumes.
- Classical notion.
+Leo Lehmann's two books: point estimation and hypothesis testing.
 \end_layout
 
 \begin_layout Standard
