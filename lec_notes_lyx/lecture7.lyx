@@ -460,7 +460,7 @@ name "thm:mis-MLE"
  Under suitable regularity conditions, the MLE estimator 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(E\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]\right)^{-1}\mathrm{var}\left[\frac{\partial\ell_{n}}{\partial\theta}\left(\theta_{0}\right)\right]\left(E\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]\right)^{-1}\right).
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(E\left[\frac{\partial^{2}\log f\left(x;\theta_{0}\right)}{\partial\theta\partial\theta'}\right]\right)^{-1}\mathrm{var}\left[\frac{\partial\log f\left(x;\theta_{0}\right)}{\partial\theta}\right]\left(E\left[\frac{\partial^{2}\log f\left(x;\theta_{0}\right)}{\partial\theta\partial\theta'}\right]\right)^{-1}\right).
 \]
 
 \end_inset
@@ -557,7 +557,7 @@ When
 
 .
  Notice that 
-\begin_inset Formula $E\left[\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}Q\left(\theta_{0}\right)=0$
+\begin_inset Formula $E\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}Q\left(\theta_{0}\right)=0$
 \end_inset
 
  if differentiation and integration are interchangeable.
@@ -574,7 +574,7 @@ noprefix "false"
  follows
 \begin_inset Formula 
 \[
-\sqrt{n}\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathrm{var}\left[\frac{\partial\ell_{n}}{\partial\theta}\left(\theta_{0}\right)\right]\right).
+\sqrt{n}\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathrm{var}\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]\right).
 \]
 
 \end_inset
@@ -590,11 +590,11 @@ noprefix "false"
 \end_inset
 
  follows 
-\begin_inset Formula $\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\stackrel{p}{\to}E\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]$
+\begin_inset Formula $\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\stackrel{p}{\to}E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]$
 \end_inset
 
  (sufficient if we assume 
-\begin_inset Formula $E\left[\frac{\partial^{3}}{\partial\theta_{i}\partial\theta_{j}\partial\theta_{l}}f\left(x;\theta\right)\right]$
+\begin_inset Formula $E\left[\frac{\partial^{3}}{\partial\theta_{i}\partial\theta_{j}\partial\theta_{l}}\log f\left(x;\theta_{0}\right)\right]$
 \end_inset
 
  is continuous in 
@@ -606,15 +606,7 @@ noprefix "false"
 \end_inset
 
 .
- Thus we conclude 
-\begin_inset Formula 
-\[
-\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(E\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]\right)^{-1}\mathrm{var}\left[\frac{\partial\ell_{n}}{\partial\theta}\left(\theta_{0}\right)\right]\left(E\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]\right)^{-1}\right).
-\]
-
-\end_inset
-
-by Slutsky's theorem.
+ Thus we have the conclusion by Slutsky's theorem.
  
 \end_layout
 
@@ -641,7 +633,7 @@ true
 \emph default
  parameter value.
  The variance 
-\begin_inset Formula $\mathcal{I}\left(\theta_{0}\right):=\mathrm{var}_{f\left(x;\theta_{0}\right)}\left[\frac{\partial\ell_{n}}{\partial\theta}\left(\theta_{0}\right)\right]$
+\begin_inset Formula $\mathcal{I}\left(\theta_{0}\right):=\mathrm{var}_{f\left(x;\theta_{0}\right)}\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]$
 \end_inset
 
  is called the 
@@ -649,7 +641,7 @@ true
 (Fisher) information matrix
 \emph default
 , and 
-\begin_inset Formula $\mathcal{H}\left(\theta_{0}\right):=E_{f\left(x;\theta_{0}\right)}\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]$
+\begin_inset Formula $\mathcal{H}\left(\theta_{0}\right):=E_{f\left(x;\theta_{0}\right)}\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]$
 \end_inset
 
  is called the 
@@ -754,7 +746,7 @@ noprefix "false"
 \begin{align*}
 0 & =\int\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]\frac{\partial}{\partial\theta'}f\left(x;\theta_{0}\right)dx\\
  & =\int\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta\right)}f\left(x;\theta_{0}\right)dx\\
- & =\int\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(\theta\right)\right]f\left(x;\theta_{0}\right)dx\\
+ & =\int\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx\\
  & =E_{f\left(x;\theta_{0}\right)}\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]+E_{f\left(x;\theta_{0}\right)}\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(x;\theta_{0}\right)\right]\\
  & =\mathcal{H}\left(\theta_{0}\right)+\mathcal{I}\left(\theta_{0}\right).
 \end{align*}
@@ -832,7 +824,7 @@ noprefix "false"
 ,
 \begin_inset Formula 
 \[
-\left(E_{g}\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]\right)^{-1}\mathrm{var}_{g}\left[\frac{\partial\ell_{n}}{\partial\theta}\left(\theta_{0}\right)\right]\left(E_{g}\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]\right)^{-1},
+\left(E_{g}\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]\right)^{-1}\mathrm{var}_{g}\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]\left(E_{g}\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]\right)^{-1},
 \]
 
 \end_inset
@@ -851,7 +843,7 @@ When the parametric model
 \end_inset
 
  is correctly specified, then we can replace 
-\begin_inset Formula $E\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]$
+\begin_inset Formula $E_{g}\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]$
 \end_inset
 
  by 
@@ -859,7 +851,7 @@ When the parametric model
 \end_inset
 
  and replace 
-\begin_inset Formula $\mathrm{var}\left[\frac{\partial\ell_{n}}{\partial\theta}\left(\theta_{0}\right)\right]$
+\begin_inset Formula $\mathrm{var}_{g}\left[\frac{\partial\ell_{n}}{\partial\theta}\left(\theta_{0}\right)\right]$
 \end_inset
 
  by 

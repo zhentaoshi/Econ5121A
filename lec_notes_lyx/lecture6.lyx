@@ -1092,7 +1092,7 @@ For the estimation of variance, if the error is homoskedastic,
 \begin_inset Formula 
 \begin{equation}
 \begin{aligned}\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} & =\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}'\left(\widehat{\beta}-\beta\right)\right)^{2}\\
- & =\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right).
+ & =\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)'\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}\left(\widehat{\beta}-\beta\right)'x_{i}x_{i}'\left(\widehat{\beta}-\beta\right).
 \end{aligned}
 \label{eq:v-homo1}
 \end{equation}
@@ -1259,9 +1259,9 @@ noprefix "false"
  is bounded by 
 \begin_inset Formula 
 \begin{align}
-\left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\left(\widehat{\beta}-\beta\right) & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\lambda_{\max}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\nonumber \\
- & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\mathrm{trace}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\nonumber \\
- & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\max_{k}\left\{ \frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{ik}^{2}\right\} \nonumber \\
+\left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x'_{i}\right)\left(\widehat{\beta}-\beta\right) & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\lambda_{\max}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x'_{i}\right)\nonumber \\
+ & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\mathrm{trace}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x'_{i}\right)\nonumber \\
+ & \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\max_{k}\left\{ \frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\right\} \nonumber \\
  & =o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right),\label{eq:homo2}
 \end{align}
 
@@ -1270,7 +1270,7 @@ noprefix "false"
 where the stochastic order follows by 
 \begin_inset Formula 
 \[
-\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{ik}^{2}\stackrel{p}{\to}E\left[e_{i}^{2}x_{ik}^{2}\right]\leq E\left[e_{i}^{4}\right]E\left[x_{ik}^{4}\right]<\infty
+\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\stackrel{p}{\to}E\left[x_{ik}^{2}\right]<\infty
 \]
 
 \end_inset
