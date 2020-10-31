@@ -25,7 +25,7 @@ navbar-links:
 #  CV: "CV"
 #  Research: "research"
 #  Supervision: "supervision"
-  Blog: "blog"
+  Blog: "/blog"
 #  Teaching: "teaching"
 #  Contact: "contact"
 #  中文: "chinese"
