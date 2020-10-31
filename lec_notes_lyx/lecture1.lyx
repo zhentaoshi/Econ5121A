@@ -663,13 +663,6 @@ Bayesian
 
 \begin_layout Subsection
 Random Variable
-\begin_inset CommandInset label
-LatexCommand label
-name "random-variable"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1082,28 +1075,8 @@ y characterized by very few parameters.
 Expected Value
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "expected-value"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Integration
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "integration"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1549,13 +1522,6 @@ Just like moments, mgf does not always exist.
 
 \begin_layout Section
 Multivariate Random Variable
-\begin_inset CommandInset label
-LatexCommand label
-name "multivariate-random-variable"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1755,13 +1721,6 @@ status collapsed
 
 \begin_layout Subsection
 Independence
-\begin_inset CommandInset label
-LatexCommand label
-name "independence"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -1849,13 +1808,6 @@ If
 
 \begin_layout Subsection
 Law of Iterated Expectations
-\begin_inset CommandInset label
-LatexCommand label
-name "law-of-iterated-expectations"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2088,7 +2040,7 @@ Fascinating questions about probability attracted great economists.
 \emph on
 A Treatise on Probability
 \emph default
- in 1921 which mixed probability and philospophy, although this piece of
+ in 1921 which mixed probability and philosophy, although this piece of
  work was not as influential as his 
 \emph on
 General Theory of Employment, Interest and Money
