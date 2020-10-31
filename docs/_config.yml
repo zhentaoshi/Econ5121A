@@ -21,10 +21,11 @@ description: Econ5121A CUHK
 # List of links in the navigation bar
 navbar-links:
   Home: "index"
+  Lecture1: "lecture1"
 #  CV: "CV"
 #  Research: "research"
 #  Supervision: "supervision"
-Blog: "blog"
+  Blog: "blog"
 #  Teaching: "teaching"
 #  Contact: "contact"
 #  中文: "chinese"
