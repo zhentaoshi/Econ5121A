@@ -152,13 +152,6 @@ a one-column matrix.
 
 \begin_layout Section
 Conditional Expectation
-\begin_inset CommandInset label
-LatexCommand label
-name "conditional-expectation"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -584,13 +577,6 @@ Our perspective so far deviates from many econometric textbooks that assume
 
 \begin_layout Section
 Linear Projection
-\begin_inset CommandInset label
-LatexCommand label
-name "linear-projection"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -914,14 +900,7 @@ Show (a)
 \end_layout
 
 \begin_layout Subsection
-Omitted Variable Bias 
-\begin_inset CommandInset label
-LatexCommand label
-name "omitted-variable-bias"
-
-\end_inset
-
-
+Omitted Variable Bias
 \end_layout
 
 \begin_layout Standard
@@ -1154,7 +1133,7 @@ structural causality
  we have learned causality or some implications of causality.
  
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 We set up a DGP, in which some parameters are unknown.
