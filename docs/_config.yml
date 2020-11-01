@@ -21,7 +21,7 @@ description: Econ5121A CUHK
 # List of links in the navigation bar
 navbar-links:
   Home: "index"
-  Lecture1: "lecture1"
+  # Lecture1: "lecture1"
   Blog: "blog"
   
 #  Teaching: "teaching"
