@@ -15,7 +15,7 @@ Reading and Assignment will be updated each week as the class progresses.
 * Week 4: [IE] Ch.10.1--6, 16; [E] Ch.4.1--4, 7, 11, 14, 16, 20, 21; Ch.5.1--12
 * Week 5: [IE] Ch. 7.1--9; [E] Ch.4.8--10
 * Week 6: [IE] Ch. 7.10--12; Ch. 8.1--14; Ch. 9.1; [E] Ch.6; Ch 7.1-4, 10, 12--14
-* Week 7: [IE] Ch. 10.1--8, 12, 13, 16--18; [E] Ch. 7.13
+* Week 7: [IE] Ch. 10.7, 8, 12, 13, 17, 18; [E] Ch. 7.13
 
 
 
@@ -36,7 +36,7 @@ Reading and Assignment will be updated each week as the class progresses.
   * [IE] Ex 7.7, 12; Ex 8.1, 7, 8
   * [E] Ex 7.1, 2, 3, 6, 14, 20
 * Week 7:
-  * [IE] Ex 10.1, 6, 13, 16
+  * [IE] Ex 10.6, 13, 16
   * [E] Ex 7.11, 15, 19, 23
 
 
@@ -68,11 +68,10 @@ This is an entry-level Ph.D. econometrics course. Under the asymptotic framework
 The lectures are based primarily on Bruce Hansen's textbooks:
 
 * Hansen (2020): [Introduction to Econometrics](https://www.ssc.wisc.edu/~bhansen/probability/)] (**IE**)
-
 * Hansen (2020): [Econometrics](http://www.ssc.wisc.edu/~bhansen/econometrics/) (**E**) 
 
 Both are downloadable for free.
- 
+
 
 
 
@@ -81,7 +80,7 @@ Both are downloadable for free.
 Undergraduate level *multivariate calculus* (two semesters), *linear algebra* (one semester), and *probability and statistics* (one semester). Undergraduate *econometrics* is a plus, though not necessary.
 
 
- 
+
 ### Lecture Hours
 
 Friday 8:30—11:15 am. [Zoom link](https://cuhk.zoom.us/j/92063037640).
