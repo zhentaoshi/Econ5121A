@@ -15,10 +15,12 @@ Reading and Assignment will be updated each week as the class progresses.
 * Week 5: [IE] Ch. 7.1--9; [E] Ch.4.8--10
 * Week 6: [IE] Ch. 7.10--12; Ch. 8.1--14; Ch. 9.1; [E] Ch.6; Ch 7.1-4, 10, 12--14
 * Week 7: [IE] Ch. 10.7, 8, 12, 13, 17, 18; [E] Ch. 7.13
+* Week 8: [IE] Ch.13; [E] 9.1--8, 19--21
 
 
 
 ### Assignment
+
 * Week 1: 
   * [IE] Ex1.5, 9; Ex.2.8, 11, 16; Ex 4.7, 12; Ex 5.5, 6, 15; 
   * [E] Ex 2.1, 2, 6, 10--14
@@ -36,6 +38,14 @@ Reading and Assignment will be updated each week as the class progresses.
 * Week 7:
   * [IE] Ex 10.6, 13, 16
   * [E] Ex 7.11, 15, 19, 23
+
+* Week 8:
+  * [IE] Ex 12.1, 2, 5
+  * [E] Ex 9.2, 3, 9, 13
+
+
+
+
 
 <img src="https://github.com/zhentaoshi/Econ5121A/blob/master/online_teaching.JPG" alt="online_teaching" width="600"/>
 
