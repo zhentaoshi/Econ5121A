@@ -40,7 +40,7 @@ Reading and Assignment will be updated each week as the class progresses.
   * [E] Ex 7.11, 15, 19, 23
 
 * Week 8:
-  * [IE] Ex 12.1, 2, 5
+  * [IE] Ex 13.1, 2, 5
   * [E] Ex 9.2, 3, 9, 13
 
 
