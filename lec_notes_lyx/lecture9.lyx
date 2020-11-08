@@ -31,9 +31,9 @@ theorems-ams-chap-bytype
 \output_sync 0
 \bibtex_command default
 \index_command default
-\paperfontsize 11
-\spacing single
-\use_hyperref true
+\paperfontsize 12
+\spacing double
+\use_hyperref false
 \pdf_bookmarks false
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
@@ -56,9 +56,9 @@ theorems-ams-chap-bytype
 \use_package stackrel 0
 \use_package stmaryrd 0
 \use_package undertilde 0
-\cite_engine basic
-\cite_engine_type default
-\biblio_style plain
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -112,17 +112,6 @@ setcounter{chapter}{8}
 
 \begin_layout Chapter
 Panel Data
-\end_layout
-
-\begin_layout Section
-Panel Data
-\begin_inset CommandInset label
-LatexCommand label
-name "panel-data"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -188,27 +177,19 @@ The most important techniques of panel data estimation are the fixed effect
  about the OLS regression.
  In this sense, panel data estimation becomes applied examples of the theory
  that we have covered in this course.
- It highlights the fundamental role of theory in econometrics.
+ It highlights the fundamental role of linear regression theory in econometrics.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Fixed Effect
-\begin_inset CommandInset label
-LatexCommand label
-name "fixed-effect"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
-OLS is consistent for the linear projection model.
- Since 
+The unobservable individual-specific heterogeneity 
 \begin_inset Formula $\alpha_{i}$
 \end_inset
 
- is unobservable, it is absorbed into the composite error 
+ is absorbed into the composite error 
 \begin_inset Formula $u_{it}=\alpha_{i}+\epsilon_{it}$
 \end_inset
 
@@ -228,12 +209,15 @@ OLS is consistent for the linear projection model.
 
  to be arbitrarily correlated.
  The trick to regain consistency is to eliminate 
-\begin_inset Formula $\alpha_{i},i=1,\ldots,n$
+\begin_inset Formula $\alpha_{i}$
 \end_inset
 
- .
- The rest of this section develops the consistency and asymptotic distribution
- of the 
+.
+\end_layout
+
+\begin_layout Standard
+This section develops the consistency and asymptotic distribution of the
+ 
 \emph on
 within estimator
 \emph default
@@ -452,7 +436,19 @@ Let
 \begin_inset Formula $M=I_{n}\otimes M_{\iota}$
 \end_inset
 
-.
+ (
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Formula $\otimes$
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+ denotes the Kronecker product).
  The FE estimator can be explicitly written as 
 \begin_inset Formula 
 \[
@@ -492,13 +488,6 @@ For simplicity, suppose we can direct observe
 .
  Then 
 \begin_inset Formula 
-\[
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
 \begin{align*}
 \frac{1}{n\left(T-1\right)}E\left[\sum_{i=1}^{n}\sum_{t=1}^{T}\tilde{\epsilon}_{it}^{2}\right] & =\frac{1}{n}\sum_{i=1}^{n}\frac{1}{T-1}E\left[\epsilon_{i}'M_{\iota}\epsilon_{i}\right]\\
  & =\frac{1}{n}\sum_{i=1}^{n}\frac{1}{T-1}\mathrm{tr}\left(E\left[M_{\iota}E\left[\epsilon_{i}\epsilon_{i}'|\mathbf{x}_{i}\right]\right]\right)\\
@@ -533,8 +522,8 @@ is a consistent estimator of the variance.
 \end_layout
 
 \begin_layout Standard
-We implicitly assume some regularity conditions that allow us to invoke
- a law of large numbers and a central limit theorem.
+We implicitly assume regularity conditions that allow us to invoke a law
+ of large numbers and a central limit theorem.
  We ignore those technical details here.
 \end_layout
 
@@ -545,18 +534,8 @@ It is important to notice that the within-group demean in FE eliminates
 riant variables.
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Section
 Random Effect
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "random-effect"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -647,14 +626,10 @@ where
 \end_inset
 
  is the explanatory variables including the constant.
- Had we known 
-\begin_inset Formula $S$
-\end_inset
-
-, the GLS estimator would be 
+ The infeasible GLS estimator is
 \begin_inset Formula 
 \[
-\widehat{\boldsymbol{\beta}}^{RE}=\left(\sum_{i=1}^{n}\mathbf{w}_{i}'S^{-1}\mathbf{w}_{i}\right)^{-1}\sum_{i=1}^{n}\mathbf{w}_{i}'S^{-1}\mathbf{y}_{i}=\left(W'\mathbf{S}^{-1}W\right)^{-1}W'\mathbf{S}^{-1}y
+\widehat{\boldsymbol{\beta}}_{\mathrm{infeasible}}^{RE}=\left(\sum_{i=1}^{n}\mathbf{w}_{i}'S^{-1}\mathbf{w}_{i}\right)^{-1}\sum_{i=1}^{n}\mathbf{w}_{i}'S^{-1}\mathbf{y}_{i}=\left(W'\mathbf{S}^{-1}W\right)^{-1}W'\mathbf{S}^{-1}y
 \]
 
 \end_inset
@@ -664,19 +639,7 @@ where
 \end_inset
 
 .
- (
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Formula $\otimes$
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
- denotes the Kronecker product.) In practice, 
+ In practice, 
 \begin_inset Formula $\sigma_{\alpha}^{2}$
 \end_inset
 
@@ -725,35 +688,124 @@ Under this assumption, we can consistently estimate the variances from the
 
 \end_inset
 
+Given the estimated variance and covariance, we can construct 
+\begin_inset Formula $\widehat{\mathbf{S}}=\left(\widehat{\sigma}_{u}^{2}-\widehat{\sigma}_{\epsilon}^{2}\right)\cdot I_{T}+\widehat{\sigma}_{\epsilon}^{2}\cdot\boldsymbol{1}_{T}\boldsymbol{1}_{T}'$
+\end_inset
 
-\end_layout
-
-\begin_layout Standard
-We claim the asymptotic normality without proof.
- If RE.1 and RE.2 are satisfied, then 
+ and then follows the feasible GLS (FGLS) 
 \begin_inset Formula 
 \[
-\left(\widehat{\sigma}_{u}^{2}\left(W'\widehat{\mathbf{S}}^{-1}W\right)^{-1}\right)^{-1/2}\left(\widehat{\boldsymbol{\beta}}^{RE}-\boldsymbol{\beta}_{0}\right)\stackrel{d}{\to}N\left(0,I_{K+1}\right)
+\widehat{\boldsymbol{\beta}}^{RE}=\left(W'\mathbf{\widehat{S}}^{-1}W\right)^{-1}W'\widehat{\mathbf{S}}^{-1}y
 \]
 
 \end_inset
 
-where 
-\begin_inset Formula $\widehat{\mathbf{S}}$
+
+\end_layout
+
+\begin_layout Exercise
+Show that if RE.1 and RE.2 are satisfied, then 
+\begin_inset Formula 
+\[
+\left(\widehat{\sigma}_{u}^{2}\left(W'\widehat{\mathbf{S}}^{-1}W\right)^{-1}\right)^{-1/2}\left(\widehat{\boldsymbol{\beta}}^{RE}-\boldsymbol{\beta}_{0}\right)\stackrel{d}{\to}N\left(0,I_{K+1}\right).
+\]
+
 \end_inset
 
- is a consistent estimator of 
-\begin_inset Formula $\mathbf{S}$
-\end_inset
 
-.
+\end_layout
+
+\begin_layout Exercise
+In econometrics practice, the FE estimator is more popular than the RE estimator
+ as the former is consistent in more general conditions.
+\end_layout
+
+\begin_layout Section
+Summary
 \end_layout
 
 \begin_layout Standard
-The complicated formula of the RE estimator is not important because it
- is be automatically handled by an econometric package.
+The formula of the FE estimator or the RE estimators is not important because
+ the estimation and inference are automatically handled by econometric packages.
  What is important is the conceptual difference of FE and RE on their treatment
  of the unobservable individual heterogeneity.
+\end_layout
+
+\begin_layout Standard
+Panel data is the first generation of economic 
+\begin_inset Quotes eld
+\end_inset
+
+big data
+\begin_inset Quotes erd
+\end_inset
+
+, as the number of observations of a cross section is multiplied by the
+ number of time periods.
+ It reflected econometrician's pursuit of controlling heterogeneity, so
+ that the OLS estimate is more credible for causal interpretation.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Further reading
+\series default
+: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "hsiao2014analysis"
+literal "false"
+
+\end_inset
+
+ is a comprehensive monograph on the topic of panel data.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "su2016identifying"
+literal "false"
+
+\end_inset
+
+ extends fixed effect models to incorporate group heterogeneity.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ Nov 8, 2020.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
