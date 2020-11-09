@@ -1775,7 +1775,7 @@ The Bayesian credible set and the frequentist confidence interval are different
 \end_layout
 
 \begin_layout Section
-Application in OLS
+Applications in OLS
 \end_layout
 
 \begin_layout Standard
@@ -2667,10 +2667,6 @@ Under heteroskedasticity, LRT must be based on efficient estimators.
 \begin_inset Note Note
 status collapsed
 
-\begin_layout Section
-Summary
-\end_layout
-
 \begin_layout Plain Layout
 Abraham Wald, Pearson and Neyman.
 \end_layout
@@ -2678,10 +2674,6 @@ Abraham Wald, Pearson and Neyman.
 \begin_layout Plain Layout
 Bayes comes back in big data.
  
-\end_layout
-
-\begin_layout Plain Layout
-Optimal test 
 \end_layout
 
 \begin_layout Plain Layout
