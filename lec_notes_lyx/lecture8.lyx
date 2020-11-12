@@ -2226,8 +2226,10 @@ Lagrangian Multiplier Test
 \end_layout
 
 \begin_layout Standard
-The LM test for the regression coefficient is based on the restricted estimator
- 
+The key difference between the Wald test and LM test is that the former
+ is based on the unrestricted OLS estimator while the latter is based on
+ the restricted OLS estimator.
+ Estimate the constrained OLS estimator
 \begin_inset Formula 
 \[
 \min_{\beta}\left(y-X\beta\right)'\left(y-X\beta\right)\mbox{ s.t. }R\beta=r.
@@ -2257,7 +2259,13 @@ where
 \end_layout
 
 \begin_layout Standard
-Set the first-order condition of 
+The LM test is also called the 
+\emph on
+score test
+\emph default
+, because the derivation is based on the score function of the restricted
+ OLS estimator.
+ Set the first-order condition of 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:Lagran"
@@ -2424,12 +2432,6 @@ In the special case of homoskedasticity,
 \end_inset
 
 
-\end_layout
-
-\begin_layout Remark
-The key difference between the Wald test and LM test is that the former
- is based on the unrestricted OLS estimator while the latter is based on
- the restricted OLS estimator.
 \end_layout
 
 \begin_layout Example
@@ -2663,9 +2665,8 @@ under homoskedasticity.
 \end_layout
 
 \begin_layout Standard
-Under heteroskedasticity, LRT must be based on efficient estimators.
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Abraham Wald, Pearson and Neyman.
@@ -2690,19 +2691,9 @@ Summary
 \end_layout
 
 \begin_layout Standard
-Applied econometrics is a field obsessed with hypothesis testing, in the
- hope to establish at least statistical association or ideally causality.
+Applied econometrics is a field obsessed of hypothesis testing, in the hope
+ to establish at least statistical association and ideally causality.
  Hypothesis testing is a fundamentally important topic in statistics.
- 
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-It is also a philosophical topic about interpreting the numerical results.
-\end_layout
-
-\end_inset
-
  The states and the decisions in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2713,7 +2704,7 @@ noprefix "false"
 
 \end_inset
 
- remind us its intrinsic connections with game theory in economics.
+ remind us the intrinsic connections with game theory in economics.
  I, a game player, plays a sequential game against the 
 \begin_inset Quotes eld
 \end_inset
@@ -2738,7 +2729,7 @@ Step 0: The parameter space
 \begin_inset Formula $\Theta_{1}$
 \end_inset
 
- according to scientific theory.
+ according to a scientific theory.
 \end_layout
 
 \begin_layout Standard
@@ -2771,11 +2762,11 @@ Step 2: Once I observe the fixed data
 \begin_inset Formula $\mathbf{x}$
 \end_inset
 
-, I act according to what 
+, I act according to the instruction of 
 \begin_inset Formula $\phi\left(\mathbf{x}\right)$
 \end_inset
 
- tells me to do: accept 
+ — either accept 
 \begin_inset Formula $\Theta_{0}$
 \end_inset
 
@@ -2812,7 +2803,7 @@ When the loss function (negative payoff) is specified as
 
 \end_inset
 
-the randomness of the data will incur my risk (expected loss) 
+the randomness of the data will incur the risk (expected loss) 
 \begin_inset Formula 
 \[
 \mathscr{R}\left(\theta,\phi\right)=E\left[\mathscr{L}\left(\theta,\phi\left(\mathbf{x}\right)\right)\right]=\beta_{\phi}\left(\theta\right)\cdot1\left\{ \theta\in\Theta_{0}\right\} +\left(1-\beta_{\phi}\left(\theta\right)\right)\cdot1\left\{ \theta\in\Theta_{1}\right\} .
@@ -2868,8 +2859,8 @@ If I am a frequentist, one and only one of
 \end_layout
 
 \begin_layout Standard
-If I am a Bayesian, I do not mind in imposing probability (weight) on the
- parameter space, which is my prior belief 
+If I am a Bayesian, I do not mind imposing probability (weight) on the parameter
+ space, which is my prior belief 
 \begin_inset Formula $\pi\left(\theta\right)$
 \end_inset
 
@@ -2895,8 +2886,8 @@ This is the average (with respect to
 \series bold
 Historical notes
 \series default
-: Hypothesis testing started to take the modern shape at the dawn of the
- 20th century.
+: Hypothesis testing started to take the modern shape at the beginning of
+ the 20th century.
  Karl Pearson (1957–1936) laid the foundation of hypothesis testing and
  introduced the 
 \begin_inset Formula $\chi^{2}$
@@ -2907,7 +2898,7 @@ Historical notes
 \end_inset
 
 -value, among many other concepts that we keep using today.
- Neyman-Pearson lemma was named after Jerzy Neyman (1894–1981) and Egon
+ Neyman-Pearson Lemma was named after Jerzy Neyman (1894–1981) and Egon
  Pearson (1895–1980), Karl's son.
 \end_layout
 

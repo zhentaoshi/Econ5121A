@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass report
+\textclass book
 \use_default_options false
 \begin_modules
 theorems-ams-chap-bytype
@@ -116,11 +116,11 @@ Panel Data
 
 \begin_layout Standard
 Economists mostly work with observational data.
- The data generation process is out of the researchers' control.
- If we only have a cross sectional dataset at hand, it is difficult to control
- heterogeneity among the individuals.
- On the other hand, panel data offers a chance to control heterogeneity
- of some particular forms.
+ The data generation process is out of the control of researchers.
+ If we only have a cross sectional dataset at hand, it is difficult to deal
+ with heterogeneity among the individuals.
+ On the other hand, panel data offers a chance to handle heterogeneity of
+ some particular forms.
 \end_layout
 
 \begin_layout Standard
@@ -145,7 +145,7 @@ A panel dataset tracks the same individuals across time
  We maintain the linear equation 
 \begin_inset Formula 
 \begin{equation}
-y_{it}=\beta_{1}+x_{it}\beta_{2}+u_{it},\ i=1,\ldots,n;t=1,\ldots,T\label{eq:basic_eq}
+y_{it}=\beta_{1}+x_{it}'\beta_{2}+u_{it},\ i=1,\ldots,n;t=1,\ldots,T\label{eq:basic_eq}
 \end{equation}
 
 \end_inset
@@ -208,15 +208,75 @@ The unobservable individual-specific heterogeneity
 \end_inset
 
  to be arbitrarily correlated.
- The trick to regain consistency is to eliminate 
+ Let us rewrite (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basic_eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) as 
+\begin_inset Formula 
+\begin{equation}
+y_{it}=w_{it}\boldsymbol{\beta}+u_{it},\label{eq:basic_eq2}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{\beta}=\left(\beta_{1},\beta_{2}'\right)'$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{it}=\left(1,x_{it}\right)$
+\end_inset
+
+ are 
+\begin_inset Formula $K+1$
+\end_inset
+
+ vectors, i.e., 
+\begin_inset Formula $\boldsymbol{\beta}$
+\end_inset
+
+ is the parameter including the intercept, and 
+\begin_inset Formula $w_{it}$
+\end_inset
+
+ is the explanatory variables including the constant.
+ 
+\end_layout
+
+\begin_layout Exercise
+Show that 
+\begin_inset Formula $\mathrm{cov}\left(\alpha_{i},x_{it}\right)\neq0$
+\end_inset
+
+, running OLS in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:basic_eq2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) will deliver an inconsistent estimator.
+ 
+\end_layout
+
+\begin_layout Standard
+While naively run OLS in the fixed effect model is inconsistent, the trick
+ to regain consistency is to eliminate 
 \begin_inset Formula $\alpha_{i}$
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-This section develops the consistency and asymptotic distribution of the
+ This section develops the consistency and asymptotic distribution of the
  
 \emph on
 within estimator
@@ -597,35 +657,6 @@ Because the covariance matrix is not a scalar multiplication of the identity
 \begin_layout Standard
 As mentioned before, FE estimation kills all time-invariant regressors.
  In contrast, RE allows time-invariant explanatory variables.
- Let us rewrite the original equation as 
-\begin_inset Formula 
-\[
-y_{it}=w_{it}\boldsymbol{\beta}+u_{it},
-\]
-
-\end_inset
-
-where 
-\begin_inset Formula $\boldsymbol{\beta}=\left(\beta_{1},\beta_{2}'\right)'$
-\end_inset
-
- and 
-\begin_inset Formula $w_{it}=\left(1,x_{it}\right)$
-\end_inset
-
- are 
-\begin_inset Formula $K+1$
-\end_inset
-
- vectors, i.e., 
-\begin_inset Formula $\boldsymbol{\beta}$
-\end_inset
-
- is the parameter including the intercept, and 
-\begin_inset Formula $w_{it}$
-\end_inset
-
- is the explanatory variables including the constant.
  The infeasible GLS estimator is
 \begin_inset Formula 
 \[
