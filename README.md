@@ -16,6 +16,7 @@ Reading and Assignment will be updated each week as the class progresses.
 * Week 6: [IE] Ch. 7.10--12; Ch. 8.1--14; Ch. 9.1; [E] Ch.6; Ch 7.1-4, 10, 12--14
 * Week 7: [IE] Ch. 10.7, 8, 12, 13, 17, 18; [E] Ch. 7.13
 * Week 8: [IE] Ch.13; [E] 9.1--8, 19--21
+* Week 9: [IE] Ch.14; [E] Ch.9.9--10, 16--18
 
 
 
@@ -43,7 +44,9 @@ Reading and Assignment will be updated each week as the class progresses.
   * [IE] Ex 13.1, 2, 5
   * [E] Ex 9.2, 3, 9, 13
 
-
+* Week 9:
+  * [IE] Ex 14.1, 4, 7
+  * [E] Ex 9.4, 5, 7, 17, 19
 
 
 
