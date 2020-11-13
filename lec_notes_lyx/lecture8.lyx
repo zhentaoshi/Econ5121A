@@ -1797,6 +1797,78 @@ We will introduce three tests for a  hypothesis of the linear regression
  estimator.
 \end_layout
 
+\begin_layout Standard
+Let 
+\begin_inset Formula $R$
+\end_inset
+
+ be a 
+\begin_inset Formula $q\times K$
+\end_inset
+
+ constant matrix with 
+\begin_inset Formula $q\leq K$
+\end_inset
+
+ and 
+\begin_inset Formula $\mbox{rank}\left(R\right)=q$
+\end_inset
+
+.
+ All linear restrictions about 
+\begin_inset Formula $\beta$
+\end_inset
+
+ can be written in the form of 
+\begin_inset Formula $R\beta=r$
+\end_inset
+
+, where 
+\begin_inset Formula $r$
+\end_inset
+
+ is a 
+\begin_inset Formula $q\times1$
+\end_inset
+
+ constant vector.
+\end_layout
+
+\begin_layout Example
+We want to simultaneously test 
+\begin_inset Formula $\beta_{1}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{3}+\beta_{4}=2$
+\end_inset
+
+ in the above example.
+ The null hypothesis can be expressed in the general form 
+\begin_inset Formula $R\beta=r$
+\end_inset
+
+, where the restriction matrix 
+\begin_inset Formula $R$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+R=\begin{pmatrix}1 & 0 & 0 & 0 & 0\\
+0 & 0 & 1 & 1 & 0
+\end{pmatrix}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $r=\left(1,2\right)'$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Wald Test
 \end_layout
@@ -1823,23 +1895,7 @@ where
 \begin_inset Formula $K\times K$
 \end_inset
 
- positive definite covariance matrix and 
-\begin_inset Formula $R$
-\end_inset
-
- is a 
-\begin_inset Formula $q\times K$
-\end_inset
-
- constant matrix with 
-\begin_inset Formula $q\leq K$
-\end_inset
-
- and 
-\begin_inset Formula $\mbox{rank}\left(R\right)=q$
-\end_inset
-
-.
+ positive definite covariance matrix and.
  Since 
 \begin_inset Formula $R\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)$
 \end_inset
@@ -1992,66 +2048,7 @@ t
 \end_layout
 
 \begin_layout Standard
-The following example gives a test about a joint hypothesis.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Example
-(Joint test) We want to simultaneously test 
-\begin_inset Formula $\beta_{1}=1$
-\end_inset
-
- and 
-\begin_inset Formula $\beta_{3}+\beta_{4}=2$
-\end_inset
-
- in the above example.
- The null hypothesis can be expressed in the general form 
-\begin_inset Formula $R\beta=r$
-\end_inset
-
-, where the restriction matrix 
-\begin_inset Formula $R$
-\end_inset
-
- is 
-\begin_inset Formula 
-\[
-R=\begin{pmatrix}1 & 0 & 0 & 0 & 0\\
-0 & 0 & 1 & 1 & 0
-\end{pmatrix}
-\]
-
-\end_inset
-
-and 
-\begin_inset Formula $r=\left(1,2\right)'$
-\end_inset
-
-.
- Once we figure out 
-\begin_inset Formula $R$
-\end_inset
-
-, it is routine to construct the test.
-\end_layout
-
-\begin_layout Example
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-These two examples are linear restrictions.
- In order to test a nonlinear regression, we use the delta method.
+In order to test a nonlinear regression, we use the delta method.
  
 \series bold
 
@@ -2175,7 +2172,7 @@ where in this example,
  The gradient 
 \begin_inset Formula 
 \[
-\frac{\partial f}{\partial\beta}\left(\beta\right)=\left(0,0,-\frac{1}{2\beta_{4}},\frac{\beta_{3}}{2\beta_{4}^{2}},0\right)
+\frac{\partial f}{\partial\beta'}\left(\beta\right)=\left(0,0,-\frac{1}{2\beta_{4}},\frac{\beta_{3}}{2\beta_{4}^{2}},0\right)
 \]
 
 \end_inset
@@ -2196,7 +2193,7 @@ Since
  Therefore, the (nonlinear) Wald test is 
 \begin_inset Formula 
 \[
-\mathcal{W}=n\left(f\left(\widehat{\beta}\right)-20\right)'\left(\frac{\partial f}{\partial\beta}\left(\widehat{\beta}\right)\widehat{\Omega}\frac{\partial f}{\partial\beta}\left(\widehat{\beta}\right)'\right)^{-1}\left(f\left(\widehat{\beta}\right)-20\right)\stackrel{d}{\to}\chi_{1}^{2}.
+\mathcal{W}=n\left(f\left(\widehat{\beta}\right)-20\right)'\left(\frac{\partial f}{\partial\beta'}\left(\widehat{\beta}\right)\widehat{\Omega}\frac{\partial f}{\partial\beta'}\left(\widehat{\beta}\right)\right)^{-1}\left(f\left(\widehat{\beta}\right)-20\right)\stackrel{d}{\to}\chi_{1}^{2}.
 \]
 
 \end_inset
@@ -2326,7 +2323,7 @@ where
 \begin_inset Formula 
 \[
 \begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
-\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & (R'Q^{-1}R)^{-1}
+\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & -(R'Q^{-1}R)^{-1}
 \end{pmatrix}\begin{pmatrix}\widehat{Q} & R'\\
 R & 0
 \end{pmatrix}=I_{K+q}.
@@ -2348,7 +2345,7 @@ Given the above fact, we can explicitly express
 \begin{aligned}\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
 \tilde{\lambda}
 \end{pmatrix} & =\begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
-\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & (R'Q^{-1}R)^{-1}
+\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & -(R'Q^{-1}R)^{-1}
 \end{pmatrix}\begin{pmatrix}\frac{1}{n}X'e\\
 0
 \end{pmatrix}\end{aligned}
@@ -2388,10 +2385,13 @@ n\tilde{\lambda}'\Sigma^{-1}\tilde{\lambda}\stackrel{d}{\to}\chi_{q}^{2}.
 \end_inset
 
 Let 
-\begin_inset Formula $\widehat{\Sigma}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{\Omega}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}$
+\begin_inset Formula 
+\[
+\widehat{\Sigma}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{\Omega}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}.
+\]
+
 \end_inset
 
-.
  If 
 \begin_inset Formula $\widehat{\Omega}\stackrel{p}{\to}\Omega$
 \end_inset
@@ -2425,7 +2425,7 @@ In the special case of homoskedasticity,
 \begin_inset Formula 
 \[
 \begin{aligned}\frac{n\tilde{\lambda}'R\hat{Q}^{-1}R'\tilde{\lambda}}{\hat{\sigma}^{2}} & =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'X\hat{Q}^{-1}R'(R\hat{Q}^{-1}R')^{-1}R\hat{Q}^{-1}X'\left(y-X\tilde{\beta}\right)\\
- & =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'P_{X\hat{Q}^{-1}R'}\left(y-X\tilde{\beta}\right)\stackrel{d}{\to}\chi_{q}^{2}.
+ & =\frac{1}{\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'P_{X\hat{Q}^{-1}R'}\left(y-X\tilde{\beta}\right)\stackrel{d}{\to}\chi_{q}^{2}.
 \end{aligned}
 \]
 
@@ -2525,8 +2525,8 @@ quasi log-likelihood function
  Notice
 \begin_inset Formula 
 \begin{align}
-\mathcal{LR} & =n\log\left(1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}\right)=n\left(\log1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+o\left(\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}\right)\right)\nonumber \\
- & =n\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+O\left(n\frac{\left\Vert \tilde{\gamma}-\widehat{\gamma}\right\Vert ^{2}}{\widehat{\gamma}^{2}}\right)\label{eq:LRT1}
+\mathcal{LR} & =n\log\left(1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}\right)=n\left(\log1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+O\left(\frac{\left|\tilde{\gamma}-\widehat{\gamma}\right|^{2}}{\widehat{\gamma}^{2}}\right)\right)\nonumber \\
+ & =n\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+O\left(\frac{\left|\tilde{\gamma}-\widehat{\gamma}\right|^{2}}{\widehat{\gamma}^{2}}\right)\label{eq:LRT1}
 \end{align}
 
 \end_inset
@@ -2544,18 +2544,18 @@ by a Taylor expansion of
 \begin_inset Formula 
 \begin{align}
 n\left(\tilde{\gamma}-\widehat{\gamma}\right) & =n\left(\gamma\left(\tilde{\beta}\right)-\gamma\left(\widehat{\beta}\right)\right)\nonumber \\
- & =n\left(\frac{\partial\gamma\left(\widehat{\beta}\right)}{\partial\beta}+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\frac{\partial^{2}\gamma\left(\widehat{\beta}\right)}{\partial\beta\partial\beta'}\left(\tilde{\beta}-\widehat{\beta}\right)+o\left(\left\Vert \tilde{\beta}-\widehat{\beta}\right\Vert _{2}^{2}\right)\right)\nonumber \\
+ & =n\left(\frac{\partial\gamma\left(\widehat{\beta}\right)}{\partial\beta}\left(\tilde{\beta}-\widehat{\beta}\right)+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\frac{\partial^{2}\gamma\left(\widehat{\beta}\right)}{\partial\beta\partial\beta'}\left(\tilde{\beta}-\widehat{\beta}\right)+O\left(\left\Vert \tilde{\beta}-\widehat{\beta}\right\Vert _{2}^{3}\right)\right)\nonumber \\
  & =\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)+O\left(n\left\Vert \tilde{\beta}-\widehat{\beta}\right\Vert _{2}^{3}\right)\label{eq:LRT2}
 \end{align}
 
 \end_inset
 
 where the last line follows by 
-\begin_inset Formula $\frac{\partial\gamma\left(\widehat{\beta}\right)}{\partial\beta}=0$
+\begin_inset Formula $\frac{\partial\gamma\left(\widehat{\beta}\right)}{\partial\beta}=-\frac{2}{n}X'\left(Y-X\widehat{\beta}\right)=-\frac{2}{n}X'\widehat{e}=0$
 \end_inset
 
  and 
-\begin_inset Formula $\frac{1}{2}\frac{\partial^{2}\gamma\left(\widehat{\beta}\right)}{\partial\beta\partial\beta'}=\widehat{Q}$
+\begin_inset Formula $\frac{1}{2}\cdot\frac{\partial^{2}\gamma\left(\widehat{\beta}\right)}{\partial\beta\partial\beta'}=\frac{1}{2}\cdot\frac{2}{n}X'X=\widehat{Q}$
 \end_inset
 
 .
@@ -2716,8 +2716,8 @@ nature
 .
 \end_layout
 
-\begin_layout Standard
-Step 0: The parameter space 
+\begin_layout Description
+Step0: The parameter space 
 \begin_inset Formula $\Theta$
 \end_inset
 
@@ -2732,8 +2732,8 @@ Step 0: The parameter space
  according to a scientific theory.
 \end_layout
 
-\begin_layout Standard
-Step 1: Before I observe the data, I design a test function 
+\begin_layout Description
+Step1: Before I observe the data, I design a test function 
 \begin_inset Formula $\phi$
 \end_inset
 
@@ -2757,8 +2757,8 @@ strategy
 .
 \end_layout
 
-\begin_layout Standard
-Step 2: Once I observe the fixed data 
+\begin_layout Description
+Step2: Once I observe the fixed data 
 \begin_inset Formula $\mathbf{x}$
 \end_inset
 
@@ -2777,8 +2777,8 @@ Step 2: Once I observe the fixed data
 .
 \end_layout
 
-\begin_layout Standard
-Step 3: Nature reveals the true parameter 
+\begin_layout Description
+Step3: Nature reveals the true parameter 
 \begin_inset Formula $\theta^{*}$
 \end_inset
 
