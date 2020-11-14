@@ -1169,8 +1169,9 @@ When estimators are not available in closed-forms, the likelihood-ratio
 :
 \begin_inset Formula 
 \begin{align*}
-\ell_{n}\left(\theta_{0}\right)-\ell_{n}\left(\widehat{\theta}\right) & =\frac{\partial\ell_{n}}{\partial\theta}\left(\widehat{\theta}\right)'\left(\theta_{0}-\widehat{\theta}\right)+\frac{1}{2}\left(\theta_{0}-\widehat{\theta}\right)'\left(\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\theta_{0}\right)\right)\left(\theta_{0}-\widehat{\theta}\right)+o\left(\left\Vert \widehat{\theta}-\theta_{0}\right\Vert _{2}^{2}\right)\\
- & =\frac{1}{2}\left(\widehat{\theta}-\theta_{0}\right)'\left(\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\theta_{0}\right)\right)\left(\widehat{\theta}-\theta_{0}\right)+o\left(\left\Vert \widehat{\theta}-\theta_{0}\right\Vert _{2}^{2}\right)
+\ell_{n}\left(\theta_{0}\right)-\ell_{n}\left(\widehat{\theta}\right) & =\frac{\partial\ell_{n}}{\partial\theta}\left(\widehat{\theta}\right)'\left(\theta_{0}-\widehat{\theta}\right)+\frac{1}{2}\left(\theta_{0}-\widehat{\theta}\right)'\left(\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\theta_{0}\right)\right)\left(\theta_{0}-\widehat{\theta}\right)+O\left(\left\Vert \widehat{\theta}-\theta_{0}\right\Vert _{2}^{3}\right)\\
+ & =\frac{1}{2}\left(\widehat{\theta}-\theta_{0}\right)'\left(\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\theta_{0}\right)\right)\left(\widehat{\theta}-\theta_{0}\right)+O\left(\left\Vert \widehat{\theta}-\theta_{0}\right\Vert _{2}^{3}\right)\\
+ & =\frac{1}{2}\left(\widehat{\theta}-\theta_{0}\right)'\left(\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\theta_{0}\right)\right)\left(\widehat{\theta}-\theta_{0}\right)+o_{p}\left(1\right)
 \end{align*}
 
 \end_inset
@@ -1239,7 +1240,7 @@ By Slutsky's theorem:
 \end_inset
 
 and then 
-\begin_inset Formula $\mathcal{LR}\stackrel{d}{\to}\chi^{2}\left(K\right)$
+\begin_inset Formula $\mathcal{LR}\stackrel{d}{\to}\chi_{K}^{2}$
 \end_inset
 
  by the continuous mapping theorem.
@@ -1259,6 +1260,10 @@ Wilks' phenomenon
 \end_inset
 
  when the parametric model is correctly specified.
+\end_layout
+
+\begin_layout Subsection
+Score Test
 \end_layout
 
 \begin_layout Section
@@ -2341,16 +2346,19 @@ R & 0
 \begin_layout Standard
 Given the above fact, we can explicitly express
 \begin_inset Formula 
-\[
-\begin{aligned}\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
+\begin{align*}
+\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
 \tilde{\lambda}
-\end{pmatrix} & =\begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
+\end{pmatrix}\begin{aligned}=\end{aligned}
+ & \begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
 \left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & -(R'Q^{-1}R)^{-1}
 \end{pmatrix}\begin{pmatrix}\frac{1}{n}X'e\\
 0
-\end{pmatrix}\end{aligned}
-.
-\]
+\end{pmatrix}\\
+= & \begin{pmatrix}\widehat{Q}^{-1}\frac{1}{n}X'e-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{n}X'e\\
+\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{n}X'e
+\end{pmatrix}
+\end{align*}
 
 \end_inset
 
@@ -2526,7 +2534,7 @@ quasi log-likelihood function
 \begin_inset Formula 
 \begin{align}
 \mathcal{LR} & =n\log\left(1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}\right)=n\left(\log1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+O\left(\frac{\left|\tilde{\gamma}-\widehat{\gamma}\right|^{2}}{\widehat{\gamma}^{2}}\right)\right)\nonumber \\
- & =n\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+O\left(\frac{\left|\tilde{\gamma}-\widehat{\gamma}\right|^{2}}{\widehat{\gamma}^{2}}\right)\label{eq:LRT1}
+ & =n\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+o_{p}\left(1\right)\label{eq:LRT1}
 \end{align}
 
 \end_inset
@@ -2545,7 +2553,7 @@ by a Taylor expansion of
 \begin{align}
 n\left(\tilde{\gamma}-\widehat{\gamma}\right) & =n\left(\gamma\left(\tilde{\beta}\right)-\gamma\left(\widehat{\beta}\right)\right)\nonumber \\
  & =n\left(\frac{\partial\gamma\left(\widehat{\beta}\right)}{\partial\beta}\left(\tilde{\beta}-\widehat{\beta}\right)+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\frac{\partial^{2}\gamma\left(\widehat{\beta}\right)}{\partial\beta\partial\beta'}\left(\tilde{\beta}-\widehat{\beta}\right)+O\left(\left\Vert \tilde{\beta}-\widehat{\beta}\right\Vert _{2}^{3}\right)\right)\nonumber \\
- & =\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)+O\left(n\left\Vert \tilde{\beta}-\widehat{\beta}\right\Vert _{2}^{3}\right)\label{eq:LRT2}
+ & =\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)+o_{p}\left(1\right)\label{eq:LRT2}
 \end{align}
 
 \end_inset
@@ -2566,7 +2574,7 @@ From the derivation of LM test, we have
 \begin_inset Formula 
 \[
 \begin{aligned}\sqrt{n}\left(\tilde{\beta}-\beta_{0}\right) & =\left(\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\right)\frac{1}{\sqrt{n}}X'e\\
- & =\frac{1}{\sqrt{n}}\left(X'X\right)X'e-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ & =\frac{1}{\sqrt{n}}\left(X'X\right)^{-1}X'e-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
  & =\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e.
 \end{aligned}
 \]
@@ -2634,7 +2642,7 @@ noprefix "false"
 Notice that under homoskedasticity, CLT gives 
 \begin_inset Formula 
 \begin{align*}
-R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e & =R\widehat{Q}^{-1/2}\widehat{Q}^{-1/2}\frac{1}{\sqrt{n}}X'\frac{e}{\sigma_{e}}\\
+R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\frac{e}{\sigma_{e}} & =R\widehat{Q}^{-1/2}\widehat{Q}^{-1/2}\frac{1}{\sqrt{n}}X'\frac{e}{\sigma_{e}}\\
  & \stackrel{d}{\to}RQ^{-1/2}\times N\left(0,I_{K}\right)\sim N\left(0,RQ^{-1}R'\right),
 \end{align*}
 
