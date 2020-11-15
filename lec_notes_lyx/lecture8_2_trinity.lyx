@@ -109,6 +109,13 @@ theorems-ams-extended-bytype
 
 \begin_body
 
+\begin_layout Standard
+
+\series bold
+(Incomplete.
+ Don't read.)
+\end_layout
+
 \begin_layout Chapter
 Hypothesis Testing with Equality Constraints
 \end_layout
@@ -1506,6 +1513,60 @@ and thus
 \end_inset
 
 under homoskedasticity.
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+Cite 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "white1982maximum"
+literal "false"
+
+\end_inset
+
+ for consequence of tests and a specification of information matrix equality.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Zhentao Shi.
+ 
+\backslash
+today}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
