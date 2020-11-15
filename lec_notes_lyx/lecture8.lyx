@@ -743,7 +743,7 @@ frequentist perspective
 unbiased
 \emph default
  if 
-\begin_inset Formula $\beta\left(\theta\right)>\alpha$
+\begin_inset Formula $\beta\left(\theta\right)>\sup_{\theta\in\Theta_{0}}\beta\left(\theta\right)$
 \end_inset
 
  for all 
@@ -2845,7 +2845,7 @@ If I am a frequentist, one and only one of
 \begin_inset Formula $\Psi_{\alpha}$
 \end_inset
 
- of unbiased tests of level 
+ of unbiased tests of size 
 \begin_inset Formula $\alpha$
 \end_inset
 
