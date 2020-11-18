@@ -908,6 +908,18 @@ GMM comes from econometrics.
 \end_layout
 
 \begin_layout Standard
+
+\series bold
+Historical notes
+\series default
+: 2SLS: Theil, H.
+ 1953.
+ “Repeated Least Squares Applied to Complete Equation Systems.” The Hague:
+ Central Planning Bureau.
+ 
+\end_layout
+
+\begin_layout Standard
 Empirical likelihood is an alternative estimator.
  
 \end_layout

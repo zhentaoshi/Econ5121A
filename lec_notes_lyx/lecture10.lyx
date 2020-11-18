@@ -1547,7 +1547,15 @@ Keynesian-Type Macro Equations
 \end_inset
 
  This is a model borrowed from Hayashi (2000, p.193) but originated from
- Haavelmo (1943).
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "haavelmo1943statistical"
+literal "false"
+
+\end_inset
+
+.
  An econometrician is interested in learning 
 \begin_inset Formula $\beta_{2}$
 \end_inset
@@ -1669,6 +1677,41 @@ structural
 \begin_layout Standard
 
 \series bold
+Historical notes
+\series default
+: Instruments originally appeared in Philip 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "wright1928tariff"
+literal "false"
+
+\end_inset
+
+ for identifying the coefficient of an endogenous variables.
+ It is believed to be a collaborative idea with Philip's son Sewall Wright.
+ The demand and supply analysis is attributed to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "working1927statistical"
+literal "false"
+
+\end_inset
+
+, and the measurement error study is dated back to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "fricsh1934statistical"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 Further reading
 \series default
 : Causality is the holy grail of econometrics.
@@ -1682,6 +1725,15 @@ literal "false"
 
  is a popular book with philosophical depth.
  It is a delight to read.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "chen2011nonlinear"
+literal "false"
+
+\end_inset
+
+ is a survey for modern nonlinear measurement error models.
 \end_layout
 
 \begin_layout Standard
@@ -1700,9 +1752,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- 
-\backslash
-today}
+ Nov 18, 2020.}
 \end_layout
 
 \end_inset
