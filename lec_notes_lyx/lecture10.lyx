@@ -158,7 +158,6 @@ Endogeneity
  In microeconomic analysis, exogenous variables are the factors determined
  outside of the economic system under consideration, and endogenous variables
  are those decided within the economic system.
- 
 \end_layout
 
 \begin_layout Example
@@ -213,7 +212,8 @@ A microeconomic exercise that we encountered so many times goes as follows.
 \begin_inset Formula $C$
 \end_inset
 
- are exogenous, and the optimal purchase 
+ are exogenous.
+ The optimal purchase 
 \begin_inset Formula $q_{1}^{*}$
 \end_inset
 
@@ -312,8 +312,8 @@ identified
 \emph on
 under-identified
 \emph default
-, or the parameter is failed to be identified.
- This is an abstract definition, and let us discuss it in more family linear
+.
+ This is an abstract definition, and let us discuss it in the family linear
  regression context.
  
 \end_layout
@@ -526,8 +526,8 @@ The linear projection model is so far the most general model in this course
 
  so there is no room for endogeneity in the linear projection model.
  In other words, if we talk about endogeneity, we must not be working with
- the linear projection model, and the coefficients we pursue are not the
- linear projection coefficients.
+ the linear projection model, and the coefficients we pursue the structural
+ parameter, rather than the linear projection coefficients.
  
 \end_layout
 
@@ -735,7 +735,7 @@ where
 \end_layout
 
 \begin_layout Standard
-In the context of endogeneity, we call the exogenous variable 
+We call the exogenous variable 
 \emph on
 instrument variables
 \emph default
@@ -978,21 +978,31 @@ Dynamic Panel Model
  Nevertheless, the FD estimator encounters difficulty in a dynamic panel
  model 
 \begin_inset Formula 
-\[
-y_{it}=\beta_{1}+\beta_{2}y_{i,t-1}+\beta_{3}x_{it}+\alpha_{i}+\epsilon_{it},
-\]
+\begin{equation}
+y_{it}=\beta_{1}+\beta_{2}y_{i,t-1}+\beta_{3}x_{it}+\alpha_{i}+\epsilon_{it},\label{eq:dymPanel}
+\end{equation}
 
 \end_inset
 
 even if we assume 
 \begin_inset Formula 
 \begin{equation}
-\E\left[\epsilon_{it}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{i,t-1},y_{i,t-2},\ldots,y_{i0}\right]=0.\label{eq:dyn_mean_0}
+\E\left[\epsilon_{is}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{i,t-1},y_{i,t-2},\ldots,y_{i0}\right]=0,\ \ \forall s\geq t\label{eq:dyn_mean_0}
 \end{equation}
 
 \end_inset
 
- When taking difference of the above equation for periods 
+ When taking difference of the above equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dymPanel"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) for periods 
 \begin_inset Formula $t$
 \end_inset
 
@@ -1063,16 +1073,27 @@ qed
 \end_layout
 
 \begin_layout Remark
-Instrumental for the above example is easy to find.
- Notice that 
-\begin_inset Formula 
-\[
-\E\left[\left(y_{i,t-1}-y_{i,t-2}\right)f\left(\epsilon_{i,t-3},\epsilon_{i,t-4},\ldots,\epsilon_{i1}\right)\right]=0
-\]
+Instruments for the above example is easy to find.
+ Notice that the linear relationship (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dymPanel"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
- according to the condition (
+) implies 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \E\left[y_{i,t-1}-y_{i,t-2}|\alpha_{i},x_{i1},\ldots,x_{iT},\epsilon_{i,t-3},\epsilon_{i,t-4},\ldots,\epsilon_{i1},y_{i0}\right]\\
+ & = & \E\left[y_{i,t-1}-y_{i,t-2}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{i,t-3},y_{i,t-4},\ldots,y_{i0}\right]=0
+\end{eqnarray*}
+
+\end_inset
+
+according to the assumption (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:dyn_mean_0"
@@ -1083,11 +1104,19 @@ noprefix "false"
 \end_inset
 
 ).
- Thus any function of 
+ The above relationship gives orthogonal condition in the form
+\begin_inset Formula 
+\[
+\E\left[\left(y_{i,t-1}-y_{i,t-2}\right)f\left(\epsilon_{i,t-3},\epsilon_{i,t-4},\ldots,\epsilon_{i1}\right)\right]=0.
+\]
+
+\end_inset
+
+In other words, any function of 
 \begin_inset Formula $\epsilon_{i,t-3},\epsilon_{i,t-4},\ldots,\epsilon_{i1}$
 \end_inset
 
- are orthogonal to the endogenous variable 
+ is orthogonal to the endogenous variable 
 \begin_inset Formula $\left(y_{i,t-1}-y_{i,t-2}\right)$
 \end_inset
 
@@ -1523,8 +1552,11 @@ Keynesian-Type Macro Equations
 \begin_inset Formula $\beta_{2}$
 \end_inset
 
-, the marginal propensity of consumption, in the Keynesian-type equation
- 
+, the 
+\emph on
+marginal propensity of consumption
+\emph default
+, in the Keynesian-type equation 
 \begin_inset Formula 
 \begin{equation}
 C_{i}=\beta_{1}+\beta_{2}Y_{i}+u_{i}\label{eq:keynes}
@@ -1571,6 +1603,15 @@ where
 \end_inset
 
  as investment is determined in advance.
+ In this example, 
+\begin_inset Formula $\left(Y_{i}C_{i}\right)$
+\end_inset
+
+ are endogenous and 
+\begin_inset Formula $\left(I_{i},u_{i}\right)$
+\end_inset
+
+ are exogenous.
  OLS (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1607,13 +1648,40 @@ Summary
 \end_layout
 
 \begin_layout Standard
-Causality.
- 
+Even though we often deal with a single equation model with potential endogenous
+ variables, the underlying structural system may involve multiple equations.
+ The simultaneous equation model is a classical econometric modeling approach,
+ and it is still actively applied in structural economic studies.
+ When our economic model is 
+\begin_inset Quotes eld
+\end_inset
+
+structural
+\begin_inset Quotes erd
+\end_inset
+
+, we keep in mind a causal mechanism.
+ Instead of identifying the causal effect by control group and treatment
+ group as in Chapter 2, here we look at causality from the economic structural
+ perspective.
 \end_layout
 
 \begin_layout Standard
-Judea Pearl.
- The book of why.
+
+\series bold
+Further reading
+\series default
+: Causality is the holy grail of econometrics.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "pearl2018book"
+literal "false"
+
+\end_inset
+
+ is a popular book with philosophical depth.
+ It is a delight to read.
 \end_layout
 
 \begin_layout Standard
@@ -1636,6 +1704,18 @@ texttt{ Zhentao Shi.
 \backslash
 today}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
 
 \end_inset
 
