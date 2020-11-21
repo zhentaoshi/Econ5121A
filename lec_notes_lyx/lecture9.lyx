@@ -221,7 +221,7 @@ noprefix "false"
 ) as 
 \begin_inset Formula 
 \begin{equation}
-y_{it}=w_{it}\boldsymbol{\beta}+u_{it},\label{eq:basic_eq2}
+y_{it}=w_{it}'\boldsymbol{\beta}+u_{it},\label{eq:basic_eq2}
 \end{equation}
 
 \end_inset
@@ -231,7 +231,7 @@ where
 \end_inset
 
  and 
-\begin_inset Formula $w_{it}=\left(1,x_{it}\right)$
+\begin_inset Formula $w_{it}=\left(1,x_{it}'\right)'$
 \end_inset
 
  are 
@@ -295,7 +295,7 @@ within estimator
 , we have 
 \begin_inset Formula 
 \begin{equation}
-\overline{y}_{i}=\beta_{1}+\overline{x}_{i}\beta_{2}+\bar{u}_{it}=\beta_{1}+\overline{x}_{i}\beta_{2}+\alpha_{i}+\bar{\epsilon}_{it}.\label{eq:group_mean}
+\overline{y}_{i}=\beta_{1}+\overline{x}_{i}'\beta_{2}+\bar{u}_{it}=\beta_{1}+\overline{x}_{i}'\beta_{2}+\alpha_{i}+\bar{\epsilon}_{it}.\label{eq:group_mean}
 \end{equation}
 
 \end_inset
@@ -308,7 +308,7 @@ where
  Subtracting the averaged equation from the original equation gives 
 \begin_inset Formula 
 \begin{equation}
-\tilde{y}_{it}=\tilde{x}_{it}\beta_{2}+\tilde{\epsilon}_{it}\label{eq:FE_demean}
+\tilde{y}_{it}=\tilde{x}_{it}'\beta_{2}+\tilde{\epsilon}_{it}\label{eq:FE_demean}
 \end{equation}
 
 \end_inset
@@ -456,7 +456,7 @@ Under FE.1 and FE.2,
 \end_inset
 
 , where 
-\begin_inset Formula $\widehat{\tilde{\epsilon}}=\tilde{y}_{it}-\tilde{x}_{it}\widehat{\beta}_{2}^{FE}$
+\begin_inset Formula $\widehat{\tilde{\epsilon}}=\tilde{y}_{it}-\tilde{x}_{it}'\widehat{\beta}_{2}^{FE}$
 \end_inset
 
 .
@@ -475,7 +475,7 @@ Under FE.1 and FE.2,
  for each cross sectional unit.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Theorem
 If FE.1 and FE.2 are satisfied, then 
 \begin_inset Formula 
 \[
@@ -705,7 +705,7 @@ Assumption RE.2
 \begin_layout Standard
 Under this assumption, we can consistently estimate the variances from the
  residuals 
-\begin_inset Formula $\widehat{u}_{it}=y_{it}-x_{it}\widehat{\boldsymbol{\beta}}^{RE}$
+\begin_inset Formula $\widehat{u}_{it}=y_{it}-x_{it}'\widehat{\boldsymbol{\beta}}^{RE}$
 \end_inset
 
 .

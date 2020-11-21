@@ -266,7 +266,7 @@ or is an
 endogenous variable
 \emph default
 , if 
-\begin_inset Formula $\mathrm{cov}\left(x_{ik},\epsilon_{i}\right)\neq0$
+\begin_inset Formula $\mathrm{cov}\left(x_{ik},e_{i}\right)\neq0$
 \end_inset
 
 ; otherwise 
