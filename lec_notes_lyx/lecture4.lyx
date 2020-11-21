@@ -131,17 +131,28 @@ l inference.
  assumptions.
 \end_layout
 
+\begin_layout Standard
+Suppose the data is generated from a parametric model.
+ Statistical estimation looks for the unknown parameter from the observed
+ data.
+ A 
+\emph on
+principle
+\emph default
+ is an ideology about a proper way of estimation.
+ Over the history of statistics, only a few principles are widely accepted.
+ Among them Maximum Likelihood is the most important and fundamental.
+ The maximum likelihood principle entails that the unknown parameter being
+ found as the maximizer of the log-likelihood function.
+ 
+\end_layout
+
 \begin_layout Section
 Maximum Likelihood
 \end_layout
 
 \begin_layout Standard
-There are very few 
-\emph on
-principles
-\emph default
- in statistics, and maximum likelihood is one of them.
- In this chapter, we first give an introduction of the maximum likelihood
+In this chapter, we first give an introduction of the maximum likelihood
  estimation.
  Consider a random sample of 
 \begin_inset Formula $Z=\left(z_{1},z_{2},\ldots,z_{n}\right)$

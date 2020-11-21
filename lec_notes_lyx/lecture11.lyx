@@ -135,7 +135,15 @@ Generalized Method of Moments
 \emph on
 Generalized method of moments
 \emph default
- (GMM) is an estimation principle that extends 
+ (GMM) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "hansen1982large"
+literal "false"
+
+\end_inset
+
+ is an estimation principle that extends 
 \emph on
 method of moments
 \emph default
@@ -912,10 +920,15 @@ GMM comes from econometrics.
 \series bold
 Historical notes
 \series default
-: 2SLS: Theil, H.
- 1953.
- “Repeated Least Squares Applied to Complete Equation Systems.” The Hague:
- Central Planning Bureau.
+: 2SLS: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "theil1953repeated"
+literal "false"
+
+\end_inset
+
+.
  
 \end_layout
 
@@ -949,6 +962,18 @@ texttt{ Zhentao Shi.
 \backslash
 today}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
 
 \end_inset
 
