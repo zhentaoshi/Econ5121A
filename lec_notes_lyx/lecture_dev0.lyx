@@ -4,10 +4,11 @@
 \begin_header
 \save_transient_properties true
 \origin unavailable
-\textclass report
+\textclass book
 \use_default_options false
 \begin_modules
-theorems-bytype
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
 \end_modules
 \maintain_unincluded_children false
 \language english
@@ -208,53 +209,6 @@ Karl Popper: hypothesis of theory.
 
 \begin_layout Standard
 Thomas Kuhn: The Structure of Scientific Revolution.
-\end_layout
-
-\begin_layout Section
-Historical Perspective
-\end_layout
-
-\begin_layout Standard
-Human society are shaped by giants.
- Modern economics, econometrics and statistics took their shapes at the
- dawn of the 20th century.
- Stand on shoulders of giants.
-\end_layout
-
-\begin_layout Standard
-Hilbert, Andrey Kolmogorov
-\end_layout
-
-\begin_layout Standard
-Karl Pearson, Ronald Fisher, Abraham Wald, Jeffery Savage, 
-\end_layout
-
-\begin_layout Standard
-Jan Tinbergen, Frisch, Jan Koopmans, Havellomo, Halbert White, Herbert Simon
-\end_layout
-
-\begin_layout Standard
-Sewall Wright, Theil, 
-\end_layout
-
-\begin_layout Standard
-Dennis Sargan, 
-\end_layout
-
-\begin_layout Standard
-Peter Phillips, Donald Andrews, Lars Hansen, Thomas Sargent
-\end_layout
-
-\begin_layout Standard
-Cliver Granger, James Heckman, Richard Blundell, Angus Deaton, 
-\end_layout
-
-\begin_layout Standard
-Judea Pearl, van der Vaart, van der Geer, Bulhmann
-\end_layout
-
-\begin_layout Standard
-Chen, Fan, Hsiao, Shao, Tiao
 \end_layout
 
 \begin_layout Section

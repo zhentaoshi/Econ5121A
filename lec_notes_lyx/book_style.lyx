@@ -174,6 +174,16 @@ LatexCommand tableofcontents
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "lecture_dev0.lyx"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Part
 Basics
 \end_layout
@@ -294,6 +304,80 @@ filename "lecture11.lyx"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Chapter*
+Epilogue
+\end_layout
+
+\begin_layout Standard
+Many topics are left untouched.
+ Stationary time series, nonstationary time series, nonparametric estimation,
+ semiparametric estimation, shrinkage estimation, machine learning methods.
+\end_layout
+
+\begin_layout Standard
+Empirical process theory.
+ 
+\end_layout
+
+\begin_layout Standard
+bootstrap inference
+\end_layout
+
+\begin_layout Standard
+From applied side, DID, LATE, selection
+\end_layout
+
+\begin_layout Section
+Historical Perspective
+\end_layout
+
+\begin_layout Standard
+Human society are shaped by giants.
+ Modern economics, econometrics and statistics took their shapes at the
+ dawn of the 20th century.
+ Stand on shoulders of giants.
+\end_layout
+
+\begin_layout Standard
+Hilbert, Andrey Kolmogorov
+\end_layout
+
+\begin_layout Standard
+Karl Pearson, Ronald Fisher, Abraham Wald, Jeffery Savage, 
+\end_layout
+
+\begin_layout Standard
+Jan Tinbergen, Frisch, Jan Koopmans, Havellomo, Halbert White, Herbert Simon
+\end_layout
+
+\begin_layout Standard
+Sewall Wright, Theil, 
+\end_layout
+
+\begin_layout Standard
+Dennis Sargan, 
+\end_layout
+
+\begin_layout Standard
+Peter Phillips, Donald Andrews, Lars Hansen, Thomas Sargent
+\end_layout
+
+\begin_layout Standard
+Cliver Granger, James Heckman, Richard Blundell, Angus Deaton, 
+\end_layout
+
+\begin_layout Standard
+Judea Pearl, van der Vaart, van der Geer, Bulhmann
+\end_layout
+
+\begin_layout Standard
+Chen, Fan, Hsiao, Shao, Tiao
+\end_layout
+
+\begin_layout Standard
+A historical perspective of econometrics.
 \end_layout
 
 \end_body
