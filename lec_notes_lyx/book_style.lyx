@@ -327,57 +327,63 @@ bootstrap inference
 
 \begin_layout Standard
 From applied side, DID, LATE, selection
-\end_layout
+\begin_inset Note Note
+status open
 
 \begin_layout Section
 Historical Perspective
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Human society are shaped by giants.
  Modern economics, econometrics and statistics took their shapes at the
  dawn of the 20th century.
  Stand on shoulders of giants.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Hilbert, Andrey Kolmogorov
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Karl Pearson, Ronald Fisher, Abraham Wald, Jeffery Savage, 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Jan Tinbergen, Frisch, Jan Koopmans, Havellomo, Halbert White, Herbert Simon
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Sewall Wright, Theil, 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Dennis Sargan, 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Peter Phillips, Donald Andrews, Lars Hansen, Thomas Sargent
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Cliver Granger, James Heckman, Richard Blundell, Angus Deaton, 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Judea Pearl, van der Vaart, van der Geer, Bulhmann
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 Chen, Fan, Hsiao, Shao, Tiao
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 A historical perspective of econometrics.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_body
