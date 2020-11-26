@@ -1246,6 +1246,55 @@ qed
 
 \end_layout
 
+\begin_layout Remark
+Alternatively, we can look at the above problem of classical measurement
+ error from the expression of the linear projection coefficient.
+ We know that in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:measurement_error"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) 
+\begin_inset Formula $\beta_{2}^{\mathrm{infeasible}}=\mathrm{cov}\left[x_{i}^{*},y_{i}\right]/\mathrm{var}\left[x_{i}^{*}\right].$
+\end_inset
+
+ In contrast, when we regression 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ on the observable 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ the corresponding linear projection coefficient is 
+\begin_inset Formula 
+\[
+\beta_{2}^{\mathrm{feasible}}=\frac{\mathrm{cov}\left[x_{i},y_{i}\right]}{\mathrm{var}\left[x_{i}\right]}=\frac{\mathrm{cov}\left[x_{i}^{*}+v_{i},y_{i}\right]}{\mathrm{var}\left[x_{i}^{*}+v_{i}\right]}=\frac{\mathrm{cov}\left[x_{i}^{*},y_{i}\right]}{\mathrm{var}\left[x_{i}^{*}\right]+\mathrm{var}\left[v_{i}\right]}.
+\]
+
+\end_inset
+
+It is clear that 
+\begin_inset Formula $|\beta_{2}^{\mathrm{feasible}}|\leq|\beta_{2}^{\mathrm{infeasible}}|$
+\end_inset
+
+ and the equality holds only if 
+\begin_inset Formula $\mathrm{var}\left[v_{i}\right]=0$
+\end_inset
+
+ (no measurement error).
+ This is called the 
+\emph on
+attenuation bias
+\emph default
+ due to the measurement error.
+\end_layout
+
 \begin_layout Standard
 \begin_inset VSpace medskip
 \end_inset
@@ -1376,17 +1425,24 @@ structural equation
 
 , we can solve 
 \begin_inset Formula 
-\begin{equation}
+\begin{align}
 \begin{pmatrix}p_{i}\\
 q_{i}
-\end{pmatrix}=\frac{1}{\beta_{s}+\beta_{d}}\begin{pmatrix}\beta_{s} & \beta_{d}\\
+\end{pmatrix} & =\begin{pmatrix}1 & \beta_{d}\\
+1 & -\beta_{s}
+\end{pmatrix}^{-1}\left[\begin{pmatrix}\alpha_{d}\\
+\alpha_{s}
+\end{pmatrix}+\begin{pmatrix}e_{di}\\
+e_{si}
+\end{pmatrix}\right]\nonumber \\
+ & =\frac{1}{\beta_{s}+\beta_{d}}\begin{pmatrix}\beta_{s} & \beta_{d}\\
 1 & -1
 \end{pmatrix}\left[\begin{pmatrix}\alpha_{d}\\
 \alpha_{s}
 \end{pmatrix}+\begin{pmatrix}e_{di}\\
 e_{si}
 \end{pmatrix}\right].\label{eq:reduced}
-\end{equation}
+\end{align}
 
 \end_inset
 
@@ -1456,7 +1512,7 @@ noprefix "false"
  Indeed, as 
 \begin_inset Formula 
 \[
-q_{i}=\left(\beta_{s}\alpha_{d}+\beta_{d}\alpha_{s}+\beta_{s}e_{di}+\beta_{d}e_{si}\right)/\left(\beta_{s}+\beta_{d}\right)
+p_{i}=\left(\beta_{s}\alpha_{d}+\beta_{d}\alpha_{s}+\beta_{s}e_{di}+\beta_{d}e_{si}\right)/\left(\beta_{s}+\beta_{d}\right)
 \]
 
 \end_inset
@@ -1482,21 +1538,21 @@ noprefix "false"
  is 
 \begin_inset Formula 
 \[
-\frac{\mathrm{cov}\left(p_{i},q_{i}\right)}{\mathrm{var}\left(q_{i}\right)}=\frac{\beta_{s}\sigma_{d}^{2}-\beta_{d}\sigma_{s}^{2}+\left(\beta_{d}-\beta_{s}\right)\sigma_{sd}}{\beta_{d}^{2}\sigma_{d}^{2}+\beta_{d}\sigma_{s}^{2}+2\beta_{d}\beta_{s}\sigma_{sd}},
+\frac{\mathrm{cov}\left[p_{i},q_{i}\right]}{\mathrm{var}\left[q_{i}\right]}=\frac{\beta_{s}\sigma_{d}^{2}-\beta_{d}\sigma_{s}^{2}+\left(\beta_{d}-\beta_{s}\right)\sigma_{sd}}{\beta_{d}^{2}\sigma_{d}^{2}+\beta_{d}\sigma_{s}^{2}+2\beta_{d}\beta_{s}\sigma_{sd}},
 \]
 
 \end_inset
 
 where 
-\begin_inset Formula $\sigma_{d}^{2}=\mathrm{var}\left(e_{di}\right)$
+\begin_inset Formula $\sigma_{d}^{2}=\mathrm{var}\left[e_{di}\right]$
 \end_inset
 
 , 
-\begin_inset Formula $\sigma_{s}^{2}=\mathrm{var}\left(e_{si}\right)$
+\begin_inset Formula $\sigma_{s}^{2}=\mathrm{var}\left[e_{si}\right]$
 \end_inset
 
  and 
-\begin_inset Formula $\sigma_{sd}=\mathrm{cov}\left(e_{di},e_{si}\right)$
+\begin_inset Formula $\sigma_{sd}=\mathrm{cov}\left[e_{di},e_{si}\right]$
 \end_inset
 
 .
@@ -1620,7 +1676,49 @@ where
 \end_inset
 
  are exogenous.
- OLS (
+ Put the two equations together as the structural form
+\begin_inset Formula 
+\[
+\begin{pmatrix}1 & -\beta_{2}\\
+-1 & 1
+\end{pmatrix}\begin{pmatrix}C_{i}\\
+Y_{i}
+\end{pmatrix}=\begin{pmatrix}\beta_{1}\\
+0
+\end{pmatrix}+\begin{pmatrix}u_{i}\\
+I_{i}
+\end{pmatrix}.
+\]
+
+\end_inset
+
+The corresponding reduced form is 
+\begin_inset Formula 
+\begin{align*}
+\begin{pmatrix}C_{i}\\
+Y_{i}
+\end{pmatrix} & =\begin{pmatrix}1 & -\beta_{2}\\
+-1 & 1
+\end{pmatrix}^{-1}\left[\begin{pmatrix}\beta_{1}\\
+0
+\end{pmatrix}+\begin{pmatrix}u_{i}\\
+I_{i}
+\end{pmatrix}\right]\\
+ & =\frac{1}{1-\beta_{2}}\begin{pmatrix}1 & \beta_{2}\\
+1 & 1
+\end{pmatrix}\left[\begin{pmatrix}\beta_{1}\\
+0
+\end{pmatrix}+\begin{pmatrix}u_{i}\\
+I_{i}
+\end{pmatrix}\right]\\
+ & =\frac{1}{1-\beta_{2}}\begin{pmatrix}\beta_{1}+u_{i}+\beta_{2}I_{i}\\
+\beta_{1}+u_{i}+I_{i}
+\end{pmatrix}.
+\end{align*}
+
+\end_inset
+
+OLS (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:keynes"
@@ -1752,7 +1850,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Nov 18, 2020.}
+ Nov 26, 2020.}
 \end_layout
 
 \end_inset
