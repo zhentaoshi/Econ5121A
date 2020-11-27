@@ -2432,9 +2432,7 @@ In the special case of homoskedasticity,
 , we have 
 \begin_inset Formula 
 \[
-\begin{aligned}\frac{n\tilde{\lambda}'R\hat{Q}^{-1}R'\tilde{\lambda}}{\hat{\sigma}^{2}} & =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'X\hat{Q}^{-1}R'(R\hat{Q}^{-1}R')^{-1}R\hat{Q}^{-1}X'\left(y-X\tilde{\beta}\right)\\
- & =\frac{1}{\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'P_{X\hat{Q}^{-1}R'}\left(y-X\tilde{\beta}\right)\stackrel{d}{\to}\chi_{q}^{2}.
-\end{aligned}
+\begin{aligned}\frac{n\tilde{\lambda}'R\hat{Q}^{-1}R'\tilde{\lambda}}{\hat{\sigma}^{2}} & =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'X\hat{Q}^{-1}R'(R\hat{Q}^{-1}R')^{-1}R\hat{Q}^{-1}X'\left(y-X\tilde{\beta}\right)\stackrel{d}{\to}\chi_{q}^{2}.\end{aligned}
 \]
 
 \end_inset

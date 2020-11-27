@@ -662,11 +662,11 @@ A.2
 \end_inset
 
  
-\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'\epsilon_{i}\stackrel{d}{\to}N\left(0_{L},\Omega\right)$
+\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\epsilon_{i}\stackrel{d}{\to}N\left(0_{L},\Omega\right)$
 \end_inset
 
 , where 
-\begin_inset Formula $\Omega=\E\left[z_{i}'z_{i}\epsilon_{i}^{2}\right].$
+\begin_inset Formula $\Omega=\E\left[z_{i}z_{i}'\epsilon_{i}^{2}\right].$
 \end_inset
 
 

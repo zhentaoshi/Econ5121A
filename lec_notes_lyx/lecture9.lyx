@@ -713,7 +713,7 @@ Under this assumption, we can consistently estimate the variances from the
 \begin_inset Formula 
 \[
 \begin{aligned}\widehat{\sigma}_{u}^{2} & =\frac{1}{nT}\sum_{i=1}^{n}\sum_{t=1}^{T}\widehat{u}_{it}^{2}\\
-\widehat{\sigma}_{\epsilon}^{2} & =\frac{1}{n}\sum_{i=1}^{n}\frac{1}{T\left(T-1\right)}\sum_{t=1}^{T}\sum_{r=1}^{T}\sum_{r\neq t}\widehat{u}_{it}\widehat{u}_{ir}.
+\widehat{\sigma}_{\alpha}^{2} & =\frac{1}{n}\sum_{i=1}^{n}\frac{1}{T\left(T-1\right)}\sum_{t=1}^{T}\sum_{r=1}^{T}\sum_{r\neq t}\widehat{u}_{it}\widehat{u}_{ir}.
 \end{aligned}
 \]
 
