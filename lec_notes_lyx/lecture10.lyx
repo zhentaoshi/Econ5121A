@@ -1087,8 +1087,8 @@ noprefix "false"
 ) implies 
 \begin_inset Formula 
 \begin{eqnarray*}
- &  & \E\left[y_{i,t-1}-y_{i,t-2}|\alpha_{i},x_{i1},\ldots,x_{iT},\epsilon_{i,t-3},\epsilon_{i,t-4},\ldots,\epsilon_{i1},y_{i0}\right]\\
- & = & \E\left[y_{i,t-1}-y_{i,t-2}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{i,t-3},y_{i,t-4},\ldots,y_{i0}\right]=0
+ &  & \E\left[\epsilon_{i,t}-\epsilon_{i,t-1}|\alpha_{i},x_{i1},\ldots,x_{iT},\epsilon_{i,t-2},\epsilon_{i,t-3},\ldots,\epsilon_{i1},y_{i0}\right]\\
+ & = & \E\left[\epsilon_{i,t}-\epsilon_{i,t-1}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{i,t-2},y_{i,t-3},\ldots,y_{i0}\right]=0
 \end{eqnarray*}
 
 \end_inset
@@ -1107,17 +1107,17 @@ noprefix "false"
  The above relationship gives orthogonal condition in the form
 \begin_inset Formula 
 \[
-\E\left[\left(y_{i,t-1}-y_{i,t-2}\right)f\left(\epsilon_{i,t-3},\epsilon_{i,t-4},\ldots,\epsilon_{i1}\right)\right]=0.
+\E\left[\left(\epsilon_{i,t}-\epsilon_{i,t-1}\right)f\left(\epsilon_{i,t-2},\epsilon_{i,t-3},\ldots,\epsilon_{i1}\right)\right]=0.
 \]
 
 \end_inset
 
 In other words, any function of 
-\begin_inset Formula $\epsilon_{i,t-3},\epsilon_{i,t-4},\ldots,\epsilon_{i1}$
+\begin_inset Formula $y_{i,t-2},y_{i,t-3},\ldots,y_{i1}$
 \end_inset
 
- is orthogonal to the endogenous variable 
-\begin_inset Formula $\left(y_{i,t-1}-y_{i,t-2}\right)$
+ is orthogonal to the error term 
+\begin_inset Formula $\left(\epsilon{}_{i,t-1}-\epsilon_{i,t-2}\right)$
 \end_inset
 
 .
