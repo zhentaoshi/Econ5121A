@@ -16,6 +16,10 @@ Reading and Assignment will be updated each week as the class progresses.
 * [lecture6](https://github.com/zhentaoshi/Econ5121A/blob/master/lec_notes_lyx/lecture6.pdf)
 * [lecture7](https://github.com/zhentaoshi/Econ5121A/blob/master/lec_notes_lyx/lecture7.pdf)
 * [lecture8](https://github.com/zhentaoshi/Econ5121A/blob/master/lec_notes_lyx/lecture8.pdf)
+* [lecture9](https://github.com/zhentaoshi/Econ5121A/blob/master/lec_notes_lyx/lecture9.pdf)
+* [lecture10](https://github.com/zhentaoshi/Econ5121A/blob/master/lec_notes_lyx/lecture10.pdf)
+* [lecture11](https://github.com/zhentaoshi/Econ5121A/blob/master/lec_notes_lyx/lecture11.pdf)
+* [lecture12ML1](https://github.com/zhentaoshi/econ5170/blob/master/05-ML.pdf), [lecture12ML2](https://github.com/zhentaoshi/econ5170/blob/master/05-ML.pdf)
 
 **Caveat**: This is an ongoing writing project. The text is incomplete, and may contain errors.
 *Use them at your own risk!*
