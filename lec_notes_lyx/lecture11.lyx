@@ -1095,7 +1095,7 @@ In these nonlinear models, a closed-form solution is in general unavailable,
 (a) If the model is identified, and 
 \begin_inset Formula 
 \[
-\mathbb{P}\left[\sup_{\beta\in\mathcal{B}}\left|\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)-\E\left[g_{i}\left(\beta\right)\right]\right|>\varepsilon\right]\to0
+\mathbb{P}\left\{ \sup_{\beta\in\mathcal{B}}\big|\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)-\E\left[g_{i}\left(\beta\right)\right]\big|>\varepsilon\right\} \to0
 \]
 
 \end_inset
@@ -1120,7 +1120,11 @@ In these nonlinear models, a closed-form solution is in general unavailable,
 \begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\beta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
 \end_inset
 
-, then 
+ and 
+\begin_inset Formula $\Sigma=\E\left[\frac{\partial}{\partial\beta'}g_{i}\left(\beta_{0}\right)\right]$
+\end_inset
+
+ is of full column rank, then 
 \begin_inset Formula 
 \[
 \sqrt{n}\left(\hat{\beta}-\beta_{0}\right)\stackrel{d}{\to}N\left(0,\left(\Sigma'W\Sigma\right)^{-1}\left(\Sigma'W\Omega W\Sigma\right)\left(\Sigma'W\Sigma\right)^{-1}\right)
@@ -1129,10 +1133,6 @@ In these nonlinear models, a closed-form solution is in general unavailable,
 \end_inset
 
 where 
-\begin_inset Formula $\Sigma=\E\left[\frac{\partial}{\partial\beta'}g_{i}\left(\beta_{0}\right)\right]$
-\end_inset
-
- and 
 \begin_inset Formula $\Omega=\E\left[g_{i}\left(\beta_{0}\right)g_{i}\left(\beta_{0}\right)'\right]$
 \end_inset
 
@@ -1260,7 +1260,7 @@ efficient market hypothesis
 
 \begin_layout Standard
 Conceptually simple though, GMM has many practical issues in reality.
- These has been vast econometric literature about issues of GMM and their
+ There has been vast econometric literature about issues of GMM and their
  remedies.
 \end_layout
 
@@ -1342,7 +1342,7 @@ bigskip
 
 \backslash
 texttt{ Zhentao Shi.
- Nov 25, 2020.}
+ Dec 3, 2020.}
 \end_layout
 
 \end_inset
