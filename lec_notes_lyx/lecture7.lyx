@@ -447,7 +447,15 @@ Asymptotic Normality
 
 \begin_layout Standard
 The next step is to derive the asymptotic distribution of the MLE estimator.
- 
+ Let 
+\begin_inset Formula $s\left(x;\theta\right)=\partial\log f\left(x;\theta\right)/\partial\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $h\left(x;\theta\right)=\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta\right)$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Theorem
@@ -460,7 +468,7 @@ name "thm:mis-MLE"
  Under suitable regularity conditions, the MLE estimator 
 \begin_inset Formula 
 \[
-\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(E\left[\frac{\partial^{2}\log f\left(x;\theta_{0}\right)}{\partial\theta\partial\theta'}\right]\right)^{-1}\mathrm{var}\left[\frac{\partial\log f\left(x;\theta_{0}\right)}{\partial\theta}\right]\left(E\left[\frac{\partial^{2}\log f\left(x;\theta_{0}\right)}{\partial\theta\partial\theta'}\right]\right)^{-1}\right).
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(E\left[h\left(x;\theta_{0}\right)\right]\right)^{-1}\mathrm{var}\left[s\left(x;\theta_{0}\right)\right]\left(E\left[h\left(x;\theta_{0}\right)\right]\right)^{-1}\right).
 \]
 
 \end_inset
@@ -557,7 +565,7 @@ When
 
 .
  Notice that 
-\begin_inset Formula $E\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}Q\left(\theta_{0}\right)=0$
+\begin_inset Formula $E\left[s\left(x;\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}Q\left(\theta_{0}\right)=0$
 \end_inset
 
  if differentiation and integration are interchangeable.
@@ -574,7 +582,7 @@ noprefix "false"
  follows
 \begin_inset Formula 
 \[
-\sqrt{n}\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathrm{var}\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]\right).
+\sqrt{n}\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathrm{var}\left[s\left(x;\theta_{0}\right)\right]\right).
 \]
 
 \end_inset
@@ -590,7 +598,7 @@ noprefix "false"
 \end_inset
 
  follows 
-\begin_inset Formula $\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\stackrel{p}{\to}E\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]$
+\begin_inset Formula $\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\stackrel{p}{\to}E\left[h\left(x;\theta_{0}\right)\right]$
 \end_inset
 
  (sufficient if we assume 
@@ -641,7 +649,7 @@ true
 (Fisher) information matrix
 \emph default
 , and 
-\begin_inset Formula $\mathcal{H}\left(\theta_{0}\right):=E_{f\left(x;\theta_{0}\right)}\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]$
+\begin_inset Formula $\mathcal{H}\left(\theta_{0}\right):=E_{f\left(x;\theta_{0}\right)}\left[h\left(x;\theta_{0}\right)\right]$
 \end_inset
 
  is called the 
@@ -714,7 +722,7 @@ Because
 \begin_inset Formula 
 \begin{align}
 0 & =\int\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)dx=\int\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta_{0}\right)}f\left(x;\theta_{0}\right)dx\nonumber \\
- & =\int\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx=E_{f\left(x;\theta_{0}\right)}\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]\label{eq:info_eqn_1}
+ & =\int\left[s\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx=E_{f\left(x;\theta_{0}\right)}\left[s\left(x;\theta_{0}\right)\right]\label{eq:info_eqn_1}
 \end{align}
 
 \end_inset
@@ -722,7 +730,7 @@ Because
 where the third equality holds as by the chain rule
 \begin_inset Formula 
 \begin{equation}
-\frac{\partial}{\partial\theta}\log f\left(\theta_{0}\right)=\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta_{0}\right)}.\label{eq:ell_d}
+s\left(x;\theta_{0}\right)=\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta_{0}\right)}.\label{eq:ell_d}
 \end{equation}
 
 \end_inset
@@ -744,10 +752,10 @@ noprefix "false"
 , according to the chain rule:
 \begin_inset Formula 
 \begin{align*}
-0 & =\int\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]\frac{\partial}{\partial\theta'}f\left(x;\theta_{0}\right)dx\\
- & =\int\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta\right)}f\left(x;\theta_{0}\right)dx\\
- & =\int\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx\\
- & =E_{f\left(x;\theta_{0}\right)}\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]+E_{f\left(x;\theta_{0}\right)}\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\frac{\partial}{\partial\theta'}\log f\left(x;\theta_{0}\right)\right]\\
+0 & =\int\left[h\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[s\left(x;\theta_{0}\right)\right]\frac{\partial}{\partial\theta'}f\left(x;\theta_{0}\right)dx\\
+ & =\int\left[h\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int s\left(x;\theta_{0}\right)\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta\right)}f\left(x;\theta_{0}\right)dx\\
+ & =\int\left[h\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[s\left(x;\theta_{0}\right)s\left(x;\theta_{0}\right)'\right]f\left(x;\theta_{0}\right)dx\\
+ & =E_{f\left(x;\theta_{0}\right)}\left[h\left(x;\theta_{0}\right)\right]+E_{f\left(x;\theta_{0}\right)}\left[s\left(x;\theta_{0}\right)s\left(x;\theta_{0}\right)'\right]\\
  & =\mathcal{H}\left(\theta_{0}\right)+\mathcal{I}\left(\theta_{0}\right).
 \end{align*}
 
@@ -824,7 +832,7 @@ noprefix "false"
 ,
 \begin_inset Formula 
 \[
-\left(E_{g}\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]\right)^{-1}\mathrm{var}_{g}\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]\left(E_{g}\left[\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta_{0}\right)\right]\right)^{-1},
+\left(E_{g}\left[h\left(x;\theta_{0}\right)\right]\right)^{-1}\mathrm{var}_{g}\left[s\left(x;\theta_{0}\right)\right]\left(E_{g}\left[h\left(x;\theta_{0}\right)\right]\right)^{-1},
 \]
 
 \end_inset
