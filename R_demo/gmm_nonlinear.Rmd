@@ -5,13 +5,13 @@ output: pdf_document
 fontsize: 12pt
 ---
 
-The CRAN packge [gmm](http://cran.r-project.org/web/packages/gmm/index.html) provides an interface for GMM estimation. In this document we demonstrate it in a nonlinear model. 
+The CRAN package [gmm](http://cran.r-project.org/web/packages/gmm/index.html) provides an interface for GMM estimation. In this document we demonstrate it in a nonlinear model. 
 
 [Bruno Rodrigues](http://www.brodrigues.co/pages/aboutme.html) shared [his example](http://www.brodrigues.co/2013/11/07/gmm-with-rmd/) with detailed instruction and discussion. Unfortunately, I find his example cannot reflect the essence of GMM. The blunder was that he took the *method of moments* as the *generalized method of moments*. He worked with a just-identified model, in which the choices of **type** and **wmatrix** in his call
 ```{r, eval = FALSE}
 my_gmm <- gmm(moments, x = dat, t0 = init, type = "iterative", crit = 1e-25, wmatrix = "optimal", method = "Nelder-Mead", control = list(reltol = 1e-25, maxit = 20000))
 ```
-is simplily irrelevant. Experimenting with different options of **type** and **wmatrix**, we will find exactly the same point estimates and variances.
+is simply irrelevant. Experimenting with different options of **type** and **wmatrix**, we will find exactly the same point estimates and variances.
 
 Below I illustrate the nonlinear GMM in an over-identified system. First we import the data and add a constant. 
 ```{r, cache=TRUE}
@@ -51,4 +51,4 @@ summary(my_gmm)
 ```
 In the summary, the J statistics indicates that the moment conditions are unlikely to hold. The model requires further modification. 
 
-P.S.: According to my personal experience, caution must be executed when using **gmm** in R for nonlinear models. Sometimes the estimates can be unrealible, perhaps due to the shape of the criterion function in several parameters. Simulation experiments are highly suggested before we believe the estimates.
+P.S.: According to my personal experience, caution must be executed when using **gmm** in R for nonlinear models. Sometimes the estimates can be unreliable, perhaps due to the shape of the criterion function in several parameters. Simulation experiments are highly suggested before we believe the estimates.
