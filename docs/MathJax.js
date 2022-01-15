@@ -1,4 +1,3 @@
-
 MathJax.Hub.Config({
     TeX: {
       equationNumbers: {
