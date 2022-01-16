@@ -22,12 +22,12 @@ description: Econ5121A CUHK
 navbar-links:
   Home: "index"
   # Lecture1: "lecture1"
-  Blog: "blog"
-  
+  # Blog: "blog"
+
 #  Teaching: "teaching"
 #  Contact: "contact"
 #  中文: "chinese"
-  
+
 #  Resources:
 #    - Econ5170@CUHK: "https://github.com/zhentaoshi/econ5170"
 #    - Econ5121A@CUHK: "https://github.com/zhentaoshi/Econ5121A"
