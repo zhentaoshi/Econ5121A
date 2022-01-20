@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Conditional Expectation | A Primer on Economic Data Science</title>
+  <meta name="description" content="nothing" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Conditional Expectation | A Primer on Economic Data Science" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="nothing" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Conditional Expectation | A Primer on Economic Data Science" />
+  
+  <meta name="twitter:description" content="nothing" />
+  
+
+<meta name="author" content="Zhentao Shi" />
+
+
+<meta name="date" content="2022-01-19" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="probability.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#personal-reflection"><i class="fa fa-check"></i><b>1.1</b> Personal Reflection</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#prerequisite"><i class="fa fa-check"></i><b>1.2</b> Prerequisite</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#structure"><i class="fa fa-check"></i><b>1.3</b> Structure</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#packages"><i class="fa fa-check"></i><b>1.4</b> Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a><ul>
+<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#axiomatic-probability"><i class="fa fa-check"></i><b>2.2</b> Axiomatic Probability</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#probability-space"><i class="fa fa-check"></i><b>2.2.1</b> Probability Space</a></li>
+<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#random-variable"><i class="fa fa-check"></i><b>2.2.2</b> Random Variable</a></li>
+<li class="chapter" data-level="2.2.3" data-path="probability.html"><a href="probability.html#distribution-function"><i class="fa fa-check"></i><b>2.2.3</b> Distribution Function</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#expected-value"><i class="fa fa-check"></i><b>2.3</b> Expected Value</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="probability.html"><a href="probability.html#integration"><i class="fa fa-check"></i><b>2.3.1</b> Integration</a></li>
+<li class="chapter" data-level="2.3.2" data-path="probability.html"><a href="probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>2.3.2</b> Properties of Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#multivariate-random-variable"><i class="fa fa-check"></i><b>2.4</b> Multivariate Random Variable</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#conditional-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>2.4.1</b> Conditional Probability and Bayes’ Theorem</a></li>
+<li class="chapter" data-level="2.4.2" data-path="probability.html"><a href="probability.html#independence"><i class="fa fa-check"></i><b>2.4.2</b> Independence</a></li>
+<li class="chapter" data-level="2.4.3" data-path="probability.html"><a href="probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>2.4.3</b> Law of Iterated Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>2.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="conditional-expectation.html"><a href="conditional-expectation.html"><i class="fa fa-check"></i><b>3</b> Conditional Expectation</a><ul>
+<li class="chapter" data-level="3.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#linear-projection"><i class="fa fa-check"></i><b>3.1</b> Linear Projection</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#omitted-variable-bias"><i class="fa fa-check"></i><b>3.1.1</b> Omitted Variable Bias</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#causality"><i class="fa fa-check"></i><b>3.2</b> Causality</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#structure-and-identification"><i class="fa fa-check"></i><b>3.2.1</b> Structure and Identification</a></li>
+<li class="chapter" data-level="3.2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#treatment-effect"><i class="fa fa-check"></i><b>3.2.2</b> Treatment Effect</a></li>
+<li class="chapter" data-level="3.2.3" data-path="conditional-expectation.html"><a href="conditional-expectation.html#ate-and-cef"><i class="fa fa-check"></i><b>3.2.3</b> ATE and CEF</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>3.3</b> Summary</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">A Primer on Economic Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="conditional-expectation" class="section level1">
+<h1><span class="header-section-number">3</span> Conditional Expectation</h1>
+<p><strong>Notation</strong>: In this note, <span class="math inline">\(y\)</span> is a scale random variable, and
+<span class="math inline">\(x=\left(x_{1},\ldots,x_{K}\right)&#39;\)</span> is a <span class="math inline">\(K\times1\)</span> random vector.
+Throughout this course, a vector is a <em>column</em> vector, i.e. a one-column
+matrix.</p>
+<hr />
+<p>Machine learning is a big basket that contains the regression models. We
+motivate the conditional expectation model from the perspective of
+prediction. We view a regression as <em>supervised learning</em>. Supervised
+learning uses a function of <span class="math inline">\(x\)</span>, say, <span class="math inline">\(g\left(x\right)\)</span>, to predict <span class="math inline">\(y\)</span>.
+<span class="math inline">\(x\)</span> cannot perfectly predict <span class="math inline">\(y\)</span>; otherwise their relationship is
+deterministic. The prediction error <span class="math inline">\(y-g\left(x\right)\)</span> depends on the
+choice of <span class="math inline">\(g\)</span>. There are numerous possible choices of <span class="math inline">\(g\)</span>. Which one is
+the best? Notice that this question is not concerned about the
+underlying data generating process (DGP) of the joint distribution of
+<span class="math inline">\(\left(y,x\right)\)</span>. We want to find a general rule to achieve accurate
+prediction of <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span>, no matter how this pair of variables is
+generated.</p>
+<p>To answer this question, we need to decide a criterion to compare
+different <span class="math inline">\(g\)</span>. Such a criterion is called the <em>loss function</em>
+<span class="math inline">\(L\left(y,g\left(x\right)\right)\)</span>. A particularly convenient one is the
+<em>quadratic loss</em>, defined as
+<span class="math display">\[L\left(y,g\left(x\right)\right)=\left(y-g\left(x\right)\right)^{2}.\]</span>
+Since the data are random, <span class="math inline">\(L\left(y,g\left(x\right)\right)\)</span> is also
+random. “Random” means uncertainty: sometimes <em>this</em> happens, and
+sometimes <em>that</em> happens. To get rid of the uncertainty, we average the
+loss function with respect to the joint distribution of
+<span class="math inline">\(\left(y,x\right)\)</span> as
+<span class="math inline">\(R\left(y,g\left(x\right)\right)=E\left[L\left(y,g\left(x\right)\right)\right]\)</span>,
+which is called <em>risk</em>. Risk is a deterministic quality. For the
+quadratic loss function, the corresponding risk is
+<span class="math display">\[R\left(y,g\left(x\right)\right)=E\left[\left(y-g\left(x\right)\right)^{2}\right],\]</span>
+is called the <em>mean squared error</em> (MSE). MSE is the most widely used
+risk measure, although there exist many alternative measures, for
+example the <em>mean absolute error</em> (MAE)
+<span class="math inline">\(E\left[\left|y-g\left(x\right)\right|\right]\)</span>. The popularity of MSE
+comes from its convenience for analysis in closed-form, which MAE does
+not enjoy due to its nondifferentiability. This is similar to the choice
+of utility functions in economics. There are only a few functional forms
+for the utility, for example CRRA, CARA, and so on. They are popular
+because they lead to close-form solutions that are easy to handle. Now
+our quest is narrowed to: What is the optimal choice of <span class="math inline">\(g\)</span> if we
+minimize the MSE?</p>
+<p><span id="prop:CEF" label="prop:CEF"><span class="math display">\[prop:CEF\]</span></span> The conditional mean function
+(CEF)
+<span class="math inline">\(m\left(x\right)=E\left[y|x\right]=\int yf\left(y|x\right)\mathrm{d}y\)</span>
+minimizes MSE.</p>
+<p>Before we prove the above proposition, we first discuss some properties
+of the conditional mean function. Obviously
+<span class="math display">\[y=m\left(x\right)+\left(y-m\left(x\right)\right)=m\left(x\right)+\epsilon,\]</span>
+where <span class="math inline">\(\epsilon:=y-m\left(x\right)\)</span> is called the <em>regression error</em>.
+This equation holds for <span class="math inline">\(\left(y,x\right)\)</span> following any joint
+distribution, as long as <span class="math inline">\(E\left[y|x\right]\)</span> exists. The error term
+<span class="math inline">\(\epsilon\)</span> satisfies these properties:</p>
+<ul>
+<li><p><span class="math inline">\(E\left[\epsilon|x\right]=E\left[y-m\left(x\right)|x\right]=E\left[y|x\right]-m(x)=0\)</span>,</p></li>
+<li><p><span class="math inline">\(E\left[\epsilon\right]=E\left[E\left[\epsilon|x\right]\right]=E\left[0\right]=0\)</span>,</p></li>
+<li><p>For any function <span class="math inline">\(h\left(x\right)\)</span>, we have
+<span class="math display">\[E\left[h\left(x\right)\epsilon\right]=E\left[E\left[h\left(x\right)\epsilon|x\right]\right]=E\left[h(x)E\left[\epsilon|x\right]\right]=0.\label{eq:uncorr}\]</span></p></li>
+</ul>
+<p>The last property implies that <span class="math inline">\(\epsilon\)</span> is uncorrelated with any
+function of <span class="math inline">\(x\)</span>. In particular, when <span class="math inline">\(h\)</span> is the identity function
+<span class="math inline">\(h\left(x\right)=x\)</span>, we have
+<span class="math inline">\(E\left[x\epsilon\right]=\mathrm{cov}\left(x,\epsilon\right)=0\)</span>.</p>
+
+<p>The optimality of the CEF can be confirmed by “guess-and-verify.” For an
+arbitrary <span class="math inline">\(g\left(x\right)\)</span>, the MSE can be decomposed into three terms
+<span class="math display">\[\begin{aligned}
+ &amp;  &amp; E\left[\left(y-g\left(x\right)\right)^{2}\right]\\
+ &amp; = &amp; E\left[\left(y-m(x)+m(x)-g(x)\right)^{2}\right]\\
+ &amp; = &amp; E\left[\left(y-m\left(x\right)\right)^{2}\right]+2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right]+E\left[\left(m\left(x\right)-g\left(x\right)\right)^{2}\right].\end{aligned}\]</span>
+The first term is irrelevant to <span class="math inline">\(g\left(x\right)\)</span>. The second term
+<span class="math display">\[\begin{aligned}2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right] &amp; =2E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)\right]=0\end{aligned}\]</span>
+by invoking (<a href="#eq:uncorr" reference-type="ref" reference="eq:uncorr"><span class="math display">\[eq:uncorr\]</span></a>) with
+<span class="math inline">\(h\left(x\right)=m\left(x\right)-g\left(x\right)\)</span>. The second term is
+again irrelevant of <span class="math inline">\(g\left(x\right)\)</span>. The third term, obviously, is
+minimized at <span class="math inline">\(g\left(x\right)=m\left(x\right)\)</span>.</p>
+
+<p>Our perspective so far deviates from many econometric textbooks that
+assume that the dependent variable <span class="math inline">\(y\)</span> is generated as
+<span class="math inline">\(g\left(x\right)+\epsilon\)</span> for some unknown function
+<span class="math inline">\(g\left(\cdot\right)\)</span> and error term <span class="math inline">\(\epsilon\)</span> such that
+<span class="math inline">\(E\left[\epsilon|x\right]=0\)</span>. Instead, we take a predictive approach
+regardless the DGP. What we observe are <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span> and we are solely
+interested in seeking a function <span class="math inline">\(g\left(x\right)\)</span> to predict <span class="math inline">\(y\)</span> as
+accurately as possible under the MSE criterion.</p>
+<div id="linear-projection" class="section level2">
+<h2><span class="header-section-number">3.1</span> Linear Projection</h2>
+<p>The CEF <span class="math inline">\(m(x)\)</span> is the function that minimizes the MSE. However,
+<span class="math inline">\(m\left(x\right)=E\left[y|x\right]\)</span> is a complex function of <span class="math inline">\(x\)</span>, for it
+depends on the joint distribution of <span class="math inline">\(\left(y,x\right)\)</span>, which is mostly
+unknown in practice. Now let us make the prediction task even simpler.
+How about we minimize the MSE within all linear functions in the form of
+<span class="math inline">\(h\left(x\right)=h\left(x;b\right)=x&#39;b\)</span> for <span class="math inline">\(b\in\mathbb{R}^{K}\)</span>? The
+minimization problem is
+<span class="math display">\[\min_{b\in\mathbb{R}^{K}}E\left[\left(y-x&#39;b\right)^{2}\right].\label{eq:linear_MSE}\]</span>
+Take the first-order condition of the MSE
+<span class="math display">\[\frac{\partial}{\partial b}E\left[\left(y-x&#39;b\right)^{2}\right]=E\left[\frac{\partial}{\partial b}\left(y-x&#39;b\right)^{2}\right]=-2E\left[x\left(y-x&#39;b\right)\right],\]</span>
+where the first equality holds if
+<span class="math inline">\(E\left[\left(y-x&#39;b\right)^{2}\right]&lt;\infty\)</span> so that the expectation
+and partial differentiation is interchangeable, and the second equality
+hods by the chain rule and the linearity of expectation. Set the first
+order condition to 0 and we solve
+<span class="math display">\[\beta=\arg\min_{b\in\mathbb{R}^{K}}E\left[\left(y-x&#39;b\right)^{2}\right]\]</span>
+in the closed-form
+<span class="math display">\[\beta=\left(E\left[xx&#39;\right]\right)^{-1}E\left[xy\right]\]</span> if
+<span class="math inline">\(E\left[xx&#39;\right]\)</span> is invertible. Notice here that <span class="math inline">\(b\)</span> is an arbitrary
+<span class="math inline">\(K\)</span>-vector, while <span class="math inline">\(\beta\)</span> is the optimizer. The function <span class="math inline">\(x&#39;\beta\)</span> is
+called the <em>best linear projection</em> (BLP) of <span class="math inline">\(y\)</span> on <span class="math inline">\(x\)</span>, and the vector
+<span class="math inline">\(\beta\)</span> is called the <em>linear projection coefficient</em>.</p>
+
+<p>The linear function is not as restrictive as one might thought. It can
+be used to produce some nonlinear (in random variables) effect if we
+re-define <span class="math inline">\(x\)</span>. For example, if
+<span class="math display">\[y=x_{1}\beta_{1}+x_{2}\beta_{2}+x_{1}^{2}\beta_{3}+e,\]</span> then
+<span class="math inline">\(\frac{\partial}{\partial x_{1}}m\left(x_{1},x_{2}\right)=\beta_{1}+2x_{1}\beta_{3}\)</span>,
+which is nonlinear in <span class="math inline">\(x_{1}\)</span>, while it is still linear in the parameter
+<span class="math inline">\(\beta=\left(\beta_{1},\beta_{2},\beta_{3}\right)\)</span> if we define a set of
+new regressors as
+<span class="math inline">\(\left(\tilde{x}_{1},\tilde{x}_{2},\tilde{x}_{3}\right)=\left(x_{1},x_{2},x_{1}^{2}\right)\)</span>.</p>
+<p>If <span class="math inline">\(\left(y,x\right)\)</span> is jointly normal in the form <span class="math display">\[\begin{pmatrix}y\\
+x
+\end{pmatrix}\sim\mathrm{N}\left(\begin{pmatrix}\mu_{y}\\
+\mu_{x}
+\end{pmatrix},\begin{pmatrix}\sigma_{y}^{2} &amp; \rho\sigma_{y}\sigma_{x}\\
+\rho\sigma_{y}\sigma_{x} &amp; \sigma_{x}^{2}
+\end{pmatrix}\right)\]</span> where <span class="math inline">\(\rho\)</span> is the correlation coefficient, then
+<span class="math display">\[E\left[y|x\right]=\mu_{y}+\rho\frac{\sigma_{y}}{\sigma_{x}}\left(x-\mu_{x}\right)=\left(\mu_{y}-\rho\frac{\sigma_{y}}{\sigma_{x}}\mu_{x}\right)+\rho\frac{\sigma_{y}}{\sigma_{x}}x,\]</span>
+is a liner function of <span class="math inline">\(x\)</span>. In this example, the CEF is linear.</p>
+<p>Even though in general <span class="math inline">\(m\left(x\right)\neq x&#39;\beta\)</span>, the linear form
+<span class="math inline">\(x&#39;\beta\)</span> is still useful in approximating <span class="math inline">\(m\left(x\right)\)</span>. That is,
+<span class="math inline">\(\beta=\arg\min\limits _{b\in\mathbb{R}^{K}}E\left[\left(m(x)-x&#39;b\right)^{2}\right]\)</span>.</p>
+<p>The first-order condition gives
+<span class="math inline">\(\frac{\partial}{\partial b}E\left[\left(m(x)-x&#39;b\right)^{2}\right]=-2E[x(m(x)-x&#39;b)]=0\)</span>.
+Rearrange the terms and obtain <span class="math inline">\(E[x\cdot m(x)]=E[xx&#39;]b\)</span>. When <span class="math inline">\(E[xx&#39;]\)</span>
+is invertible, we solve
+<span class="math display">\[\left(E\left[xx&#39;\right]\right){}^{-1}E[x\cdot m(x)]=\left(E\left[xx&#39;\right]\right){}^{-1}E[E[xy|x]]=\left(E\left[xx&#39;\right]\right){}^{-1}E[xy]=\beta.\]</span>
+Thus <span class="math inline">\(\beta\)</span> is also the best linear approximation to <span class="math inline">\(m\left(x\right)\)</span>
+under MSE.</p>
+
+<p>We may rewrite the linear regression model, or the <em>linear projection
+model,</em> as <span class="math display">\[\begin{array}[t]{c}
+y=x&#39;\beta+e\\
+E[xe]=0,
+\end{array}\]</span> where <span class="math inline">\(e=y-x&#39;\beta\)</span> is called the <em>linear projection
+error</em>, to be distinguished from <span class="math inline">\(\epsilon=y-m(x).\)</span></p>
+<p>Show (a) <span class="math inline">\(E\left[xe\right]=0\)</span>. (b) If <span class="math inline">\(x\)</span> contains a constant, then
+<span class="math inline">\(E\left[e\right]=0\)</span>.</p>
+<div id="omitted-variable-bias" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Omitted Variable Bias</h3>
+<p>We write the <em>long regression</em> as
+<span class="math display">\[y=x_{1}&#39;\beta_{1}+x_{2}&#39;\beta_{2}+\beta_{3}+e_{\beta},\]</span> and the
+<em>short regression</em> as <span class="math display">\[y=x_{1}&#39;\gamma_{1}+\gamma_{2}+e_{\gamma},\]</span>
+where <span class="math inline">\(e_{\beta}\)</span> and <span class="math inline">\(e_{\gamma}\)</span> are the projection errors,
+respectively. If <span class="math inline">\(\beta_{1}\)</span> in the long regression is the parameter of
+interest, omitting <span class="math inline">\(x_{2}\)</span> as in the short regression will render
+<em>omitted variable bias</em> (meaning <span class="math inline">\(\gamma_{1}\neq\beta_{1}\)</span>) unless
+<span class="math inline">\(x_{1}\)</span> and <span class="math inline">\(x_{2}\)</span> are uncorrelated.</p>
+<p>We first demean all the variables in the two regressions, which is
+equivalent as if we project out the effect of the constant. The long
+regression becomes
+<span class="math display">\[\tilde{y}=\tilde{x}_{1}&#39;\beta_{1}+\tilde{x}_{2}&#39;\beta_{2}+\tilde{e}_{\beta},\]</span>
+and the short regression becomes
+<span class="math display">\[\tilde{y}=\tilde{x}_{1}&#39;\gamma_{1}+\tilde{e}_{\gamma},\]</span> where <em>tilde</em>
+denotes the demeaned variable.</p>
+<p>Show <span class="math inline">\(\tilde{e}_{\beta}=e_{\beta}\)</span> and <span class="math inline">\(\tilde{e}_{\gamma}=e_{\gamma}\)</span>.</p>
+<p>After demeaning, the cross-moment equals to the covariance. The short
+regression coefficient
+<span class="math display">\[\begin{aligned}\gamma_{1} &amp; =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}&#39;\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{y}\right]\\
+ &amp; =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}&#39;\right]\right)^{-1}E\left[\tilde{x}_{1}\left(\tilde{x}_{1}&#39;\beta_{1}+\tilde{x}_{2}&#39;\beta_{2}+\tilde{e}_{\beta}\right)\right]\\
+ &amp; =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}&#39;\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{1}&#39;\right]\beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}&#39;\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}&#39;\right]\beta_{2}\\
+ &amp; =\beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}&#39;\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}&#39;\right]\beta_{2},
+\end{aligned}\]</span> where the third line holds as
+<span class="math inline">\(E\left[\tilde{x}_{1}\tilde{e}_{\beta}\right]=0\)</span>. Therefore,
+<span class="math inline">\(\gamma_{1}=\beta_{1}\)</span> if and only if
+<span class="math inline">\(E\left[\tilde{x}_{1}\tilde{x}_{2}&#39;\right]\beta_{2}=0\)</span>, which demands
+either <span class="math inline">\(E\left[\tilde{x}_{1}\tilde{x}_{2}&#39;\right]=0\)</span> or <span class="math inline">\(\beta_{2}=0\)</span>.</p>
+<p>Show that
+<span class="math inline">\(E\left[\left(y-x_{1}&#39;\beta_{1}-x_{2}&#39;\beta_{2}-\beta_{3}\right)^{2}\right]\leq E\left[\left(y-x_{1}&#39;\gamma_{1}-\gamma_{2}\right)^{2}\right]\)</span>.</p>
+<p>Obviously we prefer to run the long regression to attain <span class="math inline">\(\beta_{1}\)</span> if
+possible, for it is a more general model than the short regression and
+achieves no larger variance in the projection error. However, sometimes
+<span class="math inline">\(x_{2}\)</span> is unobservable so the long regression is unavailable. This
+example of omitted variable bias is ubiquitous in applied econometrics.
+Ideally we would like to directly observe some regressors but in reality
+we do not have them at hand. We should be aware of the potential
+consequence when the data are not as ideal as we have wished. When only
+the short regression is available, in some cases we are able to sign the
+bias, meaning that we can argue whether <span class="math inline">\(\gamma_{1}\)</span> is bigger or
+smaller than <span class="math inline">\(\beta_{1}\)</span> based on our knowledge.</p>
+</div>
+</div>
+<div id="causality" class="section level2">
+<h2><span class="header-section-number">3.2</span> Causality</h2>
+<div id="structure-and-identification" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Structure and Identification</h3>
+<p>Unlike physical laws such as Einstein’s mass–energy equivalence
+<span class="math inline">\(E=mc^{2}\)</span> and Newton’s universal gravitation <span class="math inline">\(F=Gm_{1}m_{2}/r^{2}\)</span>,
+economic phenomena can rarely be summarized in such a minimalistic
+style. When using experiments to verify physical laws, scientists often
+manage to come up with smart design in which signal-to-noise ratio is so
+high that small disturbances are kept at a negligible level. On the
+contrary, economic laws do not fit a laboratory for experimentation.
+What is worse, the subjects in economic studies — human beings — are
+heterogeneous and with many features that are hard to control. People
+from distinctive cultural and family backgrounds respond to the same
+issue differently and researchers can do little to homogenize them. The
+signal-to-noise ratios in economic laws are often significantly lower
+than those of physical laws, mainly due to the lack of laboratory
+setting and the heterogeneous nature of the subjects.</p>
+<p>Educational return and the demand-supply system are two classical topics
+in econometrics. A person’s incomes is determined by too many random
+factors in the academic and career path that is impossible to
+exhaustively observe and control. The observable prices and quantities
+are outcomes of equilibrium so the demand and supply affect each other.</p>
+<p>Generations of thinkers have been debating the definitions of causality.
+In economics, an accepted definition is <em>structural causality</em>.
+Structural causality is a thought experiment. It assumes that there is a
+DGP that produces the observational data. If we can use data to recover
+the DGP or some features of the DGP, then we have learned causality or
+some implications of causality.</p>
+<p>A key issue to resolve before looking at the realized sample is
+<em>identification</em>. We say a model or DGP is <em>identified</em> if the each
+possible parameter of the model under consideration generates
+distinctive features of the observable data. A model is
+<em>under-identified</em> if more than one parameter in the model can generate
+exact the same features of the observable data. In other words, a model
+is under-identified if from the observable data we cannot trace back to
+a unique parameter in the model. A correctly specified model is the
+prerequisite for any discussion of identification. In reality, all
+models are wrong. Thus when talking about identification, we are
+indulged in an imaginary world. If in such a thought experiment we still
+cannot unique distinguish the true parameter of the data generating
+process, then identification fails. We cannot determine what is the true
+model no matter how large the sample is.</p>
+</div>
+<div id="treatment-effect" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Treatment Effect</h3>
+<p>We narrow down to the framework of the relationship between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span>.
+One question of particular interest is <em>treatment effect</em>. The treatment
+effect is how much <span class="math inline">\(y\)</span> will change if we change a variable of interest,
+say <span class="math inline">\(d\)</span>, by one unit while keeping all other variables (including the
+unobservable variables) the same. The Latin phrase <em>ceteris paribus</em>
+means “keep all other things constant.”</p>
+<p>During the 2020 covid-19 pandemic, Hong Kong’s unemployment rate rose to
+a high-level and consumption collapsed. In order to boost the economy,
+some Hong Kong residents were qualified in receiving 10,000 HKD cash
+allowance from the government. We are interested in learning how much
+does the 10,000 HKD allowance increase people’s consumption. For an
+individual, we imagine two parallel worlds: one with the cash allowance
+and one without. The difference of the consumption in the world with the
+allowance, denoted <span class="math inline">\(Y\left(1\right)\)</span>, and that in the world without the
+allowance, denoted <span class="math inline">\(Y\left(0\right)\)</span>, is the treatment effect of that
+particular person. This thought experiment is called the <em>potential
+outcome framework</em>.</p>
+<p>However, in reality one and only one scenario happens, which echoes the
+saying of ancient Greek philosopher Heraclitus (553 BC--475 BC) “You
+cannot step into the same river twice.” The individual treatment effect
+is not operational (<em>operational</em> means it can be computed from data at
+the population level), because one and only one outcome is realized.
+With many people available, we can define <em>average treatment effect</em>
+(ATE) as
+<span class="math display">\[ATE=E\left[Y\left(1\right)-Y\left(0\right)\right]=E\left[Y\left(1\right)\right]-E\left[Y\left(0\right)\right].\]</span>
+Notice that <span class="math inline">\(E\left[Y\left(1\right)\right]\)</span> and
+<span class="math inline">\(E\left[Y\left(0\right)\right]\)</span> are still not operational before we
+observe a companion variable
+<span class="math display">\[D=1\left\{ \mbox{treatment received}\right\} .\]</span> Once each
+individual’s treatment status is observable,
+<span class="math inline">\(E\left[Y\left(1\right)|D=1\right]\)</span> and
+<span class="math inline">\(E\left[Y\left(0\right)|D=0\right]\)</span> are operational from the data.</p>
+<p>If the two potential outcomes
+<span class="math inline">\(\left(Y\left(1\right),Y\left(0\right)\right)\)</span> are independent of the
+assignment <span class="math inline">\(D\)</span>, then
+<span class="math inline">\(E\left[Y\left(1\right)\right]=E\left[Y\left(1\right)|D=1\right]\)</span> and
+<span class="math inline">\(E\left[Y\left(0\right)\right]=E\left[Y\left(0\right)|D=0\right]\)</span> so
+that ATE can be estimated from the data in an operational way as
+<span class="math display">\[ATE=E\left[Y\left(1\right)|D=1\right]-E\left[Y\left(0\right)|D=0\right].\]</span>
+Therefore, to evaluate ATE ideally we would like use a lottery to
+randomly decide that some people receive the treatment (<em>treatment
+group</em>, with <span class="math inline">\(D=1\)</span>) and the others do not (<em>control group</em>, with <span class="math inline">\(D=0\)</span>).</p>
+<p>When we have other control variables, we can also define a finer
+treatment effect conditional on <span class="math inline">\(x\)</span>:
+<span class="math display">\[ATE\left(x\right)=E\left[Y\left(1\right)|x\right]-E\left[Y\left(0\right)|x\right].\]</span>
+ATE is the average effect in the population of individuals when we
+hypothetical give them the treatment, keeping all other factors <span class="math inline">\(x\)</span>
+constant. If conditioning on <span class="math inline">\(x\)</span>, the treatment <span class="math inline">\(D\)</span> is independent of
+<span class="math inline">\(\left(Y\left(1\right),Y\left(0\right)\right)\)</span>, then ATE becomes
+operational:
+<span class="math display">\[ATE\left(x\right)=E\left[Y\left(1\right)|D=1,x\right]-E\left[Y\left(0\right)|D=0,x\right]\]</span>
+The important condition
+<span class="math inline">\(\left(\left(Y\left(1\right),Y\left(0\right)\right)\perp D\right)|x\)</span> is
+called the <em>conditional independence assumption</em> (CIA).</p>
+<p>CIA is more plausible than full independence. Consider the example
+<span class="math inline">\(Y\left(1\right)=x+u\left(1\right)\)</span>, <span class="math inline">\(Y\left(0\right)=x+u\left(0\right)\)</span>
+and <span class="math inline">\(D=1\left\{ x+u_{d}\geq0\right\}\)</span>. If
+<span class="math inline">\(\left(\left(u\left(0\right),u\left(1\right)\right)\perp u_{d}\right)|x\)</span>,
+then CIA is satisfied. Nevertheless
+<span class="math inline">\(\left(Y\left(1\right),Y\left(0\right)\right)\)</span> and <span class="math inline">\(D\)</span> are statistically
+dependent, since <span class="math inline">\(x\)</span> is involved in all random variables.</p>
+</div>
+<div id="ate-and-cef" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> ATE and CEF</h3>
+<p>In the previous section the treatment <span class="math inline">\(D\)</span> is binary. Now we consider a
+continuous treatment <span class="math inline">\(D\)</span>. Suppose the DGP, or the structural model, is
+<span class="math inline">\(Y=h\left(D,x,u\right)\)</span> where <span class="math inline">\(D\)</span> and <span class="math inline">\(x\)</span> are observable and <span class="math inline">\(u\)</span> is
+unobservable. It is natural to define ATE with the continuous treatment
+(Hansen’s book Chapter 2.30 calls it <em>average causal effect</em>) as
+<span class="math display">\[ATE\left(d,x\right)=E\left[\lim_{\Delta\to0}\frac{h\left(d+\Delta,x,u\right)-h\left(d,x,u\right)}{\Delta}\right]=E\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right],\]</span>
+where the continuous differentiability of <span class="math inline">\(h\left(d,x,u\right)\)</span> at <span class="math inline">\(d\)</span>
+is implicitly assumed. Unlike the binary treatment case, here <span class="math inline">\(d\)</span>
+explicitly shows up in <span class="math inline">\(ATE\left(d,x\right)\)</span> because the effect can vary
+at different values of <span class="math inline">\(d\)</span>. ATE here is the average effect in the
+population of individuals if we hypothetical move <span class="math inline">\(D\)</span> a tiny bit around
+<span class="math inline">\(d\)</span>, keeping all other factors <span class="math inline">\(x\)</span> constant.</p>
+<p>In the previous sections, we focused on the CEF <span class="math inline">\(m\left(d,x\right)\)</span>,
+where <span class="math inline">\(d\)</span> is added to <span class="math inline">\(x\)</span> as an additional variable of interest. We did
+not intend to model the underlying economic mechanism
+<span class="math inline">\(h\left(D,x,u\right)\)</span>, which may be very complex. Can we learn the
+<span class="math inline">\(ATE\left(d,x\right)\)</span> which bears the structural causal interpretation,
+from the mechanical <span class="math inline">\(m\left(d,x\right)\)</span> which merely cares about best
+prediction? The answer is positive under CIA: <span class="math inline">\(\left(u\perp D\right)|x\)</span>.
+<span class="math display">\[\begin{aligned}
+\frac{\partial}{\partial d}m\left(d,x\right) &amp; =\frac{\partial}{\partial d}E\left[y|d,x\right]=\frac{\partial}{\partial d}E\left[h\left(d,x,u\right)|d,x\right]=\frac{\partial}{\partial d}\int h\left(d,x,u\right)f\left(u|d,x\right)du\\
+ &amp; =\int\frac{\partial}{\partial d}\left[h\left(d,x,u\right)f\left(u|d,x\right)\right]du\\
+ &amp; =\int\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]f\left(u|d,x\right)du+\int h\left(d,x,u\right)\left[\frac{\partial}{\partial d}f\left(u|d,x\right)\right]du,\end{aligned}\]</span>
+where the second line implicitly assumes interchangeability between the
+integral and the partial derivative. Under CIA,
+<span class="math inline">\(\frac{\partial}{\partial d}f\left(u|d,x\right)=0\)</span> and the second term
+drops out. Thus
+<span class="math display">\[\frac{\partial}{\partial d}m\left(d,x\right)=\int\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]f\left(u|d,x\right)du=E\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]=ATE\left(d,x\right).\]</span>
+This is an important result. It says that if CIA holds, we can learn the
+causal effect of <span class="math inline">\(d\)</span> on <span class="math inline">\(y\)</span> by the partial derivative of CEF conditional
+on <span class="math inline">\(x\)</span>. In particular, if we further assume a linear CEF
+<span class="math inline">\(m\left(d,x\right)=\beta_{d}d+\beta_{x}&#39;x\)</span>, then the causal effect is
+the coefficient <span class="math inline">\(\beta_{d}\)</span>.</p>
+<p>CIA is the key condition that links the CEF and the causal effect. CIA
+is not an innocuous assumption. In applications, our causal results are
+credible only when we can convincing defend CIA.</p>
+<p>Let factories’ output be a Cobb-Douglas function
+<span class="math inline">\(Y=AK^{\alpha}L^{\beta}\)</span>, where the capital level <span class="math inline">\(K\)</span> and labor <span class="math inline">\(L\)</span> as
+well as the output <span class="math inline">\(Y\)</span> is observable, while the “technology” <span class="math inline">\(A\)</span> is
+unobservable. Take logarithm on both sides of the equation:
+<span class="math display">\[y=u+\alpha k+\beta l\label{eq:causal}\]</span> where <span class="math inline">\(y=\log Y\)</span>, <span class="math inline">\(u=\log A\)</span>,
+<span class="math inline">\(k=\log K\)</span> and <span class="math inline">\(l=\log L\)</span>. Suppose <span class="math inline">\(\begin{pmatrix}u\\ k\\ l \end{pmatrix}\sim N\left(\begin{pmatrix}1\\ 1\\ 1 \end{pmatrix},\begin{pmatrix}1 &amp; 0.5 &amp; 0\\ 0.5 &amp; 1 &amp; 0\\ 0 &amp; 0 &amp; 1 \end{pmatrix}\right)\)</span> and <span class="math inline">\(\alpha=\beta=1/2\)</span> make the true DGP. Here <span class="math inline">\(u\)</span>
+and <span class="math inline">\(k\)</span> are correlated, because factories of larger scale can afford
+robots to facilitate automation.</p>
+<ol style="list-style-type: decimal">
+<li><p>What is the partial derivative of CEF when we use <span class="math inline">\(k\)</span> as a treatment
+variable for a fixed labor level <span class="math inline">\(l\)</span>? (Hint: the CEF is a linear
+function thanks to the joint normality.)</p></li>
+<li><p>Does it coincide with <span class="math inline">\(\alpha=1/2\)</span>, the coefficient in the causal
+model (<a href="#eq:causal" reference-type="ref" reference="eq:causal"><span class="math display">\[eq:causal\]</span></a>)? (Hint: No, because CIA is violated.)</p></li>
+</ol>
+<p>Sometimes applied researchers assume by brute force that
+<span class="math inline">\(y=m\left(d,x\right)+u\)</span> is the DGP and <span class="math inline">\(E\left[u|d,x\right]=0\)</span>, where
+<span class="math inline">\(d\)</span> is the variable of interest and <span class="math inline">\(x\)</span> is the vector of other control
+variables. Under these assumptions,
+<span class="math display">\[ATE\left(d,x\right)=E\left[\frac{\partial}{\partial d}\left(m\left(d,x\right)+u\right)|d,x\right]=\frac{\partial m\left(d,x\right)}{\partial d}+\frac{\partial}{\partial d}E\left[u|d,x\right]=\frac{\partial m\left(d,x\right)}{\partial d},\]</span>
+where the second equality holds if
+<span class="math inline">\(\frac{\partial}{\partial d}E\left[u|d,x\right]=E\left[\frac{\partial}{\partial d}u|d,x\right]\)</span>.
+At a first glance, it seems that the mean independence assumption
+<span class="math inline">\(E\left[u|d,x\right]=0\)</span>, which is weaker than CIA, implies the
+equivalence between <span class="math inline">\(ATE\left(d,x\right)\)</span> and
+<span class="math inline">\(\partial m\left(d,x\right)/\partial d\)</span> here. However, such slight
+weakening is achieved by a very strong assumption that the DGP
+<span class="math inline">\(h\left(d,x,u\right)\)</span> follows the additive separable form
+<span class="math inline">\(m\left(d,x\right)+u\)</span>. Without economic theory to defend the choice of
+the assumed DGP <span class="math inline">\(y=m\left(d,x\right)+u\)</span>, this is at best the
+<em>reduced-form</em> approach.</p>
+<p>The <em>structural approach</em> here models the economic mechanism, guided by
+economic theory. The <em>reduced-form approach</em> is convenient and can
+document stylized facts when suitable economic theory is not immediately
+available. There are constant debates about the pros and cons of the two
+approaches; see <em>Journal of Economic Perspectives</em> Vol. 24, No. 2 Spring
+2010. In macroeconomics, the so-called Phillips curve, attributed to
+A.W. Phillips about the negative correlation between inflation and
+unemployment, is a stylized fact learned from the reduced-form approach.
+The Lucas critique <span class="citation">(Lucas <a href="#ref-lucas1976econometric" role="doc-biblioref">1976</a>)</span> exposed its lack of
+microfoundation and advocated modeling deep parameters that are
+invariant to policy changes. The latter is a structural approach.
+Ironically, more than 40 years has passed since the Lucas critique,
+equations with little microfoundation still dominate the analytical
+apparatus of central bankers.</p>
+</div>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">3.3</span> Summary</h2>
+<p>In this lecture, we cover the conditional mean function and causality.
+When we are faced with a pair of random variable <span class="math inline">\(\left(y,x\right)\)</span>
+drawn from some joint distribution, the CEF is the best predictor. When
+we go further into the structural causality about some treatment <span class="math inline">\(d\)</span> to
+the dependent variable <span class="math inline">\(y\)</span>, under CIA we can find equivalence between
+ATE and the partial derivative of CEF. All analyses are conducted in
+population. We have not touched the sample yet.</p>
+<p><strong>Historical notes</strong>: Regressions and conditional expectations are
+concepts from statistics and they are imported to econometrics in early
+time. Researchers at the Cowles Commission (now Cowles Foundation for
+Research in Economics) — Jacob Marschak (1898–1977), Tjalling
+Koopmans (1910–1985, Nobel Prize 1975), Trygve Haavelmo (1911–1999,
+Nobel Prize 1989) and their colleagues — were trailblazers of the
+econometric structural approach.</p>
+<p>The potential outcome framework is not peculiar to economics. It is
+widely used in other fields such as biostatistics and medical studies.
+It was initiated by Jerzy Neyman (1894–1981) and extended by Donald
+B. Rubin (1943– ), Professor of Statistics at Tsinghua University.</p>
+<p><strong>Further reading</strong>: <span class="citation">Lewbel (<a href="#ref-lewbel2019identification" role="doc-biblioref">2019</a>)</span> offers a comprehensive
+summary of identification in econometrics. Accounting is an applied
+field with many claimed causal inference drawn from simple regressions;
+it is encouraging to hear <span class="citation">Gow, Larcker, and Reiss (<a href="#ref-gow2016causal" role="doc-biblioref">2016</a>)</span> to reflect causality in their
+practices.</p>
+
+<p><code>Zhentao Shi. Sep 17, 2020</code></p>
+
+<div id="refs" class="references">
+<div>
+<p>Doob, Joseph L. 1996. “The Development of Rigor in Mathematical Probability (1900–1950).” <em>The American Mathematical Monthly</em> 103 (7): 586–95.</p>
+</div>
+<div>
+<p>Gow, Ian D, David F Larcker, and Peter C Reiss. 2016. “Causal Inference in Accounting Research.” <em>Journal of Accounting Research</em> 54 (2): 477–523.</p>
+</div>
+<div>
+<p>Lewbel, Arthur. 2019. “The Identification Zoo: Meanings of Identification in Econometrics.” <em>Journal of Economic Literature</em> 57 (4): 835–903.</p>
+</div>
+<div>
+<p>Lucas, Robert E. 1976. “Econometric Policy Evaluation: A Critique.” In <em>Carnegie-Rochester Conference Series on Public Policy</em>, 1:19–46. 1.</p>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-gow2016causal">
+<p>Gow, Ian D, David F Larcker, and Peter C Reiss. 2016. “Causal Inference in Accounting Research.” <em>Journal of Accounting Research</em> 54 (2): 477–523.</p>
+</div>
+<div id="ref-lewbel2019identification">
+<p>Lewbel, Arthur. 2019. “The Identification Zoo: Meanings of Identification in Econometrics.” <em>Journal of Economic Literature</em> 57 (4): 835–903.</p>
+</div>
+<div id="ref-lucas1976econometric">
+<p>Lucas, Robert E. 1976. “Econometric Policy Evaluation: A Critique.” In <em>Carnegie-Rochester Conference Series on Public Policy</em>, 1:19–46. 1.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="probability.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
