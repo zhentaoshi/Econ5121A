@@ -1,8 +1,0 @@
-conditional-expectation
-linear-projection
-omitted-variable-bias
-causality
-structure-and-identification
-treatment-effect
-ate-and-cef
-summary
