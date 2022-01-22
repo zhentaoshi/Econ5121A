@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Least Squares: Linear Algebra | Econ5121</title>
+  <meta name="description" content="nothing" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Least Squares: Linear Algebra | Econ5121" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="nothing" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Least Squares: Linear Algebra | Econ5121" />
+  
+  <meta name="twitter:description" content="nothing" />
+  
+
+<meta name="author" content="Zhentao Shi" />
+
+
+<meta name="date" content="2022-01-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="conditional-expectation.html"/>
+<link rel="next" href="least-squares-finite-sample-theory.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>1</b> Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="probability.html"><a href="probability.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="probability.html"><a href="probability.html#axiomatic-probability"><i class="fa fa-check"></i><b>1.2</b> Axiomatic Probability</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="probability.html"><a href="probability.html#probability-space"><i class="fa fa-check"></i><b>1.2.1</b> Probability Space</a></li>
+<li class="chapter" data-level="1.2.2" data-path="probability.html"><a href="probability.html#random-variable"><i class="fa fa-check"></i><b>1.2.2</b> Random Variable</a></li>
+<li class="chapter" data-level="1.2.3" data-path="probability.html"><a href="probability.html#distribution-function"><i class="fa fa-check"></i><b>1.2.3</b> Distribution Function</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="probability.html"><a href="probability.html#expected-value"><i class="fa fa-check"></i><b>1.3</b> Expected Value</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="probability.html"><a href="probability.html#integration"><i class="fa fa-check"></i><b>1.3.1</b> Integration</a></li>
+<li class="chapter" data-level="1.3.2" data-path="probability.html"><a href="probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>1.3.2</b> Properties of Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="probability.html"><a href="probability.html#multivariate-random-variable"><i class="fa fa-check"></i><b>1.4</b> Multivariate Random Variable</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="probability.html"><a href="probability.html#conditional-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>1.4.1</b> Conditional Probability and Bayes’ Theorem</a></li>
+<li class="chapter" data-level="1.4.2" data-path="probability.html"><a href="probability.html#independence"><i class="fa fa-check"></i><b>1.4.2</b> Independence</a></li>
+<li class="chapter" data-level="1.4.3" data-path="probability.html"><a href="probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>1.4.3</b> Law of Iterated Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conditional-expectation.html"><a href="conditional-expectation.html"><i class="fa fa-check"></i><b>2</b> Conditional Expectation</a><ul>
+<li class="chapter" data-level="2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#linear-projection"><i class="fa fa-check"></i><b>2.1</b> Linear Projection</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#omitted-variable-bias"><i class="fa fa-check"></i><b>2.1.1</b> Omitted Variable Bias</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#causality"><i class="fa fa-check"></i><b>2.2</b> Causality</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#structure-and-identification"><i class="fa fa-check"></i><b>2.2.1</b> Structure and Identification</a></li>
+<li class="chapter" data-level="2.2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#treatment-effect"><i class="fa fa-check"></i><b>2.2.2</b> Treatment Effect</a></li>
+<li class="chapter" data-level="2.2.3" data-path="conditional-expectation.html"><a href="conditional-expectation.html#ate-and-cef"><i class="fa fa-check"></i><b>2.2.3</b> ATE and CEF</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html"><i class="fa fa-check"></i><b>3</b> Least Squares: Linear Algebra</a><ul>
+<li class="chapter" data-level="3.1" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#estimator"><i class="fa fa-check"></i><b>3.1</b> Estimator</a></li>
+<li class="chapter" data-level="3.2" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#subvector"><i class="fa fa-check"></i><b>3.2</b> Subvector</a></li>
+<li class="chapter" data-level="3.3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#goodness-of-fit"><i class="fa fa-check"></i><b>3.3</b> Goodness of Fit</a></li>
+<li class="chapter" data-level="3.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html"><i class="fa fa-check"></i><b>4</b> Least Squares: Finite Sample Theory</a><ul>
+<li class="chapter" data-level="4.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#maximum-likelihood"><i class="fa fa-check"></i><b>4.1</b> Maximum Likelihood</a></li>
+<li class="chapter" data-level="4.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#likelihood-estimation-for-regression"><i class="fa fa-check"></i><b>4.2</b> Likelihood Estimation for Regression</a></li>
+<li class="chapter" data-level="4.3" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#finite-sample-distribution"><i class="fa fa-check"></i><b>4.3</b> Finite Sample Distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#mean-and-variancemean-and-variance"><i class="fa fa-check"></i><b>4.4</b> Mean and Variance<span id="mean-and-variance" label="mean-and-variance"><span class="math display">\[mean-and-variance\]</span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>4.5</b> Gauss-Markov Theorem</a></li>
+<li class="chapter" data-level="4.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>4.7</b> Appendix</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#joint-normal-distribution"><i class="fa fa-check"></i><b>4.7.1</b> Joint Normal Distribution</a></li>
+<li class="chapter" data-level="4.7.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#basus-theorem-subsecbasus-theoremsubsecbasus-theorem-labelsubsecbasus-theorem"><i class="fa fa-check"></i><b>4.7.2</b> Basu’s Theorem* [<span class="math display">\[subsec:Basu\&#39;s-Theorem\]</span>]{#subsec:Basu’s-Theorem label=“subsec:Basu’s-Theorem”}</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html"><i class="fa fa-check"></i><b>5</b> Basic Asymptotic Theory</a><ul>
+<li class="chapter" data-level="5.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#modes-of-convergence"><i class="fa fa-check"></i><b>5.1</b> Modes of Convergence</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#law-of-large-numbers"><i class="fa fa-check"></i><b>5.2</b> Law of Large Numbers</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#cherbyshev-lln"><i class="fa fa-check"></i><b>5.2.1</b> Cherbyshev LLN</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#central-limit-theorem"><i class="fa fa-check"></i><b>5.3</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="5.4" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#tools-for-transformations"><i class="fa fa-check"></i><b>5.4</b> Tools for Transformations</a></li>
+<li class="chapter" data-level="5.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html"><i class="fa fa-check"></i><b>6</b> Asymptotic Properties of Least Squares</a><ul>
+<li class="chapter" data-level="6.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>6.1</b> Consistency</a></li>
+<li class="chapter" data-level="6.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-distribution"><i class="fa fa-check"></i><b>6.2</b> Asymptotic Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-inference"><i class="fa fa-check"></i><b>6.3</b> Asymptotic Inference</a></li>
+<li class="chapter" data-level="6.4" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency-of-feasible-variance-estimator"><i class="fa fa-check"></i><b>6.4</b> Consistency of Feasible Variance Estimator</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#homoskedasticity"><i class="fa fa-check"></i><b>6.4.1</b> Homoskedasticity</a></li>
+<li class="chapter" data-level="6.4.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#heteroskedasticity"><i class="fa fa-check"></i><b>6.4.2</b> Heteroskedasticity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
+<li class="chapter" data-level="6.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>6.6</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html"><i class="fa fa-check"></i><b>7</b> Asymptotic Properties of MLE</a><ul>
+<li class="chapter" data-level="7.1" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#examples-of-mle"><i class="fa fa-check"></i><b>7.1</b> Examples of MLE</a></li>
+<li class="chapter" data-level="7.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>7.2</b> Consistency</a></li>
+<li class="chapter" data-level="7.3" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#asymptotic-normality"><i class="fa fa-check"></i><b>7.3</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="7.4" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#information-matrix-equality"><i class="fa fa-check"></i><b>7.4</b> Information Matrix Equality</a></li>
+<li class="chapter" data-level="7.5" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#cramer-rao-lower-bound"><i class="fa fa-check"></i><b>7.5</b> Cramer-Rao Lower Bound</a></li>
+<li class="chapter" data-level="7.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis Testing</a><ul>
+<li class="chapter" data-level="8.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing"><i class="fa fa-check"></i><b>8.1</b> Testing</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#decision-rule-and-errors"><i class="fa fa-check"></i><b>8.1.1</b> Decision Rule and Errors</a></li>
+<li class="chapter" data-level="8.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#optimality"><i class="fa fa-check"></i><b>8.1.2</b> Optimality</a></li>
+<li class="chapter" data-level="8.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-and-wilks-theorem"><i class="fa fa-check"></i><b>8.1.3</b> Likelihood-Ratio Test and Wilks’ theorem</a></li>
+<li class="chapter" data-level="8.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#score-test"><i class="fa fa-check"></i><b>8.1.4</b> Score Test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#confidence-intervalconfidence-interval"><i class="fa fa-check"></i><b>8.2</b> Confidence Interval<span id="confidence-interval" label="confidence-interval"><span class="math display">\[confidence-interval\]</span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#bayesian-credible-set"><i class="fa fa-check"></i><b>8.3</b> Bayesian Credible Set</a></li>
+<li class="chapter" data-level="8.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#applications-in-ols"><i class="fa fa-check"></i><b>8.4</b> Applications in OLS</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-test"><i class="fa fa-check"></i><b>8.4.1</b> Wald Test</a></li>
+<li class="chapter" data-level="8.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lagrangian-multiplier-test"><i class="fa fa-check"></i><b>8.4.2</b> Lagrangian Multiplier Test</a></li>
+<li class="chapter" data-level="8.4.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-for-regression"><i class="fa fa-check"></i><b>8.4.3</b> Likelihood-Ratio Test for Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>8.5</b> Summary</a></li>
+<li class="chapter" data-level="8.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>8.6</b> Appendix</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#neyman-pearson-lemma"><i class="fa fa-check"></i><b>8.6.1</b> Neyman-Pearson Lemma</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="panel-data.html"><a href="panel-data.html"><i class="fa fa-check"></i><b>9</b> Panel Data</a><ul>
+<li class="chapter" data-level="9.1" data-path="panel-data.html"><a href="panel-data.html#fixed-effect"><i class="fa fa-check"></i><b>9.1</b> Fixed Effect</a></li>
+<li class="chapter" data-level="9.2" data-path="panel-data.html"><a href="panel-data.html#random-effect"><i class="fa fa-check"></i><b>9.2</b> Random Effect</a></li>
+<li class="chapter" data-level="9.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="endogeneity.html"><a href="endogeneity.html"><i class="fa fa-check"></i><b>10</b> Endogeneity</a><ul>
+<li class="chapter" data-level="10.1" data-path="endogeneity.html"><a href="endogeneity.html#identification"><i class="fa fa-check"></i><b>10.1</b> Identification</a></li>
+<li class="chapter" data-level="10.2" data-path="endogeneity.html"><a href="endogeneity.html#instruments"><i class="fa fa-check"></i><b>10.2</b> Instruments</a></li>
+<li class="chapter" data-level="10.3" data-path="endogeneity.html"><a href="endogeneity.html#sources-of-endogeneity"><i class="fa fa-check"></i><b>10.3</b> Sources of Endogeneity</a></li>
+<li class="chapter" data-level="10.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>10.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html"><i class="fa fa-check"></i><b>11</b> Generalized Method of Moments</a><ul>
+<li class="chapter" data-level="11.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#instrumental-regression"><i class="fa fa-check"></i><b>11.1</b> Instrumental Regression</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#just-identification"><i class="fa fa-check"></i><b>11.1.1</b> Just-identification</a></li>
+<li class="chapter" data-level="11.1.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#over-identification"><i class="fa fa-check"></i><b>11.1.2</b> Over-identification</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-estimator"><i class="fa fa-check"></i><b>11.2</b> GMM Estimator</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#efficient-gmm"><i class="fa fa-check"></i><b>11.2.1</b> Efficient GMM</a></li>
+<li class="chapter" data-level="11.2.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-step-gmm"><i class="fa fa-check"></i><b>11.2.2</b> Two-Step GMM</a></li>
+<li class="chapter" data-level="11.2.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-stage-least-squares"><i class="fa fa-check"></i><b>11.2.3</b> Two Stage Least Squares</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-in-nonlinear-model"><i class="fa fa-check"></i><b>11.3</b> GMM in Nonlinear Model</a></li>
+<li class="chapter" data-level="11.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econ5121</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="least-squares-linear-algebra" class="section level1">
+<h1><span class="header-section-number">3</span> Least Squares: Linear Algebra</h1>
+<p>最小二乘法是计量经济学中最基本的估计方法，简单而透明。完全弄懂它，为未来研究更加复杂的线性估计量铺平道路。即使是非线性的估计量，它们的行为在一个点线性展开后，和线性估计量大同小异。在这一讲中，我们将会学习一系列最小二层估计的线性代数性质。</p>
+<p>Ordinary least squares (OLS) is the most basic estimation technique in
+econometrics. It is simple and transparent. Understanding it thoroughly
+paves the way to study more sophisticated linear estimators. Moreover,
+many nonlinear estimators resemble the behavior of linear estimators in
+a neighborhood of the true value. In this lecture, we learn a series of
+facts from the linear algebra operation.</p>
+<p>最小二乘估计是通用的统计方法，它不仅运用于计量经济学中也广泛的应用于其他统计分支。
+但我们必须认清，最小二层古迹是一个纯粹的线性代数操作。它只能揭示相关性，并不能说明英国性。
+只有经济理论，才能提供有关因果的假说。数据只能用来检验假说或者量化效果。</p>
+<p>To manipulate Leopold Kronecker’s famous saying “God made the integers;
+all else is the works of man”, I would say “Gauss made OLS; all else is
+the works of applied researchers.” Popularity of OLS goes far beyond our
+dismal science. But be aware that OLS is a pure statistical or
+supervised machine learning method which reveals correlation instead of
+causality. Rather, economic theory hypothesizes causality while data are
+collected to test the theory or quantify the effect.</p>
+<p>数学标记：<span class="math inline">\(y_{i}\)</span>是标量。<span class="math inline">\(x_{i}=\left(x_{i1},\ldots,x_{iK}\right)&#39;\)</span>是一个<span class="math inline">\(K\times1\)</span> 向量。
+<span class="math inline">\(Y=\left(y_{1},\ldots,y_{n}\right)&#39;\)</span>是一个<span class="math inline">\(n\times1\)</span>向量。
+<span class="math display">\[
+X=\left[\begin{array}{c}
+x_{1}&#39;\\
+x_{2}&#39;\\
+\vdots\\
+x_{n}&#39;
+\end{array}\right]=\left[\begin{array}{cccc}
+x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1K}\\
+x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2K}\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+x_{n1} &amp; x_{22} &amp; \cdots &amp; x_{nK}
+\end{array}\right]
+\]</span>
+是<span class="math inline">\(n\times K\)</span>矩阵。<span class="math inline">\(I_{n}\)</span>是<span class="math inline">\(n\times n\)</span>单位矩阵.</p>
+<div id="estimator" class="section level2">
+<h2><span class="header-section-number">3.1</span> Estimator</h2>
+<p>我们已经在前一讲中学习了线性映射模型。线性映射函数是？
+As we have learned from the linear projection model, the projection
+coefficient <span class="math inline">\(\beta\)</span> in the regression
+<span class="math display">\[
+\begin{aligned}y &amp; =x&#39;\beta+e\end{aligned}
+\]</span>
+can be written as可以被写成
+<span class="math display">\[
+\beta=\left(E\left[xx&#39;\right]\right)^{-1}E\left[xy\right].\label{eq:pop_OLS}
+\]</span>
+我们从<span class="math inline">\(\left(y,x\right)\)</span>的联合分布中取出一对观测值，记作<span class="math inline">\(\left(y_{i},x_{i}\right)\)</span>
+重复n次之后，有n个观测值。，<span class="math inline">\(i=1,\ldots,n\)</span> repeated
+experiments. We possess a <em>sample</em>
+我们就得到了一个样本<span class="math inline">\(\left(y_{i},x_{i}\right)_{i=1}^{n}\)</span>.</p>
+<div class="rem">
+<ul>
+<li>1.1*. Is <span class="math inline">\(\left(y_{i},x_{i}\right)\)</span>
+样本到底是谁寄的？还是固定的呢？
+我们在观测之前，随机变量的值是不确定的。
+观测之后，他们的值就定下来了。
+random or deterministic? Before we
+make the observation, they are treated as random variables whose
+realized values are uncertain. <span class="math inline">\(\left(y_{i},x_{i}\right)\)</span> is treated as
+random when we talk about statistical properties — statistical
+properties of a fixed number is meaningless. After we make the
+observation, they become deterministic values which cannot vary anymore.</li>
+</ul>
+</div>
+<div class="rem">
+<p>在实际操作中，我们手中只有一些给定的数字。（当然，现在的大数据也可以将文本，照片声音和图像处理成为数据，这些数据在计算机当中用零和一来表示。）我们把这些数据扔给计算机，让计算机给出一个结果。在统计上。我们认为这些数字是从一个概率分布上得出的思想实验。思想实验是一个学术用语，说白了，它就是一个故事。在公理体系的概率论当中，这个故事，在数学上是自洽的。但是数学本身是一个套套逻辑，而不是科学。概率模型的科学价值在于它在多大程度上能够毕竟事实的真相以及他是不是能够帮我们预测一些真相？在这门课的研究当中，我们假设数据来自于某种机制。我们把这种机制当成真相。在线性回归当中。Xy的联合分布就是真相。而我们想要研究线性映射系数beta。这个线性映射函数是真相的蕴含（implication）。</p>
+<ul>
+<li>1.2<em>. In reality, we have at hand fixed numbers (more recently, words,
+photos, audio clips, video clips, etc., which can all be represented in
+digital formats with 0 and 1) to feed into a computational operation,
+and the operation will return one or some numbers. All statistical
+interpretation about these numbers are drawn from the probabilistic
+thought experiments. A </em>thought experiment* is an academic jargon for a
+<em>story</em> in plain language. Under the axiomatic approach of probability
+theory, such stories are mathematical consistent and coherent. But
+mathematics is a tautological system, not science. The scientific value
+of a probability model depends on how close it is to the <em>truth</em> or
+implications of the truth. In this course, we suppose that the data are
+generated from some mechanism, which is taken as the truth. In the
+linear regression model for example, the joint distribution of
+<span class="math inline">\(\left(y,x\right)\)</span> is the truth, while we are interested in the linear
+projection coefficient <span class="math inline">\(\beta\)</span>, which is an implication of the truth as
+in (<a href="#eq:pop_OLS" reference-type="ref" reference="eq:pop_OLS"><span class="math display">\[eq:pop_OLS\]</span></a>).</li>
+</ul>
+</div>
+<p>The sample mean is a natural estimator of the population mean. Replace
+the population mean <span class="math inline">\(E\left[\cdot\right]\)</span> in
+(<a href="#eq:pop_OLS" reference-type="ref" reference="eq:pop_OLS"><span class="math display">\[eq:pop_OLS\]</span></a>) by the sample mean
+<span class="math inline">\(\frac{1}{n}\sum_{i=1}^{n}\cdot\)</span>, and the resulting estimator is
+<span class="math display">\[\begin{aligned}
+\widehat{\beta} &amp; =\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}&#39;\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}y_{i}\\
+ &amp; =\left(\frac{X&#39;X}{n}\right)^{-1}\frac{X&#39;y}{n}=\left(X&#39;X\right)^{-1}X&#39;y\end{aligned}\]</span>
+if <span class="math inline">\(X&#39;X\)</span> is invertible. This is one way to motivate the OLS estimator.</p>
+<p>Alternatively, we can derive the OLS estimator from minimizing the sum
+of squared residuals <span class="math inline">\(\sum_{i=1}^{n}\left(y_{i}-x_{i}&#39;b\right)^{2}\)</span>, or
+equivalently
+<span class="math display">\[
+Q\left(b\right)=\frac{1}{2n}\sum_{i=1}^{n}\left(y_{i}-x_{i}&#39;b\right)^{2}=\frac{1}{2n}\left(Y-Xb\right)&#39;\left(Y-Xb\right)=\frac{1}{2n}\left\Vert Y-Xb\right\Vert ^{2},
+\]</span>
+where the factor <span class="math inline">\(\frac{1}{2n}\)</span> is nonrandom and does not change the
+minimizer, and <span class="math inline">\(\left\Vert \cdot\right\Vert\)</span> is the Euclidean norm of a
+vector. Solve the first-order condition
+<span class="math display">\[
+\frac{\partial}{\partial b}Q\left(b\right)=\left[\begin{array}{c}
+\partial Q\left(b\right)/\partial b_{1}\\
+\partial Q\left(b\right)/\partial b_{2}\\
+\vdots\\
+\partial Q\left(b\right)/\partial b_{K}
+\end{array}\right]=-\frac{1}{n}X&#39;\left(Y-Xb\right)=0.
+\]</span>
+This necessary
+condition for optimality gives exactly the same
+<span class="math inline">\(\widehat{\beta}=\left(X&#39;X\right)^{-1}X&#39;y\)</span>. Moreover, the second-order
+condition
+<span class="math display">\[
+\frac{\partial^{2}}{\partial b\partial b&#39;}Q\left(b\right)=\left[\begin{array}{cccc}
+\frac{\partial^{2}}{\partial b_{1}^{2}}Q\left(b\right) &amp; \frac{\partial^{2}}{\partial b_{2}\partial b_{2}}Q\left(b\right) &amp; \cdots &amp; \frac{\partial^{2}}{\partial b_{K}\partial b_{1}}Q\left(b\right)\\
+\frac{\partial^{2}}{\partial b_{1}\partial b_{2}}Q\left(b\right) &amp; \frac{\partial^{2}}{\partial b_{2}^{2}}Q\left(b\right) &amp; \cdots &amp; \frac{\partial^{2}}{\partial b_{K}\partial b_{2}}Q\left(b\right)\\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots\\
+\frac{\partial^{2}}{\partial b_{1}\partial b_{K}}Q\left(b\right) &amp; \frac{\partial^{2}}{\partial b_{2}\partial b_{K}}Q\left(b\right) &amp; \cdots &amp; \frac{\partial^{2}}{\partial b_{K}^{2}}Q\left(b\right)
+\end{array}\right]=\frac{1}{n}X&#39;X
+\]</span>
+shows that <span class="math inline">\(Q\left(b\right)\)</span> is
+convex in <span class="math inline">\(b\)</span> due to the positive semi-definite matrix <span class="math inline">\(X&#39;X/n\)</span>. (The
+function <span class="math inline">\(Q\left(b\right)\)</span> is strictly convex in <span class="math inline">\(b\)</span> if <span class="math inline">\(X&#39;X/n\)</span> is
+positive definite.)</p>
+<div class="rem">
+<ul>
+<li>1.3<em>. In the derivation of OLS we presume that the <span class="math inline">\(K\)</span> columns in <span class="math inline">\(X\)</span>
+are </em>linearly independent<em>, which means there is no <span class="math inline">\(K\times1\)</span> vector
+<span class="math inline">\(b\)</span> such that <span class="math inline">\(b\neq0_{K}\)</span> and <span class="math inline">\(Xb=0_{n}\)</span>. Linear independence of the
+columns implies <span class="math inline">\(n\geq K\)</span> and the invertibility of <span class="math inline">\(X&#39;X/n\)</span>. Linear
+independence is violated when some regressors are </em>perfectly collinear<em>,
+for example when we use dummy variables to indicate categorical
+variables and put all these categories into the regression. Modern
+econometrics software automatically detects and reports perfect
+collinearity. What is treacherous is </em>nearly collinear*, meaning that
+the minimal eigenvalue of <span class="math inline">\(X&#39;X/n\)</span> is close to 0, though not exactly
+equal to 0. We will talk about the consequence of near collinearity in
+the chapter of asymptotic theory.</li>
+</ul>
+</div>
+<p>Here are some definitions and properties of the OLS estimator.</p>
+<ul>
+<li><p>Fitted value: <span class="math inline">\(\widehat{Y}=X\widehat{\beta}\)</span>.</p></li>
+<li><p>Projection matrix: <span class="math inline">\(P_{X}=X\left(X&#39;X\right)^{-1}X\)</span>; Residual maker
+matrix: <span class="math inline">\(M_{X}=I_{n}-P_{X}\)</span>.</p></li>
+<li><p><span class="math inline">\(P_{X}X=X\)</span>; <span class="math inline">\(X&#39;P_{X}=X&#39;\)</span>.</p></li>
+<li><p><span class="math inline">\(M_{X}X=0_{n\times K}\)</span>; <span class="math inline">\(X&#39;M_{X}=0_{K\times n}\)</span>.</p></li>
+<li><p><span class="math inline">\(P_{X}M_{X}=M_{X}P_{X}=0_{n\times n}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(AA=A\)</span>, we call it an <em>idempotent</em> matrix. Both <span class="math inline">\(P_{X}\)</span> and
+<span class="math inline">\(M_{X}\)</span> are idempotent. All eigenvalues of an idempotent matrix must
+be either 1 or 0.</p></li>
+<li><p><span class="math inline">\(\mathrm{rank}\left(P_{X}\right)=K\)</span>, and
+<span class="math inline">\(\mathrm{rank}\left(M_{X}\right)=n-K\)</span> (See the Appendix of this
+chapter).</p></li>
+<li><p>Residual:
+<span class="math inline">\(\widehat{e}=Y-\widehat{Y}=Y-X\widehat{\beta}=Y-X(X&#39;X)^{-1}X&#39;Y=(I_{n}-P_{X})Y=M_{X}Y=M_{X}\left(X\beta+e\right)=M_{X}e\)</span>.
+Notice <span class="math inline">\(\widehat{e}\)</span> and <span class="math inline">\(e\)</span> are two different objects.</p></li>
+<li><p><span class="math inline">\(X&#39;\widehat{e}=X&#39;M_{X}e=0_{K}\)</span>.</p></li>
+<li><p><span class="math inline">\(\sum_{i=1}^{n}\widehat{e}_{i}=0\)</span> if <span class="math inline">\(x_{i}\)</span> contains a constant.</p>
+<p>(Because <span class="math inline">\(X&#39;\widehat{e}=\left[\begin{array}{cccc} 1 &amp; 1 &amp; \cdots &amp; 1\\ \heartsuit &amp; \heartsuit &amp; \cdots &amp; \heartsuit\\ \cdots &amp; \cdots &amp; \ddots &amp; \vdots\\ \heartsuit &amp; \heartsuit &amp; \cdots &amp; \heartsuit \end{array}\right]\left[\begin{array}{c} \widehat{e}_{1}\\ \widehat{e}_{2}\\ \vdots\\ \widehat{e}_{n} \end{array}\right]=\left[\begin{array}{c} 0\\ 0\\ \vdots\\ 0 \end{array}\right]\)</span> , the the first row implies
+<span class="math inline">\(\sum_{i=1}^{n}\widehat{e}_{i}=0\)</span>. “<span class="math inline">\(\heartsuit\)</span>” indicates the
+entries irrelevant to our purpose.)</p></li>
+</ul>
+<p>The operation of OLS bears a natural geometric interpretation. Notice
+<span class="math inline">\(\mathcal{X}=\left\{ Xb:b\in\mathbb{R}^{K}\right\}\)</span> is the linear space
+spanned by the <span class="math inline">\(K\)</span> columns of
+<span class="math inline">\(X=\left[X_{\cdot1},\ldots,X_{\cdot K}\right]\)</span>, which is of
+<span class="math inline">\(K\)</span>-dimension if the columns are linearly independent. The OLS estimator
+is the minimizer of
+<span class="math inline">\(\min_{b\in\mathbb{R}^{K}}\left\Vert Y-Xb\right\Vert\)</span> (Square the
+Euclidean norm or not does not change the minimizer because <span class="math inline">\(a^{2}\)</span> is a
+monotonic transformation for <span class="math inline">\(a\geq0\)</span>). In other words,
+<span class="math inline">\(X\widehat{\beta}\)</span> is the point in <span class="math inline">\(\mathcal{X}\)</span> such that it is the
+closest to the vector <span class="math inline">\(Y\)</span> in terms of the Euclidean norm.</p>
+<p>The relationship <span class="math inline">\(Y=X\widehat{\beta}+\widehat{e}\)</span> decomposes <span class="math inline">\(Y\)</span> into
+two orthogonal vectors <span class="math inline">\(X\widehat{\beta}\)</span> and <span class="math inline">\(\widehat{e}\)</span> as
+<span class="math inline">\(\left\langle X\widehat{\beta},\widehat{e}\right\rangle =\widehat{\beta}&#39;X&#39;\widehat{e}=0_{K}^{\prime}\)</span>,
+where <span class="math inline">\(\left\langle \cdot,\cdot\right\rangle\)</span> is the <em>inner product</em> of
+two vectors. Therefore <span class="math inline">\(X\widehat{\beta}\)</span> is the <em>projection</em> of <span class="math inline">\(Y\)</span>
+onto <span class="math inline">\(\mathcal{X}\)</span>, and <span class="math inline">\(\widehat{e}\)</span> is the corresponding <em>projection
+residuals.</em> The Pythagorean theorem implies
+<span class="math display">\[\left\Vert Y\right\Vert ^{2}=\Vert X\widehat{\beta}\Vert^{2}+\left\Vert \widehat{e}\right\Vert ^{2}.\]</span></p>
+<div class="example">
+<p>** 1.1**. Here is a simple simulated example to demonstrate the
+properties of OLS. Given
+<span class="math inline">\(\left(x_{1i},x_{2i},x_{3i},e_{i}\right)^{\prime}\sim N\left(0_{4},I_{4}\right)\)</span>,
+the dependent variable <span class="math inline">\(y_{i}\)</span> is generated from
+<span class="math display">\[
+y_{i}=0.5+2\cdot x_{1i}-1\cdot x_{2i}+e_{i}
+\]</span></p>
+<p>The researcher does not
+know <span class="math inline">\(x_{3i}\)</span> is redundant, and he regresses <span class="math inline">\(y_{i}\)</span> on
+<span class="math inline">\(\left(1,x_{1i},x_{2i},x_{3i}\right)\)</span>.</p>
+</div>
+<p>The estimated coefficient <span class="math inline">\(\widehat{\beta}\)</span> is ( 0.315, 1.955, -0.852,
+0.151). It is close to the true value, but not very accurate due to the
+small sample size.</p>
+</div>
+<div id="subvector" class="section level2">
+<h2><span class="header-section-number">3.2</span> Subvector</h2>
+<p>The Frish-Waugh-Lovell (FWL) theorem is an algebraic fact about the
+formula of a subvector of the OLS estimator. To derive the FWL theorem
+we need to use the inverse of partitioned matrix. For a positive
+definite symmetric matrix <span class="math inline">\(A=\begin{pmatrix}A_{11} &amp; A_{12}\\ A_{12}&#39; &amp; A_{22} \end{pmatrix}\)</span>, the inverse can be written as
+<span class="math display">\[A^{-1}=\begin{pmatrix}\left(A_{11}-A_{12}A_{22}^{-1}A_{12}&#39;\right)^{-1} &amp; -\left(A_{11}-A_{12}A_{22}^{-1}A_{12}&#39;\right)^{-1}A_{12}A_{22}^{-1}\\
+-A_{22}^{-1}A_{12}&#39;\left(A_{11}-A_{12}A_{22}^{-1}A_{12}&#39;\right)^{-1} &amp; \left(A_{22}-A_{12}&#39;A_{11}^{-1}A_{12}\right)^{-1}
+\end{pmatrix}.\]</span> In our context of OLS estimator, let
+<span class="math inline">\(X=\left(\begin{array}{cc} X_{1} &amp; X_{2}\end{array}\right)\)</span></p>
+<p><span class="math display">\[\begin{aligned}
+\begin{pmatrix}\widehat{\beta}_{1}\\
+\widehat{\beta}_{2}
+\end{pmatrix} &amp; =\widehat{\beta}=(X&#39;X)^{-1}X&#39;Y\\
+ &amp; =\left(\begin{pmatrix}X_{1}&#39;\\
+X_{2}&#39;
+\end{pmatrix}\begin{pmatrix}X_{1} &amp; X_{2}\end{pmatrix}\right)^{-1}\begin{pmatrix}X_{1}&#39;Y\\
+X_{2}&#39;Y
+\end{pmatrix}\\
+ &amp; =\begin{pmatrix}X_{1}&#39;X_{1} &amp; X_{1}&#39;X_{2}\\
+X_{2}&#39;X_{1} &amp; X_{2}&#39;X_{2}
+\end{pmatrix}^{-1}\begin{pmatrix}X_{1}&#39;Y\\
+X_{2}&#39;Y
+\end{pmatrix}\\
+ &amp; =\begin{pmatrix}\left(X_{1}&#39;M_{X_{2}}&#39;X_{1}\right)^{-1} &amp; -\left(X_{1}&#39;M_{X_{2}}&#39;X_{1}\right)^{-1}X_{1}&#39;X_{2}\left(X_{2}&#39;X_{2}\right)^{-1}\\
+\heartsuit &amp; \heartsuit
+\end{pmatrix}\begin{pmatrix}X_{1}&#39;Y\\
+X_{2}&#39;Y
+\end{pmatrix}.\end{aligned}\]</span></p>
+<p>The subvector <span class="math display">\[\begin{aligned}
+\widehat{\beta}_{1} &amp; =\left(X_{1}&#39;M_{X_{2}}&#39;X_{1}\right)^{-1}X_{1}&#39;Y-\left(X_{1}&#39;M_{X_{2}}&#39;X_{1}\right)^{-1}X_{1}&#39;X_{2}\left(X_{2}&#39;X_{2}\right)^{-1}X_{2}&#39;Y\\
+ &amp; =\left(X_{1}&#39;M_{X_{2}}&#39;X_{1}\right)^{-1}X_{1}&#39;Y-\left(X_{1}&#39;M_{X_{2}}&#39;X_{1}\right)^{-1}X_{1}&#39;P_{X_{2}}Y\\
+ &amp; =\left(X_{1}&#39;M_{X_{2}}&#39;X_{1}\right)^{-1}\left(X_{1}&#39;Y-X_{1}&#39;P_{X_{2}}Y\right)\\
+ &amp; =\left(X_{1}&#39;M_{X_{2}}&#39;X_{1}\right)^{-1}X_{1}&#39;M_{X_{2}}Y.\end{aligned}\]</span></p>
+<p>Notice that <span class="math inline">\(\widehat{\beta}_{1}\)</span> can be obtained by the following:</p>
+<ol style="list-style-type: decimal">
+<li><p>Regress <span class="math inline">\(Y\)</span> on <span class="math inline">\(X_{2}\)</span>, obtain the residual <span class="math inline">\(\tilde{Y}\)</span>;</p></li>
+<li><p>Regress <span class="math inline">\(X_{1}\)</span> on <span class="math inline">\(X_{2}\)</span>, obtain the residual <span class="math inline">\(\tilde{X}_{1}\)</span>;</p></li>
+<li><p>Regress <span class="math inline">\(\tilde{Y}\)</span> on <span class="math inline">\(\tilde{X}_{1}\)</span>, obtain OLS estimates
+<span class="math inline">\(\widehat{\beta}_{1}\)</span>.</p></li>
+</ol>
+<p>Similar derivation can also be carried out in the population linear
+projection. See Hansen (2020) <span class="math display">\[E\]</span> Chapter 2.22-23.</p>
+</div>
+<div id="goodness-of-fit" class="section level2">
+<h2><span class="header-section-number">3.3</span> Goodness of Fit</h2>
+<p>Consider the regression with the intercept
+<span class="math inline">\(Y=X_{1}\beta_{1}+\beta_{2}+e.\)</span> The OLS estimator gives
+<span class="math display">\[Y=\widehat{Y}+\widehat{e}=\left(X_{1}\widehat{\beta}_{1}+\widehat{\beta}_{2}\right)+\widehat{e}.\label{eq:decomp_1}\]</span>
+Applying the FWL theorem with <span class="math inline">\(X_{2}=\iota\)</span>, where <span class="math inline">\(\iota\)</span> (Greek
+letter, iota) is an <span class="math inline">\(n\times1\)</span> vector of 1’s. Then
+<span class="math inline">\(M_{X_{2}}=M_{\iota}=I_{n}-\frac{1}{n}\iota\iota&#39;\)</span>. Notice <span class="math inline">\(M_{\iota}\)</span>
+is the <em>demeaner</em> in that <span class="math inline">\(M_{\iota}z=z-\bar{z}\)</span>. It subtract the vector
+mean <span class="math inline">\(\bar{z}=\frac{1}{n}\sum_{i=1}^{n}z_{i}\)</span> from the original vector
+<span class="math inline">\(z\)</span>. The above three-step procedure becomes</p>
+<ol style="list-style-type: decimal">
+<li><p>Regress <span class="math inline">\(Y\)</span> on <span class="math inline">\(\iota\)</span>, and the residual is <span class="math inline">\(M_{\iota}Y\)</span>;</p></li>
+<li><p>Regress <span class="math inline">\(X_{1}\)</span> on <span class="math inline">\(\iota\)</span>, and the residual is <span class="math inline">\(M_{\iota}X_{1}\)</span>;</p></li>
+<li><p>Regress <span class="math inline">\(M_{\iota}Y\)</span> on <span class="math inline">\(M_{\iota}X_{1}\)</span>, and the OLS estimates is
+exactly the same as <span class="math inline">\(\widehat{\beta}_{1}\)</span> in
+(<a href="#eq:decomp_1" reference-type="ref" reference="eq:decomp_1"><span class="math display">\[eq:decomp_1\]</span></a>).</p></li>
+</ol>
+<p>The last step gives the decomposition
+<span class="math display">\[M_{\iota}Y=M_{\iota}X_{1}\widehat{\beta}_{1}+\tilde{e},\label{eq:decomp_2}\]</span>
+and the Pythagorean theorem implies
+<span class="math display">\[\left\Vert M_{\iota}Y\right\Vert ^{2}=\Vert M_{\iota}X_{1}\widehat{\beta}_{1}\Vert^{2}+\left\Vert \widehat{e}\right\Vert ^{2}.\]</span></p>
+<div id="ex:e_equiv" class="xca">
+<p>** 1.1**. Show that <span class="math inline">\(\widehat{e}\)</span> in
+(<a href="#eq:decomp_1" reference-type="ref" reference="eq:decomp_1"><span class="math display">\[eq:decomp_1\]</span></a>) is exactly the same as <span class="math inline">\(\tilde{e}\)</span> in
+(<a href="#eq:decomp_2" reference-type="ref" reference="eq:decomp_2"><span class="math display">\[eq:decomp_2\]</span></a>).</p>
+</div>
+<p><em>R-squared</em> is a popular measure of goodness-of-fit in the linear
+regression. The (in-sample) R-squared
+<span class="math display">\[R^{2}=\frac{\Vert M_{\iota}X_{1}\widehat{\beta}_{1}\Vert^{2}}{\left\Vert M_{\iota}Y\right\Vert ^{2}}=1-\frac{\left\Vert \tilde{e}\right\Vert ^{2}}{\left\Vert M_{\iota}Y\right\Vert ^{2}}.\]</span>
+is well defined only when a constant is included in the regressors.</p>
+<div class="xca">
+<p>** 1.2**. Show
+<span class="math display">\[R^{2}=\frac{\widehat{Y}&#39;M_{\iota}\widehat{Y}}{Y&#39;M_{\iota}Y}=\frac{\sum_{i=1}^{n}\left(\widehat{y_{i}}-\overline{y}\right)^{2}}{\sum_{i=1}^{n}\left(y_{i}-\overline{y}\right)^{2}}\]</span>
+as in the decomposition
+(<a href="#eq:decomp_1" reference-type="ref" reference="eq:decomp_1"><span class="math display">\[eq:decomp_1\]</span></a>). In other words, it is the ratio between the
+sample variance of <span class="math inline">\(\widehat{Y}\)</span> and the sample variance of <span class="math inline">\(Y\)</span>.</p>
+</div>
+<p>The magnitude of R-squared varies in different contexts. In macro models
+with the lagged dependent variables, it is not unusually to observe
+R-squared larger than 90%. In cross sectional regressions it is often
+below 20%.</p>
+<div class="xca">
+<p>** 1.3**. Consider a short regression “regress <span class="math inline">\(y_{i}\)</span> on <span class="math inline">\(x_{1i}\)</span>” and
+a long regression “regress <span class="math inline">\(y_{i}\)</span> on <span class="math inline">\(\left(x_{1i},x_{2i}\right)\)</span>”.
+Given the same dataset <span class="math inline">\(\left(Y,X_{1},X_{2}\right)\)</span>, show that the
+R-squared from the short regression is no larger than that from the long
+regression. In other words, we can always (weakly) increase <span class="math inline">\(R^{2}\)</span> by
+adding more regressors.</p>
+</div>
+<p>Conventionally we consider the regressions when the number of regressors
+<span class="math inline">\(K\)</span> is much smaller the sample size <span class="math inline">\(n\)</span>. In the era of big data, it can
+happen that we have more potential regressors than the sample size.</p>
+<div class="xca">
+<p>** 1.4**. Show <span class="math inline">\(R^{2}=1\)</span> when <span class="math inline">\(K\geq n\)</span>. (When <span class="math inline">\(K&gt;n\)</span>, the matrix <span class="math inline">\(X&#39;X\)</span>
+must be rank deficient. We can generalize the definition OLS fitting as
+any vector that minimizes <span class="math inline">\(\left\Vert Y-Xb\right\Vert ^{2}\)</span> though the
+minimizer is not unique.</p>
+<div class="kframe">
+<pre><code>##
+## Call:
+## lm(formula = Y ~ X)
+##
+## Residuals:
+## ALL 5 residuals are 0: no residual degrees of freedom!
+##
+## Coefficients: (2 not defined because of singularities)
+##             Estimate Std. Error t value Pr(&gt;|t|)
+## (Intercept)  -0.2229         NA      NA       NA
+## X1           -0.6422         NA      NA       NA
+## X2            0.1170         NA      NA       NA
+## X3            1.1844         NA      NA       NA
+## X4            0.5883         NA      NA       NA
+## X5                NA         NA      NA       NA
+## X6                NA         NA      NA       NA
+##
+## Residual standard error: NaN on 0 degrees of freedom
+## Multiple R-squared:      1,  Adjusted R-squared:    NaN
+## F-statistic:   NaN on 4 and 0 DF,  p-value: NA</code></pre>
+</div>
+</div>
+<p>With a new dataset <span class="math inline">\(\left(Y^{\mathrm{new}},X^{\mathrm{new}}\right)\)</span>, the
+<em>out-of-sample</em> (OOS) R-squared is
+<span class="math display">\[OOS\ R^{2}=\frac{\widehat{\beta}^{\prime}X^{\mathrm{new}\prime}M_{\iota}X^{\mathrm{new}}\widehat{\beta}}{Y^{\mathrm{new}\prime}M_{\iota}Y^{\mathrm{new}}}.\]</span>
+OOS R-squred measures the goodness of fit in a new dataset given the
+coefficient estimated from the original data. In financial market
+shorter-term predictive models, a person may easily become rich if he
+can systematically achieve 2% OOS R-squared.</p>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">3.4</span> Summary</h2>
+<p>The linear algebraic properties holds in finite sample no matter the
+data are taken as fixed numbers or random variables. The Gauss Markov
+theorem holds under two crucial assumptions: linear CEF and
+homoskedasticity.</p>
+<p>高斯说，他在1795年就想出了最小二乘法的操作。他用三个点来预测了。矮行星位置。高斯没有在1809年之前把文章发表出来。而勒让德发表了同样的方法。今天，人们通常将最小二乘法归功于高斯。因为大家觉得像高斯这样的数学巨人没有必要。撒一个谎，来偷取勒让德的发现。</p>
+<p><strong>Historical notes</strong>: Carl Friedrich Gauss (1777–1855) claimed he had
+come up with the operation of OLS in 1795. With only three data points
+at hand, Gauss successfully applied his method to predict the location
+of the dwarf planet Ceres in 1801. While Gauss did not publish the work
+on OLS until 1809, Adrien-Marie Legendre (1752–1833) presented this
+method in 1805. Today people tend to attribute OLS to Gauss, assuming
+that a giant like Gauss had no need to tell a lie to steal Legendre’s
+discovery.</p>
+
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="conditional-expectation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="least-squares-finite-sample-theory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

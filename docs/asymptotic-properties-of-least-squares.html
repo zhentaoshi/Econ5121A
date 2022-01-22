@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Asymptotic Properties of Least Squares | Econ5121</title>
+  <meta name="description" content="nothing" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Asymptotic Properties of Least Squares | Econ5121" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="nothing" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Asymptotic Properties of Least Squares | Econ5121" />
+  
+  <meta name="twitter:description" content="nothing" />
+  
+
+<meta name="author" content="Zhentao Shi" />
+
+
+<meta name="date" content="2022-01-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basic-asymptotic-theory.html"/>
+<link rel="next" href="asymptotic-properties-of-mle.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>1</b> Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="probability.html"><a href="probability.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="probability.html"><a href="probability.html#axiomatic-probability"><i class="fa fa-check"></i><b>1.2</b> Axiomatic Probability</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="probability.html"><a href="probability.html#probability-space"><i class="fa fa-check"></i><b>1.2.1</b> Probability Space</a></li>
+<li class="chapter" data-level="1.2.2" data-path="probability.html"><a href="probability.html#random-variable"><i class="fa fa-check"></i><b>1.2.2</b> Random Variable</a></li>
+<li class="chapter" data-level="1.2.3" data-path="probability.html"><a href="probability.html#distribution-function"><i class="fa fa-check"></i><b>1.2.3</b> Distribution Function</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="probability.html"><a href="probability.html#expected-value"><i class="fa fa-check"></i><b>1.3</b> Expected Value</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="probability.html"><a href="probability.html#integration"><i class="fa fa-check"></i><b>1.3.1</b> Integration</a></li>
+<li class="chapter" data-level="1.3.2" data-path="probability.html"><a href="probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>1.3.2</b> Properties of Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="probability.html"><a href="probability.html#multivariate-random-variable"><i class="fa fa-check"></i><b>1.4</b> Multivariate Random Variable</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="probability.html"><a href="probability.html#conditional-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>1.4.1</b> Conditional Probability and Bayes’ Theorem</a></li>
+<li class="chapter" data-level="1.4.2" data-path="probability.html"><a href="probability.html#independence"><i class="fa fa-check"></i><b>1.4.2</b> Independence</a></li>
+<li class="chapter" data-level="1.4.3" data-path="probability.html"><a href="probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>1.4.3</b> Law of Iterated Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conditional-expectation.html"><a href="conditional-expectation.html"><i class="fa fa-check"></i><b>2</b> Conditional Expectation</a><ul>
+<li class="chapter" data-level="2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#linear-projection"><i class="fa fa-check"></i><b>2.1</b> Linear Projection</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#omitted-variable-bias"><i class="fa fa-check"></i><b>2.1.1</b> Omitted Variable Bias</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#causality"><i class="fa fa-check"></i><b>2.2</b> Causality</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#structure-and-identification"><i class="fa fa-check"></i><b>2.2.1</b> Structure and Identification</a></li>
+<li class="chapter" data-level="2.2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#treatment-effect"><i class="fa fa-check"></i><b>2.2.2</b> Treatment Effect</a></li>
+<li class="chapter" data-level="2.2.3" data-path="conditional-expectation.html"><a href="conditional-expectation.html#ate-and-cef"><i class="fa fa-check"></i><b>2.2.3</b> ATE and CEF</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html"><i class="fa fa-check"></i><b>3</b> Least Squares: Linear Algebra</a><ul>
+<li class="chapter" data-level="3.1" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#estimator"><i class="fa fa-check"></i><b>3.1</b> Estimator</a></li>
+<li class="chapter" data-level="3.2" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#subvector"><i class="fa fa-check"></i><b>3.2</b> Subvector</a></li>
+<li class="chapter" data-level="3.3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#goodness-of-fit"><i class="fa fa-check"></i><b>3.3</b> Goodness of Fit</a></li>
+<li class="chapter" data-level="3.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html"><i class="fa fa-check"></i><b>4</b> Least Squares: Finite Sample Theory</a><ul>
+<li class="chapter" data-level="4.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#maximum-likelihood"><i class="fa fa-check"></i><b>4.1</b> Maximum Likelihood</a></li>
+<li class="chapter" data-level="4.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#likelihood-estimation-for-regression"><i class="fa fa-check"></i><b>4.2</b> Likelihood Estimation for Regression</a></li>
+<li class="chapter" data-level="4.3" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#finite-sample-distribution"><i class="fa fa-check"></i><b>4.3</b> Finite Sample Distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#mean-and-variancemean-and-variance"><i class="fa fa-check"></i><b>4.4</b> Mean and Variance<span id="mean-and-variance" label="mean-and-variance"><span class="math display">\[mean-and-variance\]</span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>4.5</b> Gauss-Markov Theorem</a></li>
+<li class="chapter" data-level="4.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>4.7</b> Appendix</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#joint-normal-distribution"><i class="fa fa-check"></i><b>4.7.1</b> Joint Normal Distribution</a></li>
+<li class="chapter" data-level="4.7.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#basus-theorem-subsecbasus-theoremsubsecbasus-theorem-labelsubsecbasus-theorem"><i class="fa fa-check"></i><b>4.7.2</b> Basu’s Theorem* [<span class="math display">\[subsec:Basu\&#39;s-Theorem\]</span>]{#subsec:Basu’s-Theorem label=“subsec:Basu’s-Theorem”}</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html"><i class="fa fa-check"></i><b>5</b> Basic Asymptotic Theory</a><ul>
+<li class="chapter" data-level="5.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#modes-of-convergence"><i class="fa fa-check"></i><b>5.1</b> Modes of Convergence</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#law-of-large-numbers"><i class="fa fa-check"></i><b>5.2</b> Law of Large Numbers</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#cherbyshev-lln"><i class="fa fa-check"></i><b>5.2.1</b> Cherbyshev LLN</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#central-limit-theorem"><i class="fa fa-check"></i><b>5.3</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="5.4" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#tools-for-transformations"><i class="fa fa-check"></i><b>5.4</b> Tools for Transformations</a></li>
+<li class="chapter" data-level="5.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html"><i class="fa fa-check"></i><b>6</b> Asymptotic Properties of Least Squares</a><ul>
+<li class="chapter" data-level="6.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>6.1</b> Consistency</a></li>
+<li class="chapter" data-level="6.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-distribution"><i class="fa fa-check"></i><b>6.2</b> Asymptotic Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-inference"><i class="fa fa-check"></i><b>6.3</b> Asymptotic Inference</a></li>
+<li class="chapter" data-level="6.4" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency-of-feasible-variance-estimator"><i class="fa fa-check"></i><b>6.4</b> Consistency of Feasible Variance Estimator</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#homoskedasticity"><i class="fa fa-check"></i><b>6.4.1</b> Homoskedasticity</a></li>
+<li class="chapter" data-level="6.4.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#heteroskedasticity"><i class="fa fa-check"></i><b>6.4.2</b> Heteroskedasticity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
+<li class="chapter" data-level="6.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>6.6</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html"><i class="fa fa-check"></i><b>7</b> Asymptotic Properties of MLE</a><ul>
+<li class="chapter" data-level="7.1" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#examples-of-mle"><i class="fa fa-check"></i><b>7.1</b> Examples of MLE</a></li>
+<li class="chapter" data-level="7.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>7.2</b> Consistency</a></li>
+<li class="chapter" data-level="7.3" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#asymptotic-normality"><i class="fa fa-check"></i><b>7.3</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="7.4" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#information-matrix-equality"><i class="fa fa-check"></i><b>7.4</b> Information Matrix Equality</a></li>
+<li class="chapter" data-level="7.5" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#cramer-rao-lower-bound"><i class="fa fa-check"></i><b>7.5</b> Cramer-Rao Lower Bound</a></li>
+<li class="chapter" data-level="7.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis Testing</a><ul>
+<li class="chapter" data-level="8.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing"><i class="fa fa-check"></i><b>8.1</b> Testing</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#decision-rule-and-errors"><i class="fa fa-check"></i><b>8.1.1</b> Decision Rule and Errors</a></li>
+<li class="chapter" data-level="8.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#optimality"><i class="fa fa-check"></i><b>8.1.2</b> Optimality</a></li>
+<li class="chapter" data-level="8.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-and-wilks-theorem"><i class="fa fa-check"></i><b>8.1.3</b> Likelihood-Ratio Test and Wilks’ theorem</a></li>
+<li class="chapter" data-level="8.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#score-test"><i class="fa fa-check"></i><b>8.1.4</b> Score Test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#confidence-intervalconfidence-interval"><i class="fa fa-check"></i><b>8.2</b> Confidence Interval<span id="confidence-interval" label="confidence-interval"><span class="math display">\[confidence-interval\]</span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#bayesian-credible-set"><i class="fa fa-check"></i><b>8.3</b> Bayesian Credible Set</a></li>
+<li class="chapter" data-level="8.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#applications-in-ols"><i class="fa fa-check"></i><b>8.4</b> Applications in OLS</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-test"><i class="fa fa-check"></i><b>8.4.1</b> Wald Test</a></li>
+<li class="chapter" data-level="8.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lagrangian-multiplier-test"><i class="fa fa-check"></i><b>8.4.2</b> Lagrangian Multiplier Test</a></li>
+<li class="chapter" data-level="8.4.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-for-regression"><i class="fa fa-check"></i><b>8.4.3</b> Likelihood-Ratio Test for Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>8.5</b> Summary</a></li>
+<li class="chapter" data-level="8.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>8.6</b> Appendix</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#neyman-pearson-lemma"><i class="fa fa-check"></i><b>8.6.1</b> Neyman-Pearson Lemma</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="panel-data.html"><a href="panel-data.html"><i class="fa fa-check"></i><b>9</b> Panel Data</a><ul>
+<li class="chapter" data-level="9.1" data-path="panel-data.html"><a href="panel-data.html#fixed-effect"><i class="fa fa-check"></i><b>9.1</b> Fixed Effect</a></li>
+<li class="chapter" data-level="9.2" data-path="panel-data.html"><a href="panel-data.html#random-effect"><i class="fa fa-check"></i><b>9.2</b> Random Effect</a></li>
+<li class="chapter" data-level="9.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="endogeneity.html"><a href="endogeneity.html"><i class="fa fa-check"></i><b>10</b> Endogeneity</a><ul>
+<li class="chapter" data-level="10.1" data-path="endogeneity.html"><a href="endogeneity.html#identification"><i class="fa fa-check"></i><b>10.1</b> Identification</a></li>
+<li class="chapter" data-level="10.2" data-path="endogeneity.html"><a href="endogeneity.html#instruments"><i class="fa fa-check"></i><b>10.2</b> Instruments</a></li>
+<li class="chapter" data-level="10.3" data-path="endogeneity.html"><a href="endogeneity.html#sources-of-endogeneity"><i class="fa fa-check"></i><b>10.3</b> Sources of Endogeneity</a></li>
+<li class="chapter" data-level="10.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>10.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html"><i class="fa fa-check"></i><b>11</b> Generalized Method of Moments</a><ul>
+<li class="chapter" data-level="11.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#instrumental-regression"><i class="fa fa-check"></i><b>11.1</b> Instrumental Regression</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#just-identification"><i class="fa fa-check"></i><b>11.1.1</b> Just-identification</a></li>
+<li class="chapter" data-level="11.1.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#over-identification"><i class="fa fa-check"></i><b>11.1.2</b> Over-identification</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-estimator"><i class="fa fa-check"></i><b>11.2</b> GMM Estimator</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#efficient-gmm"><i class="fa fa-check"></i><b>11.2.1</b> Efficient GMM</a></li>
+<li class="chapter" data-level="11.2.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-step-gmm"><i class="fa fa-check"></i><b>11.2.2</b> Two-Step GMM</a></li>
+<li class="chapter" data-level="11.2.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-stage-least-squares"><i class="fa fa-check"></i><b>11.2.3</b> Two Stage Least Squares</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-in-nonlinear-model"><i class="fa fa-check"></i><b>11.3</b> GMM in Nonlinear Model</a></li>
+<li class="chapter" data-level="11.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econ5121</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="asymptotic-properties-of-least-squares" class="section level1">
+<h1><span class="header-section-number">6</span> Asymptotic Properties of Least Squares</h1>
+<p>We have learned some basic asymptotic theory in the previous chapter. We
+apply these results to study asymptotic properties of the OLS estimator
+<span class="math inline">\(\widehat{\beta}=\left(X&#39;X\right)^{-1}X&#39;Y\)</span>, which is of key interest in
+our course. We will show (i) <span class="math inline">\(\widehat{\beta}\)</span> is a consistent estimator
+of the linear projection coefficient <span class="math inline">\(\beta\)</span>; (ii) <span class="math inline">\(\widehat{\beta}\)</span> is
+asymptotically normal; (iii) the asymptotic normality allows asymptotic
+inference of <span class="math inline">\(\beta\)</span>; (iv) under what condition the variance components
+in the test statistic can be consistently estimated so that the testing
+procedure is make feasible.</p>
+<div id="consistency" class="section level2">
+<h2><span class="header-section-number">6.1</span> Consistency</h2>
+<p><em>Consistency</em> is the most basic requirement for estimators in large
+sample. Intuitively, it says that when the sample size is arbitrarily
+large, a desirable estimator should be arbitrarily close (in the sense
+of convergence in probability) to the population quantity of interest.
+Otherwise, if an estimator still deviates from the object of interest
+under infinite sample size, it is hard to persuade other researchers to
+use such an estimator unless compelling justification is provided.</p>
+<p>For a generic estimator <span class="math inline">\(\widehat{\theta}\)</span>, we say <span class="math inline">\(\widehat{\theta}\)</span> is
+<em>consistent</em> for <span class="math inline">\(\theta\)</span> if <span class="math inline">\(\widehat{\theta}\stackrel{p}{\to}\theta\)</span>,
+where <span class="math inline">\(\theta\)</span> is some non-random object.</p>
+<p>In OLS, we say <span class="math inline">\(\widehat{\beta}\)</span> is <em>consistent</em> if
+<span class="math inline">\(\widehat{\beta}\stackrel{p}{\to}\beta\)</span> as <span class="math inline">\(n\to\infty\)</span>, where <span class="math inline">\(\beta\)</span>
+is the linear projection coefficient of the population model
+<span class="math inline">\(y_{i}=x_{i}&#39;\beta+e_{i}\)</span> with <span class="math inline">\(E\left[x_{i}e_{i}\right]=0\)</span>. To verify
+consistency, we write
+<span class="math display">\[\widehat{\beta}-\beta=\left(X&#39;X\right)^{-1}X&#39;e=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}&#39;\right)^{-1}\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}.\label{eq:ols_d}\]</span></p>
+<p>For simplicity, in this chapter we discuss the iid setting only. The
+first term, by LLN,
+<span class="math display">\[\widehat{Q}:=\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}&#39;\stackrel{p}{\to}Q:=E\left[x_{i}x_{i}&#39;\right].\]</span>
+Here <span class="math inline">\(\widehat{Q}\)</span> is the sample mean of <span class="math inline">\(x_{i}x_{i}&#39;\)</span> and <span class="math inline">\(Q\)</span> is the
+population mean of <span class="math inline">\(x_{i}x_{i}&#39;\)</span>. The second term, again by LLN,
+<span class="math display">\[\frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{p}{\to}0.\]</span> The
+continuous mapping theorem immediately implies
+<span class="math display">\[\widehat{\beta}-\beta\stackrel{p}{\to}Q^{-1}\times0=0.\]</span> The OLS
+estimator <span class="math inline">\(\widehat{\beta}\)</span> is a consistent estimator of <span class="math inline">\(\beta\)</span>.</p>
+<p>No matter whether <span class="math inline">\(\left(y_{i},x_{i}\right)_{i=1}^{n}\)</span> is an iid, or
+inid, or dependent sample, consistency holds as long as the convergence
+in probability holds for the above two expressions and <span class="math inline">\(Q\)</span> is an
+invertible matrix.</p>
+</div>
+<div id="asymptotic-distribution" class="section level2">
+<h2><span class="header-section-number">6.2</span> Asymptotic Distribution</h2>
+<p>In finite sample, <span class="math inline">\(\widehat{\beta}\)</span> is a random variable. We have shown
+the distribution of <span class="math inline">\(\widehat{\beta}\)</span> under normality before. Without
+the restrictive normality assumption, how can we characterize the
+randomness of the OLS estimator?</p>
+<p>We know from the previous section that
+<span class="math inline">\(\hat{\beta}-\beta\stackrel{p}{\to}0\)</span> degenerates to a constant. To
+study its distribution, we must scale it up by a proper multiplier so
+that in the limit it neither degenerates nor explodes. The suitable
+scaling factor is <span class="math inline">\(\sqrt{n}\)</span>, as in a CLT.
+<span class="math display">\[\sqrt{n}\left(\widehat{\beta}-\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}&#39;\right)^{-1}\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}e_{i}.\]</span>
+Since <span class="math inline">\(E\left[x_{i}e_{i}\right]=0\)</span>, we apply a CLT to obtain
+<span class="math display">\[\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}e_{i}\stackrel{d}{\to}N\left(0,\Sigma\right)\]</span>
+where <span class="math inline">\(\Sigma=E\left[x_{i}x_{i}&#39;e_{i}^{2}\right]\)</span>. By the continuous
+mapping theorem,
+<span class="math display">\[\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}Q^{-1}\times N\left(0,\Sigma\right)\sim N\left(0,\Omega\right)\label{eq:asym_norm}\]</span>
+where <span class="math inline">\(\Omega=Q^{-1}\Sigma Q^{-1}\)</span> is called the <em>asymptotic variance</em>.
+This result is the <em>asymptotic normality</em> of the OLS estimator.</p>
+<p>The asymptotic variance <span class="math inline">\(\Omega=Q^{-1}\Sigma Q^{-1}\)</span> is called of the
+<em>sandwich form</em>. It can be simplified under conditional homoskedasticity
+<span class="math inline">\(E\left[e_{i}^{2}|x_{i}\right]=\sigma^{2}\)</span> for all <span class="math inline">\(i\)</span>, which gives
+<span class="math display">\[\Sigma=E\left[x_{i}x_{i}&#39;e_{i}^{2}\right]=E\left[x_{i}x_{i}&#39;E\left[e_{i}^{2}|X\right]\right]=\sigma^{2}E\left[x_{i}x_{i}&#39;\right]=\sigma^{2}Q.\]</span>
+In this case, <span class="math inline">\(\Omega=Q^{-1}\Sigma Q^{-1}=\sigma^{2}Q^{-1}\)</span>, and thus
+<span class="math display">\[\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,\sigma^{2}Q^{-1}\right).\label{eq:asym_norm_homo}\]</span></p>
+<p>If we are interested in the <span class="math inline">\(k\)</span>-th parameter <span class="math inline">\(\beta_{k}\)</span>, then the joint
+distribution in
+(<a href="#eq:asym_norm" reference-type="eqref" reference="eq:asym_norm"><span class="math display">\[eq:asym\_norm\]</span></a>) implies <span class="math display">\[\begin{aligned}
+\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right) &amp; =\sqrt{n}\eta_{k}&#39;\left(\widehat{\beta}-\beta\right)\nonumber \\
+ &amp; \stackrel{d}{\to}N\left(0,\sigma^{2}\eta_{k}&#39;Q^{-1}\eta_{k}\right)\sim N\left(0,\sigma^{2}[Q^{-1}]_{kk}\right),\label{eq:asym_norm_homok}\end{aligned}\]</span>
+where <span class="math inline">\(\eta_{k}=\left(0,\ldots,0,1,0\ldots,0\right)&#39;\)</span> is the selector of
+the <span class="math inline">\(k\)</span>-th element.</p>
+<p>If <span class="math inline">\(\Omega^{-1/2}\)</span> is multiplied on both sides of
+<a href="#eq:asym_norm" reference-type="eqref" reference="eq:asym_norm"><span class="math display">\[eq:asym\_norm\]</span></a>, we have
+<span class="math display">\[\Omega^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right).\label{eq:asym_norm-pivot}\]</span>
+We say the asymptotic distribution in
+<a href="#eq:asym_norm-pivot" reference-type="eqref" reference="eq:asym_norm-pivot"><span class="math display">\[eq:asym\_norm-pivot\]</span></a>, <span class="math inline">\(N\left(0,I_{K}\right)\)</span>, is <em>pivotal</em>
+because it does not involve any unknown parameter. In contrast, the
+asymptotic distribution in
+<a href="#eq:asym_norm" reference-type="eqref" reference="eq:asym_norm"><span class="math display">\[eq:asym\_norm\]</span></a> is not pivotal because <span class="math inline">\(\Omega\)</span> is unknown in
+<span class="math inline">\(N\left(0,\Omega\right)\)</span>. If we are interested in the <span class="math inline">\(k\)</span>-th parameter
+<span class="math inline">\(\beta_{k}\)</span>, we can write
+<a href="#eq:asym_norm-pivot" reference-type="eqref" reference="eq:asym_norm-pivot"><span class="math display">\[eq:asym\_norm-pivot\]</span></a> into the pivotal form as
+<span class="math display">\[\frac{\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right)}{\sqrt{\sigma^{2}[Q^{-1}]_{kk}}}\stackrel{d}{\to}N\left(0,1\right).\label{eq:asym_norm_homok_pivot}\]</span></p>
+</div>
+<div id="asymptotic-inference" class="section level2">
+<h2><span class="header-section-number">6.3</span> Asymptotic Inference</h2>
+<p>Up to now we have derived the asymptotic distribution of
+<span class="math inline">\(\widehat{\beta}\)</span>. However,
+<a href="#eq:asym_norm" reference-type="eqref" reference="eq:asym_norm"><span class="math display">\[eq:asym\_norm\]</span></a> or
+<a href="#eq:asym_norm-pivot" reference-type="eqref" reference="eq:asym_norm-pivot"><span class="math display">\[eq:asym\_norm-pivot\]</span></a> will be useful for statistical inference
+only if <span class="math inline">\(\Omega\)</span> is known. In reality <span class="math inline">\(\Omega\)</span> is mostly unknown, and
+therefore we will need to estimate it to make statistical inference
+feasible. Suppose <span class="math inline">\(\tilde{\Omega}\)</span> is any consistent estimator for
+<span class="math inline">\(\Omega\)</span> in that <span class="math inline">\(\tilde{\Omega}\stackrel{p}{\to}\Omega\)</span>. When we
+replace <span class="math inline">\(\Omega\)</span> in
+<a href="#eq:asym_norm-pivot" reference-type="eqref" reference="eq:asym_norm-pivot"><span class="math display">\[eq:asym\_norm-pivot\]</span></a> with <span class="math inline">\(\tilde{\Omega}\)</span>, we have
+<span class="math display">\[\begin{aligned}
+\tilde{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right) &amp; =\tilde{\Omega}^{-1/2}\Omega^{1/2}\times\Omega^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right).\end{aligned}\]</span>
+Because <span class="math inline">\(\Omega\)</span> is positive definite, we have the first factor
+<span class="math inline">\(\tilde{\Omega}^{-1/2}\Omega^{1/2}\stackrel{p}{\to}I_{K}\)</span> by the
+continuous mapping theorem. The second factor is asymptotic normal by
+<a href="#eq:asym_norm-pivot" reference-type="eqref" reference="eq:asym_norm-pivot"><span class="math display">\[eq:asym\_norm-pivot\]</span></a>. Thus Slutsky’s theorem implies
+<span class="math display">\[\tilde{\Omega}^{-1/2}\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,I_{K}\right)\label{eq:asym_norm_feasible}\]</span>
+and
+<a href="#eq:asym_norm_feasible" reference-type="eqref" reference="eq:asym_norm_feasible"><span class="math display">\[eq:asym\_norm\_feasible\]</span></a> is a feasible statistic for
+asymptotic inference.</p>
+<p>The next question is how to consistently estimate
+<span class="math inline">\(\Omega=Q^{-1}\Sigma Q^{-1}\)</span>, or equivalent how to come up with an
+<span class="math inline">\(\tilde{\Omega}\)</span>. We have had <span class="math inline">\(\widehat{Q}\stackrel{p}{\to}Q\)</span>. If we
+have a consistent estimator <span class="math inline">\(\tilde{\Sigma}\)</span> for <span class="math inline">\(\Sigma\)</span>, then we can
+plug in these consistent estimators to form
+<span class="math inline">\(\tilde{\Omega}=\widehat{Q}^{-1}\tilde{\Sigma}\widehat{Q}^{-1}\)</span>. The
+tricky question is how to consistently estimate
+<span class="math inline">\(\Sigma=E\left[x_{i}x_{i}&#39;e_{i}^{2}\right]\)</span>. We cannot use the sample
+mean of <span class="math inline">\(x_{i}x_{i}&#39;e_{i}^{2}\)</span> to estimate <span class="math inline">\(\Sigma\)</span> because <span class="math inline">\(e_{i}\)</span> is
+unobservable. Under homoskedasticity
+<span class="math inline">\(\Omega=Q^{-1}\Sigma Q^{-1}=\sigma^{2}Q^{-1}\)</span>, and similarly we cannot
+use the sample mean of <span class="math inline">\(e_{i}^{2}\)</span> to estimate <span class="math inline">\(\sigma^{2}\)</span>.</p>
+<p>Heteroskedasticity is ubiquitous in econometrics. A regression example
+that naturally generates conditional heteroskedasticity is the <em>linear
+probability model</em> <span class="math inline">\(y_{i}=x_{i}&#39;\beta+e_{i}\)</span>, where
+<span class="math inline">\(y_{i}\in\left\{ 0,1\right\}\)</span> is a binary dependent variable. Assume CEF
+as <span class="math inline">\(E\left[y_{i}|x_{i}\right]=x_{i}&#39;\beta\)</span>, so we can use OLS to
+consistently estimate <span class="math inline">\(\beta\)</span>. The conditional variance
+<span class="math display">\[\mathrm{var}\left[e_{i}|x_{i}\right]=\mathrm{var}\left[y_{i}|x_{i}\right]=E\left[y_{i}|x_{i}\right]\left(1-E\left[y_{i}|x_{i}\right]\right)=x_{i}&#39;\beta\left(1-x_{i}&#39;\beta\right)\]</span>
+explicitly depends on <span class="math inline">\(x_{i}\)</span>. In other words, the conditional variance
+varies with <span class="math inline">\(x_{i}\)</span>.</p>
+<p>Naturally, one may attempt to use the OLS residual
+<span class="math inline">\(\widehat{e}_{i}=\widehat{y}_{i}-x_{i}&#39;\widehat{\beta}\)</span> to replace the
+regression error <span class="math inline">\(e_{i}\)</span>, so that we would have the plug-in estimators
+<span class="math inline">\(\widehat{\Omega}=\widehat{\sigma}^{2}\widehat{Q}^{-1}\)</span> for
+homoskedasticity, where
+<span class="math inline">\(\widehat{\sigma}^{2}=\widehat{e}&#39;\widehat{e}/\left(n-K\right)\)</span> or
+<span class="math inline">\(\widehat{\sigma}^{2}=\widehat{e}&#39;\widehat{e}/n\)</span>, and
+<span class="math inline">\(\widehat{\Omega}=\widehat{Q}^{-1}\widehat{\Sigma}\widehat{Q}^{-1}\)</span> for
+heteroskedasticity, where
+<span class="math inline">\(\widehat{\Sigma}=n^{-1}\sum_{i}x_{i}x_{i}&#39;\widehat{e}_{i}^{2}\)</span>.</p>
+
+<p>If we choose
+<span class="math inline">\(\widehat{\sigma}^{2}=\widehat{e}&#39;\widehat{e}/\left(n-K\right)\)</span> and
+replace <span class="math inline">\(\sigma^{2}\)</span> in
+<a href="#eq:asym_norm_homok_pivot" reference-type="eqref" reference="eq:asym_norm_homok_pivot"><span class="math display">\[eq:asym\_norm\_homok\_pivot\]</span></a>, then the resulting statistic
+<span class="math inline">\(T_{k}=\frac{\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right)}{\sqrt{\widehat{\sigma}^{2}[\widehat{Q}^{-1}]_{kk}}}\)</span>
+is exactly the <span class="math inline">\(t\)</span>-statistic in the finite sample analysis. Recall that
+under the classical normal-error assumption, the <span class="math inline">\(t\)</span>-statistics follows
+exact finite sample <span class="math inline">\(t\)</span>-distribution with degrees of freedom <span class="math inline">\(n-K\)</span>. In
+asymptotic analysis, we allow <span class="math inline">\(e_{i}\)</span> to be any distribution if
+<span class="math inline">\(E\left[e_{i}^{2}|x_{i}\right]&lt;\infty\)</span> (We impose this assumption for
+simplicity. It can be further relaxed in inid cases.) The asymptotic
+normality allows us to conduct asymptotic statistical inference. For the
+same <span class="math inline">\(t\)</span>-statistic, we must draw the critical values from the normal
+distribution, because
+<span class="math display">\[T_{k}=\frac{\sqrt{\sigma^{2}[Q^{-1}]_{kk}}}{\sqrt{\widehat{\sigma}^{2}[\widehat{Q}^{-1}]_{kk}}}\cdot\frac{\sqrt{n}\left(\widehat{\beta}_{k}-\beta_{k}\right)}{\sqrt{\sigma^{2}[Q^{-1}]_{kk}}}\stackrel{d}{\to}1\times N\left(0,1\right)\sim N\left(0,1\right)\]</span>
+by Slutsky’s theorem if
+<span class="math inline">\(\widehat{\sigma}^{2}\stackrel{p}{\to}\sigma^{2}\)</span>.</p>
+
+<p>The next section will give sufficient conditions for
+<span class="math inline">\(\widehat{\sigma}^{2}\stackrel{p}{\to}\sigma^{2}\)</span> and
+<span class="math inline">\(\widehat{\Sigma}\stackrel{p}{\to}\Sigma\)</span>.</p>
+</div>
+<div id="consistency-of-feasible-variance-estimator" class="section level2">
+<h2><span class="header-section-number">6.4</span> Consistency of Feasible Variance Estimator</h2>
+<p>We first show under what conditions all elements of
+<span class="math inline">\(\Sigma=E\left[x_{i}x_{i}&#39;e_{i}^{2}\right]\)</span> are finite. That is,
+<span class="math inline">\(\left\Vert \Sigma\right\Vert _{\infty}&lt;\infty\)</span>, where
+<span class="math inline">\(\left\Vert \cdot\right\Vert _{\infty}\)</span> is the value of the largest
+element in absolute value of a matrix or vector. Let <span class="math inline">\(z_{i}=x_{i}e_{i}\)</span>,
+so <span class="math inline">\(\Sigma=E\left[z_{i}z_{i}&#39;\right]\)</span>.</p>
+<p>For a generic random variable <span class="math inline">\(u_{i}\)</span> with finite variance, define its
+<span class="math inline">\(L_{2}\)</span><em>-norm</em> as <span class="math inline">\(\sqrt{E\left[u_{i}^{2}\right]}\)</span>. Given another
+generic random variable <span class="math inline">\(v_{i}\)</span> with finite variance, define the <em>inner
+product</em> of <span class="math inline">\(u_{i}\)</span> and <span class="math inline">\(v_{i}\)</span> as <span class="math inline">\(E\left[u_{i}v_{i}\right]\)</span>.</p>
+<p><span class="math inline">\(\left|E\left[u_{i}v_{i}\right]\right|\leq\sqrt{E\left[u_{i}^{2}\right]E\left[v_{i}^{2}\right]}\)</span>.</p>
+<p>Because of the Cauchy-Schwarz inequality (cross moments are no larger
+than variance)
+<span class="math display">\[\left\Vert \Sigma\right\Vert _{\infty}=\max_{k\in[K]}E\left[z_{ik}^{2}\right],\]</span>
+where <span class="math inline">\(\left[K\right]:=\left\{ 1,2,\ldots,K\right\}\)</span>. For each <span class="math inline">\(k\)</span>,
+<span class="math display">\[E\left[z_{ik}^{2}\right]=E\left[x_{ik}^{2}e_{i}^{2}\right]\leq\left(E\left[x_{ik}^{4}\right]E\left[e_{i}^{4}\right]\right)^{1/2}\]</span>
+where the last inequality again follows by the Cauchy-Schwarz
+inequality. It implies that the <em>sufficient conditions</em> for finite
+variance are
+<span class="math display">\[\max_{k}E\left[x_{ik}^{4}\right]&lt;\infty\ \ \mbox{and }\ \ E\left[e_{i}^{4}\right]&lt;\infty.\label{eq:4th_moment}\]</span>
+We will maintain these conditions in the following derivation.</p>
+<div id="homoskedasticity" class="section level3">
+<h3><span class="header-section-number">6.4.1</span> Homoskedasticity</h3>
+<p>For the estimation of variance, if the error is homoskedastic,
+<span class="math display">\[\begin{aligned}\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2} &amp; =\frac{1}{n}\sum_{i=1}^{n}\left(e_{i}+x_{i}&#39;\left(\widehat{\beta}-\beta\right)\right)^{2}\\
+ &amp; =\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)&#39;\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}\left(\widehat{\beta}-\beta\right)&#39;x_{i}x_{i}&#39;\left(\widehat{\beta}-\beta\right).
+\end{aligned}
+\label{eq:v-homo1}\]</span></p>
+<p>For a generic <span class="math inline">\(m\)</span>-vector <span class="math inline">\(u\)</span>, define its <span class="math inline">\(L_{2}\)</span><em>-norm</em> as
+<span class="math inline">\(\left\Vert u\right\Vert _{2}=\sqrt{u&#39;u}\)</span>. Given another generic
+<span class="math inline">\(m\)</span>-vector <span class="math inline">\(v\)</span>, define the <em>inner product</em> of <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> as
+<span class="math inline">\(\left\langle u,v\right\rangle =u&#39;v\)</span>.</p>
+<p><span class="math inline">\(\left|\left\langle u,v\right\rangle \right|\leq\left\Vert u\right\Vert _{2}\left\Vert v\right\Vert _{2}\)</span>,
+or equivalently
+<span class="math inline">\(\left|u&#39;v\right|\leq\sqrt{\left(u&#39;u\right)\left(v&#39;v\right)}\)</span>.</p>
+<p>Notice
+<span class="math inline">\(\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{i}\stackrel{p}{\to}E\left[e_{i}x_{i}\right]=0\)</span>,
+the second term of <a href="#eq:v-homo1" reference-type="eqref" reference="eq:v-homo1"><span class="math display">\[eq:v-homo1\]</span></a> is <span class="math display">\[\begin{aligned}
+\left|\left(\frac{2}{n}\sum_{i=1}^{n}e_{i}x_{i}\right)&#39;\left(\widehat{\beta}-\beta\right)\right| &amp; \leq2\left\Vert \frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}\right\Vert _{2}\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\nonumber \\
+ &amp; =o_{p}\left(1\right)o_{p}\left(1\right)=o_{p}\left(1\right)\label{eq:homo1}\end{aligned}\]</span>
+by Cauchy-Schwarz inequality.</p>
+<p>For a generic <span class="math inline">\(m\times m\)</span> symmetric positive semi-definite matrix <span class="math inline">\(A\)</span>
+and a generic <span class="math inline">\(m\)</span> vector <span class="math inline">\(u\)</span>, we have the
+<span class="math display">\[\left\Vert u\right\Vert _{2}^{2}\lambda_{\min}\left(A\right)\leq u&#39;Au\leq\left\Vert u\right\Vert _{2}^{2}\lambda_{\max}\left(A\right).\]</span></p>
+<p>The third term of <a href="#eq:v-homo1" reference-type="eqref" reference="eq:v-homo1"><span class="math display">\[eq:v-homo1\]</span></a> is bounded by <span class="math display">\[\begin{aligned}
+\left(\widehat{\beta}-\beta\right)\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}x_{i}x&#39;_{i}\right)\left(\widehat{\beta}-\beta\right) &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\lambda_{\max}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x&#39;_{i}\right)\nonumber \\
+ &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\mathrm{trace}\left(\frac{1}{n}\sum_{i=1}^{n}x_{i}x&#39;_{i}\right)\nonumber \\
+ &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}K\max_{k}\left\{ \frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\right\} \nonumber \\
+ &amp; =o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right),\label{eq:homo2}\end{aligned}\]</span>
+where the stochastic order follows by
+<span class="math display">\[\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{2}\stackrel{p}{\to}E\left[x_{ik}^{2}\right]&lt;\infty\]</span>
+in view of the condition
+<a href="#eq:4th_moment" reference-type="eqref" reference="eq:4th_moment"><span class="math display">\[eq:4th\_moment\]</span></a>.</p>
+<p>(<a href="#eq:homo1" reference-type="ref" reference="eq:homo1"><span class="math display">\[eq:homo1\]</span></a>)
+and (<a href="#eq:homo2" reference-type="ref" reference="eq:homo2"><span class="math display">\[eq:homo2\]</span></a>) implies that
+<span class="math display">\[\frac{1}{n}\sum_{i=1}^{n}\widehat{e}_{i}^{2}=\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+o_{p}\left(1\right)+o_{p}\left(1\right)=\frac{1}{n}\sum_{i=1}^{n}e_{i}^{2}+o_{p}\left(1\right)\stackrel{p}{\to}\sigma_{e}^{2}.\]</span>
+(See Appendix for the operations of small op and big Op.)</p>
+</div>
+<div id="heteroskedasticity" class="section level3">
+<h3><span class="header-section-number">6.4.2</span> Heteroskedasticity</h3>
+<p>The basic strategy of proof is similar for the general case of
+heteroskedasticity, though each step is more complicated.
+<span class="math display">\[\begin{aligned}\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}&#39;\widehat{e}_{i}^{2} &amp; =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}&#39;\left(e_{i}+x_{i}&#39;\left(\widehat{\beta}-\beta\right)\right)^{2}\\
+ &amp; =\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}&#39;e_{i}^{2}+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}&#39;\cdot e_{i}x_{i}&#39;\left(\widehat{\beta}-\beta\right)+\frac{1}{n}\sum_{i=1}^{n}x_{i}x_{i}&#39;\left(\left(\widehat{\beta}-\beta\right)&#39;x_{i}\right)^{2}.
+\end{aligned}
+\label{eq:v-hetero}\]</span></p>
+<p>For a generic <span class="math inline">\(m\)</span>-vector <span class="math inline">\(u\)</span>, its <span class="math inline">\(L_{p}\)</span>-norm (for <span class="math inline">\(p\geq1\)</span>) is defined
+as
+<span class="math inline">\(\left\Vert u\right\Vert _{p}=\left(\left|u_{1}\right|^{p}+\cdots+\left|u_{m}\right|^{p}\right)^{1/p}\)</span>.</p>
+<p>For two generic <span class="math inline">\(m\)</span>-vectors <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span>,
+<span class="math display">\[\left|u&#39;v\right|\leq\left\Vert u\right\Vert _{p}\left\Vert q\right\Vert _{q}\]</span>
+for any <span class="math inline">\(p,q\in[1,\infty)\)</span> and <span class="math inline">\(1/p+1/q=1\)</span>.</p>
+<p>Cauchy-Schwarz inequality is a special case of Holder’s inequality when
+<span class="math inline">\(p=q=2\)</span>.</p>
+<p>The second term of
+<a href="#eq:v-hetero" reference-type="eqref" reference="eq:v-hetero"><span class="math display">\[eq:v-hetero\]</span></a> is bounded by
+<span class="math display">\[\begin{aligned} &amp; \max_{k,k&#39;}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}x_{ik&#39;}\cdot e_{i}x_{i}&#39;\left(\widehat{\beta}-\beta\right)\right|\\
+ &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\max_{k,k&#39;}\left\Vert \frac{1}{n}\sum_{i=1}^{n}x_{i}e_{i}x_{ik}x_{ik&#39;}\right\Vert _{2}\\
+ &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\sqrt{K}\max_{k,k&#39;,k&#39;&#39;}\left|\frac{1}{n}\sum_{i=1}^{n}e_{i}x_{ik}x_{ik&#39;}x_{ik&#39;&#39;}\right|\\
+ &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\sqrt{K}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\right)^{1/4}\max_{k,k&#39;,k&#39;&#39;}\left(\frac{1}{n}\sum_{i=1}^{n}\left(x_{ik}x_{ik&#39;}x_{ik&#39;&#39;}\right)^{4/3}\right)^{3/4}\\
+ &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}\sqrt{K}\left(\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\right)^{1/4}\max_{k}\left(\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\right)^{3/4}\\
+ &amp; =o_{p}\left(1\right)O_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right)
+\end{aligned}\]</span> where the third inequality hold by the Holder’s
+inequality with <span class="math inline">\(p=4\)</span> and <span class="math inline">\(q=4/3\)</span>, and the stochastic order is
+guaranteed if under suitable conditions
+<span class="math display">\[\frac{1}{n}\sum_{i=1}^{n}e_{i}^{4}\stackrel{p}{\to}E\left[e_{i}^{4}\right]&lt;\infty\ \ \text{and }\ \ \frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\stackrel{p}{\to}E\left[x_{ik}^{4}\right]&lt;\infty.\]</span></p>
+<p>The third term of <a href="#eq:v-hetero" reference-type="eqref" reference="eq:v-hetero"><span class="math display">\[eq:v-hetero\]</span></a> is bounded by
+<span class="math display">\[\begin{aligned} &amp; \max_{k_{1},k_{2}}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik_{1}}x_{ik_{2}}\left(\left(\widehat{\beta}-\beta\right)&#39;x_{i}\right)^{2}\right|\\
+ &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k_{1},k_{2}}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik_{1}}x_{ik_{2}}\left(x_{i}x_{i}&#39;\right)\right|\\
+ &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k_{1},k_{2},k_{3},k_{4}}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik_{1}}x_{ik_{2}}x_{ik_{3}}x_{ik_{4}}\right|\\
+ &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k_{1},k_{2}}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik_{1}}^{2}x_{ik_{2}}^{2}\right|\\
+ &amp; \leq\left\Vert \widehat{\beta}-\beta\right\Vert _{2}^{2}\max_{k}\left|\frac{1}{n}\sum_{i=1}^{n}x_{ik}^{4}\right|\\
+ &amp; =o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right).
+\end{aligned}\]</span> where the third and the fourth inequalities follow by
+applying Cauchy Schwarz inequality.</p>
+</div>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">6.5</span> Summary</h2>
+<p>One of the most important techniques in asymptotic theory is
+manipulating inequalities. These derivations of the variances look
+complicated at first glance, but is often encountered in proofs of
+theoretical results. After many years of torment, you will be accustomed
+to these routine calculations.</p>
+<p><strong>Historical notes</strong>: <span class="citation">White (<a href="#ref-white1980heteroskedasticity" role="doc-biblioref">1980</a>)</span> drew attention of
+economic contexts that violate the classical statistical assumptions in
+linear regressions. It seeded econometricians’ care, or obsession, in
+variance estimation for statistical inference. The following decades has
+witnessed a plethora of proposals of variance estimation that deal with
+various deviation from the classical assumptions.</p>
+<p><strong>Further reading</strong>: In this chapter all vectors are of finite
+dimensional. Some results can be extended to allow infinite <span class="math inline">\(K\)</span> when
+<span class="math inline">\(K\to\infty\)</span> at a much slower speed than <span class="math inline">\(n\)</span>. Such asymptotic
+development will require multiple indices, and it goes beyond the
+simplest case of <span class="math inline">\(n\to\infty\)</span> that we learned here. Big data is
+accompanied by big model, in which the model itself is indexed by the
+sample size and can grow more sophisticated as <span class="math inline">\(n\)</span> get bigger. In the
+proofs of my latest paper <span class="citation">Shi, Su, and Xie (<a href="#ref-shi2020high" role="doc-biblioref">2020</a>)</span>, You will find loads of
+inequality operations of similar flavor to this chapter.</p>
+</div>
+<div id="appendix" class="section level2">
+<h2><span class="header-section-number">6.6</span> Appendix</h2>
+<p>We introduce the “big Op and small op” notation. They are the stochastic
+counterparts of the “big O and small o” notation in deterministic cases.</p>
+<ul>
+<li><p>Small op: <span class="math inline">\(x_{n}=o_{p}\left(r_{n}\right)\)</span> if
+<span class="math inline">\(x_{n}/r_{n}\stackrel{p}{\to}0\)</span>.</p></li>
+<li><p>Big Op: <span class="math inline">\(x_{n}=O_{p}\left(r_{n}\right)\)</span> if for any <span class="math inline">\(\varepsilon&gt;0\)</span>,
+there exists a <span class="math inline">\(c&gt;0\)</span> such that
+<span class="math inline">\(P\left(\left|x_{n}\right|/r_{n}&gt;c\right)&lt;\varepsilon\)</span>.</p></li>
+</ul>
+<p>Some operations:</p>
+<ul>
+<li><p><span class="math inline">\(o_{p}\left(1\right)+o_{p}\left(1\right)=o_{p}\left(1\right)\)</span>;</p></li>
+<li><p><span class="math inline">\(o_{p}\left(1\right)+O_{p}\left(1\right)=O_{p}\left(1\right)\)</span>;</p></li>
+<li><p><span class="math inline">\(o_{p}\left(1\right)O_{p}\left(1\right)=o_{p}\left(1\right)\)</span>.</p></li>
+</ul>
+<p>The big Op and small op notation allows us to keep using equalities in
+calculation while expressing the stochastic order of random objects.</p>
+
+<p><code>Zhentao Shi. Oct 21, 2020.</code></p>
+
+
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-shi2020high">
+<p>Shi, Zhentao, Liangjun Su, and Tian Xie. 2020. “High Dimensional Forecast Combinations Under Latent Structures.” <em>arXiv</em> 2010.09477.</p>
+</div>
+<div id="ref-white1980heteroskedasticity">
+<p>White, Halbert. 1980. “A Heteroskedasticity-Consistent Covariance Matrix Estimator and a Direct Test for Heteroskedasticity.” <em>Econometrica</em>, 817–38.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basic-asymptotic-theory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="asymptotic-properties-of-mle.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

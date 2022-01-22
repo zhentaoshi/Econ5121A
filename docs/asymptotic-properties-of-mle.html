@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>7 Asymptotic Properties of MLE | Econ5121</title>
+  <meta name="description" content="nothing" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="7 Asymptotic Properties of MLE | Econ5121" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="nothing" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="7 Asymptotic Properties of MLE | Econ5121" />
+  
+  <meta name="twitter:description" content="nothing" />
+  
+
+<meta name="author" content="Zhentao Shi" />
+
+
+<meta name="date" content="2022-01-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="asymptotic-properties-of-least-squares.html"/>
+<link rel="next" href="hypothesis-testing.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>1</b> Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="probability.html"><a href="probability.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="probability.html"><a href="probability.html#axiomatic-probability"><i class="fa fa-check"></i><b>1.2</b> Axiomatic Probability</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="probability.html"><a href="probability.html#probability-space"><i class="fa fa-check"></i><b>1.2.1</b> Probability Space</a></li>
+<li class="chapter" data-level="1.2.2" data-path="probability.html"><a href="probability.html#random-variable"><i class="fa fa-check"></i><b>1.2.2</b> Random Variable</a></li>
+<li class="chapter" data-level="1.2.3" data-path="probability.html"><a href="probability.html#distribution-function"><i class="fa fa-check"></i><b>1.2.3</b> Distribution Function</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="probability.html"><a href="probability.html#expected-value"><i class="fa fa-check"></i><b>1.3</b> Expected Value</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="probability.html"><a href="probability.html#integration"><i class="fa fa-check"></i><b>1.3.1</b> Integration</a></li>
+<li class="chapter" data-level="1.3.2" data-path="probability.html"><a href="probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>1.3.2</b> Properties of Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="probability.html"><a href="probability.html#multivariate-random-variable"><i class="fa fa-check"></i><b>1.4</b> Multivariate Random Variable</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="probability.html"><a href="probability.html#conditional-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>1.4.1</b> Conditional Probability and Bayes’ Theorem</a></li>
+<li class="chapter" data-level="1.4.2" data-path="probability.html"><a href="probability.html#independence"><i class="fa fa-check"></i><b>1.4.2</b> Independence</a></li>
+<li class="chapter" data-level="1.4.3" data-path="probability.html"><a href="probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>1.4.3</b> Law of Iterated Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conditional-expectation.html"><a href="conditional-expectation.html"><i class="fa fa-check"></i><b>2</b> Conditional Expectation</a><ul>
+<li class="chapter" data-level="2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#linear-projection"><i class="fa fa-check"></i><b>2.1</b> Linear Projection</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#omitted-variable-bias"><i class="fa fa-check"></i><b>2.1.1</b> Omitted Variable Bias</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#causality"><i class="fa fa-check"></i><b>2.2</b> Causality</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#structure-and-identification"><i class="fa fa-check"></i><b>2.2.1</b> Structure and Identification</a></li>
+<li class="chapter" data-level="2.2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#treatment-effect"><i class="fa fa-check"></i><b>2.2.2</b> Treatment Effect</a></li>
+<li class="chapter" data-level="2.2.3" data-path="conditional-expectation.html"><a href="conditional-expectation.html#ate-and-cef"><i class="fa fa-check"></i><b>2.2.3</b> ATE and CEF</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html"><i class="fa fa-check"></i><b>3</b> Least Squares: Linear Algebra</a><ul>
+<li class="chapter" data-level="3.1" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#estimator"><i class="fa fa-check"></i><b>3.1</b> Estimator</a></li>
+<li class="chapter" data-level="3.2" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#subvector"><i class="fa fa-check"></i><b>3.2</b> Subvector</a></li>
+<li class="chapter" data-level="3.3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#goodness-of-fit"><i class="fa fa-check"></i><b>3.3</b> Goodness of Fit</a></li>
+<li class="chapter" data-level="3.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html"><i class="fa fa-check"></i><b>4</b> Least Squares: Finite Sample Theory</a><ul>
+<li class="chapter" data-level="4.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#maximum-likelihood"><i class="fa fa-check"></i><b>4.1</b> Maximum Likelihood</a></li>
+<li class="chapter" data-level="4.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#likelihood-estimation-for-regression"><i class="fa fa-check"></i><b>4.2</b> Likelihood Estimation for Regression</a></li>
+<li class="chapter" data-level="4.3" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#finite-sample-distribution"><i class="fa fa-check"></i><b>4.3</b> Finite Sample Distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#mean-and-variancemean-and-variance"><i class="fa fa-check"></i><b>4.4</b> Mean and Variance<span id="mean-and-variance" label="mean-and-variance"><span class="math display">\[mean-and-variance\]</span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>4.5</b> Gauss-Markov Theorem</a></li>
+<li class="chapter" data-level="4.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>4.7</b> Appendix</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#joint-normal-distribution"><i class="fa fa-check"></i><b>4.7.1</b> Joint Normal Distribution</a></li>
+<li class="chapter" data-level="4.7.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#basus-theorem-subsecbasus-theoremsubsecbasus-theorem-labelsubsecbasus-theorem"><i class="fa fa-check"></i><b>4.7.2</b> Basu’s Theorem* [<span class="math display">\[subsec:Basu\&#39;s-Theorem\]</span>]{#subsec:Basu’s-Theorem label=“subsec:Basu’s-Theorem”}</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html"><i class="fa fa-check"></i><b>5</b> Basic Asymptotic Theory</a><ul>
+<li class="chapter" data-level="5.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#modes-of-convergence"><i class="fa fa-check"></i><b>5.1</b> Modes of Convergence</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#law-of-large-numbers"><i class="fa fa-check"></i><b>5.2</b> Law of Large Numbers</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#cherbyshev-lln"><i class="fa fa-check"></i><b>5.2.1</b> Cherbyshev LLN</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#central-limit-theorem"><i class="fa fa-check"></i><b>5.3</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="5.4" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#tools-for-transformations"><i class="fa fa-check"></i><b>5.4</b> Tools for Transformations</a></li>
+<li class="chapter" data-level="5.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html"><i class="fa fa-check"></i><b>6</b> Asymptotic Properties of Least Squares</a><ul>
+<li class="chapter" data-level="6.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>6.1</b> Consistency</a></li>
+<li class="chapter" data-level="6.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-distribution"><i class="fa fa-check"></i><b>6.2</b> Asymptotic Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-inference"><i class="fa fa-check"></i><b>6.3</b> Asymptotic Inference</a></li>
+<li class="chapter" data-level="6.4" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency-of-feasible-variance-estimator"><i class="fa fa-check"></i><b>6.4</b> Consistency of Feasible Variance Estimator</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#homoskedasticity"><i class="fa fa-check"></i><b>6.4.1</b> Homoskedasticity</a></li>
+<li class="chapter" data-level="6.4.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#heteroskedasticity"><i class="fa fa-check"></i><b>6.4.2</b> Heteroskedasticity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
+<li class="chapter" data-level="6.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>6.6</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html"><i class="fa fa-check"></i><b>7</b> Asymptotic Properties of MLE</a><ul>
+<li class="chapter" data-level="7.1" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#examples-of-mle"><i class="fa fa-check"></i><b>7.1</b> Examples of MLE</a></li>
+<li class="chapter" data-level="7.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>7.2</b> Consistency</a></li>
+<li class="chapter" data-level="7.3" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#asymptotic-normality"><i class="fa fa-check"></i><b>7.3</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="7.4" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#information-matrix-equality"><i class="fa fa-check"></i><b>7.4</b> Information Matrix Equality</a></li>
+<li class="chapter" data-level="7.5" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#cramer-rao-lower-bound"><i class="fa fa-check"></i><b>7.5</b> Cramer-Rao Lower Bound</a></li>
+<li class="chapter" data-level="7.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis Testing</a><ul>
+<li class="chapter" data-level="8.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing"><i class="fa fa-check"></i><b>8.1</b> Testing</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#decision-rule-and-errors"><i class="fa fa-check"></i><b>8.1.1</b> Decision Rule and Errors</a></li>
+<li class="chapter" data-level="8.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#optimality"><i class="fa fa-check"></i><b>8.1.2</b> Optimality</a></li>
+<li class="chapter" data-level="8.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-and-wilks-theorem"><i class="fa fa-check"></i><b>8.1.3</b> Likelihood-Ratio Test and Wilks’ theorem</a></li>
+<li class="chapter" data-level="8.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#score-test"><i class="fa fa-check"></i><b>8.1.4</b> Score Test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#confidence-intervalconfidence-interval"><i class="fa fa-check"></i><b>8.2</b> Confidence Interval<span id="confidence-interval" label="confidence-interval"><span class="math display">\[confidence-interval\]</span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#bayesian-credible-set"><i class="fa fa-check"></i><b>8.3</b> Bayesian Credible Set</a></li>
+<li class="chapter" data-level="8.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#applications-in-ols"><i class="fa fa-check"></i><b>8.4</b> Applications in OLS</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-test"><i class="fa fa-check"></i><b>8.4.1</b> Wald Test</a></li>
+<li class="chapter" data-level="8.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lagrangian-multiplier-test"><i class="fa fa-check"></i><b>8.4.2</b> Lagrangian Multiplier Test</a></li>
+<li class="chapter" data-level="8.4.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-for-regression"><i class="fa fa-check"></i><b>8.4.3</b> Likelihood-Ratio Test for Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>8.5</b> Summary</a></li>
+<li class="chapter" data-level="8.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>8.6</b> Appendix</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#neyman-pearson-lemma"><i class="fa fa-check"></i><b>8.6.1</b> Neyman-Pearson Lemma</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="panel-data.html"><a href="panel-data.html"><i class="fa fa-check"></i><b>9</b> Panel Data</a><ul>
+<li class="chapter" data-level="9.1" data-path="panel-data.html"><a href="panel-data.html#fixed-effect"><i class="fa fa-check"></i><b>9.1</b> Fixed Effect</a></li>
+<li class="chapter" data-level="9.2" data-path="panel-data.html"><a href="panel-data.html#random-effect"><i class="fa fa-check"></i><b>9.2</b> Random Effect</a></li>
+<li class="chapter" data-level="9.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="endogeneity.html"><a href="endogeneity.html"><i class="fa fa-check"></i><b>10</b> Endogeneity</a><ul>
+<li class="chapter" data-level="10.1" data-path="endogeneity.html"><a href="endogeneity.html#identification"><i class="fa fa-check"></i><b>10.1</b> Identification</a></li>
+<li class="chapter" data-level="10.2" data-path="endogeneity.html"><a href="endogeneity.html#instruments"><i class="fa fa-check"></i><b>10.2</b> Instruments</a></li>
+<li class="chapter" data-level="10.3" data-path="endogeneity.html"><a href="endogeneity.html#sources-of-endogeneity"><i class="fa fa-check"></i><b>10.3</b> Sources of Endogeneity</a></li>
+<li class="chapter" data-level="10.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>10.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html"><i class="fa fa-check"></i><b>11</b> Generalized Method of Moments</a><ul>
+<li class="chapter" data-level="11.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#instrumental-regression"><i class="fa fa-check"></i><b>11.1</b> Instrumental Regression</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#just-identification"><i class="fa fa-check"></i><b>11.1.1</b> Just-identification</a></li>
+<li class="chapter" data-level="11.1.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#over-identification"><i class="fa fa-check"></i><b>11.1.2</b> Over-identification</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-estimator"><i class="fa fa-check"></i><b>11.2</b> GMM Estimator</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#efficient-gmm"><i class="fa fa-check"></i><b>11.2.1</b> Efficient GMM</a></li>
+<li class="chapter" data-level="11.2.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-step-gmm"><i class="fa fa-check"></i><b>11.2.2</b> Two-Step GMM</a></li>
+<li class="chapter" data-level="11.2.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-stage-least-squares"><i class="fa fa-check"></i><b>11.2.3</b> Two Stage Least Squares</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-in-nonlinear-model"><i class="fa fa-check"></i><b>11.3</b> GMM in Nonlinear Model</a></li>
+<li class="chapter" data-level="11.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econ5121</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="asymptotic-properties-of-mle" class="section level1">
+<h1><span class="header-section-number">7</span> Asymptotic Properties of MLE</h1>
+<div id="examples-of-mle" class="section level2">
+<h2><span class="header-section-number">7.1</span> Examples of MLE</h2>
+<p>Normal, Logistic, Probit, Poisson</p>
+</div>
+<div id="consistency" class="section level2">
+<h2><span class="header-section-number">7.2</span> Consistency</h2>
+<p>We specify a parametric distribution (pdf) <span class="math inline">\(f\left(x;\theta\right)\)</span> and
+a parameter space <span class="math inline">\(\Theta\)</span>. Define
+<span class="math inline">\(Q\left(\theta\right)=E\left[\log f\left(x;\theta\right)\right]\)</span>, and
+<span class="math inline">\(\theta_{0}=\arg\max_{\theta\in\Theta}Q\left(\theta\right)\)</span> maximizes
+the expected log-likelihood. Given a sample of <span class="math inline">\(n\)</span> observations, we
+compute the average sample log-likelihood
+<span class="math inline">\(\ell_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\log f\left(x;\theta\right)\)</span>.
+The MLE estimator is
+<span class="math inline">\(\widehat{\theta}=\arg\max_{\theta\in\Theta}\ell_{n}\left(\theta\right)\)</span>.</p>
+<p>We say that <em>correctly specified</em> if the data
+<span class="math inline">\(\left(x_{1},\ldots,x_{n}\right)\)</span> is generated from the pdf
+<span class="math inline">\(f\left(x;\theta\right)\)</span> for some <span class="math inline">\(\theta\in\Theta\)</span>. Otherwise if the
+data is not generated from any member in the class of distributions
+<span class="math inline">\(\mathcal{M}^{*}:=\left\{ \theta\in\Theta:f\left(x;\theta\right)\right\}\)</span>,
+we say it is <em>misspecified</em>. When the model is misspecified, strictly
+speaking the log-likelihood function <span class="math inline">\(\ell_{n}\left(\theta\right)\)</span>
+should be called quasi log-likelihood and the MLE estimator
+<span class="math inline">\(\widehat{\theta}\)</span> should be called the <em>quasi MLE</em>.</p>
+<p>We will discuss under what condition
+<span class="math inline">\(\widehat{\theta}\stackrel{p}{\to}\theta_{0}\)</span>, that is, the maximizer of
+the sample log-likelihood converges in probability to the maximizer of
+the expected log-likelihood in population. Notice that unlike OLS, most
+MLE estimators do not admit a closed-form. They are defined as a
+maximizer and solved by numerical optimization.</p>
+<p>The first requirement for the consistency of MLE is that <span class="math inline">\(\theta_{0}\)</span>
+uniquely defined. Suppose <span class="math inline">\(\theta_{0}\in\mathrm{int}\left(\Theta\right)\)</span>
+lies in the interior of <span class="math inline">\(\Theta\)</span>. Let
+<span class="math inline">\(N\left(\theta_{0},\varepsilon\right)=\left\{ \theta\in\Theta:\left|\theta-\theta_{0}\right|&lt;\varepsilon\right\}\)</span>
+is a neighborhood around <span class="math inline">\(\theta_{0}\)</span> with radius <span class="math inline">\(\varepsilon\)</span> for some
+<span class="math inline">\(\varepsilon&gt;0\)</span>.</p>
+<p>The value <span class="math inline">\(\theta_{0}\)</span> is identified if for any <span class="math inline">\(\varepsilon&gt;0\)</span>, there
+exists a <span class="math inline">\(\delta=\delta\left(\varepsilon\right)&gt;0\)</span> such that
+<span class="math inline">\(Q\left(\theta_{0}\right)&gt;\sup_{\theta\in\Theta\backslash N\left(\theta_{0},\varepsilon\right)}Q\left(\theta\right)+\delta\)</span>.</p>
+<p>We know under suitable condition, LLN implies
+<span class="math inline">\(\ell_{n}\left(\theta\right)\stackrel{p}{\to}Q\left(\theta\right)\)</span> for
+each <span class="math inline">\(\theta\in\Theta\)</span>. This is a pointwise result, meaning <span class="math inline">\(\theta\)</span> is
+taken as fixed as <span class="math inline">\(n\to\infty\)</span>. However, <span class="math inline">\(\widehat{\theta}\)</span> is random in
+finite-sample, which makes <span class="math inline">\(\ell_{n}(\widehat{\theta})\)</span> a complicated
+function of the data in particular when <span class="math inline">\(\widehat{\theta}\)</span> has no
+closed-form solution. We therefore need to strengthen the pointwise LLN.</p>
+<p>We say a <em>uniform law of large numbers</em> (ULLN) for
+<span class="math inline">\(Q\left(\theta\right)\)</span> holds on <span class="math inline">\(\Theta\)</span> if
+<span class="math display">\[P\left\{ \sup_{\theta\in\Theta}\left|\ell_{n}\left(\theta\right)-Q\left(\theta\right)\right|\geq\varepsilon\right\} \to0\label{eq:ULLN}\]</span>
+for all <span class="math inline">\(\varepsilon&gt;0\)</span> as <span class="math inline">\(n\to\infty\)</span>.</p>
+<p>ULLN can be established under pointwise LLN plus some regularity
+conditions, for example when <span class="math inline">\(\Theta\)</span> is a compact set, and
+<span class="math inline">\(\log f\left(x;\cdot\right)\)</span> is continuous in <span class="math inline">\(\theta\)</span> almost everywhere
+on the support of <span class="math inline">\(x\)</span>.</p>
+<p>If <span class="math inline">\(\theta_{0}\)</span> is identified and ULLN
+<a href="#eq:ULLN" reference-type="eqref" reference="eq:ULLN"><span class="math display">\[eq:ULLN\]</span></a>
+hold, then <span class="math inline">\(\widehat{\theta}\stackrel{p}{\to}\theta_{0}\)</span>.</p>
+<p>According to the definition of consistency, we can check
+<span class="math display">\[\begin{aligned}
+ &amp; P\left\{ \left|\widehat{\theta}-\theta_{0}\right|&gt;\varepsilon\right\} \leq P\left\{ Q\left(\theta_{0}\right)-Q(\widehat{\theta})&gt;\delta\right\} \\
+ &amp; =P\left\{ Q\left(\theta_{0}\right)-\ell_{n}\left(\theta_{0}\right)+\ell_{n}\left(\theta_{0}\right)-\ell_{n}(\widehat{\theta})+\ell_{n}\left(\widehat{\theta}\right)-Q(\widehat{\theta})&gt;\delta\right\} \\
+ &amp; \leq P\left\{ \left|Q\left(\theta_{0}\right)-\ell_{n}\left(\theta_{0}\right)\right|+\ell_{n}\left(\theta_{0}\right)-\ell_{n}(\widehat{\theta})+\left|\ell_{n}\left(\widehat{\theta}\right)-Q(\widehat{\theta})\right|&gt;\delta\right\} \\
+ &amp; \leq P\left\{ \left|Q\left(\theta_{0}\right)-\ell_{n}\left(\theta_{0}\right)\right|+\left|\ell_{n}(\widehat{\theta})-Q(\widehat{\theta})\right|\geq\delta\right\} \\
+ &amp; \leq P\left\{ 2\sup_{\theta\in\Theta}\left|\ell_{n}\left(\theta\right)-Q\left(\theta\right)\right|\geq\delta\right\} =P\left\{ \sup_{\theta\in\Theta}\left|\ell_{n}\left(\theta\right)-Q\left(\theta\right)\right|\geq\frac{\delta}{2}\right\} \to0.\end{aligned}\]</span>
+The first line holds because of identification, the third line by the
+triangle inequality, the fourth line by the definition of MLE that
+<span class="math inline">\(\ell_{n}(\widehat{\theta})\geq\ell_{n}\left(\theta_{0}\right)\)</span>, and the
+last line by ULLN.</p>
+<p>Identification is a necessary condition for consistent estimation.
+Although <span class="math inline">\(\widehat{\theta}\)</span> has no closed-form solution in general, we
+establish consistency via ULLN over all point <span class="math inline">\(\theta\in\Theta\)</span> under
+consideration.</p>
+</div>
+<div id="asymptotic-normality" class="section level2">
+<h2><span class="header-section-number">7.3</span> Asymptotic Normality</h2>
+<p>The next step is to derive the asymptotic distribution of the MLE
+estimator. Let
+<span class="math inline">\(s\left(x;\theta\right)=\partial\log f\left(x;\theta\right)/\partial\theta\)</span>
+and
+<span class="math inline">\(h\left(x;\theta\right)=\frac{\partial^{2}}{\partial\theta\partial\theta&#39;}\log f\left(x;\theta\right)\)</span></p>
+<p><span id="thm:mis-MLE" label="thm:mis-MLE"><span class="math display">\[thm:mis-MLE\]</span></span> Under suitable
+regularity conditions, the MLE estimator
+<span class="math display">\[\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(E\left[h\left(x;\theta_{0}\right)\right]\right)^{-1}\mathrm{var}\left[s\left(x;\theta_{0}\right)\right]\left(E\left[h\left(x;\theta_{0}\right)\right]\right)^{-1}\right).\]</span></p>
+<p>The “suitable regularity conditions” will be spelled out later. Indeed,
+those conditions can be observed in the proof.</p>
+<p>That <span class="math inline">\(\widehat{\theta}\)</span> is a maximizer entails
+<span class="math inline">\(\frac{\partial}{\partial\theta}\ell_{n}\left(\widehat{\theta}\right)=0\)</span>.
+Take a Taylor expansion of
+<span class="math inline">\(\frac{\partial}{\partial\theta}\ell_{n}\left(\widehat{\theta}\right)\)</span>
+around <span class="math inline">\(\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)\)</span>:
+<span class="math display">\[0-\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)=\frac{\partial}{\partial\theta}\ell_{n}\left(\widehat{\theta}\right)-\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)=\frac{\partial}{\partial\theta\partial\theta&#39;}\ell_{n}\left(\dot{\theta}\right)\left(\widehat{\theta}-\theta_{0}\right)\]</span>
+where <span class="math inline">\(\dot{\theta}\)</span> is some point on the line segment connecting
+<span class="math inline">\(\widehat{\theta}\)</span> and <span class="math inline">\(\theta_{0}.\)</span> Rearrange the above equation and
+multiply both side by <span class="math inline">\(\sqrt{n}:\)</span>
+<span class="math display">\[\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)=-\left(\frac{\partial}{\partial\theta\partial\theta&#39;}\ell_{n}\left(\dot{\theta}\right)\right)^{-1}\sqrt{n}\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right).\label{eq:taylor1}\]</span></p>
+<p>When <span class="math inline">\(Q\left(\theta\right)\)</span> is differentiable at <span class="math inline">\(\theta_{0}\)</span>, we have
+<span class="math inline">\(\frac{\partial}{\partial\theta}Q\left(\theta_{0}\right)=0\)</span> by the first
+condition of optimality of <span class="math inline">\(\theta_{0}\)</span> for <span class="math inline">\(Q\left(\theta\right)\)</span>.
+Notice that
+<span class="math inline">\(E\left[s\left(x;\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}Q\left(\theta_{0}\right)=0\)</span>
+if differentiation and integration are interchangeable. By CLT, the
+second factor in <a href="#eq:taylor1" reference-type="eqref" reference="eq:taylor1"><span class="math display">\[eq:taylor1\]</span></a> follows
+<span class="math display">\[\sqrt{n}\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathrm{var}\left[s\left(x;\theta_{0}\right)\right]\right).\]</span>
+Suppose the second factor in
+<a href="#eq:taylor1" reference-type="eqref" reference="eq:taylor1"><span class="math display">\[eq:taylor1\]</span></a> follows
+<span class="math inline">\(\frac{\partial}{\partial\theta\partial\theta&#39;}\ell_{n}\left(\dot{\theta}\right)\stackrel{p}{\to}E\left[h\left(x;\theta_{0}\right)\right]\)</span>
+(sufficient if we assume
+<span class="math inline">\(E\left[\frac{\partial^{3}}{\partial\theta_{i}\partial\theta_{j}\partial\theta_{l}}\log f\left(x;\theta_{0}\right)\right]\)</span>
+is continuous in <span class="math inline">\(\theta\)</span> for all <span class="math inline">\(i,j,l\leq K\)</span>. Thus we have the
+conclusion by Slutsky’s theorem.</p>
+<p>When the model is misspecified, the asymptotic variance takes a
+complicated sandwich form. When the parametric model is correctly
+specified, then the asymptotic variance can be further simplified,
+thanks to the following important result of information matrix equality.</p>
+</div>
+<div id="information-matrix-equality" class="section level2">
+<h2><span class="header-section-number">7.4</span> Information Matrix Equality</h2>
+<p>When the model is correctly specified, <span class="math inline">\(\theta_{0}\)</span> is the <em>true</em>
+parameter value. The variance
+<span class="math inline">\(\mathcal{I}\left(\theta_{0}\right):=\mathrm{var}_{f\left(x;\theta_{0}\right)}\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]\)</span>
+is called the <em>(Fisher) information matrix</em>, and
+<span class="math inline">\(\mathcal{H}\left(\theta_{0}\right):=E_{f\left(x;\theta_{0}\right)}\left[h\left(x;\theta_{0}\right)\right]\)</span>
+is called the <em>expected Hessian matrix</em>. Here we emphasize the true
+underlying distribution <span class="math inline">\(f\left(x;\theta_{0}\right)\)</span> by writing it as
+the subscript of the mathematical expectations.</p>
+<p><span id="fact:Info" label="fact:Info"><span class="math display">\[fact:Info\]</span></span>Under suitable regularity
+conditions, we have
+<span class="math inline">\(\mathcal{I}\left(\theta_{0}\right)=-\mathcal{H}\left(\theta_{0}\right)\)</span></p>
+<p>Because <span class="math inline">\(f\left(x;\theta_{0}\right)\)</span> a pdf,
+<span class="math inline">\(\int f\left(x;\theta_{0}\right)dx=1\)</span>. Take partial derivative with
+respect to <span class="math inline">\(\theta\)</span>, <span class="math display">\[\begin{aligned}
+0 &amp; =\int\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)dx=\int\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta_{0}\right)}f\left(x;\theta_{0}\right)dx\nonumber \\
+ &amp; =\int\left[s\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx=E_{f\left(x;\theta_{0}\right)}\left[s\left(x;\theta_{0}\right)\right]\label{eq:info_eqn_1}\end{aligned}\]</span>
+where the third equality holds as by the chain rule
+<span class="math display">\[s\left(x;\theta_{0}\right)=\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta_{0}\right)}.\label{eq:ell_d}\]</span>
+Take a second partial derivative of
+(<a href="#eq:info_eqn_1" reference-type="ref" reference="eq:info_eqn_1"><span class="math display">\[eq:info\_eqn\_1\]</span></a>) with respective to <span class="math inline">\(\theta\)</span>, according to
+the chain rule: <span class="math display">\[\begin{aligned}
+0 &amp; =\int\left[h\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[s\left(x;\theta_{0}\right)\right]\frac{\partial}{\partial\theta&#39;}f\left(x;\theta_{0}\right)dx\\
+ &amp; =\int\left[h\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int s\left(x;\theta_{0}\right)\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta\right)}f\left(x;\theta_{0}\right)dx\\
+ &amp; =\int\left[h\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[s\left(x;\theta_{0}\right)s\left(x;\theta_{0}\right)&#39;\right]f\left(x;\theta_{0}\right)dx\\
+ &amp; =E_{f\left(x;\theta_{0}\right)}\left[h\left(x;\theta_{0}\right)\right]+E_{f\left(x;\theta_{0}\right)}\left[s\left(x;\theta_{0}\right)s\left(x;\theta_{0}\right)&#39;\right]\\
+ &amp; =\mathcal{H}\left(\theta_{0}\right)+\mathcal{I}\left(\theta_{0}\right).\end{aligned}\]</span>
+The second equality follows by
+(<a href="#eq:ell_d" reference-type="ref" reference="eq:ell_d"><span class="math display">\[eq:ell\_d\]</span></a>).
+The last equality by
+<a href="#eq:info_eqn_1" reference-type="eqref" reference="eq:info_eqn_1"><span class="math display">\[eq:info\_eqn\_1\]</span></a> as the zero mean ensures the variance of
+<span class="math inline">\(\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\)</span> is
+equal to the expectation of its out-product.</p>
+<p>Notice that a correct specification is essential for the information
+matrix equality. If the true data generating distribution is
+<span class="math inline">\(g\notin\mathcal{M}^{*}\)</span>, then
+<a href="#eq:info_eqn_1" reference-type="eqref" reference="eq:info_eqn_1"><span class="math display">\[eq:info\_eqn\_1\]</span></a> breaks down because
+<span class="math display">\[0=\int\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)=\int\left[g^{-1}\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)\right]g=E_{g}\left[g^{-1}\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)\right]\]</span>
+but
+<span class="math inline">\(g^{-1}\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)\neq\left(f\left(x;\theta_{0}\right)\right)^{-1}\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)=\frac{\partial}{\partial\theta}\log f\left(\theta_{0}\right)\)</span>.
+The asymptotic variance in Theorem
+<a href="asymptotic-properties-of-mle.html#thm:mis-MLE" reference-type="ref" reference="thm:mis-MLE"><span class="math display">\[thm:mis-MLE\]</span></a>,
+<span class="math display">\[\left(E_{g}\left[h\left(x;\theta_{0}\right)\right]\right)^{-1}\mathrm{var}_{g}\left[s\left(x;\theta_{0}\right)\right]\left(E_{g}\left[h\left(x;\theta_{0}\right)\right]\right)^{-1},\]</span>
+written explicitly in <span class="math inline">\(E_{g}\left[\cdot\right]\)</span>, is still valid.</p>
+<p>When the parametric model <span class="math inline">\(\mathcal{M}^{*}\)</span> is correctly specified, then
+we can replace
+<span class="math inline">\(E_{g}\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta&#39;}\left(\theta_{0}\right)\right]\)</span>
+by <span class="math inline">\(\mathcal{H}\left(\theta_{0}\right)\)</span> and replace
+<span class="math inline">\(\mathrm{var}_{g}\left[\frac{\partial\ell_{n}}{\partial\theta}\left(\theta_{0}\right)\right]\)</span>
+by <span class="math inline">\(\mathcal{I}\left(\theta_{0}\right)\)</span>, we simplify the asymptotic
+variance as
+<span class="math display">\[\left(\mathcal{H}\left(\theta_{0}\right)\right)^{-1}\mathcal{I}\left(\theta_{0}\right)\left(\mathcal{H}\left(\theta_{0}\right)\right)^{-1}=\left(-\mathcal{I}\left(\theta_{0}\right)\right)^{-1}\mathcal{I}\left(\theta_{0}\right)\left(-\mathcal{I}\left(\theta_{0}\right)\right)^{-1}=\left(\mathcal{I}\left(\theta_{0}\right)\right)^{-1}\]</span>
+by the information matrix equality Fact
+<a href="asymptotic-properties-of-mle.html#fact:Info" reference-type="ref" reference="fact:Info"><span class="math display">\[fact:Info\]</span></a>.</p>
+<p>If the model is correctly specified, under the conditions for Theorem
+<a href="#eq:info_eqn_1" reference-type="ref" reference="eq:info_eqn_1"><span class="math display">\[eq:info\_eqn\_1\]</span></a> and Fact
+<a href="asymptotic-properties-of-mle.html#fact:Info" reference-type="ref" reference="fact:Info"><span class="math display">\[fact:Info\]</span></a>
+the MLE estimator
+<span class="math display">\[\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left[\mathcal{I}\left(\theta_{0}\right)\right]^{-1}\right).\]</span></p>
+<p>This is the classical asymptotic normality result of MLE.</p>
+</div>
+<div id="cramer-rao-lower-bound" class="section level2">
+<h2><span class="header-section-number">7.5</span> Cramer-Rao Lower Bound</h2>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">7.6</span> Summary</h2>
+<p><strong>Further reading</strong>: <span class="citation">White (<a href="#ref-white1996estimation" role="doc-biblioref">1996</a>)</span>, <span class="citation">Newey and McFadden (<a href="#ref-newey1994large" role="doc-biblioref">1994</a>)</span>.</p>
+
+<p><code>Zhentao Shi. Oct 29, 2020.</code></p>
+
+
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-newey1994large">
+<p>Newey, KW, and Daniel McFadden. 1994. “Large Sample Estimation and Hypothesis.” <em>Handbook of Econometrics, IV, Edited by RF Engle and DL McFadden</em>, 2112–2245.</p>
+</div>
+<div id="ref-white1996estimation">
+<p>White, Halbert. 1996. <em>Estimation, Inference and Specification Analysis</em>. 22. Cambridge university press.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="asymptotic-properties-of-least-squares.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="hypothesis-testing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

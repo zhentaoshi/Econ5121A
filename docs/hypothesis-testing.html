@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Hypothesis Testing | Econ5121</title>
+  <meta name="description" content="nothing" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Hypothesis Testing | Econ5121" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="nothing" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Hypothesis Testing | Econ5121" />
+  
+  <meta name="twitter:description" content="nothing" />
+  
+
+<meta name="author" content="Zhentao Shi" />
+
+
+<meta name="date" content="2022-01-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="asymptotic-properties-of-mle.html"/>
+<link rel="next" href="panel-data.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>1</b> Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="probability.html"><a href="probability.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="probability.html"><a href="probability.html#axiomatic-probability"><i class="fa fa-check"></i><b>1.2</b> Axiomatic Probability</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="probability.html"><a href="probability.html#probability-space"><i class="fa fa-check"></i><b>1.2.1</b> Probability Space</a></li>
+<li class="chapter" data-level="1.2.2" data-path="probability.html"><a href="probability.html#random-variable"><i class="fa fa-check"></i><b>1.2.2</b> Random Variable</a></li>
+<li class="chapter" data-level="1.2.3" data-path="probability.html"><a href="probability.html#distribution-function"><i class="fa fa-check"></i><b>1.2.3</b> Distribution Function</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="probability.html"><a href="probability.html#expected-value"><i class="fa fa-check"></i><b>1.3</b> Expected Value</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="probability.html"><a href="probability.html#integration"><i class="fa fa-check"></i><b>1.3.1</b> Integration</a></li>
+<li class="chapter" data-level="1.3.2" data-path="probability.html"><a href="probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>1.3.2</b> Properties of Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="probability.html"><a href="probability.html#multivariate-random-variable"><i class="fa fa-check"></i><b>1.4</b> Multivariate Random Variable</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="probability.html"><a href="probability.html#conditional-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>1.4.1</b> Conditional Probability and Bayes’ Theorem</a></li>
+<li class="chapter" data-level="1.4.2" data-path="probability.html"><a href="probability.html#independence"><i class="fa fa-check"></i><b>1.4.2</b> Independence</a></li>
+<li class="chapter" data-level="1.4.3" data-path="probability.html"><a href="probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>1.4.3</b> Law of Iterated Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conditional-expectation.html"><a href="conditional-expectation.html"><i class="fa fa-check"></i><b>2</b> Conditional Expectation</a><ul>
+<li class="chapter" data-level="2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#linear-projection"><i class="fa fa-check"></i><b>2.1</b> Linear Projection</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#omitted-variable-bias"><i class="fa fa-check"></i><b>2.1.1</b> Omitted Variable Bias</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#causality"><i class="fa fa-check"></i><b>2.2</b> Causality</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#structure-and-identification"><i class="fa fa-check"></i><b>2.2.1</b> Structure and Identification</a></li>
+<li class="chapter" data-level="2.2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#treatment-effect"><i class="fa fa-check"></i><b>2.2.2</b> Treatment Effect</a></li>
+<li class="chapter" data-level="2.2.3" data-path="conditional-expectation.html"><a href="conditional-expectation.html#ate-and-cef"><i class="fa fa-check"></i><b>2.2.3</b> ATE and CEF</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html"><i class="fa fa-check"></i><b>3</b> Least Squares: Linear Algebra</a><ul>
+<li class="chapter" data-level="3.1" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#estimator"><i class="fa fa-check"></i><b>3.1</b> Estimator</a></li>
+<li class="chapter" data-level="3.2" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#subvector"><i class="fa fa-check"></i><b>3.2</b> Subvector</a></li>
+<li class="chapter" data-level="3.3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#goodness-of-fit"><i class="fa fa-check"></i><b>3.3</b> Goodness of Fit</a></li>
+<li class="chapter" data-level="3.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html"><i class="fa fa-check"></i><b>4</b> Least Squares: Finite Sample Theory</a><ul>
+<li class="chapter" data-level="4.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#maximum-likelihood"><i class="fa fa-check"></i><b>4.1</b> Maximum Likelihood</a></li>
+<li class="chapter" data-level="4.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#likelihood-estimation-for-regression"><i class="fa fa-check"></i><b>4.2</b> Likelihood Estimation for Regression</a></li>
+<li class="chapter" data-level="4.3" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#finite-sample-distribution"><i class="fa fa-check"></i><b>4.3</b> Finite Sample Distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#mean-and-variancemean-and-variance"><i class="fa fa-check"></i><b>4.4</b> Mean and Variance<span id="mean-and-variance" label="mean-and-variance"><span class="math display">\[mean-and-variance\]</span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>4.5</b> Gauss-Markov Theorem</a></li>
+<li class="chapter" data-level="4.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>4.7</b> Appendix</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#joint-normal-distribution"><i class="fa fa-check"></i><b>4.7.1</b> Joint Normal Distribution</a></li>
+<li class="chapter" data-level="4.7.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#basus-theorem-subsecbasus-theoremsubsecbasus-theorem-labelsubsecbasus-theorem"><i class="fa fa-check"></i><b>4.7.2</b> Basu’s Theorem* [<span class="math display">\[subsec:Basu\&#39;s-Theorem\]</span>]{#subsec:Basu’s-Theorem label=“subsec:Basu’s-Theorem”}</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html"><i class="fa fa-check"></i><b>5</b> Basic Asymptotic Theory</a><ul>
+<li class="chapter" data-level="5.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#modes-of-convergence"><i class="fa fa-check"></i><b>5.1</b> Modes of Convergence</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#law-of-large-numbers"><i class="fa fa-check"></i><b>5.2</b> Law of Large Numbers</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#cherbyshev-lln"><i class="fa fa-check"></i><b>5.2.1</b> Cherbyshev LLN</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#central-limit-theorem"><i class="fa fa-check"></i><b>5.3</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="5.4" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#tools-for-transformations"><i class="fa fa-check"></i><b>5.4</b> Tools for Transformations</a></li>
+<li class="chapter" data-level="5.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html"><i class="fa fa-check"></i><b>6</b> Asymptotic Properties of Least Squares</a><ul>
+<li class="chapter" data-level="6.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>6.1</b> Consistency</a></li>
+<li class="chapter" data-level="6.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-distribution"><i class="fa fa-check"></i><b>6.2</b> Asymptotic Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-inference"><i class="fa fa-check"></i><b>6.3</b> Asymptotic Inference</a></li>
+<li class="chapter" data-level="6.4" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency-of-feasible-variance-estimator"><i class="fa fa-check"></i><b>6.4</b> Consistency of Feasible Variance Estimator</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#homoskedasticity"><i class="fa fa-check"></i><b>6.4.1</b> Homoskedasticity</a></li>
+<li class="chapter" data-level="6.4.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#heteroskedasticity"><i class="fa fa-check"></i><b>6.4.2</b> Heteroskedasticity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
+<li class="chapter" data-level="6.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>6.6</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html"><i class="fa fa-check"></i><b>7</b> Asymptotic Properties of MLE</a><ul>
+<li class="chapter" data-level="7.1" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#examples-of-mle"><i class="fa fa-check"></i><b>7.1</b> Examples of MLE</a></li>
+<li class="chapter" data-level="7.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>7.2</b> Consistency</a></li>
+<li class="chapter" data-level="7.3" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#asymptotic-normality"><i class="fa fa-check"></i><b>7.3</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="7.4" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#information-matrix-equality"><i class="fa fa-check"></i><b>7.4</b> Information Matrix Equality</a></li>
+<li class="chapter" data-level="7.5" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#cramer-rao-lower-bound"><i class="fa fa-check"></i><b>7.5</b> Cramer-Rao Lower Bound</a></li>
+<li class="chapter" data-level="7.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis Testing</a><ul>
+<li class="chapter" data-level="8.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing"><i class="fa fa-check"></i><b>8.1</b> Testing</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#decision-rule-and-errors"><i class="fa fa-check"></i><b>8.1.1</b> Decision Rule and Errors</a></li>
+<li class="chapter" data-level="8.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#optimality"><i class="fa fa-check"></i><b>8.1.2</b> Optimality</a></li>
+<li class="chapter" data-level="8.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-and-wilks-theorem"><i class="fa fa-check"></i><b>8.1.3</b> Likelihood-Ratio Test and Wilks’ theorem</a></li>
+<li class="chapter" data-level="8.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#score-test"><i class="fa fa-check"></i><b>8.1.4</b> Score Test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#confidence-intervalconfidence-interval"><i class="fa fa-check"></i><b>8.2</b> Confidence Interval<span id="confidence-interval" label="confidence-interval"><span class="math display">\[confidence-interval\]</span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#bayesian-credible-set"><i class="fa fa-check"></i><b>8.3</b> Bayesian Credible Set</a></li>
+<li class="chapter" data-level="8.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#applications-in-ols"><i class="fa fa-check"></i><b>8.4</b> Applications in OLS</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-test"><i class="fa fa-check"></i><b>8.4.1</b> Wald Test</a></li>
+<li class="chapter" data-level="8.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lagrangian-multiplier-test"><i class="fa fa-check"></i><b>8.4.2</b> Lagrangian Multiplier Test</a></li>
+<li class="chapter" data-level="8.4.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-for-regression"><i class="fa fa-check"></i><b>8.4.3</b> Likelihood-Ratio Test for Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>8.5</b> Summary</a></li>
+<li class="chapter" data-level="8.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>8.6</b> Appendix</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#neyman-pearson-lemma"><i class="fa fa-check"></i><b>8.6.1</b> Neyman-Pearson Lemma</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="panel-data.html"><a href="panel-data.html"><i class="fa fa-check"></i><b>9</b> Panel Data</a><ul>
+<li class="chapter" data-level="9.1" data-path="panel-data.html"><a href="panel-data.html#fixed-effect"><i class="fa fa-check"></i><b>9.1</b> Fixed Effect</a></li>
+<li class="chapter" data-level="9.2" data-path="panel-data.html"><a href="panel-data.html#random-effect"><i class="fa fa-check"></i><b>9.2</b> Random Effect</a></li>
+<li class="chapter" data-level="9.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="endogeneity.html"><a href="endogeneity.html"><i class="fa fa-check"></i><b>10</b> Endogeneity</a><ul>
+<li class="chapter" data-level="10.1" data-path="endogeneity.html"><a href="endogeneity.html#identification"><i class="fa fa-check"></i><b>10.1</b> Identification</a></li>
+<li class="chapter" data-level="10.2" data-path="endogeneity.html"><a href="endogeneity.html#instruments"><i class="fa fa-check"></i><b>10.2</b> Instruments</a></li>
+<li class="chapter" data-level="10.3" data-path="endogeneity.html"><a href="endogeneity.html#sources-of-endogeneity"><i class="fa fa-check"></i><b>10.3</b> Sources of Endogeneity</a></li>
+<li class="chapter" data-level="10.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>10.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html"><i class="fa fa-check"></i><b>11</b> Generalized Method of Moments</a><ul>
+<li class="chapter" data-level="11.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#instrumental-regression"><i class="fa fa-check"></i><b>11.1</b> Instrumental Regression</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#just-identification"><i class="fa fa-check"></i><b>11.1.1</b> Just-identification</a></li>
+<li class="chapter" data-level="11.1.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#over-identification"><i class="fa fa-check"></i><b>11.1.2</b> Over-identification</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-estimator"><i class="fa fa-check"></i><b>11.2</b> GMM Estimator</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#efficient-gmm"><i class="fa fa-check"></i><b>11.2.1</b> Efficient GMM</a></li>
+<li class="chapter" data-level="11.2.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-step-gmm"><i class="fa fa-check"></i><b>11.2.2</b> Two-Step GMM</a></li>
+<li class="chapter" data-level="11.2.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-stage-least-squares"><i class="fa fa-check"></i><b>11.2.3</b> Two Stage Least Squares</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-in-nonlinear-model"><i class="fa fa-check"></i><b>11.3</b> GMM in Nonlinear Model</a></li>
+<li class="chapter" data-level="11.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econ5121</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="hypothesis-testing" class="section level1">
+<h1><span class="header-section-number">8</span> Hypothesis Testing</h1>
+<p>Notation: <span class="math inline">\(\mathbf{X}\)</span> denotes a random variable or random vector.
+<span class="math inline">\(\mathbf{x}\)</span> is its realization.</p>
+<p>A <em>hypothesis</em> is a statement about the parameter space <span class="math inline">\(\Theta\)</span>.
+Hypothesis testing checks whether the data support a <em>null hypothesis</em>
+<span class="math inline">\(\Theta_{0}\)</span>, which is a subset of <span class="math inline">\(\Theta\)</span> of interest. Ideally the
+null hypothesis should be suggested by scientific theory. The
+<em>alternative hypothesis</em> <span class="math inline">\(\Theta_{1}=\Theta\backslash\Theta_{0}\)</span> is the
+complement of <span class="math inline">\(\Theta_{0}\)</span>. Based on the observed evidence, hypothesis
+testing decides to accept or reject the null hypothesis. If the null
+hypothesis is rejected by the data, it implies that from the statistical
+perspective the data is incompatible with the proposed scientific
+theory.</p>
+<p>In this chapter, we will first introduce the idea and practice of
+hypothesis testing and the related confidence interval. While we mainly
+focus on the frequentist interpretation of hypothesis, we briefly
+discuss the Bayesian approach to statistical decision. As an application
+of the testing procedures to the linear regression model, we elaborate
+how to test a linear or nonlinear hypothesis of the slope coefficients
+based on the unrestricted or restricted OLS estimators.</p>
+<div id="testing" class="section level2">
+<h2><span class="header-section-number">8.1</span> Testing</h2>
+<div id="decision-rule-and-errors" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Decision Rule and Errors</h3>
+<p>If <span class="math inline">\(\Theta_{0}\)</span> is a singleton, we call it a <em>simple hypothesis</em>;
+otherwise we call it a <em>composite hypothesis</em>. For example, if the
+parameter space <span class="math inline">\(\Theta=\mathbb{R}\)</span>, then <span class="math inline">\(\Theta_{0}=\left\{ 0\right\}\)</span>
+(or equivalently <span class="math inline">\(\theta_{0}=0\)</span>) is a simple hypothesis, whereas
+<span class="math inline">\(\Theta_{0}=(-\infty,0]\)</span> (or equivalently <span class="math inline">\(\theta_{0}\leq0\)</span>) is a
+composite hypothesis.</p>
+<p>A <em>test function</em> is a mapping
+<span class="math display">\[\phi:\mathcal{X}^{n}\mapsto\left\{ 0,1\right\} ,\]</span> where <span class="math inline">\(\mathcal{X}\)</span>
+is the sample space. The null hypothesis is accepted if
+<span class="math inline">\(\phi\left(\mathbf{x}\right)=0\)</span>, or rejected if
+<span class="math inline">\(\phi\left(\mathbf{x}\right)=1\)</span>. We call the set
+<span class="math inline">\(A_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi_{\theta}\left(\mathbf{x}\right)=0\right\}\)</span>
+the <em>acceptance region</em>, and its complement
+<span class="math inline">\(R_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi\left(\mathbf{x}\right)=1\right\}\)</span>
+the <em>rejection region.</em></p>
+<p>The <em>power function</em> of a test <span class="math inline">\(\phi\)</span> is
+<span class="math display">\[\beta\left(\theta\right)=P_{\theta}\left\{ \phi\left(\mathbf{X}\right)=1\right\} =E_{\theta}\left[\phi\left(\mathbf{X}\right)\right].\]</span>
+The power function measures the probability that the test function
+rejects the null when the data is generated under the true parameter
+<span class="math inline">\(\theta\)</span>, reflected in <span class="math inline">\(P_{\theta}\)</span> and <span class="math inline">\(E_{\theta}\)</span>.</p>
+<p>The <em>power</em> of a test for some <span class="math inline">\(\theta\in\Theta_{1}\)</span> is the value of
+<span class="math inline">\(\beta\left(\theta\right)\)</span>. The <em>size</em> of the test is
+<span class="math inline">\(\sup_{\theta\in\Theta_{0}}\beta\left(\theta\right).\)</span> Notice that the
+definition of power depends on a <span class="math inline">\(\theta\)</span> in the alternative hypothesis
+<span class="math inline">\(\Theta_{1}\)</span>, whereas that of size is independent of <span class="math inline">\(\theta\)</span> due to the
+supremum over the set of null <span class="math inline">\(\Theta_{0}\)</span>. The <em>level</em> of a test is any
+value <span class="math inline">\(\alpha\in\left(0,1\right)\)</span> such that
+<span class="math inline">\(\alpha\geq\sup_{\theta\in\Theta_{0}}\beta\left(\theta\right)\)</span>, which is
+often used when it is difficult to attain the exact supremum. A test of
+size <span class="math inline">\(\alpha\)</span> is also of level <span class="math inline">\(\alpha\)</span> or bigger; while a test of level
+<span class="math inline">\(\alpha\)</span> must have size smaller or equal to <span class="math inline">\(\alpha\)</span>.</p>
+<p>The concept of <em>level</em> is useful if we do not have sufficient
+information to derive the exact size of a test. If
+<span class="math inline">\(\left(X_{1i},X_{2i}\right)_{i=1}^{n}\)</span> are randomly drawn from some
+unknown joint distribution, but we know the marginal distribution is
+<span class="math inline">\(X_{ji}\sim N\left(\theta_{j},1\right)\)</span>, for <span class="math inline">\(j=1,2\)</span>. In order to test
+the joint hypothesis <span class="math inline">\(\theta_{1}=\theta_{2}=0\)</span>, we can construct a test
+function
+<span class="math display">\[\phi_{\theta_{1}=\theta_{2}=0}\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)=1\left\{ \left\{ \sqrt{n}\left|\overline{X}_{1}\right|\geq z_{1-\alpha/4}\right\} \cup\left\{ \sqrt{n}\left|\overline{X}_{2}\right|\geq z_{1-\alpha/4}\right\} \right\} ,\]</span>
+where <span class="math inline">\(z_{1-\alpha/4}\)</span> is the <span class="math inline">\(\left(1-\alpha/4\right)\)</span>-th quantile of
+the standard normal distribution. The level of this test is
+<span class="math display">\[\begin{aligned}P\left(\phi_{\theta_{1}=\theta_{2}=0}\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) &amp; \leq P\left(\sqrt{n}\left|\overline{X}_{1}\right|\geq z_{1-\alpha/4}\right)+P\left(\sqrt{n}\left|\overline{X}_{2}\right|\geq z_{1-\alpha/4}\right)\\
+ &amp; =\alpha/2+\alpha/2=\alpha.
+\end{aligned}\]</span> where the inequality follows by the <em>Bonferroni
+inequality</em>
+<span class="math display">\[P\left(A\cup B\right)\leq P\left(A\right)+P\left(B\right).\]</span> (The
+seemingly trivial Bonferroni inequality is useful in many proofs of
+probability results.) Therefore, the level of
+<span class="math inline">\(\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\)</span> is <span class="math inline">\(\alpha\)</span>, but the
+exact size is unknown without the knowledge of the joint distribution.
+(Even if we know the correlation of <span class="math inline">\(X_{1i}\)</span> and <span class="math inline">\(X_{2i}\)</span>, putting two
+marginally normal distributions together does not make a jointly normal
+vector in general.)</p>
+
+<hr />
+<pre><code>                   accept $H_{0}$     reject $H_{0}$
+  $H_{0}$ true    correct decision     Type I error
+  $H_{0}$ false    Type II error     correct decision</code></pre>
+<hr />
+<p>: <span id="tab:Decisions-and-States" label="tab:Decisions-and-States"><span class="math display">\[tab:Decisions-and-States\]</span></span> Actions, States and Consequences</p>
+<ul>
+<li><p>The <em>probability of committing Type I error</em> is
+<span class="math inline">\(\beta\left(\theta\right)\)</span> for some <span class="math inline">\(\theta\in\Theta_{0}\)</span>.</p></li>
+<li><p>The <em>probability of committing Type II error</em> is
+<span class="math inline">\(1-\beta\left(\theta\right)\)</span> for some <span class="math inline">\(\theta\in\Theta_{1}\)</span>.</p></li>
+</ul>
+<p>The philosophy on hypothesis testing has been debated for centuries. At
+present the prevailing framework in statistics textbooks is the
+<em>frequentist perspective</em>. A frequentist views the parameter as a fixed
+constant. They keep a conservative attitude about the Type I error: Only
+if overwhelming evidence is demonstrated shall a researcher reject the
+null. Under the principle of protecting the null hypothesis, a desirable
+test should have a small level. Conventionally we take <span class="math inline">\(\alpha=0.01,\)</span>
+0.05 or 0.1. We say a test is <em>unbiased</em> if
+<span class="math inline">\(\beta\left(\theta\right)&gt;\sup_{\theta\in\Theta_{0}}\beta\left(\theta\right)\)</span>
+for all <span class="math inline">\(\theta\in\Theta_{1}\)</span>. There can be many tests of correct size.</p>
+
+<p>A trivial test function
+<span class="math inline">\(\phi(\mathbf{x})=1\left\{ 0\leq U\leq\alpha\right\}\)</span> for all
+<span class="math inline">\(\theta\in\Theta\)</span>, where <span class="math inline">\(U\)</span> is a random variable from a uniform
+distribution on <span class="math inline">\(\left[0,1\right]\)</span>, has correct size <span class="math inline">\(\alpha\)</span> but no
+non-trivial power at the alternative. On the other extreme, the trivial
+test function <span class="math inline">\(\phi\left(\mathbf{x}\right)=1\)</span> for all <span class="math inline">\(\mathbf{x}\)</span>
+enjoys the biggest power but suffers incorrect size.</p>
+
+<p>Usually, we design a test by proposing a test statistic
+<span class="math inline">\(T_{n}:\mathcal{X}^{n}\mapsto\mathbb{R}^{+}\)</span> and a critical value
+<span class="math inline">\(c_{1-\alpha}\)</span>. Given <span class="math inline">\(T_{n}\)</span> and <span class="math inline">\(c_{1-\alpha}\)</span>, we write the test
+function as
+<span class="math display">\[\phi\left(\mathbf{X}\right)=1\left\{ T_{n}\left(\mathbf{X}\right)&gt;c_{1-\alpha}\right\} .\]</span>
+To ensure such a <span class="math inline">\(\phi\left(\mathbf{x}\right)\)</span> has correct size, we need
+to figure out the distribution of <span class="math inline">\(T_{n}\)</span> under the null hypothesis
+(called the <em>null distribution</em>), and choose a critical value
+<span class="math inline">\(c_{1-\alpha}\)</span> according to the null distribution and the desirable size
+or level <span class="math inline">\(\alpha\)</span>.</p>
+<p>Another commonly used indicator in hypothesis testing is <span class="math inline">\(p\)</span>-value:
+<span class="math display">\[\sup_{\theta\in\Theta_{0}}P_{\theta}\left\{ T_{n}\left(\mathbf{x}\right)\leq T_{n}\left(\mathbf{X}\right)\right\} .\]</span>
+In the above expression, <span class="math inline">\(T_{n}\left(\mathbf{x}\right)\)</span> is the realized
+value of the test statistic <span class="math inline">\(T_{n}\)</span>, while
+<span class="math inline">\(T_{n}\left(\mathbf{X}\right)\)</span> is the random variable generated by
+<span class="math inline">\(\mathbf{X}\)</span> under the null <span class="math inline">\(\theta\in\Theta_{0}\)</span>. The interpretation of
+the <span class="math inline">\(p\)</span>-value is tricky. <span class="math inline">\(p\)</span>-value is the probability that we observe
+<span class="math inline">\(T_{n}(\mathbf{X})\)</span> being greater than the realized <span class="math inline">\(T_{n}(\mathbf{x})\)</span>
+if the null hypothesis is true.</p>
+<p><span class="math inline">\(p\)</span>-value is <em>not</em> the probability that the null hypothesis is true.
+Under the frequentist perspective, the null hypothesis is either true or
+false, with certainty. The randomness of a test comes only from
+sampling, not from the hypothesis. <span class="math inline">\(p\)</span>-value measures whether the
+dataset is compatible with the null hypothesis. <span class="math inline">\(p\)</span>-value is closely
+related to the corresponding test. When <span class="math inline">\(p\)</span>-value is smaller than the
+specified test size <span class="math inline">\(\alpha\)</span>, the test rejects the null.</p>
+<p>So far we have been talking about hypothesis testing in finite sample.
+The discussion and terminologies can be carried over to the asymptotic
+world when <span class="math inline">\(n\to\infty\)</span>. If we denote the power function as
+<span class="math inline">\(\beta_{n}\left(\theta\right)\)</span>, in which we make its dependence on the
+sample size <span class="math inline">\(n\)</span> explicit, the test is of asymptotic size <span class="math inline">\(\alpha\)</span> if
+<span class="math inline">\(\limsup_{n\to\infty}\beta_{n}\left(\theta\right)\leq\alpha\)</span> for all
+<span class="math inline">\(\theta\in\Theta_{0}\)</span>. A test is <em>consistent</em> if
+<span class="math inline">\(\beta_{n}\left(\theta\right)\to1\)</span> for every <span class="math inline">\(\theta\in\Theta_{1}\)</span>.</p>
+</div>
+<div id="optimality" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> Optimality</h3>
+<p>Just as there may be multiple valid estimators for a task of estimation,
+there may be multiple tests for a task of hypothesis testing. For a
+class of tests of the same level <span class="math inline">\(\alpha\)</span> under the null
+<span class="math inline">\(\Psi_{\alpha}=\left\{ \phi:\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)\leq\alpha\right\}\)</span>
+where we put a subscript <span class="math inline">\(\phi\)</span> in <span class="math inline">\(\beta_{\phi}\left(\theta\right)\)</span> to
+distinguish the power for different tests, it is natural to prefer a
+test <span class="math inline">\(\phi^{*}\)</span> that exhibits higher power than all other tests under
+consideration at each point of the alternative hypothesis in that
+<span class="math display">\[\beta_{\phi^{*}}\left(\theta\right)\geq\beta_{\phi}\left(\theta\right)\]</span>
+for every <span class="math inline">\(\theta\in\Theta_{1}\)</span> and every <span class="math inline">\(\phi\in\Psi_{\alpha}\)</span>. If
+such a test <span class="math inline">\(\phi^{*}\in\Psi_{\alpha}\)</span> exists, we call it the <em>uniformly
+most powerful test.</em></p>
+<p>Suppose a random sample of size 6 is generated from
+<span class="math display">\[\left(X_{1},\ldots,X_{6}\right)\sim\text{iid.}N\left(\theta,1\right),\]</span>
+where <span class="math inline">\(\theta\)</span> is unknown. We want to infer the population mean of the
+normal distribution. The null hypothesis is <span class="math inline">\(H_{0}\)</span>: <span class="math inline">\(\theta\leq0\)</span> and
+the alternative is <span class="math inline">\(H_{1}\)</span>: <span class="math inline">\(\theta&gt;0\)</span>. All tests in
+<span class="math display">\[\Psi=\left\{ 1\left\{ \bar{X}\geq c/\sqrt{6}\right\} :c\geq1.64\right\}\]</span>
+has the correct level. Since <span class="math inline">\(\bar{X}=N\left(\theta,1/6\right)\)</span>, the
+power function for those in <span class="math inline">\(\Psi\)</span> is <span class="math display">\[\begin{aligned}
+\beta_{\phi}\left(\theta\right) &amp; =P\left(\bar{X}\geq\frac{c}{\sqrt{6}}\right)=P\left(\frac{\bar{X}-\theta}{1/\sqrt{6}}\geq\frac{\frac{c}{\sqrt{6}}-\theta}{1/\sqrt{6}}\right)\\
+ &amp; =P\left(N\geq c-\sqrt{6}\theta\right)=1-\Phi\left(c-\sqrt{6}\theta\right)\end{aligned}\]</span>
+where <span class="math inline">\(N=\frac{\bar{X}-\theta}{1/\sqrt{6}}\)</span> follows the standard normal,
+and <span class="math inline">\(\Phi\)</span> is the cdf of the standard normal. It is clear that
+<span class="math inline">\(\beta_{\phi}\left(\theta\right)\)</span> is monotonically decreasing in <span class="math inline">\(c\)</span>.
+Thus the test function
+<span class="math display">\[\phi_{\theta=0}\left(\mathbf{X}\right)=1\left\{ \bar{X}\geq1.64/\sqrt{6}\right\}\]</span>
+is the most powerful test in <span class="math inline">\(\Psi\)</span>, as <span class="math inline">\(c=1.64\)</span> is the lower bound that
+<span class="math inline">\(\Psi_{\alpha}\)</span> allows in order to keep the level <span class="math inline">\(\alpha\)</span>.</p>
+</div>
+<div id="likelihood-ratio-test-and-wilks-theorem" class="section level3">
+<h3><span class="header-section-number">8.1.3</span> Likelihood-Ratio Test and Wilks’ theorem</h3>
+<p>When estimators are not available in closed-forms, the likelihood-ratio
+test (LRT) serves as a very general testing statistic under the
+likelihood principle. Let
+<span class="math inline">\(\ell_{n}\left(\theta\right)=n^{-1}\sum_{i}\log f\left(x_{i};\theta\right)\)</span>
+be the average sample log-likelihood, and
+<span class="math inline">\(\widehat{\theta}=\arg\max_{\theta\in\Theta}\ell_{n}\left(\theta\right)\)</span>
+is the maximum likelihood estimator (MLE). Take a Taylor expansion of
+<span class="math inline">\(\ell_{n}\left(\theta_{0}\right)\)</span> around
+<span class="math inline">\(\ell_{n}\left(\widehat{\theta}\right)\)</span>: <span class="math display">\[\begin{aligned}
+\ell_{n}\left(\theta_{0}\right)-\ell_{n}\left(\widehat{\theta}\right) &amp; =\frac{\partial\ell_{n}}{\partial\theta}\left(\widehat{\theta}\right)&#39;\left(\theta_{0}-\widehat{\theta}\right)+\frac{1}{2}\left(\theta_{0}-\widehat{\theta}\right)&#39;\left(\frac{\partial^{2}}{\partial\theta\partial\theta&#39;}\ell_{n}\left(\theta_{0}\right)\right)\left(\theta_{0}-\widehat{\theta}\right)+O\left(\left\Vert \widehat{\theta}-\theta_{0}\right\Vert _{2}^{3}\right)\\
+ &amp; =\frac{1}{2}\left(\widehat{\theta}-\theta_{0}\right)&#39;\left(\frac{\partial^{2}}{\partial\theta\partial\theta&#39;}\ell_{n}\left(\theta_{0}\right)\right)\left(\widehat{\theta}-\theta_{0}\right)+O\left(\left\Vert \widehat{\theta}-\theta_{0}\right\Vert _{2}^{3}\right)\\
+ &amp; =\frac{1}{2}\left(\widehat{\theta}-\theta_{0}\right)&#39;\left(\frac{\partial^{2}}{\partial\theta\partial\theta&#39;}\ell_{n}\left(\theta_{0}\right)\right)\left(\widehat{\theta}-\theta_{0}\right)+o_{p}\left(1\right)\end{aligned}\]</span>
+by that
+<span class="math inline">\(\frac{\partial\ell_{n}}{\partial\theta}\left(\widehat{\theta}\right)=0\)</span>
+due to the first order condition of optimality. Define
+<span class="math inline">\(L_{n}\left(\theta\right):=\sum_{i}\log f\left(x_{i};\theta\right)\)</span>, and
+the <em>likelihood-ratio statistic</em> as
+<span class="math display">\[\mathcal{LR}:=2\left(L_{n}\left(\widehat{\theta}\right)-L_{n}\left(\theta_{0}\right)\right)=2n\left(\ell_{n}\left(\widehat{\theta}\right)-\ell_{n}\left(\theta_{0}\right)\right).\]</span>
+Obviously <span class="math inline">\(\mathcal{LR}\geq0\)</span> because <span class="math inline">\(\widehat{\theta}\)</span> maximizes
+<span class="math inline">\(\ell_{n}\left(\theta\right)\)</span>. Multiply <span class="math inline">\(-2n\)</span> to the two sides of the
+above Taylor expansion:
+<span class="math display">\[\mathcal{LR}=\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)&#39;\left(-\frac{\partial^{2}}{\partial\theta\partial\theta&#39;}\ell_{n}\left(\dot{\theta}\right)\right)\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)+o_{p}\left(1\right)\]</span>
+Notice that when the model is correctly specified we have
+<span class="math display">\[\begin{aligned}
+-\frac{\partial^{2}}{\partial\theta\partial\theta&#39;}\ell_{n}\left(\theta_{0}\right) &amp; \stackrel{p}{\to}-\mathcal{H}\left(\theta_{0}\right)=\mathcal{I}\left(\theta_{0}\right)\\
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right) &amp; \stackrel{d}{\to}N\left(0,\mathcal{I}^{-1}\left(\theta_{0}\right)\right)\end{aligned}\]</span>
+By Slutsky’s theorem:
+<span class="math display">\[\left(-\frac{\partial^{2}}{\partial\theta\partial\theta&#39;}\ell_{n}\left(\dot{\theta}\right)\right)^{1/2}\left[\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\right]\stackrel{d}{\to}\mathcal{I}^{1/2}\left(\theta_{0}\right)\times N\left(0,\mathcal{I}^{-1}\left(\theta_{0}\right)\right)\sim N\left(0,I_{k}\right).\]</span>
+and then <span class="math inline">\(\mathcal{LR}\stackrel{d}{\to}\chi_{K}^{2}\)</span> by the continuous
+mapping theorem.</p>
+<p><em>Wilks’ theorem</em>, or <em>Wilks’ phenomenon</em> is referred to the fact that
+<span class="math inline">\(\mathcal{LR}\stackrel{d}{\to}\chi^{2}\left(K\right)\)</span> when the
+parametric model is correctly specified.</p>
+</div>
+<div id="score-test" class="section level3">
+<h3><span class="header-section-number">8.1.4</span> Score Test</h3>
+</div>
+</div>
+<div id="confidence-intervalconfidence-interval" class="section level2">
+<h2><span class="header-section-number">8.2</span> Confidence Interval<span id="confidence-interval" label="confidence-interval"><span class="math display">\[confidence-interval\]</span></span></h2>
+<p>An <em>interval estimate</em> is a function
+<span class="math inline">\(C:\mathcal{X}^{n}\mapsto\left\{ \Theta_{1}:\Theta_{1}\subseteq\Theta\right\}\)</span>
+that maps a point in the sample space to a subset of the parameter
+space. The <em>coverage probability</em> of an <em>interval estimator</em>
+<span class="math inline">\(C\left(\mathbf{X}\right)\)</span> is defined as
+<span class="math inline">\(P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)\)</span>. When
+<span class="math inline">\(\theta\)</span> is of one dimension, we usually call the interval estimator
+<em>confidence interval</em>. When <span class="math inline">\(\theta\)</span> is of multiple dimensions, we call
+the it <em>confidence region</em> and it of course includes the one-dimensional
+<span class="math inline">\(\theta\)</span> as a special case. The coverage probability is the frequency
+that the interval estimator captures the true parameter that generates
+the sample. From the frequentist perspective, the parameter is fixed
+while the confidence region is random. It is <em>not</em> the probability that
+<span class="math inline">\(\theta\)</span> is inside the given confidence interval.</p>
+<p>Suppose a random sample of size 6 is generated from
+<span class="math inline">\(\left(X_{1},\ldots,X_{6}\right)\sim\text{iid }N\left(\theta,1\right).\)</span>
+Find the coverage probability of the random interval is
+<span class="math inline">\(\left[\bar{X}-1.96/\sqrt{6},\ \bar{X}+1.96/\sqrt{6}\right].\)</span></p>
+
+<p>Hypothesis testing and confidence region are closely related. Sometimes
+it is difficult to directly construct the confidence region, but easy to
+test a hypothesis. One way to construct confidence region is by
+<em>inverting a test</em>. Suppose <span class="math inline">\(\phi_{\theta}\)</span> is a test of size <span class="math inline">\(\alpha\)</span>.
+If <span class="math inline">\(C\left(\mathbf{X}\right)\)</span> is constructed as
+<span class="math display">\[C\left(\mathbf{X}\right)=\left\{ \theta\in\Theta:\phi\left(\mathbf{X}\right)=0\right\} .\]</span>
+The coverage probability of the true data generating parameter <span class="math inline">\(\theta\)</span>
+is
+<span class="math display">\[P_{\theta}\left\{ \theta\in C\left(\mathbf{X}\right)\right\} =P_{\theta}\left\{ \phi\left(\mathbf{X}\right)=0\right\} =1-P_{\theta}\left\{ \phi\left(\mathbf{X}\right)=1\right\} =1-\beta\left(\theta\right)\geq1-\alpha\]</span>
+where the last inequality follows as
+<span class="math inline">\(\beta\left(\theta\right)\leq\alpha\)</span> for <span class="math inline">\(\theta\in\Theta_{0}\)</span>. If
+<span class="math inline">\(\Theta_{0}\)</span> is a singleton, the equality holds.</p>
+<p><strong>knitr</strong></p>
+</div>
+<div id="bayesian-credible-set" class="section level2">
+<h2><span class="header-section-number">8.3</span> Bayesian Credible Set</h2>
+<p>The Bayesian framework offers a coherent and natural language for
+statistical decision. However, the major criticism against Bayesian
+statistics is the arbitrariness of the choice of the prior.</p>
+<p>The Bayesian approach views both the data <span class="math inline">\(\mathbf{X}_{n}\)</span> and the
+parameter <span class="math inline">\(\theta\)</span> as random variables. Before she observes the data,
+she holds a <em>prior distribution</em> <span class="math inline">\(\pi\)</span> about <span class="math inline">\(\theta\)</span>. After observing
+the data, she updates the prior distribution to a <em>posterior
+distribution</em> <span class="math inline">\(p(\theta|\mathbf{X}_{n})\)</span>. The <em>Bayes Theorem</em> connects
+the prior and the posterior as
+<span class="math display">\[p(\theta|\mathbf{X}_{n})\propto f(\mathbf{X}_{n}|\theta)\pi(\theta)\]</span>
+where <span class="math inline">\(f(\mathbf{X}_{n}|\theta)\)</span> is the likelihood function.</p>
+<p>Here is a classical example to illustrate the Bayesian approach to
+statistical inference. Suppose <span class="math inline">\(\mathbf{X}_{n}=(X_{1},\ldots,X_{n})\)</span> is
+an iid sample drawn from a normal distribution with unknown <span class="math inline">\(\theta\)</span> and
+known <span class="math inline">\(\sigma\)</span>. If a researcher’s prior distribution
+<span class="math inline">\(\theta\sim N(\theta_{0},\sigma_{0}^{2})\)</span>, her posterior distribution
+is, by some routine calculation, also a normal distribution
+<span class="math display">\[p(\theta|\mathbf{x}_{n})\sim N\left(\tilde{\theta},\tilde{\sigma}^{2}\right),\]</span>
+where
+<span class="math inline">\(\tilde{\theta}=\frac{\sigma^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\theta_{0}+\frac{n\sigma_{0}^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\bar{x}\)</span>
+and
+<span class="math inline">\(\tilde{\sigma}^{2}=\frac{\sigma_{0}^{2}\sigma^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\)</span>.
+Thus the Bayesian credible set is
+<span class="math display">\[\left(\tilde{\theta}-z_{1-\alpha/2}\cdot\tilde{\sigma},\ \tilde{\theta}+z_{1-\alpha/2}\cdot\tilde{\sigma}\right).\]</span>
+This posterior distribution depends on <span class="math inline">\(\theta_{0}\)</span> and <span class="math inline">\(\sigma_{0}^{2}\)</span>
+from the prior. When the sample size is sufficiently large the posterior
+can be approximated by <span class="math inline">\(N(\bar{x},\sigma^{2}/n)\)</span>, where the prior
+information is overwhelmed by the information accumulated from the data.</p>
+<p>In contrast, a frequentist will estimate
+<span class="math inline">\(\hat{\theta}=\bar{x}\sim N(\theta,\sigma^{2}/n)\)</span>. Her confidence
+interval is
+<span class="math display">\[\left(\bar{x}-z_{1-\alpha/2}\cdot\sigma/\sqrt{n},\ \bar{x}-z_{1-\alpha/2}\cdot\sigma/\sqrt{n}\right).\]</span>
+The Bayesian credible set and the frequentist confidence interval are
+different for finite <span class="math inline">\(n\)</span>, but they coincide when <span class="math inline">\(n\to\infty\)</span>.</p>
+</div>
+<div id="applications-in-ols" class="section level2">
+<h2><span class="header-section-number">8.4</span> Applications in OLS</h2>
+<p>We will introduce three tests for a hypothesis of the linear regression
+coefficients, namely the Wald test, the Lagrangian multiplier (LM) test,
+and the likelihood ratio test. The Wald test is based on the
+unrestricted OLS estimator <span class="math inline">\(\widehat{\beta}\)</span>. The LM test is based on
+the restricted estimator <span class="math inline">\(\tilde{\beta}\)</span>. The LRT, as we have discussed,
+is based on the difference of the log-likelihood function evaluated at
+the unrestricted OLS estimator and that on the restricted estimator.</p>
+<p>Let <span class="math inline">\(R\)</span> be a <span class="math inline">\(q\times K\)</span> constant matrix with <span class="math inline">\(q\leq K\)</span> and
+<span class="math inline">\(\mbox{rank}\left(R\right)=q\)</span>. All linear restrictions about <span class="math inline">\(\beta\)</span> can
+be written in the form of <span class="math inline">\(R\beta=r\)</span>, where <span class="math inline">\(r\)</span> is a <span class="math inline">\(q\times1\)</span> constant
+vector.</p>
+<p>We want to simultaneously test <span class="math inline">\(\beta_{1}=1\)</span> and <span class="math inline">\(\beta_{3}+\beta_{4}=2\)</span>
+in the above example. The null hypothesis can be expressed in the
+general form <span class="math inline">\(R\beta=r\)</span>, where the restriction matrix <span class="math inline">\(R\)</span> is
+<span class="math display">\[R=\begin{pmatrix}1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 0
+\end{pmatrix}\]</span> and <span class="math inline">\(r=\left(1,2\right)&#39;\)</span>.</p>
+<div id="wald-test" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> Wald Test</h3>
+<p>Suppose the OLS estimator <span class="math inline">\(\widehat{\beta}\)</span> is asymptotic normal, i.e.
+<span class="math display">\[\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,\Omega\right)\]</span>
+where <span class="math inline">\(\Omega\)</span> is a <span class="math inline">\(K\times K\)</span> positive definite covariance matrix and.
+Since
+<span class="math inline">\(R\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R&#39;\right)\)</span>,
+the quadratic form
+<span class="math display">\[n\left(\widehat{\beta}-\beta\right)&#39;R&#39;\left(R\Omega R&#39;\right)^{-1}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}\chi_{q}^{2}.\]</span>
+Now we intend to test the linear null hypothesis <span class="math inline">\(R\beta=r\)</span>. Under the
+null, the Wald statistic
+<span class="math display">\[\mathcal{W}=n\left(R\widehat{\beta}-r\right)&#39;\left(R\widehat{\Omega}R&#39;\right)^{-1}\left(R\widehat{\beta}-r\right)\stackrel{d}{\to}\chi_{q}^{2}\]</span>
+where <span class="math inline">\(\widehat{\Omega}\)</span> is a consistent estimator of <span class="math inline">\(\Omega\)</span>.</p>
+<p>(Single test) In a linear regression
+<span class="math display">\[\begin{aligned}y &amp; =x_{i}&#39;\beta+e_{i}=\sum_{k=1}^{5}\beta_{k}x_{ik}+e_{i}.\nonumber\\
+E\left[e_{i}x_{i}\right] &amp; =\mathbf{0}_{5},\label{eq:example}
+\end{aligned}\]</span> where <span class="math inline">\(y\)</span> is wage and
+<span class="math display">\[x=\left(\mbox{edu},\mbox{age},\mbox{experience},\mbox{experience}^{2},1\right)&#39;.\]</span>
+To test whether <em>education</em> affects <em>wage</em>, we specify the null
+hypothesis <span class="math inline">\(\beta_{1}=0\)</span>. Let <span class="math inline">\(R=\left(1,0,0,0,0\right)\)</span> and <span class="math inline">\(r=0\)</span>.
+<span class="math display">\[\sqrt{n}\widehat{\beta}_{1}=\sqrt{n}\left(\widehat{\beta}_{1}-\beta_{1}\right)=\sqrt{n}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R&#39;\right)\sim N\left(0,\Omega_{11}\right),\label{eq:R11}\]</span>
+where <span class="math inline">\(\Omega{}_{11}\)</span> is the <span class="math inline">\(\left(1,1\right)\)</span> (scalar) element of
+<span class="math inline">\(\Omega\)</span>. Under
+<span class="math display">\[H_{0}:R\beta=\left(1,0,0,0,0\right)\left(\beta_{1},\ldots,\beta_{5}\right)&#39;=\beta_{1}=0,\]</span>
+we have
+<span class="math inline">\(\sqrt{n}R\left(\widehat{\beta}-\beta\right)=\sqrt{n}\widehat{\beta}_{1}\stackrel{d}{\to}N\left(0,\Omega_{11}\right).\)</span>
+Therefore,
+<span class="math display">\[\sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}=\sqrt{\frac{\Omega_{11}}{\widehat{\Omega}_{11}}}\sqrt{n}\frac{\widehat{\beta}_{1}}{\sqrt{\Omega_{11}}}\]</span>
+If <span class="math inline">\(\widehat{\Omega}\stackrel{p}{\to}\Omega\)</span>, then
+<span class="math inline">\(\left(\Omega_{11}/\widehat{\Omega}_{11}\right)^{1/2}\stackrel{p}{\to}1\)</span>
+by the continuous mapping theorem. As
+<span class="math inline">\(\sqrt{n}\widehat{\beta}_{1}/\Omega_{11}^{1/2}\stackrel{d}{\to}N\left(0,1\right)\)</span>,
+we conclude
+<span class="math inline">\(\sqrt{n}\widehat{\beta}_{1}/\widehat{\Omega}_{11}^{1/2}\stackrel{d}{\to}N\left(0,1\right).\)</span></p>
+<p>The above example is a test about a single coefficient, and the test
+statistic is essentially the square of the <em>t</em>-statistic, and the null
+distribution is the square of a standard normal.</p>
+<p>In order to test a nonlinear regression, we use the delta method.</p>
+<p><em>(This is not a good example because it can be rewritten into a linear
+hypothesis.)</em> In the example of linear regression, the optimal
+experience level can be found by setting to zero the first order
+condition with respective to experience,
+<span class="math inline">\(\beta_{3}+2\beta_{4}\mbox{experience}^{*}=0\)</span>. We test the hypothesis
+that the optimal experience level is 20 years; in other words,
+<span class="math display">\[\mbox{experience}^{*}=-\frac{\beta_{3}}{2\beta_{4}}=20.\]</span> This is a
+nonlinear hypothesis. If <span class="math inline">\(q\leq K\)</span> where <span class="math inline">\(q\)</span> is the number of
+restrictions, we have
+<span class="math display">\[n\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)&#39;\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)&#39;\right)^{-1}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}\chi_{q}^{2},\]</span>
+where in this example, <span class="math inline">\(\theta=\beta\)</span>,
+<span class="math inline">\(f\left(\beta\right)=-\beta_{3}/\left(2\beta_{4}\right)\)</span>. The gradient
+<span class="math display">\[\frac{\partial f}{\partial\beta&#39;}\left(\beta\right)=\left(0,0,-\frac{1}{2\beta_{4}},\frac{\beta_{3}}{2\beta_{4}^{2}},0\right)\]</span>
+Since <span class="math inline">\(\widehat{\beta}\stackrel{p}{\to}\beta_{0}\)</span>, by the continuous
+mapping theorem, if <span class="math inline">\(\beta_{0,4}\neq0\)</span>, we have
+<span class="math inline">\(\frac{\partial}{\partial\beta}f\left(\widehat{\beta}\right)\stackrel{p}{\to}\frac{\partial}{\partial\beta}f\left(\beta_{0}\right)\)</span>.
+Therefore, the (nonlinear) Wald test is
+<span class="math display">\[\mathcal{W}=n\left(f\left(\widehat{\beta}\right)-20\right)&#39;\left(\frac{\partial f}{\partial\beta&#39;}\left(\widehat{\beta}\right)\widehat{\Omega}\frac{\partial f}{\partial\beta&#39;}\left(\widehat{\beta}\right)\right)^{-1}\left(f\left(\widehat{\beta}\right)-20\right)\stackrel{d}{\to}\chi_{1}^{2}.\]</span>
+This is a valid test with correct asymptotic size.</p>
+<p>However, we can equivalently state the null hypothesis as
+<span class="math inline">\(\beta_{3}+40\beta_{4}=0\)</span> and we can construct a Wald statistic
+accordingly. Asymptotically equivalent though, in general a linear
+hypothesis is preferred to a nonlinear one, due to the approximation
+error in the delta method under the null and more importantly the
+invalidity of the Taylor expansion under the alternative. It also
+highlights the problem of Wald test being <em>variant</em> to
+re-parametrization.</p>
+</div>
+<div id="lagrangian-multiplier-test" class="section level3">
+<h3><span class="header-section-number">8.4.2</span> Lagrangian Multiplier Test</h3>
+<p>The key difference between the Wald test and LM test is that the former
+is based on the unrestricted OLS estimator while the latter is based on
+the restricted OLS estimator. Estimate the constrained OLS estimator
+<span class="math display">\[\min_{\beta}\left(y-X\beta\right)&#39;\left(y-X\beta\right)\mbox{ s.t. }R\beta=r.\]</span>
+We know that the restricted minimization problem can be converted into
+an unrestricted problem
+<span class="math display">\[L\left(\beta,\lambda\right)=\frac{1}{2n}\left(y-X\beta\right)&#39;\left(y-X\beta\right)+\lambda&#39;\left(R\beta-r\right),\label{eq:Lagran}\]</span>
+where <span class="math inline">\(L\left(\beta,\lambda\right)\)</span> is called the Lagrangian, and
+<span class="math inline">\(\lambda\)</span> is the Lagrangian multiplier.</p>
+<p>The LM test is also called the <em>score test</em>, because the derivation is
+based on the score function of the restricted OLS estimator. Set the
+first-order condition of
+<a href="#eq:Lagran" reference-type="eqref" reference="eq:Lagran"><span class="math display">\[eq:Lagran\]</span></a> as zero: <span class="math display">\[\begin{aligned}
+\frac{\partial}{\partial\beta}L &amp; =-\frac{1}{n}X&#39;\left(y-X\tilde{\beta}\right)+\tilde{\lambda}R=-\frac{1}{n}X&#39;e+\frac{1}{n}X&#39;X\left(\tilde{\beta}-\beta_{0}\right)+R&#39;\tilde{\lambda}=0.\\
+\frac{\partial}{\partial\lambda}L &amp; =R\tilde{\beta}-r=R\left(\tilde{\beta}-\beta_{0}\right)=0\end{aligned}\]</span>
+where <span class="math inline">\(\tilde{\beta}\)</span> and <span class="math inline">\(\tilde{\lambda}\)</span> denote the roots of these
+equation, and <span class="math inline">\(\beta_{0}\)</span> is the hypothesized true value. The two
+equations can be written as a linear system
+<span class="math display">\[\begin{pmatrix}\widehat{Q} &amp; R&#39;\\
+R &amp; 0
+\end{pmatrix}\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
+\tilde{\lambda}
+\end{pmatrix}=\begin{pmatrix}\frac{1}{n}X&#39;e\\
+0
+\end{pmatrix},\]</span> where <span class="math inline">\(\hat{Q}=X&#39;X/n\)</span>.</p>
+<p><span class="math display">\[\begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1} &amp; \widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}\\
+\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1} &amp; -(R&#39;Q^{-1}R)^{-1}
+\end{pmatrix}\begin{pmatrix}\widehat{Q} &amp; R&#39;\\
+R &amp; 0
+\end{pmatrix}=I_{K+q}.\]</span></p>
+<p>Given the above fact, we can explicitly express <span class="math display">\[\begin{aligned}
+\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
+\tilde{\lambda}
+\end{pmatrix}\begin{aligned}=\end{aligned}
+ &amp; \begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1} &amp; \widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}\\
+\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1} &amp; -(R&#39;Q^{-1}R)^{-1}
+\end{pmatrix}\begin{pmatrix}\frac{1}{n}X&#39;e\\
+0
+\end{pmatrix}\\
+= &amp; \begin{pmatrix}\widehat{Q}^{-1}\frac{1}{n}X&#39;e-\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{n}X&#39;e\\
+\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{n}X&#39;e
+\end{pmatrix}\end{aligned}\]</span> The <span class="math inline">\(\tilde{\lambda}\)</span> component is
+<span class="math display">\[\begin{aligned}
+\sqrt{n}\tilde{\lambda} &amp; =\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X&#39;e\\
+ &amp; \stackrel{d}{\to}N\left(0,\left(RQ^{-1}R&#39;\right)^{-1}RQ^{-1}\Omega Q^{-1}R&#39;\left(RQ^{-1}R&#39;\right)^{-1}\right)\end{aligned}\]</span>
+as <span class="math inline">\(\widehat{Q}\stackrel{p}{\to}Q\)</span>. Denote
+<span class="math inline">\(\Sigma=\left(RQ^{-1}R&#39;\right)^{-1}RQ^{-1}\Omega Q^{-1}R&#39;\left(RQ^{-1}R&#39;\right)^{-1}\)</span>,
+we have
+<span class="math display">\[n\tilde{\lambda}&#39;\Sigma^{-1}\tilde{\lambda}\stackrel{d}{\to}\chi_{q}^{2}.\]</span>
+Let
+<span class="math display">\[\widehat{\Sigma}=\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\widehat{\Omega}\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}.\]</span>
+If <span class="math inline">\(\widehat{\Omega}\stackrel{p}{\to}\Omega\)</span>, we have <span class="math display">\[\begin{aligned}
+\mathcal{LM} &amp; =n\tilde{\lambda}&#39;\widehat{\Sigma}^{-1}\tilde{\lambda}=n\tilde{\lambda}&#39;\Sigma^{-1}\tilde{\lambda}+n\tilde{\lambda}&#39;\left(\widehat{\Sigma}^{-1}-\Sigma^{-1}\right)\tilde{\lambda}\\
+ &amp; =n\tilde{\lambda}&#39;\Sigma^{-1}\tilde{\lambda}+o_{p}\left(1\right)\stackrel{d}{\to}\chi_{q}^{2}.\end{aligned}\]</span>
+This is the general expression of the LM test.</p>
+<p>In the special case of homoskedasticity,
+<span class="math inline">\(\Sigma=\sigma^{2}\left(RQ^{-1}R&#39;\right)^{-1}RQ^{-1}QQ^{-1}R&#39;\left(RQ^{-1}R&#39;\right)^{-1}=\sigma^{2}\left(RQ^{-1}R&#39;\right)^{-1}.\)</span>
+Replace <span class="math inline">\(\Sigma\)</span> with the estimated <span class="math inline">\(\hat{\Sigma}\)</span>, we have
+<span class="math display">\[\begin{aligned}\frac{n\tilde{\lambda}&#39;R\hat{Q}^{-1}R&#39;\tilde{\lambda}}{\hat{\sigma}^{2}} &amp; =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)&#39;X\hat{Q}^{-1}R&#39;(R\hat{Q}^{-1}R&#39;)^{-1}R\hat{Q}^{-1}X&#39;\left(y-X\tilde{\beta}\right)\stackrel{d}{\to}\chi_{q}^{2}.\end{aligned}\]</span></p>
+<p>If we test the hypothesis that the optimal experience level is 20 years;
+<span class="math inline">\(\mbox{experience}^{*}=-\frac{\beta_{3}}{2\beta_{4}}=20.\)</span> We can replace
+<span class="math inline">\(\beta_{3}\)</span> by <span class="math inline">\(-40\beta_{4}\)</span> so we only need to estimate 3 slope
+coefficients in the OLS to construct the LM test. Moreover, the LM test
+is invariant to re-parametrization.</p>
+</div>
+<div id="likelihood-ratio-test-for-regression" class="section level3">
+<h3><span class="header-section-number">8.4.3</span> Likelihood-Ratio Test for Regression</h3>
+<p>In the previous section we have discussed the LRT. Here we put it into
+the context regression with Gaussian error. Let <span class="math inline">\(\gamma=\sigma_{e}^{2}\)</span>.
+Under the classical assumptions of normal regression model,
+<span class="math display">\[L_{n}\left(\beta,\gamma\right)=-\frac{n}{2}\log\left(2\pi\right)-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\left(Y-X\beta\right)&#39;\left(Y-X\beta\right).\]</span>
+For the unrestricted estimator, we know
+<span class="math display">\[\widehat{\gamma}=\gamma\left(\widehat{\beta}\right)=n^{-1}\left(Y-X\widehat{\beta}\right)&#39;\left(Y-X\widehat{\beta}\right)\]</span>
+and the sample log-likelihood function evaluated at the MLE is
+<span class="math display">\[\widehat{L}_{n}=L_{n}\left(\widehat{\beta},\widehat{\gamma}\right)=-\frac{n}{2}\log\left(2\pi\right)-\frac{n}{2}\log\widehat{\gamma}-\frac{n}{2}\]</span>
+and the restricted estimator
+<span class="math inline">\(\tilde{L}_{n}=L_{n}\left(\tilde{\beta},\tilde{\gamma}\right)=-\frac{n}{2}\log\left(2\pi\right)-\frac{n}{2}\log\tilde{\gamma}-\frac{n}{2}\)</span>.
+The likelihood ratio is <span class="math display">\[\begin{aligned}
+\mathcal{LR} &amp; =2\left(\widehat{L}_{n}-\tilde{L}_{n}\right)=n\log\left(\tilde{\gamma}/\widehat{\gamma}\right).\end{aligned}\]</span>
+If the normal regression is correctly specified, we can immediately
+conclude <span class="math inline">\(\mathcal{LR}\stackrel{d}{\to}\chi_{q}^{2}.\)</span></p>
+<p>Now we drop the Gaussian error assumption while keep the conditional
+homoskedasticity. In this case, the classical results is not applicable
+because <span class="math inline">\(L_{n}\left(\beta,\gamma\right)\)</span> is not a (genuine)
+log-likelihood function; instead it is the <em>quasi log-likelihood
+function</em>. Notice <span class="math display">\[\begin{aligned}
+\mathcal{LR} &amp; =n\log\left(1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}\right)=n\left(\log1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+O\left(\frac{\left|\tilde{\gamma}-\widehat{\gamma}\right|^{2}}{\widehat{\gamma}^{2}}\right)\right)\nonumber \\
+ &amp; =n\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+o_{p}\left(1\right)\label{eq:LRT1}\end{aligned}\]</span>
+by a Taylor expansion of
+<span class="math inline">\(\log\left(1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}\right)\)</span>
+around <span class="math inline">\(\log1=0\)</span>. We focus on <span class="math display">\[\begin{aligned}
+n\left(\tilde{\gamma}-\widehat{\gamma}\right) &amp; =n\left(\gamma\left(\tilde{\beta}\right)-\gamma\left(\widehat{\beta}\right)\right)\nonumber \\
+ &amp; =n\left(\frac{\partial\gamma\left(\widehat{\beta}\right)}{\partial\beta}\left(\tilde{\beta}-\widehat{\beta}\right)+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)&#39;\frac{\partial^{2}\gamma\left(\widehat{\beta}\right)}{\partial\beta\partial\beta&#39;}\left(\tilde{\beta}-\widehat{\beta}\right)+O\left(\left\Vert \tilde{\beta}-\widehat{\beta}\right\Vert _{2}^{3}\right)\right)\nonumber \\
+ &amp; =\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)&#39;\widehat{Q}\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)+o_{p}\left(1\right)\label{eq:LRT2}\end{aligned}\]</span>
+where the last line follows by
+<span class="math inline">\(\frac{\partial\gamma\left(\widehat{\beta}\right)}{\partial\beta}=-\frac{2}{n}X&#39;\left(Y-X\widehat{\beta}\right)=-\frac{2}{n}X&#39;\widehat{e}=0\)</span>
+and
+<span class="math inline">\(\frac{1}{2}\cdot\frac{\partial^{2}\gamma\left(\widehat{\beta}\right)}{\partial\beta\partial\beta&#39;}=\frac{1}{2}\cdot\frac{2}{n}X&#39;X=\widehat{Q}\)</span>.</p>
+<p>From the derivation of LM test, we have
+<span class="math display">\[\begin{aligned}\sqrt{n}\left(\tilde{\beta}-\beta_{0}\right) &amp; =\left(\widehat{Q}^{-1}-\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\right)\frac{1}{\sqrt{n}}X&#39;e\\
+ &amp; =\frac{1}{\sqrt{n}}\left(X&#39;X\right)^{-1}X&#39;e-\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X&#39;e\\
+ &amp; =\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)-\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X&#39;e.
+\end{aligned}\]</span> Rearrange the above equation to obtain
+<span class="math display">\[\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)=-\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X&#39;e\]</span>
+and thus the quadratic form <span class="math display">\[\begin{aligned}
+ &amp;  &amp; \sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)&#39;\widehat{Q}\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)\nonumber \\
+ &amp; = &amp; \frac{1}{\sqrt{n}}e&#39;X\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X&#39;e\nonumber \\
+ &amp; = &amp; \frac{1}{\sqrt{n}}e&#39;X\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X&#39;e\nonumber \\
+ &amp; = &amp; \frac{1}{\sqrt{n}}e&#39;X\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X&#39;e.\label{eq:LRT3}\end{aligned}\]</span>
+Collecting (<a href="#eq:LRT1" reference-type="ref" reference="eq:LRT1"><span class="math display">\[eq:LRT1\]</span></a>), (<a href="#eq:LRT2" reference-type="ref" reference="eq:LRT2"><span class="math display">\[eq:LRT2\]</span></a>) and (<a href="#eq:LRT3" reference-type="ref" reference="eq:LRT3"><span class="math display">\[eq:LRT3\]</span></a>), we have <span class="math display">\[\begin{aligned}
+\mathcal{LR} &amp; =n\frac{\sigma_{e}^{2}}{\widehat{\gamma}}\cdot\frac{\tilde{\gamma}-\widehat{\gamma}}{\sigma_{e}^{2}}+o_{p}\left(1\right)\\
+ &amp; =\frac{\sigma_{e}^{2}}{\widehat{\gamma}}\frac{1}{\sqrt{n}}\frac{e}{\sigma_{e}}&#39;X\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X&#39;\frac{e}{\sigma_{e}}+o_{p}\left(1\right)\end{aligned}\]</span>
+Notice that under homoskedasticity, CLT gives <span class="math display">\[\begin{aligned}
+R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X&#39;\frac{e}{\sigma_{e}} &amp; =R\widehat{Q}^{-1/2}\widehat{Q}^{-1/2}\frac{1}{\sqrt{n}}X&#39;\frac{e}{\sigma_{e}}\\
+ &amp; \stackrel{d}{\to}RQ^{-1/2}\times N\left(0,I_{K}\right)\sim N\left(0,RQ^{-1}R&#39;\right),\end{aligned}\]</span>
+and thus
+<span class="math display">\[\frac{1}{\sqrt{n}}\frac{e}{\sigma_{e}}&#39;X\widehat{Q}^{-1}R&#39;\left(R\widehat{Q}^{-1}R&#39;\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X&#39;\frac{e}{\sigma_{e}}\stackrel{d}{\to}\chi_{q}^{2}.\]</span>
+Moreover, <span class="math inline">\(\frac{\sigma_{e}^{2}}{\widehat{\gamma}}\stackrel{p}{\to}1\)</span>.
+By Slutsky’s theorem, we conclude
+<span class="math display">\[\mathcal{LR}\stackrel{d}{\to}\chi_{q}^{2}.\]</span> under homoskedasticity.</p>
+</div>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">8.5</span> Summary</h2>
+<p>Applied econometrics is a field obsessed of hypothesis testing, in the
+hope to establish at least statistical association and ideally
+causality. Hypothesis testing is a fundamentally important topic in
+statistics. The states and the decisions in Table
+<a href="hypothesis-testing.html#tab:Decisions-and-States" reference-type="ref" reference="tab:Decisions-and-States"><span class="math display">\[tab:Decisions-and-States\]</span></a> remind us the intrinsic
+connections with game theory in economics. I, a game player, plays a
+sequential game against the “nature”.</p>
+<dl>
+<dt>Step0:</dt>
+<dd><p>The parameter space <span class="math inline">\(\Theta\)</span> is partitioned into the null hypothesis
+<span class="math inline">\(\Theta_{0}\)</span> and the alternative hypothesis <span class="math inline">\(\Theta_{1}\)</span> according
+to a scientific theory.</p>
+</dd>
+<dt>Step1:</dt>
+<dd><p>Before I observe the data, I design a test function <span class="math inline">\(\phi\)</span> according
+to <span class="math inline">\(\Theta_{0}\)</span> and <span class="math inline">\(\Theta_{1}\)</span>. In game theory terminology, the
+contingency plan <span class="math inline">\(\phi\)</span> is my <em>strategy</em>.</p>
+</dd>
+<dt>Step2:</dt>
+<dd><p>Once I observe the fixed data <span class="math inline">\(\mathbf{x}\)</span>, I act according to the
+instruction of <span class="math inline">\(\phi\left(\mathbf{x}\right)\)</span> — either accept
+<span class="math inline">\(\Theta_{0}\)</span> or reject <span class="math inline">\(\Theta_{0}\)</span>.</p>
+</dd>
+<dt>Step3:</dt>
+<dd><p>Nature reveals the true parameter <span class="math inline">\(\theta^{*}\)</span> behind <span class="math inline">\(\mathbf{x}\)</span>.
+Then I can evaluate the gain/loss of my decision
+<span class="math inline">\(\phi\left(\mathbf{x}\right)\)</span>.</p>
+</dd>
+</dl>
+<p>When the loss function (negative payoff) is specified as
+<span class="math display">\[\mathscr{L}\left(\theta,\phi\left(\mathbf{x}\right)\right)=\phi\left(\mathbf{x}\right)\cdot1\left\{ \theta\in\Theta_{0}\right\} +\left(1-\phi\left(\mathbf{x}\right)\right)\cdot1\left\{ \theta\in\Theta_{1}\right\} ,\]</span>
+the randomness of the data will incur the risk (expected loss)
+<span class="math display">\[\mathscr{R}\left(\theta,\phi\right)=E\left[\mathscr{L}\left(\theta,\phi\left(\mathbf{x}\right)\right)\right]=\beta_{\phi}\left(\theta\right)\cdot1\left\{ \theta\in\Theta_{0}\right\} +\left(1-\beta_{\phi}\left(\theta\right)\right)\cdot1\left\{ \theta\in\Theta_{1}\right\} .\]</span>
+I am a rational person. I understand the structure of the game and I
+want to do a good job in Step 1 in designing my strategy. I want to
+minimize my risk.</p>
+<p>If I am a frequentist, one and only one of
+<span class="math inline">\(1\left\{ \theta\in\Theta_{0}\right\}\)</span> and
+<span class="math inline">\(1\left\{ \theta\in\Theta_{1}\right\}\)</span> can happen. An unbiased test
+makes sure
+<span class="math inline">\(\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)\leq\alpha\)</span>.
+When many tests are unbiased, ideally I would like to pick the best one.
+If it exists, in a class <span class="math inline">\(\Psi_{\alpha}\)</span> of unbiased tests of size
+<span class="math inline">\(\alpha\)</span> the uniformly most power test <span class="math inline">\(\phi^{*}\)</span> satisfies
+<span class="math inline">\(\mathscr{R}\left(\theta,\phi^{*}\right)\geq\sup_{\phi\in\Psi_{\alpha}}\mathscr{R}\left(\theta,\phi\right)\)</span>
+for every <span class="math inline">\(\theta\in\Theta_{1}\)</span>. For simple versus simple tests, LRT is
+the uniformly most powerful test according to Neyman-Pearson Lemma.</p>
+<p>If I am a Bayesian, I do not mind imposing probability (weight) on the
+parameter space, which is my prior belief <span class="math inline">\(\pi\left(\theta\right)\)</span>. My
+Bayesian risk becomes <span class="math display">\[\begin{aligned}
+\mathscr{BR}\left(\pi,\phi\right) &amp; =E_{\pi\left(\theta\right)}\left[\mathscr{R}\left(\theta,\phi\right)\right]=\int\left[\beta_{\phi}\left(\theta\right)\cdot1\left\{ \theta\in\Theta_{0}\right\} +\left(1-\beta_{\phi}\left(\theta\right)\right)\cdot1\left\{ \theta\in\Theta_{1}\right\} \right]\pi\left(\theta\right)d\theta\\
+ &amp; =\int_{\left\{ \theta\in\Theta_{0}\right\} }\beta_{\phi}\left(\theta\right)\pi\left(\theta\right)d\theta+\int_{\left\{ \theta\in\Theta_{1}\right\} }(1-\beta_{\phi}\left(\theta\right))\pi\left(\theta\right)d\theta.\end{aligned}\]</span>
+This is the average (with respect to <span class="math inline">\(\pi\left(\theta\right)\)</span>) risk over
+the null and the alternative.</p>
+<p><strong>Historical notes</strong>: Hypothesis testing started to take the modern
+shape at the beginning of the 20th century. Karl Pearson (1957–1936)
+laid the foundation of hypothesis testing and introduced the <span class="math inline">\(\chi^{2}\)</span>
+test, the <span class="math inline">\(p\)</span>-value, among many other concepts that we keep using today.
+Neyman-Pearson Lemma was named after Jerzy Neyman (1894–1981) and Egon
+Pearson (1895–1980), Karl’s son.</p>
+<p><strong>Further reading</strong>: <span class="citation">Young and Smith (<a href="#ref-young2005essentials" role="doc-biblioref">2005</a>)</span> is a concise but in-depth
+reference for statistical inference.</p>
+</div>
+<div id="appendix" class="section level2">
+<h2><span class="header-section-number">8.6</span> Appendix</h2>
+<div id="neyman-pearson-lemma" class="section level3">
+<h3><span class="header-section-number">8.6.1</span> Neyman-Pearson Lemma</h3>
+<p>We have discussed an example of the uniformly most power test in the
+Gaussian location model. Under the likelihood principle, if the test is
+a simple versus simple (the null hypothesis is a singleton <span class="math inline">\(\theta_{0}\)</span>
+and the alternative hypothesis is another single point <span class="math inline">\(\theta_{1}\)</span>),
+then LRT <span class="math display">\[\begin{aligned}
+\phi\left(\mathbf{X}\right) &amp; :=1\left\{ \mathcal{LR}\geq c_{LR}\right\} ,\end{aligned}\]</span>
+where <span class="math inline">\(c_{LR}\)</span> is the critical value depending on the size of the the
+test, is a uniformly most powerful test. This result is the well-known
+Neyman-Pearson Lemma.</p>
+<p>Notice
+<span class="math inline">\(\exp\left(L_{n}\left(\theta\right)\right)=\Pi_{i}f\left(x_{i};\theta\right)=f\left(\mathbf{x};\theta\right)\)</span>
+where <span class="math inline">\(f\left(\mathbf{x};\theta_{0}\right)\)</span> is the joint density of
+<span class="math inline">\(\left(x_{1},\ldots,x_{n}\right)\)</span>, the LRT can be equivalently written
+in likelihood ratio form (without log)
+<span class="math display">\[\phi\left(\mathbf{X}\right)=1\left\{ f\left(\mathbf{X};\widehat{\theta}\right)/f\left(\mathbf{X};\theta_{0}\right)\geq c\right\}\]</span>
+where <span class="math inline">\(c:=\exp\left(c_{LR}/2\right)\)</span>.</p>
+<p>To see its is the most power test in the simple to simple context,
+consider another test <span class="math inline">\(\psi\)</span> of the same size at the single null
+hypothesis
+<span class="math inline">\(\int\phi\left(\mathbf{x}\right)f\left(\theta_{0}\right)=\int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)=\alpha\)</span>,
+where <span class="math inline">\(f\left(\mathbf{x};\theta_{0}\right)=\)</span> is the joint density of the
+sample <span class="math inline">\(\mathbf{X}\)</span>. For any constant <span class="math inline">\(c&gt;0\)</span>, the power of <span class="math inline">\(\phi\)</span> at the
+alternative <span class="math inline">\(\theta_{1}\)</span> is <span class="math display">\[\begin{aligned}
+E_{\theta_{1}}\left[\phi\left(\mathbf{X}\right)\right] &amp; =\int\phi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{1}\right)\nonumber \\
+ &amp; =\int\phi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{1}\right)-c\left[\int\phi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)-\int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)\right]\nonumber \\
+ &amp; =\int\phi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{1}\right)-c\int\phi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)+c\int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)\nonumber \\
+ &amp; =\int\phi\left(\mathbf{x}\right)\left(f\left(\mathbf{x};\theta_{1}\right)-cf\left(\mathbf{x};\theta_{0}\right)\right)+c\int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right).\label{eq:NP1}\end{aligned}\]</span>
+Define
+<span class="math inline">\(\xi_{c}:=f\left(\mathbf{x};\theta_{1}\right)-cf\left(\mathbf{x};\theta_{0}\right)\)</span>.
+The fact that <span class="math inline">\(\phi\left(\mathbf{x}\right)=1\)</span> if <span class="math inline">\(\xi_{c}\geq0\)</span> and
+<span class="math inline">\(\phi\left(\mathbf{x}\right)=0\)</span> if <span class="math inline">\(\xi_{c}&lt;0\)</span> implies <span class="math display">\[\begin{aligned}
+ &amp;  &amp; \int\phi\left(\mathbf{x}\right)\left(f\left(\mathbf{x};\theta_{1}\right)-cf\left(\mathbf{x};\theta_{0}\right)\right)=\int\phi\left(\mathbf{x}\right)\xi_{c}\\
+ &amp; = &amp; \int_{\left\{ \xi_{c}\geq0\right\} }\phi\left(\mathbf{x}\right)\xi_{c}+\int_{\left\{ \xi_{c}&lt;0\right\} }\phi\left(\mathbf{x}\right)\xi_{c}=\int_{\left\{ \xi_{c}\geq0\right\} }\xi_{c}=\int\xi_{c}\cdot1\left\{ \xi_{c}\geq0\right\} \\
+ &amp; \geq &amp; \int\psi\left(\mathbf{x}\right)\xi_{c}\cdot1\left\{ \xi_{c}\geq0\right\} =\int_{\left\{ \xi_{c}\geq0\right\} }\psi\left(\mathbf{x}\right)\xi_{c}\\
+ &amp; \geq &amp; \int_{\left\{ \xi_{c}\geq0\right\} }\psi\left(\mathbf{x}\right)\xi_{c}+\int_{\left\{ \xi_{c}&lt;0\right\} }\psi\left(\mathbf{x}\right)\xi_{c}=\int\psi\left(x\right)\xi_{c}\\
+ &amp; = &amp; \int\psi\left(\mathbf{x}\right)\left(f\left(\mathbf{x};\theta_{1}\right)-cf\left(\mathbf{x};\theta_{0}\right)\right)\end{aligned}\]</span>
+where the first inequality follows because the test function
+<span class="math inline">\(0\leq\psi\left(\mathbf{x}\right)\leq1\)</span> for any realization of
+<span class="math inline">\(\mathbf{x}\)</span>, and where the second inequality holds because
+<span class="math inline">\(\int_{\left\{ \xi_{c}&lt;0\right\} }\psi\left(\mathbf{x}\right)\xi_{c}\leq0\)</span>.
+We continue <a href="#eq:NP1" reference-type="eqref" reference="eq:NP1"><span class="math display">\[eq:NP1\]</span></a>: <span class="math display">\[\begin{aligned}
+E_{\theta_{1}}\left[\phi\left(\mathbf{X}\right)\right] &amp; \geq &amp; \int\psi\left(\mathbf{x}\right)\left(f\left(\mathbf{x};\theta_{1}\right)-cf\left(\mathbf{x};\theta_{0}\right)\right)+c\int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)\\
+ &amp; = &amp; \int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{1}\right)=E_{\theta_{1}}\left[\psi\left(\mathbf{X}\right)\right].\end{aligned}\]</span>
+In other words, <span class="math inline">\(\phi\left(\mathbf{X}\right)\)</span> is more powerful at
+<span class="math inline">\(\theta_{1}\)</span> than any other test <span class="math inline">\(\psi\)</span> of the same size at the null.</p>
+<p>Neyman-Pearson lemma establishes the optimality of LRT in single versus
+simple hypothesis testing. It can be generalized to show the existence
+of the uniformly most power test in one sided composite null hypothesis
+<span class="math inline">\(H_{0}:\theta\leq\theta_{0}\)</span> or <span class="math inline">\(H_{0}:\theta\geq\theta_{0}\)</span> in the
+parametric class of distributions exhibiting <em>monotone likelihood
+ratio</em>.</p>
+
+<p><code>Zhentao Shi. Nov 4, 2020.</code></p>
+
+
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-young2005essentials">
+<p>Young, G Alastair, and Robert Leslie Smith. 2005. <em>Essentials of Statistical Inference</em>. Vol. 16. Cambridge University Press.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="asymptotic-properties-of-mle.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="panel-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Least Squares: Finite Sample Theory | Econ5121</title>
+  <meta name="description" content="nothing" />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Least Squares: Finite Sample Theory | Econ5121" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="nothing" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Least Squares: Finite Sample Theory | Econ5121" />
+  
+  <meta name="twitter:description" content="nothing" />
+  
+
+<meta name="author" content="Zhentao Shi" />
+
+
+<meta name="date" content="2022-01-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="least-squares-linear-algebra.html"/>
+<link rel="next" href="basic-asymptotic-theory.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>1</b> Probability</a><ul>
+<li class="chapter" data-level="1.1" data-path="probability.html"><a href="probability.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="probability.html"><a href="probability.html#axiomatic-probability"><i class="fa fa-check"></i><b>1.2</b> Axiomatic Probability</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="probability.html"><a href="probability.html#probability-space"><i class="fa fa-check"></i><b>1.2.1</b> Probability Space</a></li>
+<li class="chapter" data-level="1.2.2" data-path="probability.html"><a href="probability.html#random-variable"><i class="fa fa-check"></i><b>1.2.2</b> Random Variable</a></li>
+<li class="chapter" data-level="1.2.3" data-path="probability.html"><a href="probability.html#distribution-function"><i class="fa fa-check"></i><b>1.2.3</b> Distribution Function</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="probability.html"><a href="probability.html#expected-value"><i class="fa fa-check"></i><b>1.3</b> Expected Value</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="probability.html"><a href="probability.html#integration"><i class="fa fa-check"></i><b>1.3.1</b> Integration</a></li>
+<li class="chapter" data-level="1.3.2" data-path="probability.html"><a href="probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>1.3.2</b> Properties of Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="probability.html"><a href="probability.html#multivariate-random-variable"><i class="fa fa-check"></i><b>1.4</b> Multivariate Random Variable</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="probability.html"><a href="probability.html#conditional-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>1.4.1</b> Conditional Probability and Bayes’ Theorem</a></li>
+<li class="chapter" data-level="1.4.2" data-path="probability.html"><a href="probability.html#independence"><i class="fa fa-check"></i><b>1.4.2</b> Independence</a></li>
+<li class="chapter" data-level="1.4.3" data-path="probability.html"><a href="probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>1.4.3</b> Law of Iterated Expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conditional-expectation.html"><a href="conditional-expectation.html"><i class="fa fa-check"></i><b>2</b> Conditional Expectation</a><ul>
+<li class="chapter" data-level="2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#linear-projection"><i class="fa fa-check"></i><b>2.1</b> Linear Projection</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#omitted-variable-bias"><i class="fa fa-check"></i><b>2.1.1</b> Omitted Variable Bias</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#causality"><i class="fa fa-check"></i><b>2.2</b> Causality</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#structure-and-identification"><i class="fa fa-check"></i><b>2.2.1</b> Structure and Identification</a></li>
+<li class="chapter" data-level="2.2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#treatment-effect"><i class="fa fa-check"></i><b>2.2.2</b> Treatment Effect</a></li>
+<li class="chapter" data-level="2.2.3" data-path="conditional-expectation.html"><a href="conditional-expectation.html#ate-and-cef"><i class="fa fa-check"></i><b>2.2.3</b> ATE and CEF</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html"><i class="fa fa-check"></i><b>3</b> Least Squares: Linear Algebra</a><ul>
+<li class="chapter" data-level="3.1" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#estimator"><i class="fa fa-check"></i><b>3.1</b> Estimator</a></li>
+<li class="chapter" data-level="3.2" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#subvector"><i class="fa fa-check"></i><b>3.2</b> Subvector</a></li>
+<li class="chapter" data-level="3.3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#goodness-of-fit"><i class="fa fa-check"></i><b>3.3</b> Goodness of Fit</a></li>
+<li class="chapter" data-level="3.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html"><i class="fa fa-check"></i><b>4</b> Least Squares: Finite Sample Theory</a><ul>
+<li class="chapter" data-level="4.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#maximum-likelihood"><i class="fa fa-check"></i><b>4.1</b> Maximum Likelihood</a></li>
+<li class="chapter" data-level="4.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#likelihood-estimation-for-regression"><i class="fa fa-check"></i><b>4.2</b> Likelihood Estimation for Regression</a></li>
+<li class="chapter" data-level="4.3" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#finite-sample-distribution"><i class="fa fa-check"></i><b>4.3</b> Finite Sample Distribution</a></li>
+<li class="chapter" data-level="4.4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#mean-and-variancemean-and-variance"><i class="fa fa-check"></i><b>4.4</b> Mean and Variance<span id="mean-and-variance" label="mean-and-variance"><span class="math display">\[mean-and-variance\]</span></span></a></li>
+<li class="chapter" data-level="4.5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>4.5</b> Gauss-Markov Theorem</a></li>
+<li class="chapter" data-level="4.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.6</b> Summary</a></li>
+<li class="chapter" data-level="4.7" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>4.7</b> Appendix</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#joint-normal-distribution"><i class="fa fa-check"></i><b>4.7.1</b> Joint Normal Distribution</a></li>
+<li class="chapter" data-level="4.7.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#basus-theorem-subsecbasus-theoremsubsecbasus-theorem-labelsubsecbasus-theorem"><i class="fa fa-check"></i><b>4.7.2</b> Basu’s Theorem* [<span class="math display">\[subsec:Basu\&#39;s-Theorem\]</span>]{#subsec:Basu’s-Theorem label=“subsec:Basu’s-Theorem”}</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html"><i class="fa fa-check"></i><b>5</b> Basic Asymptotic Theory</a><ul>
+<li class="chapter" data-level="5.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#modes-of-convergence"><i class="fa fa-check"></i><b>5.1</b> Modes of Convergence</a></li>
+<li class="chapter" data-level="5.2" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#law-of-large-numbers"><i class="fa fa-check"></i><b>5.2</b> Law of Large Numbers</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#cherbyshev-lln"><i class="fa fa-check"></i><b>5.2.1</b> Cherbyshev LLN</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#central-limit-theorem"><i class="fa fa-check"></i><b>5.3</b> Central Limit Theorem</a></li>
+<li class="chapter" data-level="5.4" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#tools-for-transformations"><i class="fa fa-check"></i><b>5.4</b> Tools for Transformations</a></li>
+<li class="chapter" data-level="5.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>5.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html"><i class="fa fa-check"></i><b>6</b> Asymptotic Properties of Least Squares</a><ul>
+<li class="chapter" data-level="6.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>6.1</b> Consistency</a></li>
+<li class="chapter" data-level="6.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-distribution"><i class="fa fa-check"></i><b>6.2</b> Asymptotic Distribution</a></li>
+<li class="chapter" data-level="6.3" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-inference"><i class="fa fa-check"></i><b>6.3</b> Asymptotic Inference</a></li>
+<li class="chapter" data-level="6.4" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency-of-feasible-variance-estimator"><i class="fa fa-check"></i><b>6.4</b> Consistency of Feasible Variance Estimator</a><ul>
+<li class="chapter" data-level="6.4.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#homoskedasticity"><i class="fa fa-check"></i><b>6.4.1</b> Homoskedasticity</a></li>
+<li class="chapter" data-level="6.4.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#heteroskedasticity"><i class="fa fa-check"></i><b>6.4.2</b> Heteroskedasticity</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
+<li class="chapter" data-level="6.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>6.6</b> Appendix</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html"><i class="fa fa-check"></i><b>7</b> Asymptotic Properties of MLE</a><ul>
+<li class="chapter" data-level="7.1" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#examples-of-mle"><i class="fa fa-check"></i><b>7.1</b> Examples of MLE</a></li>
+<li class="chapter" data-level="7.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>7.2</b> Consistency</a></li>
+<li class="chapter" data-level="7.3" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#asymptotic-normality"><i class="fa fa-check"></i><b>7.3</b> Asymptotic Normality</a></li>
+<li class="chapter" data-level="7.4" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#information-matrix-equality"><i class="fa fa-check"></i><b>7.4</b> Information Matrix Equality</a></li>
+<li class="chapter" data-level="7.5" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#cramer-rao-lower-bound"><i class="fa fa-check"></i><b>7.5</b> Cramer-Rao Lower Bound</a></li>
+<li class="chapter" data-level="7.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>7.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>8</b> Hypothesis Testing</a><ul>
+<li class="chapter" data-level="8.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing"><i class="fa fa-check"></i><b>8.1</b> Testing</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#decision-rule-and-errors"><i class="fa fa-check"></i><b>8.1.1</b> Decision Rule and Errors</a></li>
+<li class="chapter" data-level="8.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#optimality"><i class="fa fa-check"></i><b>8.1.2</b> Optimality</a></li>
+<li class="chapter" data-level="8.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-and-wilks-theorem"><i class="fa fa-check"></i><b>8.1.3</b> Likelihood-Ratio Test and Wilks’ theorem</a></li>
+<li class="chapter" data-level="8.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#score-test"><i class="fa fa-check"></i><b>8.1.4</b> Score Test</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#confidence-intervalconfidence-interval"><i class="fa fa-check"></i><b>8.2</b> Confidence Interval<span id="confidence-interval" label="confidence-interval"><span class="math display">\[confidence-interval\]</span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#bayesian-credible-set"><i class="fa fa-check"></i><b>8.3</b> Bayesian Credible Set</a></li>
+<li class="chapter" data-level="8.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#applications-in-ols"><i class="fa fa-check"></i><b>8.4</b> Applications in OLS</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-test"><i class="fa fa-check"></i><b>8.4.1</b> Wald Test</a></li>
+<li class="chapter" data-level="8.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lagrangian-multiplier-test"><i class="fa fa-check"></i><b>8.4.2</b> Lagrangian Multiplier Test</a></li>
+<li class="chapter" data-level="8.4.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-for-regression"><i class="fa fa-check"></i><b>8.4.3</b> Likelihood-Ratio Test for Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>8.5</b> Summary</a></li>
+<li class="chapter" data-level="8.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>8.6</b> Appendix</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#neyman-pearson-lemma"><i class="fa fa-check"></i><b>8.6.1</b> Neyman-Pearson Lemma</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="panel-data.html"><a href="panel-data.html"><i class="fa fa-check"></i><b>9</b> Panel Data</a><ul>
+<li class="chapter" data-level="9.1" data-path="panel-data.html"><a href="panel-data.html#fixed-effect"><i class="fa fa-check"></i><b>9.1</b> Fixed Effect</a></li>
+<li class="chapter" data-level="9.2" data-path="panel-data.html"><a href="panel-data.html#random-effect"><i class="fa fa-check"></i><b>9.2</b> Random Effect</a></li>
+<li class="chapter" data-level="9.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="endogeneity.html"><a href="endogeneity.html"><i class="fa fa-check"></i><b>10</b> Endogeneity</a><ul>
+<li class="chapter" data-level="10.1" data-path="endogeneity.html"><a href="endogeneity.html#identification"><i class="fa fa-check"></i><b>10.1</b> Identification</a></li>
+<li class="chapter" data-level="10.2" data-path="endogeneity.html"><a href="endogeneity.html#instruments"><i class="fa fa-check"></i><b>10.2</b> Instruments</a></li>
+<li class="chapter" data-level="10.3" data-path="endogeneity.html"><a href="endogeneity.html#sources-of-endogeneity"><i class="fa fa-check"></i><b>10.3</b> Sources of Endogeneity</a></li>
+<li class="chapter" data-level="10.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>10.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html"><i class="fa fa-check"></i><b>11</b> Generalized Method of Moments</a><ul>
+<li class="chapter" data-level="11.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#instrumental-regression"><i class="fa fa-check"></i><b>11.1</b> Instrumental Regression</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#just-identification"><i class="fa fa-check"></i><b>11.1.1</b> Just-identification</a></li>
+<li class="chapter" data-level="11.1.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#over-identification"><i class="fa fa-check"></i><b>11.1.2</b> Over-identification</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-estimator"><i class="fa fa-check"></i><b>11.2</b> GMM Estimator</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#efficient-gmm"><i class="fa fa-check"></i><b>11.2.1</b> Efficient GMM</a></li>
+<li class="chapter" data-level="11.2.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-step-gmm"><i class="fa fa-check"></i><b>11.2.2</b> Two-Step GMM</a></li>
+<li class="chapter" data-level="11.2.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-stage-least-squares"><i class="fa fa-check"></i><b>11.2.3</b> Two Stage Least Squares</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-in-nonlinear-model"><i class="fa fa-check"></i><b>11.3</b> GMM in Nonlinear Model</a></li>
+<li class="chapter" data-level="11.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econ5121</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="least-squares-finite-sample-theory" class="section level1">
+<h1><span class="header-section-number">4</span> Least Squares: Finite Sample Theory</h1>
+<p>We continue with properties of OLS. We will show that OLS coincides with
+the maximum likelihood estimator if the error term follows a normal
+distribution. We derive its finite-sample exact distribution which can
+be used for statistical inference. The Gauss-Markov theorem justifies
+the optimality of OLS under the classical assumptions.</p>
+<p>Suppose the data is generated from a parametric model. Statistical
+estimation looks for the unknown parameter from the observed data. A
+<em>principle</em> is an ideology about a proper way of estimation. Over the
+history of statistics, only a few principles are widely accepted. Among
+them Maximum Likelihood is the most important and fundamental. The
+maximum likelihood principle entails that the unknown parameter being
+found as the maximizer of the log-likelihood function.</p>
+<div id="maximum-likelihood" class="section level2">
+<h2><span class="header-section-number">4.1</span> Maximum Likelihood</h2>
+<p>In this chapter, we first give an introduction of the maximum likelihood
+estimation. Consider a random sample of
+<span class="math inline">\(Z=\left(z_{1},z_{2},\ldots,z_{n}\right)\)</span> drawn from a parametric
+distribution with density <span class="math inline">\(f_{z}\left(z_{i};\theta\right)\)</span>, where
+<span class="math inline">\(z_{i}\)</span> is either a scalar random variable or a random vector. A
+parametric distribution is completely characterized by a
+finite-dimensional parameter <span class="math inline">\(\theta\)</span>. We know that <span class="math inline">\(\theta\)</span> belongs to
+a parameter space <span class="math inline">\(\Theta\)</span>. We use the data to estimate <span class="math inline">\(\theta\)</span>.</p>
+<p>The log-likelihood of observing the entire sample <span class="math inline">\(Z\)</span> is
+<span class="math display">\[L_{n}\left(\theta;Z\right):=\log\left(\prod_{i=1}^{n}f_{z}\left(z_{i};\theta\right)\right)=\sum_{i=1}^{n}\log f_{z}\left(z_{i};\theta\right).\label{eq:raw_likelihood}\]</span>
+In reality the sample <span class="math inline">\(Z\)</span> is given and for each <span class="math inline">\(\theta\in\Theta\)</span> we can
+evaluate <span class="math inline">\(L_{n}\left(\theta;Z\right)\)</span>. The maximum likelihood estimator
+is
+<span class="math display">\[\widehat{\theta}_{MLE}:=\arg\max_{\theta\in\Theta}L_{n}\left(\theta;Z\right).\]</span>
+Why maximizing the log-likelihood function is desirable? An intuitive
+explanation is that <span class="math inline">\(\widehat{\theta}_{MLE}\)</span> makes observing <span class="math inline">\(Z\)</span> the
+“most likely” in the entire parametric space.</p>
+<p>A more formal justification requires an explicitly defined distance.
+Suppose that the true parameter value that generates the data is
+<span class="math inline">\(\theta_{0}\)</span>, so that the true distribution is
+<span class="math inline">\(f_{z}\left(z_{i};\theta_{0}\right)\)</span>. Any generic point
+<span class="math inline">\(\theta\in\Theta\)</span> produces <span class="math inline">\(f_{z}\left(z_{i};\theta\right)\)</span>. To measure
+their difference, we introduce the <em>Kullback-Leibler divergence</em>, or the
+Kullback-Leibler distance, defined as the logarithms of the expected
+log-likelihood ratio <span class="math display">\[\begin{aligned}
+D_{f}\left(\theta_{0}\Vert\theta\right) &amp; =D\left(f_{z}\left(z_{i};\theta_{0}\right)\Vert f_{z}\left(z_{i};\theta\right)\right):=E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right]\\
+ &amp; =E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta_{0}\right)\right]-E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta\right)\right].\end{aligned}\]</span>
+We call it a “distance” because it is non-negative, although it is not
+symmetric in that
+<span class="math inline">\(D_{f}\left(\theta_{1}\Vert\theta_{2}\right)\neq D_{f}\left(\theta_{2}\Vert\theta_{1}\right)\)</span>
+and it does not satisfy the triangle inequality. To see
+<span class="math inline">\(D_{f}\left(\theta_{0}\Vert\theta\right)\)</span> is non-negative, notice that
+<span class="math inline">\(-\log\left(\cdot\right)\)</span> is strictly convex and then by Jensen’s
+inequality <span class="math display">\[\begin{aligned}
+E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right] &amp; =E_{\theta_{0}}\left[-\log\frac{f_{z}\left(z_{i};\theta\right)}{f_{z}\left(z_{i};\theta_{0}\right)}\right]\geq-\log\left(E_{\theta_{0}}\left[\frac{f_{z}\left(z_{i};\theta\right)}{f_{z}\left(z_{i};\theta_{0}\right)}\right]\right)\\
+ &amp; =-\log\left(\int\frac{f_{z}\left(z_{i};\theta\right)}{f_{z}\left(z_{i};\theta_{0}\right)}f_{z}\left(z_{i};\theta_{0}\right)dz_{i}\right)=-\log\left(\int f_{z}\left(z_{i};\theta\right)dz_{i}\right)\\
+ &amp; =-\log1=0,\end{aligned}\]</span> where
+<span class="math inline">\(\int f_{z}\left(z_{i};\theta\right)dz_{i}=1\)</span> for any pdf. The equality
+holds if and only if
+<span class="math inline">\(f_{z}\left(z_{i};\theta\right)=f_{z}\left(z_{i};\theta_{0}\right)\)</span>
+almost everywhere. Furthermore, if there is a one-to-one mapping between
+<span class="math inline">\(\theta\)</span> and <span class="math inline">\(f_{z}\left(z_{i};\theta\right)\)</span> on <span class="math inline">\(\Theta\)</span>
+(identification), then
+<span class="math inline">\(\theta_{0}=\arg\min_{\theta\in\Theta}D_{f}\left(\theta_{0}\Vert\theta\right)\)</span>
+is the unique solution.</p>
+<p>In information theory,
+<span class="math inline">\(-E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta_{0}\right)\right]\)</span> is
+the <em>entropy</em> of the continuous distribution of
+<span class="math inline">\(f_{z}\left(z_{i};\theta_{0}\right)\)</span>. Entropy measures the uncertainty
+of a random variable; the larger is the value, the more chaotic is the
+random variable. The Kullback-Leibler distance is the <em>relative entropy</em>
+between the distribution <span class="math inline">\(f_{z}\left(z_{i};\theta_{0}\right)\)</span> and
+<span class="math inline">\(f_{z}\left(z_{i};\theta\right)\)</span>. It measures the inefficiency of
+assuming that the distribution is <span class="math inline">\(f_{z}\left(z_{i};\theta\right)\)</span> when
+the true distribution is indeed <span class="math inline">\(f_{z}\left(z_{i};\theta_{0}\right)\)</span>.
+<span class="citation">(Cover and Thomas <a href="#ref-cover2006elements" role="doc-biblioref">2006</a>, 19)</span></p>
+<p>Consider the Gaussian location model <span class="math inline">\(z_{i}\sim N\left(\mu,1\right)\)</span>,
+where <span class="math inline">\(\mu\)</span> is the unknown parameter to be estimated. The likelihood of
+observing <span class="math inline">\(z_{i}\)</span> is
+<span class="math inline">\(f_{z}\left(z_{i};\mu\right)=\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(z_{i}-\mu\right)^{2}\right)\)</span>.
+The likelihood of observing the sample <span class="math inline">\(Z\)</span> is
+<span class="math display">\[f_{Z}\left(Z;\mu\right)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{1}{2}\left(z_{i}-\mu\right)^{2}\right)\]</span>
+and the log-likelihood is
+<span class="math display">\[L_{n}\left(\mu;Z\right)=-\frac{n}{2}\log\left(2\pi\right)-\frac{1}{2}\sum_{i=1}^{n}\left(z_{i}-\mu\right)^{2}.\]</span>
+The (averaged) log-likelihood function for the <span class="math inline">\(n\)</span> observations is
+<span class="math display">\[\begin{aligned}
+\ell_{n}\left(\mu\right) &amp; =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2n}\sum_{i=1}^{n}\left(z_{i}-\mu\right)^{2}.\end{aligned}\]</span>
+We work with the averaged log-likelihood <span class="math inline">\(\ell_{n}\)</span>, instead of the
+(raw) log-likelihood <span class="math inline">\(L_{n}\)</span>, to make it directly comparable with the
+expected log density <span class="math display">\[\begin{aligned}
+E_{\mu_{0}}\left[\log f_{z}\left(z;\mu\right)\right] &amp; =E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]\\
+ &amp; =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E_{\mu_{0}}\left[\left(z_{i}-\mu\right)^{2}\right]\\
+ &amp; =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E_{\mu_{0}}\left[\left(\left(z_{i}-\mu_{0}\right)+\left(\mu_{0}-\mu\right)\right)^{2}\right]\\
+ &amp; =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}E_{\mu_{0}}\left[\left(z_{i}-\mu_{0}\right)^{2}\right]-E_{\mu_{0}}\left[z_{i}-\mu_{0}\right]\left(\mu_{0}-\mu\right)-\frac{1}{2}\left(\mu_{0}-\mu\right)^{2}\\
+ &amp; =-\frac{1}{2}\log\left(2\pi\right)-\frac{1}{2}-\frac{1}{2}\left(\mu-\mu_{0}\right)^{2}.\end{aligned}\]</span>
+where the first equality holds because of random sampling. Obviously,
+<span class="math inline">\(\ell_{n}\left(\mu\right)\)</span> is maximized at
+<span class="math inline">\(\bar{z}=\frac{1}{n}\sum_{i=1}^{n}z_{i}\)</span> while
+<span class="math inline">\(E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]\)</span> is maximized at
+<span class="math inline">\(\mu=\mu_{0}\)</span>. The Kullback-Leibler divergence in this example is
+<span class="math display">\[D\left(\mu_{0}\Vert\mu\right)=E_{\mu_{0}}\left[\ell_{n}\left(\mu_{0}\right)\right]-E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]=\frac{1}{2}\left(\mu-\mu_{0}\right)^{2},\]</span>
+where
+<span class="math inline">\(-E_{\mu_{0}}\left[\ell_{n}\left(\mu_{0}\right)\right]=\frac{1}{2}\left(\log\left(2\pi\right)+1\right)\)</span>
+is the entropy of the normal distribution with unit variance.</p>
+<p>We use the following code to demonstrate the population log-likelihood
+<span class="math inline">\(E\left[\ell_{n}\left(\mu\right)\right]\)</span> when <span class="math inline">\(\mu_{0}=2\)</span> (solid line)
+and the 3 sample realizations when <span class="math inline">\(n=4\)</span> (dashed lines).</p>
+<p>**there is a knitr** part</p>
+</div>
+<div id="likelihood-estimation-for-regression" class="section level2">
+<h2><span class="header-section-number">4.2</span> Likelihood Estimation for Regression</h2>
+<p>Notation: <span class="math inline">\(y_{i}\)</span> is a scalar, and
+<span class="math inline">\(x_{i}=\left(x_{i1},\ldots,x_{iK}\right)&#39;\)</span> is a <span class="math inline">\(K\times1\)</span> vector. <span class="math inline">\(Y\)</span>
+is an <span class="math inline">\(n\times1\)</span> vector, and <span class="math inline">\(X\)</span> is an <span class="math inline">\(n\times K\)</span> matrix.</p>
+<p>In this chapter we employ the classical statistical framework under
+restrictive distributional assumption
+<span class="math display">\[y_{i}|x_{i}\sim N\left(x_{i}&#39;\beta,\gamma\right),\label{eq:normal_yx}\]</span>
+where <span class="math inline">\(\gamma=\sigma^{2}\)</span> to ease the differentiation. This assumption
+is equivalent to
+<span class="math inline">\(e_{i}|x_{i}=\left(y_{i}-x_{i}&#39;\beta\right)|x_{i}\sim N\left(0,\gamma\right)\)</span>.
+Because the distribution of <span class="math inline">\(e_{i}\)</span> is invariant to <span class="math inline">\(x_{i}\)</span>, the error
+term <span class="math inline">\(e_{i}\sim N\left(0,\gamma\right)\)</span> and is statistically independent
+of <span class="math inline">\(x_{i}\)</span>. This is a very strong assumption.</p>
+<p>The likelihood of observing a pair <span class="math inline">\(\left(y_{i},x_{i}\right)\)</span> is
+<span class="math display">\[\begin{aligned}
+f_{yx}\left(y_{i},x_{i}\right) &amp; =f_{y|x}\left(y_{i}|x_{i}\right)f_{x}\left(x\right)\\
+ &amp; =\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}&#39;\beta\right)^{2}\right)\times f_{x}\left(x\right),\end{aligned}\]</span>
+where <span class="math inline">\(f_{yx}\)</span> is the joint pdf, <span class="math inline">\(f_{y|x}\)</span> is the conditional pdf and
+<span class="math inline">\(f_{x}\)</span> is the marginal pdf of <span class="math inline">\(x\)</span>, and the second equality holds under
+(<a href="#eq:normal_yx" reference-type="ref" reference="eq:normal_yx"><span class="math display">\[eq:normal\_yx\]</span></a>). The likelihood of the random sample
+<span class="math inline">\(\left(y_{i},x_{i}\right)_{i=1}^{n}\)</span> is <span class="math display">\[\begin{aligned}
+\prod_{i=1}^{n}f_{yx}\left(y_{i},x_{i}\right) &amp; =\prod_{i=1}^{n}f_{y|x}\left(y_{i}|x_{i}\right)f_{x}\left(x\right)\\
+ &amp; =\prod_{i=1}^{n}f_{y|x}\left(y_{i}|x_{i}\right)\times\prod_{i=1}^{n}f_{x}\left(x\right)\\
+ &amp; =\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}&#39;\beta\right)^{2}\right)\times\prod_{i=1}^{n}f_{x}\left(x\right).\end{aligned}\]</span>
+The parameters of interest <span class="math inline">\(\left(\beta,\gamma\right)\)</span> are irrelevant to
+the second term <span class="math inline">\(\prod_{i=1}^{n}f_{x}\left(x\right)\)</span> for they appear
+only in the <em>conditional likelihood</em>
+<span class="math display">\[\prod_{i=1}^{n}f_{y|x}\left(y_{i}|x_{i}\right)=\prod_{i=1}^{n}\frac{1}{\sqrt{2\pi\gamma}}\exp\left(-\frac{1}{2\gamma}\left(y_{i}-x_{i}&#39;\beta\right)^{2}\right).\]</span>
+We focus on the conditional likelihood. To facilitate derivation, we
+work with the (averaged) conditional log-likelihood function
+<span class="math display">\[\ell_{n}\left(\beta,\gamma\right)=-\frac{1}{2}\log2\pi-\frac{1}{2}\log\gamma-\frac{1}{2n\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}&#39;\beta\right)^{2},\]</span>
+for <span class="math inline">\(\log\left(\cdot\right)\)</span> is a monotonic transformation that does not
+change the maximizer. The maximum likelihood estimator
+<span class="math inline">\(\widehat{\beta}_{MLE}\)</span> can be found using the FOC: <span class="math display">\[\begin{aligned}
+\frac{\partial}{\partial\beta}\ell_{n}\left(\beta,\gamma\right) &amp; =\frac{1}{n\gamma}\sum_{i=1}^{n}x_{i}\left(y_{i}-x_{i}&#39;\beta\right)=0\\
+\frac{\partial}{\partial\gamma}\ell_{n}\left(\beta,\gamma\right) &amp; =-\frac{1}{2\gamma}+\frac{1}{2n\gamma^{2}}\sum_{i=1}^{n}\left(y_{i}-x_{i}&#39;\beta\right)^{2}=0.\end{aligned}\]</span>
+Rearranging the above equations in matrix form: <span class="math display">\[\begin{aligned}
+X&#39;X\beta &amp; =X&#39;Y\\
+\gamma &amp; =\frac{1}{n}\left(Y-X\beta\right)&#39;\left(Y-X\beta\right).\end{aligned}\]</span>
+We solve <span class="math display">\[\begin{aligned}
+\widehat{\beta}_{MLE} &amp; =(X&#39;X)^{-1}X&#39;Y\\
+\widehat{\gamma}_{\mathrm{MLE}} &amp; =\frac{1}{n}\left(Y-X\widehat{\beta}_{MLE}\right)&#39;\left(Y-X\widehat{\beta}_{MLE}\right)=\widehat{e}&#39;\widehat{e}/n\end{aligned}\]</span>
+when <span class="math inline">\(X&#39;X\)</span> is invertible. The MLE of the slope coefficient
+<span class="math inline">\(\widehat{\beta}_{MLE}\)</span> coincides with the OLS estimator, and
+<span class="math inline">\(\widehat{e}\)</span> is exactly the OLS residual.</p>
+</div>
+<div id="finite-sample-distribution" class="section level2">
+<h2><span class="header-section-number">4.3</span> Finite Sample Distribution</h2>
+<p>We can show the finite-sample exact distribution of <span class="math inline">\(\widehat{\beta}\)</span>
+assuming the error term follows a Gaussian distribution. <em>Finite sample
+distribution</em> means that the distribution holds for any <span class="math inline">\(n\)</span>; it is in
+contrast to <em>asymptotic distribution</em>, which is a large sample
+approximation to the finite sample distribution. We first review some
+properties of a generic jointly normal random vector.</p>
+<p><span id="fact31" label="fact31"><span class="math display">\[fact31\]</span></span> Let
+<span class="math inline">\(z\sim N\left(\mu,\Omega\right)\)</span> be an <span class="math inline">\(l\times1\)</span> random vector with a
+positive definite variance-covariance matrix <span class="math inline">\(\Omega\)</span>. Let <span class="math inline">\(A\)</span> be an
+<span class="math inline">\(m\times l\)</span> non-random matrix where <span class="math inline">\(m\leq l\)</span>. Then
+<span class="math inline">\(Az\sim N\left(A\mu,A\Omega A&#39;\right)\)</span>.</p>
+<p><span id="fact32" label="fact32"><span class="math display">\[fact32\]</span></span>If <span class="math inline">\(z\sim N\left(0,1\right)\)</span>,
+<span class="math inline">\(w\sim\chi^{2}\left(d\right)\)</span> and <span class="math inline">\(z\)</span> and <span class="math inline">\(w\)</span> are independent. Then
+<span class="math inline">\(\frac{z}{\sqrt{w/d}}\sim t\left(d\right)\)</span>.</p>
+<p>The OLS estimator
+<span class="math display">\[\widehat{\beta}=\left(X&#39;X\right)^{-1}X&#39;Y=\left(X&#39;X\right)^{-1}X&#39;\left(X&#39;\beta+e\right)=\beta+\left(X&#39;X\right)^{-1}X&#39;e,\]</span>
+and its conditional distribution can be written as <span class="math display">\[\begin{aligned}
+\widehat{\beta}|X &amp; =\beta+\left(X&#39;X\right)^{-1}X&#39;e|X\\
+ &amp; \sim\beta+\left(X&#39;X\right)^{-1}X&#39;\cdot N\left(0_{n},\gamma I_{n}\right)\\
+ &amp; \sim N\left(\beta,\gamma\left(X&#39;X\right)^{-1}X&#39;X\left(X&#39;X\right)^{-1}\right)\sim N\left(\beta,\gamma\left(X&#39;X\right)^{-1}\right)\end{aligned}\]</span>
+by Fact <a href="least-squares-finite-sample-theory.html#fact31" reference-type="ref" reference="fact31"><span class="math display">\[fact31\]</span></a>.
+The <span class="math inline">\(k\)</span>-th element of the vector coefficient
+<span class="math display">\[\widehat{\beta}_{k}|X=\eta_{k}&#39;\widehat{\beta}|X\sim N\left(\beta_{k},\gamma\eta_{k}&#39;\left(X&#39;X\right)^{-1}\eta_{k}\right)\sim N\left(\beta_{k},\gamma\left[\left(X&#39;X\right)^{-1}\right]_{kk}\right),\]</span>
+where <span class="math inline">\(\eta_{k}=\left(1\left\{ l=k\right\} \right)_{l=1,\ldots,K}\)</span> is
+the selector of the <span class="math inline">\(k\)</span>-th element.</p>
+<p>In reality, <span class="math inline">\(\sigma^{2}\)</span> is an unknown parameter, and
+<span class="math display">\[s^{2}=\widehat{e}&#39;\widehat{e}/\left(n-K\right)=e&#39;M_{X}e/\left(n-K\right)\]</span>
+is an unbiased estimator of <span class="math inline">\(\gamma\)</span>. (Because <span class="math display">\[\begin{aligned}
+E\left[s^{2}|X\right] &amp; =\frac{1}{n-K}E\left[e&#39;M_{X}e|X\right]=\frac{1}{n-K}\mathrm{trace}\left(E\left[e&#39;M_{X}e|X\right]\right)\\
+ &amp; =\frac{1}{n-K}\mathrm{trace}\left(E\left[M_{X}ee&#39;|X\right]\right)=\frac{1}{n-K}\mathrm{trace}\left(M_{X}E\left[ee&#39;|X\right]\right)\\
+ &amp; =\frac{1}{n-K}\mathrm{trace}\left(M_{X}\gamma I_{n}\right)=\frac{\gamma}{n-K}\mathrm{trace}\left(M_{X}\right)=\gamma\end{aligned}\]</span>
+where we use the property of trace
+<span class="math inline">\(\mathrm{trace}\left(AB\right)=\mathrm{trace}\left(BA\right)\)</span>.)</p>
+<p>Under the null hypothesis <span class="math inline">\(H_{0}:\beta_{k}=\beta_{k}^{*}\)</span>, where
+<span class="math inline">\(\beta_{k}^{*}\)</span> is the hypothesized value we want to test. We can
+construct a <span class="math inline">\(t\)</span>-statistic
+<span class="math display">\[T_{k}=\frac{\widehat{\beta}_{k}-\beta_{k}^{*}}{\sqrt{s^{2}\left[\left(X&#39;X\right)^{-1}\right]_{kk}}},\]</span>
+which is <em>infeasible</em> is that sense that it can be directly computed
+from the data because there is no unknown object in this statistic. When
+the hypothesis is true, <span class="math inline">\(\beta_{k}=\beta_{k}^{*}\)</span> and thus
+<span class="math display">\[\begin{aligned}
+T_{k} &amp; =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{s^{2}\left[\left(X&#39;X\right)^{-1}\right]_{kk}}}\nonumber \\
+ &amp; =\frac{\widehat{\beta}_{k}-\beta_{k}}{\sqrt{\sigma^{2}\left[\left(X&#39;X\right)^{-1}\right]_{kk}}}\cdot\frac{\sqrt{\sigma^{2}}}{\sqrt{s^{2}}}\nonumber \\
+ &amp; =\frac{\left(\widehat{\beta}_{k}-\beta_{0,k}\right)/\sqrt{\sigma^{2}\left[\left(X&#39;X\right)^{-1}\right]_{kk}}}{\sqrt{\frac{e&#39;}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}},\label{eq:t-stat}\end{aligned}\]</span>
+where we introduce the population quantity <span class="math inline">\(\sigma^{2}\)</span> into the second
+equality to help derive the distribution of the numerator and the
+denominator of the last expression. The numerator
+<span class="math display">\[\left(\widehat{\beta}_{k}-\beta_{k}\right)/\sqrt{\sigma^{2}\left[\left(X&#39;X\right)^{-1}\right]_{kk}}\sim N\left(0,1\right),\]</span>
+and the denominator
+<span class="math inline">\(\sqrt{\frac{e&#39;}{\sigma}M_{X}\frac{e}{\sigma}/\left(n-K\right)}\)</span> follows
+<span class="math inline">\(\sqrt{\frac{1}{n-K}\chi^{2}\left(n-K\right)}\)</span>. Moreover, because
+<span class="math display">\[\begin{aligned}
+\begin{bmatrix}\widehat{\beta}-\beta\\
+\widehat{e}
+\end{bmatrix} &amp; =\begin{bmatrix}\left(X&#39;X\right)^{-1}X&#39;e\\
+M_{X}e
+\end{bmatrix}=\begin{bmatrix}\left(X&#39;X\right)^{-1}X&#39;\\
+M_{X}
+\end{bmatrix}e\\
+ &amp; \sim\begin{bmatrix}\left(X&#39;X\right)^{-1}X&#39;\\
+M_{X}
+\end{bmatrix}\cdot N\left(0,\gamma I_{n}\right)\sim N\left(0,\gamma\begin{bmatrix}\left(X&#39;X\right)^{-1} &amp; 0\\
+0 &amp; M_{X}
+\end{bmatrix}\right)\end{aligned}\]</span> are jointly normal with zero
+off-diagonal blocks, <span class="math inline">\(\left(\widehat{\beta}-\beta\right)\)</span> and
+<span class="math inline">\(\widehat{e}\)</span> are statistically independent. (This claim is true,
+although the covariance matrix of the <span class="math inline">\(\widehat{e}\)</span> is singular.) Given
+that <span class="math inline">\(X\)</span> is viewed as if non-random, the numerator and the denominator
+of (<a href="#eq:t-stat" reference-type="ref" reference="eq:t-stat"><span class="math display">\[eq:t-stat\]</span></a>) are statistically independent as well is a
+function since the former is a function of
+<span class="math inline">\(\left(\widehat{\beta}-\beta\right)\)</span> and latter is a function of
+<span class="math inline">\(\widehat{e}\)</span>. (Alternatively, the statistically independent can be
+verified by Basu’s theorem, See Appendix
+<a href="#subsec:Basu&#39;s-Theorem" reference-type="ref" reference="subsec:Basu&#39;s-Theorem"><span class="math display">\[subsec:Basu\&#39;s-Theorem\]</span></a>.) As a result, we conclude
+<span class="math inline">\(T_{k}\sim t\left(n-K\right)\)</span> by Fact
+<a href="least-squares-finite-sample-theory.html#fact32" reference-type="ref" reference="fact32"><span class="math display">\[fact32\]</span></a>. This
+finite sample distribution allows us to conduct statistical inference.</p>
+</div>
+<div id="mean-and-variancemean-and-variance" class="section level2">
+<h2><span class="header-section-number">4.4</span> Mean and Variance<span id="mean-and-variance" label="mean-and-variance"><span class="math display">\[mean-and-variance\]</span></span></h2>
+<p>Now we relax the normality assumption and statistical independence.
+Instead, we represent the regression model as <span class="math inline">\(Y=X\beta+e\)</span> and
+<span class="math display">\[\begin{aligned}
+E[e|X] &amp; =0_{n}\\
+\mathrm{var}\left[e|X\right] &amp; =E\left[ee&#39;|X\right]=\sigma^{2}I_{n}.\end{aligned}\]</span>
+where the first condition is the <em>mean independence</em> assumption, and the
+second condition is the <em>homoskedasticity</em> assumption. These assumptions
+are about the first and second <em>moments</em> of <span class="math inline">\(e_{i}\)</span> conditional on
+<span class="math inline">\(x_{i}\)</span>. Unlike the normality assumption, they do not restrict the
+distribution of <span class="math inline">\(e_{i}\)</span>.</p>
+<ul>
+<li><p>Unbiasedness: <span class="math display">\[\begin{aligned}
+E\left[\widehat{\beta}|X\right] &amp; =E\left[\left(X&#39;X\right)^{-1}XY|X\right]=E\left[\left(X&#39;X\right)^{-1}X\left(X&#39;\beta+e\right)|X\right]\\
+ &amp; =\beta+\left(X&#39;X\right)^{-1}XE\left[e|X\right]=\beta.\end{aligned}\]</span>
+By the law of iterated expectations, the unconditional expectation
+<span class="math inline">\(E\left[\widehat{\beta}\right]=E\left[E\left[\widehat{\beta}|X\right]\right]=\beta.\)</span>
+Unbiasedness does not rely on homoskedasticity.</p></li>
+<li><p>Variance:
+<span class="math display">\[\begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] &amp; =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)&#39;|X\right]\\
+ &amp; =E\left[\left(\widehat{\beta}-\beta\right)\left(\widehat{\beta}-\beta\right)&#39;|X\right]\\
+ &amp; =E\left[\left(X&#39;X\right)^{-1}X&#39;ee&#39;X\left(X&#39;X\right)^{-1}|X\right]\\
+ &amp; =\left(X&#39;X\right)^{-1}X&#39;E\left[ee&#39;|X\right]X\left(X&#39;X\right)^{-1}
+\end{aligned}\]</span> where the second equality holds as</p></li>
+<li><p>Under the assumption of homoskedasticity, it can be simplified as
+<span class="math display">\[\begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] &amp; =\left(X&#39;X\right)^{-1}X&#39;\left(\sigma^{2}I_{n}\right)X\left(X&#39;X\right)^{-1}\\
+ &amp; =\sigma^{2}\left(X&#39;X\right)^{-1}X&#39;I_{n}X\left(X&#39;X\right)^{-1}\\
+ &amp; =\sigma^{2}\left(X&#39;X\right)^{-1}.
+\end{aligned}\]</span></p></li>
+</ul>
+<p>(Heteroskedasticity) If <span class="math inline">\(e_{i}=x_{i}u_{i}\)</span>, where <span class="math inline">\(x_{i}\)</span> is a scalar
+random variable, <span class="math inline">\(u_{i}\)</span> is statistically independent of <span class="math inline">\(x_{i}\)</span>,
+<span class="math inline">\(E\left[u_{i}\right]=0\)</span> and <span class="math inline">\(E\left[u_{i}^{2}\right]=\sigma_{u}^{2}\)</span>.
+Then
+<span class="math inline">\(E\left[e_{i}|x_{i}\right]=E\left[x_{i}u_{i}|x_{i}\right]=x_{i}E\left[u_{i}|x_{i}\right]=0\)</span>
+but
+<span class="math inline">\(E\left[e_{i}^{2}|x_{i}\right]=E\left[x_{i}^{2}u_{i}^{2}|x_{i}\right]=x_{i}^{2}E\left[u_{i}^{2}|x_{i}\right]=\sigma_{u}^{2}x_{i}^{2}\)</span>
+is a function of <span class="math inline">\(x_{i}\)</span>. We say <span class="math inline">\(e_{i}^{2}\)</span> is a heteroskedastic error.</p>
+<p>**knitr**</p>
+<p>It is important to notice that independently and identically distributed
+sample (iid) <span class="math inline">\(\left(y_{i},x_{i}\right)\)</span> does not imply homoskedasticity.
+Homoskedasticity or heteroskedasticity is about the relationship between
+<span class="math inline">\(\left(x_{i},e_{i}=y_{i}-\beta x\right)\)</span> within an observation, whereas
+iid is about the relationship between <span class="math inline">\(\left(y_{i},x_{i}\right)\)</span> and
+<span class="math inline">\(\left(y_{j},x_{j}\right)\)</span> for <span class="math inline">\(i\neq j\)</span> across observations.</p>
+</div>
+<div id="gauss-markov-theorem" class="section level2">
+<h2><span class="header-section-number">4.5</span> Gauss-Markov Theorem</h2>
+<p>Gauss-Markov theorem is concerned about the optimality of OLS. It
+justifies OLS as the efficient estimator among all linear unbiased ones.
+<em>Efficient</em> here means that it enjoys the smallest variance in a family
+of estimators.</p>
+<p>We have shown that OLS is unbiased in that
+<span class="math inline">\(E\left[\widehat{\beta}\right]=\beta\)</span>. There are numerous linearly
+unbiased estimators. For example, <span class="math inline">\(\left(Z&#39;X\right)^{-1}Z&#39;y\)</span> for
+<span class="math inline">\(z_{i}=x_{i}^{2}\)</span> is unbiased because
+<span class="math inline">\(E\left[\left(Z&#39;X\right)^{-1}Z&#39;y\right]=E\left[\left(Z&#39;X\right)^{-1}Z&#39;\left(X\beta+e\right)\right]=\beta\)</span>.
+We cannot say OLS is better than those other unbiased estimators because
+they are all unbiased — they are equally good at this aspect. We move
+to the second order property of variance: an estimator is better if its
+variance is smaller.</p>
+<p>For two generic random vectors <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> of the same size, we say
+<span class="math inline">\(X\)</span>’s variance is smaller or equal to <span class="math inline">\(Y\)</span>’s variance if
+<span class="math inline">\(\left(\Omega_{Y}-\Omega_{X}\right)\)</span> is a positive semi-definite matrix.
+The comparison is defined this way because for any non-zero constant
+vector <span class="math inline">\(c\)</span>, the variance of the linear combination of <span class="math inline">\(X\)</span>
+<span class="math display">\[\mathrm{var}\left(c&#39;X\right)=c&#39;\Omega_{X}c\leq c&#39;\Omega_{Y}c=\mathrm{var}\left(c&#39;Y\right)\]</span>
+is no bigger than the same linear combination of <span class="math inline">\(Y\)</span>.</p>
+<p>Let <span class="math inline">\(\tilde{\beta}=A&#39;y\)</span> be a generic linear estimator, where <span class="math inline">\(A\)</span> is any
+<span class="math inline">\(n\times K\)</span> functions of <span class="math inline">\(X\)</span>. As
+<span class="math display">\[E\left[A&#39;y|X\right]=E\left[A&#39;\left(X\beta+e\right)|X\right]=A&#39;X\beta.\]</span>
+So the linearity and unbiasedness of <span class="math inline">\(\tilde{\beta}\)</span> implies
+<span class="math inline">\(A&#39;X=I_{n}\)</span>. Moreover, the variance
+<span class="math display">\[\mbox{var}\left(A&#39;y|X\right)=E\left[\left(A&#39;y-\beta\right)\left(A&#39;y-\beta\right)&#39;|X\right]=E\left[A&#39;ee&#39;A|X\right]=\sigma^{2}A&#39;A.\]</span>
+Let <span class="math inline">\(C=A-X\left(X&#39;X\right)^{-1}.\)</span>
+<span class="math display">\[\begin{aligned}A&#39;A-\left(X&#39;X\right)^{-1} &amp; =\left(C+X\left(X&#39;X\right)^{-1}\right)&#39;\left(C+X\left(X&#39;X\right)^{-1}\right)-\left(X&#39;X\right)^{-1}\\
+ &amp; =C&#39;C+\left(X&#39;X\right)^{-1}X&#39;C+C&#39;X\left(X&#39;X\right)^{-1}\\
+ &amp; =C&#39;C,
+\end{aligned}\]</span> where the last equality follows as
+<span class="math display">\[\left(X&#39;X\right)^{-1}X&#39;C=\left(X&#39;X\right)^{-1}X&#39;\left(A-X\left(X&#39;X\right)^{-1}\right)=\left(X&#39;X\right)^{-1}-\left(X&#39;X\right)^{-1}=0.\]</span>
+Therefore <span class="math inline">\(A&#39;A-\left(X&#39;X\right)^{-1}\)</span> is a positive semi-definite
+matrix. The variance of any <span class="math inline">\(\tilde{\beta}\)</span> is no smaller than the OLS
+estimator <span class="math inline">\(\widehat{\beta}\)</span>. The above derivation shows OLS achieves the
+smallest variance among all linear unbiased estimators.</p>
+<p>Homoskedasticity is a restrictive assumption. Under homoskedasticity,
+<span class="math inline">\(\mathrm{var}\left[\widehat{\beta}\right]=\sigma^{2}\left(X&#39;X\right)^{-1}\)</span>.
+Popular estimator of <span class="math inline">\(\sigma^{2}\)</span> is the sample mean of the residuals
+<span class="math inline">\(\widehat{\sigma}^{2}=\frac{1}{n}\widehat{e}&#39;\widehat{e}\)</span> or the
+unbiased one <span class="math inline">\(s^{2}=\frac{1}{n-K}\widehat{e}&#39;\widehat{e}\)</span>. Under
+heteroskedasticity, Gauss-Markov theorem does not apply.</p>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">4.6</span> Summary</h2>
+<p>The exact distribution under the normality assumption of the error term
+is the classical statistical results. The Gauss Markov theorem holds
+under two crucial assumptions: linear CEF and homoskedasticity.</p>
+<p><strong>Historical notes</strong>: MLE was promulgated and popularized by Ronald
+Fisher (1890–1962). He was a major contributor of the frequentist
+approach which dominates mathematical statistics today, and he sharply
+criticized the Bayesian approach. Fisher collected the iris flower
+dataset of 150 observations in his biological study in 1936, which can
+be displayed in R by typing <code>iris</code>. Fisher invented the many concepts in
+classical mathematical statistics, such as sufficient statistic,
+ancillary statistic, completeness, and exponential family, etc.</p>
+<p><strong>Further reading</strong>: <span class="citation">Phillips (<a href="#ref-phillips1983exact" role="doc-biblioref">1983</a>)</span> offered a comprehensive
+treatment of exact small sample theory in econometrics. After that,
+theoretical studies in econometrics swiftly shifted to large sample
+theory, which we will introduce in the next chapter.</p>
+</div>
+<div id="appendix" class="section level2">
+<h2><span class="header-section-number">4.7</span> Appendix</h2>
+<div id="joint-normal-distribution" class="section level3">
+<h3><span class="header-section-number">4.7.1</span> Joint Normal Distribution</h3>
+<p>It is arguable that normal distribution is the most frequently
+encountered distribution in statistical inference, as it is the
+asymptotic distribution of many popular estimators. Moreover, it boasts
+some unique features that facilitates the calculation of objects of
+interest. This note summaries a few of them.</p>
+<p>An <span class="math inline">\(n\times1\)</span> random vector <span class="math inline">\(Y\)</span> follows a joint normal distribution
+<span class="math inline">\(N\left(\mu,\Sigma\right)\)</span>, where <span class="math inline">\(\mu\)</span> is an <span class="math inline">\(n\times1\)</span> vector and
+<span class="math inline">\(\Sigma\)</span> is an <span class="math inline">\(n\times n\)</span> symmetric positive definite matrix. The
+probability density function is
+<span class="math display">\[f_{y}\left(y\right)=\left(2\pi\right)^{-n/2}\left(\mathrm{det}\left(\Sigma\right)\right)^{-1/2}\exp\left(-\frac{1}{2}\left(y-\mu\right)&#39;\Sigma^{-1}\left(y-\mu\right)\right)\]</span>
+where <span class="math inline">\(\mathrm{det}\left(\cdot\right)\)</span> is the determinant of a matrix.
+The moment generating function is
+<span class="math display">\[M_{y}\left(t\right)=\exp\left(t&#39;\mu+\frac{1}{2}t&#39;\Sigma t\right).\]</span></p>
+<p>We will discuss the relationship between two components of a random
+vector. To fix notation, <span class="math display">\[Y=\left(\begin{array}{c}
+Y_{1}\\
+Y_{2}
+\end{array}\right)\sim N\left(\left(\begin{array}{c}
+\mu_{1}\\
+\mu_{2}
+\end{array}\right),\left(\begin{array}{cc}
+\Sigma_{11} &amp; \Sigma_{12}\\
+\Sigma_{21} &amp; \Sigma_{22}
+\end{array}\right)\right)\]</span> where <span class="math inline">\(Y_{1}\)</span> is an <span class="math inline">\(m\times1\)</span> vector, and
+<span class="math inline">\(Y_{2}\)</span> is an <span class="math inline">\(\left(n-m\right)\times1\)</span> vector. <span class="math inline">\(\mu_{1}\)</span> and <span class="math inline">\(\mu_{2}\)</span>
+are the corresponding mean vectors, and <span class="math inline">\(\Sigma_{ij}\)</span>, <span class="math inline">\(j=1,2\)</span> are the
+corresponding variance and covariance matrices. From now on, we always
+maintain the assumption that <span class="math inline">\(Y=\left(Y_{1}&#39;,Y_{2}&#39;\right)&#39;\)</span> is jointly
+normal.</p>
+<p>Fact <a href="least-squares-finite-sample-theory.html#fact31" reference-type="ref" reference="fact31"><span class="math display">\[fact31\]</span></a>
+immediately implies a convenient feature of the normal distribution.
+Generally speaking, if we are given a joint pdf of two random variables
+and intend to find the marginal distribution of one random variables, we
+need to integrate out the other variable from the joint pdf. However, if
+the variables are jointly normal, the information of the other random
+variable is irrelevant to the marginal distribution of the random
+variable of interest. We only need to know the partial information of
+the part of interest, say the mean <span class="math inline">\(\mu_{1}\)</span> and the variance
+<span class="math inline">\(\Sigma_{11}\)</span> to decide the marginal distribution of <span class="math inline">\(Y_{1}\)</span>.</p>
+<p><span id="fact:marginal" label="fact:marginal"><span class="math display">\[fact:marginal\]</span></span>The marginal
+distribution <span class="math inline">\(Y_{1}\sim N\left(\mu_{1},\Sigma_{11}\right)\)</span>.</p>
+<p>This result is very convenient if we are interested in some component if
+an estimator, but not the entire vector of the estimator. For example,
+the OLS estimator of the linear regression model
+<span class="math inline">\(y_{i}=x_{i}&#39;\beta+e_{i}\)</span>, under the classical assumption of (i) random
+sample; (ii) independence of <span class="math inline">\(z_{i}\)</span> and <span class="math inline">\(e_{i}\)</span>; (iii)
+<span class="math inline">\(e_{i}\sim N\left(0,\gamma\right)\)</span> is
+<span class="math display">\[\widehat{\beta}=\left(X&#39;X\right)^{-1}X&#39;y,\]</span> and the finite sample
+exact distribution of <span class="math inline">\(\widehat{\beta}\)</span> is
+<span class="math display">\[\left(\widehat{\beta}-\beta\right)|X\sim N\left(0,\gamma\left(X&#39;X\right)^{-1}\right)\]</span>
+If we are interested in the inference of only the <span class="math inline">\(j\)</span>-th component of
+<span class="math inline">\(\beta_{0}^{\left(j\right)}\)</span>, then from Fact
+<a href="least-squares-finite-sample-theory.html#fact:marginal" reference-type="ref" reference="fact:marginal"><span class="math display">\[fact:marginal\]</span></a>,
+<span class="math display">\[\left(\widehat{\beta}_{k}-\beta_{k}\right)/\left(X&#39;X\right)_{kk}^{-1}\sim N\left(0,\gamma\right)\]</span>
+where <span class="math inline">\(\left[\left(X&#39;X\right)^{-1}\right]_{kk}\)</span> is the <span class="math inline">\(k\)</span>-th diagonal
+element of <span class="math inline">\(\left(X&#39;X\right)^{-1}\)</span>. The marginal distribution is
+independent of the other components. This saves us from integrating out
+the other components, which could be troublesome if the dimension of the
+vector is high.</p>
+<p>Generally, zero covariance of two random variables only indicates that
+they are uncorrelated, whereas full statistical independence is a much
+stronger requirement. However, if <span class="math inline">\(Y_{1}\)</span> and <span class="math inline">\(Y_{2}\)</span> are jointly
+normal, then zero covariance is equivalent to full independence.</p>
+<p>If <span class="math inline">\(\Sigma_{12}=0\)</span>, then <span class="math inline">\(Y_{1}\)</span> and <span class="math inline">\(Y_{2}\)</span> are independent.</p>
+<p>If <span class="math inline">\(\Sigma\)</span> is invertible, then
+<span class="math inline">\(Y&#39;\Sigma^{-1}Y\sim\chi^{2}\left(\mathrm{rank}\left(\Sigma\right)\right)\)</span>.</p>
+<p>The last result, which is useful in linear regression, is that if
+<span class="math inline">\(Y_{1}\)</span> and <span class="math inline">\(Y_{2}\)</span> are jointly normal, the conditional distribution of
+<span class="math inline">\(Y_{1}\)</span> on <span class="math inline">\(Y_{2}\)</span> is still jointly normal, with the mean and variance
+specified as in the following fact.</p>
+<p><span class="math inline">\(Y_{1}|Y_{2}\sim N\left(\mu_{1}+\Sigma_{12}\Sigma_{22}^{-1}\left(Y_{2}-\mu_{2}\right),\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\right)\)</span>.</p>
+</div>
+<div id="basus-theorem-subsecbasus-theoremsubsecbasus-theorem-labelsubsecbasus-theorem" class="section level3">
+<h3><span class="header-section-number">4.7.2</span> Basu’s Theorem* [<span class="math display">\[subsec:Basu\&#39;s-Theorem\]</span>]{#subsec:Basu’s-Theorem label=“subsec:Basu’s-Theorem”}</h3>
+<p><span class="math inline">\(Y=\left(y_{1},\ldots,y_{n}\right)\)</span> consists of <span class="math inline">\(n\)</span> iid observations. We
+say <span class="math inline">\(T\left(Y\right)\)</span> is a <em>sufficient statistic</em> for a parameter
+<span class="math inline">\(\theta\)</span> if the conditional probability
+<span class="math inline">\(f\left(Y|T\left(Y\right)\right)\)</span> does not depend on <span class="math inline">\(\theta\)</span>. We say
+<span class="math inline">\(S\left(Y\right)\)</span> is an <em>ancillary statistic</em> for <span class="math inline">\(\theta\)</span> if its
+distribution does not depend on <span class="math inline">\(\theta\)</span>.</p>
+<p><em>Basu’s theorem</em> says that a <em>complete</em> sufficient statistic is
+statistically independent from any ancillary statistic.</p>
+<p>Sufficient statistic is closely related to the exponential family in
+classical mathematical statistics. A parametric distribution indexed by
+<span class="math inline">\(\theta\)</span> is a member of the <em>exponential family</em> is its PDF can be
+written as
+<span class="math display">\[f\left(Y|\theta\right)=h\left(Y\right)g\left(\theta\right)\exp\left(\eta\left(\theta\right)&#39;T\left(Y\right)\right),\]</span>
+where <span class="math inline">\(g\left(\theta\right)\)</span> and <span class="math inline">\(\eta\left(\theta\right)\)</span> are functions
+depend, only on <span class="math inline">\(\theta\)</span> and <span class="math inline">\(h\left(Y\right)\)</span> and <span class="math inline">\(T\left(Y\right)\)</span> are
+functions depend only on <span class="math inline">\(Y\)</span>.</p>
+<p>(Univariate Gaussian location model.) For a normal distribution
+<span class="math inline">\(y_{i}\sim N\left(\mu,\gamma\right)\)</span> with known <span class="math inline">\(\gamma\)</span> and unknown
+<span class="math inline">\(\mu\)</span>, the sample mean <span class="math inline">\(\bar{y}\)</span> is the sufficient statistic and the
+sample standard deviation <span class="math inline">\(s^{2}\)</span> is an ancillary statistic.</p>
+<p>We first verify that the sample mean <span class="math inline">\(\bar{y}=n^{-1}\sum_{i=1}^{n}y_{i}\)</span>
+is a sufficient statistic for <span class="math inline">\(\mu\)</span>. Notice that the joint density of
+<span class="math inline">\(Y\)</span> is <span class="math display">\[\begin{aligned}
+f\left(Y\right) &amp; =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
+ &amp; =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(\left(y_{i}-\bar{y}\right)+\left(\bar{y}-\mu\right)\right)^{2}\right)\\
+ &amp; =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(\left(y_{i}-\bar{y}\right)^{2}+2\left(y_{i}-\bar{y}\right)\left(\bar{y}-\mu\right)+\left(\bar{y}-\mu\right)^{2}\right)\right)\\
+ &amp; =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}\right)\exp\left(-\frac{n}{2\gamma}\left(\bar{y}-\mu\right)^{2}\right).\end{aligned}\]</span>
+Because <span class="math inline">\(\bar{y}\sim N\left(\mu,\gamma/n\right),\)</span> the marginal density
+is
+<span class="math display">\[f\left(\bar{y}\right)=\left(2\pi\gamma/n\right)^{-1/2}\exp\left(-\frac{n}{2\gamma}\left(\bar{y}-\mu\right)^{2}\right).\]</span>
+For <span class="math inline">\(\bar{y}\)</span> is a statistic of <span class="math inline">\(Y\)</span>, we have
+<span class="math inline">\(f\left(Y,\bar{y}\right)=f\left(Y\right)\)</span>. The conditional density is
+<span class="math display">\[f\left(Y|\bar{y}\right)=\frac{f\left(Y,\bar{y}\right)}{f\left(\bar{y}\right)}=\frac{f\left(Y\right)}{f\left(\bar{y}\right)}=\sqrt{n}\left(2\pi\gamma\right)^{-\frac{n-1}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)^{2}\right)\]</span>
+is independent of <span class="math inline">\(\mu\)</span>, and thus <span class="math inline">\(\bar{y}\)</span> is a sufficient statistic
+for <span class="math inline">\(\mu\)</span>. In the meantime, the sample standard deviation
+<span class="math inline">\(s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)\)</span> is an
+<em>ancillary statistic</em> for <span class="math inline">\(\mu\)</span> , because the distribution of <span class="math inline">\(s^{2}\)</span>
+does not depend on <span class="math inline">\(\mu.\)</span></p>
+<p>The normal distribution with known <span class="math inline">\(\sigma^{2}\)</span> and unknown <span class="math inline">\(\mu\)</span>
+belongs to the exponential family in view of the decomposition
+<span class="math display">\[\begin{aligned}
+f(Y) &amp; =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
+ &amp; =\underbrace{\exp\left(-\sum_{i=1}^{n}\frac{y_{i}^{2}}{2\gamma}\right)}_{h\left(Y\right)}\cdot\underbrace{\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{n}{2\gamma}\mu^{2}\right)}_{g\left(\theta\right)}\cdot\underbrace{\exp\left(\frac{\mu}{2\gamma}n\bar{y}\right)}_{\exp\left(\eta\left(\theta\right)&#39;T\left(Y\right)\right)}.\end{aligned}\]</span>
+The exponential family is a class of distributions with the special
+functional form which is convenient for deriving sufficient statistics
+as well as other desirable properties in classical mathematical
+statistics.</p>
+<p>(Conditional Gaussian location model.) If
+<span class="math inline">\(y_{i}\sim N\left(x_{i}\beta,\gamma\right)\)</span> with known <span class="math inline">\(\gamma\)</span> and
+unknown <span class="math inline">\(\beta\)</span>, We verify that the sample mean <span class="math inline">\(\widehat{\beta}\)</span> is a
+sufficient statistic for <span class="math inline">\(\beta\)</span>. Notice that the joint density of <span class="math inline">\(Y\)</span>
+given <span class="math inline">\(X\)</span> is <span class="math display">\[\begin{aligned}
+f\left(Y|X\right) &amp; =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{i=1}^{n}\left(y_{i}-\mu\right)^{2}\right)\\
+ &amp; =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\left(Y-X\widehat{\beta}\right)&#39;\left(Y-X\widehat{\beta}\right)\right)\exp\left(-\frac{1}{2\gamma}\left(\widehat{\beta}-\beta\right)&#39;X&#39;X\left(\widehat{\beta}-\beta\right)\right).\end{aligned}\]</span>
+Because
+<span class="math inline">\(\widehat{\beta}\sim N\left(\beta,\gamma\left(X&#39;X\right)^{-1}\right),\)</span>
+the marginal density is
+<span class="math display">\[f\left(\widehat{\beta}|X\right)=\left(2\pi\gamma\right)^{-\frac{K}{2}}\left(\mathrm{det}\left(\left(X&#39;X\right)^{-1}\right)\right)^{-1/2}\exp\left(-\frac{1}{2\gamma}\left(\widehat{\beta}-\beta\right)&#39;X&#39;X\left(\widehat{\beta}-\beta\right)\right).\]</span>
+The conditional density is <span class="math display">\[\begin{aligned}
+f\left(Y|\widehat{\beta},X\right) &amp; =\frac{f\left(Y|X\right)}{f\left(\widehat{\beta}|X\right)}\\
+ &amp; =\left(2\pi\gamma\right)^{-\frac{n-K}{2}}\left(\mathrm{det}\left(\left(X&#39;X\right)^{-1}\right)\right)^{-1/2}\exp\left(-\frac{1}{2\gamma}\left(Y-X\widehat{\beta}\right)&#39;\left(Y-X\widehat{\beta}\right)\right)\end{aligned}\]</span>
+is independent of <span class="math inline">\(\beta\)</span>, and thus <span class="math inline">\(\widehat{\beta}\)</span> is a sufficient
+statistic for <span class="math inline">\(\beta\)</span>.</p>
+<p>In the meantime, the sample standard deviation
+<span class="math inline">\(s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-x_{i}\widehat{\beta}\right)\)</span>
+is an <em>ancillary statistic</em> for <span class="math inline">\(\beta\)</span> , because the distribution of
+<span class="math inline">\(s^{2}\)</span> does not depend on <span class="math inline">\(\beta.\)</span></p>
+
+<p><code>Zhentao Shi. Oct 10.</code></p>
+
+
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-cover2006elements">
+<p>Cover, Thomas M, and Joy A. Thomas. 2006. <em>Elements of Information Theory (2nd Ed.)</em>. John Wiley &amp; Sons.</p>
+</div>
+<div id="ref-phillips1983exact">
+<p>Phillips, Peter CB. 1983. “Exact Small Sample Theory in the Simultaneous Equations Model.” <em>Handbook of Econometrics</em> 1: 449–516.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="least-squares-linear-algebra.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-asymptotic-theory.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
