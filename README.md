@@ -50,7 +50,7 @@ The lectures are based primarily on Bruce Hansen's textbooks:
 
 * Hansen (2020): [Introduction to Econometrics](https://www.ssc.wisc.edu/~bhansen/probability/) (**IE**)
 
-* Hansen (2020): [Econometrics](http://www.ssc.wisc.edu/~bhansen/econometrics/) (**E**) 
+* Hansen (2020): [Econometrics](http://www.ssc.wisc.edu/~bhansen/econometrics/) (**E**)
 
 Both are downloadable for free.
 
@@ -58,7 +58,8 @@ Both are downloadable for free.
 
 My lecture notes and code demonstrations can be found at
 
-* [Lecture Notes](https://github.com/zhentaoshi/Econ5121A/tree/master/lec_notes_lyx)
+* [Lecture Notes in one book-style file](https://github.com/zhentaoshi/Econ5121A/tree/master/book_style.pdf)
+* [Lecture Notes in separate chapters](https://github.com/zhentaoshi/Econ5121A/tree/master/lec_notes_lyx)
 * [Jupyter Notebooks (python)](https://mybinder.org/v2/gh/zhentaoshi/Econ5121A/master)
 
 **Caveat**: This is an ongoing writing project. The text is incomplete, and may contain errors.
