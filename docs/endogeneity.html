@@ -1,209 +1,95 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>11 Endogeneity | Econ5121</title>
-  <meta name="description" content="nothing" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="11 Endogeneity | Econ5121" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="nothing" />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="11 Endogeneity | Econ5121" />
-  
-  <meta name="twitter:description" content="nothing" />
-  
-
-<meta name="author" content="Zhentao Shi" />
-
-
-<meta name="date" content="2022-01-22" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="panel-data.html"/>
-<link rel="next" href="generalized-method-of-moments.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>11 Endogeneity | Econ5121</title>
+<meta name="author" content="Zhentao Shi">
+<meta name="description" content="In microeconomic analysis, exogenous variables are the factors determined outside of the economic system under consideration, and endogenous variables are those decided within the economic system....">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="11 Endogeneity | Econ5121">
+<meta property="og:type" content="book">
+<meta property="og:description" content="In microeconomic analysis, exogenous variables are the factors determined outside of the economic system under consideration, and endogenous variables are those decided within the economic system....">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="11 Endogeneity | Econ5121">
+<meta name="twitter:description" content="In microeconomic analysis, exogenous variables are the factors determined outside of the economic system under consideration, and endogenous variables are those decided within the economic system....">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Alice-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_DM%20Mono-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
-<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a><ul>
-<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
-<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#axiomatic-probability"><i class="fa fa-check"></i><b>2.2</b> Axiomatic Probability</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#probability-space"><i class="fa fa-check"></i><b>2.2.1</b> Probability Space</a></li>
-<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#random-variable"><i class="fa fa-check"></i><b>2.2.2</b> Random Variable</a></li>
-<li class="chapter" data-level="2.2.3" data-path="probability.html"><a href="probability.html#distribution-function"><i class="fa fa-check"></i><b>2.2.3</b> Distribution Function</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#expected-value"><i class="fa fa-check"></i><b>2.3</b> Expected Value</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="probability.html"><a href="probability.html#integration"><i class="fa fa-check"></i><b>2.3.1</b> Integration</a></li>
-<li class="chapter" data-level="2.3.2" data-path="probability.html"><a href="probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>2.3.2</b> Properties of Expectations</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#multivariate-random-variable"><i class="fa fa-check"></i><b>2.4</b> Multivariate Random Variable</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#conditional-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>2.4.1</b> Conditional Probability and Bayes’ Theorem</a></li>
-<li class="chapter" data-level="2.4.2" data-path="probability.html"><a href="probability.html#independence"><i class="fa fa-check"></i><b>2.4.2</b> Independence</a></li>
-<li class="chapter" data-level="2.4.3" data-path="probability.html"><a href="probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>2.4.3</b> Law of Iterated Expectations</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>2.5</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="conditional-expectation.html"><a href="conditional-expectation.html"><i class="fa fa-check"></i><b>3</b> Conditional Expectation</a><ul>
-<li class="chapter" data-level="3.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#linear-projection"><i class="fa fa-check"></i><b>3.1</b> Linear Projection</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#omitted-variable-bias"><i class="fa fa-check"></i><b>3.1.1</b> Omitted Variable Bias</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#causality"><i class="fa fa-check"></i><b>3.2</b> Causality</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#structure-and-identification"><i class="fa fa-check"></i><b>3.2.1</b> Structure and Identification</a></li>
-<li class="chapter" data-level="3.2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#treatment-effect"><i class="fa fa-check"></i><b>3.2.2</b> Treatment Effect</a></li>
-<li class="chapter" data-level="3.2.3" data-path="conditional-expectation.html"><a href="conditional-expectation.html#ate-and-cef"><i class="fa fa-check"></i><b>3.2.3</b> ATE and CEF</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>3.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html"><i class="fa fa-check"></i><b>4</b> Least Squares: Linear Algebra</a><ul>
-<li class="chapter" data-level="4.1" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#estimator"><i class="fa fa-check"></i><b>4.1</b> Estimator</a></li>
-<li class="chapter" data-level="4.2" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#subvector"><i class="fa fa-check"></i><b>4.2</b> Subvector</a></li>
-<li class="chapter" data-level="4.3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#goodness-of-fit"><i class="fa fa-check"></i><b>4.3</b> Goodness of Fit</a></li>
-<li class="chapter" data-level="4.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.4</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html"><i class="fa fa-check"></i><b>5</b> Least Squares: Finite Sample Theory</a><ul>
-<li class="chapter" data-level="5.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#maximum-likelihood"><i class="fa fa-check"></i><b>5.1</b> Maximum Likelihood</a></li>
-<li class="chapter" data-level="5.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#likelihood-estimation-for-regression"><i class="fa fa-check"></i><b>5.2</b> Likelihood Estimation for Regression</a></li>
-<li class="chapter" data-level="5.3" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#finite-sample-distribution"><i class="fa fa-check"></i><b>5.3</b> Finite Sample Distribution</a></li>
-<li class="chapter" data-level="5.4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#mean-and-variancemean-and-variance"><i class="fa fa-check"></i><b>5.4</b> Mean and Variance<span id="mean-and-variance" label="mean-and-variance"><span class="math display">\[mean-and-variance\]</span></span></a></li>
-<li class="chapter" data-level="5.5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>5.5</b> Gauss-Markov Theorem</a></li>
-<li class="chapter" data-level="5.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
-<li class="chapter" data-level="5.7" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>5.7</b> Appendix</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#joint-normal-distribution"><i class="fa fa-check"></i><b>5.7.1</b> Joint Normal Distribution</a></li>
-<li class="chapter" data-level="5.7.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#basus-theorem-subsecbasus-theoremsubsecbasus-theorem-labelsubsecbasus-theorem"><i class="fa fa-check"></i><b>5.7.2</b> Basu’s Theorem* [<span class="math display">\[subsec:Basu\&#39;s-Theorem\]</span>]{#subsec:Basu’s-Theorem label=“subsec:Basu’s-Theorem”}</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html"><i class="fa fa-check"></i><b>6</b> Basic Asymptotic Theory</a><ul>
-<li class="chapter" data-level="6.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#modes-of-convergence"><i class="fa fa-check"></i><b>6.1</b> Modes of Convergence</a></li>
-<li class="chapter" data-level="6.2" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#law-of-large-numbers"><i class="fa fa-check"></i><b>6.2</b> Law of Large Numbers</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#cherbyshev-lln"><i class="fa fa-check"></i><b>6.2.1</b> Cherbyshev LLN</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#central-limit-theorem"><i class="fa fa-check"></i><b>6.3</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="6.4" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#tools-for-transformations"><i class="fa fa-check"></i><b>6.4</b> Tools for Transformations</a></li>
-<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html"><i class="fa fa-check"></i><b>7</b> Asymptotic Properties of Least Squares</a><ul>
-<li class="chapter" data-level="7.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>7.1</b> Consistency</a></li>
-<li class="chapter" data-level="7.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-distribution"><i class="fa fa-check"></i><b>7.2</b> Asymptotic Distribution</a></li>
-<li class="chapter" data-level="7.3" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-inference"><i class="fa fa-check"></i><b>7.3</b> Asymptotic Inference</a></li>
-<li class="chapter" data-level="7.4" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency-of-feasible-variance-estimator"><i class="fa fa-check"></i><b>7.4</b> Consistency of Feasible Variance Estimator</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#homoskedasticity"><i class="fa fa-check"></i><b>7.4.1</b> Homoskedasticity</a></li>
-<li class="chapter" data-level="7.4.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#heteroskedasticity"><i class="fa fa-check"></i><b>7.4.2</b> Heteroskedasticity</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-<li class="chapter" data-level="7.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>7.6</b> Appendix</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html"><i class="fa fa-check"></i><b>8</b> Asymptotic Properties of MLE</a><ul>
-<li class="chapter" data-level="8.1" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#examples-of-mle"><i class="fa fa-check"></i><b>8.1</b> Examples of MLE</a></li>
-<li class="chapter" data-level="8.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>8.2</b> Consistency</a></li>
-<li class="chapter" data-level="8.3" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#asymptotic-normality"><i class="fa fa-check"></i><b>8.3</b> Asymptotic Normality</a></li>
-<li class="chapter" data-level="8.4" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#information-matrix-equality"><i class="fa fa-check"></i><b>8.4</b> Information Matrix Equality</a></li>
-<li class="chapter" data-level="8.5" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#cramer-rao-lower-bound"><i class="fa fa-check"></i><b>8.5</b> Cramer-Rao Lower Bound</a></li>
-<li class="chapter" data-level="8.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Hypothesis Testing</a><ul>
-<li class="chapter" data-level="9.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing"><i class="fa fa-check"></i><b>9.1</b> Testing</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#decision-rule-and-errors"><i class="fa fa-check"></i><b>9.1.1</b> Decision Rule and Errors</a></li>
-<li class="chapter" data-level="9.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#optimality"><i class="fa fa-check"></i><b>9.1.2</b> Optimality</a></li>
-<li class="chapter" data-level="9.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-and-wilks-theorem"><i class="fa fa-check"></i><b>9.1.3</b> Likelihood-Ratio Test and Wilks’ theorem</a></li>
-<li class="chapter" data-level="9.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#score-test"><i class="fa fa-check"></i><b>9.1.4</b> Score Test</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#confidence-intervalconfidence-interval"><i class="fa fa-check"></i><b>9.2</b> Confidence Interval<span id="confidence-interval" label="confidence-interval"><span class="math display">\[confidence-interval\]</span></span></a></li>
-<li class="chapter" data-level="9.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#bayesian-credible-set"><i class="fa fa-check"></i><b>9.3</b> Bayesian Credible Set</a></li>
-<li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#applications-in-ols"><i class="fa fa-check"></i><b>9.4</b> Applications in OLS</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-test"><i class="fa fa-check"></i><b>9.4.1</b> Wald Test</a></li>
-<li class="chapter" data-level="9.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lagrangian-multiplier-test"><i class="fa fa-check"></i><b>9.4.2</b> Lagrangian Multiplier Test</a></li>
-<li class="chapter" data-level="9.4.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-for-regression"><i class="fa fa-check"></i><b>9.4.3</b> Likelihood-Ratio Test for Regression</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>9.5</b> Summary</a></li>
-<li class="chapter" data-level="9.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>9.6</b> Appendix</a><ul>
-<li class="chapter" data-level="9.6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#neyman-pearson-lemma"><i class="fa fa-check"></i><b>9.6.1</b> Neyman-Pearson Lemma</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="panel-data.html"><a href="panel-data.html"><i class="fa fa-check"></i><b>10</b> Panel Data</a><ul>
-<li class="chapter" data-level="10.1" data-path="panel-data.html"><a href="panel-data.html#fixed-effect"><i class="fa fa-check"></i><b>10.1</b> Fixed Effect</a></li>
-<li class="chapter" data-level="10.2" data-path="panel-data.html"><a href="panel-data.html#random-effect"><i class="fa fa-check"></i><b>10.2</b> Random Effect</a></li>
-<li class="chapter" data-level="10.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>10.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="endogeneity.html"><a href="endogeneity.html"><i class="fa fa-check"></i><b>11</b> Endogeneity</a><ul>
-<li class="chapter" data-level="11.1" data-path="endogeneity.html"><a href="endogeneity.html#identification"><i class="fa fa-check"></i><b>11.1</b> Identification</a></li>
-<li class="chapter" data-level="11.2" data-path="endogeneity.html"><a href="endogeneity.html#instruments"><i class="fa fa-check"></i><b>11.2</b> Instruments</a></li>
-<li class="chapter" data-level="11.3" data-path="endogeneity.html"><a href="endogeneity.html#sources-of-endogeneity"><i class="fa fa-check"></i><b>11.3</b> Sources of Endogeneity</a></li>
-<li class="chapter" data-level="11.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html"><i class="fa fa-check"></i><b>12</b> Generalized Method of Moments</a><ul>
-<li class="chapter" data-level="12.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#instrumental-regression"><i class="fa fa-check"></i><b>12.1</b> Instrumental Regression</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#just-identification"><i class="fa fa-check"></i><b>12.1.1</b> Just-identification</a></li>
-<li class="chapter" data-level="12.1.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#over-identification"><i class="fa fa-check"></i><b>12.1.2</b> Over-identification</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-estimator"><i class="fa fa-check"></i><b>12.2</b> GMM Estimator</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#efficient-gmm"><i class="fa fa-check"></i><b>12.2.1</b> Efficient GMM</a></li>
-<li class="chapter" data-level="12.2.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-step-gmm"><i class="fa fa-check"></i><b>12.2.2</b> Two-Step GMM</a></li>
-<li class="chapter" data-level="12.2.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-stage-least-squares"><i class="fa fa-check"></i><b>12.2.3</b> Two Stage Least Squares</a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-in-nonlinear-model"><i class="fa fa-check"></i><b>12.3</b> GMM in Nonlinear Model</a></li>
-<li class="chapter" data-level="12.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
-</ul></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Econ5121</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econ5121</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Preface</a></li>
+<li><a class="" href="probability.html"><span class="header-section-number">2</span> Probability</a></li>
+<li><a class="" href="conditional-expectation.html"><span class="header-section-number">3</span> Conditional Expectation</a></li>
+<li><a class="" href="least-squares-linear-algebra.html"><span class="header-section-number">4</span> Least Squares: Linear Algebra</a></li>
+<li><a class="" href="least-squares-finite-sample-theory.html"><span class="header-section-number">5</span> Least Squares: Finite Sample Theory</a></li>
+<li><a class="" href="basic-asymptotic-theory.html"><span class="header-section-number">6</span> Basic Asymptotic Theory</a></li>
+<li><a class="" href="asymptotic-properties-of-least-squares.html"><span class="header-section-number">7</span> Asymptotic Properties of Least Squares</a></li>
+<li><a class="" href="asymptotic-properties-of-mle.html"><span class="header-section-number">8</span> Asymptotic Properties of MLE</a></li>
+<li><a class="" href="hypothesis-testing.html"><span class="header-section-number">9</span> Hypothesis Testing</a></li>
+<li><a class="" href="panel-data.html"><span class="header-section-number">10</span> Panel Data</a></li>
+<li><a class="active" href="endogeneity.html"><span class="header-section-number">11</span> Endogeneity</a></li>
+<li><a class="" href="generalized-method-of-moments.html"><span class="header-section-number">12</span> Generalized Method of Moments</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/zhentaoshi/Econ5121A">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="endogeneity" class="section level1">
-<h1><span class="header-section-number">11</span> Endogeneity</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="endogeneity" class="section level1" number="11">
+<h1>
+<span class="header-section-number">11</span> Endogeneity<a class="anchor" aria-label="anchor" href="#endogeneity"><i class="fas fa-link"></i></a>
+</h1>
 <p>In microeconomic analysis, exogenous variables are the factors
 determined outside of the economic system under consideration, and
 endogenous variables are those decided within the economic system.</p>
@@ -219,7 +105,7 @@ utility function <span class="math inline">\(u\left(\cdot,\cdot\right)\)</span>,
 <p>The terms “endogenous” and “exogenous” in microeconomics will be carried
 over into multiple-equation econometric models. While in a
 single-equation regression model
-<span class="math display">\[y_{i}=x_{i}&#39;\beta+e_{i}\label{eq:generative}\]</span> is only part of the
+<span class="math display">\[y_{i}=x_{i}'\beta+e_{i}\label{eq:generative}\]</span> is only part of the
 equation system. To make it simple, in the single-equation model we say
 an <span class="math inline">\(x_{ik}\)</span> is <em>endogenous,</em> or is an <em>endogenous variable</em>, if
 <span class="math inline">\(\mathrm{cov}\left(x_{ik},e_{i}\right)\neq0\)</span>; otherwise <span class="math inline">\(x_{ik}\)</span> is an
@@ -229,8 +115,10 @@ questions about endogeneity. Such questions plague economic seminars and
 referee reports. To defend empirical strategies in quantitative economic
 studies, it is important to understand the sources of potential
 endogeneity and thoroughly discuss attempts for resolving endogeneity.</p>
-<div id="identification" class="section level2">
-<h2><span class="header-section-number">11.1</span> Identification</h2>
+<div id="identification" class="section level2" number="11.1">
+<h2>
+<span class="header-section-number">11.1</span> Identification<a class="anchor" aria-label="anchor" href="#identification"><i class="fas fa-link"></i></a>
+</h2>
 <p>Endogeneity usually implies difficulty in identifying the parameter of
 interest with only <span class="math inline">\(\left(y_{i},x_{i}\right)\)</span>. Identification is
 critical for the interpretation of empirical economic research. We say a
@@ -240,15 +128,14 @@ otherwise we say the parameter is <em>under-identified</em>. This is an
 abstract definition, and let us discuss it in the family linear
 regression context.</p>
 <p>The linear projection model implies the moment equation
-<span class="math display">\[\mathbb{E}\left[x_{i}x_{i}&#39;\right]\beta=\mathbb{E}\left[x_{i}y_{i}\right]. (citation)\]</span>
-If <span class="math inline">\(E\left[x_{i}x_{i}&#39;\right]\)</span> is of full rank, then
-<span class="math inline">\(\beta=\left(\mathbb{E}\left[x_{i}x_{i}&#39;\right]\right)^{-1}\mathbb{E}\left[x_{i}y_{i}\right]\)</span>
+<span class="math display">\[\mathbb{E}\left[x_{i}x_{i}'\right]\beta=\mathbb{E}\left[x_{i}y_{i}\right]. (citation)\]</span>
+If <span class="math inline">\(E\left[x_{i}x_{i}'\right]\)</span> is of full rank, then
+<span class="math inline">\(\beta=\left(\mathbb{E}\left[x_{i}x_{i}'\right]\right)^{-1}\mathbb{E}\left[x_{i}y_{i}\right]\)</span>
 is a function of the quantities of the population moment and it is
 identified. On the contrary, if some <span class="math inline">\(x_{k}\)</span>’s are perfect collinear so
-that <span class="math inline">\(\mathbb{E}\left[x_{i}x_{i}&#39;\right]\)</span> is rank deficient, there are
+that <span class="math inline">\(\mathbb{E}\left[x_{i}x_{i}'\right]\)</span> is rank deficient, there are
 multiple <span class="math inline">\(\beta\)</span> that satisfies the <span class="math inline">\(k\)</span>-equation system
 (<a href="#eq:k-equation-FOC" reference-type="ref" reference="eq:k-equation-FOC"><span class="math display">\[eq:k-equation-FOC\]</span></a>). Identification fails.</p>
-
 <p>Suppose <span class="math inline">\(x_{i}\)</span> is a scalar random variable, <span class="math display">\[\begin{pmatrix}x_{i}\\
 e_{i}
 \end{pmatrix}\sim N\left(\begin{pmatrix}0\\
@@ -291,7 +178,7 @@ methods are (i) fixed effect model (ii) instrumental variables:</p>
 <li><p>The fixed effect model requires that multiple observations, often
 across time, are collected for each individual <span class="math inline">\(i\)</span>. Moreover, the
 source of endogeneity is time invariant and enters the model
-additively in the form <span class="math display">\[y_{it}=x_{it}&#39;\beta+u_{it},\]</span> where
+additively in the form <span class="math display">\[y_{it}=x_{it}'\beta+u_{it},\]</span> where
 <span class="math inline">\(u_{it}=\alpha_{i}+\epsilon_{it}\)</span> is the composite error. The panel
 data approach extends <span class="math inline">\(\left(y_{i},x_{i}\right)\)</span> to
 <span class="math inline">\(\left(y_{it},x_{it}\right)_{i=1}^{T}\)</span> if data are available along
@@ -314,8 +201,10 @@ referencing to any economics. In essence, the linear IV model seeks a
 linear combination <span class="math inline">\(y_{i}-\beta x_{i}\)</span> that is orthogonal to the linear
 space spanned by <span class="math inline">\(z_{i}\)</span>.</p>
 </div>
-<div id="instruments" class="section level2">
-<h2><span class="header-section-number">11.2</span> Instruments</h2>
+<div id="instruments" class="section level2" number="11.2">
+<h2>
+<span class="header-section-number">11.2</span> Instruments<a class="anchor" aria-label="anchor" href="#instruments"><i class="fas fa-link"></i></a>
+</h2>
 <p>There are two requirements for valid IVs: orthogonality and relevance.
 Orthogonality entails that the model is correctly specified. If
 relevance is violated, meaning that the IVs are not correlated with the
@@ -324,30 +213,30 @@ observable data. Identification, as in the standard definition in
 econometrics, breaks down.</p>
 <p>A structural equation is a model of economic interest. Consider the
 following linear structural model
-<span class="math display">\[y_{i}=x_{1i}&#39;\beta_{1}+z_{1i}&#39;\beta_{2}+\epsilon_{i},\label{eq:basic_1}\]</span>
+<span class="math display">\[y_{i}=x_{1i}'\beta_{1}+z_{1i}'\beta_{2}+\epsilon_{i},\label{eq:basic_1}\]</span>
 where <span class="math inline">\(x_{1i}\)</span> is a <span class="math inline">\(k_{1}\)</span>-dimensional endogenous explanatory
 variables, <span class="math inline">\(z_{1i}\)</span> is a <span class="math inline">\(k_{2}\)</span>-dimensional exogenous explanatory
 variables with the intercept included. In addition, we have <span class="math inline">\(z_{2i}\)</span>, a
 <span class="math inline">\(k_{3}\)</span>-dimensional excluded exogenous variables. Let <span class="math inline">\(K=k_{1}+k_{2}\)</span>
-and <span class="math inline">\(L=k_{2}+k_{3}\)</span>. Denote <span class="math inline">\(x_{i}=\left(x_{1i}&#39;,z_{1i}&#39;\right)&#39;\)</span> as a
+and <span class="math inline">\(L=k_{2}+k_{3}\)</span>. Denote <span class="math inline">\(x_{i}=\left(x_{1i}',z_{1i}'\right)'\)</span> as a
 <span class="math inline">\(K\)</span>-dimensional explanatory variable, and
-<span class="math inline">\(z_{i}=\left(z_{1i}&#39;,z_{2i}&#39;\right)\)</span> as an <span class="math inline">\(L\)</span>-dimensional exogenous
+<span class="math inline">\(z_{i}=\left(z_{1i}',z_{2i}'\right)\)</span> as an <span class="math inline">\(L\)</span>-dimensional exogenous
 vector.</p>
 <p>We call the exogenous variable <em>instrument variables</em>, or simply
-<em>instruments</em>. Let <span class="math inline">\(\beta=\left(\beta_{1}&#39;,\beta_{2}&#39;\right)&#39;\)</span> be a
+<em>instruments</em>. Let <span class="math inline">\(\beta=\left(\beta_{1}',\beta_{2}'\right)'\)</span> be a
 <span class="math inline">\(K\)</span>-dimensional parameter of interest. From now on, we rewrite
 (<a href="#eq:basic_1" reference-type="ref" reference="eq:basic_1"><span class="math display">\[eq:basic\_1\]</span></a>) as
-<span class="math display">\[y_{i}=x_{i}&#39;\beta+\epsilon_{i},\label{eq:basic_2}\]</span> and we have a
+<span class="math display">\[y_{i}=x_{i}'\beta+\epsilon_{i},\label{eq:basic_2}\]</span> and we have a
 vector of instruments <span class="math inline">\(z_{i}\)</span>.</p>
 <p>Before estimating any structural econometric model, we must check
 identification. In the context of
 (<a href="#eq:basic_2" reference-type="ref" reference="eq:basic_2"><span class="math display">\[eq:basic\_2\]</span></a>), identification requires that the true value
 <span class="math inline">\(\beta_{0}\)</span> is the only value on the parameters space that satisfies the
 moment condition
-<span class="math display">\[\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}&#39;\beta\right)\right]=0_{L}.\label{eq:moment}\]</span>
+<span class="math display">\[\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}'\beta\right)\right]=0_{L}.\label{eq:moment}\]</span>
 The rank condition is sufficient and necessary for identification.</p>
-<p><span class="math inline">\(\mathrm{rank}\left(\mathbb{E}\left[z_{i}x_{i}&#39;\right]\right)=K\)</span>.</p>
-<p>Note that <span class="math inline">\(\mathbb{E}\left[x_{i}&#39;z_{i}\right]\)</span> is a <span class="math inline">\(K\times L\)</span> matrix.
+<p><span class="math inline">\(\mathrm{rank}\left(\mathbb{E}\left[z_{i}x_{i}'\right]\right)=K\)</span>.</p>
+<p>Note that <span class="math inline">\(\mathbb{E}\left[x_{i}'z_{i}\right]\)</span> is a <span class="math inline">\(K\times L\)</span> matrix.
 The rank condition implies the <em>order condition</em> <span class="math inline">\(L\geq K\)</span>, which says
 that the number of excluded instruments must be no fewer than the number
 of endogenous variables.</p>
@@ -355,12 +244,12 @@ of endogenous variables.</p>
 holds.</p>
 <p>(The “if” direction). For any <span class="math inline">\(\tilde{\beta}\)</span> such that
 <span class="math inline">\(\tilde{\beta}\neq\beta_{0}\)</span>, <span class="math display">\[\begin{aligned}
-\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}&#39;\tilde{\beta}\right)\right] &amp; =\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}&#39;\beta_{0}\right)\right]+\mathbb{E}\left[z_{i}x_{i}&#39;\right]\left(\beta_{0}-\tilde{\beta}\right)\\
- &amp; =0_{L}+\mathbb{E}\left[z_{i}x_{i}&#39;\right]\left(\beta_{0}-\tilde{\beta}\right).\end{aligned}\]</span>
+\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}'\tilde{\beta}\right)\right] &amp; =\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}'\beta_{0}\right)\right]+\mathbb{E}\left[z_{i}x_{i}'\right]\left(\beta_{0}-\tilde{\beta}\right)\\
+&amp; =0_{L}+\mathbb{E}\left[z_{i}x_{i}'\right]\left(\beta_{0}-\tilde{\beta}\right).\end{aligned}\]</span>
 Because
-<span class="math inline">\(\mathrm{rank}\left(\mathbb{E}\left[z_{i}x_{i}&#39;\right]\right)=K\)</span>, we
+<span class="math inline">\(\mathrm{rank}\left(\mathbb{E}\left[z_{i}x_{i}'\right]\right)=K\)</span>, we
 would have
-<span class="math inline">\(\mathbb{E}\left[z_{i}x_{i}&#39;\right]\left(\beta_{0}-\tilde{\beta}\right)=0_{L}\)</span>
+<span class="math inline">\(\mathbb{E}\left[z_{i}x_{i}'\right]\left(\beta_{0}-\tilde{\beta}\right)=0_{L}\)</span>
 if and only if <span class="math inline">\(\beta_{0}-\tilde{\beta}=0_{K}\)</span>, which violates
 <span class="math inline">\(\tilde{\beta}\neq\beta_{0}\)</span>. Therefore <span class="math inline">\(\beta_{0}\)</span> is the unique value
 that satisfies (<a href="#eq:moment" reference-type="ref" reference="eq:moment"><span class="math display">\[eq:moment\]</span></a>).</p>
@@ -368,8 +257,10 @@ that satisfies (<a href="#eq:moment" reference-type="ref" reference="eq:moment">
 contrapositiveness, if the rank condition fails, then the model is not
 identified. We can easily prove the claim by making an example.)</p>
 </div>
-<div id="sources-of-endogeneity" class="section level2">
-<h2><span class="header-section-number">11.3</span> Sources of Endogeneity</h2>
+<div id="sources-of-endogeneity" class="section level2" number="11.3">
+<h2>
+<span class="header-section-number">11.3</span> Sources of Endogeneity<a class="anchor" aria-label="anchor" href="#sources-of-endogeneity"><i class="fas fa-link"></i></a>
+</h2>
 <p>As econometricians mostly work with non-experimental data, we cannot
 overstate the importance of the endogeneity problem. We go over a few
 examples.</p>
@@ -392,8 +283,8 @@ identified from the linear regression model
 <p>Instruments for the above example is easy to find. Notice that the
 linear relationship
 (<a href="#eq:dymPanel" reference-type="ref" reference="eq:dymPanel"><span class="math display">\[eq:dymPanel\]</span></a>) implies <span class="math display">\[\begin{aligned}
- &amp;  &amp; \mathbb{E}\left[\epsilon_{i,t}-\epsilon_{i,t-1}|\alpha_{i},x_{i1},\ldots,x_{iT},\epsilon_{i,t-2},\epsilon_{i,t-3},\ldots,\epsilon_{i1},y_{i0}\right]\\
- &amp; = &amp; \mathbb{E}\left[\epsilon_{i,t}-\epsilon_{i,t-1}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{i,t-2},y_{i,t-3},\ldots,y_{i0}\right]=0\end{aligned}\]</span>
+&amp;  &amp; \mathbb{E}\left[\epsilon_{i,t}-\epsilon_{i,t-1}|\alpha_{i},x_{i1},\ldots,x_{iT},\epsilon_{i,t-2},\epsilon_{i,t-3},\ldots,\epsilon_{i1},y_{i0}\right]\\
+&amp; = &amp; \mathbb{E}\left[\epsilon_{i,t}-\epsilon_{i,t-1}|\alpha_{i},x_{i1},\ldots,x_{iT},y_{i,t-2},y_{i,t-3},\ldots,y_{i0}\right]=0\end{aligned}\]</span>
 according to the assumption
 (<a href="#eq:dyn_mean_0" reference-type="ref" reference="eq:dyn_mean_0"><span class="math display">\[eq:dyn\_mean\_0\]</span></a>). The above relationship gives orthogonal
 condition in the form
@@ -402,7 +293,6 @@ In other words, any function of <span class="math inline">\(y_{i,t-2},y_{i,t-3},
 orthogonal to the error term
 <span class="math inline">\(\left(\epsilon{}_{i,t-1}-\epsilon_{i,t-2}\right)\)</span>. Here the excluded
 IVs are naturally generated from the model itself.</p>
-
 <p>Another classical source of endogeneity is the measurement error.</p>
 <p>Endogeneity also emerges when an explanatory variables is not directly
 observable but is replaced by a measurement with error. Suppose the true
@@ -434,7 +324,6 @@ It is clear that
 and the equality holds only if <span class="math inline">\(\mathrm{var}\left[v_{i}\right]=0\)</span> (no
 measurement error). This is called the <em>attenuation bias</em> due to the
 measurement error.</p>
-
 <p>Next, we give two examples of equation systems, one from microeconomics
 and the other from macroeconomics.</p>
 <p>Let <span class="math inline">\(p_{i}\)</span> and <span class="math inline">\(q_{i}\)</span> be a good’s log-price and log-quantity on the
@@ -472,7 +361,7 @@ q_{i}
 \end{pmatrix}+\begin{pmatrix}e_{di}\\
 e_{si}
 \end{pmatrix}\right]\nonumber \\
- &amp; =\frac{1}{\beta_{s}+\beta_{d}}\begin{pmatrix}\beta_{s} &amp; \beta_{d}\\
+&amp; =\frac{1}{\beta_{s}+\beta_{d}}\begin{pmatrix}\beta_{s} &amp; \beta_{d}\\
 1 &amp; -1
 \end{pmatrix}\left[\begin{pmatrix}\alpha_{d}\\
 \alpha_{s}
@@ -501,9 +390,8 @@ parameter cannot be directly identified because the observed
 crossing of the demand curve and the supply curve. To identify the
 demand curve, we will need an instrument that shifts the supply curve
 only; and vice versa.</p>
-
 <p>This is a model borrowed from Hayashi (2000, p.193) but originated from
-<span class="citation">Haavelmo (<a href="#ref-haavelmo1943statistical" role="doc-biblioref">1943</a>)</span>. An econometrician is interested in learning
+<span class="citation">Haavelmo (<a href="generalized-method-of-moments.html#ref-haavelmo1943statistical" role="doc-biblioref">1943</a>)</span>. An econometrician is interested in learning
 <span class="math inline">\(\beta_{2}\)</span>, the <em>marginal propensity of consumption</em>, in the
 Keynesian-type equation
 <span class="math display">\[C_{i}=\beta_{1}+\beta_{2}Y_{i}+u_{i}\label{eq:keynes}\]</span> where <span class="math inline">\(C_{i}\)</span>
@@ -532,22 +420,24 @@ Y_{i}
 \end{pmatrix}+\begin{pmatrix}u_{i}\\
 I_{i}
 \end{pmatrix}\right]\\
- &amp; =\frac{1}{1-\beta_{2}}\begin{pmatrix}1 &amp; \beta_{2}\\
+&amp; =\frac{1}{1-\beta_{2}}\begin{pmatrix}1 &amp; \beta_{2}\\
 1 &amp; 1
 \end{pmatrix}\left[\begin{pmatrix}\beta_{1}\\
 0
 \end{pmatrix}+\begin{pmatrix}u_{i}\\
 I_{i}
 \end{pmatrix}\right]\\
- &amp; =\frac{1}{1-\beta_{2}}\begin{pmatrix}\beta_{1}+u_{i}+\beta_{2}I_{i}\\
+&amp; =\frac{1}{1-\beta_{2}}\begin{pmatrix}\beta_{1}+u_{i}+\beta_{2}I_{i}\\
 \beta_{1}+u_{i}+I_{i}
 \end{pmatrix}.\end{aligned}\]</span> OLS
 (<a href="#eq:keynes" reference-type="ref" reference="eq:keynes"><span class="math display">\[eq:keynes\]</span></a>) will be inconsistent because in the reduced-form
 <span class="math inline">\(Y_{i}=\frac{1}{1-\beta_{2}}\left(\beta_{1}+u_{i}+I_{i}\right)\)</span> implies
 <span class="math inline">\(\mathbb{E}\left[Y_{i}u_{i}\right]=\mathbb{E}\left[u_{i}^{2}\right]/\left(1-\beta_{2}\right)\neq0\)</span>.</p>
 </div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">11.4</span> Summary</h2>
+<div id="summary-9" class="section level2" number="11.4">
+<h2>
+<span class="header-section-number">11.4</span> Summary<a class="anchor" aria-label="anchor" href="#summary-9"><i class="fas fa-link"></i></a>
+</h2>
 <p>Even though we often deal with a single equation model with potential
 endogenous variables, the underlying structural system may involve
 multiple equations. The simultaneous equation model is a classical
@@ -557,98 +447,55 @@ keep in mind a causal mechanism. Instead of identifying the causal
 effect by control group and treatment group as in Chapter 2, here we
 look at causality from the economic structural perspective.</p>
 <p><strong>Historical notes</strong>: Instruments originally appeared in Philip
-<span class="citation">Wright (<a href="#ref-wright1928tariff" role="doc-biblioref">1928</a>)</span> for identifying the coefficient of an endogenous
+<span class="citation">Wright (<a href="generalized-method-of-moments.html#ref-wright1928tariff" role="doc-biblioref">1928</a>)</span> for identifying the coefficient of an endogenous
 variables. It is believed to be a collaborative idea with Philip’s son
 Sewall Wright. The demand and supply analysis is attributed to
-<span class="citation">Working (<a href="#ref-working1927statistical" role="doc-biblioref">1927</a>)</span>, and the measurement error study is dated back
-to <span class="citation">Fricsh (<a href="#ref-fricsh1934statistical" role="doc-biblioref">1934</a>)</span>.</p>
+<span class="citation">Working (<a href="generalized-method-of-moments.html#ref-working1927statistical" role="doc-biblioref">1927</a>)</span>, and the measurement error study is dated back
+to <span class="citation">Fricsh (<a href="generalized-method-of-moments.html#ref-fricsh1934statistical" role="doc-biblioref">1934</a>)</span>.</p>
 <p><strong>Further reading</strong>: Causality is the holy grail of econometrics.
-<span class="citation">Pearl and Mackenzie (<a href="#ref-pearl2018book" role="doc-biblioref">2018</a>)</span> is a popular book with philosophical depth. It is a
-delight to read. <span class="citation">(Chen, Hong, and Nekipelov <a href="#ref-chen2011nonlinear" role="doc-biblioref">2011</a>)</span> is a survey for modern nonlinear
+<span class="citation">Pearl and Mackenzie (<a href="generalized-method-of-moments.html#ref-pearl2018book" role="doc-biblioref">2018</a>)</span> is a popular book with philosophical depth. It is a
+delight to read. <span class="citation">(<a href="generalized-method-of-moments.html#ref-chen2011nonlinear" role="doc-biblioref">Chen, Hong, and Nekipelov 2011</a>)</span> is a survey for modern nonlinear
 measurement error models.</p>
 
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="panel-data.html"><span class="header-section-number">10</span> Panel Data</a></div>
+<div class="next"><a href="generalized-method-of-moments.html"><span class="header-section-number">12</span> Generalized Method of Moments</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#endogeneity"><span class="header-section-number">11</span> Endogeneity</a></li>
+<li><a class="nav-link" href="#identification"><span class="header-section-number">11.1</span> Identification</a></li>
+<li><a class="nav-link" href="#instruments"><span class="header-section-number">11.2</span> Instruments</a></li>
+<li><a class="nav-link" href="#sources-of-endogeneity"><span class="header-section-number">11.3</span> Sources of Endogeneity</a></li>
+<li><a class="nav-link" href="#summary-9"><span class="header-section-number">11.4</span> Summary</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/zhentaoshi/Econ5121A/blob/master/10-lecture.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/zhentaoshi/Econ5121A/edit/master/10-lecture.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
 
 </div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-chen2011nonlinear">
-<p>Chen, Xiaohong, Han Hong, and Denis Nekipelov. 2011. “Nonlinear Models of Measurement Errors.” <em>Journal of Economic Literature</em> 49 (4): 901–37.</p>
-</div>
-<div id="ref-fricsh1934statistical">
-<p>Fricsh, R. 1934. “Statistical Confluence Study.” <em>Oslo: University Institute of Economics</em>.</p>
-</div>
-<div id="ref-haavelmo1943statistical">
-<p>Haavelmo, Trygve. 1943. “The Statistical Implications of a System of Simultaneous Equations.” <em>Econometrica, Journal of the Econometric Society</em>, 1–12.</p>
-</div>
-<div id="ref-pearl2018book">
-<p>Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. Basic Books.</p>
-</div>
-<div id="ref-working1927statistical">
-<p>Working, Elmer J. 1927. “What Do Statistical "Demand Curves" Show?” <em>The Quarterly Journal of Economics</em> 41 (2): 212–35.</p>
-</div>
-<div id="ref-wright1928tariff">
-<p>Wright, Philip G. 1928. <em>Tariff on Animal and Vegetable Oils</em>. Macmillan Company, New York.</p>
-</div>
-</div>
-            </section>
+</div> <!-- .container -->
 
-          </div>
-        </div>
-      </div>
-<a href="panel-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="generalized-method-of-moments.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Econ5121</strong>" was written by Zhentao Shi. It was last built on 2022-06-12.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -660,7 +507,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

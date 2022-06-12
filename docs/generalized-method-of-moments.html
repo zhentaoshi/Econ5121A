@@ -1,210 +1,96 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12 Generalized Method of Moments | Econ5121</title>
-  <meta name="description" content="nothing" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="12 Generalized Method of Moments | Econ5121" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="nothing" />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12 Generalized Method of Moments | Econ5121" />
-  
-  <meta name="twitter:description" content="nothing" />
-  
-
-<meta name="author" content="Zhentao Shi" />
-
-
-<meta name="date" content="2022-01-22" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="endogeneity.html"/>
-
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>12 Generalized Method of Moments | Econ5121</title>
+<meta name="author" content="Zhentao Shi">
+<meta name="description" content="Generalized method of moments (GMM) (Hansen 1982) is an estimation principle that extends method of moments. It seeks the parameter value that minimizes a quadratic form of the moments. It is...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="12 Generalized Method of Moments | Econ5121">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Generalized method of moments (GMM) (Hansen 1982) is an estimation principle that extends method of moments. It seeks the parameter value that minimizes a quadratic form of the moments. It is...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="12 Generalized Method of Moments | Econ5121">
+<meta name="twitter:description" content="Generalized method of moments (GMM) (Hansen 1982) is an estimation principle that extends method of moments. It seeks the parameter value that minimizes a quadratic form of the moments. It is...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Alice-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_DM%20Mono-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
-<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a><ul>
-<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
-<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#axiomatic-probability"><i class="fa fa-check"></i><b>2.2</b> Axiomatic Probability</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#probability-space"><i class="fa fa-check"></i><b>2.2.1</b> Probability Space</a></li>
-<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#random-variable"><i class="fa fa-check"></i><b>2.2.2</b> Random Variable</a></li>
-<li class="chapter" data-level="2.2.3" data-path="probability.html"><a href="probability.html#distribution-function"><i class="fa fa-check"></i><b>2.2.3</b> Distribution Function</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#expected-value"><i class="fa fa-check"></i><b>2.3</b> Expected Value</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="probability.html"><a href="probability.html#integration"><i class="fa fa-check"></i><b>2.3.1</b> Integration</a></li>
-<li class="chapter" data-level="2.3.2" data-path="probability.html"><a href="probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>2.3.2</b> Properties of Expectations</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#multivariate-random-variable"><i class="fa fa-check"></i><b>2.4</b> Multivariate Random Variable</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#conditional-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>2.4.1</b> Conditional Probability and Bayes’ Theorem</a></li>
-<li class="chapter" data-level="2.4.2" data-path="probability.html"><a href="probability.html#independence"><i class="fa fa-check"></i><b>2.4.2</b> Independence</a></li>
-<li class="chapter" data-level="2.4.3" data-path="probability.html"><a href="probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>2.4.3</b> Law of Iterated Expectations</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>2.5</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="conditional-expectation.html"><a href="conditional-expectation.html"><i class="fa fa-check"></i><b>3</b> Conditional Expectation</a><ul>
-<li class="chapter" data-level="3.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#linear-projection"><i class="fa fa-check"></i><b>3.1</b> Linear Projection</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#omitted-variable-bias"><i class="fa fa-check"></i><b>3.1.1</b> Omitted Variable Bias</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#causality"><i class="fa fa-check"></i><b>3.2</b> Causality</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#structure-and-identification"><i class="fa fa-check"></i><b>3.2.1</b> Structure and Identification</a></li>
-<li class="chapter" data-level="3.2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#treatment-effect"><i class="fa fa-check"></i><b>3.2.2</b> Treatment Effect</a></li>
-<li class="chapter" data-level="3.2.3" data-path="conditional-expectation.html"><a href="conditional-expectation.html#ate-and-cef"><i class="fa fa-check"></i><b>3.2.3</b> ATE and CEF</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>3.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html"><i class="fa fa-check"></i><b>4</b> Least Squares: Linear Algebra</a><ul>
-<li class="chapter" data-level="4.1" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#estimator"><i class="fa fa-check"></i><b>4.1</b> Estimator</a></li>
-<li class="chapter" data-level="4.2" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#subvector"><i class="fa fa-check"></i><b>4.2</b> Subvector</a></li>
-<li class="chapter" data-level="4.3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#goodness-of-fit"><i class="fa fa-check"></i><b>4.3</b> Goodness of Fit</a></li>
-<li class="chapter" data-level="4.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.4</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html"><i class="fa fa-check"></i><b>5</b> Least Squares: Finite Sample Theory</a><ul>
-<li class="chapter" data-level="5.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#maximum-likelihood"><i class="fa fa-check"></i><b>5.1</b> Maximum Likelihood</a></li>
-<li class="chapter" data-level="5.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#likelihood-estimation-for-regression"><i class="fa fa-check"></i><b>5.2</b> Likelihood Estimation for Regression</a></li>
-<li class="chapter" data-level="5.3" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#finite-sample-distribution"><i class="fa fa-check"></i><b>5.3</b> Finite Sample Distribution</a></li>
-<li class="chapter" data-level="5.4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#mean-and-variancemean-and-variance"><i class="fa fa-check"></i><b>5.4</b> Mean and Variance<span id="mean-and-variance" label="mean-and-variance"><span class="math display">\[mean-and-variance\]</span></span></a></li>
-<li class="chapter" data-level="5.5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>5.5</b> Gauss-Markov Theorem</a></li>
-<li class="chapter" data-level="5.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
-<li class="chapter" data-level="5.7" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>5.7</b> Appendix</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#joint-normal-distribution"><i class="fa fa-check"></i><b>5.7.1</b> Joint Normal Distribution</a></li>
-<li class="chapter" data-level="5.7.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#basus-theorem-subsecbasus-theoremsubsecbasus-theorem-labelsubsecbasus-theorem"><i class="fa fa-check"></i><b>5.7.2</b> Basu’s Theorem* [<span class="math display">\[subsec:Basu\&#39;s-Theorem\]</span>]{#subsec:Basu’s-Theorem label=“subsec:Basu’s-Theorem”}</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html"><i class="fa fa-check"></i><b>6</b> Basic Asymptotic Theory</a><ul>
-<li class="chapter" data-level="6.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#modes-of-convergence"><i class="fa fa-check"></i><b>6.1</b> Modes of Convergence</a></li>
-<li class="chapter" data-level="6.2" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#law-of-large-numbers"><i class="fa fa-check"></i><b>6.2</b> Law of Large Numbers</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#cherbyshev-lln"><i class="fa fa-check"></i><b>6.2.1</b> Cherbyshev LLN</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#central-limit-theorem"><i class="fa fa-check"></i><b>6.3</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="6.4" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#tools-for-transformations"><i class="fa fa-check"></i><b>6.4</b> Tools for Transformations</a></li>
-<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html"><i class="fa fa-check"></i><b>7</b> Asymptotic Properties of Least Squares</a><ul>
-<li class="chapter" data-level="7.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>7.1</b> Consistency</a></li>
-<li class="chapter" data-level="7.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-distribution"><i class="fa fa-check"></i><b>7.2</b> Asymptotic Distribution</a></li>
-<li class="chapter" data-level="7.3" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-inference"><i class="fa fa-check"></i><b>7.3</b> Asymptotic Inference</a></li>
-<li class="chapter" data-level="7.4" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency-of-feasible-variance-estimator"><i class="fa fa-check"></i><b>7.4</b> Consistency of Feasible Variance Estimator</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#homoskedasticity"><i class="fa fa-check"></i><b>7.4.1</b> Homoskedasticity</a></li>
-<li class="chapter" data-level="7.4.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#heteroskedasticity"><i class="fa fa-check"></i><b>7.4.2</b> Heteroskedasticity</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-<li class="chapter" data-level="7.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>7.6</b> Appendix</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html"><i class="fa fa-check"></i><b>8</b> Asymptotic Properties of MLE</a><ul>
-<li class="chapter" data-level="8.1" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#examples-of-mle"><i class="fa fa-check"></i><b>8.1</b> Examples of MLE</a></li>
-<li class="chapter" data-level="8.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>8.2</b> Consistency</a></li>
-<li class="chapter" data-level="8.3" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#asymptotic-normality"><i class="fa fa-check"></i><b>8.3</b> Asymptotic Normality</a></li>
-<li class="chapter" data-level="8.4" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#information-matrix-equality"><i class="fa fa-check"></i><b>8.4</b> Information Matrix Equality</a></li>
-<li class="chapter" data-level="8.5" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#cramer-rao-lower-bound"><i class="fa fa-check"></i><b>8.5</b> Cramer-Rao Lower Bound</a></li>
-<li class="chapter" data-level="8.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Hypothesis Testing</a><ul>
-<li class="chapter" data-level="9.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing"><i class="fa fa-check"></i><b>9.1</b> Testing</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#decision-rule-and-errors"><i class="fa fa-check"></i><b>9.1.1</b> Decision Rule and Errors</a></li>
-<li class="chapter" data-level="9.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#optimality"><i class="fa fa-check"></i><b>9.1.2</b> Optimality</a></li>
-<li class="chapter" data-level="9.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-and-wilks-theorem"><i class="fa fa-check"></i><b>9.1.3</b> Likelihood-Ratio Test and Wilks’ theorem</a></li>
-<li class="chapter" data-level="9.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#score-test"><i class="fa fa-check"></i><b>9.1.4</b> Score Test</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#confidence-intervalconfidence-interval"><i class="fa fa-check"></i><b>9.2</b> Confidence Interval<span id="confidence-interval" label="confidence-interval"><span class="math display">\[confidence-interval\]</span></span></a></li>
-<li class="chapter" data-level="9.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#bayesian-credible-set"><i class="fa fa-check"></i><b>9.3</b> Bayesian Credible Set</a></li>
-<li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#applications-in-ols"><i class="fa fa-check"></i><b>9.4</b> Applications in OLS</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-test"><i class="fa fa-check"></i><b>9.4.1</b> Wald Test</a></li>
-<li class="chapter" data-level="9.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lagrangian-multiplier-test"><i class="fa fa-check"></i><b>9.4.2</b> Lagrangian Multiplier Test</a></li>
-<li class="chapter" data-level="9.4.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-for-regression"><i class="fa fa-check"></i><b>9.4.3</b> Likelihood-Ratio Test for Regression</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>9.5</b> Summary</a></li>
-<li class="chapter" data-level="9.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>9.6</b> Appendix</a><ul>
-<li class="chapter" data-level="9.6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#neyman-pearson-lemma"><i class="fa fa-check"></i><b>9.6.1</b> Neyman-Pearson Lemma</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="panel-data.html"><a href="panel-data.html"><i class="fa fa-check"></i><b>10</b> Panel Data</a><ul>
-<li class="chapter" data-level="10.1" data-path="panel-data.html"><a href="panel-data.html#fixed-effect"><i class="fa fa-check"></i><b>10.1</b> Fixed Effect</a></li>
-<li class="chapter" data-level="10.2" data-path="panel-data.html"><a href="panel-data.html#random-effect"><i class="fa fa-check"></i><b>10.2</b> Random Effect</a></li>
-<li class="chapter" data-level="10.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>10.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="endogeneity.html"><a href="endogeneity.html"><i class="fa fa-check"></i><b>11</b> Endogeneity</a><ul>
-<li class="chapter" data-level="11.1" data-path="endogeneity.html"><a href="endogeneity.html#identification"><i class="fa fa-check"></i><b>11.1</b> Identification</a></li>
-<li class="chapter" data-level="11.2" data-path="endogeneity.html"><a href="endogeneity.html#instruments"><i class="fa fa-check"></i><b>11.2</b> Instruments</a></li>
-<li class="chapter" data-level="11.3" data-path="endogeneity.html"><a href="endogeneity.html#sources-of-endogeneity"><i class="fa fa-check"></i><b>11.3</b> Sources of Endogeneity</a></li>
-<li class="chapter" data-level="11.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html"><i class="fa fa-check"></i><b>12</b> Generalized Method of Moments</a><ul>
-<li class="chapter" data-level="12.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#instrumental-regression"><i class="fa fa-check"></i><b>12.1</b> Instrumental Regression</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#just-identification"><i class="fa fa-check"></i><b>12.1.1</b> Just-identification</a></li>
-<li class="chapter" data-level="12.1.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#over-identification"><i class="fa fa-check"></i><b>12.1.2</b> Over-identification</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-estimator"><i class="fa fa-check"></i><b>12.2</b> GMM Estimator</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#efficient-gmm"><i class="fa fa-check"></i><b>12.2.1</b> Efficient GMM</a></li>
-<li class="chapter" data-level="12.2.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-step-gmm"><i class="fa fa-check"></i><b>12.2.2</b> Two-Step GMM</a></li>
-<li class="chapter" data-level="12.2.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-stage-least-squares"><i class="fa fa-check"></i><b>12.2.3</b> Two Stage Least Squares</a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-in-nonlinear-model"><i class="fa fa-check"></i><b>12.3</b> GMM in Nonlinear Model</a></li>
-<li class="chapter" data-level="12.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
-</ul></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Econ5121</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econ5121</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Preface</a></li>
+<li><a class="" href="probability.html"><span class="header-section-number">2</span> Probability</a></li>
+<li><a class="" href="conditional-expectation.html"><span class="header-section-number">3</span> Conditional Expectation</a></li>
+<li><a class="" href="least-squares-linear-algebra.html"><span class="header-section-number">4</span> Least Squares: Linear Algebra</a></li>
+<li><a class="" href="least-squares-finite-sample-theory.html"><span class="header-section-number">5</span> Least Squares: Finite Sample Theory</a></li>
+<li><a class="" href="basic-asymptotic-theory.html"><span class="header-section-number">6</span> Basic Asymptotic Theory</a></li>
+<li><a class="" href="asymptotic-properties-of-least-squares.html"><span class="header-section-number">7</span> Asymptotic Properties of Least Squares</a></li>
+<li><a class="" href="asymptotic-properties-of-mle.html"><span class="header-section-number">8</span> Asymptotic Properties of MLE</a></li>
+<li><a class="" href="hypothesis-testing.html"><span class="header-section-number">9</span> Hypothesis Testing</a></li>
+<li><a class="" href="panel-data.html"><span class="header-section-number">10</span> Panel Data</a></li>
+<li><a class="" href="endogeneity.html"><span class="header-section-number">11</span> Endogeneity</a></li>
+<li><a class="active" href="generalized-method-of-moments.html"><span class="header-section-number">12</span> Generalized Method of Moments</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/zhentaoshi/Econ5121A">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="generalized-method-of-moments" class="section level1">
-<h1><span class="header-section-number">12</span> Generalized Method of Moments</h1>
-<p><em>Generalized method of moments</em> (GMM) <span class="citation">(Hansen <a href="#ref-hansen1982large" role="doc-biblioref">1982</a>)</span> is an
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="generalized-method-of-moments" class="section level1" number="12">
+<h1>
+<span class="header-section-number">12</span> Generalized Method of Moments<a class="anchor" aria-label="anchor" href="#generalized-method-of-moments"><i class="fas fa-link"></i></a>
+</h1>
+<p><em>Generalized method of moments</em> (GMM) <span class="citation">(<a href="generalized-method-of-moments.html#ref-hansen1982large" role="doc-biblioref">Hansen 1982</a>)</span> is an
 estimation principle that extends <em>method of moments</em>. It seeks the
 parameter value that minimizes a quadratic form of the moments. It is
 particularly useful in estimating structural economic models in which
@@ -212,20 +98,24 @@ moment conditions can be derived from underlying economic theory. GMM
 emerges as one of the most popular estimators in modern econometrics. It
 includes conventional methods like the two-stage least squares (2SLS)
 and the three-stage least square as special cases.</p>
-<div id="instrumental-regression" class="section level2">
-<h2><span class="header-section-number">12.1</span> Instrumental Regression</h2>
+<div id="instrumental-regression" class="section level2" number="12.1">
+<h2>
+<span class="header-section-number">12.1</span> Instrumental Regression<a class="anchor" aria-label="anchor" href="#instrumental-regression"><i class="fas fa-link"></i></a>
+</h2>
 <p>We first discuss estimation in a linear single structural equation
-<span class="math display">\[y_{i}=x_{i}&#39;\beta+\epsilon_{i}\]</span> with <span class="math inline">\(K\)</span> regressors. Identification
+<span class="math display">\[y_{i}=x_{i}'\beta+\epsilon_{i}\]</span> with <span class="math inline">\(K\)</span> regressors. Identification
 is a prerequisite for structural estimation. From now on we always
 assume that the model is identified: there is an <span class="math inline">\(L\times1\)</span> vector of
 instruments <span class="math inline">\(z_{i}\)</span> such that
 <span class="math inline">\(\mathbb{E}\left[z_{i}\epsilon_{i}\right]=0_{L}\)</span> and
-<span class="math inline">\(\Sigma:=\mathbb{E}\left[z_{i}x_{i}&#39;\right]\)</span> is of full column rank.
+<span class="math inline">\(\Sigma:=\mathbb{E}\left[z_{i}x_{i}'\right]\)</span> is of full column rank.
 Denote <span class="math inline">\(\beta_{0}\)</span> as the root of the equation
-<span class="math inline">\(E\left[z_{i}\left(y_{i}-x_{i}&#39;\beta\right)\right]=0_{L}\)</span>, which is
+<span class="math inline">\(E\left[z_{i}\left(y_{i}-x_{i}'\beta\right)\right]=0_{L}\)</span>, which is
 uniquely identified.</p>
-<div id="just-identification" class="section level3">
-<h3><span class="header-section-number">12.1.1</span> Just-identification</h3>
+<div id="just-identification" class="section level3" number="12.1.1">
+<h3>
+<span class="header-section-number">12.1.1</span> Just-identification<a class="anchor" aria-label="anchor" href="#just-identification"><i class="fas fa-link"></i></a>
+</h3>
 <p>When <span class="math inline">\(L=K\)</span>, the instrumental regression model is <em>just-identified</em>, or
 <em>exactly identified</em>. The orthogonality condition implies
 <span class="math display">\[\Sigma\beta_{0}=\mathbb{E}\left[z_{i}y_{i}\right],\]</span> and we can solve
@@ -237,15 +127,17 @@ replace the population methods by the sample moments and this is a
 method-of-moments estimator. Nevertheless, we postpone the discussion of
 this estimator to the next section.</p>
 </div>
-<div id="over-identification" class="section level3">
-<h3><span class="header-section-number">12.1.2</span> Over-identification</h3>
+<div id="over-identification" class="section level3" number="12.1.2">
+<h3>
+<span class="header-section-number">12.1.2</span> Over-identification<a class="anchor" aria-label="anchor" href="#over-identification"><i class="fas fa-link"></i></a>
+</h3>
 <p>When <span class="math inline">\(L&gt;K\)</span>, the model is <em>over-identified</em>. The orthogonality condition
 still implies
 <span class="math display">\[\Sigma\beta_{0}=\mathbb{E}\left[z_{i}y_{i}\right],\label{eq:moment2}\]</span>
 but <span class="math inline">\(\Sigma\)</span> is not a square matrix so we cannot write <span class="math inline">\(\beta_{0}\)</span> as
 that in (<a href="#eq:just_beta" reference-type="ref" reference="eq:just_beta"><span class="math display">\[eq:just\_beta\]</span></a>). In order to express <span class="math inline">\(\beta_{0}\)</span> explicitly,
 we define a criterion function
-<span class="math display">\[Q\left(\beta\right)=\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}\beta\right)\right]&#39;W\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}\beta\right)\right],\]</span>
+<span class="math display">\[Q\left(\beta\right)=\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}\beta\right)\right]'W\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}\beta\right)\right],\]</span>
 where <span class="math inline">\(W\)</span> is an <span class="math inline">\(L\times L\)</span> positive-definite non-random symmetric
 matrix. (The choice of <span class="math inline">\(W\)</span> will be discussed soon.) Because of the
 quadratic form, <span class="math inline">\(Q\left(\beta\right)\geq0\)</span> for all <span class="math inline">\(\beta\)</span>.
@@ -255,15 +147,15 @@ Identification indicates that <span class="math inline">\(Q\left(\beta\right)=0\
 minimizer. Since <span class="math inline">\(Q\left(\beta\right)\)</span> is a smooth function of <span class="math inline">\(\beta\)</span>,
 the minimizer <span class="math inline">\(\beta_{0}\)</span> can be characterized by the first-order
 condition
-<span class="math display">\[0_{K}=\frac{\partial}{\partial\beta}Q\left(\beta_{0}\right)=-2\Sigma&#39;W\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}\beta_{0}\right)\right]\]</span>
+<span class="math display">\[0_{K}=\frac{\partial}{\partial\beta}Q\left(\beta_{0}\right)=-2\Sigma'W\mathbb{E}\left[z_{i}\left(y_{i}-x_{i}\beta_{0}\right)\right]\]</span>
 Rearranging the above equation, we have
-<span class="math display">\[\Sigma&#39;W\Sigma\beta_{0}=\Sigma&#39;W\mathbb{E}\left[z_{i}y_{i}\right].\]</span>
-Under the rank condition <span class="math inline">\(\Sigma&#39;W\Sigma\)</span> is invertible so that we can
+<span class="math display">\[\Sigma'W\Sigma\beta_{0}=\Sigma'W\mathbb{E}\left[z_{i}y_{i}\right].\]</span>
+Under the rank condition <span class="math inline">\(\Sigma'W\Sigma\)</span> is invertible so that we can
 solve
-<span class="math display">\[\beta_{0}=\left(\Sigma&#39;W\Sigma\right)^{-1}\Sigma&#39;W\mathbb{E}\left[z_{i}y_{i}\right].\label{eq:over_beta}\]</span>
+<span class="math display">\[\beta_{0}=\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\mathbb{E}\left[z_{i}y_{i}\right].\label{eq:over_beta}\]</span>
 Because we have more moments (<span class="math inline">\(L\)</span>) than the number of unknown parameters
 (<span class="math inline">\(K\)</span>), we call it the <em>generalized</em> method of moments.</p>
-<p>The above equation can be derived by pre-multiplying <span class="math inline">\(\Sigma&#39;W\)</span> on the
+<p>The above equation can be derived by pre-multiplying <span class="math inline">\(\Sigma'W\)</span> on the
 both sides of (<a href="#eq:moment2" reference-type="ref" reference="eq:moment2"><span class="math display">\[eq:moment2\]</span></a>) without referring to the minimization problem.</p>
 <p>Although we separate the discussion of the just-identified case and the
 over-identified case, the latter
@@ -271,94 +163,98 @@ over-identified case, the latter
 (<a href="#eq:just_beta" reference-type="ref" reference="eq:just_beta"><span class="math display">\[eq:just\_beta\]</span></a>) as a special case. In this sense, GMM is
 genuine generalization of the method of moments. to see this point,
 notice that when <span class="math inline">\(L=K\)</span>, given any <span class="math inline">\(W\)</span> we have <span class="math display">\[\begin{aligned}
-\beta_{0} &amp; =\left(\Sigma&#39;W\Sigma\right)^{-1}\Sigma&#39;W\mathbb{E}\left[z_{i}y_{i}\right]=\Sigma^{-1}W^{-1}(\Sigma&#39;)^{-1}\Sigma&#39;W\mathbb{E}\left[z_{i}y_{i}\right]\\
- &amp; =\Sigma^{-1}W^{-1}W\mathbb{E}\left[z_{i}y_{i}\right]=\Sigma^{-1}\mathbb{E}\left[z_{i}y_{i}\right],\end{aligned}\]</span>
+\beta_{0} &amp; =\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\mathbb{E}\left[z_{i}y_{i}\right]=\Sigma^{-1}W^{-1}(\Sigma')^{-1}\Sigma'W\mathbb{E}\left[z_{i}y_{i}\right]\\
+&amp; =\Sigma^{-1}W^{-1}W\mathbb{E}\left[z_{i}y_{i}\right]=\Sigma^{-1}\mathbb{E}\left[z_{i}y_{i}\right],\end{aligned}\]</span>
 as <span class="math inline">\(\Sigma\)</span> is a square matrix. That is to say, in the just-identified
 case <span class="math inline">\(W\)</span> plays no role because any choices of <span class="math inline">\(W\)</span> lead to the same
 explicit solution of <span class="math inline">\(\beta_{0}\)</span>.</p>
 </div>
 </div>
-<div id="gmm-estimator" class="section level2">
-<h2><span class="header-section-number">12.2</span> GMM Estimator</h2>
+<div id="gmm-estimator" class="section level2" number="12.2">
+<h2>
+<span class="header-section-number">12.2</span> GMM Estimator<a class="anchor" aria-label="anchor" href="#gmm-estimator"><i class="fas fa-link"></i></a>
+</h2>
 <p>In practice, we use the sample moments to replace the corresponding
 population moments. The GMM estimator mimics its population formula.
 <span class="math display">\[\begin{aligned}
-\widehat{\beta} &amp; = &amp; \left(\frac{1}{n}\sum x_{i}z_{i}&#39;W\frac{1}{n}\sum z_{i}x_{i}&#39;\right)^{-1}\frac{1}{n}\sum x_{i}z_{i}&#39;W\frac{1}{n}\sum z_{i}y_{i}\\
- &amp; = &amp; \left(\frac{X&#39;Z}{n}W\frac{Z&#39;X}{n}\right)^{-1}\frac{X&#39;Z}{n}W\frac{Z&#39;y}{n}\\
- &amp; = &amp; \left(X&#39;ZWZ&#39;X\right)^{-1}X&#39;ZWZ&#39;y.\end{aligned}\]</span> Under
+\widehat{\beta} &amp; = &amp; \left(\frac{1}{n}\sum x_{i}z_{i}'W\frac{1}{n}\sum z_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum x_{i}z_{i}'W\frac{1}{n}\sum z_{i}y_{i}\\
+&amp; = &amp; \left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'y}{n}\\
+&amp; = &amp; \left(X'ZWZ'X\right)^{-1}X'ZWZ'y.\end{aligned}\]</span> Under
 just-identification, this expression includes the 2SLS estimator
-<span class="math display">\[\hat{\beta}=\left(\frac{Z&#39;X}{n}\right)^{-1}\frac{Z&#39;y}{n}=\left(Z&#39;X\right)^{-1}Z&#39;y\]</span>
+<span class="math display">\[\hat{\beta}=\left(\frac{Z'X}{n}\right)^{-1}\frac{Z'y}{n}=\left(Z'X\right)^{-1}Z'y\]</span>
 as a special case.</p>
-
 <p>The same GMM estimator <span class="math inline">\(\hat{\beta}\)</span> can be obtained by minimizing
-<span class="math display">\[Q_{n}\left(\beta\right)=\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}\left(y_{i}-x_{i}\beta\right)\right]&#39;W\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}\left(y_{i}-x_{i}\beta\right)\right]=\frac{\left(y-X\beta\right)&#39;Z}{n}W\frac{Z&#39;\left(y-X\beta\right)}{n},\]</span>
+<span class="math display">\[Q_{n}\left(\beta\right)=\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}\left(y_{i}-x_{i}\beta\right)\right]'W\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}\left(y_{i}-x_{i}\beta\right)\right]=\frac{\left(y-X\beta\right)'Z}{n}W\frac{Z'\left(y-X\beta\right)}{n},\]</span>
 or more concisely
-<span class="math inline">\(\hat{\beta}=\arg\min_{\beta}\left(y-X\beta\right)&#39;ZWZ&#39;\left(y-X\beta\right).\)</span></p>
-
+<span class="math inline">\(\hat{\beta}=\arg\min_{\beta}\left(y-X\beta\right)'ZWZ'\left(y-X\beta\right).\)</span></p>
 <p>Now we check the asymptotic properties of <span class="math inline">\(\widehat{\beta}\)</span>. A few
 assumptions are in order.</p>
-<p><span class="math inline">\(Z&#39;X/n\stackrel{\mathrm{p}}{\to}\Sigma\)</span> and
-<span class="math inline">\(Z&#39;\epsilon/n\stackrel{\mathrm{p}}{\to}0_{L}\)</span>.</p>
+<p><span class="math inline">\(Z'X/n\stackrel{\mathrm{p}}{\to}\Sigma\)</span> and
+<span class="math inline">\(Z'\epsilon/n\stackrel{\mathrm{p}}{\to}0_{L}\)</span>.</p>
 <p>A.1 assumes that we can apply a law of large numbers, so that that the
-sample moments <span class="math inline">\(Z&#39;X/n\)</span> and <span class="math inline">\(Z&#39;\epsilon/n\)</span> converge in probability to
+sample moments <span class="math inline">\(Z'X/n\)</span> and <span class="math inline">\(Z'\epsilon/n\)</span> converge in probability to
 their population counterparts.</p>
 <p>Under Assumption A.1, <span class="math inline">\(\widehat{\beta}\)</span> is consistent.</p>
 <p>The step is similar to the consistency proof of OLS. <span class="math display">\[\begin{aligned}
-\widehat{\beta} &amp; =\left(X&#39;ZWZ&#39;X\right)^{-1}X&#39;ZWZ&#39;\left(X&#39;\beta_{0}+\epsilon\right)\\
- &amp; =\beta_{0}+\left(\frac{X&#39;Z}{n}W\frac{Z&#39;X}{n}\right)^{-1}\frac{X&#39;Z}{n}W\frac{Z&#39;\epsilon}{n}\\
- &amp; \stackrel{\mathrm{p}}{\to}\beta_{0}+\left(\Sigma&#39;W\Sigma\right)^{-1}\Sigma&#39;W0=\beta_{0}.\qedhere\end{aligned}\]</span></p>
+\widehat{\beta} &amp; =\left(X'ZWZ'X\right)^{-1}X'ZWZ'\left(X'\beta_{0}+\epsilon\right)\\
+&amp; =\beta_{0}+\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{n}\\
+&amp; \stackrel{\mathrm{p}}{\to}\beta_{0}+\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W0=\beta_{0}.\qedhere\end{aligned}\]</span></p>
 <p>To check asymptotic normality, we assume that a central limit theorem
 can be applied.</p>
 <p><span class="math inline">\(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\epsilon_{i}\stackrel{d}{\to}N\left(0_{L},\Omega\right)\)</span>,
-where <span class="math inline">\(\Omega=\mathbb{E}\left[z_{i}z_{i}&#39;\epsilon_{i}^{2}\right].\)</span></p>
+where <span class="math inline">\(\Omega=\mathbb{E}\left[z_{i}z_{i}'\epsilon_{i}^{2}\right].\)</span></p>
 <p>Under Assumptions A.1 and A.2,
-<span class="math display">\[\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)\stackrel{d}{\to}N\left(0_{K},\left(\Sigma&#39;W\Sigma\right)^{-1}\Sigma&#39;W\Omega W\Sigma\left(\Sigma&#39;W\Sigma\right)^{-1}\right).\label{eq:normality}\]</span></p>
+<span class="math display">\[\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)\stackrel{d}{\to}N\left(0_{K},\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}\right).\label{eq:normality}\]</span></p>
 <p>Multiply <span class="math inline">\(\widehat{\beta}-\beta_{0}\)</span> by the scaling factor <span class="math inline">\(\sqrt{n}\)</span>,
-<span class="math display">\[\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)=\left(\frac{X&#39;Z}{n}W\frac{Z&#39;X}{n}\right)^{-1}\frac{X&#39;Z}{n}W\frac{Z&#39;\epsilon}{\sqrt{n}}=\left(\frac{X&#39;Z}{n}W\frac{Z&#39;X}{n}\right)^{-1}\frac{X&#39;Z}{n}W\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}&#39;\epsilon_{i}.\]</span>
+<span class="math display">\[\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{\sqrt{n}}=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'\epsilon_{i}.\]</span>
 The conclusion follows by the Slutsky’s theorem as
-<span class="math display">\[\frac{X&#39;Z}{n}W\frac{Z&#39;X}{n}\stackrel{\mathrm{p}}{\to}\Sigma&#39;W\Sigma\]</span>
+<span class="math display">\[\frac{X'Z}{n}W\frac{Z'X}{n}\stackrel{\mathrm{p}}{\to}\Sigma'W\Sigma\]</span>
 and
-<span class="math display">\[\frac{X&#39;Z}{n}W\frac{1}{\sqrt{n}}\sum z_{i}&#39;\epsilon_{i}\stackrel{d}{\to}\Sigma&#39;W\times N\left(0,\Omega\right)\sim N\left(0,\Sigma&#39;W\Omega W\Sigma\right).\qedhere\]</span></p>
-<div id="efficient-gmm" class="section level3">
-<h3><span class="header-section-number">12.2.1</span> Efficient GMM</h3>
+<span class="math display">\[\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum z_{i}'\epsilon_{i}\stackrel{d}{\to}\Sigma'W\times N\left(0,\Omega\right)\sim N\left(0,\Sigma'W\Omega W\Sigma\right).\qedhere\]</span></p>
+<div id="efficient-gmm" class="section level3" number="12.2.1">
+<h3>
+<span class="header-section-number">12.2.1</span> Efficient GMM<a class="anchor" aria-label="anchor" href="#efficient-gmm"><i class="fas fa-link"></i></a>
+</h3>
 <p>It is clear from (<a href="#eq:normality" reference-type="ref" reference="eq:normality"><span class="math display">\[eq:normality\]</span></a>) that the GMM estimator’s asymptotic variance
 depends on the choice of <span class="math inline">\(W\)</span>. Which <span class="math inline">\(W\)</span> makes the asymptotic variance as
 small as possible? The answer is <span class="math inline">\(W=\Omega^{-1}\)</span>, under which the
 efficient asymptotic variance is
-<span class="math display">\[\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}\Sigma&#39;\Omega^{-1}\Omega\Omega^{-1}\Sigma\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}=\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}.\]</span></p>
+<span class="math display">\[\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\Sigma'\Omega^{-1}\Omega\Omega^{-1}\Sigma\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}=\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}.\]</span></p>
 <p>For any positive definite symmetric matrix <span class="math inline">\(W\)</span>, the difference
-<span class="math display">\[\left(\Sigma&#39;W\Sigma\right)^{-1}\Sigma&#39;W\Omega W\Sigma\left(\Sigma&#39;W\Sigma\right)^{-1}-\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}\]</span>
+<span class="math display">\[\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}-\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\]</span>
 is positive semi-definite.</p>
 <p>To simplify notation, denote
-<span class="math inline">\(A:=W\Sigma\left(\Sigma&#39;W\Sigma\right)^{-1}\)</span> and
-<span class="math inline">\(B:=\Omega^{-1}\Sigma\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}\)</span> and
+<span class="math inline">\(A:=W\Sigma\left(\Sigma'W\Sigma\right)^{-1}\)</span> and
+<span class="math inline">\(B:=\Omega^{-1}\Sigma\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\)</span> and
 then the difference of the two matrices becomes <span class="math display">\[\begin{aligned}
- &amp;  &amp; \left(\Sigma&#39;W\Sigma\right)^{-1}\Sigma&#39;W\Omega W\Sigma\left(\Sigma&#39;W\Sigma\right)^{-1}-\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}\\
- &amp; = &amp; A&#39;\Omega A-B&#39;\Omega B\\
- &amp; = &amp; \left(A-B+B\right)&#39;\Omega\left(A-B+B\right)-B&#39;\Omega B\\
- &amp; = &amp; \left(A-B\right)&#39;\Omega\left(A-B\right)+\left(A-B\right)&#39;\Omega B+B&#39;\Omega\left(A-B\right).\end{aligned}\]</span>
+&amp;  &amp; \left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}-\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\\
+&amp; = &amp; A'\Omega A-B'\Omega B\\
+&amp; = &amp; \left(A-B+B\right)'\Omega\left(A-B+B\right)-B'\Omega B\\
+&amp; = &amp; \left(A-B\right)'\Omega\left(A-B\right)+\left(A-B\right)'\Omega B+B'\Omega\left(A-B\right).\end{aligned}\]</span>
 Notice that <span class="math display">\[\begin{aligned}
-B&#39;\Omega A &amp; =\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}\Sigma&#39;\Omega^{-1}\Omega W\Sigma\left(\Sigma&#39;W\Sigma\right)^{-1}\\
- &amp; =\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}\Sigma&#39;W\Sigma\left(\Sigma&#39;W\Sigma\right)^{-1}=\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}=B&#39;\Omega B,\end{aligned}\]</span>
-which implies <span class="math inline">\(B&#39;\Omega\left(A-B\right)=0\)</span> and
-<span class="math inline">\(\left(A-B\right)&#39;\Omega B=0\)</span>. We thus conclude that
-<span class="math display">\[\left(\Sigma&#39;W\Sigma\right)^{-1}\Sigma&#39;W\Omega W\Sigma\left(\Sigma&#39;W\Sigma\right)^{-1}-\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}=\left(A-B\right)&#39;\Omega\left(A-B\right)\]</span>
+B'\Omega A &amp; =\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\Sigma'\Omega^{-1}\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}\\
+&amp; =\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\Sigma'W\Sigma\left(\Sigma'W\Sigma\right)^{-1}=\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}=B'\Omega B,\end{aligned}\]</span>
+which implies <span class="math inline">\(B'\Omega\left(A-B\right)=0\)</span> and
+<span class="math inline">\(\left(A-B\right)'\Omega B=0\)</span>. We thus conclude that
+<span class="math display">\[\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}-\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}=\left(A-B\right)'\Omega\left(A-B\right)\]</span>
 is positive semi-definite.</p>
 </div>
-<div id="two-step-gmm" class="section level3">
-<h3><span class="header-section-number">12.2.2</span> Two-Step GMM</h3>
+<div id="two-step-gmm" class="section level3" number="12.2.2">
+<h3>
+<span class="header-section-number">12.2.2</span> Two-Step GMM<a class="anchor" aria-label="anchor" href="#two-step-gmm"><i class="fas fa-link"></i></a>
+</h3>
 <p>The <em>two-step GMM</em> is one way to construct a feasible efficient GMM
 estimator.</p>
 <ol style="list-style-type: decimal">
 <li><p>Choose any valid <span class="math inline">\(W\)</span>, say <span class="math inline">\(W=I_{L}\)</span>, to get a consistent (but
 inefficient in general) estimator
 <span class="math inline">\(\hat{\beta}^{\sharp}=\hat{\beta}^{\sharp}\left(W\right)\)</span>. Save the
-residual <span class="math inline">\(\widehat{\epsilon}_{i}=y_{i}-x_{i}&#39;\hat{\beta}^{\sharp}\)</span>
+residual <span class="math inline">\(\widehat{\epsilon}_{i}=y_{i}-x_{i}'\hat{\beta}^{\sharp}\)</span>
 and estimate the variance matrix
-<span class="math inline">\(\widehat{\Omega}=\frac{1}{n}\sum z_{i}z_{i}&#39;\widehat{\epsilon}_{i}^{2}.\)</span>
+<span class="math inline">\(\widehat{\Omega}=\frac{1}{n}\sum z_{i}z_{i}'\widehat{\epsilon}_{i}^{2}.\)</span>
 Notice that this <span class="math inline">\(\widehat{\Omega}\)</span> is a consistent for <span class="math inline">\(\Omega\)</span>.</p></li>
 <li><p>Set <span class="math inline">\(W=\widehat{\Omega}^{-1}\)</span> and obtain the second estimator
-<span class="math display">\[\widehat{\beta}^{\natural}=\widehat{\beta}^{\natural}(\widehat{\Omega}^{-1})=\left(X&#39;Z\widehat{\Omega}^{-1}Z&#39;X\right)^{-1}X&#39;Z\widehat{\Omega}^{-1}Z&#39;y.\]</span>
+<span class="math display">\[\widehat{\beta}^{\natural}=\widehat{\beta}^{\natural}(\widehat{\Omega}^{-1})=\left(X'Z\widehat{\Omega}^{-1}Z'X\right)^{-1}X'Z\widehat{\Omega}^{-1}Z'y.\]</span>
 This second estimator is asymptotic efficient.</p></li>
 </ol>
 <p>Show that if <span class="math inline">\(\widehat{\Omega}\stackrel{p}{\to}\Omega\)</span>, then
@@ -368,23 +264,25 @@ In other words, the feasible estimator
 equivalent to the infeasible efficient estimator
 <span class="math inline">\(\widehat{\beta}\left(\Omega^{-1}\right)\)</span>.</p>
 </div>
-<div id="two-stage-least-squares" class="section level3">
-<h3><span class="header-section-number">12.2.3</span> Two Stage Least Squares</h3>
+<div id="two-stage-least-squares" class="section level3" number="12.2.3">
+<h3>
+<span class="header-section-number">12.2.3</span> Two Stage Least Squares<a class="anchor" aria-label="anchor" href="#two-stage-least-squares"><i class="fas fa-link"></i></a>
+</h3>
 <p>If we further assume conditional homoskedasticity
 <span class="math inline">\(\mathbb{E}\left[\epsilon_{i}^{2}|z_{i}\right]=\sigma^{2}\)</span>, then
-<span class="math display">\[\Omega=\mathbb{E}\left[z_{i}z_{i}&#39;\epsilon_{i}^{2}\right]=\mathbb{E}\left[z_{i}z_{i}&#39;\mathbb{E}\left[\epsilon_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\mathbb{E}\left[z_{i}z_{i}&#39;\right].\]</span>
+<span class="math display">\[\Omega=\mathbb{E}\left[z_{i}z_{i}'\epsilon_{i}^{2}\right]=\mathbb{E}\left[z_{i}z_{i}'\mathbb{E}\left[\epsilon_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\mathbb{E}\left[z_{i}z_{i}'\right].\]</span>
 In the first-step of the two-step GMM we can estimate the variance of
 the error term by
 <span class="math inline">\(\widehat{\sigma}^{2}=\frac{1}{n}\sum_{i=1}^{n}\widehat{\epsilon}_{i}^{2}\)</span>
 and the variance matrix by
-<span class="math inline">\(\widehat{\Omega}=\widehat{\sigma}^{2}\frac{1}{n}\sum_{i=1}^{n}z_{i}z_{i}&#39;=\widehat{\sigma}^{2}Z&#39;Z/n\)</span>.
+<span class="math inline">\(\widehat{\Omega}=\widehat{\sigma}^{2}\frac{1}{n}\sum_{i=1}^{n}z_{i}z_{i}'=\widehat{\sigma}^{2}Z'Z/n\)</span>.
 When we plug this <span class="math inline">\(W=\widehat{\Omega}^{-1}\)</span> into the GMM estimator,
 <span class="math display">\[\begin{aligned}
-\widehat{\beta} &amp; = &amp; \left(X&#39;Z\left(\widehat{\sigma}^{2}\frac{Z&#39;Z}{n}\right)^{-1}Z&#39;X\right)^{-1}X&#39;Z\left(\widehat{\sigma}^{2}\frac{Z&#39;Z}{n}\right)^{-1}Z&#39;y\\
- &amp; = &amp; \left(X&#39;Z\left(Z&#39;Z\right)^{-1}Z&#39;X\right)^{-1}X&#39;Z\left(Z&#39;Z\right)^{-1}Z&#39;y.\end{aligned}\]</span>
+\widehat{\beta} &amp; = &amp; \left(X'Z\left(\widehat{\sigma}^{2}\frac{Z'Z}{n}\right)^{-1}Z'X\right)^{-1}X'Z\left(\widehat{\sigma}^{2}\frac{Z'Z}{n}\right)^{-1}Z'y\\
+&amp; = &amp; \left(X'Z\left(Z'Z\right)^{-1}Z'X\right)^{-1}X'Z\left(Z'Z\right)^{-1}Z'y.\end{aligned}\]</span>
 This is exactly the same expression of 2SLS for <span class="math inline">\(L&gt;K\)</span>. Therefore, 2SLS
 can be viewed as a special case of GMM with the weighting matrix
-<span class="math inline">\(\left(Z&#39;Z/n\right)^{-1}\)</span>. Under conditional homoskedasticity, 2SLS is
+<span class="math inline">\(\left(Z'Z/n\right)^{-1}\)</span>. Under conditional homoskedasticity, 2SLS is
 the efficient estimator. 2SLS is inefficient in general cases of
 heteroskedasticity, despite its popularity.</p>
 <p>2SLS gets its name because it can be obtained using two steps: first
@@ -403,8 +301,10 @@ will be non-standard and thereby critical values must be found by Monte
 Carlo simulations.</p>
 </div>
 </div>
-<div id="gmm-in-nonlinear-model" class="section level2">
-<h2><span class="header-section-number">12.3</span> GMM in Nonlinear Model</h2>
+<div id="gmm-in-nonlinear-model" class="section level2" number="12.3">
+<h2>
+<span class="header-section-number">12.3</span> GMM in Nonlinear Model<a class="anchor" aria-label="anchor" href="#gmm-in-nonlinear-model"><i class="fas fa-link"></i></a>
+</h2>
 <p>The principle of GMM can be used in models where the parameter enters
 the moment conditions nonlinearly. Let
 <span class="math inline">\(g_{i}\left(\beta\right)=g\left(w_{i},\beta\right)\mapsto\mathbb{R}^{L}\)</span>
@@ -412,14 +312,14 @@ be a function of the data <span class="math inline">\(w_{i}\)</span> and the par
 theory implies <span class="math inline">\(\mathbb{E}\left[g_{i}\left(\beta\right)\right]=0\)</span>, which
 the statisticians call the <em>estimating equations</em>, we can write the GMM
 population criterion function as
-<span class="math display">\[Q\left(\beta\right)=\mathbb{E}\left[g_{i}\left(\beta\right)\right]&#39;W\mathbb{E}\left[g_{i}\left(\beta\right)\right]\]</span></p>
+<span class="math display">\[Q\left(\beta\right)=\mathbb{E}\left[g_{i}\left(\beta\right)\right]'W\mathbb{E}\left[g_{i}\left(\beta\right)\right]\]</span></p>
 <p>Nonlinear models nest the linear model as a special case. For the linear
 IV model in the previous section, the data is
 <span class="math inline">\(w_{i}=\left(y_{i},x_{i},z_{i}\right)\)</span>, and the moment function is
-<span class="math inline">\(g\left(w_{i},\beta\right)=z_{i}&#39;\left(y_{i}-x_{i}\beta\right)\)</span>.</p>
+<span class="math inline">\(g\left(w_{i},\beta\right)=z_{i}'\left(y_{i}-x_{i}\beta\right)\)</span>.</p>
 <p>In practice we use the sample moments to mimic the population moments in
 the criterion function
-<span class="math display">\[Q_{n}\left(\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)\right)&#39;W\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)\right).\]</span>
+<span class="math display">\[Q_{n}\left(\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)\right)'W\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)\right).\]</span>
 The GMM estimator is defined as
 <span class="math display">\[\hat{\beta}=\arg\min_{\beta}Q_{n}\left(\beta\right).\]</span> In these
 nonlinear models, a closed-form solution is in general unavailable,
@@ -429,18 +329,18 @@ asymptotic properties without proofs.</p>
 <span class="math display">\[\mathbb{P}\left\{ \sup_{\beta\in\mathcal{B}}\big|\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)-\mathbb{E}\left[g_{i}\left(\beta\right)\right]\big|&gt;\varepsilon\right\} \to0\]</span>
 for any constant <span class="math inline">\(\varepsilon&gt;0\)</span> where the parametric space
 <span class="math inline">\(\mathcal{B}\)</span> is a closed set, then
-<span class="math inline">\(\hat{\beta}\stackrel{\mathrm{p}}{\to}\beta.\)</span><br />
+<span class="math inline">\(\hat{\beta}\stackrel{\mathrm{p}}{\to}\beta.\)</span><br>
 (b) If in addition
 <span class="math inline">\(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\beta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)\)</span>
 and
-<span class="math inline">\(\Sigma=\mathbb{E}\left[\frac{\partial}{\partial\beta&#39;}g_{i}\left(\beta_{0}\right)\right]\)</span>
+<span class="math inline">\(\Sigma=\mathbb{E}\left[\frac{\partial}{\partial\beta'}g_{i}\left(\beta_{0}\right)\right]\)</span>
 is of full column rank, then
-<span class="math display">\[\sqrt{n}\left(\hat{\beta}-\beta_{0}\right)\stackrel{d}{\to}N\left(0,\left(\Sigma&#39;W\Sigma\right)^{-1}\left(\Sigma&#39;W\Omega W\Sigma\right)\left(\Sigma&#39;W\Sigma\right)^{-1}\right)\]</span>
+<span class="math display">\[\sqrt{n}\left(\hat{\beta}-\beta_{0}\right)\stackrel{d}{\to}N\left(0,\left(\Sigma'W\Sigma\right)^{-1}\left(\Sigma'W\Omega W\Sigma\right)\left(\Sigma'W\Sigma\right)^{-1}\right)\]</span>
 where
-<span class="math inline">\(\Omega=\mathbb{E}\left[g_{i}\left(\beta_{0}\right)g_{i}\left(\beta_{0}\right)&#39;\right]\)</span>.<br />
+<span class="math inline">\(\Omega=\mathbb{E}\left[g_{i}\left(\beta_{0}\right)g_{i}\left(\beta_{0}\right)'\right]\)</span>.<br>
 (c) If we choose <span class="math inline">\(W=\Omega^{-1}\)</span>, then the GMM estimator is efficient,
 and the asymptotic variance becomes
-<span class="math inline">\(\left(\Sigma&#39;\Omega^{-1}\Sigma\right)^{-1}\)</span>.</p>
+<span class="math inline">\(\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\)</span>.</p>
 <p>The list of assumptions in the above statement is incomplete. We only
 lay out the key conditions but neglect some technical details.</p>
 <p><span class="math inline">\(Q_{n}\left(\beta\right)\)</span> measures how close are the moments to zeros.
@@ -448,8 +348,8 @@ It can serve as a test statistic with proper scaling. Under the null
 hypothesis <span class="math inline">\(\mathbb{E}\left[g_{i}\left(\beta\right)\right]=0_{L}\)</span>, this
 Sargan-Hansen <span class="math inline">\(J\)</span>-test checks whether a moment condition is violated.
 The test statistic is <span class="math display">\[\begin{aligned}
-J\left(\widehat{\beta}\right) &amp; =nQ_{n}\left(\widehat{\beta}\right)=n\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)&#39;\widehat{\Omega}^{-1}\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)\\
- &amp; =\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)&#39;\widehat{\Omega}^{-1}\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)\end{aligned}\]</span>
+J\left(\widehat{\beta}\right) &amp; =nQ_{n}\left(\widehat{\beta}\right)=n\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)'\widehat{\Omega}^{-1}\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)\\
+&amp; =\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)'\widehat{\Omega}^{-1}\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)\end{aligned}\]</span>
 where <span class="math inline">\(\widehat{\Omega}\)</span> is a consistent estimator of <span class="math inline">\(\Omega\)</span>, and
 <span class="math inline">\(\widehat{\beta}\)</span> is an efficient estimator, for example, the two-step
 GMM estimator <span class="math inline">\(\widehat{\beta}^{\natural}(\widehat{\Omega}^{-1})\)</span>. This
@@ -459,8 +359,10 @@ degree of freedom <span class="math inline">\(L-K\)</span>. That is, under the n
 If the null hypothesis is false, then the test statistic tends to be
 large and it is more likely to reject the null.</p>
 </div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">12.4</span> Summary</h2>
+<div id="summary-10" class="section level2" number="12.4">
+<h2>
+<span class="header-section-number">12.4</span> Summary<a class="anchor" aria-label="anchor" href="#summary-10"><i class="fas fa-link"></i></a>
+</h2>
 <p>The popularity of GMM in econometrics comes from the fact that economic
 theory is often not informative enough about the underlying parametric
 relationship amongst the variables. Instead, many economic assumptions
@@ -475,172 +377,145 @@ market hypothesis.</p>
 <p>Conceptually simple though, GMM has many practical issues in reality.
 There has been vast econometric literature about issues of GMM and their
 remedies.</p>
-<p><strong>Historical notes</strong>: 2SLS was attributed to <span class="citation">Theil (<a href="#ref-theil1953repeated" role="doc-biblioref">1953</a>)</span>. In the
+<p><strong>Historical notes</strong>: 2SLS was attributed to <span class="citation">Theil (<a href="generalized-method-of-moments.html#ref-theil1953repeated" role="doc-biblioref">1953</a>)</span>. In the
 linear IV model, the <span class="math inline">\(J\)</span>-statistic was proposed by
-<span class="citation">Sargan (<a href="#ref-sargan1958estimation" role="doc-biblioref">1958</a>)</span>, and <span class="citation">Hansen (<a href="#ref-hansen1982large" role="doc-biblioref">1982</a>)</span> extended it to nonlinear
+<span class="citation">Sargan (<a href="generalized-method-of-moments.html#ref-sargan1958estimation" role="doc-biblioref">1958</a>)</span>, and <span class="citation">Hansen (<a href="generalized-method-of-moments.html#ref-hansen1982large" role="doc-biblioref">1982</a>)</span> extended it to nonlinear
 models.</p>
 <p><strong>Further reading</strong>: The quadratic form of GMM makes it difficult to
 accommodate many moments in the big data problems. <em>Empirical
 likelihood</em> is an alternative estimator to GMM to estimate models
-defined by moment restrictions. <span class="citation">Shi (<a href="#ref-shi2016econometric" role="doc-biblioref">2016</a>)</span> solves the
+defined by moment restrictions. <span class="citation">Shi (<a href="generalized-method-of-moments.html#ref-shi2016econometric" role="doc-biblioref">2016</a>)</span> solves the
 estimation problem of high-dimensional moments under the framework of
 empirical likelihood.</p>
-
 <p><code>Zhentao Shi. Dec 3, 2020.</code></p>
 
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-chen2011nonlinear" class="csl-entry">
+Chen, Xiaohong, Han Hong, and Denis Nekipelov. 2011. <span>“Nonlinear Models of Measurement Errors.”</span> <em>Journal of Economic Literature</em> 49 (4): 901–37.
+</div>
+<div id="ref-cover2006elements" class="csl-entry">
+Cover, Thomas M, and Joy A. Thomas. 2006. <em>Elements of Information Theory (2nd Ed.)</em>. John Wiley &amp; Sons.
+</div>
+<div id="ref-davidson1994stochastic" class="csl-entry">
+Davidson, James. 1994. <em>Stochastic Limit Theory: An Introduction for Econometricians</em>. Oxford University Press.
+</div>
+<div id="ref-doob1996development" class="csl-entry">
+Doob, Joseph L. 1996. <span>“The Development of Rigor in Mathematical Probability (1900–1950).”</span> <em>The American Mathematical Monthly</em> 103 (7): 586–95.
+</div>
+<div id="ref-fricsh1934statistical" class="csl-entry">
+Fricsh, R. 1934. <span>“Statistical Confluence Study.”</span> <em>Oslo: University Institute of Economics</em>.
+</div>
+<div id="ref-gow2016causal" class="csl-entry">
+Gow, Ian D, David F Larcker, and Peter C Reiss. 2016. <span>“Causal Inference in Accounting Research.”</span> <em>Journal of Accounting Research</em> 54 (2): 477–523.
+</div>
+<div id="ref-haavelmo1943statistical" class="csl-entry">
+Haavelmo, Trygve. 1943. <span>“The Statistical Implications of a System of Simultaneous Equations.”</span> <em>Econometrica, Journal of the Econometric Society</em>, 1–12.
+</div>
+<div id="ref-hansen1982large" class="csl-entry">
+Hansen, Lars Peter. 1982. <span>“Large Sample Properties of Generalized Method of Moments Estimators.”</span> <em>Econometrica: Journal of the Econometric Society</em>, 1029–54.
+</div>
+<div id="ref-hsiao2014analysis" class="csl-entry">
+Hsiao, Cheng. 2014. <em>Analysis of Panel Data</em>. 54. Cambridge University Press.
+</div>
+<div id="ref-lewbel2019identification" class="csl-entry">
+Lewbel, Arthur. 2019. <span>“The Identification Zoo: Meanings of Identification in Econometrics.”</span> <em>Journal of Economic Literature</em> 57 (4): 835–903.
+</div>
+<div id="ref-lucas1976econometric" class="csl-entry">
+Lucas, Robert E. 1976. <span>“Econometric Policy Evaluation: A Critique.”</span> In <em>Carnegie-Rochester Conference Series on Public Policy</em>, 1:19–46. 1.
+</div>
+<div id="ref-newey1994large" class="csl-entry">
+Newey, KW, and Daniel McFadden. 1994. <span>“Large Sample Estimation and Hypothesis.”</span> <em>Handbook of Econometrics, IV, Edited by RF Engle and DL McFadden</em>, 2112–2245.
+</div>
+<div id="ref-pearl2018book" class="csl-entry">
+Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. Basic Books.
+</div>
+<div id="ref-phillips1983exact" class="csl-entry">
+Phillips, Peter CB. 1983. <span>“Exact Small Sample Theory in the Simultaneous Equations Model.”</span> <em>Handbook of Econometrics</em> 1: 449–516.
+</div>
+<div id="ref-sargan1958estimation" class="csl-entry">
+Sargan, John D. 1958. <span>“The Estimation of Economic Relationships Using Instrumental Variables.”</span> <em>Econometrica: Journal of the Econometric Society</em>, 393–415.
+</div>
+<div id="ref-shi2016econometric" class="csl-entry">
+Shi, Zhentao. 2016. <span>“Econometric Estimation with High-Dimensional Moment Equalities.”</span> <em>Journal of Econometrics</em> 195 (1): 104–19.
+</div>
+<div id="ref-shi2020high" class="csl-entry">
+Shi, Zhentao, Liangjun Su, and Tian Xie. 2020. <span>“High Dimensional Forecast Combinations Under Latent Structures.”</span> <em>arXiv</em> 2010.09477.
+</div>
+<div id="ref-su2016identifying" class="csl-entry">
+Su, Liangjun, Zhentao Shi, and Peter CB Phillips. 2016. <span>“Identifying Latent Structures in Panel Data.”</span> <em>Econometrica</em> 84 (6): 2215–64.
+</div>
+<div id="ref-theil1953repeated" class="csl-entry">
+Theil, Henri. 1953. <span>“Repeated Least Squares Applied to Complete Equation Systems.”</span> <em>The Hague: Central Planning Bureau</em>.
+</div>
+<div id="ref-white1980heteroskedasticity" class="csl-entry">
+White, Halbert. 1980. <span>“A Heteroskedasticity-Consistent Covariance Matrix Estimator and a Direct Test for Heteroskedasticity.”</span> <em>Econometrica</em>, 817–38.
+</div>
+<div id="ref-white1996estimation" class="csl-entry">
+———. 1996. <em>Estimation, Inference and Specification Analysis</em>. 22. Cambridge university press.
+</div>
+<div id="ref-white2014asymptotic" class="csl-entry">
+———. 2000. <em>Asymptotic Theory for Econometricians</em>. Academic Press.
+</div>
+<div id="ref-working1927statistical" class="csl-entry">
+Working, Elmer J. 1927. <span>“What Do Statistical "Demand Curves" Show?”</span> <em>The Quarterly Journal of Economics</em> 41 (2): 212–35.
+</div>
+<div id="ref-wright1928tariff" class="csl-entry">
+Wright, Philip G. 1928. <em>Tariff on Animal and Vegetable Oils</em>. Macmillan Company, New York.
+</div>
+<div id="ref-young2005essentials" class="csl-entry">
+Young, G Alastair, and Robert Leslie Smith. 2005. <em>Essentials of Statistical Inference</em>. Vol. 16. Cambridge University Press.
+</div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="endogeneity.html"><span class="header-section-number">11</span> Endogeneity</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#generalized-method-of-moments"><span class="header-section-number">12</span> Generalized Method of Moments</a></li>
+<li>
+<a class="nav-link" href="#instrumental-regression"><span class="header-section-number">12.1</span> Instrumental Regression</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#just-identification"><span class="header-section-number">12.1.1</span> Just-identification</a></li>
+<li><a class="nav-link" href="#over-identification"><span class="header-section-number">12.1.2</span> Over-identification</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#gmm-estimator"><span class="header-section-number">12.2</span> GMM Estimator</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#efficient-gmm"><span class="header-section-number">12.2.1</span> Efficient GMM</a></li>
+<li><a class="nav-link" href="#two-step-gmm"><span class="header-section-number">12.2.2</span> Two-Step GMM</a></li>
+<li><a class="nav-link" href="#two-stage-least-squares"><span class="header-section-number">12.2.3</span> Two Stage Least Squares</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#gmm-in-nonlinear-model"><span class="header-section-number">12.3</span> GMM in Nonlinear Model</a></li>
+<li><a class="nav-link" href="#summary-10"><span class="header-section-number">12.4</span> Summary</a></li>
+</ul>
 
-<div id="refs" class="references">
-<div>
-<p>Chen, Xiaohong, Han Hong, and Denis Nekipelov. 2011. “Nonlinear Models of Measurement Errors.” <em>Journal of Economic Literature</em> 49 (4): 901–37.</p>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/zhentaoshi/Econ5121A/blob/master/11-lecture.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/zhentaoshi/Econ5121A/edit/master/11-lecture.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
 </div>
-<div>
-<p>Cover, Thomas M, and Joy A. Thomas. 2006. <em>Elements of Information Theory (2nd Ed.)</em>. John Wiley &amp; Sons.</p>
+    </nav>
 </div>
-<div>
-<p>Davidson, James. 1994. <em>Stochastic Limit Theory: An Introduction for Econometricians</em>. Oxford University Press.</p>
-</div>
-<div>
-<p>Doob, Joseph L. 1996. “The Development of Rigor in Mathematical Probability (1900–1950).” <em>The American Mathematical Monthly</em> 103 (7): 586–95.</p>
-</div>
-<div>
-<p>Fricsh, R. 1934. “Statistical Confluence Study.” <em>Oslo: University Institute of Economics</em>.</p>
-</div>
-<div>
-<p>Gow, Ian D, David F Larcker, and Peter C Reiss. 2016. “Causal Inference in Accounting Research.” <em>Journal of Accounting Research</em> 54 (2): 477–523.</p>
-</div>
-<div>
-<p>Haavelmo, Trygve. 1943. “The Statistical Implications of a System of Simultaneous Equations.” <em>Econometrica, Journal of the Econometric Society</em>, 1–12.</p>
-</div>
-<div>
-<p>Hansen, Lars Peter. 1982. “Large Sample Properties of Generalized Method of Moments Estimators.” <em>Econometrica: Journal of the Econometric Society</em>, 1029–54.</p>
-</div>
-<div>
-<p>Hsiao, Cheng. 2014. <em>Analysis of Panel Data</em>. 54. Cambridge University Press.</p>
-</div>
-<div>
-<p>Lewbel, Arthur. 2019. “The Identification Zoo: Meanings of Identification in Econometrics.” <em>Journal of Economic Literature</em> 57 (4): 835–903.</p>
-</div>
-<div>
-<p>Lucas, Robert E. 1976. “Econometric Policy Evaluation: A Critique.” In <em>Carnegie-Rochester Conference Series on Public Policy</em>, 1:19–46. 1.</p>
-</div>
-<div>
-<p>Newey, KW, and Daniel McFadden. 1994. “Large Sample Estimation and Hypothesis.” <em>Handbook of Econometrics, IV, Edited by RF Engle and DL McFadden</em>, 2112–2245.</p>
-</div>
-<div>
-<p>Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. Basic Books.</p>
-</div>
-<div>
-<p>Phillips, Peter CB. 1983. “Exact Small Sample Theory in the Simultaneous Equations Model.” <em>Handbook of Econometrics</em> 1: 449–516.</p>
-</div>
-<div>
-<p>Sargan, John D. 1958. “The Estimation of Economic Relationships Using Instrumental Variables.” <em>Econometrica: Journal of the Econometric Society</em>, 393–415.</p>
-</div>
-<div>
-<p>Shi, Zhentao. 2016. “Econometric Estimation with High-Dimensional Moment Equalities.” <em>Journal of Econometrics</em> 195 (1): 104–19.</p>
-</div>
-<div>
-<p>Shi, Zhentao, Liangjun Su, and Tian Xie. 2020. “High Dimensional Forecast Combinations Under Latent Structures.” <em>arXiv</em> 2010.09477.</p>
-</div>
-<div>
-<p>Su, Liangjun, Zhentao Shi, and Peter CB Phillips. 2016. “Identifying Latent Structures in Panel Data.” <em>Econometrica</em> 84 (6): 2215–64.</p>
-</div>
-<div>
-<p>Theil, Henri. 1953. “Repeated Least Squares Applied to Complete Equation Systems.” <em>The Hague: Central Planning Bureau</em>.</p>
-</div>
-<div>
-<p>White, Halbert. 1980. “A Heteroskedasticity-Consistent Covariance Matrix Estimator and a Direct Test for Heteroskedasticity.” <em>Econometrica</em>, 817–38.</p>
-</div>
-<div>
-<p>———. 1996. <em>Estimation, Inference and Specification Analysis</em>. 22. Cambridge university press.</p>
-</div>
-<div>
-<p>———. 2000. <em>Asymptotic Theory for Econometricians</em>. Academic Press.</p>
-</div>
-<div>
-<p>Working, Elmer J. 1927. “What Do Statistical "Demand Curves" Show?” <em>The Quarterly Journal of Economics</em> 41 (2): 212–35.</p>
-</div>
-<div>
-<p>Wright, Philip G. 1928. <em>Tariff on Animal and Vegetable Oils</em>. Macmillan Company, New York.</p>
-</div>
-<div>
-<p>Young, G Alastair, and Robert Leslie Smith. 2005. <em>Essentials of Statistical Inference</em>. Vol. 16. Cambridge University Press.</p>
-</div>
-</div>
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-hansen1982large">
-<p>Hansen, Lars Peter. 1982. “Large Sample Properties of Generalized Method of Moments Estimators.” <em>Econometrica: Journal of the Econometric Society</em>, 1029–54.</p>
-</div>
-<div id="ref-sargan1958estimation">
-<p>Sargan, John D. 1958. “The Estimation of Economic Relationships Using Instrumental Variables.” <em>Econometrica: Journal of the Econometric Society</em>, 393–415.</p>
-</div>
-<div id="ref-shi2016econometric">
-<p>Shi, Zhentao. 2016. “Econometric Estimation with High-Dimensional Moment Equalities.” <em>Journal of Econometrics</em> 195 (1): 104–19.</p>
-</div>
-<div id="ref-theil1953repeated">
-<p>Theil, Henri. 1953. “Repeated Least Squares Applied to Complete Equation Systems.” <em>The Hague: Central Planning Bureau</em>.</p>
-</div>
-</div>
-            </section>
 
-          </div>
-        </div>
-      </div>
-<a href="endogeneity.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+</div>
+</div> <!-- .container -->
 
-    </div>
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Econ5121</strong>" was written by Zhentao Shi. It was last built on 2022-06-12.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -652,7 +527,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

@@ -1,209 +1,95 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Basic Asymptotic Theory | Econ5121</title>
-  <meta name="description" content="nothing" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="6 Basic Asymptotic Theory | Econ5121" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="nothing" />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Basic Asymptotic Theory | Econ5121" />
-  
-  <meta name="twitter:description" content="nothing" />
-  
-
-<meta name="author" content="Zhentao Shi" />
-
-
-<meta name="date" content="2022-01-22" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="least-squares-finite-sample-theory.html"/>
-<link rel="next" href="asymptotic-properties-of-least-squares.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
-
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>6 Basic Asymptotic Theory | Econ5121</title>
+<meta name="author" content="Zhentao Shi">
+<meta name="description" content="Our universe, though enormous, consists of fewer than \(10^{82}\) atoms, which is a finite number. However, mathematical ideas are not bounded by secular realities. Asymptotic theory is about...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="6 Basic Asymptotic Theory | Econ5121">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Our universe, though enormous, consists of fewer than \(10^{82}\) atoms, which is a finite number. However, mathematical ideas are not bounded by secular realities. Asymptotic theory is about...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6 Basic Asymptotic Theory | Econ5121">
+<meta name="twitter:description" content="Our universe, though enormous, consists of fewer than \(10^{82}\) atoms, which is a finite number. However, mathematical ideas are not bounded by secular realities. Asymptotic theory is about...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Alice-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_DM%20Mono-0.4.1/font.css" rel="stylesheet">
+<link href="libs/_Montserrat-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
-<li class="chapter" data-level="2" data-path="probability.html"><a href="probability.html"><i class="fa fa-check"></i><b>2</b> Probability</a><ul>
-<li class="chapter" data-level="2.1" data-path="probability.html"><a href="probability.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
-<li class="chapter" data-level="2.2" data-path="probability.html"><a href="probability.html#axiomatic-probability"><i class="fa fa-check"></i><b>2.2</b> Axiomatic Probability</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="probability.html"><a href="probability.html#probability-space"><i class="fa fa-check"></i><b>2.2.1</b> Probability Space</a></li>
-<li class="chapter" data-level="2.2.2" data-path="probability.html"><a href="probability.html#random-variable"><i class="fa fa-check"></i><b>2.2.2</b> Random Variable</a></li>
-<li class="chapter" data-level="2.2.3" data-path="probability.html"><a href="probability.html#distribution-function"><i class="fa fa-check"></i><b>2.2.3</b> Distribution Function</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="probability.html"><a href="probability.html#expected-value"><i class="fa fa-check"></i><b>2.3</b> Expected Value</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="probability.html"><a href="probability.html#integration"><i class="fa fa-check"></i><b>2.3.1</b> Integration</a></li>
-<li class="chapter" data-level="2.3.2" data-path="probability.html"><a href="probability.html#properties-of-expectations"><i class="fa fa-check"></i><b>2.3.2</b> Properties of Expectations</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="probability.html"><a href="probability.html#multivariate-random-variable"><i class="fa fa-check"></i><b>2.4</b> Multivariate Random Variable</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="probability.html"><a href="probability.html#conditional-probability-and-bayes-theorem"><i class="fa fa-check"></i><b>2.4.1</b> Conditional Probability and Bayes’ Theorem</a></li>
-<li class="chapter" data-level="2.4.2" data-path="probability.html"><a href="probability.html#independence"><i class="fa fa-check"></i><b>2.4.2</b> Independence</a></li>
-<li class="chapter" data-level="2.4.3" data-path="probability.html"><a href="probability.html#law-of-iterated-expectations"><i class="fa fa-check"></i><b>2.4.3</b> Law of Iterated Expectations</a></li>
-</ul></li>
-<li class="chapter" data-level="2.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>2.5</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="conditional-expectation.html"><a href="conditional-expectation.html"><i class="fa fa-check"></i><b>3</b> Conditional Expectation</a><ul>
-<li class="chapter" data-level="3.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#linear-projection"><i class="fa fa-check"></i><b>3.1</b> Linear Projection</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#omitted-variable-bias"><i class="fa fa-check"></i><b>3.1.1</b> Omitted Variable Bias</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#causality"><i class="fa fa-check"></i><b>3.2</b> Causality</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="conditional-expectation.html"><a href="conditional-expectation.html#structure-and-identification"><i class="fa fa-check"></i><b>3.2.1</b> Structure and Identification</a></li>
-<li class="chapter" data-level="3.2.2" data-path="conditional-expectation.html"><a href="conditional-expectation.html#treatment-effect"><i class="fa fa-check"></i><b>3.2.2</b> Treatment Effect</a></li>
-<li class="chapter" data-level="3.2.3" data-path="conditional-expectation.html"><a href="conditional-expectation.html#ate-and-cef"><i class="fa fa-check"></i><b>3.2.3</b> ATE and CEF</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>3.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html"><i class="fa fa-check"></i><b>4</b> Least Squares: Linear Algebra</a><ul>
-<li class="chapter" data-level="4.1" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#estimator"><i class="fa fa-check"></i><b>4.1</b> Estimator</a></li>
-<li class="chapter" data-level="4.2" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#subvector"><i class="fa fa-check"></i><b>4.2</b> Subvector</a></li>
-<li class="chapter" data-level="4.3" data-path="least-squares-linear-algebra.html"><a href="least-squares-linear-algebra.html#goodness-of-fit"><i class="fa fa-check"></i><b>4.3</b> Goodness of Fit</a></li>
-<li class="chapter" data-level="4.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>4.4</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html"><i class="fa fa-check"></i><b>5</b> Least Squares: Finite Sample Theory</a><ul>
-<li class="chapter" data-level="5.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#maximum-likelihood"><i class="fa fa-check"></i><b>5.1</b> Maximum Likelihood</a></li>
-<li class="chapter" data-level="5.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#likelihood-estimation-for-regression"><i class="fa fa-check"></i><b>5.2</b> Likelihood Estimation for Regression</a></li>
-<li class="chapter" data-level="5.3" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#finite-sample-distribution"><i class="fa fa-check"></i><b>5.3</b> Finite Sample Distribution</a></li>
-<li class="chapter" data-level="5.4" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#mean-and-variancemean-and-variance"><i class="fa fa-check"></i><b>5.4</b> Mean and Variance<span id="mean-and-variance" label="mean-and-variance"><span class="math display">\[mean-and-variance\]</span></span></a></li>
-<li class="chapter" data-level="5.5" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#gauss-markov-theorem"><i class="fa fa-check"></i><b>5.5</b> Gauss-Markov Theorem</a></li>
-<li class="chapter" data-level="5.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
-<li class="chapter" data-level="5.7" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>5.7</b> Appendix</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#joint-normal-distribution"><i class="fa fa-check"></i><b>5.7.1</b> Joint Normal Distribution</a></li>
-<li class="chapter" data-level="5.7.2" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#basus-theorem-subsecbasus-theoremsubsecbasus-theorem-labelsubsecbasus-theorem"><i class="fa fa-check"></i><b>5.7.2</b> Basu’s Theorem* [<span class="math display">\[subsec:Basu\&#39;s-Theorem\]</span>]{#subsec:Basu’s-Theorem label=“subsec:Basu’s-Theorem”}</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html"><i class="fa fa-check"></i><b>6</b> Basic Asymptotic Theory</a><ul>
-<li class="chapter" data-level="6.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#modes-of-convergence"><i class="fa fa-check"></i><b>6.1</b> Modes of Convergence</a></li>
-<li class="chapter" data-level="6.2" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#law-of-large-numbers"><i class="fa fa-check"></i><b>6.2</b> Law of Large Numbers</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#cherbyshev-lln"><i class="fa fa-check"></i><b>6.2.1</b> Cherbyshev LLN</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#central-limit-theorem"><i class="fa fa-check"></i><b>6.3</b> Central Limit Theorem</a></li>
-<li class="chapter" data-level="6.4" data-path="basic-asymptotic-theory.html"><a href="basic-asymptotic-theory.html#tools-for-transformations"><i class="fa fa-check"></i><b>6.4</b> Tools for Transformations</a></li>
-<li class="chapter" data-level="6.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>6.5</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html"><i class="fa fa-check"></i><b>7</b> Asymptotic Properties of Least Squares</a><ul>
-<li class="chapter" data-level="7.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>7.1</b> Consistency</a></li>
-<li class="chapter" data-level="7.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-distribution"><i class="fa fa-check"></i><b>7.2</b> Asymptotic Distribution</a></li>
-<li class="chapter" data-level="7.3" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#asymptotic-inference"><i class="fa fa-check"></i><b>7.3</b> Asymptotic Inference</a></li>
-<li class="chapter" data-level="7.4" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency-of-feasible-variance-estimator"><i class="fa fa-check"></i><b>7.4</b> Consistency of Feasible Variance Estimator</a><ul>
-<li class="chapter" data-level="7.4.1" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#homoskedasticity"><i class="fa fa-check"></i><b>7.4.1</b> Homoskedasticity</a></li>
-<li class="chapter" data-level="7.4.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#heteroskedasticity"><i class="fa fa-check"></i><b>7.4.2</b> Heteroskedasticity</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
-<li class="chapter" data-level="7.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>7.6</b> Appendix</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html"><i class="fa fa-check"></i><b>8</b> Asymptotic Properties of MLE</a><ul>
-<li class="chapter" data-level="8.1" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#examples-of-mle"><i class="fa fa-check"></i><b>8.1</b> Examples of MLE</a></li>
-<li class="chapter" data-level="8.2" data-path="asymptotic-properties-of-least-squares.html"><a href="asymptotic-properties-of-least-squares.html#consistency"><i class="fa fa-check"></i><b>8.2</b> Consistency</a></li>
-<li class="chapter" data-level="8.3" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#asymptotic-normality"><i class="fa fa-check"></i><b>8.3</b> Asymptotic Normality</a></li>
-<li class="chapter" data-level="8.4" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#information-matrix-equality"><i class="fa fa-check"></i><b>8.4</b> Information Matrix Equality</a></li>
-<li class="chapter" data-level="8.5" data-path="asymptotic-properties-of-mle.html"><a href="asymptotic-properties-of-mle.html#cramer-rao-lower-bound"><i class="fa fa-check"></i><b>8.5</b> Cramer-Rao Lower Bound</a></li>
-<li class="chapter" data-level="8.6" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>8.6</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>9</b> Hypothesis Testing</a><ul>
-<li class="chapter" data-level="9.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#testing"><i class="fa fa-check"></i><b>9.1</b> Testing</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#decision-rule-and-errors"><i class="fa fa-check"></i><b>9.1.1</b> Decision Rule and Errors</a></li>
-<li class="chapter" data-level="9.1.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#optimality"><i class="fa fa-check"></i><b>9.1.2</b> Optimality</a></li>
-<li class="chapter" data-level="9.1.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-and-wilks-theorem"><i class="fa fa-check"></i><b>9.1.3</b> Likelihood-Ratio Test and Wilks’ theorem</a></li>
-<li class="chapter" data-level="9.1.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#score-test"><i class="fa fa-check"></i><b>9.1.4</b> Score Test</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#confidence-intervalconfidence-interval"><i class="fa fa-check"></i><b>9.2</b> Confidence Interval<span id="confidence-interval" label="confidence-interval"><span class="math display">\[confidence-interval\]</span></span></a></li>
-<li class="chapter" data-level="9.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#bayesian-credible-set"><i class="fa fa-check"></i><b>9.3</b> Bayesian Credible Set</a></li>
-<li class="chapter" data-level="9.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#applications-in-ols"><i class="fa fa-check"></i><b>9.4</b> Applications in OLS</a><ul>
-<li class="chapter" data-level="9.4.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#wald-test"><i class="fa fa-check"></i><b>9.4.1</b> Wald Test</a></li>
-<li class="chapter" data-level="9.4.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#lagrangian-multiplier-test"><i class="fa fa-check"></i><b>9.4.2</b> Lagrangian Multiplier Test</a></li>
-<li class="chapter" data-level="9.4.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#likelihood-ratio-test-for-regression"><i class="fa fa-check"></i><b>9.4.3</b> Likelihood-Ratio Test for Regression</a></li>
-</ul></li>
-<li class="chapter" data-level="9.5" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>9.5</b> Summary</a></li>
-<li class="chapter" data-level="9.6" data-path="least-squares-finite-sample-theory.html"><a href="least-squares-finite-sample-theory.html#appendix"><i class="fa fa-check"></i><b>9.6</b> Appendix</a><ul>
-<li class="chapter" data-level="9.6.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#neyman-pearson-lemma"><i class="fa fa-check"></i><b>9.6.1</b> Neyman-Pearson Lemma</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="panel-data.html"><a href="panel-data.html"><i class="fa fa-check"></i><b>10</b> Panel Data</a><ul>
-<li class="chapter" data-level="10.1" data-path="panel-data.html"><a href="panel-data.html#fixed-effect"><i class="fa fa-check"></i><b>10.1</b> Fixed Effect</a></li>
-<li class="chapter" data-level="10.2" data-path="panel-data.html"><a href="panel-data.html#random-effect"><i class="fa fa-check"></i><b>10.2</b> Random Effect</a></li>
-<li class="chapter" data-level="10.3" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>10.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="endogeneity.html"><a href="endogeneity.html"><i class="fa fa-check"></i><b>11</b> Endogeneity</a><ul>
-<li class="chapter" data-level="11.1" data-path="endogeneity.html"><a href="endogeneity.html#identification"><i class="fa fa-check"></i><b>11.1</b> Identification</a></li>
-<li class="chapter" data-level="11.2" data-path="endogeneity.html"><a href="endogeneity.html#instruments"><i class="fa fa-check"></i><b>11.2</b> Instruments</a></li>
-<li class="chapter" data-level="11.3" data-path="endogeneity.html"><a href="endogeneity.html#sources-of-endogeneity"><i class="fa fa-check"></i><b>11.3</b> Sources of Endogeneity</a></li>
-<li class="chapter" data-level="11.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html"><i class="fa fa-check"></i><b>12</b> Generalized Method of Moments</a><ul>
-<li class="chapter" data-level="12.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#instrumental-regression"><i class="fa fa-check"></i><b>12.1</b> Instrumental Regression</a><ul>
-<li class="chapter" data-level="12.1.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#just-identification"><i class="fa fa-check"></i><b>12.1.1</b> Just-identification</a></li>
-<li class="chapter" data-level="12.1.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#over-identification"><i class="fa fa-check"></i><b>12.1.2</b> Over-identification</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-estimator"><i class="fa fa-check"></i><b>12.2</b> GMM Estimator</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#efficient-gmm"><i class="fa fa-check"></i><b>12.2.1</b> Efficient GMM</a></li>
-<li class="chapter" data-level="12.2.2" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-step-gmm"><i class="fa fa-check"></i><b>12.2.2</b> Two-Step GMM</a></li>
-<li class="chapter" data-level="12.2.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#two-stage-least-squares"><i class="fa fa-check"></i><b>12.2.3</b> Two Stage Least Squares</a></li>
-</ul></li>
-<li class="chapter" data-level="12.3" data-path="generalized-method-of-moments.html"><a href="generalized-method-of-moments.html#gmm-in-nonlinear-model"><i class="fa fa-check"></i><b>12.3</b> GMM in Nonlinear Model</a></li>
-<li class="chapter" data-level="12.4" data-path="probability.html"><a href="probability.html#summary"><i class="fa fa-check"></i><b>12.4</b> Summary</a></li>
-</ul></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Econ5121</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econ5121</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Preface</a></li>
+<li><a class="" href="probability.html"><span class="header-section-number">2</span> Probability</a></li>
+<li><a class="" href="conditional-expectation.html"><span class="header-section-number">3</span> Conditional Expectation</a></li>
+<li><a class="" href="least-squares-linear-algebra.html"><span class="header-section-number">4</span> Least Squares: Linear Algebra</a></li>
+<li><a class="" href="least-squares-finite-sample-theory.html"><span class="header-section-number">5</span> Least Squares: Finite Sample Theory</a></li>
+<li><a class="active" href="basic-asymptotic-theory.html"><span class="header-section-number">6</span> Basic Asymptotic Theory</a></li>
+<li><a class="" href="asymptotic-properties-of-least-squares.html"><span class="header-section-number">7</span> Asymptotic Properties of Least Squares</a></li>
+<li><a class="" href="asymptotic-properties-of-mle.html"><span class="header-section-number">8</span> Asymptotic Properties of MLE</a></li>
+<li><a class="" href="hypothesis-testing.html"><span class="header-section-number">9</span> Hypothesis Testing</a></li>
+<li><a class="" href="panel-data.html"><span class="header-section-number">10</span> Panel Data</a></li>
+<li><a class="" href="endogeneity.html"><span class="header-section-number">11</span> Endogeneity</a></li>
+<li><a class="" href="generalized-method-of-moments.html"><span class="header-section-number">12</span> Generalized Method of Moments</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/zhentaoshi/Econ5121A">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="basic-asymptotic-theory" class="section level1">
-<h1><span class="header-section-number">6</span> Basic Asymptotic Theory</h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="basic-asymptotic-theory" class="section level1" number="6">
+<h1>
+<span class="header-section-number">6</span> Basic Asymptotic Theory<a class="anchor" aria-label="anchor" href="#basic-asymptotic-theory"><i class="fas fa-link"></i></a>
+</h1>
 <p>Our universe, though enormous, consists of fewer than <span class="math inline">\(10^{82}\)</span> atoms,
 which is a finite number. However, mathematical ideas are not bounded by
 secular realities. Asymptotic theory is about behaviors of statistics
@@ -227,8 +113,10 @@ approach is more constructive can only be judged case by case. The
 prevalence of asymptotic theory is its mathematical amenability and
 generality. The law of evolution elevates asymptotic theory to the
 throne of mathematical statistics of our time.</p>
-<div id="modes-of-convergence" class="section level2">
-<h2><span class="header-section-number">6.1</span> Modes of Convergence</h2>
+<div id="modes-of-convergence" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Modes of Convergence<a class="anchor" aria-label="anchor" href="#modes-of-convergence"><i class="fas fa-link"></i></a>
+</h2>
 <p>We first review what is <em>convergence</em> for a non-random sequence, which
 you learned in high school. Let <span class="math inline">\(z_{1},z_{2},\ldots\)</span> be an infinite
 sequence of non-random variables.</p>
@@ -316,11 +204,13 @@ modes of converges can be easily generalized to random vectors. In
 particular, the <em>Cramer-Wold device</em> collapses a random vector into a
 random vector via arbitrary linear combination. We say a sequence of
 <span class="math inline">\(K\)</span>-dimensional random vectors <span class="math inline">\(\left(z_{n}\right)\)</span> converge in
-distribution to <span class="math inline">\(z\)</span> if <span class="math inline">\(\lambda&#39;z_{n}\stackrel{d}{\to}\lambda&#39;z\)</span> for any
+distribution to <span class="math inline">\(z\)</span> if <span class="math inline">\(\lambda'z_{n}\stackrel{d}{\to}\lambda'z\)</span> for any
 <span class="math inline">\(\lambda\in\mathbb{R}^{K}\)</span> and <span class="math inline">\(\left\Vert \lambda\right\Vert _{2}=1.\)</span></p>
 </div>
-<div id="law-of-large-numbers" class="section level2">
-<h2><span class="header-section-number">6.2</span> Law of Large Numbers</h2>
+<div id="law-of-large-numbers" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Law of Large Numbers<a class="anchor" aria-label="anchor" href="#law-of-large-numbers"><i class="fas fa-link"></i></a>
+</h2>
 <p>(Weak) law of large numbers (LLN) is a collection of statements about
 convergence in probability of the sample average to its population
 counterpart. The basic form of LLN is:
@@ -328,13 +218,16 @@ counterpart. The basic form of LLN is:
 <span class="math inline">\(n\to\infty\)</span>. Various versions of LLN work under different assumptions
 about some features and/or dependence of the underlying random
 variables.</p>
-<div id="cherbyshev-lln" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Cherbyshev LLN</h3>
+<div id="cherbyshev-lln" class="section level3" number="6.2.1">
+<h3>
+<span class="header-section-number">6.2.1</span> Cherbyshev LLN<a class="anchor" aria-label="anchor" href="#cherbyshev-lln"><i class="fas fa-link"></i></a>
+</h3>
 <p>We illustrate LLN by the simple example of Chebyshev LLN, which can be
 proved by elementary calculation. It utilizes the <em>Chebyshev
 inequality</em>.</p>
 <ul>
-<li><em>Chebyshev inequality</em>: If a random variable <span class="math inline">\(x\)</span> has a finite second
+<li>
+<em>Chebyshev inequality</em>: If a random variable <span class="math inline">\(x\)</span> has a finite second
 moment <span class="math inline">\(E\left[x^{2}\right]&lt;\infty\)</span>, then we have
 <span class="math inline">\(P\left\{ \left|x\right|&gt;\varepsilon\right\} \leq E\left[x^{2}\right]/\varepsilon^{2}\)</span>
 for any constant <span class="math inline">\(\varepsilon&gt;0\)</span>.</li>
@@ -345,7 +238,8 @@ for any constant <span class="math inline">\(\varepsilon&gt;0\)</span>.</li>
 inequality.)</p>
 <p>The Chebyshev inequality is a special case of the <em>Markov inequality</em>.</p>
 <ul>
-<li><em>Markov inequality</em>: If a random variable <span class="math inline">\(x\)</span> has a finite <span class="math inline">\(r\)</span>-th
+<li>
+<em>Markov inequality</em>: If a random variable <span class="math inline">\(x\)</span> has a finite <span class="math inline">\(r\)</span>-th
 absolute moment <span class="math inline">\(E\left[\left|x\right|^{r}\right]&lt;\infty\)</span> for some
 <span class="math inline">\(r\ge1\)</span>, then we have
 <span class="math inline">\(P\left\{ \left|x\right|&gt;\varepsilon\right\} \leq E\left[\left|x\right|^{r}\right]/\varepsilon^{r}\)</span>
@@ -353,8 +247,8 @@ any constant <span class="math inline">\(\varepsilon&gt;0\)</span>.</li>
 </ul>
 <p>It is easy to verify the Markov inequality.
 <span class="math display">\[\begin{aligned}E\left[\left|x\right|^{r}\right] &amp; =\int_{\left|x\right|&gt;\varepsilon}\left|x\right|^{r}dF_{X}+\int_{\left|x\right|\leq\varepsilon}\left|x\right|^{r}dF_{X}\\
- &amp; \geq\int_{\left|x\right|&gt;\varepsilon}\left|x\right|^{r}dF_{X}\\
- &amp; \geq\varepsilon^{r}\int_{\left|x\right|&gt;\varepsilon}dF_{X}=\varepsilon^{r}P\left\{ \left|x\right|&gt;\varepsilon\right\} .
+&amp; \geq\int_{\left|x\right|&gt;\varepsilon}\left|x\right|^{r}dF_{X}\\
+&amp; \geq\varepsilon^{r}\int_{\left|x\right|&gt;\varepsilon}dF_{X}=\varepsilon^{r}P\left\{ \left|x\right|&gt;\varepsilon\right\} .
 \end{aligned}\]</span> Rearrange the above inequality and we obtain the Markov
 inequality.</p>
 <p>Let the <em>partial sum</em> <span class="math inline">\(S_{n}=\sum_{i=1}^{n}x_{i}\)</span>, where
@@ -364,9 +258,9 @@ inequality to the sample mean
 <span class="math inline">\(z_{n}=\overline{x}-\bar{\mu}=n^{-1}\left(S_{n}-E\left[S_{n}\right]\right)\)</span>.
 <span class="math display">\[\begin{aligned}
 P\left\{ \left|z_{n}\right|\geq\varepsilon\right\}  &amp; =P\left\{ n^{-1}\left|S_{n}-E\left[S_{n}\right]\right|\geq\varepsilon\right\} \nonumber \\
- &amp; \leq E\left[\left(n^{-1}\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)\right)^{2}\right]/\varepsilon^{2}\nonumber \\
- &amp; =\left(n\varepsilon\right)^{-2}\left\{ E\left[\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)^{2}\right]+\sum_{i=1}^{n}\sum_{j\neq i}E\left[\left(x_{i}-\mu_{i}\right)\left(x_{j}-\mu_{j}\right)\right]\right\} \nonumber \\
- &amp; =\left(n\varepsilon\right)^{-2}\left\{ \sum_{i=1}^{n}\mathrm{var}\left(x_{i}\right)+\sum_{i=1}^{n}\sum_{j\neq i}\mathrm{cov}\left(x_{i},x_{j}\right)\right\} .\label{eq:cheby_mean}\end{aligned}\]</span>
+&amp; \leq E\left[\left(n^{-1}\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)\right)^{2}\right]/\varepsilon^{2}\nonumber \\
+&amp; =\left(n\varepsilon\right)^{-2}\left\{ E\left[\sum_{i=1}^{n}\left(x_{i}-\mu_{i}\right)^{2}\right]+\sum_{i=1}^{n}\sum_{j\neq i}E\left[\left(x_{i}-\mu_{i}\right)\left(x_{j}-\mu_{j}\right)\right]\right\} \nonumber \\
+&amp; =\left(n\varepsilon\right)^{-2}\left\{ \sum_{i=1}^{n}\mathrm{var}\left(x_{i}\right)+\sum_{i=1}^{n}\sum_{j\neq i}\mathrm{cov}\left(x_{i},x_{j}\right)\right\} .\label{eq:cheby_mean}\end{aligned}\]</span>
 Convergence in probability holds if the right-hand side shrinks to 0 as
 <span class="math inline">\(n\to\infty\)</span>. For example, If <span class="math inline">\(x_{1},\ldots,x_{n}\)</span> are iid with
 <span class="math inline">\(\mathrm{var}\left(x_{1}\right)=\sigma^{2}\)</span>, then the RHS of
@@ -377,7 +271,8 @@ This result gives the Chebyshev LLN:</p>
 <li>Chebyshev LLN: If <span class="math inline">\(\left(z_{1},\ldots,z_{n}\right)\)</span> is a sample of
 iid observations, <span class="math inline">\(E\left[z_{1}\right]=\mu\)</span> , and
 <span class="math inline">\(\sigma^{2}=\mathrm{var}\left[z_{1}\right]&lt;\infty\)</span> exists, then
-<span class="math inline">\(\frac{1}{n}\sum_{i=1}^{n}z_{i}\stackrel{p}{\to}\mu.\)</span></li>
+<span class="math inline">\(\frac{1}{n}\sum_{i=1}^{n}z_{i}\stackrel{p}{\to}\mu.\)</span>
+</li>
 </ul>
 <p>The convergence in probability can be indeed maintained under much more
 general conditions than under iid case. The random variables in the
@@ -414,14 +309,17 @@ Cauchy distribution does not.</p>
 <p><strong>knitrout</strong></p>
 </div>
 </div>
-<div id="central-limit-theorem" class="section level2">
-<h2><span class="header-section-number">6.3</span> Central Limit Theorem</h2>
+<div id="central-limit-theorem" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Central Limit Theorem<a class="anchor" aria-label="anchor" href="#central-limit-theorem"><i class="fas fa-link"></i></a>
+</h2>
 <p>The central limit theorem (CLT) is a collection of probability results
 about the convergence in distribution to a stable distribution. The
 limiting distribution is usually the Gaussian distribution. The basic
 form of the CLT is:</p>
 <ul>
-<li><em>Under some conditions to be spelled out</em>, the sample average of
+<li>
+<em>Under some conditions to be spelled out</em>, the sample average of
 <em>zero-mean</em> random variables <span class="math inline">\(\left(z_{1},\ldots,z_{n}\right)\)</span>
 multiplied by <span class="math inline">\(\sqrt{n}\)</span> satisfies
 <span class="math display">\[\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\stackrel{d}{\to}N\left(0,\sigma^{2}\right)\]</span>
@@ -449,7 +347,7 @@ Under the assumption of Lindeberg-Levy CLT,
 <span class="math display">\[M_{\frac{X_{i}}{\sqrt{n}}}\left(t\right)=1+\frac{t^{2}}{2n}\sigma^{2}+O\left(\frac{t^{3}}{n^{3/2}}\right)\]</span>
 for all <span class="math inline">\(i\)</span>, and by independence we have
 <span class="math display">\[\begin{aligned}M_{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}x_{i}}\left(t\right) &amp; =\prod_{i=1}^{n}M_{\frac{X_{i}}{\sqrt{n}}}\left(t\right)=\left(1+\frac{t^{2}}{2n}\sigma^{2}+O\left(\frac{t^{3}}{n^{3/2}}\right)\right)^{n}\\
- &amp; \to\exp\left(\frac{\sigma^{2}}{2}t^{2}\right),
+&amp; \to\exp\left(\frac{\sigma^{2}}{2}t^{2}\right),
 \end{aligned}\]</span> where the limit is exactly the characteristic function
 of <span class="math inline">\(N\left(0,\sigma^{2}\right)\)</span>.</p>
 <p>This proof with MGF is simple and elementary. Its drawback is that not
@@ -474,13 +372,15 @@ we have
 <p>This is a simulated example.</p>
 <p><span class="math display">\[knitrout\]</span></p>
 </div>
-<div id="tools-for-transformations" class="section level2">
-<h2><span class="header-section-number">6.4</span> Tools for Transformations</h2>
+<div id="tools-for-transformations" class="section level2" number="6.4">
+<h2>
+<span class="header-section-number">6.4</span> Tools for Transformations<a class="anchor" aria-label="anchor" href="#tools-for-transformations"><i class="fas fa-link"></i></a>
+</h2>
 <p>In their original forms, LLN deals with the sample mean, and CLT handles
 the scaled (by <span class="math inline">\(\sqrt{n}\)</span>) and/or standardized (by standard deviation)
 sample mean. However, most of the econometric estimators of interest are
 functions of sample means. For example, in the OLS estimator
-<span class="math display">\[\widehat{\beta}=\left(\frac{1}{n}\sum_{i}x_{i}x_{i}&#39;\right)^{-1}\frac{1}{n}\sum_{i}x_{i}y_{i}\]</span>
+<span class="math display">\[\widehat{\beta}=\left(\frac{1}{n}\sum_{i}x_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum_{i}x_{i}y_{i}\]</span>
 involves matrix inverse and the matrix-vector multiplication. We need
 tools to handle transformations.</p>
 <ul>
@@ -490,13 +390,15 @@ tools to handle transformations.</p>
 <li><p>Continuous mapping theorem 2: If <span class="math inline">\(x_{n}\stackrel{d}{\to}x\)</span> and
 <span class="math inline">\(f\left(\cdot\right)\)</span> is continuous almost surely on the support of
 <span class="math inline">\(x\)</span>, then <span class="math inline">\(f\left(x_{n}\right)\stackrel{d}{\to}f\left(x\right)\)</span>.</p></li>
-<li><p>Slutsky’s theorem: If <span class="math inline">\(x_{n}\stackrel{d}{\to}x\)</span> and
+<li>
+<p>Slutsky’s theorem: If <span class="math inline">\(x_{n}\stackrel{d}{\to}x\)</span> and
 <span class="math inline">\(y_{n}\stackrel{p}{\to}a\)</span>, then</p>
 <ul>
 <li><p><span class="math inline">\(x_{n}+y_{n}\stackrel{d}{\to}x+a\)</span></p></li>
 <li><p><span class="math inline">\(x_{n}y_{n}\stackrel{d}{\to}ax\)</span></p></li>
 <li><p><span class="math inline">\(x_{n}/y_{n}\stackrel{d}{\to}x/a\)</span> if <span class="math inline">\(a\neq0\)</span>.</p></li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>Slutsky’s theorem consists of special cases of the continuous mapping
 theorem 2. Only because the addition, multiplication and division are
@@ -508,27 +410,30 @@ and <span class="math inline">\(f\left(\cdot\right)\)</span> is continuously dif
 <span class="math inline">\(\theta_{0}\)</span> (meaning
 <span class="math inline">\(\frac{\partial}{\partial\theta}f\left(\cdot\right)\)</span> is continuous
 at <span class="math inline">\(\theta_{0}\)</span>), then we have
-<span class="math display">\[\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta&#39;}\left(\theta_{0}\right)\Omega\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\right)&#39;\right).\]</span></li>
+<span class="math display">\[\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta'}\left(\theta_{0}\right)\Omega\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\right)'\right).\]</span>
+</li>
 </ul>
 <p>Take a Taylor expansion of <span class="math inline">\(f\left(\widehat{\theta}\right)\)</span> around
 <span class="math inline">\(f\left(\theta_{0}\right)\)</span>:
-<span class="math display">\[f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)=\frac{\partial f\left(\dot{\theta}\right)}{\partial\theta&#39;}\left(\widehat{\theta}-\theta_{0}\right),\]</span>
+<span class="math display">\[f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)=\frac{\partial f\left(\dot{\theta}\right)}{\partial\theta'}\left(\widehat{\theta}-\theta_{0}\right),\]</span>
 where <span class="math inline">\(\dot{\theta}\)</span> lies on the line segment between <span class="math inline">\(\widehat{\theta}\)</span>
 and <span class="math inline">\(\theta_{0}\)</span>. Multiply <span class="math inline">\(\sqrt{n}\)</span> on both sides,
-<span class="math display">\[\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)=\frac{\partial f\left(\dot{\theta}\right)}{\partial\theta&#39;}\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right).\]</span>
+<span class="math display">\[\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)=\frac{\partial f\left(\dot{\theta}\right)}{\partial\theta'}\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right).\]</span>
 Because <span class="math inline">\(\widehat{\theta}\stackrel{p}{\to}\theta_{0}\)</span> implies
 <span class="math inline">\(\dot{\theta}\stackrel{p}{\to}\theta_{0}\)</span> and
-<span class="math inline">\(\frac{\partial}{\partial\theta&#39;}f\left(\cdot\right)\)</span> is continuous at
+<span class="math inline">\(\frac{\partial}{\partial\theta'}f\left(\cdot\right)\)</span> is continuous at
 <span class="math inline">\(\theta_{0}\)</span>, we have
-<span class="math inline">\(\frac{\partial}{\partial\theta&#39;}f\left(\dot{\theta}\right)\stackrel{p}{\to}\frac{\partial f\left(\theta_{0}\right)}{\partial\theta&#39;}\)</span>
+<span class="math inline">\(\frac{\partial}{\partial\theta'}f\left(\dot{\theta}\right)\stackrel{p}{\to}\frac{\partial f\left(\theta_{0}\right)}{\partial\theta'}\)</span>
 by the continuous mapping theorem 1. In view of
 <span class="math inline">\(\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)\)</span>,
 Slutsky’s Theorem implies
-<span class="math display">\[\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}\frac{\partial f\left(\theta_{0}\right)}{\partial\theta&#39;}N\left(0,\Omega\right)\]</span>
+<span class="math display">\[\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}\frac{\partial f\left(\theta_{0}\right)}{\partial\theta'}N\left(0,\Omega\right)\]</span>
 and the conclusion follows.</p>
 </div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">6.5</span> Summary</h2>
+<div id="summary-4" class="section level2" number="6.5">
+<h2>
+<span class="header-section-number">6.5</span> Summary<a class="anchor" aria-label="anchor" href="#summary-4"><i class="fas fa-link"></i></a>
+</h2>
 <p>Asymptotic theory is a topic with vast breadth and depth. In this
 chapter we only scratch the very surface of it. We will discuss in the
 next chapter how to apply the asymptotic tools we learned here to the
@@ -539,82 +444,53 @@ prominent young (at that time) econometricians came to the field and
 changed the situation, among them were Halbert White (UCSD), Peter
 C.B. Phillips (Yale) and Peter Robinson (LSE), to name a few.</p>
 <p><strong>Further reading</strong>: Halbert White (1950-2012) wrote an accessible book
-<span class="citation">(White <a href="#ref-white2014asymptotic" role="doc-biblioref">2000</a> first edition 1984)</span> to introduce asymptotics to
+<span class="citation">(<a href="generalized-method-of-moments.html#ref-white2014asymptotic" role="doc-biblioref">White 2000</a> first edition 1984)</span> to introduce asymptotics to
 econometricians. This book remains popular among researchers and
-graduate students in economics. <span class="citation">Davidson (<a href="#ref-davidson1994stochastic" role="doc-biblioref">1994</a>)</span> is a longer and
+graduate students in economics. <span class="citation">Davidson (<a href="generalized-method-of-moments.html#ref-davidson1994stochastic" role="doc-biblioref">1994</a>)</span> is a longer and
 more self-contained monograph.</p>
 
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="least-squares-finite-sample-theory.html"><span class="header-section-number">5</span> Least Squares: Finite Sample Theory</a></div>
+<div class="next"><a href="asymptotic-properties-of-least-squares.html"><span class="header-section-number">7</span> Asymptotic Properties of Least Squares</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#basic-asymptotic-theory"><span class="header-section-number">6</span> Basic Asymptotic Theory</a></li>
+<li><a class="nav-link" href="#modes-of-convergence"><span class="header-section-number">6.1</span> Modes of Convergence</a></li>
+<li>
+<a class="nav-link" href="#law-of-large-numbers"><span class="header-section-number">6.2</span> Law of Large Numbers</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#cherbyshev-lln"><span class="header-section-number">6.2.1</span> Cherbyshev LLN</a></li></ul>
+</li>
+<li><a class="nav-link" href="#central-limit-theorem"><span class="header-section-number">6.3</span> Central Limit Theorem</a></li>
+<li><a class="nav-link" href="#tools-for-transformations"><span class="header-section-number">6.4</span> Tools for Transformations</a></li>
+<li><a class="nav-link" href="#summary-4"><span class="header-section-number">6.5</span> Summary</a></li>
+</ul>
 
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/zhentaoshi/Econ5121A/blob/master/05-lecture.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/zhentaoshi/Econ5121A/edit/master/05-lecture.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
 
 </div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-davidson1994stochastic">
-<p>Davidson, James. 1994. <em>Stochastic Limit Theory: An Introduction for Econometricians</em>. Oxford University Press.</p>
-</div>
-<div id="ref-white2014asymptotic">
-<p>White, Halbert. 2000. <em>Asymptotic Theory for Econometricians</em>. Academic Press.</p>
-</div>
-</div>
-            </section>
+</div> <!-- .container -->
 
-          </div>
-        </div>
-      </div>
-<a href="least-squares-finite-sample-theory.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="asymptotic-properties-of-least-squares.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Econ5121</strong>" was written by Zhentao Shi. It was last built on 2022-06-12.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -626,7 +502,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
