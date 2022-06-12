@@ -2,6 +2,9 @@
 
 ### Chinese University of Hong Kong, Fall 2020
 
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
 Reading and Assignment will be updated each week as the class progresses.
 
 ### Reading
@@ -92,3 +95,16 @@ Options:
 * **SCRP**. Each CU student has [an account](http://scrp.econ.cuhk.edu.hk/guide/account-and-access). Copy and paste the lines in the [Rscript](https://github.com/zhentaoshi/Econ5121A/blob/master/Rpreload.R) when logging into RStudio.
 * **Local RStudio**. Use the [Rscript](https://github.com/zhentaoshi/Econ5121A/blob/master/Rpreload.R) for git repo and package. May have conflict with pre-existing installation.
 * **Local Docker**. Use Docker image built from [Dockerfile](https://github.com/zhentaoshi/Econ5121A/blob/master/Dockerfile). Clean environment. Need to install [Docker](https://www.docker.com/products/docker-desktosp).
+
+
+## License
+
+
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
