@@ -1,0 +1,995 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "mathpazo" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing double
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\bullet 1 0 9 -1
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{6}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Asymptotic Properties of MLE
+\end_layout
+
+\begin_layout Section
+Examples of MLE
+\end_layout
+
+\begin_layout Standard
+Normal, Logistic, Probit, Poisson
+\end_layout
+
+\begin_layout Section
+Consistency
+\end_layout
+
+\begin_layout Standard
+We specify a parametric distribution (pdf) 
+\begin_inset Formula $f\left(x;\theta\right)$
+\end_inset
+
+ and a parameter space 
+\begin_inset Formula $\Theta$
+\end_inset
+
+.
+ Define 
+\begin_inset Formula $Q\left(\theta\right)=E\left[\log f\left(x;\theta\right)\right]$
+\end_inset
+
+, and 
+\begin_inset Formula $\theta_{0}=\arg\max_{\theta\in\Theta}Q\left(\theta\right)$
+\end_inset
+
+ maximizes the expected log-likelihood.
+ Given a sample of 
+\begin_inset Formula $n$
+\end_inset
+
+ observations, we compute the average sample log-likelihood 
+\begin_inset Formula $\ell_{n}\left(\theta\right)=\frac{1}{n}\sum_{i=1}^{n}\log f\left(x;\theta\right)$
+\end_inset
+
+.
+ The MLE estimator is 
+\begin_inset Formula $\widehat{\theta}=\arg\max_{\theta\in\Theta}\ell_{n}\left(\theta\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We say that 
+\emph on
+correctly specified
+\emph default
+ if the data 
+\begin_inset Formula $\left(x_{1},\ldots,x_{n}\right)$
+\end_inset
+
+ is generated from the pdf 
+\begin_inset Formula $f\left(x;\theta\right)$
+\end_inset
+
+ for some 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+.
+ Otherwise if the data is not generated from any member in the class of
+ distributions 
+\begin_inset Formula $\mathcal{M}^{*}:=\left\{ \theta\in\Theta:f\left(x;\theta\right)\right\} $
+\end_inset
+
+, we say it is 
+\emph on
+misspecified
+\emph default
+.
+ When the model is misspecified, strictly speaking the log-likelihood function
+ 
+\begin_inset Formula $\ell_{n}\left(\theta\right)$
+\end_inset
+
+ should be called quasi log-likelihood and the MLE estimator 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ should be called the 
+\emph on
+quasi MLE
+\emph default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We will discuss under what condition 
+\begin_inset Formula $\widehat{\theta}\stackrel{p}{\to}\theta_{0}$
+\end_inset
+
+, that is, the maximizer of the sample log-likelihood converges in probability
+ to the maximizer of the expected log-likelihood in population.
+ Notice that unlike OLS, most MLE estimators do not admit a closed-form.
+ They are defined as a maximizer and solved by numerical optimization.
+\end_layout
+
+\begin_layout Standard
+The first requirement for the consistency of MLE is that 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ uniquely defined.
+ Suppose 
+\begin_inset Formula $\theta_{0}\in\mathrm{int}\left(\Theta\right)$
+\end_inset
+
+ lies in the interior of 
+\begin_inset Formula $\Theta$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $N\left(\theta_{0},\varepsilon\right)=\left\{ \theta\in\Theta:\left|\theta-\theta_{0}\right|<\varepsilon\right\} $
+\end_inset
+
+ is a neighborhood around 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ with radius 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ for some 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Identification
+\end_layout
+
+\end_inset
+
+ The value 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is identified if for any 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+, there exists a 
+\begin_inset Formula $\delta=\delta\left(\varepsilon\right)>0$
+\end_inset
+
+ such that 
+\begin_inset Formula $Q\left(\theta_{0}\right)>\sup_{\theta\in\Theta\backslash N\left(\theta_{0},\varepsilon\right)}Q\left(\theta\right)+\delta$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We know under suitable condition, LLN implies 
+\begin_inset Formula $\ell_{n}\left(\theta\right)\stackrel{p}{\to}Q\left(\theta\right)$
+\end_inset
+
+ for each 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+.
+ This is a pointwise result, meaning 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is taken as fixed as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ However, 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ is random in finite-sample, which makes 
+\begin_inset Formula $\ell_{n}(\widehat{\theta})$
+\end_inset
+
+ a complicated function of the data in particular when 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ has no closed-form solution.
+ We therefore need to strengthen the pointwise LLN.
+ 
+\end_layout
+
+\begin_layout Definition
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+ULLN
+\end_layout
+
+\end_inset
+
+ We say a 
+\emph on
+uniform law of large numbers
+\emph default
+ (ULLN) for 
+\begin_inset Formula $Q\left(\theta\right)$
+\end_inset
+
+ holds on 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ if 
+\begin_inset Formula 
+\begin{equation}
+P\left\{ \sup_{\theta\in\Theta}\left|\ell_{n}\left(\theta\right)-Q\left(\theta\right)\right|\geq\varepsilon\right\} \to0\label{eq:ULLN}
+\end{equation}
+
+\end_inset
+
+ for all 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ as 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+ULLN can be established under pointwise LLN plus some regularity conditions,
+ for example when 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ is a compact set, and 
+\begin_inset Formula $\log f\left(x;\cdot\right)$
+\end_inset
+
+ is continuous in 
+\begin_inset Formula $\theta$
+\end_inset
+
+ almost everywhere on the support of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Theorem
+If 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is identified and ULLN 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ULLN"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ hold, then 
+\begin_inset Formula $\widehat{\theta}\stackrel{p}{\to}\theta_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Proof
+According to the definition of consistency, we can check 
+\begin_inset Formula 
+\begin{align*}
+ & P\left\{ \left|\widehat{\theta}-\theta_{0}\right|>\varepsilon\right\} \leq P\left\{ Q\left(\theta_{0}\right)-Q(\widehat{\theta})>\delta\right\} \\
+ & =P\left\{ Q\left(\theta_{0}\right)-\ell_{n}\left(\theta_{0}\right)+\ell_{n}\left(\theta_{0}\right)-\ell_{n}(\widehat{\theta})+\ell_{n}\left(\widehat{\theta}\right)-Q(\widehat{\theta})>\delta\right\} \\
+ & \leq P\left\{ \left|Q\left(\theta_{0}\right)-\ell_{n}\left(\theta_{0}\right)\right|+\ell_{n}\left(\theta_{0}\right)-\ell_{n}(\widehat{\theta})+\left|\ell_{n}\left(\widehat{\theta}\right)-Q(\widehat{\theta})\right|>\delta\right\} \\
+ & \leq P\left\{ \left|Q\left(\theta_{0}\right)-\ell_{n}\left(\theta_{0}\right)\right|+\left|\ell_{n}(\widehat{\theta})-Q(\widehat{\theta})\right|\geq\delta\right\} \\
+ & \leq P\left\{ 2\sup_{\theta\in\Theta}\left|\ell_{n}\left(\theta\right)-Q\left(\theta\right)\right|\geq\delta\right\} =P\left\{ \sup_{\theta\in\Theta}\left|\ell_{n}\left(\theta\right)-Q\left(\theta\right)\right|\geq\frac{\delta}{2}\right\} \to0.
+\end{align*}
+
+\end_inset
+
+The first line holds because of identification, the third line by the triangle
+ inequality, the fourth line by the definition of MLE that 
+\begin_inset Formula $\ell_{n}(\widehat{\theta})\geq\ell_{n}\left(\theta_{0}\right)$
+\end_inset
+
+, and the last line by ULLN.
+\end_layout
+
+\begin_layout Standard
+Identification is a necessary condition for consistent estimation.
+ Although 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ has no closed-form solution in general, we establish consistency via ULLN
+ over all point 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+ under consideration.
+\end_layout
+
+\begin_layout Section
+Asymptotic Normality
+\end_layout
+
+\begin_layout Standard
+The next step is to derive the asymptotic distribution of the MLE estimator.
+ Let 
+\begin_inset Formula $s\left(x;\theta\right)=\partial\log f\left(x;\theta\right)/\partial\theta$
+\end_inset
+
+ and 
+\begin_inset Formula $h\left(x;\theta\right)=\frac{\partial^{2}}{\partial\theta\partial\theta'}\log f\left(x;\theta\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:mis-MLE"
+
+\end_inset
+
+ Under suitable regularity conditions, the MLE estimator 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left(E\left[h\left(x;\theta_{0}\right)\right]\right)^{-1}\mathrm{var}\left[s\left(x;\theta_{0}\right)\right]\left(E\left[h\left(x;\theta_{0}\right)\right]\right)^{-1}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+The 
+\begin_inset Quotes eld
+\end_inset
+
+suitable regularity conditions
+\begin_inset Quotes erd
+\end_inset
+
+ will be spelled out later.
+ Indeed, those conditions can be observed in the proof.
+\end_layout
+
+\begin_layout Proof
+That 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ is a maximizer entails 
+\begin_inset Formula $\frac{\partial}{\partial\theta}\ell_{n}\left(\widehat{\theta}\right)=0$
+\end_inset
+
+.
+ Take a Taylor expansion of 
+\begin_inset Formula $\frac{\partial}{\partial\theta}\ell_{n}\left(\widehat{\theta}\right)$
+\end_inset
+
+ around 
+\begin_inset Formula $\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+0-\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)=\frac{\partial}{\partial\theta}\ell_{n}\left(\widehat{\theta}\right)-\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)=\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\left(\widehat{\theta}-\theta_{0}\right)
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\dot{\theta}$
+\end_inset
+
+ is some point on the line segment connecting 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{0}.$
+\end_inset
+
+ Rearrange the above equation and multiply both side by 
+\begin_inset Formula $\sqrt{n}:$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)=-\left(\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\right)^{-1}\sqrt{n}\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right).\label{eq:taylor1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+When 
+\begin_inset Formula $Q\left(\theta\right)$
+\end_inset
+
+ is differentiable at 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+, we have 
+\begin_inset Formula $\frac{\partial}{\partial\theta}Q\left(\theta_{0}\right)=0$
+\end_inset
+
+ by the first condition of optimality of 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ for 
+\begin_inset Formula $Q\left(\theta\right)$
+\end_inset
+
+.
+ Notice that 
+\begin_inset Formula $E\left[s\left(x;\theta_{0}\right)\right]=\frac{\partial}{\partial\theta}Q\left(\theta_{0}\right)=0$
+\end_inset
+
+ if differentiation and integration are interchangeable.
+ By CLT, the second factor in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:taylor1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ follows
+\begin_inset Formula 
+\[
+\sqrt{n}\frac{\partial}{\partial\theta}\ell_{n}\left(\theta_{0}\right)\stackrel{d}{\to}N\left(0,\mathrm{var}\left[s\left(x;\theta_{0}\right)\right]\right).
+\]
+
+\end_inset
+
+ Suppose the second factor in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:taylor1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ follows 
+\begin_inset Formula $\frac{\partial}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\stackrel{p}{\to}E\left[h\left(x;\theta_{0}\right)\right]$
+\end_inset
+
+ (sufficient if we assume 
+\begin_inset Formula $E\left[\frac{\partial^{3}}{\partial\theta_{i}\partial\theta_{j}\partial\theta_{l}}\log f\left(x;\theta_{0}\right)\right]$
+\end_inset
+
+ is continuous in 
+\begin_inset Formula $\theta$
+\end_inset
+
+ for all 
+\begin_inset Formula $i,j,l\leq K$
+\end_inset
+
+.
+ Thus we have the conclusion by Slutsky's theorem.
+ 
+\end_layout
+
+\begin_layout Standard
+When the model is misspecified, the asymptotic variance takes a complicated
+ sandwich form.
+ When the parametric model is correctly specified, then the asymptotic variance
+ can be further simplified, thanks to the following important result of
+ information matrix equality.
+\end_layout
+
+\begin_layout Section
+Information Matrix Equality
+\end_layout
+
+\begin_layout Standard
+When the model is correctly specified, 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ is the 
+\emph on
+true
+\emph default
+ parameter value.
+ The variance 
+\begin_inset Formula $\mathcal{I}\left(\theta_{0}\right):=\mathrm{var}_{f\left(x;\theta_{0}\right)}\left[\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)\right]$
+\end_inset
+
+ is called the 
+\emph on
+(Fisher) information matrix
+\emph default
+, and 
+\begin_inset Formula $\mathcal{H}\left(\theta_{0}\right):=E_{f\left(x;\theta_{0}\right)}\left[h\left(x;\theta_{0}\right)\right]$
+\end_inset
+
+ is called the 
+\emph on
+expected Hessian matrix
+\emph default
+.
+ Here we emphasize the true underlying distribution 
+\begin_inset Formula $f\left(x;\theta_{0}\right)$
+\end_inset
+
+ by writing it as the subscript of the mathematical expectations.
+\end_layout
+
+\begin_layout Fact
+\begin_inset CommandInset label
+LatexCommand label
+name "fact:Info"
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+If 
+\begin_inset Formula $f\left(x;\theta\right)$
+\end_inset
+
+ is second-order differentiable almost everywhere on the support of 
+\begin_inset Formula $x$
+\end_inset
+
+, 
+\begin_inset Formula $\left\Vert E\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta\right)\right]\right\Vert _{\infty}<\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\left\Vert \mathrm{var}\left[\frac{\partial\ell_{n}}{\partial\theta}\left(\theta\right)\right]\right\Vert _{\infty}<\infty$
+\end_inset
+
+,
+\end_layout
+
+\end_inset
+
+Under suitable regularity conditions, we have 
+\begin_inset Formula $\mathcal{I}\left(\theta_{0}\right)=-\mathcal{H}\left(\theta_{0}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Because 
+\begin_inset Formula $f\left(x;\theta_{0}\right)$
+\end_inset
+
+ a pdf, 
+\begin_inset Formula $\int f\left(x;\theta_{0}\right)dx=1$
+\end_inset
+
+.
+ Take partial derivative with respect to 
+\begin_inset Formula $\theta$
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{align}
+0 & =\int\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)dx=\int\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta_{0}\right)}f\left(x;\theta_{0}\right)dx\nonumber \\
+ & =\int\left[s\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx=E_{f\left(x;\theta_{0}\right)}\left[s\left(x;\theta_{0}\right)\right]\label{eq:info_eqn_1}
+\end{align}
+
+\end_inset
+
+where the third equality holds as by the chain rule
+\begin_inset Formula 
+\begin{equation}
+s\left(x;\theta_{0}\right)=\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta_{0}\right)}.\label{eq:ell_d}
+\end{equation}
+
+\end_inset
+
+ Take a second partial derivative of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:info_eqn_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) with respective to 
+\begin_inset Formula $\theta$
+\end_inset
+
+, according to the chain rule:
+\begin_inset Formula 
+\begin{align*}
+0 & =\int\left[h\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[s\left(x;\theta_{0}\right)\right]\frac{\partial}{\partial\theta'}f\left(x;\theta_{0}\right)dx\\
+ & =\int\left[h\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int s\left(x;\theta_{0}\right)\frac{\partial f\left(x;\theta_{0}\right)/\partial\theta}{f\left(x;\theta\right)}f\left(x;\theta_{0}\right)dx\\
+ & =\int\left[h\left(x;\theta_{0}\right)\right]f\left(x;\theta_{0}\right)dx+\int\left[s\left(x;\theta_{0}\right)s\left(x;\theta_{0}\right)'\right]f\left(x;\theta_{0}\right)dx\\
+ & =E_{f\left(x;\theta_{0}\right)}\left[h\left(x;\theta_{0}\right)\right]+E_{f\left(x;\theta_{0}\right)}\left[s\left(x;\theta_{0}\right)s\left(x;\theta_{0}\right)'\right]\\
+ & =\mathcal{H}\left(\theta_{0}\right)+\mathcal{I}\left(\theta_{0}\right).
+\end{align*}
+
+\end_inset
+
+The second equality follows by (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ell_d"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The last equality by 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:info_eqn_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ as the zero mean ensures the variance of 
+\begin_inset Formula $\frac{\partial}{\partial\theta}\log f\left(x;\theta_{0}\right)$
+\end_inset
+
+ is equal to the expectation of its out-product.
+\end_layout
+
+\begin_layout Standard
+Notice that a correct specification is essential for the information matrix
+ equality.
+ If the true data generating distribution is 
+\begin_inset Formula $g\notin\mathcal{M}^{*}$
+\end_inset
+
+, then 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:info_eqn_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ breaks down because 
+\begin_inset Formula 
+\[
+0=\int\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)=\int\left[g^{-1}\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)\right]g=E_{g}\left[g^{-1}\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)\right]
+\]
+
+\end_inset
+
+but 
+\begin_inset Formula $g^{-1}\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)\neq\left(f\left(x;\theta_{0}\right)\right)^{-1}\frac{\partial}{\partial\theta}f\left(x;\theta_{0}\right)=\frac{\partial}{\partial\theta}\log f\left(\theta_{0}\right)$
+\end_inset
+
+.
+ The asymptotic variance in Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:mis-MLE"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\left(E_{g}\left[h\left(x;\theta_{0}\right)\right]\right)^{-1}\mathrm{var}_{g}\left[s\left(x;\theta_{0}\right)\right]\left(E_{g}\left[h\left(x;\theta_{0}\right)\right]\right)^{-1},
+\]
+
+\end_inset
+
+ written explicitly in 
+\begin_inset Formula $E_{g}\left[\cdot\right]$
+\end_inset
+
+, is still valid.
+ 
+\end_layout
+
+\begin_layout Standard
+When the parametric model 
+\begin_inset Formula $\mathcal{M}^{*}$
+\end_inset
+
+ is correctly specified, then we can replace 
+\begin_inset Formula $E_{g}\left[\frac{\partial^{2}\ell_{n}}{\partial\theta\partial\theta'}\left(\theta_{0}\right)\right]$
+\end_inset
+
+ by 
+\begin_inset Formula $\mathcal{H}\left(\theta_{0}\right)$
+\end_inset
+
+ and replace 
+\begin_inset Formula $\mathrm{var}_{g}\left[\frac{\partial\ell_{n}}{\partial\theta}\left(\theta_{0}\right)\right]$
+\end_inset
+
+ by 
+\begin_inset Formula $\mathcal{I}\left(\theta_{0}\right)$
+\end_inset
+
+, we simplify the asymptotic variance as 
+\begin_inset Formula 
+\[
+\left(\mathcal{H}\left(\theta_{0}\right)\right)^{-1}\mathcal{I}\left(\theta_{0}\right)\left(\mathcal{H}\left(\theta_{0}\right)\right)^{-1}=\left(-\mathcal{I}\left(\theta_{0}\right)\right)^{-1}\mathcal{I}\left(\theta_{0}\right)\left(-\mathcal{I}\left(\theta_{0}\right)\right)^{-1}=\left(\mathcal{I}\left(\theta_{0}\right)\right)^{-1}
+\]
+
+\end_inset
+
+by the information matrix equality Fact 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fact:Info"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Corollary
+If the model is correctly specified, under the conditions for Theorem 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:info_eqn_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and Fact 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fact:Info"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ the MLE estimator 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\left[\mathcal{I}\left(\theta_{0}\right)\right]^{-1}\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is the classical asymptotic normality result of MLE.
+\end_layout
+
+\begin_layout Section
+Cramer-Rao Lower Bound
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Further reading
+\series default
+: 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "white1996estimation"
+literal "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "newey1994large"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ Oct 29, 2020.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

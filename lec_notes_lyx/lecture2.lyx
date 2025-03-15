@@ -1,0 +1,1979 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "mathpazo" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command bibtex
+\index_command default
+\paperfontsize 12
+\spacing double
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style chicagoa
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Regression, Projection and Causality
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Notation
+\series default
+: In this note, 
+\begin_inset Formula $y$
+\end_inset
+
+ is a scale random variable, and 
+\begin_inset Formula $x=\left(x_{1},\ldots,x_{K}\right)'$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times1$
+\end_inset
+
+ random vector.
+ Throughout this course, a vector is a 
+\emph on
+column
+\emph default
+ vector, i.e.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+a one-column matrix.
+\end_layout
+
+\begin_layout Section
+Conditional Expectation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+While computer scientists may not care much about a theoretical model that
+ generates the observable data, statisticians and econometricians are serious
+ about the models and study whether we can recover the model or some elements
+ of the model from the data.
+\end_layout
+
+\end_inset
+
+ Machine learning is a big basket that contains the regression models.
+ We motivate the conditional expectation model from the perspective of predictio
+n.
+ We view a regression as 
+\emph on
+supervised learning
+\emph default
+.
+ Supervised learning uses a function of 
+\begin_inset Formula $x$
+\end_inset
+
+, say, 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+, to predict 
+\begin_inset Formula $y$
+\end_inset
+
+.
+ 
+\begin_inset Formula $x$
+\end_inset
+
+ cannot perfectly predict 
+\begin_inset Formula $y$
+\end_inset
+
+; otherwise their relationship is deterministic.
+ The prediction error 
+\begin_inset Formula $y-g\left(x\right)$
+\end_inset
+
+ depends on the choice of 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ There are numerous possible choices of 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ Which one is the best? Notice that this question is not concerned about
+ the underlying data generating process (DGP) of the joint distribution
+ of 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+.
+ We want to find a general rule to achieve accurate prediction of 
+\begin_inset Formula $y$
+\end_inset
+
+ given 
+\begin_inset Formula $x$
+\end_inset
+
+, no matter how this pair of variables is generated.
+\end_layout
+
+\begin_layout Standard
+To answer this question, we need to decide a criterion to compare different
+ 
+\begin_inset Formula $g$
+\end_inset
+
+.
+ Such a criterion is called the 
+\emph on
+loss function
+\emph default
+ 
+\begin_inset Formula $L\left(y,g\left(x\right)\right)$
+\end_inset
+
+.
+ A particularly convenient one is the 
+\emph on
+quadratic loss
+\emph default
+, defined as 
+\begin_inset Formula 
+\[
+L\left(y,g\left(x\right)\right)=\left(y-g\left(x\right)\right)^{2}.
+\]
+
+\end_inset
+
+Since the data are random, 
+\begin_inset Formula $L\left(y,g\left(x\right)\right)$
+\end_inset
+
+ is also random.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Random
+\begin_inset Quotes erd
+\end_inset
+
+ means uncertainty: sometimes 
+\emph on
+this
+\emph default
+ happens, and sometimes 
+\emph on
+that
+\emph default
+ happens.
+ To get rid of the uncertainty, we average the loss function with respect
+ to the joint distribution of 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ as 
+\begin_inset Formula $R\left(y,g\left(x\right)\right)=E\left[L\left(y,g\left(x\right)\right)\right]$
+\end_inset
+
+, which is called 
+\emph on
+risk
+\emph default
+.
+ Risk is a deterministic quality.
+ For the quadratic loss function, the corresponding risk is
+\begin_inset Formula 
+\[
+R\left(y,g\left(x\right)\right)=E\left[\left(y-g\left(x\right)\right)^{2}\right],
+\]
+
+\end_inset
+
+ is called the 
+\emph on
+mean squared error
+\emph default
+ (MSE).
+ MSE is the most widely used risk measure, although there exist many alternative
+ measures, for example the 
+\emph on
+mean absolute error
+\emph default
+ (MAE) 
+\begin_inset Formula $E\left[\left|y-g\left(x\right)\right|\right]$
+\end_inset
+
+.
+ The popularity of MSE comes from its convenience for analysis in closed-form,
+ which MAE does not enjoy due to its nondifferentiability.
+ This is similar to the choice of utility functions in economics.
+ There are only a few functional forms for the utility, for example CRRA,
+ CARA, and so on.
+ They are popular because they lead to close-form solutions that are easy
+ to handle.
+ Now our quest is narrowed to: What is the optimal choice of 
+\begin_inset Formula $g$
+\end_inset
+
+ if we minimize the MSE?
+\end_layout
+
+\begin_layout Proposition
+\begin_inset CommandInset label
+LatexCommand label
+name "prop:CEF"
+
+\end_inset
+
+ The conditional mean function (CEF) 
+\begin_inset Formula $m\left(x\right)=E\left[y|x\right]=\int yf\left(y|x\right)\mathrm{d}y$
+\end_inset
+
+ minimizes MSE.
+\end_layout
+
+\begin_layout Standard
+Before we prove the above proposition, we first discuss some properties
+ of the conditional mean function.
+ Obviously
+\begin_inset Formula 
+\[
+y=m\left(x\right)+\left(y-m\left(x\right)\right)=m\left(x\right)+\epsilon,
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\epsilon:=y-m\left(x\right)$
+\end_inset
+
+ is called the 
+\emph on
+regression error
+\emph default
+.
+ This equation holds for 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ following any joint distribution, as long as 
+\begin_inset Formula $E\left[y|x\right]$
+\end_inset
+
+ exists.
+ The error term 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ satisfies these properties:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E\left[\epsilon|x\right]=E\left[y-m\left(x\right)|x\right]=E\left[y|x\right]-m(x)=0$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $E\left[\epsilon\right]=E\left[E\left[\epsilon|x\right]\right]=E\left[0\right]=0$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Itemize
+For any function 
+\begin_inset Formula $h\left(x\right)$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{equation}
+E\left[h\left(x\right)\epsilon\right]=E\left[E\left[h\left(x\right)\epsilon|x\right]\right]=E\left[h(x)E\left[\epsilon|x\right]\right]=0.\label{eq:uncorr}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The last property implies that 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is uncorrelated with any function of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ In particular, when 
+\begin_inset Formula $h$
+\end_inset
+
+ is the identity function 
+\begin_inset Formula $h\left(x\right)=x$
+\end_inset
+
+, we have 
+\begin_inset Formula $E\left[x\epsilon\right]=\mathrm{cov}\left(x,\epsilon\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Proof of Proposition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "prop:CEF"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ The optimality of the CEF can be confirmed by 
+\begin_inset Quotes eld
+\end_inset
+
+guess-and-verify.
+\begin_inset Quotes erd
+\end_inset
+
+ For an arbitrary 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+, the MSE can be decomposed into three terms
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & E\left[\left(y-g\left(x\right)\right)^{2}\right]\\
+ & = & E\left[\left(y-m(x)+m(x)-g(x)\right)^{2}\right]\\
+ & = & E\left[\left(y-m\left(x\right)\right)^{2}\right]+2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right]+E\left[\left(m\left(x\right)-g\left(x\right)\right)^{2}\right].
+\end{eqnarray*}
+
+\end_inset
+
+The first term is irrelevant to 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+.
+ The second term
+\begin_inset Formula 
+\[
+\begin{aligned}2E\left[\left(y-m\left(x\right)\right)\left(m\left(x\right)-g\left(x\right)\right)\right] & =2E\left[\epsilon\left(m\left(x\right)-g\left(x\right)\right)\right]=0\end{aligned}
+\]
+
+\end_inset
+
+by invoking (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uncorr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) with 
+\begin_inset Formula $h\left(x\right)=m\left(x\right)-g\left(x\right)$
+\end_inset
+
+.
+ The second term is again irrelevant of 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+.
+ The third term, obviously, is minimized at 
+\begin_inset Formula $g\left(x\right)=m\left(x\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Our perspective so far deviates from many econometric textbooks that assume
+ that the dependent variable 
+\begin_inset Formula $y$
+\end_inset
+
+ is generated as 
+\begin_inset Formula $g\left(x\right)+\epsilon$
+\end_inset
+
+ for some unknown function 
+\begin_inset Formula $g\left(\cdot\right)$
+\end_inset
+
+ and error term 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ such that 
+\begin_inset Formula $E\left[\epsilon|x\right]=0$
+\end_inset
+
+.
+ Instead, we take a predictive approach regardless the DGP.
+ What we observe are 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+ and we are solely interested in seeking a function 
+\begin_inset Formula $g\left(x\right)$
+\end_inset
+
+ to predict 
+\begin_inset Formula $y$
+\end_inset
+
+ as accurately as possible under the MSE criterion.
+\end_layout
+
+\begin_layout Section
+Linear Projection
+\end_layout
+
+\begin_layout Standard
+The CEF 
+\begin_inset Formula $m(x)$
+\end_inset
+
+ is the function that minimizes the MSE.
+ However, 
+\begin_inset Formula $m\left(x\right)=E\left[y|x\right]$
+\end_inset
+
+ is a complex function of 
+\begin_inset Formula $x$
+\end_inset
+
+, for it depends on the joint distribution of 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+, which is mostly unknown in practice.
+ Now let us make the prediction task even simpler.
+ How about we minimize the MSE within all linear functions in the form of
+ 
+\begin_inset Formula $h\left(x\right)=h\left(x;b\right)=x'b$
+\end_inset
+
+ for 
+\begin_inset Formula $b\in\mathbb{R}^{K}$
+\end_inset
+
+? The minimization problem is
+\begin_inset Formula 
+\begin{equation}
+\min_{b\in\mathbb{R}^{K}}E\left[\left(y-x'b\right)^{2}\right].\label{eq:linear_MSE}
+\end{equation}
+
+\end_inset
+
+Take the first-order condition of the MSE 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial b}E\left[\left(y-x'b\right)^{2}\right]=E\left[\frac{\partial}{\partial b}\left(y-x'b\right)^{2}\right]=-2E\left[x\left(y-x'b\right)\right],
+\]
+
+\end_inset
+
+where the first equality holds if 
+\begin_inset Formula $E\left[\left(y-x'b\right)^{2}\right]<\infty$
+\end_inset
+
+ so that the expectation and partial differentiation is interchangeable,
+ and the second equality hods by the chain rule and the linearity of expectation.
+ Set the first order condition to 0 and we solve 
+\begin_inset Formula 
+\[
+\beta=\arg\min_{b\in\mathbb{R}^{K}}E\left[\left(y-x'b\right)^{2}\right]
+\]
+
+\end_inset
+
+ in the closed-form 
+\begin_inset Formula 
+\[
+\beta=\left(E\left[xx'\right]\right)^{-1}E\left[xy\right]
+\]
+
+\end_inset
+
+ if 
+\begin_inset Formula $E\left[xx'\right]$
+\end_inset
+
+ is invertible.
+ Notice here that 
+\begin_inset Formula $b$
+\end_inset
+
+ is an arbitrary 
+\begin_inset Formula $K$
+\end_inset
+
+-vector, while 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is the optimizer.
+ The function 
+\begin_inset Formula $x'\beta$
+\end_inset
+
+ is called the 
+\emph on
+best linear projection
+\emph default
+ (BLP) of 
+\begin_inset Formula $y$
+\end_inset
+
+ on 
+\begin_inset Formula $x$
+\end_inset
+
+, and the vector 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is called the 
+\emph on
+linear projection coefficient
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+The linear function is not as restrictive as one might thought.
+ It can be used to produce some nonlinear (in random variables) effect if
+ we re-define 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ For example, if 
+\begin_inset Formula 
+\[
+y=x_{1}\beta_{1}+x_{2}\beta_{2}+x_{1}^{2}\beta_{3}+e,
+\]
+
+\end_inset
+
+then 
+\begin_inset Formula $\frac{\partial}{\partial x_{1}}m\left(x_{1},x_{2}\right)=\beta_{1}+2x_{1}\beta_{3}$
+\end_inset
+
+, which is nonlinear in 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+, while it is still linear in the parameter 
+\begin_inset Formula $\beta=\left(\beta_{1},\beta_{2},\beta_{3}\right)$
+\end_inset
+
+ if we define a set of new regressors as 
+\begin_inset Formula $\left(\tilde{x}_{1},\tilde{x}_{2},\tilde{x}_{3}\right)=\left(x_{1},x_{2},x_{1}^{2}\right)$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+If 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ is jointly normal in the form 
+\begin_inset Formula 
+\[
+\begin{pmatrix}y\\
+x
+\end{pmatrix}\sim\mathrm{N}\left(\begin{pmatrix}\mu_{y}\\
+\mu_{x}
+\end{pmatrix},\begin{pmatrix}\sigma_{y}^{2} & \rho\sigma_{y}\sigma_{x}\\
+\rho\sigma_{y}\sigma_{x} & \sigma_{x}^{2}
+\end{pmatrix}\right)
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is the correlation coefficient, then 
+\begin_inset Formula 
+\[
+E\left[y|x\right]=\mu_{y}+\rho\frac{\sigma_{y}}{\sigma_{x}}\left(x-\mu_{x}\right)=\left(\mu_{y}-\rho\frac{\sigma_{y}}{\sigma_{x}}\mu_{x}\right)+\rho\frac{\sigma_{y}}{\sigma_{x}}x,
+\]
+
+\end_inset
+
+is a liner function of 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ In this example, the CEF is linear.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Even though in general 
+\begin_inset Formula $m\left(x\right)\neq x'\beta$
+\end_inset
+
+, the linear form 
+\begin_inset Formula $x'\beta$
+\end_inset
+
+ is still useful in approximating 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+.
+ That is, 
+\begin_inset Formula $\beta=\arg\min\limits _{b\in\mathbb{R}^{K}}E\left[\left(m(x)-x'b\right)^{2}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+The first-order condition gives 
+\begin_inset Formula $\frac{\partial}{\partial b}E\left[\left(m(x)-x'b\right)^{2}\right]=-2E[x(m(x)-x'b)]=0$
+\end_inset
+
+.
+ Rearrange the terms and obtain 
+\begin_inset Formula $E[x\cdot m(x)]=E[xx']b$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $E[xx']$
+\end_inset
+
+ is invertible, we solve 
+\begin_inset Formula 
+\[
+\left(E\left[xx'\right]\right){}^{-1}E[x\cdot m(x)]=\left(E\left[xx'\right]\right){}^{-1}E[E[xy|x]]=\left(E\left[xx'\right]\right){}^{-1}E[xy]=\beta.
+\]
+
+\end_inset
+
+Thus 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is also the best linear approximation to 
+\begin_inset Formula $m\left(x\right)$
+\end_inset
+
+ under MSE.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We may rewrite the linear regression model, or the 
+\emph on
+linear projection model,
+\emph default
+ as
+\begin_inset Formula 
+\[
+\begin{array}[t]{c}
+y=x'\beta+e\\
+E[xe]=0,
+\end{array}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $e=y-x'\beta$
+\end_inset
+
+ is called the 
+\emph on
+linear projection error
+\emph default
+, to be distinguished from 
+\begin_inset Formula $\epsilon=y-m(x).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+Show (a) 
+\begin_inset Formula $E\left[xe\right]=0$
+\end_inset
+
+.
+ (b) If 
+\begin_inset Formula $x$
+\end_inset
+
+ contains a constant, then 
+\begin_inset Formula $E\left[e\right]=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Omitted Variable Bias
+\end_layout
+
+\begin_layout Standard
+We write the 
+\emph on
+long regression
+\emph default
+ as 
+\begin_inset Formula 
+\[
+y=x_{1}'\beta_{1}+x_{2}'\beta_{2}+\beta_{3}+e_{\beta},
+\]
+
+\end_inset
+
+and the 
+\emph on
+short regression
+\emph default
+ as 
+\begin_inset Formula 
+\[
+y=x_{1}'\gamma_{1}+\gamma_{2}+e_{\gamma},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $e_{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{\gamma}$
+\end_inset
+
+ are the projection errors, respectively.
+ If 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ in the long regression is the parameter of interest, omitting 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ as in the short regression will render 
+\emph on
+omitted variable bias
+\emph default
+ (meaning 
+\begin_inset Formula $\gamma_{1}\neq\beta_{1}$
+\end_inset
+
+) unless 
+\begin_inset Formula $x_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ are uncorrelated.
+\end_layout
+
+\begin_layout Standard
+We first demean all the variables in the two regressions, which is equivalent
+ as if we project out the effect of the constant.
+ The long regression becomes 
+\begin_inset Formula 
+\[
+\tilde{y}=\tilde{x}_{1}'\beta_{1}+\tilde{x}_{2}'\beta_{2}+\tilde{e}_{\beta},
+\]
+
+\end_inset
+
+and the short regression becomes 
+\begin_inset Formula 
+\[
+\tilde{y}=\tilde{x}_{1}'\gamma_{1}+\tilde{e}_{\gamma},
+\]
+
+\end_inset
+
+where 
+\emph on
+tilde
+\emph default
+ denotes the demeaned variable.
+\end_layout
+
+\begin_layout Exercise*
+Show 
+\begin_inset Formula $\tilde{e}_{\beta}=e_{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{e}_{\gamma}=e_{\gamma}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+After demeaning, the cross-moment equals to the covariance.
+ The short regression coefficient 
+\begin_inset Formula 
+\[
+\begin{aligned}\gamma_{1} & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{y}\right]\\
+ & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\left(\tilde{x}_{1}'\beta_{1}+\tilde{x}_{2}'\beta_{2}+\tilde{e}_{\beta}\right)\right]\\
+ & =\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}\\
+ & =\beta_{1}+\left(E\left[\tilde{x}_{1}\tilde{x}_{1}'\right]\right)^{-1}E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2},
+\end{aligned}
+\]
+
+\end_inset
+
+where the third line holds as 
+\begin_inset Formula $E\left[\tilde{x}_{1}\tilde{e}_{\beta}\right]=0$
+\end_inset
+
+.
+ Therefore, 
+\begin_inset Formula $\gamma_{1}=\beta_{1}$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]\beta_{2}=0$
+\end_inset
+
+, which demands either 
+\begin_inset Formula $E\left[\tilde{x}_{1}\tilde{x}_{2}'\right]=0$
+\end_inset
+
+ or 
+\begin_inset Formula $\beta_{2}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Exercise
+Show that 
+\begin_inset Formula $E\left[\left(y-x_{1}'\beta_{1}-x_{2}'\beta_{2}-\beta_{3}\right)^{2}\right]\leq E\left[\left(y-x_{1}'\gamma_{1}-\gamma_{2}\right)^{2}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Obviously we prefer to run the long regression to attain 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ if possible, for it is a more general model than the short regression and
+ achieves no larger variance in the projection error.
+ However, sometimes 
+\begin_inset Formula $x_{2}$
+\end_inset
+
+ is unobservable so the long regression is unavailable.
+ This example of omitted variable bias is ubiquitous in applied econometrics.
+ Ideally we would like to directly observe some regressors but in reality
+ we do not have them at hand.
+ We should be aware of the potential consequence when the data are not as
+ ideal as we have wished.
+ When only the short regression is available, in some cases we are able
+ to sign the bias, meaning that we can argue whether 
+\begin_inset Formula $\gamma_{1}$
+\end_inset
+
+ is bigger or smaller than 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+ based on our knowledge.
+\end_layout
+
+\begin_layout Section
+Causality
+\end_layout
+
+\begin_layout Subsection
+Structure and Identification
+\end_layout
+
+\begin_layout Standard
+Unlike physical laws such as Einstein's mass–energy equivalence 
+\begin_inset Formula $E=mc^{2}$
+\end_inset
+
+ and Newton's universal gravitation 
+\begin_inset Formula $F=Gm_{1}m_{2}/r^{2}$
+\end_inset
+
+, economic phenomena can rarely be summarized in such a minimalistic style.
+ When using experiments to verify physical laws, scientists often manage
+ to come up with smart design in which signal-to-noise ratio is so high
+ that small disturbances are kept at a negligible level.
+ On the contrary, economic laws do not fit a laboratory for experimentation.
+ What is worse, the subjects in economic studies — human beings — are heterogene
+ous and with many features that are hard to control.
+ People from distinctive cultural and family backgrounds respond to the
+ same issue differently and researchers can do little to homogenize them.
+ The signal-to-noise ratios in economic laws are often significantly lower
+ than those of physical laws, mainly due to the lack of laboratory setting
+ and the heterogeneous nature of the subjects.
+ 
+\end_layout
+
+\begin_layout Standard
+Educational return and the demand-supply system are two classical topics
+ in econometrics.
+ A person's incomes is determined by too many random factors in the academic
+ and career path that is impossible to exhaustively observe and control.
+ The observable prices and quantities are outcomes of equilibrium so the
+ demand and supply affect each other.
+ 
+\end_layout
+
+\begin_layout Standard
+Generations of thinkers have been debating the definitions of causality.
+ In economics, an accepted definition is 
+\emph on
+structural causality
+\emph default
+.
+ Structural causality is a thought experiment.
+ It assumes that there is a DGP that produces the observational data.
+ If we can use data to recover the DGP or some features of the DGP, then
+ we have learned causality or some implications of causality.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We set up a DGP, in which some parameters are unknown.
+ We would like to recover the unknown components of the model.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A key issue to resolve before looking at the realized sample is 
+\emph on
+identification
+\emph default
+.
+ We say a model or DGP is 
+\emph on
+identified
+\emph default
+ if the each possible parameter of the model under consideration generates
+ distinctive features of the observable data.
+ A model is 
+\emph on
+under-identified
+\emph default
+ if more than one parameter in the model can generate exact the same features
+ of the observable data.
+ In other words, a model is under-identified if from the observable data
+ we cannot trace back to a unique parameter in the model.
+ A correctly specified model is the prerequisite for any discussion of identific
+ation.
+ In reality, all models are wrong.
+ Thus when talking about identification, we are indulged in an imaginary
+ world.
+ If in such a thought experiment we still cannot unique distinguish the
+ true parameter of the data generating process, then identification fails.
+ We cannot determine what is the true model no matter how large the sample
+ is.
+ 
+\end_layout
+
+\begin_layout Subsection
+Treatment Effect
+\end_layout
+
+\begin_layout Standard
+We narrow down to the framework of the relationship between 
+\begin_inset Formula $y$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ One question of particular interest is 
+\emph on
+treatment effect
+\emph default
+.
+ The treatment effect is how much 
+\begin_inset Formula $y$
+\end_inset
+
+ will change if we change a variable of interest, say 
+\begin_inset Formula $d$
+\end_inset
+
+, by one unit while keeping all other variables (including the unobservable
+ variables) the same.
+ The Latin phrase 
+\emph on
+ceteris paribus
+\emph default
+ means 
+\begin_inset Quotes eld
+\end_inset
+
+keep all other things constant.
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+During the 2020 covid-19 pandemic, Hong Kong's unemployment rate rose to
+ a high-level and consumption collapsed.
+ In order to boost the economy, some Hong Kong residents were qualified
+ in receiving 10,000 HKD cash allowance from the government.
+ We are interested in learning how much does the 10,000 HKD allowance increase
+ people's consumption.
+ For an individual, we imagine two parallel worlds: one with the cash allowance
+ and one without.
+ The difference of the consumption in the world with the allowance, denoted
+ 
+\begin_inset Formula $Y\left(1\right)$
+\end_inset
+
+, and that in the world without the allowance, denoted 
+\begin_inset Formula $Y\left(0\right)$
+\end_inset
+
+, is the treatment effect of that particular person.
+ This thought experiment is called the 
+\emph on
+potential outcome framework
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+However, in reality one and only one scenario happens, which echoes the
+ saying of ancient Greek philosopher Heraclitus (553 BC--475 BC) 
+\begin_inset Quotes eld
+\end_inset
+
+You cannot step into the same river twice.
+\begin_inset Quotes erd
+\end_inset
+
+ The individual treatment effect is not operational (
+\emph on
+operational
+\emph default
+ means it can be computed from data at the population level), because one
+ and only one outcome is realized.
+ With many people available, we can define 
+\emph on
+average treatment effect
+\emph default
+ (ATE) as 
+\begin_inset Formula 
+\[
+ATE=E\left[Y\left(1\right)-Y\left(0\right)\right]=E\left[Y\left(1\right)\right]-E\left[Y\left(0\right)\right].
+\]
+
+\end_inset
+
+Notice that 
+\begin_inset Formula $E\left[Y\left(1\right)\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[Y\left(0\right)\right]$
+\end_inset
+
+ are still not operational before we observe a companion variable 
+\begin_inset Formula 
+\[
+D=1\left\{ \mbox{treatment received}\right\} .
+\]
+
+\end_inset
+
+Once each individual's treatment status is observable, 
+\begin_inset Formula $E\left[Y\left(1\right)|D=1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[Y\left(0\right)|D=0\right]$
+\end_inset
+
+ are operational from the data.
+\end_layout
+
+\begin_layout Standard
+If the two potential outcomes 
+\begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)$
+\end_inset
+
+ are independent of the assignment 
+\begin_inset Formula $D$
+\end_inset
+
+, then 
+\begin_inset Formula $E\left[Y\left(1\right)\right]=E\left[Y\left(1\right)|D=1\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $E\left[Y\left(0\right)\right]=E\left[Y\left(0\right)|D=0\right]$
+\end_inset
+
+ so that ATE can be estimated from the data in an operational  way as
+\begin_inset Formula 
+\[
+ATE=E\left[Y\left(1\right)|D=1\right]-E\left[Y\left(0\right)|D=0\right].
+\]
+
+\end_inset
+
+Therefore, to evaluate ATE ideally we would like use a lottery to randomly
+ decide that some people receive the treatment (
+\emph on
+treatment group
+\emph default
+, with 
+\begin_inset Formula $D=1$
+\end_inset
+
+) and the others do not (
+\emph on
+control group
+\emph default
+, with 
+\begin_inset Formula $D=0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+When we have other control variables, we can also define a finer treatment
+ effect conditional on 
+\begin_inset Formula $x$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+ATE\left(x\right)=E\left[Y\left(1\right)|x\right]-E\left[Y\left(0\right)|x\right].
+\]
+
+\end_inset
+
+ATE is the average effect in the population of individuals when we hypothetical
+ give them the treatment, keeping all other factors 
+\begin_inset Formula $x$
+\end_inset
+
+ constant.
+ If conditioning on 
+\begin_inset Formula $x$
+\end_inset
+
+, the treatment 
+\begin_inset Formula $D$
+\end_inset
+
+ is independent of 
+\begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)$
+\end_inset
+
+, then ATE becomes operational:
+\begin_inset Formula 
+\[
+ATE\left(x\right)=E\left[Y\left(1\right)|D=1,x\right]-E\left[Y\left(0\right)|D=0,x\right]
+\]
+
+\end_inset
+
+The important condition 
+\begin_inset Formula $\left(\left(Y\left(1\right),Y\left(0\right)\right)\perp D\right)|x$
+\end_inset
+
+ is called the 
+\emph on
+conditional independence assumption
+\emph default
+ (CIA).
+\end_layout
+
+\begin_layout Example
+CIA is more plausible than full independence.
+ Consider the example 
+\begin_inset Formula $Y\left(1\right)=x+u\left(1\right)$
+\end_inset
+
+, 
+\begin_inset Formula $Y\left(0\right)=x+u\left(0\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $D=1\left\{ x+u_{d}\geq0\right\} $
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\left(\left(u\left(0\right),u\left(1\right)\right)\perp u_{d}\right)|x$
+\end_inset
+
+, then CIA is satisfied.
+ Nevertheless 
+\begin_inset Formula $\left(Y\left(1\right),Y\left(0\right)\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $D$
+\end_inset
+
+ are statistically dependent, since 
+\begin_inset Formula $x$
+\end_inset
+
+ is involved in all random variables.
+\end_layout
+
+\begin_layout Subsection
+ATE and CEF
+\end_layout
+
+\begin_layout Standard
+In the previous section the treatment 
+\begin_inset Formula $D$
+\end_inset
+
+ is binary.
+ Now we consider a continuous treatment 
+\begin_inset Formula $D$
+\end_inset
+
+.
+ Suppose the DGP, or the structural model, is 
+\begin_inset Formula $Y=h\left(D,x,u\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $D$
+\end_inset
+
+ and 
+\begin_inset Formula $x$
+\end_inset
+
+ are observable and 
+\begin_inset Formula $u$
+\end_inset
+
+ is unobservable.
+ It is natural to define ATE with the continuous treatment (Hansen's book
+ Chapter 2.30 calls it 
+\emph on
+average causal effect
+\emph default
+) as
+\begin_inset Formula 
+\[
+ATE\left(d,x\right)=E\left[\lim_{\Delta\to0}\frac{h\left(d+\Delta,x,u\right)-h\left(d,x,u\right)}{\Delta}\right]=E\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right],
+\]
+
+\end_inset
+
+where the continuous differentiability of 
+\begin_inset Formula $h\left(d,x,u\right)$
+\end_inset
+
+ at 
+\begin_inset Formula $d$
+\end_inset
+
+ is implicitly assumed.
+ Unlike the binary treatment case, here 
+\begin_inset Formula $d$
+\end_inset
+
+ explicitly shows up in 
+\begin_inset Formula $ATE\left(d,x\right)$
+\end_inset
+
+ because the effect can vary at different values of 
+\begin_inset Formula $d$
+\end_inset
+
+.
+ ATE here is the average effect in the population of individuals if we hypotheti
+cal move 
+\begin_inset Formula $D$
+\end_inset
+
+ a tiny bit around 
+\begin_inset Formula $d$
+\end_inset
+
+, keeping all other factors 
+\begin_inset Formula $x$
+\end_inset
+
+ constant.
+\end_layout
+
+\begin_layout Standard
+In the previous sections, we focused on the CEF 
+\begin_inset Formula $m\left(d,x\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $d$
+\end_inset
+
+ is added to 
+\begin_inset Formula $x$
+\end_inset
+
+ as an additional variable of interest.
+ We did not intend to model the underlying economic mechanism 
+\begin_inset Formula $h\left(D,x,u\right)$
+\end_inset
+
+, which may be very complex.
+ Can we learn the 
+\begin_inset Formula $ATE\left(d,x\right)$
+\end_inset
+
+ which bears the structural causal interpretation, from the mechanical 
+\begin_inset Formula $m\left(d,x\right)$
+\end_inset
+
+ which merely cares about best prediction? The answer is positive under
+ CIA: 
+\begin_inset Formula $\left(u\perp D\right)|x$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial d}m\left(d,x\right) & =\frac{\partial}{\partial d}E\left[y|d,x\right]=\frac{\partial}{\partial d}E\left[h\left(d,x,u\right)|d,x\right]=\frac{\partial}{\partial d}\int h\left(d,x,u\right)f\left(u|d,x\right)du\\
+ & =\int\frac{\partial}{\partial d}\left[h\left(d,x,u\right)f\left(u|d,x\right)\right]du\\
+ & =\int\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]f\left(u|d,x\right)du+\int h\left(d,x,u\right)\left[\frac{\partial}{\partial d}f\left(u|d,x\right)\right]du,
+\end{align*}
+
+\end_inset
+
+where the second line implicitly assumes interchangeability between the
+ integral and the partial derivative.
+ Under CIA, 
+\begin_inset Formula $\frac{\partial}{\partial d}f\left(u|d,x\right)=0$
+\end_inset
+
+ and the second term drops out.
+ Thus 
+\begin_inset Formula 
+\[
+\frac{\partial}{\partial d}m\left(d,x\right)=\int\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]f\left(u|d,x\right)du=E\left[\frac{\partial}{\partial d}h\left(d,x,u\right)\right]=ATE\left(d,x\right).
+\]
+
+\end_inset
+
+This is an important result.
+ It says that if CIA holds, we can learn the causal effect of 
+\begin_inset Formula $d$
+\end_inset
+
+ on 
+\begin_inset Formula $y$
+\end_inset
+
+ by the partial derivative of CEF conditional on 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ In particular, if we further assume a linear CEF 
+\begin_inset Formula $m\left(d,x\right)=\beta_{d}d+\beta_{x}'x$
+\end_inset
+
+, then the causal effect is the coefficient 
+\begin_inset Formula $\beta_{d}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+CIA is the key condition that links the CEF and the causal effect.
+ CIA is not an innocuous assumption.
+ In applications, our causal results are credible only when we can convincing
+ defend CIA.
+\end_layout
+
+\begin_layout Exercise
+Let factories' output be a Cobb-Douglas function 
+\begin_inset Formula $Y=AK^{\alpha}L^{\beta}$
+\end_inset
+
+, where the capital level 
+\begin_inset Formula $K$
+\end_inset
+
+ and labor 
+\begin_inset Formula $L$
+\end_inset
+
+ as well as the output 
+\begin_inset Formula $Y$
+\end_inset
+
+ is observable, while the 
+\begin_inset Quotes eld
+\end_inset
+
+technology
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ is unobservable.
+ Take logarithm on both sides of the equation:
+\begin_inset Formula 
+\begin{equation}
+y=u+\alpha k+\beta l\label{eq:causal}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $y=\log Y$
+\end_inset
+
+, 
+\begin_inset Formula $u=\log A$
+\end_inset
+
+, 
+\begin_inset Formula $k=\log K$
+\end_inset
+
+ and 
+\begin_inset Formula $l=\log L$
+\end_inset
+
+.
+ Suppose 
+\begin_inset Formula $\begin{pmatrix}u\\
+k\\
+l
+\end{pmatrix}\sim N\left(\begin{pmatrix}1\\
+1\\
+1
+\end{pmatrix},\begin{pmatrix}1 & 0.5 & 0\\
+0.5 & 1 & 0\\
+0 & 0 & 1
+\end{pmatrix}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\alpha=\beta=1/2$
+\end_inset
+
+ make the true DGP.
+ Here 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $k$
+\end_inset
+
+ are correlated, because factories of larger scale can afford robots to
+ facilitate automation.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+What is the partial derivative of CEF when we use 
+\begin_inset Formula $k$
+\end_inset
+
+ as a treatment variable for a fixed labor level 
+\begin_inset Formula $l$
+\end_inset
+
+? (Hint: the CEF is a linear function thanks to the joint normality.)
+\end_layout
+
+\begin_layout Enumerate
+Does it coincide with 
+\begin_inset Formula $\alpha=1/2$
+\end_inset
+
+, the coefficient in the causal model (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:causal"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)? (Hint: No, because CIA is violated.)
+\end_layout
+
+\end_deeper
+\begin_layout Exercise
+Sometimes applied researchers assume by brute force that 
+\begin_inset Formula $y=m\left(d,x\right)+u$
+\end_inset
+
+ is the DGP and 
+\begin_inset Formula $E\left[u|d,x\right]=0$
+\end_inset
+
+, where 
+\begin_inset Formula $d$
+\end_inset
+
+ is the variable of interest and 
+\begin_inset Formula $x$
+\end_inset
+
+ is the vector of other control variables.
+ Under these assumptions, 
+\begin_inset Formula 
+\[
+ATE\left(d,x\right)=E\left[\frac{\partial}{\partial d}\left(m\left(d,x\right)+u\right)|d,x\right]=\frac{\partial m\left(d,x\right)}{\partial d}+\frac{\partial}{\partial d}E\left[u|d,x\right]=\frac{\partial m\left(d,x\right)}{\partial d},
+\]
+
+\end_inset
+
+where the second equality holds if 
+\begin_inset Formula $\frac{\partial}{\partial d}E\left[u|d,x\right]=E\left[\frac{\partial}{\partial d}u|d,x\right]$
+\end_inset
+
+.
+ At a first glance, it seems that the mean independence assumption 
+\begin_inset Formula $E\left[u|d,x\right]=0$
+\end_inset
+
+, which is weaker than CIA, implies the equivalence between 
+\begin_inset Formula $ATE\left(d,x\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial m\left(d,x\right)/\partial d$
+\end_inset
+
+ here.
+ However, such slight weakening is achieved by a very strong assumption
+ that the DGP 
+\begin_inset Formula $h\left(d,x,u\right)$
+\end_inset
+
+ follows the additive separable form 
+\begin_inset Formula $m\left(d,x\right)+u$
+\end_inset
+
+.
+ Without economic theory to defend the choice of the assumed DGP 
+\begin_inset Formula $y=m\left(d,x\right)+u$
+\end_inset
+
+, this is at best the 
+\emph on
+reduced-form
+\emph default
+ approach.
+\end_layout
+
+\begin_layout Exercise
+The 
+\emph on
+structural approach
+\emph default
+ here models the economic mechanism, guided by economic theory.
+ The 
+\emph on
+reduced-form approach
+\emph default
+ is convenient and can document stylized facts when suitable economic theory
+ is not immediately available.
+ There are constant debates about the pros and cons of the two approaches;
+ see 
+\emph on
+Journal of Economic Perspectives
+\emph default
+ Vol.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+24, No.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+2 Spring 2010.
+ In macroeconomics, the so-called Phillips curve, attributed to A.W.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Phillips about the negative correlation between inflation and unemployment,
+ is a stylized fact learned from the reduced-form approach.
+ The Lucas critique 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "lucas1976econometric"
+literal "false"
+
+\end_inset
+
+ exposed its lack of microfoundation and advocated modeling deep parameters
+ that are invariant to policy changes.
+ The latter is a structural approach.
+ Ironically, more than 40 years has passed since the Lucas critique, equations
+ with little microfoundation still dominate the analytical apparatus of
+ central bankers.
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+In this lecture, we cover the conditional mean function and causality.
+ When we are faced with a pair of random variable 
+\begin_inset Formula $\left(y,x\right)$
+\end_inset
+
+ drawn from some joint distribution, the CEF is the best predictor.
+ When we go further into the structural causality about some treatment 
+\begin_inset Formula $d$
+\end_inset
+
+ to the dependent variable 
+\begin_inset Formula $y$
+\end_inset
+
+, under CIA we can find equivalence between ATE and the partial derivative
+ of CEF.
+ All analyses are conducted in population.
+ We have not touched the sample yet.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Historical notes
+\series default
+: Regressions and conditional expectations are concepts from statistics
+ and they are imported to econometrics in early time.
+ Researchers at the Cowles Commission (now Cowles Foundation for Research
+ in Economics) — Jacob Marschak (1898–1977), Tjalling Koopmans (1910–1985,
+ Nobel Prize 1975), Trygve Haavelmo (1911–1999, Nobel Prize 1989) and their
+ colleagues — were trailblazers of the econometric structural approach.
+\end_layout
+
+\begin_layout Standard
+The potential outcome framework is not peculiar to economics.
+ It is widely used in other fields such as biostatistics and medical studies.
+ It was initiated by Jerzy Neyman (1894–1981) and extended by Donald B.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+~
+\end_layout
+
+\end_inset
+
+Rubin (1943– ), Professor of Statistics at Tsinghua University.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Further reading
+\series default
+: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lewbel2019identification"
+literal "false"
+
+\end_inset
+
+ offers a comprehensive summary of identification in econometrics.
+ Accounting is an applied field with many claimed causal inference drawn
+ from simple regressions; it is encouraging to hear 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "gow2016causal"
+literal "false"
+
+\end_inset
+
+ to reflect causality in their practices.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ Sep 17, 2020}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

@@ -1,0 +1,3184 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8x
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "mathpazo" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing double
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "urlcolor=urlcolor,linkcolor=linkcolor,citecolor=citecolor,"
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{7}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Hypothesis Testing
+\end_layout
+
+\begin_layout Standard
+Notation: 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ denotes a random variable or random vector.
+ 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ is its realization.
+ 
+\end_layout
+
+\begin_layout Standard
+A 
+\emph on
+hypothesis
+\emph default
+ is a statement about the parameter space 
+\begin_inset Formula $\Theta$
+\end_inset
+
+.
+ Hypothesis testing checks whether the data support a 
+\emph on
+null hypothesis
+\emph default
+ 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+, which is a subset of 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ of interest.
+ Ideally the null hypothesis should be suggested by scientific theory.
+ The 
+\emph on
+alternative hypothesis
+\emph default
+ 
+\begin_inset Formula $\Theta_{1}=\Theta\backslash\Theta_{0}$
+\end_inset
+
+ is the complement of 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+.
+ Based on the observed evidence, hypothesis testing decides to accept or
+ reject the null hypothesis.
+ If the null hypothesis is rejected by the data, it implies that from the
+ statistical perspective the data is incompatible with the proposed scientific
+ theory.
+\end_layout
+
+\begin_layout Standard
+In this chapter, we will first introduce the idea and practice of hypothesis
+ testing and the related confidence interval.
+ While we mainly focus on the frequentist interpretation of hypothesis,
+ we briefly discuss the Bayesian approach to statistical decision.
+ As an application of the testing procedures to the linear regression model,
+ we elaborate how to test a linear or nonlinear hypothesis of the slope
+ coefficients based on the unrestricted or restricted OLS estimators.
+\end_layout
+
+\begin_layout Section
+Testing
+\end_layout
+
+\begin_layout Subsection
+Decision Rule and Errors
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+ is a singleton, we call it a 
+\emph on
+simple hypothesis
+\emph default
+; otherwise we call it a 
+\emph on
+composite hypothesis
+\emph default
+.
+ For example, if the parameter space 
+\begin_inset Formula $\Theta=\mathbb{R}$
+\end_inset
+
+, then 
+\begin_inset Formula $\Theta_{0}=\left\{ 0\right\} $
+\end_inset
+
+ (or equivalently 
+\begin_inset Formula $\theta_{0}=0$
+\end_inset
+
+) is a simple hypothesis, whereas 
+\begin_inset Formula $\Theta_{0}=(-\infty,0]$
+\end_inset
+
+ (or equivalently 
+\begin_inset Formula $\theta_{0}\leq0$
+\end_inset
+
+) is a composite hypothesis.
+ 
+\end_layout
+
+\begin_layout Standard
+A 
+\emph on
+test function
+\emph default
+ is a mapping 
+\begin_inset Formula 
+\[
+\phi:\mathcal{X}^{n}\mapsto\left\{ 0,1\right\} ,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathcal{X}$
+\end_inset
+
+ is the sample space.
+ The null hypothesis is accepted if 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)=0$
+\end_inset
+
+, or rejected if 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)=1$
+\end_inset
+
+.
+ We call the set 
+\begin_inset Formula $A_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi_{\theta}\left(\mathbf{x}\right)=0\right\} $
+\end_inset
+
+ the 
+\emph on
+acceptance region
+\emph default
+, and its complement 
+\begin_inset Formula $R_{\phi}=\left\{ \mathbf{x}\in\mathcal{X}^{n}:\phi\left(\mathbf{x}\right)=1\right\} $
+\end_inset
+
+ the 
+\emph on
+rejection region.
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+power function
+\emph default
+ of a test 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+\beta\left(\theta\right)=P_{\theta}\left\{ \phi\left(\mathbf{X}\right)=1\right\} =E_{\theta}\left[\phi\left(\mathbf{X}\right)\right].
+\]
+
+\end_inset
+
+The power function measures the probability that the test function rejects
+ the null when the data is generated under the true parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+, reflected in 
+\begin_inset Formula $P_{\theta}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+power
+\emph default
+ of a test for some 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+ is the value of 
+\begin_inset Formula $\beta\left(\theta\right)$
+\end_inset
+
+.
+ The 
+\emph on
+size
+\emph default
+ of the test is 
+\begin_inset Formula $\sup_{\theta\in\Theta_{0}}\beta\left(\theta\right).$
+\end_inset
+
+ Notice that the definition of power depends on a 
+\begin_inset Formula $\theta$
+\end_inset
+
+ in the alternative hypothesis 
+\begin_inset Formula $\Theta_{1}$
+\end_inset
+
+, whereas that of size is independent of 
+\begin_inset Formula $\theta$
+\end_inset
+
+ due to the supremum over the set of null 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+.
+ The 
+\emph on
+level
+\emph default
+ of a test is any value 
+\begin_inset Formula $\alpha\in\left(0,1\right)$
+\end_inset
+
+ such that 
+\begin_inset Formula $\alpha\geq\sup_{\theta\in\Theta_{0}}\beta\left(\theta\right)$
+\end_inset
+
+, which is often used when it is difficult to attain the exact supremum.
+ A test of size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is also of level 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ or bigger; while a test of level 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ must have size smaller or equal to 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+The concept of 
+\emph on
+level
+\emph default
+ is useful if we do not have sufficient information to derive the exact
+ size of a test.
+ If 
+\begin_inset Formula $\left(X_{1i},X_{2i}\right)_{i=1}^{n}$
+\end_inset
+
+ are randomly drawn from some unknown joint distribution, but we know the
+ marginal distribution is 
+\begin_inset Formula $X_{ji}\sim N\left(\theta_{j},1\right)$
+\end_inset
+
+, for 
+\begin_inset Formula $j=1,2$
+\end_inset
+
+.
+ In order to test the joint hypothesis 
+\begin_inset Formula $\theta_{1}=\theta_{2}=0$
+\end_inset
+
+, we can construct a test function 
+\begin_inset Formula 
+\[
+\phi_{\theta_{1}=\theta_{2}=0}\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)=1\left\{ \left\{ \sqrt{n}\left|\overline{X}_{1}\right|\geq z_{1-\alpha/4}\right\} \cup\left\{ \sqrt{n}\left|\overline{X}_{2}\right|\geq z_{1-\alpha/4}\right\} \right\} ,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $z_{1-\alpha/4}$
+\end_inset
+
+ is the 
+\begin_inset Formula $\left(1-\alpha/4\right)$
+\end_inset
+
+-th quantile of the standard normal distribution.
+ The level of this test is 
+\begin_inset Formula 
+\[
+\begin{aligned}P\left(\phi_{\theta_{1}=\theta_{2}=0}\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)\right) & \leq P\left(\sqrt{n}\left|\overline{X}_{1}\right|\geq z_{1-\alpha/4}\right)+P\left(\sqrt{n}\left|\overline{X}_{2}\right|\geq z_{1-\alpha/4}\right)\\
+ & =\alpha/2+\alpha/2=\alpha.
+\end{aligned}
+\]
+
+\end_inset
+
+where the inequality follows by the 
+\emph on
+Bonferroni inequality
+\emph default
+ 
+\begin_inset Formula 
+\[
+P\left(A\cup B\right)\leq P\left(A\right)+P\left(B\right).
+\]
+
+\end_inset
+
+(The seemingly trivial Bonferroni inequality is useful in many proofs of
+ probability results.) Therefore, the level of 
+\begin_inset Formula $\phi\left(\mathbf{X}_{1},\mathbf{X}_{2}\right)$
+\end_inset
+
+ is 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, but the exact size is unknown without the knowledge of the joint distribution.
+ (Even if we know the correlation of 
+\begin_inset Formula $X_{1i}$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{2i}$
+\end_inset
+
+, putting two marginally normal distributions together does not make a jointly
+ normal vector in general.)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Decisions-and-States"
+
+\end_inset
+
+ Actions, States and Consequences
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+medskip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+action
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+accept 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+reject 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+State of nature
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ true
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+correct decision
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Type I error
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $H_{0}$
+\end_inset
+
+ false
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Type II error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+correct decision
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+probability of committing Type I error
+\emph default
+ is 
+\begin_inset Formula $\beta\left(\theta\right)$
+\end_inset
+
+ for some 
+\begin_inset Formula $\theta\in\Theta_{0}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+The 
+\emph on
+probability of committing Type II error
+\emph default
+ is 
+\begin_inset Formula $1-\beta\left(\theta\right)$
+\end_inset
+
+ for some 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The philosophy on hypothesis testing has been debated for centuries.
+ At present the prevailing framework in statistics textbooks is the 
+\emph on
+frequentist perspective
+\emph default
+.
+ A frequentist views the parameter as a fixed constant.
+ They keep a conservative attitude about the Type I error: Only if overwhelming
+ evidence is demonstrated shall a researcher reject the null.
+ Under the principle of protecting the null hypothesis, a desirable test
+ should have a small level.
+ Conventionally we take 
+\begin_inset Formula $\alpha=0.01,$
+\end_inset
+
+ 0.05 or 0.1.
+ We say a test is 
+\emph on
+unbiased
+\emph default
+ if 
+\begin_inset Formula $\beta\left(\theta\right)>\sup_{\theta\in\Theta_{0}}\beta\left(\theta\right)$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+.
+ There can be many tests of correct size.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+A trivial test function 
+\begin_inset Formula $\phi(\mathbf{x})=1\left\{ 0\leq U\leq\alpha\right\} $
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta\in\Theta$
+\end_inset
+
+, where 
+\begin_inset Formula $U$
+\end_inset
+
+ is a random variable from a uniform distribution on 
+\begin_inset Formula $\left[0,1\right]$
+\end_inset
+
+, has correct size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ but no non-trivial power at the alternative.
+ On the other extreme, the trivial test function 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)=1$
+\end_inset
+
+ for all 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ enjoys the biggest power but suffers incorrect size.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Usually, we design a test by proposing a test statistic 
+\begin_inset Formula $T_{n}:\mathcal{X}^{n}\mapsto\mathbb{R}^{+}$
+\end_inset
+
+ and a critical value 
+\begin_inset Formula $c_{1-\alpha}$
+\end_inset
+
+.
+ Given 
+\begin_inset Formula $T_{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{1-\alpha}$
+\end_inset
+
+, we write the test function as 
+\begin_inset Formula 
+\[
+\phi\left(\mathbf{X}\right)=1\left\{ T_{n}\left(\mathbf{X}\right)>c_{1-\alpha}\right\} .
+\]
+
+\end_inset
+
+To ensure such a 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)$
+\end_inset
+
+ has correct size, we need to figure out the distribution of 
+\begin_inset Formula $T_{n}$
+\end_inset
+
+ under the null hypothesis (called the 
+\emph on
+null distribution
+\emph default
+), and choose a critical value 
+\begin_inset Formula $c_{1-\alpha}$
+\end_inset
+
+ according to the null distribution and the desirable size or level 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Another commonly used indicator in hypothesis testing is 
+\begin_inset Formula $p$
+\end_inset
+
+-value: 
+\begin_inset Formula 
+\[
+\sup_{\theta\in\Theta_{0}}P_{\theta}\left\{ T_{n}\left(\mathbf{x}\right)\leq T_{n}\left(\mathbf{X}\right)\right\} .
+\]
+
+\end_inset
+
+In the above expression, 
+\begin_inset Formula $T_{n}\left(\mathbf{x}\right)$
+\end_inset
+
+ is the realized value of the test statistic 
+\begin_inset Formula $T_{n}$
+\end_inset
+
+, while 
+\begin_inset Formula $T_{n}\left(\mathbf{X}\right)$
+\end_inset
+
+ is the random variable generated by 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ under the null 
+\begin_inset Formula $\theta\in\Theta_{0}$
+\end_inset
+
+.
+ The interpretation of the 
+\begin_inset Formula $p$
+\end_inset
+
+-value is tricky.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+-value is the probability that we observe 
+\begin_inset Formula $T_{n}(\mathbf{X})$
+\end_inset
+
+ being greater than the realized 
+\begin_inset Formula $T_{n}(\mathbf{x})$
+\end_inset
+
+ if the null hypothesis is true.
+\end_layout
+
+\begin_layout Remark
+\begin_inset Formula $p$
+\end_inset
+
+-value is 
+\emph on
+not
+\emph default
+ the probability that the null hypothesis is true.
+ Under the frequentist perspective, the null hypothesis is either true or
+ false, with certainty.
+ The randomness of a test comes only from sampling, not from the hypothesis.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+-value measures whether the dataset is compatible with the null hypothesis.
+ 
+\begin_inset Formula $p$
+\end_inset
+
+-value is closely related to the corresponding test.
+ When 
+\begin_inset Formula $p$
+\end_inset
+
+-value is smaller than the specified test size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, the test rejects the null.
+\end_layout
+
+\begin_layout Standard
+So far we have been talking about hypothesis testing in finite sample.
+ The discussion and terminologies can be carried over to the asymptotic
+ world when 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+ If we denote the power function as 
+\begin_inset Formula $\beta_{n}\left(\theta\right)$
+\end_inset
+
+, in which we make its dependence on the sample size 
+\begin_inset Formula $n$
+\end_inset
+
+ explicit, the test is of asymptotic size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ if 
+\begin_inset Formula $\limsup_{n\to\infty}\beta_{n}\left(\theta\right)\leq\alpha$
+\end_inset
+
+ for all 
+\begin_inset Formula $\theta\in\Theta_{0}$
+\end_inset
+
+.
+ A test is 
+\emph on
+consistent
+\emph default
+ if 
+\begin_inset Formula $\beta_{n}\left(\theta\right)\to1$
+\end_inset
+
+ for every 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Optimality
+\end_layout
+
+\begin_layout Standard
+Just as there may be multiple valid estimators for a task of estimation,
+ there may be multiple tests for a task of hypothesis testing.
+ For a class of tests of the same level 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ under the null 
+\begin_inset Formula $\Psi_{\alpha}=\left\{ \phi:\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)\leq\alpha\right\} $
+\end_inset
+
+ where we put a subscript 
+\begin_inset Formula $\phi$
+\end_inset
+
+ in 
+\begin_inset Formula $\beta_{\phi}\left(\theta\right)$
+\end_inset
+
+ to distinguish the power for different tests, it is natural to prefer a
+ test 
+\begin_inset Formula $\phi^{*}$
+\end_inset
+
+ that exhibits higher power than all other tests under consideration at
+ each point of the alternative hypothesis in that 
+\begin_inset Formula 
+\[
+\beta_{\phi^{*}}\left(\theta\right)\geq\beta_{\phi}\left(\theta\right)
+\]
+
+\end_inset
+
+for every 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+ and every 
+\begin_inset Formula $\phi\in\Psi_{\alpha}$
+\end_inset
+
+.
+ If such a test 
+\begin_inset Formula $\phi^{*}\in\Psi_{\alpha}$
+\end_inset
+
+ exists, we call it the 
+\emph on
+uniformly most powerful test.
+\end_layout
+
+\begin_layout Example
+Suppose a random sample of size 6 is generated from 
+\begin_inset Formula 
+\[
+\left(X_{1},\ldots,X_{6}\right)\sim\text{iid.}N\left(\theta,1\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is unknown.
+ We want to infer the population mean of the normal distribution.
+ The null hypothesis is 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+: 
+\begin_inset Formula $\theta\leq0$
+\end_inset
+
+ and the alternative is 
+\begin_inset Formula $H_{1}$
+\end_inset
+
+: 
+\begin_inset Formula $\theta>0$
+\end_inset
+
+.
+ All tests in 
+\begin_inset Formula 
+\[
+\Psi=\left\{ 1\left\{ \bar{X}\geq c/\sqrt{6}\right\} :c\geq1.64\right\} 
+\]
+
+\end_inset
+
+has the correct level.
+ Since 
+\begin_inset Formula $\bar{X}=N\left(\theta,1/6\right)$
+\end_inset
+
+, the power function for those in 
+\begin_inset Formula $\Psi$
+\end_inset
+
+ is
+\begin_inset Formula 
+\begin{align*}
+\beta_{\phi}\left(\theta\right) & =P\left(\bar{X}\geq\frac{c}{\sqrt{6}}\right)=P\left(\frac{\bar{X}-\theta}{1/\sqrt{6}}\geq\frac{\frac{c}{\sqrt{6}}-\theta}{1/\sqrt{6}}\right)\\
+ & =P\left(N\geq c-\sqrt{6}\theta\right)=1-\Phi\left(c-\sqrt{6}\theta\right)
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $N=\frac{\bar{X}-\theta}{1/\sqrt{6}}$
+\end_inset
+
+ follows the standard normal, and 
+\begin_inset Formula $\Phi$
+\end_inset
+
+ is the cdf of the standard normal.
+ It is clear that 
+\begin_inset Formula $\beta_{\phi}\left(\theta\right)$
+\end_inset
+
+ is monotonically decreasing in 
+\begin_inset Formula $c$
+\end_inset
+
+.
+ Thus the test function 
+\begin_inset Formula 
+\[
+\phi_{\theta=0}\left(\mathbf{X}\right)=1\left\{ \bar{X}\geq1.64/\sqrt{6}\right\} 
+\]
+
+\end_inset
+
+is the most powerful test in 
+\begin_inset Formula $\Psi$
+\end_inset
+
+, as 
+\begin_inset Formula $c=1.64$
+\end_inset
+
+ is the lower bound that 
+\begin_inset Formula $\Psi_{\alpha}$
+\end_inset
+
+ allows in order to keep the level 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Likelihood-Ratio Test and 
+\series bold
+Wilks' theorem
+\end_layout
+
+\begin_layout Standard
+When estimators are not available in closed-forms, the likelihood-ratio
+ test (LRT) serves as a very general testing statistic under the likelihood
+ principle.
+ Let 
+\begin_inset Formula $\ell_{n}\left(\theta\right)=n^{-1}\sum_{i}\log f\left(x_{i};\theta\right)$
+\end_inset
+
+ be the average sample log-likelihood, and 
+\begin_inset Formula $\widehat{\theta}=\arg\max_{\theta\in\Theta}\ell_{n}\left(\theta\right)$
+\end_inset
+
+ is the maximum likelihood estimator (MLE).
+ Take a Taylor expansion of 
+\begin_inset Formula $\ell_{n}\left(\theta_{0}\right)$
+\end_inset
+
+ around 
+\begin_inset Formula $\ell_{n}\left(\widehat{\theta}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\ell_{n}\left(\theta_{0}\right)-\ell_{n}\left(\widehat{\theta}\right) & =\frac{\partial\ell_{n}}{\partial\theta}\left(\widehat{\theta}\right)'\left(\theta_{0}-\widehat{\theta}\right)+\frac{1}{2}\left(\theta_{0}-\widehat{\theta}\right)'\left(\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\theta_{0}\right)\right)\left(\theta_{0}-\widehat{\theta}\right)+O\left(\left\Vert \widehat{\theta}-\theta_{0}\right\Vert _{2}^{3}\right)\\
+ & =\frac{1}{2}\left(\widehat{\theta}-\theta_{0}\right)'\left(\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\theta_{0}\right)\right)\left(\widehat{\theta}-\theta_{0}\right)+O\left(\left\Vert \widehat{\theta}-\theta_{0}\right\Vert _{2}^{3}\right)\\
+ & =\frac{1}{2}\left(\widehat{\theta}-\theta_{0}\right)'\left(\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\theta_{0}\right)\right)\left(\widehat{\theta}-\theta_{0}\right)+o_{p}\left(1\right)
+\end{align*}
+
+\end_inset
+
+by that 
+\begin_inset Formula $\frac{\partial\ell_{n}}{\partial\theta}\left(\widehat{\theta}\right)=0$
+\end_inset
+
+ due to the first order condition of optimality.
+ Define 
+\begin_inset Formula $L_{n}\left(\theta\right):=\sum_{i}\log f\left(x_{i};\theta\right)$
+\end_inset
+
+, and the 
+\emph on
+likelihood-ratio statistic
+\emph default
+ as 
+\begin_inset Formula 
+\[
+\mathcal{LR}:=2\left(L_{n}\left(\widehat{\theta}\right)-L_{n}\left(\theta_{0}\right)\right)=2n\left(\ell_{n}\left(\widehat{\theta}\right)-\ell_{n}\left(\theta_{0}\right)\right).
+\]
+
+\end_inset
+
+ Obviously 
+\begin_inset Formula $\mathcal{LR}\geq0$
+\end_inset
+
+ because 
+\begin_inset Formula $\widehat{\theta}$
+\end_inset
+
+ maximizes 
+\begin_inset Formula $\ell_{n}\left(\theta\right)$
+\end_inset
+
+.
+ Multiply 
+\begin_inset Formula $-2n$
+\end_inset
+
+ to the two sides of the above Taylor expansion:
+\begin_inset Formula 
+\[
+\mathcal{LR}=\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)'\left(-\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\right)\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)+o_{p}\left(1\right)
+\]
+
+\end_inset
+
+Notice that when the model is correctly specified we have 
+\begin_inset Formula 
+\begin{align*}
+-\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\theta_{0}\right) & \stackrel{p}{\to}-\mathcal{H}\left(\theta_{0}\right)=\mathcal{I}\left(\theta_{0}\right)\\
+\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right) & \stackrel{d}{\to}N\left(0,\mathcal{I}^{-1}\left(\theta_{0}\right)\right)
+\end{align*}
+
+\end_inset
+
+By Slutsky's theorem:
+\begin_inset Formula 
+\[
+\left(-\frac{\partial^{2}}{\partial\theta\partial\theta'}\ell_{n}\left(\dot{\theta}\right)\right)^{1/2}\left[\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\right]\stackrel{d}{\to}\mathcal{I}^{1/2}\left(\theta_{0}\right)\times N\left(0,\mathcal{I}^{-1}\left(\theta_{0}\right)\right)\sim N\left(0,I_{k}\right).
+\]
+
+\end_inset
+
+and then 
+\begin_inset Formula $\mathcal{LR}\stackrel{d}{\to}\chi_{K}^{2}$
+\end_inset
+
+ by the continuous mapping theorem.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Wilks' theorem
+\emph default
+, or 
+\emph on
+Wilks' phenomenon
+\emph default
+ is referred to the fact that 
+\begin_inset Formula $\mathcal{LR}\stackrel{d}{\to}\chi^{2}\left(K\right)$
+\end_inset
+
+ when the parametric model is correctly specified.
+\end_layout
+
+\begin_layout Subsection
+Score Test
+\end_layout
+
+\begin_layout Section
+Confidence Interval
+\begin_inset CommandInset label
+LatexCommand label
+name "confidence-interval"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+An 
+\emph on
+interval estimate
+\emph default
+ is a function 
+\begin_inset Formula $C:\mathcal{X}^{n}\mapsto\left\{ \Theta_{1}:\Theta_{1}\subseteq\Theta\right\} $
+\end_inset
+
+ that maps a point in the sample space to a subset of the parameter space.
+ The 
+\emph on
+coverage probability
+\emph default
+ of an 
+\emph on
+interval estimator
+\emph default
+ 
+\begin_inset Formula $C\left(\mathbf{X}\right)$
+\end_inset
+
+ is defined as 
+\begin_inset Formula $P_{\theta}\left(\theta\in C\left(\mathbf{X}\right)\right)$
+\end_inset
+
+.
+ When 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is of one dimension, we usually call the interval estimator 
+\emph on
+confidence interval
+\emph default
+.
+ When 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is of multiple dimensions, we call the it 
+\emph on
+confidence region
+\emph default
+ and it of course includes the one-dimensional 
+\begin_inset Formula $\theta$
+\end_inset
+
+ as a special case.
+ The coverage probability is the frequency that the interval estimator captures
+ the true parameter that generates the sample.
+ From the frequentist perspective, the parameter is fixed while the confidence
+ region is random.
+ It is 
+\emph on
+not
+\emph default
+ the probability that 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is inside the given confidence interval.
+\end_layout
+
+\begin_layout Exercise
+Suppose a random sample of size 6 is generated from 
+\begin_inset Formula $\left(X_{1},\ldots,X_{6}\right)\sim\text{iid }N\left(\theta,1\right).$
+\end_inset
+
+ Find the coverage probability of the random interval is 
+\begin_inset Formula $\left[\bar{X}-1.96/\sqrt{6},\ \bar{X}+1.96/\sqrt{6}\right].$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Hypothesis testing and confidence region are closely related.
+ Sometimes it is difficult to directly construct the confidence region,
+ but easy to test a hypothesis.
+ One way to construct confidence region is by 
+\emph on
+inverting a test
+\emph default
+.
+ Suppose 
+\begin_inset Formula $\phi_{\theta}$
+\end_inset
+
+ is a test of size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $C\left(\mathbf{X}\right)$
+\end_inset
+
+ is constructed as 
+\begin_inset Formula 
+\[
+C\left(\mathbf{X}\right)=\left\{ \theta\in\Theta:\phi\left(\mathbf{X}\right)=0\right\} .
+\]
+
+\end_inset
+
+The coverage probability of the true data generating parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+P_{\theta}\left\{ \theta\in C\left(\mathbf{X}\right)\right\} =P_{\theta}\left\{ \phi\left(\mathbf{X}\right)=0\right\} =1-P_{\theta}\left\{ \phi\left(\mathbf{X}\right)=1\right\} =1-\beta\left(\theta\right)\geq1-\alpha
+\]
+
+\end_inset
+
+where the last inequality follows as 
+\begin_inset Formula $\beta\left(\theta\right)\leq\alpha$
+\end_inset
+
+ for 
+\begin_inset Formula $\theta\in\Theta_{0}$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+ is a singleton, the equality holds.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(2020-10-28)
+\end_layout
+
+\begin_layout Plain Layout
+
+# function for two-sided confidence interval
+\end_layout
+
+\begin_layout Plain Layout
+
+CI <- function(x) {# x is a vector of random variables
+\end_layout
+
+\begin_layout Plain Layout
+
+  # nominal coverage probability is 90%
+\end_layout
+
+\begin_layout Plain Layout
+
+  n <- length(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+  mu <- mean(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+  sig <- sd(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+  upper <- mu + 1.645 / sqrt(n) * sig
+\end_layout
+
+\begin_layout Plain Layout
+
+  lower <- mu - 1.645/ sqrt(n) * sig
+\end_layout
+
+\begin_layout Plain Layout
+
+  return(list(lower = lower, upper = upper))
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Empirical coverage probability
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Rep <- 1000
+\end_layout
+
+\begin_layout Plain Layout
+
+sample_size <- 10
+\end_layout
+
+\begin_layout Plain Layout
+
+capture <- rep(0, Rep)
+\end_layout
+
+\begin_layout Plain Layout
+
+Bounds <- matrix(0, nrow = Rep, ncol = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+for (i in 1:Rep) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  mu <- 2
+\end_layout
+
+\begin_layout Plain Layout
+
+  x <- rpois(sample_size, mu)
+\end_layout
+
+\begin_layout Plain Layout
+
+  bounds <- CI(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+  capture[i] <- ((bounds$lower <= mu) & (mu <= bounds$upper))
+\end_layout
+
+\begin_layout Plain Layout
+
+  Bounds[i,] <- unlist( bounds )
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+cat("the emprical coverage probability = ", mean(capture)) # empirical size
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Plot confidence intervals for 25 replications.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+Bounds25 <- Bounds[1:25, ]
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(1, type="n", xlab="", ylab="", 
+\end_layout
+
+\begin_layout Plain Layout
+
+     ylim=c(min(Bounds25), max(Bounds25)), xlim=c(1, 25))
+\end_layout
+
+\begin_layout Plain Layout
+
+segments(x0= 1:25, y0=Bounds25[,1], x1 = 1:25, y1 = Bounds25[,2])
+\end_layout
+
+\begin_layout Plain Layout
+
+abline(h=2, col = "red", lty = 2, lwd = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Bayesian Credible Set
+\end_layout
+
+\begin_layout Standard
+The Bayesian framework offers a coherent and natural language for statistical
+ decision.
+ However, the major criticism against Bayesian statistics is the arbitrariness
+ of the choice of the prior.
+\end_layout
+
+\begin_layout Standard
+The Bayesian approach views both the data 
+\begin_inset Formula $\mathbf{X}_{n}$
+\end_inset
+
+ and the parameter 
+\begin_inset Formula $\theta$
+\end_inset
+
+ as random variables.
+ Before she observes the data, she holds a 
+\emph on
+prior distribution
+\emph default
+ 
+\begin_inset Formula $\pi$
+\end_inset
+
+ about 
+\begin_inset Formula $\theta$
+\end_inset
+
+.
+ After observing the data, she updates the prior distribution to a 
+\emph on
+posterior distribution
+\emph default
+ 
+\begin_inset Formula $p(\theta|\mathbf{X}_{n})$
+\end_inset
+
+.
+ The 
+\emph on
+Bayes Theorem
+\emph default
+ connects the prior and the posterior as 
+\begin_inset Formula 
+\[
+p(\theta|\mathbf{X}_{n})\propto f(\mathbf{X}_{n}|\theta)\pi(\theta)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $f(\mathbf{X}_{n}|\theta)$
+\end_inset
+
+ is the likelihood function.
+\end_layout
+
+\begin_layout Standard
+Here is a classical example to illustrate the Bayesian approach to statistical
+ inference.
+ Suppose 
+\begin_inset Formula $\mathbf{X}_{n}=(X_{1},\ldots,X_{n})$
+\end_inset
+
+ is an iid sample drawn from a normal distribution with unknown 
+\begin_inset Formula $\theta$
+\end_inset
+
+ and known 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+ If a researcher's prior distribution 
+\begin_inset Formula $\theta\sim N(\theta_{0},\sigma_{0}^{2})$
+\end_inset
+
+, her posterior distribution is, by some routine calculation, also a normal
+ distribution 
+\begin_inset Formula 
+\[
+p(\theta|\mathbf{x}_{n})\sim N\left(\tilde{\theta},\tilde{\sigma}^{2}\right),
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\theta}=\frac{\sigma^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\theta_{0}+\frac{n\sigma_{0}^{2}}{n\sigma_{0}^{2}+\sigma^{2}}\bar{x}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{\sigma}^{2}=\frac{\sigma_{0}^{2}\sigma^{2}}{n\sigma_{0}^{2}+\sigma^{2}}$
+\end_inset
+
+.
+ Thus the Bayesian credible set is 
+\begin_inset Formula 
+\[
+\left(\tilde{\theta}-z_{1-\alpha/2}\cdot\tilde{\sigma},\ \tilde{\theta}+z_{1-\alpha/2}\cdot\tilde{\sigma}\right).
+\]
+
+\end_inset
+
+This posterior distribution depends on 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{0}^{2}$
+\end_inset
+
+ from the prior.
+ When the sample size is sufficiently large the posterior can be approximated
+ by 
+\begin_inset Formula $N(\bar{x},\sigma^{2}/n)$
+\end_inset
+
+, where the prior information is overwhelmed by the information accumulated
+ from the data.
+\end_layout
+
+\begin_layout Standard
+In contrast, a frequentist will estimate 
+\begin_inset Formula $\hat{\theta}=\bar{x}\sim N(\theta,\sigma^{2}/n)$
+\end_inset
+
+.
+ Her confidence interval is 
+\begin_inset Formula 
+\[
+\left(\bar{x}-z_{1-\alpha/2}\cdot\sigma/\sqrt{n},\ \bar{x}-z_{1-\alpha/2}\cdot\sigma/\sqrt{n}\right).
+\]
+
+\end_inset
+
+The Bayesian credible set and the frequentist confidence interval are different
+ for finite 
+\begin_inset Formula $n$
+\end_inset
+
+, but they coincide when 
+\begin_inset Formula $n\to\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Applications in OLS
+\end_layout
+
+\begin_layout Standard
+We will introduce three tests for a  hypothesis of the linear regression
+ coefficients, namely the Wald test, the Lagrangian multiplier (LM) test,
+ and the likelihood ratio test.
+ The Wald test is based on the unrestricted OLS estimator 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+.
+ The LM test is based on the restricted estimator 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+.
+ The LRT, as we have discussed, is based on the difference of the log-likelihood
+ function evaluated at the unrestricted OLS estimator and that on the restricted
+ estimator.
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $R$
+\end_inset
+
+ be a 
+\begin_inset Formula $q\times K$
+\end_inset
+
+ constant matrix with 
+\begin_inset Formula $q\leq K$
+\end_inset
+
+ and 
+\begin_inset Formula $\mbox{rank}\left(R\right)=q$
+\end_inset
+
+.
+ All linear restrictions about 
+\begin_inset Formula $\beta$
+\end_inset
+
+ can be written in the form of 
+\begin_inset Formula $R\beta=r$
+\end_inset
+
+, where 
+\begin_inset Formula $r$
+\end_inset
+
+ is a 
+\begin_inset Formula $q\times1$
+\end_inset
+
+ constant vector.
+\end_layout
+
+\begin_layout Example
+We want to simultaneously test 
+\begin_inset Formula $\beta_{1}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{3}+\beta_{4}=2$
+\end_inset
+
+ in the above example.
+ The null hypothesis can be expressed in the general form 
+\begin_inset Formula $R\beta=r$
+\end_inset
+
+, where the restriction matrix 
+\begin_inset Formula $R$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\[
+R=\begin{pmatrix}1 & 0 & 0 & 0 & 0\\
+0 & 0 & 1 & 1 & 0
+\end{pmatrix}
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $r=\left(1,2\right)'$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Wald Test
+\end_layout
+
+\begin_layout Standard
+Suppose the OLS estimator 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is asymptotic normal, i.e.
+ 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,\Omega\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Omega$
+\end_inset
+
+ is a 
+\begin_inset Formula $K\times K$
+\end_inset
+
+ positive definite covariance matrix and.
+ Since 
+\begin_inset Formula $R\sqrt{n}\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)$
+\end_inset
+
+, the quadratic form 
+\begin_inset Formula 
+\[
+n\left(\widehat{\beta}-\beta\right)'R'\left(R\Omega R'\right)^{-1}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}\chi_{q}^{2}.
+\]
+
+\end_inset
+
+Now we intend to test the linear null hypothesis 
+\begin_inset Formula $R\beta=r$
+\end_inset
+
+.
+ Under the null, the Wald statistic 
+\begin_inset Formula 
+\[
+\mathcal{W}=n\left(R\widehat{\beta}-r\right)'\left(R\widehat{\Omega}R'\right)^{-1}\left(R\widehat{\beta}-r\right)\stackrel{d}{\to}\chi_{q}^{2}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\widehat{\Omega}$
+\end_inset
+
+ is a consistent estimator of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+(Single test) In a linear regression 
+\begin_inset Formula 
+\[
+\begin{aligned}y & =x_{i}'\beta+e_{i}=\sum_{k=1}^{5}\beta_{k}x_{ik}+e_{i}.\nonumber\\
+E\left[e_{i}x_{i}\right] & =\mathbf{0}_{5},\label{eq:example}
+\end{aligned}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $y$
+\end_inset
+
+ is wage and 
+\begin_inset Formula 
+\[
+x=\left(\mbox{edu},\mbox{age},\mbox{experience},\mbox{experience}^{2},1\right)'.
+\]
+
+\end_inset
+
+To test whether 
+\emph on
+education
+\emph default
+ affects 
+\emph on
+wage
+\emph default
+, we specify the null hypothesis 
+\begin_inset Formula $\beta_{1}=0$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $R=\left(1,0,0,0,0\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $r=0$
+\end_inset
+
+.
+ 
+\begin_inset Formula 
+\begin{equation}
+\sqrt{n}\widehat{\beta}_{1}=\sqrt{n}\left(\widehat{\beta}_{1}-\beta_{1}\right)=\sqrt{n}R\left(\widehat{\beta}-\beta\right)\stackrel{d}{\to}N\left(0,R\Omega R'\right)\sim N\left(0,\Omega_{11}\right),\label{eq:R11}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Omega{}_{11}$
+\end_inset
+
+ is the 
+\begin_inset Formula $\left(1,1\right)$
+\end_inset
+
+ (scalar) element of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ Under 
+\begin_inset Formula 
+\[
+H_{0}:R\beta=\left(1,0,0,0,0\right)\left(\beta_{1},\ldots,\beta_{5}\right)'=\beta_{1}=0,
+\]
+
+\end_inset
+
+ we have 
+\begin_inset Formula $\sqrt{n}R\left(\widehat{\beta}-\beta\right)=\sqrt{n}\widehat{\beta}_{1}\stackrel{d}{\to}N\left(0,\Omega_{11}\right).$
+\end_inset
+
+ Therefore, 
+\begin_inset Formula 
+\[
+\sqrt{n}\frac{\widehat{\beta}_{1}}{\widehat{\Omega}_{11}^{1/2}}=\sqrt{\frac{\Omega_{11}}{\widehat{\Omega}_{11}}}\sqrt{n}\frac{\widehat{\beta}_{1}}{\sqrt{\Omega_{11}}}
+\]
+
+\end_inset
+
+If 
+\begin_inset Formula $\widehat{\Omega}\stackrel{p}{\to}\Omega$
+\end_inset
+
+, then 
+\begin_inset Formula $\left(\Omega_{11}/\widehat{\Omega}_{11}\right)^{1/2}\stackrel{p}{\to}1$
+\end_inset
+
+ by the continuous mapping theorem.
+ As 
+\begin_inset Formula $\sqrt{n}\widehat{\beta}_{1}/\Omega_{11}^{1/2}\stackrel{d}{\to}N\left(0,1\right)$
+\end_inset
+
+, we conclude 
+\begin_inset Formula $\sqrt{n}\widehat{\beta}_{1}/\widehat{\Omega}_{11}^{1/2}\stackrel{d}{\to}N\left(0,1\right).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+The above example is a test about a single coefficient, and the test statistic
+ is essentially the square of the 
+\emph on
+t
+\emph default
+-statistic, and the null distribution is the square of a standard normal.
+\end_layout
+
+\begin_layout Standard
+In order to test a nonlinear regression, we use the delta method.
+ 
+\series bold
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\series bold
+Delta method
+\series default
+ If 
+\begin_inset Formula $\sqrt{n}\left(\widehat{\theta}-\theta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega_{K\times K}\right)$
+\end_inset
+
+, and 
+\begin_inset Formula $f:\mathbb{R}^{K}\mapsto\mathbb{R}^{q}$
+\end_inset
+
+ is a continuously differentiable function for some 
+\begin_inset Formula $q\leq K$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}N\left(0,\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)'\right).
+\]
+
+\end_inset
+
+This result can be easily shown by a mean-value expansion 
+\begin_inset Formula 
+\[
+f(\hat{\theta})-f(\theta_{0})=\frac{\partial f(\tilde{\theta})}{\partial\theta}(\hat{\theta}-\theta_{0})
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\theta}$
+\end_inset
+
+ lies on the line segment connecting 
+\begin_inset Formula $\hat{\theta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+.
+ Multiply both sides by 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+ and notice 
+\begin_inset Formula $\tilde{\theta}\stackrel{p}{\to}\theta_{0}$
+\end_inset
+
+, by Slutsky theorem we have 
+\begin_inset Formula $\sqrt{n}(f(\hat{\theta})-f(\theta_{0}))\stackrel{d}{\to}\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)N(0,\Omega).$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+(This is not a good example because it can be rewritten into a linear hypothesis.
+)
+\emph default
+ In the example of linear regression, the optimal experience level can be
+ found by setting to zero the first order condition with respective to experienc
+e, 
+\begin_inset Formula $\beta_{3}+2\beta_{4}\mbox{experience}^{*}=0$
+\end_inset
+
+.
+ We test the hypothesis that the optimal experience level is 20 years; in
+ other words, 
+\begin_inset Formula 
+\[
+\mbox{experience}^{*}=-\frac{\beta_{3}}{2\beta_{4}}=20.
+\]
+
+\end_inset
+
+This is a nonlinear hypothesis.
+ If 
+\begin_inset Formula $q\leq K$
+\end_inset
+
+ where 
+\begin_inset Formula $q$
+\end_inset
+
+ is the number of restrictions, we have 
+\begin_inset Formula 
+\[
+n\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)'\left(\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)\Omega\frac{\partial f}{\partial\theta}\left(\theta_{0}\right)'\right)^{-1}\left(f\left(\widehat{\theta}\right)-f\left(\theta_{0}\right)\right)\stackrel{d}{\to}\chi_{q}^{2},
+\]
+
+\end_inset
+
+where in this example, 
+\begin_inset Formula $\theta=\beta$
+\end_inset
+
+, 
+\begin_inset Formula $f\left(\beta\right)=-\beta_{3}/\left(2\beta_{4}\right)$
+\end_inset
+
+.
+ The gradient 
+\begin_inset Formula 
+\[
+\frac{\partial f}{\partial\beta'}\left(\beta\right)=\left(0,0,-\frac{1}{2\beta_{4}},\frac{\beta_{3}}{2\beta_{4}^{2}},0\right)
+\]
+
+\end_inset
+
+Since 
+\begin_inset Formula $\widehat{\beta}\stackrel{p}{\to}\beta_{0}$
+\end_inset
+
+, by the continuous mapping theorem, if 
+\begin_inset Formula $\beta_{0,4}\neq0$
+\end_inset
+
+, we have 
+\begin_inset Formula $\frac{\partial}{\partial\beta}f\left(\widehat{\beta}\right)\stackrel{p}{\to}\frac{\partial}{\partial\beta}f\left(\beta_{0}\right)$
+\end_inset
+
+.
+ Therefore, the (nonlinear) Wald test is 
+\begin_inset Formula 
+\[
+\mathcal{W}=n\left(f\left(\widehat{\beta}\right)-20\right)'\left(\frac{\partial f}{\partial\beta'}\left(\widehat{\beta}\right)\widehat{\Omega}\frac{\partial f}{\partial\beta'}\left(\widehat{\beta}\right)\right)^{-1}\left(f\left(\widehat{\beta}\right)-20\right)\stackrel{d}{\to}\chi_{1}^{2}.
+\]
+
+\end_inset
+
+This is a valid test with correct asymptotic size.
+\end_layout
+
+\begin_layout Standard
+However, we can equivalently state the null hypothesis as 
+\begin_inset Formula $\beta_{3}+40\beta_{4}=0$
+\end_inset
+
+ and we can construct a Wald statistic accordingly.
+ Asymptotically equivalent though, in general a linear hypothesis is preferred
+ to a nonlinear one, due to the approximation error in the delta method
+ under the null and more importantly the invalidity of the Taylor expansion
+ under the alternative.
+ It also highlights the problem of Wald test being 
+\emph on
+variant
+\emph default
+ to re-parametrization.
+\end_layout
+
+\begin_layout Subsection
+Lagrangian Multiplier Test
+\end_layout
+
+\begin_layout Standard
+The key difference between the Wald test and LM test is that the former
+ is based on the unrestricted OLS estimator while the latter is based on
+ the restricted OLS estimator.
+ Estimate the constrained OLS estimator
+\begin_inset Formula 
+\[
+\min_{\beta}\left(y-X\beta\right)'\left(y-X\beta\right)\mbox{ s.t. }R\beta=r.
+\]
+
+\end_inset
+
+We know that the restricted minimization problem can be converted into an
+ unrestricted problem 
+\begin_inset Formula 
+\begin{equation}
+L\left(\beta,\lambda\right)=\frac{1}{2n}\left(y-X\beta\right)'\left(y-X\beta\right)+\lambda'\left(R\beta-r\right),\label{eq:Lagran}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $L\left(\beta,\lambda\right)$
+\end_inset
+
+ is called the Lagrangian, and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ is the Lagrangian multiplier.
+ 
+\end_layout
+
+\begin_layout Standard
+The LM test is also called the 
+\emph on
+score test
+\emph default
+, because the derivation is based on the score function of the restricted
+ OLS estimator.
+ Set the first-order condition of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Lagran"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ as zero:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial}{\partial\beta}L & =-\frac{1}{n}X'\left(y-X\tilde{\beta}\right)+\tilde{\lambda}R=-\frac{1}{n}X'e+\frac{1}{n}X'X\left(\tilde{\beta}-\beta_{0}\right)+R'\tilde{\lambda}=0.\\
+\frac{\partial}{\partial\lambda}L & =R\tilde{\beta}-r=R\left(\tilde{\beta}-\beta_{0}\right)=0
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{\lambda}$
+\end_inset
+
+ denote the roots of these equation, and 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ is the hypothesized true value.
+ The two equations can be written as a linear system
+\begin_inset Formula 
+\[
+\begin{pmatrix}\widehat{Q} & R'\\
+R & 0
+\end{pmatrix}\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
+\tilde{\lambda}
+\end{pmatrix}=\begin{pmatrix}\frac{1}{n}X'e\\
+0
+\end{pmatrix},
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\hat{Q}=X'X/n$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Fact
+\begin_inset Formula 
+\[
+\begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
+\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & -(R'Q^{-1}R)^{-1}
+\end{pmatrix}\begin{pmatrix}\widehat{Q} & R'\\
+R & 0
+\end{pmatrix}=I_{K+q}.
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Given the above fact, we can explicitly express
+\begin_inset Formula 
+\begin{align*}
+\begin{pmatrix}\tilde{\beta}-\beta_{0}\\
+\tilde{\lambda}
+\end{pmatrix}\begin{aligned}=\end{aligned}
+ & \begin{pmatrix}\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & \widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}\\
+\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1} & -(R'Q^{-1}R)^{-1}
+\end{pmatrix}\begin{pmatrix}\frac{1}{n}X'e\\
+0
+\end{pmatrix}\\
+= & \begin{pmatrix}\widehat{Q}^{-1}\frac{1}{n}X'e-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{n}X'e\\
+\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{n}X'e
+\end{pmatrix}
+\end{align*}
+
+\end_inset
+
+The 
+\begin_inset Formula $\tilde{\lambda}$
+\end_inset
+
+ component is 
+\begin_inset Formula 
+\begin{align*}
+\sqrt{n}\tilde{\lambda} & =\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ & \stackrel{d}{\to}N\left(0,\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}\right)
+\end{align*}
+
+\end_inset
+
+as 
+\begin_inset Formula $\widehat{Q}\stackrel{p}{\to}Q$
+\end_inset
+
+.
+ Denote 
+\begin_inset Formula $\Sigma=\left(RQ^{-1}R'\right)^{-1}RQ^{-1}\Omega Q^{-1}R'\left(RQ^{-1}R'\right)^{-1}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+n\tilde{\lambda}'\Sigma^{-1}\tilde{\lambda}\stackrel{d}{\to}\chi_{q}^{2}.
+\]
+
+\end_inset
+
+Let 
+\begin_inset Formula 
+\[
+\widehat{\Sigma}=\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{\Omega}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}.
+\]
+
+\end_inset
+
+ If 
+\begin_inset Formula $\widehat{\Omega}\stackrel{p}{\to}\Omega$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{LM} & =n\tilde{\lambda}'\widehat{\Sigma}^{-1}\tilde{\lambda}=n\tilde{\lambda}'\Sigma^{-1}\tilde{\lambda}+n\tilde{\lambda}'\left(\widehat{\Sigma}^{-1}-\Sigma^{-1}\right)\tilde{\lambda}\\
+ & =n\tilde{\lambda}'\Sigma^{-1}\tilde{\lambda}+o_{p}\left(1\right)\stackrel{d}{\to}\chi_{q}^{2}.
+\end{align*}
+
+\end_inset
+
+This is the general expression of the LM test.
+\end_layout
+
+\begin_layout Standard
+In the special case of homoskedasticity, 
+\begin_inset Formula $\Sigma=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}RQ^{-1}QQ^{-1}R'\left(RQ^{-1}R'\right)^{-1}=\sigma^{2}\left(RQ^{-1}R'\right)^{-1}.$
+\end_inset
+
+ Replace 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ with the estimated 
+\begin_inset Formula $\hat{\Sigma}$
+\end_inset
+
+, we have 
+\begin_inset Formula 
+\[
+\begin{aligned}\frac{n\tilde{\lambda}'R\hat{Q}^{-1}R'\tilde{\lambda}}{\hat{\sigma}^{2}} & =\frac{1}{n\hat{\sigma}^{2}}\left(y-X\tilde{\beta}\right)'X\hat{Q}^{-1}R'(R\hat{Q}^{-1}R')^{-1}R\hat{Q}^{-1}X'\left(y-X\tilde{\beta}\right)\stackrel{d}{\to}\chi_{q}^{2}.\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+If we test the hypothesis that the optimal experience level is 20 years;
+ 
+\begin_inset Formula $\mbox{experience}^{*}=-\frac{\beta_{3}}{2\beta_{4}}=20.$
+\end_inset
+
+ We can replace 
+\begin_inset Formula $\beta_{3}$
+\end_inset
+
+ by 
+\begin_inset Formula $-40\beta_{4}$
+\end_inset
+
+ so we only need to estimate 3 slope coefficients in the OLS to construct
+ the LM test.
+ Moreover, the LM test is invariant to re-parametrization.
+\end_layout
+
+\begin_layout Subsection
+Likelihood-Ratio Test for Regression
+\end_layout
+
+\begin_layout Standard
+In the previous section we have discussed the LRT.
+ Here we put it into the context regression with Gaussian error.
+ Let 
+\begin_inset Formula $\gamma=\sigma_{e}^{2}$
+\end_inset
+
+.
+ Under the classical assumptions of normal regression model,
+\begin_inset Formula 
+\[
+L_{n}\left(\beta,\gamma\right)=-\frac{n}{2}\log\left(2\pi\right)-\frac{n}{2}\log\gamma-\frac{1}{2\gamma}\left(Y-X\beta\right)'\left(Y-X\beta\right).
+\]
+
+\end_inset
+
+For the unrestricted estimator, we know 
+\begin_inset Formula 
+\[
+\widehat{\gamma}=\gamma\left(\widehat{\beta}\right)=n^{-1}\left(Y-X\widehat{\beta}\right)'\left(Y-X\widehat{\beta}\right)
+\]
+
+\end_inset
+
+ and the sample log-likelihood function evaluated at the MLE is 
+\begin_inset Formula 
+\[
+\widehat{L}_{n}=L_{n}\left(\widehat{\beta},\widehat{\gamma}\right)=-\frac{n}{2}\log\left(2\pi\right)-\frac{n}{2}\log\widehat{\gamma}-\frac{n}{2}
+\]
+
+\end_inset
+
+and the restricted estimator 
+\begin_inset Formula $\tilde{L}_{n}=L_{n}\left(\tilde{\beta},\tilde{\gamma}\right)=-\frac{n}{2}\log\left(2\pi\right)-\frac{n}{2}\log\tilde{\gamma}-\frac{n}{2}$
+\end_inset
+
+.
+ The likelihood ratio is 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{LR} & =2\left(\widehat{L}_{n}-\tilde{L}_{n}\right)=n\log\left(\tilde{\gamma}/\widehat{\gamma}\right).
+\end{align*}
+
+\end_inset
+
+If the normal regression is correctly specified, we can immediately conclude
+ 
+\begin_inset Formula $\mathcal{LR}\stackrel{d}{\to}\chi_{q}^{2}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we drop the Gaussian error assumption while keep the conditional homoskedast
+icity.
+ In this case, the classical results is not applicable because 
+\begin_inset Formula $L_{n}\left(\beta,\gamma\right)$
+\end_inset
+
+ is not a (genuine) log-likelihood function; instead it is the 
+\emph on
+quasi log-likelihood function
+\emph default
+.
+ Notice
+\begin_inset Formula 
+\begin{align}
+\mathcal{LR} & =n\log\left(1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}\right)=n\left(\log1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+O\left(\frac{\left|\tilde{\gamma}-\widehat{\gamma}\right|^{2}}{\widehat{\gamma}^{2}}\right)\right)\nonumber \\
+ & =n\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}+o_{p}\left(1\right)\label{eq:LRT1}
+\end{align}
+
+\end_inset
+
+by a Taylor expansion of 
+\begin_inset Formula $\log\left(1+\frac{\tilde{\gamma}-\widehat{\gamma}}{\widehat{\gamma}}\right)$
+\end_inset
+
+ around 
+\begin_inset Formula $\log1=0$
+\end_inset
+
+.
+ We focus on 
+\begin_inset Formula 
+\begin{align}
+n\left(\tilde{\gamma}-\widehat{\gamma}\right) & =n\left(\gamma\left(\tilde{\beta}\right)-\gamma\left(\widehat{\beta}\right)\right)\nonumber \\
+ & =n\left(\frac{\partial\gamma\left(\widehat{\beta}\right)}{\partial\beta}\left(\tilde{\beta}-\widehat{\beta}\right)+\frac{1}{2}\left(\tilde{\beta}-\widehat{\beta}\right)'\frac{\partial^{2}\gamma\left(\widehat{\beta}\right)}{\partial\beta\partial\beta'}\left(\tilde{\beta}-\widehat{\beta}\right)+O\left(\left\Vert \tilde{\beta}-\widehat{\beta}\right\Vert _{2}^{3}\right)\right)\nonumber \\
+ & =\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)+o_{p}\left(1\right)\label{eq:LRT2}
+\end{align}
+
+\end_inset
+
+where the last line follows by 
+\begin_inset Formula $\frac{\partial\gamma\left(\widehat{\beta}\right)}{\partial\beta}=-\frac{2}{n}X'\left(Y-X\widehat{\beta}\right)=-\frac{2}{n}X'\widehat{e}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{1}{2}\cdot\frac{\partial^{2}\gamma\left(\widehat{\beta}\right)}{\partial\beta\partial\beta'}=\frac{1}{2}\cdot\frac{2}{n}X'X=\widehat{Q}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+From the derivation of LM test, we have 
+\begin_inset Formula 
+\[
+\begin{aligned}\sqrt{n}\left(\tilde{\beta}-\beta_{0}\right) & =\left(\widehat{Q}^{-1}-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\right)\frac{1}{\sqrt{n}}X'e\\
+ & =\frac{1}{\sqrt{n}}\left(X'X\right)^{-1}X'e-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\\
+ & =\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e.
+\end{aligned}
+\]
+
+\end_inset
+
+Rearrange the above equation to obtain 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)=-\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e
+\]
+
+\end_inset
+
+and thus the quadratic form
+\begin_inset Formula 
+\begin{eqnarray}
+ &  & \sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)'\widehat{Q}\sqrt{n}\left(\tilde{\beta}-\widehat{\beta}\right)\nonumber \\
+ & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\widehat{Q}\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\nonumber \\
+ & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e\nonumber \\
+ & = & \frac{1}{\sqrt{n}}e'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'e.\label{eq:LRT3}
+\end{eqnarray}
+
+\end_inset
+
+Collecting (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LRT1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LRT2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LRT3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), we have 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{LR} & =n\frac{\sigma_{e}^{2}}{\widehat{\gamma}}\cdot\frac{\tilde{\gamma}-\widehat{\gamma}}{\sigma_{e}^{2}}+o_{p}\left(1\right)\\
+ & =\frac{\sigma_{e}^{2}}{\widehat{\gamma}}\frac{1}{\sqrt{n}}\frac{e}{\sigma_{e}}'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\frac{e}{\sigma_{e}}+o_{p}\left(1\right)
+\end{align*}
+
+\end_inset
+
+Notice that under homoskedasticity, CLT gives 
+\begin_inset Formula 
+\begin{align*}
+R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\frac{e}{\sigma_{e}} & =R\widehat{Q}^{-1/2}\widehat{Q}^{-1/2}\frac{1}{\sqrt{n}}X'\frac{e}{\sigma_{e}}\\
+ & \stackrel{d}{\to}RQ^{-1/2}\times N\left(0,I_{K}\right)\sim N\left(0,RQ^{-1}R'\right),
+\end{align*}
+
+\end_inset
+
+and thus 
+\begin_inset Formula 
+\[
+\frac{1}{\sqrt{n}}\frac{e}{\sigma_{e}}'X\widehat{Q}^{-1}R'\left(R\widehat{Q}^{-1}R'\right)^{-1}R\widehat{Q}^{-1}\frac{1}{\sqrt{n}}X'\frac{e}{\sigma_{e}}\stackrel{d}{\to}\chi_{q}^{2}.
+\]
+
+\end_inset
+
+ Moreover, 
+\begin_inset Formula $\frac{\sigma_{e}^{2}}{\widehat{\gamma}}\stackrel{p}{\to}1$
+\end_inset
+
+.
+ By Slutsky's theorem, we conclude 
+\begin_inset Formula 
+\[
+\mathcal{LR}\stackrel{d}{\to}\chi_{q}^{2}.
+\]
+
+\end_inset
+
+under homoskedasticity.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Abraham Wald, Pearson and Neyman.
+\end_layout
+
+\begin_layout Plain Layout
+Bayes comes back in big data.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+Leo Lehmann's two books: point estimation and hypothesis testing.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+Applied econometrics is a field obsessed of hypothesis testing, in the hope
+ to establish at least statistical association and ideally causality.
+ Hypothesis testing is a fundamentally important topic in statistics.
+ The states and the decisions in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Decisions-and-States"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ remind us the intrinsic connections with game theory in economics.
+ I, a game player, plays a sequential game against the 
+\begin_inset Quotes eld
+\end_inset
+
+nature
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Step0: The parameter space 
+\begin_inset Formula $\Theta$
+\end_inset
+
+ is partitioned into the null hypothesis 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+ and the alternative hypothesis 
+\begin_inset Formula $\Theta_{1}$
+\end_inset
+
+ according to a scientific theory.
+\end_layout
+
+\begin_layout Description
+Step1: Before I observe the data, I design a test function 
+\begin_inset Formula $\phi$
+\end_inset
+
+ according to 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Theta_{1}$
+\end_inset
+
+.
+ In game theory terminology, the contingency plan 
+\begin_inset Formula $\phi$
+\end_inset
+
+ is my 
+\emph on
+strategy
+\emph default
+.
+\end_layout
+
+\begin_layout Description
+Step2: Once I observe the fixed data 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, I act according to the instruction of 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)$
+\end_inset
+
+ — either accept 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+ or reject 
+\begin_inset Formula $\Theta_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+Step3: Nature reveals the true parameter 
+\begin_inset Formula $\theta^{*}$
+\end_inset
+
+ behind 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+.
+ Then I can evaluate the gain/loss of my decision 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+When the loss function (negative payoff) is specified as
+\begin_inset Formula 
+\[
+\mathscr{L}\left(\theta,\phi\left(\mathbf{x}\right)\right)=\phi\left(\mathbf{x}\right)\cdot1\left\{ \theta\in\Theta_{0}\right\} +\left(1-\phi\left(\mathbf{x}\right)\right)\cdot1\left\{ \theta\in\Theta_{1}\right\} ,
+\]
+
+\end_inset
+
+the randomness of the data will incur the risk (expected loss) 
+\begin_inset Formula 
+\[
+\mathscr{R}\left(\theta,\phi\right)=E\left[\mathscr{L}\left(\theta,\phi\left(\mathbf{x}\right)\right)\right]=\beta_{\phi}\left(\theta\right)\cdot1\left\{ \theta\in\Theta_{0}\right\} +\left(1-\beta_{\phi}\left(\theta\right)\right)\cdot1\left\{ \theta\in\Theta_{1}\right\} .
+\]
+
+\end_inset
+
+I am a rational person.
+ I understand the structure of the game and I want to do a good job in Step
+ 1 in designing my strategy.
+ I want to minimize my risk.
+\end_layout
+
+\begin_layout Standard
+If I am a frequentist, one and only one of 
+\begin_inset Formula $1\left\{ \theta\in\Theta_{0}\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $1\left\{ \theta\in\Theta_{1}\right\} $
+\end_inset
+
+ can happen.
+ An unbiased test makes sure 
+\begin_inset Formula $\sup_{\theta\in\Theta_{0}}\beta_{\phi}\left(\theta\right)\leq\alpha$
+\end_inset
+
+.
+ When many tests are unbiased, ideally I would like to pick the best one.
+ If it exists, in a class 
+\begin_inset Formula $\Psi_{\alpha}$
+\end_inset
+
+ of unbiased tests of size 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ the uniformly most power test 
+\begin_inset Formula $\phi^{*}$
+\end_inset
+
+ satisfies 
+\begin_inset Formula $\mathscr{R}\left(\theta,\phi^{*}\right)\geq\sup_{\phi\in\Psi_{\alpha}}\mathscr{R}\left(\theta,\phi\right)$
+\end_inset
+
+ for every 
+\begin_inset Formula $\theta\in\Theta_{1}$
+\end_inset
+
+.
+ For simple versus simple tests, LRT is the uniformly most powerful test
+ according to Neyman-Pearson Lemma.
+\end_layout
+
+\begin_layout Standard
+If I am a Bayesian, I do not mind imposing probability (weight) on the parameter
+ space, which is my prior belief 
+\begin_inset Formula $\pi\left(\theta\right)$
+\end_inset
+
+.
+ My Bayesian risk becomes
+\begin_inset Formula 
+\begin{align*}
+\mathscr{BR}\left(\pi,\phi\right) & =E_{\pi\left(\theta\right)}\left[\mathscr{R}\left(\theta,\phi\right)\right]=\int\left[\beta_{\phi}\left(\theta\right)\cdot1\left\{ \theta\in\Theta_{0}\right\} +\left(1-\beta_{\phi}\left(\theta\right)\right)\cdot1\left\{ \theta\in\Theta_{1}\right\} \right]\pi\left(\theta\right)d\theta\\
+ & =\int_{\left\{ \theta\in\Theta_{0}\right\} }\beta_{\phi}\left(\theta\right)\pi\left(\theta\right)d\theta+\int_{\left\{ \theta\in\Theta_{1}\right\} }(1-\beta_{\phi}\left(\theta\right))\pi\left(\theta\right)d\theta.
+\end{align*}
+
+\end_inset
+
+This is the average (with respect to 
+\begin_inset Formula $\pi\left(\theta\right)$
+\end_inset
+
+) risk over the null and the alternative.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Historical notes
+\series default
+: Hypothesis testing started to take the modern shape at the beginning of
+ the 20th century.
+ Karl Pearson (1957–1936) laid the foundation of hypothesis testing and
+ introduced the 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ test, the 
+\begin_inset Formula $p$
+\end_inset
+
+-value, among many other concepts that we keep using today.
+ Neyman-Pearson Lemma was named after Jerzy Neyman (1894–1981) and Egon
+ Pearson (1895–1980), Karl's son.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Further reading
+\series default
+: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "young2005essentials"
+literal "false"
+
+\end_inset
+
+ is a concise but in-depth reference for statistical inference.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+I spent lots of time on it when I sat in Andrew Barron's class.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Appendix
+\end_layout
+
+\begin_layout Subsection
+
+\series bold
+Neyman-Pearson Lemma
+\end_layout
+
+\begin_layout Standard
+We have discussed an example of the uniformly most power test in the Gaussian
+ location model.
+ Under the likelihood principle, if the test is a simple versus simple (the
+ null hypothesis is a singleton 
+\begin_inset Formula $\theta_{0}$
+\end_inset
+
+ and the alternative hypothesis is another single point 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+), then LRT
+\begin_inset Formula 
+\begin{align*}
+\phi\left(\mathbf{X}\right) & :=1\left\{ \mathcal{LR}\geq c_{LR}\right\} ,
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{LR}$
+\end_inset
+
+ is the critical value depending on the size of the the test, is a uniformly
+ most powerful test.
+ This result is the well-known Neyman-Pearson Lemma.
+\end_layout
+
+\begin_layout Standard
+Notice 
+\begin_inset Formula $\exp\left(L_{n}\left(\theta\right)\right)=\Pi_{i}f\left(x_{i};\theta\right)=f\left(\mathbf{x};\theta\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $f\left(\mathbf{x};\theta_{0}\right)$
+\end_inset
+
+ is the joint density of 
+\begin_inset Formula $\left(x_{1},\ldots,x_{n}\right)$
+\end_inset
+
+, the LRT can be equivalently written in likelihood ratio form (without
+ log)
+\begin_inset Formula 
+\[
+\phi\left(\mathbf{X}\right)=1\left\{ f\left(\mathbf{X};\widehat{\theta}\right)/f\left(\mathbf{X};\theta_{0}\right)\geq c\right\} 
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c:=\exp\left(c_{LR}/2\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To see its is the most power test in the simple to simple context, consider
+ another test 
+\begin_inset Formula $\psi$
+\end_inset
+
+ of the same size at the single null hypothesis 
+\begin_inset Formula $\int\phi\left(\mathbf{x}\right)f\left(\theta_{0}\right)=\int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)=\alpha$
+\end_inset
+
+, where 
+\begin_inset Formula $f\left(\mathbf{x};\theta_{0}\right)=$
+\end_inset
+
+ is the joint density of the sample 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+.
+ For any constant 
+\begin_inset Formula $c>0$
+\end_inset
+
+, the power of 
+\begin_inset Formula $\phi$
+\end_inset
+
+ at the alternative 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align}
+E_{\theta_{1}}\left[\phi\left(\mathbf{X}\right)\right] & =\int\phi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{1}\right)\nonumber \\
+ & =\int\phi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{1}\right)-c\left[\int\phi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)-\int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)\right]\nonumber \\
+ & =\int\phi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{1}\right)-c\int\phi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)+c\int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)\nonumber \\
+ & =\int\phi\left(\mathbf{x}\right)\left(f\left(\mathbf{x};\theta_{1}\right)-cf\left(\mathbf{x};\theta_{0}\right)\right)+c\int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right).\label{eq:NP1}
+\end{align}
+
+\end_inset
+
+Define 
+\begin_inset Formula $\xi_{c}:=f\left(\mathbf{x};\theta_{1}\right)-cf\left(\mathbf{x};\theta_{0}\right)$
+\end_inset
+
+.
+ The fact that 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)=1$
+\end_inset
+
+ if 
+\begin_inset Formula $\xi_{c}\geq0$
+\end_inset
+
+ and 
+\begin_inset Formula $\phi\left(\mathbf{x}\right)=0$
+\end_inset
+
+ if 
+\begin_inset Formula $\xi_{c}<0$
+\end_inset
+
+ implies 
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \int\phi\left(\mathbf{x}\right)\left(f\left(\mathbf{x};\theta_{1}\right)-cf\left(\mathbf{x};\theta_{0}\right)\right)=\int\phi\left(\mathbf{x}\right)\xi_{c}\\
+ & = & \int_{\left\{ \xi_{c}\geq0\right\} }\phi\left(\mathbf{x}\right)\xi_{c}+\int_{\left\{ \xi_{c}<0\right\} }\phi\left(\mathbf{x}\right)\xi_{c}=\int_{\left\{ \xi_{c}\geq0\right\} }\xi_{c}=\int\xi_{c}\cdot1\left\{ \xi_{c}\geq0\right\} \\
+ & \geq & \int\psi\left(\mathbf{x}\right)\xi_{c}\cdot1\left\{ \xi_{c}\geq0\right\} =\int_{\left\{ \xi_{c}\geq0\right\} }\psi\left(\mathbf{x}\right)\xi_{c}\\
+ & \geq & \int_{\left\{ \xi_{c}\geq0\right\} }\psi\left(\mathbf{x}\right)\xi_{c}+\int_{\left\{ \xi_{c}<0\right\} }\psi\left(\mathbf{x}\right)\xi_{c}=\int\psi\left(x\right)\xi_{c}\\
+ & = & \int\psi\left(\mathbf{x}\right)\left(f\left(\mathbf{x};\theta_{1}\right)-cf\left(\mathbf{x};\theta_{0}\right)\right)
+\end{eqnarray*}
+
+\end_inset
+
+where the first inequality follows because the test function 
+\begin_inset Formula $0\leq\psi\left(\mathbf{x}\right)\leq1$
+\end_inset
+
+ for any realization of 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, and where the second inequality holds because 
+\begin_inset Formula $\int_{\left\{ \xi_{c}<0\right\} }\psi\left(\mathbf{x}\right)\xi_{c}\leq0$
+\end_inset
+
+.
+ We continue 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:NP1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{eqnarray*}
+E_{\theta_{1}}\left[\phi\left(\mathbf{X}\right)\right] & \geq & \int\psi\left(\mathbf{x}\right)\left(f\left(\mathbf{x};\theta_{1}\right)-cf\left(\mathbf{x};\theta_{0}\right)\right)+c\int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{0}\right)\\
+ & = & \int\psi\left(\mathbf{x}\right)f\left(\mathbf{x};\theta_{1}\right)=E_{\theta_{1}}\left[\psi\left(\mathbf{X}\right)\right].
+\end{eqnarray*}
+
+\end_inset
+
+In other words, 
+\begin_inset Formula $\phi\left(\mathbf{X}\right)$
+\end_inset
+
+ is more powerful at 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ than any other test 
+\begin_inset Formula $\psi$
+\end_inset
+
+ of the same size at the null.
+\end_layout
+
+\begin_layout Standard
+Neyman-Pearson lemma establishes the optimality of LRT in single versus
+ simple hypothesis testing.
+ It can be generalized to show the existence of the uniformly most power
+ test in one sided composite null hypothesis 
+\begin_inset Formula $H_{0}:\theta\leq\theta_{0}$
+\end_inset
+
+ or 
+\begin_inset Formula $H_{0}:\theta\geq\theta_{0}$
+\end_inset
+
+ in the parametric class of distributions exhibiting 
+\emph on
+monotone likelihood ratio
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Zhentao Shi.
+ Nov 4, 2020.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

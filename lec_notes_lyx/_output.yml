@@ -1,0 +1,22 @@
+bookdown::bs4_book:
+  theme:
+    primary: "#0f4d92"
+    base_font: 
+      google: 
+        family: Alice
+    heading_font:
+      google:
+        family: Spectral
+        wght: 600
+    code_font:
+      google: 
+        family: DM Mono
+    bg: "#e0ddd1" #backgrounds
+    fg: "#000000" #fonts
+  repo: 
+    base: https://github.com/zhentaoshi/Econ5121A
+    branch: master
+#  includes:
+#    in_header: style/ga.html
+#  template: style/bs4_book.html
+#  css: style/style.css

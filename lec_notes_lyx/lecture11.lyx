@@ -1,0 +1,1366 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass book
+\begin_preamble
+\usepackage[T1]{fontenc}
+% Nicer default font (+ math font) than Computer Modern for most use cases
+\usepackage{mathpazo}
+\end_preamble
+\use_default_options false
+\begin_modules
+theorems-ams-chap-bytype
+theorems-ams-extended-chap-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format dvi
+\output_sync 1
+\output_sync_macro "\synctex=-1"
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing double
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\branch abc
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch pf of gamma = 0
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes true
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{10}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Generalized Method of Moments
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Generalized method of moments
+\emph default
+ (GMM) 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "hansen1982large"
+literal "false"
+
+\end_inset
+
+ is an estimation principle that extends 
+\emph on
+method of moments
+\emph default
+.
+ It seeks the parameter value that minimizes a quadratic form of the moments.
+ It is particularly useful in estimating structural economic models in which
+ moment conditions can be derived from underlying economic theory.
+ GMM emerges as one of the most popular estimators in modern econometrics.
+ It includes conventional methods like the two-stage least squares (2SLS)
+ and the three-stage least square as special cases.
+ 
+\begin_inset FormulaMacro
+\newcommand{\top}{\stackrel{\mathrm{p}}{\to}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\Op}{O_{\mathrm{p}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\op}{o_{\mathrm{p}}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\E}{\mathbb{E}}
+\end_inset
+
+
+\begin_inset FormulaMacro
+\newcommand{\d}{\mathrm{d}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Instrumental Regression
+\end_layout
+
+\begin_layout Standard
+We first discuss estimation in a linear single structural equation 
+\begin_inset Formula 
+\[
+y_{i}=x_{i}'\beta+\epsilon_{i}
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $K$
+\end_inset
+
+ regressors.
+ Identification is a prerequisite for structural estimation.
+ From now on we always assume that the model is identified: there is an
+ 
+\begin_inset Formula $L\times1$
+\end_inset
+
+ vector of instruments 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\E\left[z_{i}\epsilon_{i}\right]=0_{L}$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma:=\E\left[z_{i}x_{i}'\right]$
+\end_inset
+
+ is of full column rank.
+ Denote 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ as the root of the equation 
+\begin_inset Formula $E\left[z_{i}\left(y_{i}-x_{i}'\beta\right)\right]=0_{L}$
+\end_inset
+
+, which is uniquely identified.
+ 
+\end_layout
+
+\begin_layout Subsection
+Just-identification
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $L=K$
+\end_inset
+
+, the instrumental regression model is 
+\emph on
+just-identified
+\emph default
+, or 
+\emph on
+exactly identified
+\emph default
+.
+ The orthogonality condition implies 
+\begin_inset Formula 
+\[
+\Sigma\beta_{0}=\E\left[z_{i}y_{i}\right],
+\]
+
+\end_inset
+
+ and we can solve express 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ as 
+\begin_inset Formula 
+\begin{equation}
+\beta_{0}=\Sigma^{-1}\E\left[z_{i}y_{i}\right]\label{eq:just_beta}
+\end{equation}
+
+\end_inset
+
+in closed form.
+ 
+\end_layout
+
+\begin_layout Standard
+The closed-form solution naturally motivates an estimator in which we replace
+ the population methods by the sample moments and this is a method-of-moments
+ estimator.
+ Nevertheless, we postpone the discussion of this estimator to the next
+ section.
+\end_layout
+
+\begin_layout Subsection
+Over-identification
+\end_layout
+
+\begin_layout Standard
+When 
+\begin_inset Formula $L>K$
+\end_inset
+
+, the model is 
+\emph on
+over-identified
+\emph default
+.
+ The orthogonality condition still implies 
+\begin_inset Formula 
+\begin{equation}
+\Sigma\beta_{0}=\E\left[z_{i}y_{i}\right],\label{eq:moment2}
+\end{equation}
+
+\end_inset
+
+but 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ is not a square matrix so we cannot write 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ as that in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:just_beta"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ In order to express 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ explicitly, we define a criterion function
+\begin_inset Formula 
+\[
+Q\left(\beta\right)=\E\left[z_{i}\left(y_{i}-x_{i}\beta\right)\right]'W\E\left[z_{i}\left(y_{i}-x_{i}\beta\right)\right],
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $W$
+\end_inset
+
+ is an 
+\begin_inset Formula $L\times L$
+\end_inset
+
+ positive-definite non-random symmetric matrix.
+ (The choice of 
+\begin_inset Formula $W$
+\end_inset
+
+ will be discussed soon.) Because of the quadratic form, 
+\begin_inset Formula $Q\left(\beta\right)\geq0$
+\end_inset
+
+ for all 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ Identification indicates that 
+\begin_inset Formula $Q\left(\beta\right)=0$
+\end_inset
+
+ if and only if 
+\begin_inset Formula $\beta=\beta_{0}$
+\end_inset
+
+.
+ Therefore we conclude 
+\begin_inset Formula 
+\[
+\beta_{0}=\arg\min_{\beta}Q\left(\beta\right)
+\]
+
+\end_inset
+
+is the unique minimizer.
+ Since 
+\begin_inset Formula $Q\left(\beta\right)$
+\end_inset
+
+ is a smooth function of 
+\begin_inset Formula $\beta$
+\end_inset
+
+, the minimizer 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ can be characterized by the first-order condition
+\begin_inset Formula 
+\[
+0_{K}=\frac{\partial}{\partial\beta}Q\left(\beta_{0}\right)=-2\Sigma'W\E\left[z_{i}\left(y_{i}-x_{i}\beta_{0}\right)\right]
+\]
+
+\end_inset
+
+Rearranging the above equation, we have 
+\begin_inset Formula 
+\[
+\Sigma'W\Sigma\beta_{0}=\Sigma'W\E\left[z_{i}y_{i}\right].
+\]
+
+\end_inset
+
+Under the rank condition 
+\begin_inset Formula $\Sigma'W\Sigma$
+\end_inset
+
+ is invertible so that we can solve 
+\begin_inset Formula 
+\begin{equation}
+\beta_{0}=\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\E\left[z_{i}y_{i}\right].\label{eq:over_beta}
+\end{equation}
+
+\end_inset
+
+Because we have more moments (
+\begin_inset Formula $L$
+\end_inset
+
+) than the number of unknown parameters (
+\begin_inset Formula $K$
+\end_inset
+
+), we call it the 
+\emph on
+generalized
+\emph default
+ method of moments.
+ 
+\end_layout
+
+\begin_layout Remark
+The above equation can be derived by pre-multiplying 
+\begin_inset Formula $\Sigma'W$
+\end_inset
+
+ on the both sides of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:moment2"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ without referring to the minimization problem.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Although we separate the discussion of the just-identified case and the
+ over-identified case, the latter 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:over_beta"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ actually takes 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:just_beta"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ as a special case.
+ In this sense, GMM is genuine generalization of the method of moments.
+ to see this point, notice that when 
+\begin_inset Formula $L=K$
+\end_inset
+
+, given any 
+\begin_inset Formula $W$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\begin{align*}
+\beta_{0} & =\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\E\left[z_{i}y_{i}\right]=\Sigma^{-1}W^{-1}(\Sigma')^{-1}\Sigma'W\E\left[z_{i}y_{i}\right]\\
+ & =\Sigma^{-1}W^{-1}W\E\left[z_{i}y_{i}\right]=\Sigma^{-1}\E\left[z_{i}y_{i}\right],
+\end{align*}
+
+\end_inset
+
+as 
+\begin_inset Formula $\Sigma$
+\end_inset
+
+ is a square matrix.
+ That is to say, in the just-identified case 
+\begin_inset Formula $W$
+\end_inset
+
+ plays no role because any choices of 
+\begin_inset Formula $W$
+\end_inset
+
+ lead to the same explicit solution of 
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+GMM Estimator
+\end_layout
+
+\begin_layout Standard
+In practice, we use the sample moments to replace the corresponding population
+ moments.
+ The GMM estimator mimics its population formula.
+ 
+\begin_inset Formula 
+\begin{eqnarray*}
+\widehat{\beta} & = & \left(\frac{1}{n}\sum x_{i}z_{i}'W\frac{1}{n}\sum z_{i}x_{i}'\right)^{-1}\frac{1}{n}\sum x_{i}z_{i}'W\frac{1}{n}\sum z_{i}y_{i}\\
+ & = & \left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'y}{n}\\
+ & = & \left(X'ZWZ'X\right)^{-1}X'ZWZ'y.
+\end{eqnarray*}
+
+\end_inset
+
+Under just-identification, this expression includes the 2SLS estimator 
+\begin_inset Formula 
+\[
+\hat{\beta}=\left(\frac{Z'X}{n}\right)^{-1}\frac{Z'y}{n}=\left(Z'X\right)^{-1}Z'y
+\]
+
+\end_inset
+
+ as a special case.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+The same GMM estimator 
+\begin_inset Formula $\hat{\beta}$
+\end_inset
+
+ can be obtained by minimizing 
+\begin_inset Formula 
+\[
+Q_{n}\left(\beta\right)=\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}\left(y_{i}-x_{i}\beta\right)\right]'W\left[\frac{1}{n}\sum_{i=1}^{n}z_{i}\left(y_{i}-x_{i}\beta\right)\right]=\frac{\left(y-X\beta\right)'Z}{n}W\frac{Z'\left(y-X\beta\right)}{n},
+\]
+
+\end_inset
+
+or more concisely 
+\begin_inset Formula $\hat{\beta}=\arg\min_{\beta}\left(y-X\beta\right)'ZWZ'\left(y-X\beta\right).$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now we check the asymptotic properties of 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+.
+ A few assumptions are in order.
+\end_layout
+
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+A.1
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $Z'X/n\top\Sigma$
+\end_inset
+
+ and 
+\begin_inset Formula $Z'\epsilon/n\top0_{L}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+A.1 assumes that we can apply a law of large numbers, so that that the sample
+ moments 
+\begin_inset Formula $Z'X/n$
+\end_inset
+
+ and 
+\begin_inset Formula $Z'\epsilon/n$
+\end_inset
+
+ converge in probability to their population counterparts.
+ 
+\end_layout
+
+\begin_layout Theorem
+Under Assumption A.1, 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is consistent.
+\end_layout
+
+\begin_layout Proof
+The step is similar to the consistency proof of OLS.
+ 
+\begin_inset Formula 
+\begin{align*}
+\widehat{\beta} & =\left(X'ZWZ'X\right)^{-1}X'ZWZ'\left(X'\beta_{0}+\epsilon\right)\\
+ & =\beta_{0}+\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{n}\\
+ & \top\beta_{0}+\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W0=\beta_{0}.\qedhere
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To check asymptotic normality, we assume that a central limit theorem can
+ be applied.
+\end_layout
+
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+A.2
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}\epsilon_{i}\stackrel{d}{\to}N\left(0_{L},\Omega\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\Omega=\E\left[z_{i}z_{i}'\epsilon_{i}^{2}\right].$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Asymptotic Normality
+\end_layout
+
+\end_inset
+
+Under Assumptions A.1 and A.2, 
+\begin_inset Formula 
+\begin{equation}
+\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)\stackrel{d}{\to}N\left(0_{K},\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}\right).\label{eq:normality}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+Multiply 
+\begin_inset Formula $\widehat{\beta}-\beta_{0}$
+\end_inset
+
+ by the scaling factor 
+\begin_inset Formula $\sqrt{n}$
+\end_inset
+
+,
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\widehat{\beta}-\beta_{0}\right)=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{Z'\epsilon}{\sqrt{n}}=\left(\frac{X'Z}{n}W\frac{Z'X}{n}\right)^{-1}\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum_{i=1}^{n}z_{i}'\epsilon_{i}.
+\]
+
+\end_inset
+
+The conclusion follows by the Slutsky's theorem as 
+\begin_inset Formula 
+\[
+\frac{X'Z}{n}W\frac{Z'X}{n}\top\Sigma'W\Sigma
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+\frac{X'Z}{n}W\frac{1}{\sqrt{n}}\sum z_{i}'\epsilon_{i}\stackrel{d}{\to}\Sigma'W\times N\left(0,\Omega\right)\sim N\left(0,\Sigma'W\Omega W\Sigma\right).\qedhere
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Efficient GMM
+\end_layout
+
+\begin_layout Standard
+It is clear from (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:normality"
+
+\end_inset
+
+) that the GMM estimator's asymptotic variance depends on the choice of
+ 
+\begin_inset Formula $W$
+\end_inset
+
+.
+ Which 
+\begin_inset Formula $W$
+\end_inset
+
+ makes the asymptotic variance as small as possible? The answer is 
+\begin_inset Formula $W=\Omega^{-1}$
+\end_inset
+
+, under which the efficient asymptotic variance is
+\begin_inset Formula 
+\[
+\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\Sigma'\Omega^{-1}\Omega\Omega^{-1}\Sigma\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}=\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proposition
+For any positive definite symmetric matrix 
+\begin_inset Formula $W$
+\end_inset
+
+, the difference 
+\begin_inset Formula 
+\[
+\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}-\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}
+\]
+
+\end_inset
+
+ is positive semi-definite.
+\end_layout
+
+\begin_layout Proof
+To simplify notation, denote 
+\begin_inset Formula $A:=W\Sigma\left(\Sigma'W\Sigma\right)^{-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $B:=\Omega^{-1}\Sigma\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}$
+\end_inset
+
+ and then the difference of the two matrices becomes
+\begin_inset Formula 
+\begin{eqnarray*}
+ &  & \left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}-\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\\
+ & = & A'\Omega A-B'\Omega B\\
+ & = & \left(A-B+B\right)'\Omega\left(A-B+B\right)-B'\Omega B\\
+ & = & \left(A-B\right)'\Omega\left(A-B\right)+\left(A-B\right)'\Omega B+B'\Omega\left(A-B\right).
+\end{eqnarray*}
+
+\end_inset
+
+Notice that 
+\begin_inset Formula 
+\begin{align*}
+B'\Omega A & =\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\Sigma'\Omega^{-1}\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}\\
+ & =\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}\Sigma'W\Sigma\left(\Sigma'W\Sigma\right)^{-1}=\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}=B'\Omega B,
+\end{align*}
+
+\end_inset
+
+which implies 
+\begin_inset Formula $B'\Omega\left(A-B\right)=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(A-B\right)'\Omega B=0$
+\end_inset
+
+.
+ We thus conclude that 
+\begin_inset Formula 
+\[
+\left(\Sigma'W\Sigma\right)^{-1}\Sigma'W\Omega W\Sigma\left(\Sigma'W\Sigma\right)^{-1}-\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}=\left(A-B\right)'\Omega\left(A-B\right)
+\]
+
+\end_inset
+
+is positive semi-definite.
+\end_layout
+
+\begin_layout Subsection
+Two-Step GMM
+\end_layout
+
+\begin_layout Standard
+The 
+\emph on
+two-step GMM
+\emph default
+ is one way to construct a feasible efficient GMM estimator.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Choose any valid 
+\begin_inset Formula $W$
+\end_inset
+
+, say 
+\begin_inset Formula $W=I_{L}$
+\end_inset
+
+, to get a consistent (but inefficient in general) estimator 
+\begin_inset Formula $\hat{\beta}^{\sharp}=\hat{\beta}^{\sharp}\left(W\right)$
+\end_inset
+
+.
+ Save the residual 
+\begin_inset Formula $\widehat{\epsilon}_{i}=y_{i}-x_{i}'\hat{\beta}^{\sharp}$
+\end_inset
+
+ and estimate the variance matrix 
+\begin_inset Formula $\widehat{\Omega}=\frac{1}{n}\sum z_{i}z_{i}'\widehat{\epsilon}_{i}^{2}.$
+\end_inset
+
+ Notice that this 
+\begin_inset Formula $\widehat{\Omega}$
+\end_inset
+
+ is a consistent for 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $W=\widehat{\Omega}^{-1}$
+\end_inset
+
+ and obtain the second estimator 
+\begin_inset Formula 
+\[
+\widehat{\beta}^{\natural}=\widehat{\beta}^{\natural}(\widehat{\Omega}^{-1})=\left(X'Z\widehat{\Omega}^{-1}Z'X\right)^{-1}X'Z\widehat{\Omega}^{-1}Z'y.
+\]
+
+\end_inset
+
+This second estimator is asymptotic efficient.
+\end_layout
+
+\begin_layout Exercise
+Show that if 
+\begin_inset Formula $\widehat{\Omega}\stackrel{p}{\to}\Omega$
+\end_inset
+
+, then 
+\begin_inset Formula $\sqrt{n}\left(\widehat{\beta}^{\natural}(\widehat{\Omega}^{-1})-\widehat{\beta}\left(\Omega^{-1}\right)\right)\stackrel{p}{\to}0$
+\end_inset
+
+.
+ In other words, the feasible estimator 
+\begin_inset Formula $\widehat{\beta}^{\natural}(\widehat{\Omega}^{-1})$
+\end_inset
+
+ is asymptotically equivalent to the infeasible efficient estimator 
+\begin_inset Formula $\widehat{\beta}\left(\Omega^{-1}\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Two Stage Least Squares
+\end_layout
+
+\begin_layout Standard
+If we further assume conditional homoskedasticity 
+\begin_inset Formula $\E\left[\epsilon_{i}^{2}|z_{i}\right]=\sigma^{2}$
+\end_inset
+
+, then 
+\begin_inset Formula 
+\[
+\Omega=\E\left[z_{i}z_{i}'\epsilon_{i}^{2}\right]=\E\left[z_{i}z_{i}'\E\left[\epsilon_{i}^{2}|z_{i}\right]\right]=\sigma^{2}\E\left[z_{i}z_{i}'\right].
+\]
+
+\end_inset
+
+In the first-step of the two-step GMM we can estimate the variance of the
+ error term by 
+\begin_inset Formula $\widehat{\sigma}^{2}=\frac{1}{n}\sum_{i=1}^{n}\widehat{\epsilon}_{i}^{2}$
+\end_inset
+
+ and the variance matrix by 
+\begin_inset Formula $\widehat{\Omega}=\widehat{\sigma}^{2}\frac{1}{n}\sum_{i=1}^{n}z_{i}z_{i}'=\widehat{\sigma}^{2}Z'Z/n$
+\end_inset
+
+.
+ When we plug this 
+\begin_inset Formula $W=\widehat{\Omega}^{-1}$
+\end_inset
+
+ into the GMM estimator, 
+\begin_inset Formula 
+\begin{eqnarray*}
+\widehat{\beta} & = & \left(X'Z\left(\widehat{\sigma}^{2}\frac{Z'Z}{n}\right)^{-1}Z'X\right)^{-1}X'Z\left(\widehat{\sigma}^{2}\frac{Z'Z}{n}\right)^{-1}Z'y\\
+ & = & \left(X'Z\left(Z'Z\right)^{-1}Z'X\right)^{-1}X'Z\left(Z'Z\right)^{-1}Z'y.
+\end{eqnarray*}
+
+\end_inset
+
+This is exactly the same expression of 2SLS for 
+\begin_inset Formula $L>K$
+\end_inset
+
+.
+ Therefore, 2SLS can be viewed as a special case of GMM with the weighting
+ matrix 
+\begin_inset Formula $\left(Z'Z/n\right)^{-1}$
+\end_inset
+
+.
+ Under conditional homoskedasticity, 2SLS is the efficient estimator.
+ 2SLS is inefficient in general cases of heteroskedasticity, despite its
+ popularity.
+\end_layout
+
+\begin_layout Remark
+2SLS gets its name because it can be obtained using two steps: first regress
+ 
+\begin_inset Formula $X$
+\end_inset
+
+ on all instruments 
+\begin_inset Formula $Z$
+\end_inset
+
+, and then regress 
+\begin_inset Formula $y$
+\end_inset
+
+ on the fitted value along with the included exogenous variables.
+ However, 2SLS can actually be obtained by one step using the above equation.
+ It is a special case of GMM.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+If an efficient estimator is not too difficult to implement, an econometric
+ theorist would prefer the efficient estimator to an inefficient estimator.
+ The benefits of using the efficient estimator is not limited to more accurate
+ coefficient estimation.
+ Many specification tests, for example the 
+\begin_inset Formula $J$
+\end_inset
+
+-statistic we will introduce soon, count on the efficient estimator to lead
+ to a familiar 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ distribution under null hypotheses.
+ Otherwise their null asymptotic distributions will be non-standard and
+ thereby critical values must be found by Monte Carlo simulations.
+\end_layout
+
+\begin_layout Section
+GMM in Nonlinear Model
+\end_layout
+
+\begin_layout Standard
+The principle of GMM can be used in models where the parameter enters the
+ moment conditions nonlinearly.
+ Let 
+\begin_inset Formula $g_{i}\left(\beta\right)=g\left(w_{i},\beta\right)\mapsto\mathbb{R}^{L}$
+\end_inset
+
+ be a function of the data 
+\begin_inset Formula $w_{i}$
+\end_inset
+
+ and the parameter 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ If economic theory implies 
+\begin_inset Formula $\E\left[g_{i}\left(\beta\right)\right]=0$
+\end_inset
+
+, which the statisticians call the 
+\emph on
+estimating equations
+\emph default
+, we can write the GMM population criterion function as 
+\begin_inset Formula 
+\[
+Q\left(\beta\right)=\E\left[g_{i}\left(\beta\right)\right]'W\E\left[g_{i}\left(\beta\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Nonlinear models nest the linear model as a special case.
+ For the linear IV model in the previous section, the data is 
+\begin_inset Formula $w_{i}=\left(y_{i},x_{i},z_{i}\right)$
+\end_inset
+
+, and the moment function is 
+\begin_inset Formula $g\left(w_{i},\beta\right)=z_{i}'\left(y_{i}-x_{i}\beta\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In practice we use the sample moments to mimic the population moments in
+ the criterion function
+\begin_inset Formula 
+\[
+Q_{n}\left(\beta\right)=\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)\right)'W\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)\right).
+\]
+
+\end_inset
+
+The GMM estimator is defined as 
+\begin_inset Formula 
+\[
+\hat{\beta}=\arg\min_{\beta}Q_{n}\left(\beta\right).
+\]
+
+\end_inset
+
+In these nonlinear models, a closed-form solution is in general unavailable,
+ while the asymptotic properties can still be established.
+ We state these asymptotic properties without proofs.
+\end_layout
+
+\begin_layout Theorem
+(a) If the model is identified, and 
+\begin_inset Formula 
+\[
+\mathbb{P}\left\{ \sup_{\beta\in\mathcal{B}}\big|\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\beta\right)-\E\left[g_{i}\left(\beta\right)\right]\big|>\varepsilon\right\} \to0
+\]
+
+\end_inset
+
+ for any constant 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ where the parametric space 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+ is a closed set, then 
+\begin_inset Formula $\hat{\beta}\top\beta.$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+(b) If in addition 
+\begin_inset Formula $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\beta_{0}\right)\stackrel{d}{\to}N\left(0,\Omega\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\Sigma=\E\left[\frac{\partial}{\partial\beta'}g_{i}\left(\beta_{0}\right)\right]$
+\end_inset
+
+ is of full column rank, then 
+\begin_inset Formula 
+\[
+\sqrt{n}\left(\hat{\beta}-\beta_{0}\right)\stackrel{d}{\to}N\left(0,\left(\Sigma'W\Sigma\right)^{-1}\left(\Sigma'W\Omega W\Sigma\right)\left(\Sigma'W\Sigma\right)^{-1}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\Omega=\E\left[g_{i}\left(\beta_{0}\right)g_{i}\left(\beta_{0}\right)'\right]$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+(c) If we choose 
+\begin_inset Formula $W=\Omega^{-1}$
+\end_inset
+
+, then the GMM estimator is efficient, and the asymptotic variance becomes
+ 
+\begin_inset Formula $\left(\Sigma'\Omega^{-1}\Sigma\right)^{-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+The list of assumptions in the above statement is incomplete.
+ We only lay out the key conditions but neglect some technical details.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Q_{n}\left(\beta\right)$
+\end_inset
+
+ measures how close are the moments to zeros.
+ It can serve as a test statistic with proper scaling.
+ Under the null hypothesis 
+\begin_inset Formula $\E\left[g_{i}\left(\beta\right)\right]=0_{L}$
+\end_inset
+
+, this Sargan-Hansen 
+\begin_inset Formula $J$
+\end_inset
+
+-test checks whether a moment condition is violated.
+ The test statistic is 
+\begin_inset Formula 
+\begin{align*}
+J\left(\widehat{\beta}\right) & =nQ_{n}\left(\widehat{\beta}\right)=n\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)'\widehat{\Omega}^{-1}\left(\frac{1}{n}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)\\
+ & =\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)'\widehat{\Omega}^{-1}\left(\frac{1}{\sqrt{n}}\sum_{i=1}^{n}g_{i}\left(\widehat{\beta}\right)\right)
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\widehat{\Omega}$
+\end_inset
+
+ is a consistent estimator of 
+\begin_inset Formula $\Omega$
+\end_inset
+
+, and 
+\begin_inset Formula $\widehat{\beta}$
+\end_inset
+
+ is an efficient estimator, for example, the two-step GMM estimator 
+\begin_inset Formula $\widehat{\beta}^{\natural}(\widehat{\Omega}^{-1})$
+\end_inset
+
+.
+ This statistic converges in distribution to a 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+ random variable with degree of freedom 
+\begin_inset Formula $L-K$
+\end_inset
+
+.
+ That is, under the null, 
+\begin_inset Formula 
+\[
+J\left(\widehat{\beta}\right)\stackrel{d}{\to}\chi^{2}\left(L-K\right).
+\]
+
+\end_inset
+
+If the null hypothesis is false, then the test statistic tends to be large
+ and it is more likely to reject the null.
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Standard
+The popularity of GMM in econometrics comes from the fact that economic
+ theory is often not informative enough about the underlying parametric
+ relationship amongst the variables.
+ Instead, many economic assumptions suggest moment restrictions.
+ From example, the 
+\emph on
+efficient market hypothesis
+\emph default
+ postulates that the future price movement 
+\begin_inset Formula $\Delta p_{t+1}$
+\end_inset
+
+ cannot be predicted by available past information set 
+\begin_inset Formula $\mathscr{I}_{t}$
+\end_inset
+
+ so that 
+\begin_inset Formula $\E\left[\Delta p_{t+1}|\mathscr{I}_{t}\right]=0$
+\end_inset
+
+.
+ It implies that any functions of the variables in the information set 
+\begin_inset Formula $\mathscr{I}_{t}$
+\end_inset
+
+ are orthogonal to 
+\begin_inset Formula $\Delta p_{t+1}$
+\end_inset
+
+.
+ A plethora of moment conditions can be constructed in order to test the
+ efficient market hypothesis.
+\end_layout
+
+\begin_layout Standard
+Conceptually simple though, GMM has many practical issues in reality.
+ There has been vast econometric literature about issues of GMM and their
+ remedies.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Historical notes
+\series default
+: 2SLS was attributed to 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "theil1953repeated"
+literal "false"
+
+\end_inset
+
+.
+ In the linear IV model, the 
+\begin_inset Formula $J$
+\end_inset
+
+-statistic was proposed by 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sargan1958estimation"
+literal "false"
+
+\end_inset
+
+, and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "hansen1982large"
+literal "false"
+
+\end_inset
+
+ extended it to nonlinear models.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Further reading
+\series default
+: The quadratic form of GMM makes it difficult to accommodate many moments
+ in the big data problems.
+ 
+\emph on
+Empirical likelihood
+\emph default
+ is an alternative estimator to GMM to estimate models defined by moment
+ restrictions.
+ 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "shi2016econometric"
+literal "false"
+
+\end_inset
+
+ solves the estimation problem of high-dimensional moments under the framework
+ of empirical likelihood.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+bigskip
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ Zhentao Shi.
+ Dec 3, 2020.}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "ref_teaching"
+options "chicagoa"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
