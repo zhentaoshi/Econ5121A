@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -16,7 +16,7 @@
 theorems-ams-chap-bytype
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package none
 \inputencoding utf8x
@@ -28,7 +28,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -72,7 +74,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -92,11 +96,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -118,32 +127,29 @@ setcounter{chapter}{3}
 \end_layout
 
 \begin_layout Chapter
-Least Squares: Finite Sample Theory
+Least Squares:
+ Finite Sample Theory
 \end_layout
 
 \begin_layout Standard
 We continue with properties of OLS.
- We will show that OLS coincides with the maximum likelihood estimator if
- the error term follows a normal distribution.
- We derive its finite-sample exact distribution which can be used for statistica
-l inference.
- The Gauss-Markov theorem justifies the optimality of OLS under the classical
- assumptions.
+ We will show that OLS coincides with the maximum likelihood estimator if the error term follows a normal distribution.
+ We derive its finite-sample exact distribution which can be used for statistical inference.
+ The Gauss-Markov theorem justifies the optimality of OLS under the classical assumptions.
 \end_layout
 
 \begin_layout Standard
 Suppose the data is generated from a parametric model.
- Statistical estimation looks for the unknown parameter from the observed
- data.
+ Statistical estimation looks for the unknown parameter from the observed data.
  A 
 \emph on
 principle
 \emph default
  is an ideology about a proper way of estimation.
- Over the history of statistics, only a few principles are widely accepted.
+ Over the history of statistics,
+ only a few principles are widely accepted.
  Among them Maximum Likelihood is the most important and fundamental.
- The maximum likelihood principle entails that the unknown parameter being
- found as the maximizer of the log-likelihood function.
+ The maximum likelihood principle entails that the unknown parameter being found as the maximizer of the log-likelihood function.
  
 \end_layout
 
@@ -152,8 +158,8 @@ Maximum Likelihood
 \end_layout
 
 \begin_layout Standard
-In this chapter, we first give an introduction of the maximum likelihood
- estimation.
+In this chapter,
+ we first give an introduction of the maximum likelihood estimation.
  Consider a random sample of 
 \begin_inset Formula $Z=\left(z_{1},z_{2},\ldots,z_{n}\right)$
 \end_inset
@@ -162,13 +168,13 @@ In this chapter, we first give an introduction of the maximum likelihood
 \begin_inset Formula $f_{z}\left(z_{i};\theta\right)$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $z_{i}$
 \end_inset
 
  is either a scalar random variable or a random vector.
- A parametric distribution is completely characterized by a finite-dimensional
- parameter 
+ A parametric distribution is completely characterized by a finite-dimensional parameter 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -223,8 +229,8 @@ In reality the sample
 
 \end_inset
 
-Why maximizing the log-likelihood function is desirable? An intuitive explanatio
-n is that 
+Why maximizing the log-likelihood function is desirable?
+ An intuitive explanation is that 
 \begin_inset Formula $\widehat{\theta}_{MLE}$
 \end_inset
 
@@ -250,7 +256,8 @@ A more formal justification requires an explicitly defined distance.
 \begin_inset Formula $\theta_{0}$
 \end_inset
 
-, so that the true distribution is 
+,
+ so that the true distribution is 
 \begin_inset Formula $f_{z}\left(z_{i};\theta_{0}\right)$
 \end_inset
 
@@ -264,12 +271,14 @@ A more formal justification requires an explicitly defined distance.
 \end_inset
 
 .
- To measure their difference, we introduce the 
+ To measure their difference,
+ we introduce the 
 \emph on
 Kullback-Leibler divergence
 \emph default
-, or the Kullback-Leibler distance, defined as the logarithms of the expected
- log-likelihood ratio
+,
+ or the Kullback-Leibler distance,
+ defined as the logarithms of the expected log-likelihood ratio
 \begin_inset Formula 
 \begin{align*}
 D_{f}\left(\theta_{0}\Vert\theta\right) & =D\left(f_{z}\left(z_{i};\theta_{0}\right)\Vert f_{z}\left(z_{i};\theta\right)\right):=E_{\theta_{0}}\left[\log\frac{f_{z}\left(z_{i};\theta_{0}\right)}{f_{z}\left(z_{i};\theta\right)}\right]\\
@@ -286,7 +295,8 @@ distance
 \begin_inset Quotes erd
 \end_inset
 
- because it is non-negative, although it is not symmetric in that 
+ because it is non-negative,
+ although it is not symmetric in that 
 \begin_inset Formula $D_{f}\left(\theta_{1}\Vert\theta_{2}\right)\neq D_{f}\left(\theta_{2}\Vert\theta_{1}\right)$
 \end_inset
 
@@ -295,7 +305,8 @@ distance
 \begin_inset Formula $D_{f}\left(\theta_{0}\Vert\theta\right)$
 \end_inset
 
- is non-negative, notice that 
+ is non-negative,
+ notice that 
 \begin_inset Formula $-\log\left(\cdot\right)$
 \end_inset
 
@@ -319,7 +330,8 @@ where
 \end_inset
 
  almost everywhere.
- Furthermore, if there is a one-to-one mapping between 
+ Furthermore,
+ if there is a one-to-one mapping between 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -331,7 +343,8 @@ where
 \begin_inset Formula $\Theta$
 \end_inset
 
- (identification), then 
+ (identification),
+ then 
 \begin_inset Formula $\theta_{0}=\arg\min_{\theta\in\Theta}D_{f}\left(\theta_{0}\Vert\theta\right)$
 \end_inset
 
@@ -339,7 +352,8 @@ where
 \end_layout
 
 \begin_layout Standard
-In information theory, 
+In information theory,
+ 
 \begin_inset Formula $-E_{\theta_{0}}\left[\log f_{z}\left(z_{i};\theta_{0}\right)\right]$
 \end_inset
 
@@ -352,8 +366,9 @@ entropy
 \end_inset
 
 .
- Entropy measures the uncertainty of a random variable; the larger is the
- value, the more chaotic is the random variable.
+ Entropy measures the uncertainty of a random variable;
+ the larger is the value,
+ the more chaotic is the random variable.
  The Kullback-Leibler distance is the 
 \emph on
 relative entropy
@@ -393,7 +408,8 @@ Consider the Gaussian location model
 \begin_inset Formula $z_{i}\sim N\left(\mu,1\right)$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -443,11 +459,13 @@ We work with the averaged log-likelihood
 \begin_inset Formula $\ell_{n}$
 \end_inset
 
-, instead of the (raw) log-likelihood 
+,
+ instead of the (raw) log-likelihood 
 \begin_inset Formula $L_{n}$
 \end_inset
 
-, to make it directly comparable with the expected log density 
+,
+ to make it directly comparable with the expected log density 
 \begin_inset Formula 
 \begin{align*}
 E_{\mu_{0}}\left[\log f_{z}\left(z;\mu\right)\right] & =E_{\mu_{0}}\left[\ell_{n}\left(\mu\right)\right]\\
@@ -460,7 +478,8 @@ E_{\mu_{0}}\left[\log f_{z}\left(z;\mu\right)\right] & =E_{\mu_{0}}\left[\ell_{n
 \end_inset
 
 where the first equality holds because of random sampling.
- Obviously, 
+ Obviously,
+ 
 \begin_inset Formula $\ell_{n}\left(\mu\right)$
 \end_inset
 
@@ -514,17 +533,22 @@ status open
 
 \begin_layout Plain Layout
 
-<<graph-size, echo=FALSE>>= 
+<<graph-size,
+ echo=FALSE>>= 
 \end_layout
 
 \begin_layout Plain Layout
 
-my_pdf = function(file, width, height) {
+my_pdf = function(file,
+ width,
+ height) {
 \end_layout
 
 \begin_layout Plain Layout
 
-  pdf(file, width = 5, height = 5) 
+  pdf(file,
+ width = 5,
+ height = 5) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -548,7 +572,9 @@ status open
 
 \begin_layout Plain Layout
 
-<<mle, dev='my_pdf', fig.ext='pdf'>>=
+<<mle,
+ dev='my_pdf',
+ fig.ext='pdf'>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -558,7 +584,8 @@ set.seed(2020-10-7)
 
 \begin_layout Plain Layout
 
-mu0 <- 2; gamma0 <- 1
+mu0 <- 2;
+ gamma0 <- 1
 \end_layout
 
 \begin_layout Plain Layout
@@ -607,7 +634,9 @@ Ln <- function(mu) {
 
 \begin_layout Plain Layout
 
-mu_base = mu0 + seq(-3, 3, by = 0.01)
+mu_base = mu0 + seq(-3,
+ 3,
+ by = 0.01)
 \end_layout
 
 \begin_layout Plain Layout
@@ -622,7 +651,9 @@ n = 4
 
 \begin_layout Plain Layout
 
-lnz = matrix(0, length(mu_base), 3)
+lnz = matrix(0,
+ length(mu_base),
+ 3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -632,12 +663,15 @@ for (rr in 1:3){
 
 \begin_layout Plain Layout
 
-  z <- rnorm(n, mu0, sqrt(gamma0) )
+  z <- rnorm(n,
+ mu0,
+ sqrt(gamma0) )
 \end_layout
 
 \begin_layout Plain Layout
 
-  lnz[,rr] <- plyr::laply(.data = mu_base, .fun = Ln)
+  lnz[,rr] <- plyr::laply(.data = mu_base,
+ .fun = Ln)
 \end_layout
 
 \begin_layout Plain Layout
@@ -652,32 +686,45 @@ for (rr in 1:3){
 
 \begin_layout Plain Layout
 
-matplot(x = mu_base, y = cbind( L(mu_base), lnz), 
+matplot(x = mu_base,
+ y = cbind( L(mu_base),
+ lnz),
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-        type = "l", lty = c(1, rep(2,3)), 
+        type = "l",
+ lty = c(1,
+ rep(2,3)),
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-        lwd =  c(2,rep(1,3)), col = 1:4, ylim = c(-6, -1), 
+        lwd =  c(2,rep(1,3)),
+ col = 1:4,
+ ylim = c(-6,
+ -1),
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-        xlab = "mu", ylab = "log-likelihood")
+        xlab = "mu",
+ ylab = "log-likelihood")
 \end_layout
 
 \begin_layout Plain Layout
 
-abline(v = mu0, lty = 3)
+abline(v = mu0,
+ lty = 3)
 \end_layout
 
 \begin_layout Plain Layout
 
-abline(h = L(mu0), lty = 3)
+abline(h = L(mu0),
+ lty = 3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -695,11 +742,13 @@ Likelihood Estimation for Regression
 \end_layout
 
 \begin_layout Standard
-Notation: 
+Notation:
+ 
 \begin_inset Formula $y_{i}$
 \end_inset
 
- is a scalar, and 
+ is a scalar,
+ and 
 \begin_inset Formula $x_{i}=\left(x_{i1},\ldots,x_{iK}\right)'$
 \end_inset
 
@@ -716,7 +765,8 @@ Notation:
 \begin_inset Formula $n\times1$
 \end_inset
 
- vector, and 
+ vector,
+ and 
 \begin_inset Formula $X$
 \end_inset
 
@@ -728,8 +778,7 @@ Notation:
 \end_layout
 
 \begin_layout Standard
-In this chapter we employ the classical statistical framework under restrictive
- distributional assumption 
+In this chapter we employ the classical statistical framework under restrictive distributional assumption 
 \begin_inset Formula 
 \begin{equation}
 y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right),\label{eq:normal_yx}
@@ -755,7 +804,8 @@ y_{i}|x_{i}\sim N\left(x_{i}'\beta,\gamma\right),\label{eq:normal_yx}
 \begin_inset Formula $x_{i}$
 \end_inset
 
-, the error term 
+,
+ the error term 
 \begin_inset Formula $e_{i}\sim N\left(0,\gamma\right)$
 \end_inset
 
@@ -785,7 +835,8 @@ f_{yx}\left(y_{i},x_{i}\right) & =f_{y|x}\left(y_{i}|x_{i}\right)f_{x}\left(x\ri
 \begin_inset Formula $f_{yx}$
 \end_inset
 
- is the joint pdf, 
+ is the joint pdf,
+ 
 \begin_inset Formula $f_{y|x}$
 \end_inset
 
@@ -797,13 +848,15 @@ f_{yx}\left(y_{i},x_{i}\right) & =f_{y|x}\left(y_{i}|x_{i}\right)f_{x}\left(x\ri
 \begin_inset Formula $x$
 \end_inset
 
-, and the second equality holds under (
+,
+ and the second equality holds under (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:normal_yx"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -843,8 +896,8 @@ conditional likelihood
 \end_inset
 
 We focus on the conditional likelihood.
- To facilitate derivation, we work with the (averaged) conditional log-likelihoo
-d function 
+ To facilitate derivation,
+ we work with the (averaged) conditional log-likelihood function 
 \begin_inset Formula 
 \[
 \ell_{n}\left(\beta,\gamma\right)=-\frac{1}{2}\log2\pi-\frac{1}{2}\log\gamma-\frac{1}{2n\gamma}\sum_{i=1}^{n}\left(y_{i}-x_{i}'\beta\right)^{2},
@@ -870,7 +923,8 @@ for
 
 \end_inset
 
-Rearranging the above equations in matrix form: 
+Rearranging the above equations in matrix form:
+ 
 \begin_inset Formula 
 \begin{align*}
 X'X\beta & =X'Y\\
@@ -897,7 +951,8 @@ when
 \begin_inset Formula $\widehat{\beta}_{MLE}$
 \end_inset
 
- coincides with the OLS estimator, and 
+ coincides with the OLS estimator,
+ and 
 \begin_inset Formula $\widehat{e}$
 \end_inset
 
@@ -922,11 +977,13 @@ Finite sample distribution
 \begin_inset Formula $n$
 \end_inset
 
-; it is in contrast to 
+;
+ it is in contrast to 
 \emph on
 asymptotic distribution
 \emph default
-, which is a large sample approximation to the finite sample distribution.
+,
+ which is a large sample approximation to the finite sample distribution.
  We first review some properties of a generic jointly normal random vector.
  
 \end_layout
@@ -990,7 +1047,8 @@ If
 \begin_inset Formula $z\sim N\left(0,1\right)$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $w\sim\chi^{2}\left(d\right)$
 \end_inset
 
@@ -1036,6 +1094,7 @@ reference "fact31"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -1064,11 +1123,13 @@ where
 \end_layout
 
 \begin_layout Standard
-In reality, 
+In reality,
+ 
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
- is an unknown parameter, and 
+ is an unknown parameter,
+ and 
 \begin_inset Formula 
 \[
 s^{2}=\widehat{e}'\widehat{e}/\left(n-K\right)=e'M_{X}e/\left(n-K\right)
@@ -1103,7 +1164,8 @@ Under the null hypothesis
 \begin_inset Formula $H_{0}:\beta_{k}=\beta_{k}^{*}$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $\beta_{k}^{*}$
 \end_inset
 
@@ -1124,9 +1186,9 @@ which is
 \emph on
 infeasible
 \emph default
- is that sense that it can be directly computed from the data because there
- is no unknown object in this statistic.
- When the hypothesis is true, 
+ is that sense that it can be directly computed from the data because there is no unknown object in this statistic.
+ When the hypothesis is true,
+ 
 \begin_inset Formula $\beta_{k}=\beta_{k}^{*}$
 \end_inset
 
@@ -1144,8 +1206,7 @@ where we introduce the population quantity
 \begin_inset Formula $\sigma^{2}$
 \end_inset
 
- into the second equality to help derive the distribution of the numerator
- and the denominator of the last expression.
+ into the second equality to help derive the distribution of the numerator and the denominator of the last expression.
  The numerator 
 \begin_inset Formula 
 \[
@@ -1163,7 +1224,8 @@ where we introduce the population quantity
 \end_inset
 
 .
- Moreover, because 
+ Moreover,
+ because 
 \begin_inset Formula 
 \begin{align*}
 \begin{bmatrix}\widehat{\beta}-\beta\\
@@ -1182,7 +1244,8 @@ M_{X}
 
 \end_inset
 
-are jointly normal with zero off-diagonal blocks, 
+are jointly normal with zero off-diagonal blocks,
+ 
 \begin_inset Formula $\left(\widehat{\beta}-\beta\right)$
 \end_inset
 
@@ -1191,7 +1254,8 @@ are jointly normal with zero off-diagonal blocks,
 \end_inset
 
  are statistically independent.
- (This claim is true, although the covariance matrix of the 
+ (This claim is true,
+ although the covariance matrix of the 
 \begin_inset Formula $\widehat{e}$
 \end_inset
 
@@ -1199,18 +1263,19 @@ are jointly normal with zero off-diagonal blocks,
 \begin_inset Formula $X$
 \end_inset
 
- is viewed as if non-random, the numerator and the denominator of (
+ is viewed as if non-random,
+ the numerator and the denominator of (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:t-stat"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
-) are statistically independent as well is a function since the former is
- a function of 
+) are statistically independent as well is a function since the former is a function of 
 \begin_inset Formula $\left(\widehat{\beta}-\beta\right)$
 \end_inset
 
@@ -1219,18 +1284,21 @@ noprefix "false"
 \end_inset
 
 .
- (Alternatively, the statistically independent can be verified by Basu's
- theorem, See Appendix 
+ (Alternatively,
+ the statistically independent can be verified by Basu's theorem,
+ See Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Basu's-Theorem"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
-.) As a result, we conclude 
+.) As a result,
+ we conclude 
 \begin_inset Formula $T_{k}\sim t\left(n-K\right)$
 \end_inset
 
@@ -1241,6 +1309,7 @@ reference "fact32"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -1261,7 +1330,8 @@ name "mean-and-variance"
 
 \begin_layout Standard
 Now we relax the normality assumption and statistical independence.
- Instead, we represent the regression model as 
+ Instead,
+ we represent the regression model as 
 \begin_inset Formula $Y=X\beta+e$
 \end_inset
 
@@ -1278,7 +1348,8 @@ where the first condition is the
 \emph on
 mean independence
 \emph default
- assumption, and the second condition is the 
+ assumption,
+ and the second condition is the 
 \emph on
 homoskedasticity
 \emph default
@@ -1296,8 +1367,8 @@ moments
 \end_inset
 
 .
- Unlike the normality assumption, they do not restrict the distribution
- of 
+ Unlike the normality assumption,
+ they do not restrict the distribution of 
 \begin_inset Formula $e_{i}$
 \end_inset
 
@@ -1305,7 +1376,8 @@ moments
 \end_layout
 
 \begin_layout Itemize
-Unbiasedness: 
+Unbiasedness:
+ 
 \begin_inset Formula 
 \begin{align*}
 E\left[\widehat{\beta}|X\right] & =E\left[\left(X'X\right)^{-1}XY|X\right]=E\left[\left(X'X\right)^{-1}X\left(X'\beta+e\right)|X\right]\\
@@ -1314,7 +1386,8 @@ E\left[\widehat{\beta}|X\right] & =E\left[\left(X'X\right)^{-1}XY|X\right]=E\lef
 
 \end_inset
 
-By the law of iterated expectations, the unconditional expectation 
+By the law of iterated expectations,
+ the unconditional expectation 
 \begin_inset Formula $E\left[\widehat{\beta}\right]=E\left[E\left[\widehat{\beta}|X\right]\right]=\beta.$
 \end_inset
 
@@ -1322,7 +1395,8 @@ By the law of iterated expectations, the unconditional expectation
 \end_layout
 
 \begin_layout Itemize
-Variance: 
+Variance:
+ 
 \begin_inset Formula 
 \[
 \begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] & =E\left[\left(\widehat{\beta}-E\widehat{\beta}\right)\left(\widehat{\beta}-E\widehat{\beta}\right)'|X\right]\\
@@ -1338,7 +1412,8 @@ where the second equality holds as
 \end_layout
 
 \begin_layout Itemize
-Under the assumption of homoskedasticity, it can be simplified as
+Under the assumption of homoskedasticity,
+ it can be simplified as
 \begin_inset Formula 
 \[
 \begin{aligned}\mathrm{var}\left[\widehat{\beta}|X\right] & =\left(X'X\right)^{-1}X'\left(\sigma^{2}I_{n}\right)X\left(X'X\right)^{-1}\\
@@ -1357,11 +1432,13 @@ Under the assumption of homoskedasticity, it can be simplified as
 \begin_inset Formula $e_{i}=x_{i}u_{i}$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $x_{i}$
 \end_inset
 
- is a scalar random variable, 
+ is a scalar random variable,
+ 
 \begin_inset Formula $u_{i}$
 \end_inset
 
@@ -1369,7 +1446,8 @@ Under the assumption of homoskedasticity, it can be simplified as
 \begin_inset Formula $x_{i}$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $E\left[u_{i}\right]=0$
 \end_inset
 
@@ -1423,6 +1501,7 @@ reference "eq:e_mean_zero"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -1444,12 +1523,15 @@ status open
 
 \begin_layout Plain Layout
 
-<<hsk, dev='my_pdf', fig.ext='pdf'>>=
+<<hsk,
+ dev='my_pdf',
+ fig.ext='pdf'>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-n = 100; X = rnorm(n)
+n = 100;
+ X = rnorm(n)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1459,7 +1541,9 @@ u = rnorm(n)
 
 \begin_layout Plain Layout
 
-plot( y = u, x = X, col = 
+plot( y = u,
+ x = X,
+ col = 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1467,7 +1551,8 @@ blue
 \begin_inset Quotes erd
 \end_inset
 
-, ylab = 
+,
+ ylab = 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1485,7 +1570,9 @@ e = X * rnorm(n)
 
 \begin_layout Plain Layout
 
-points( y = e, x = X, col = 
+points( y = e,
+ x = X,
+ col = 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1507,18 +1594,17 @@ red
 \end_layout
 
 \begin_layout Example
-It is important to notice that independently and identically distributed
- sample (iid) 
+It is important to notice that independently and identically distributed sample (iid) 
 \begin_inset Formula $\left(y_{i},x_{i}\right)$
 \end_inset
 
  does not imply homoskedasticity.
- Homoskedasticity or heteroskedasticity is about the relationship between
- 
+ Homoskedasticity or heteroskedasticity is about the relationship between 
 \begin_inset Formula $\left(x_{i},e_{i}=y_{i}-\beta x\right)$
 \end_inset
 
- within an observation, whereas iid is about the relationship between 
+ within an observation,
+ whereas iid is about the relationship between 
 \begin_inset Formula $\left(y_{i},x_{i}\right)$
 \end_inset
 
@@ -1554,7 +1640,8 @@ We have shown that OLS is unbiased in that
 
 .
  There are numerous linearly unbiased estimators.
- For example, 
+ For example,
+ 
 \begin_inset Formula $\left(Z'X\right)^{-1}Z'y$
 \end_inset
 
@@ -1567,10 +1654,10 @@ We have shown that OLS is unbiased in that
 \end_inset
 
 .
- We cannot say OLS is better than those other unbiased estimators because
- they are all unbiased — they are equally good at this aspect.
- We move to the second order property of variance: an estimator is better
- if its variance is smaller.
+ We cannot say OLS is better than those other unbiased estimators because they are all unbiased —
+ they are equally good at this aspect.
+ We move to the second order property of variance:
+ an estimator is better if its variance is smaller.
 \end_layout
 
 \begin_layout Fact
@@ -1582,7 +1669,8 @@ For two generic random vectors
 \begin_inset Formula $Y$
 \end_inset
 
- of the same size, we say 
+ of the same size,
+ we say 
 \begin_inset Formula $X$
 \end_inset
 
@@ -1595,12 +1683,12 @@ For two generic random vectors
 \end_inset
 
  is a positive semi-definite matrix.
- The comparison is defined this way because for any non-zero constant vector
- 
+ The comparison is defined this way because for any non-zero constant vector 
 \begin_inset Formula $c$
 \end_inset
 
-, the variance of the linear combination of 
+,
+ the variance of the linear combination of 
 \begin_inset Formula $X$
 \end_inset
 
@@ -1624,7 +1712,8 @@ Let
 \begin_inset Formula $\tilde{\beta}=A'y$
 \end_inset
 
- be a generic linear estimator, where 
+ be a generic linear estimator,
+ where 
 \begin_inset Formula $A$
 \end_inset
 
@@ -1654,7 +1743,8 @@ So the linearity and unbiasedness of
 \end_inset
 
 .
- Moreover, the variance 
+ Moreover,
+ the variance 
 \begin_inset Formula 
 \[
 \mbox{var}\left(A'y|X\right)=E\left[\left(A'y-\beta\right)\left(A'y-\beta\right)'|X\right]=E\left[A'ee'A|X\right]=\sigma^{2}A'A.
@@ -1699,14 +1789,14 @@ Therefore
 \end_inset
 
 .
- The above derivation shows OLS achieves the smallest variance among all
- linear unbiased estimators.
+ The above derivation shows OLS achieves the smallest variance among all linear unbiased estimators.
 \end_layout
 
 \begin_layout Standard
 Homoskedasticity is a restrictive assumption.
- Under homoskedasticity, 
-\begin_inset Formula $\mathrm{var}\left[\widehat{\beta}\right]=\sigma^{2}\left(X'X\right)^{-1}$
+ Under homoskedasticity,
+ 
+\begin_inset Formula $\mathrm{var}\left[\widehat{\beta}|X\right]=\sigma^{2}\left(X'X\right)^{-1}$
 \end_inset
 
 .
@@ -1723,7 +1813,8 @@ Homoskedasticity is a restrictive assumption.
 \end_inset
 
 .
- Under heteroskedasticity, Gauss-Markov theorem does not apply.
+ Under heteroskedasticity,
+ Gauss-Markov theorem does not apply.
 \end_layout
 
 \begin_layout Section
@@ -1731,10 +1822,9 @@ Summary
 \end_layout
 
 \begin_layout Standard
-The exact distribution under the normality assumption of the error term
- is the classical statistical results.
- The Gauss Markov theorem holds under two crucial assumptions: linear CEF
- and homoskedasticity.
+The exact distribution under the normality assumption of the error term is the classical statistical results.
+ The Gauss Markov theorem holds under two crucial assumptions:
+ linear CEF and homoskedasticity.
  
 \end_layout
 
@@ -1743,18 +1833,22 @@ The exact distribution under the normality assumption of the error term
 \series bold
 Historical notes
 \series default
-: MLE was promulgated and popularized by Ronald Fisher (1890–1962).
- He was a major contributor of the frequentist approach which dominates
- mathematical statistics today, and he sharply criticized the Bayesian approach.
- Fisher collected the iris flower dataset of 150 observations in his biological
- study in 1936, which can be displayed in R by typing 
+:
+ MLE was promulgated and popularized by Ronald Fisher (1890–1962).
+ He was a major contributor of the frequentist approach which dominates mathematical statistics today,
+ and he sharply criticized the Bayesian approach.
+ Fisher collected the iris flower dataset of 150 observations in his biological study in 1936,
+ which can be displayed in R by typing 
 \family typewriter
 iris
 \family default
 .
  Fisher invented the many concepts in classical mathematical statistics,
- such as sufficient statistic, ancillary statistic, completeness, and exponentia
-l family, etc.
+ such as sufficient statistic,
+ ancillary statistic,
+ completeness,
+ and exponential family,
+ etc.
 \end_layout
 
 \begin_layout Standard
@@ -1762,7 +1856,8 @@ l family, etc.
 \series bold
 Further reading
 \series default
-: 
+:
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "phillips1983exact"
@@ -1771,8 +1866,9 @@ literal "false"
 \end_inset
 
  offered a comprehensive treatment of exact small sample theory in econometrics.
- After that, theoretical studies in econometrics swiftly shifted to large
- sample theory, which we will introduce in the next chapter.
+ After that,
+ theoretical studies in econometrics swiftly shifted to large sample theory,
+ which we will introduce in the next chapter.
 \end_layout
 
 \begin_layout Section
@@ -1784,11 +1880,10 @@ Joint Normal Distribution
 \end_layout
 
 \begin_layout Standard
-It is arguable that normal distribution is the most frequently encountered
- distribution in statistical inference, as it is the asymptotic distribution
- of many popular estimators.
- Moreover, it boasts some unique features that facilitates the calculation
- of objects of interest.
+It is arguable that normal distribution is the most frequently encountered distribution in statistical inference,
+ as it is the asymptotic distribution of many popular estimators.
+ Moreover,
+ it boasts some unique features that facilitates the calculation of objects of interest.
  This note summaries a few of them.
 \end_layout
 
@@ -1805,7 +1900,8 @@ An
 \begin_inset Formula $N\left(\mu,\Sigma\right)$
 \end_inset
 
-, where 
+,
+ where 
 \begin_inset Formula $\mu$
 \end_inset
 
@@ -1873,7 +1969,8 @@ where
 \begin_inset Formula $m\times1$
 \end_inset
 
- vector, and 
+ vector,
+ and 
 \begin_inset Formula $Y_{2}$
 \end_inset
 
@@ -1890,16 +1987,19 @@ where
 \begin_inset Formula $\mu_{2}$
 \end_inset
 
- are the corresponding mean vectors, and 
+ are the corresponding mean vectors,
+ and 
 \begin_inset Formula $\Sigma_{ij}$
 \end_inset
 
-, 
+,
+ 
 \begin_inset Formula $j=1,2$
 \end_inset
 
  are the corresponding variance and covariance matrices.
- From now on, we always maintain the assumption that 
+ From now on,
+ we always maintain the assumption that 
 \begin_inset Formula $Y=\left(Y_{1}',Y_{2}'\right)'$
 \end_inset
 
@@ -1914,18 +2014,19 @@ reference "fact31"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
  immediately implies a convenient feature of the normal distribution.
- Generally speaking, if we are given a joint pdf of two random variables
- and intend to find the marginal distribution of one random variables, we
- need to integrate out the other variable from the joint pdf.
- However, if the variables are jointly normal, the information of the other
- random variable is irrelevant to the marginal distribution of the random
- variable of interest.
- We only need to know the partial information of the part of interest, say
- the mean 
+ Generally speaking,
+ if we are given a joint pdf of two random variables and intend to find the marginal distribution of one random variables,
+ we need to integrate out the other variable from the joint pdf.
+ However,
+ if the variables are jointly normal,
+ the information of the other random variable is irrelevant to the marginal distribution of the random variable of interest.
+ We only need to know the partial information of the part of interest,
+ say the mean 
 \begin_inset Formula $\mu_{1}$
 \end_inset
 
@@ -1955,14 +2056,16 @@ The marginal distribution
 \end_layout
 
 \begin_layout Standard
-This result is very convenient if we are interested in some component if
- an estimator, but not the entire vector of the estimator.
- For example, the OLS estimator of the linear regression model 
+This result is very convenient if we are interested in some component if an estimator,
+ but not the entire vector of the estimator.
+ For example,
+ the OLS estimator of the linear regression model 
 \begin_inset Formula $y_{i}=x_{i}'\beta+e_{i}$
 \end_inset
 
-, under the classical assumption of (i) random sample; (ii) independence
- of 
+,
+ under the classical assumption of (i) random sample;
+ (ii) independence of 
 \begin_inset Formula $z_{i}$
 \end_inset
 
@@ -1970,7 +2073,8 @@ This result is very convenient if we are interested in some component if
 \begin_inset Formula $e_{i}$
 \end_inset
 
-; (iii) 
+;
+ (iii) 
 \begin_inset Formula $e_{i}\sim N\left(0,\gamma\right)$
 \end_inset
 
@@ -2002,13 +2106,15 @@ If we are interested in the inference of only the
 \begin_inset Formula $\beta_{0}^{\left(j\right)}$
 \end_inset
 
-, then from Fact 
+,
+ then from Fact 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fact:marginal"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -2034,15 +2140,16 @@ where
 
 .
  The marginal distribution is independent of the other components.
- This saves us from integrating out the other components, which could be
- troublesome if the dimension of the vector is high.
+ This saves us from integrating out the other components,
+ which could be troublesome if the dimension of the vector is high.
 \end_layout
 
 \begin_layout Standard
-Generally, zero covariance of two random variables only indicates that they
- are uncorrelated, whereas full statistical independence is a much stronger
- requirement.
- However, if 
+Generally,
+ zero covariance of two random variables only indicates that they are uncorrelated,
+ whereas full statistical independence is a much stronger requirement.
+ However,
+ if 
 \begin_inset Formula $Y_{1}$
 \end_inset
 
@@ -2050,7 +2157,8 @@ Generally, zero covariance of two random variables only indicates that they
 \begin_inset Formula $Y_{2}$
 \end_inset
 
- are jointly normal, then zero covariance is equivalent to full independence.
+ are jointly normal,
+ then zero covariance is equivalent to full independence.
 \end_layout
 
 \begin_layout Fact
@@ -2058,7 +2166,8 @@ If
 \begin_inset Formula $\Sigma_{12}=0$
 \end_inset
 
-, then 
+,
+ then 
 \begin_inset Formula $Y_{1}$
 \end_inset
 
@@ -2081,7 +2190,8 @@ If
 \begin_inset Formula $\Sigma$
 \end_inset
 
- is invertible, then 
+ is invertible,
+ then 
 \begin_inset Formula $Y'\Sigma^{-1}Y\sim\chi^{2}\left(\mathrm{rank}\left(\Sigma\right)\right)$
 \end_inset
 
@@ -2089,7 +2199,9 @@ If
 \end_layout
 
 \begin_layout Standard
-The last result, which is useful in linear regression, is that if 
+The last result,
+ which is useful in linear regression,
+ is that if 
 \begin_inset Formula $Y_{1}$
 \end_inset
 
@@ -2097,7 +2209,8 @@ The last result, which is useful in linear regression, is that if
 \begin_inset Formula $Y_{2}$
 \end_inset
 
- are jointly normal, the conditional distribution of 
+ are jointly normal,
+ the conditional distribution of 
 \begin_inset Formula $Y_{1}$
 \end_inset
 
@@ -2105,8 +2218,8 @@ The last result, which is useful in linear regression, is that if
 \begin_inset Formula $Y_{2}$
 \end_inset
 
- is still jointly normal, with the mean and variance specified as in the
- following fact.
+ is still jointly normal,
+ with the mean and variance specified as in the following fact.
  
 \end_layout
 
@@ -2190,8 +2303,7 @@ complete
 \end_layout
 
 \begin_layout Standard
-Sufficient statistic is closely related to the exponential family in classical
- mathematical statistics.
+Sufficient statistic is closely related to the exponential family in classical mathematical statistics.
  A parametric distribution indexed by 
 \begin_inset Formula $\theta$
 \end_inset
@@ -2216,7 +2328,8 @@ f\left(Y|\theta\right)=h\left(Y\right)g\left(\theta\right)\exp\left(\eta\left(\t
 \begin_inset Formula $\eta\left(\theta\right)$
 \end_inset
 
- are functions depend, only on 
+ are functions depend,
+ only on 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -2248,7 +2361,8 @@ f\left(Y|\theta\right)=h\left(Y\right)g\left(\theta\right)\exp\left(\eta\left(\t
 \begin_inset Formula $\mu$
 \end_inset
 
-, the sample mean 
+,
+ the sample mean 
 \begin_inset Formula $\bar{y}$
 \end_inset
 
@@ -2304,7 +2418,8 @@ For
 \begin_inset Formula $Y$
 \end_inset
 
-, we have 
+,
+ we have 
 \begin_inset Formula $f\left(Y,\bar{y}\right)=f\left(Y\right)$
 \end_inset
 
@@ -2321,7 +2436,8 @@ is independent of
 \begin_inset Formula $\mu$
 \end_inset
 
-, and thus 
+,
+ and thus 
 \begin_inset Formula $\bar{y}$
 \end_inset
 
@@ -2330,7 +2446,8 @@ is independent of
 \end_inset
 
 .
- In the meantime, the sample standard deviation 
+ In the meantime,
+ the sample standard deviation 
 \begin_inset Formula $s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-\bar{y}\right)$
 \end_inset
 
@@ -2342,7 +2459,8 @@ ancillary statistic
 \begin_inset Formula $\mu$
 \end_inset
 
- , because the distribution of 
+ ,
+ because the distribution of 
 \begin_inset Formula $s^{2}$
 \end_inset
 
@@ -2371,9 +2489,7 @@ f(Y) & =\left(2\pi\gamma\right)^{-\frac{n}{2}}\exp\left(-\frac{1}{2\gamma}\sum_{
 
 \end_inset
 
-The exponential family is a class of distributions with the special functional
- form which is convenient for deriving sufficient statistics as well as
- other desirable properties in classical mathematical statistics.
+The exponential family is a class of distributions with the special functional form which is convenient for deriving sufficient statistics as well as other desirable properties in classical mathematical statistics.
 \end_layout
 
 \begin_layout Example
@@ -2389,7 +2505,8 @@ The exponential family is a class of distributions with the special functional
 \begin_inset Formula $\beta$
 \end_inset
 
-, We verify that the sample mean 
+,
+ We verify that the sample mean 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
@@ -2440,7 +2557,8 @@ is independent of
 \begin_inset Formula $\beta$
 \end_inset
 
-, and thus 
+,
+ and thus 
 \begin_inset Formula $\widehat{\beta}$
 \end_inset
 
@@ -2452,7 +2570,8 @@ is independent of
 \end_layout
 
 \begin_layout Standard
-In the meantime, the sample standard deviation 
+In the meantime,
+ the sample standard deviation 
 \begin_inset Formula $s^{2}=\frac{1}{n-1}\sum_{i=1}^{n}\left(y_{i}-x_{i}\widehat{\beta}\right)$
 \end_inset
 
@@ -2464,7 +2583,8 @@ ancillary statistic
 \begin_inset Formula $\beta$
 \end_inset
 
- , because the distribution of 
+ ,
+ because the distribution of 
 \begin_inset Formula $s^{2}$
 \end_inset
 
